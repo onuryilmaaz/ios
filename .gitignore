@@ -1,0 +1,21 @@
+.DS_Store
+
+# Yerel Xcode çıktıları ve kullanıcı ayarları
+build/
+DerivedData/
+**/xcuserdata/
+*.xcuserstate
+*.xcresult
+*.xcarchive
+*.ipa
+*.dSYM/
+.swiftpm/
+
+# Makineye ve hesaba özel dosyalar
+.env
+.env.*
+*.p8
+*.p12
+*.pem
+*.key
+*.mobileprovision

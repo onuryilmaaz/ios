@@ -1,0 +1,1040 @@
+{
+  "tr": {
+    "categories": [
+      {
+        "id": "sabah",
+        "title": "Sabah Duaları",
+        "icon": "sunny-outline",
+        "duas": [
+          {
+            "id": "sabah-1",
+            "title": "Sabah Uyanış Duası",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَحْيَانَا بَعْدَ مَآ أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+            "transliteration": "Elhamdülillâhillezî ahyânâ ba'de mâ emâtenâ ve ileyhin-nüşûr.",
+            "turkish": "Bizi öldürdükten sonra dirilten Allah'a hamd olsun. Dönüş O'nadır.",
+            "source": "Buhârî, Müslim"
+          },
+          {
+            "id": "sabah-2",
+            "title": "Sabah Zikri",
+            "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "Esbahnâ ve esbahal-mülkü lillâh, vel-hamdü lillâh.",
+            "turkish": "Sabahladık, mülk de Allah'a aittir. Hamd Allah'a mahsustur.",
+            "source": "Müslim"
+          },
+          {
+            "id": "sabah-3",
+            "title": "Sabah Selameti Duası",
+            "arabic": "اَللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+            "transliteration": "Allâhümme bike asbahnâ ve bike emseynâ ve bike nahyâ ve bike nemûtü ve ileyken-nüşûr.",
+            "turkish": "Allah'ım! Senin adınla sabahladık, senin adınla akşamladık, seninle yaşar seninle ölürüz. Dönüş sanadır.",
+            "source": "Tirmizî"
+          }
+        ]
+      },
+      {
+        "id": "aksam",
+        "title": "Akşam Duaları",
+        "icon": "moon-outline",
+        "duas": [
+          {
+            "id": "aksam-1",
+            "title": "Akşam Zikri",
+            "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "Emseynâ ve emsel-mülkü lillâh, vel-hamdü lillâh.",
+            "turkish": "Akşamladık. Mülk de Allah'a aittir. Hamd Allah'a mahsustur.",
+            "source": "Müslim"
+          },
+          {
+            "id": "aksam-2",
+            "title": "Akşam Korunma Duası",
+            "arabic": "اَللَّهُمَّ إِنِّى أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللّٰهُ لَا إِلٰهَ إِلَّا أَنْتَ",
+            "transliteration": "Allâhümme innî emseytü üşhidüke ve üşhidü hamele arşike ve melâiketek ve cemîa halkıke enneke entallâhü lâ ilâhe illâ ent.",
+            "turkish": "Allah'ım! Akşamladım; seni, arşını taşıyanları, meleklerini ve tüm yaratıklarını tanık tutuyorum ki; sen Allah'sın, senden başka ilah yoktur.",
+            "source": "Ebû Dâvûd"
+          }
+        ]
+      },
+      {
+        "id": "yemek",
+        "title": "Yemek Duaları",
+        "icon": "restaurant-outline",
+        "duas": [
+          {
+            "id": "yemek-1",
+            "title": "Yemek Öncesi",
+            "arabic": "بِسْمِ اللّٰهِ وَعَلَى بَرَكَةِ اللّٰهِ",
+            "transliteration": "Bismillâhi ve alâ beraketillâh.",
+            "turkish": "Allah'ın adıyla ve Allah'ın bereketi ile (yiyorum).",
+            "source": "Ebû Dâvûd"
+          },
+          {
+            "id": "yemek-2",
+            "title": "Yemek Sonrası",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+            "transliteration": "Elhamdülillâhillezî et'amenâ ve sekânâ ve ce'alenâ müslimîn.",
+            "turkish": "Bizi doyuran, içiren ve Müslüman kılan Allah'a hamd olsun.",
+            "source": "Tirmizî"
+          },
+          {
+            "id": "yemek-3",
+            "title": "Yemeği Unutunca",
+            "arabic": "بِسْمِ اللّٰهِ أَوَّلَهُ وَآخِرَهُ",
+            "transliteration": "Bismillâhi evvelehû ve âhirehû.",
+            "turkish": "Allah'ın adıyla, başında da sonunda da.",
+            "source": "Ebû Dâvûd, Tirmizî"
+          }
+        ]
+      },
+      {
+        "id": "uyku",
+        "title": "Uyku Duaları",
+        "icon": "bed-outline",
+        "duas": [
+          {
+            "id": "uyku-1",
+            "title": "Uyumadan Önce",
+            "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+            "transliteration": "Bismikallâhümme emûtü ve ahyâ.",
+            "turkish": "Allah'ım! Senin adınla ölür (uyur) ve dirilir (uyanırım).",
+            "source": "Buhârî"
+          },
+          {
+            "id": "uyku-2",
+            "title": "Yatağa Girerken",
+            "arabic": "اَللَّهُمَّ قِنِى عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+            "transliteration": "Allâhümme kınî azâbeke yevme teb'asü ibâdek.",
+            "turkish": "Allah'ım! Kullarını yeniden dirilttiğin gün beni azabından koru.",
+            "source": "Ebû Dâvûd, Tirmizî"
+          },
+          {
+            "id": "uyku-3",
+            "title": "Kabus Görünce",
+            "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّةِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ",
+            "transliteration": "E'ûzü bikelimâtillâhit-tâmmeti min gadabihî ve ikâbihî ve şerri ibâdihî ve min hemezâtiş-şeyâtîn.",
+            "turkish": "Allah'ın tam sözleri ile O'nun gazabından, azabından, kullarının şerrinden ve şeytanların vesveselerinden Allah'a sığınırım.",
+            "source": "Tirmizî"
+          }
+        ]
+      },
+      {
+        "id": "yolculuk",
+        "title": "Yolculuk Duaları",
+        "icon": "car-outline",
+        "duas": [
+          {
+            "id": "yolculuk-1",
+            "title": "Taşıta Binerken",
+            "arabic": "بِسْمِ اللّٰهِ وَالْحَمْدُ لِلّٰهِ سُبْحَانَ الَّذِى سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+            "transliteration": "Bismillâhi vel-hamdü lillâh. Sübhânellezî sehhara lenâ hâzâ ve mâ künnâ lehü mukrinîn, ve innâ ilâ rabbinâ lemünkalibûn.",
+            "turkish": "Allah'ın adıyla. Hamd Allah'a. Bunu bize boyun eğdiren yücedir, yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz.",
+            "source": "Tirmizî"
+          },
+          {
+            "id": "yolculuk-2",
+            "title": "Sefer Duası",
+            "arabic": "اَللَّهُمَّ إِنَّا نَسْأَلُكَ فِى سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى",
+            "transliteration": "Allâhümme innâ nes'elüke fî seferinâ hâzel-birra vet-takvâ.",
+            "turkish": "Allah'ım! Seferimizde senden iyilik ve takva istiyoruz.",
+            "source": "Müslim"
+          }
+        ]
+      },
+      {
+        "id": "namaz-sonrasi",
+        "title": "Namaz Sonrası",
+        "icon": "hand-left-outline",
+        "duas": [
+          {
+            "id": "ns-1",
+            "title": "Namaz Sonrası Dua",
+            "arabic": "اَللَّهُمَّ أَعِنِّى عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+            "transliteration": "Allâhümme a'innî alâ zikrike ve şükrike ve hüsni ibâdetik.",
+            "turkish": "Allah'ım! Seni zikretmek, sana şükretmek ve güzel ibadet etmek için bana yardım et.",
+            "source": "Ebû Dâvûd"
+          },
+          {
+            "id": "ns-2",
+            "title": "Seyyidül İstiğfar",
+            "arabic": "اَللَّهُمَّ أَنْتَ رَبِّى لَا إِلٰهَ إِلَّا أَنْتَ خَلَقْتَنِى وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ",
+            "transliteration": "Allâhümme ente rabbî lâ ilâhe illâ ent. Halaktenî ve ene abdük, ve ene alâ ahdike ve va'dike mesteta't. E'ûzü bike min şerri mâ sana't.",
+            "turkish": "Allah'ım, sen benim Rabbimsin. Senden başka ilah yoktur. Beni sen yarattın, ben senin kulunum ve gücüm yettiğince ahdinde ve vaadinde duruyorum. Yaptıklarımın şerrinden sana sığınıyorum.",
+            "source": "Buhârî"
+          },
+          {
+            "id": "ns-3",
+            "title": "Kul Hüvellah",
+            "arabic": "قُلْ هُوَ اللّٰهُ أَحَدٌ",
+            "transliteration": "Kul huvallâhu ehad.",
+            "turkish": "De ki: O Allah'tır, bir tektir.",
+            "source": "Kur'an, İhlas Suresi"
+          }
+        ]
+      },
+      {
+        "id": "genel",
+        "title": "Genel Dualar",
+        "icon": "heart-outline",
+        "duas": [
+          {
+            "id": "genel-1",
+            "title": "Rabbena Duası",
+            "arabic": "رَبَّنَا آتِنَا فِى الدُّنْيَا حَسَنَةً وَفِى الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+            "transliteration": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhirati haseneten ve kınâ azâben-nâr.",
+            "turkish": "Rabbimiz! Bize dünyada iyilik, ahirette de iyilik ver ve bizi ateş azabından koru.",
+            "source": "Kur'an, Bakara 201"
+          },
+          {
+            "id": "genel-2",
+            "title": "Kalp Salimliği",
+            "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِى عَلَى دِينِكَ",
+            "transliteration": "Yâ mukallibel-kulûbi sebbit kalbî alâ dînik.",
+            "turkish": "Ey kalpleri halden hale çeviren! Kalbimi dininde sabit kıl.",
+            "source": "Tirmizî"
+          },
+          {
+            "id": "genel-3",
+            "title": "Sıkıntı Duası",
+            "arabic": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّى كُنْتُ مِنَ الظَّالِمِينَ",
+            "transliteration": "Lâ ilâhe illâ ente sübhâneke innî küntü minez-zâlimîn.",
+            "turkish": "Senden başka ilah yoktur. Seni tenzih ederim. Gerçekten ben zalimlerden oldum.",
+            "source": "Kur'an, Enbiya 87"
+          }
+        ]
+      }
+    ],
+    "situations": [
+      {
+        "key": "kaygi",
+        "icon": "rainy-outline",
+        "duaIds": [
+          "genel-3",
+          "genel-2",
+          "aksam-2"
+        ],
+        "label": "Kaygı / Stres",
+        "keywords": [
+          "kaygı",
+          "stres",
+          "endişe",
+          "sıkıntı",
+          "üzgün",
+          "bunalım",
+          "huzursuz",
+          "panik"
+        ]
+      },
+      {
+        "key": "sukur",
+        "icon": "heart-outline",
+        "duaIds": [
+          "yemek-2",
+          "ns-1",
+          "sabah-1"
+        ],
+        "label": "Şükür",
+        "keywords": [
+          "şükür",
+          "minnet",
+          "mutlu",
+          "sevinç",
+          "nimet",
+          "teşekkür"
+        ]
+      },
+      {
+        "key": "yolculuk",
+        "icon": "airplane-outline",
+        "duaIds": [
+          "yolculuk-1",
+          "yolculuk-2"
+        ],
+        "label": "Yolculuk",
+        "keywords": [
+          "yolculuk",
+          "sefer",
+          "seyahat",
+          "yola",
+          "gidiyorum",
+          "uçak",
+          "araba"
+        ]
+      },
+      {
+        "key": "korunma",
+        "icon": "shield-outline",
+        "duaIds": [
+          "aksam-2",
+          "uyku-3",
+          "genel-3"
+        ],
+        "label": "Korku / Korunma",
+        "keywords": [
+          "korku",
+          "korkuyorum",
+          "korunma",
+          "nazar",
+          "kötülük",
+          "şer",
+          "kabus"
+        ]
+      },
+      {
+        "key": "uyku",
+        "icon": "moon-outline",
+        "duaIds": [
+          "uyku-1",
+          "uyku-2",
+          "uyku-3"
+        ],
+        "label": "Uyku",
+        "keywords": [
+          "uyku",
+          "uyuyacağım",
+          "gece",
+          "yatağa",
+          "uykusuz"
+        ]
+      },
+      {
+        "key": "tovbe",
+        "icon": "refresh-outline",
+        "duaIds": [
+          "ns-2",
+          "genel-3"
+        ],
+        "label": "Tövbe / İstiğfar",
+        "keywords": [
+          "tövbe",
+          "istiğfar",
+          "günah",
+          "pişman",
+          "af",
+          "bağışla"
+        ]
+      },
+      {
+        "key": "huzur",
+        "icon": "leaf-outline",
+        "duaIds": [
+          "genel-2",
+          "genel-1",
+          "ns-3"
+        ],
+        "label": "Huzur / Kalp",
+        "keywords": [
+          "huzur",
+          "kalp",
+          "sükunet",
+          "sakinlik",
+          "iç huzuru",
+          "rahat"
+        ]
+      },
+      {
+        "key": "sabah",
+        "icon": "sunny-outline",
+        "duaIds": [
+          "sabah-1",
+          "sabah-2",
+          "sabah-3"
+        ],
+        "label": "Güne Başlarken",
+        "keywords": [
+          "sabah",
+          "güne",
+          "uyandım",
+          "başlangıç",
+          "yeni gün"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "categories": [
+      {
+        "id": "sabah",
+        "title": "Morning Duas",
+        "icon": "sunny-outline",
+        "duas": [
+          {
+            "id": "sabah-1",
+            "title": "Upon Waking Up",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَحْيَانَا بَعْدَ مَآ أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+            "transliteration": "Alhamdu lillahil-ladhi ahyana ba'da ma amatana wa ilayhin-nushur.",
+            "turkish": "All praise is for Allah, who gave us life after having taken it from us, and to Him is the return.",
+            "source": "Bukhari, Muslim"
+          },
+          {
+            "id": "sabah-2",
+            "title": "Morning Remembrance",
+            "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "Asbahna wa asbahal-mulku lillah, wal-hamdu lillah.",
+            "turkish": "We have entered the morning and the whole kingdom belongs to Allah. All praise is for Allah.",
+            "source": "Muslim"
+          },
+          {
+            "id": "sabah-3",
+            "title": "Morning Protection",
+            "arabic": "اَللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+            "transliteration": "Allahumma bika asbahna wa bika amsayna wa bika nahya wa bika namutu wa ilaykan-nushur.",
+            "turkish": "O Allah, by You we enter the morning and by You we enter the evening, by You we live and by You we die, and to You is the resurrection.",
+            "source": "Tirmidhi"
+          }
+        ]
+      },
+      {
+        "id": "aksam",
+        "title": "Evening Duas",
+        "icon": "moon-outline",
+        "duas": [
+          {
+            "id": "aksam-1",
+            "title": "Evening Remembrance",
+            "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "Amsayna wa amsal-mulku lillah, wal-hamdu lillah.",
+            "turkish": "We have entered the evening and the whole kingdom belongs to Allah. All praise is for Allah.",
+            "source": "Muslim"
+          },
+          {
+            "id": "aksam-2",
+            "title": "Evening Protection",
+            "arabic": "اَللَّهُمَّ إِنِّى أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللّٰهُ لَا إِلٰهَ إِلَّا أَنْتَ",
+            "transliteration": "Allahumma inni amsaytu ush-hiduka wa ush-hidu hamalata 'arshika wa mala'ikataka wa jami'a khalqika annaka antallahu la ilaha illa ant.",
+            "turkish": "O Allah, I have entered the evening calling on You, the bearers of Your Throne, Your angels and all of Your creation to witness that You are Allah; there is no god but You.",
+            "source": "Abu Dawud"
+          }
+        ]
+      },
+      {
+        "id": "yemek",
+        "title": "Meal Duas",
+        "icon": "restaurant-outline",
+        "duas": [
+          {
+            "id": "yemek-1",
+            "title": "Before Eating",
+            "arabic": "بِسْمِ اللّٰهِ وَعَلَى بَرَكَةِ اللّٰهِ",
+            "transliteration": "Bismillahi wa 'ala barakatillah.",
+            "turkish": "In the name of Allah and with the blessings of Allah (I eat).",
+            "source": "Abu Dawud"
+          },
+          {
+            "id": "yemek-2",
+            "title": "After Eating",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+            "transliteration": "Alhamdu lillahil-ladhi at'amana wa saqana wa ja'alana muslimin.",
+            "turkish": "All praise is for Allah who fed us, gave us drink and made us Muslims.",
+            "source": "Tirmidhi"
+          },
+          {
+            "id": "yemek-3",
+            "title": "If You Forget at the Start",
+            "arabic": "بِسْمِ اللّٰهِ أَوَّلَهُ وَآخِرَهُ",
+            "transliteration": "Bismillahi awwalahu wa akhirahu.",
+            "turkish": "In the name of Allah, at its beginning and at its end.",
+            "source": "Abu Dawud, Tirmidhi"
+          }
+        ]
+      },
+      {
+        "id": "uyku",
+        "title": "Sleep Duas",
+        "icon": "bed-outline",
+        "duas": [
+          {
+            "id": "uyku-1",
+            "title": "Before Sleeping",
+            "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+            "transliteration": "Bismika Allahumma amutu wa ahya.",
+            "turkish": "In Your name, O Allah, I die (sleep) and I live (wake).",
+            "source": "Bukhari"
+          },
+          {
+            "id": "uyku-2",
+            "title": "Getting Into Bed",
+            "arabic": "اَللَّهُمَّ قِنِى عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+            "transliteration": "Allahumma qini 'adhabaka yawma tab'athu 'ibadak.",
+            "turkish": "O Allah, protect me from Your punishment on the Day You resurrect Your servants.",
+            "source": "Abu Dawud, Tirmidhi"
+          },
+          {
+            "id": "uyku-3",
+            "title": "After a Nightmare",
+            "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّةِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ",
+            "transliteration": "A'udhu bikalimatillahit-tammati min ghadabihi wa 'iqabihi wa sharri 'ibadihi wa min hamazatish-shayatin.",
+            "turkish": "I seek refuge in the perfect words of Allah from His anger and His punishment, from the evil of His servants and from the whispers of the devils.",
+            "source": "Tirmidhi"
+          }
+        ]
+      },
+      {
+        "id": "yolculuk",
+        "title": "Travel Duas",
+        "icon": "car-outline",
+        "duas": [
+          {
+            "id": "yolculuk-1",
+            "title": "Boarding a Vehicle",
+            "arabic": "بِسْمِ اللّٰهِ وَالْحَمْدُ لِلّٰهِ سُبْحَانَ الَّذِى سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+            "transliteration": "Bismillahi wal-hamdu lillah. Subhanal-ladhi sakhkhara lana hadha wa ma kunna lahu muqrinin, wa inna ila rabbina lamunqalibun.",
+            "turkish": "In the name of Allah, and all praise is for Allah. Glory be to Him who has subjected this to us, for we could never have done it by ourselves. And surely to our Lord we shall return.",
+            "source": "Tirmidhi"
+          },
+          {
+            "id": "yolculuk-2",
+            "title": "Travel Dua",
+            "arabic": "اَللَّهُمَّ إِنَّا نَسْأَلُكَ فِى سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى",
+            "transliteration": "Allahumma inna nas'aluka fi safarina hadhal-birra wat-taqwa.",
+            "turkish": "O Allah, we ask You on this journey of ours for righteousness and piety.",
+            "source": "Muslim"
+          }
+        ]
+      },
+      {
+        "id": "namaz-sonrasi",
+        "title": "After Prayer",
+        "icon": "hand-left-outline",
+        "duas": [
+          {
+            "id": "ns-1",
+            "title": "After the Prayer",
+            "arabic": "اَللَّهُمَّ أَعِنِّى عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+            "transliteration": "Allahumma a'inni 'ala dhikrika wa shukrika wa husni 'ibadatik.",
+            "turkish": "O Allah, help me to remember You, to thank You and to worship You in the best way.",
+            "source": "Abu Dawud"
+          },
+          {
+            "id": "ns-2",
+            "title": "Sayyid al-Istighfar",
+            "arabic": "اَللَّهُمَّ أَنْتَ رَبِّى لَا إِلٰهَ إِلَّا أَنْتَ خَلَقْتَنِى وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ",
+            "transliteration": "Allahumma anta rabbi la ilaha illa ant. Khalaqtani wa ana 'abduk, wa ana 'ala 'ahdika wa wa'dika mastata't. A'udhu bika min sharri ma sana't.",
+            "turkish": "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant, and I abide by Your covenant and promise as best I can. I seek refuge in You from the evil of what I have done.",
+            "source": "Bukhari"
+          },
+          {
+            "id": "ns-3",
+            "title": "Qul Huwallah",
+            "arabic": "قُلْ هُوَ اللّٰهُ أَحَدٌ",
+            "transliteration": "Qul huwallahu ahad.",
+            "turkish": "Say: He is Allah, the One.",
+            "source": "Qur'an, Surah Al-Ikhlas"
+          }
+        ]
+      },
+      {
+        "id": "genel",
+        "title": "General Duas",
+        "icon": "heart-outline",
+        "duas": [
+          {
+            "id": "genel-1",
+            "title": "Rabbana Dua",
+            "arabic": "رَبَّنَا آتِنَا فِى الدُّنْيَا حَسَنَةً وَفِى الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+            "transliteration": "Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar.",
+            "turkish": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+            "source": "Qur'an, Al-Baqarah 201"
+          },
+          {
+            "id": "genel-2",
+            "title": "Steadfastness of the Heart",
+            "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِى عَلَى دِينِكَ",
+            "transliteration": "Ya muqallibal-qulubi thabbit qalbi 'ala dinik.",
+            "turkish": "O Turner of hearts, keep my heart firm upon Your religion.",
+            "source": "Tirmidhi"
+          },
+          {
+            "id": "genel-3",
+            "title": "Dua in Distress",
+            "arabic": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّى كُنْتُ مِنَ الظَّالِمِينَ",
+            "transliteration": "La ilaha illa anta subhanaka inni kuntu minaz-zalimin.",
+            "turkish": "There is no god but You. Glory be to You. Indeed, I have been among the wrongdoers.",
+            "source": "Qur'an, Al-Anbiya 87"
+          }
+        ]
+      }
+    ],
+    "situations": [
+      {
+        "key": "kaygi",
+        "icon": "rainy-outline",
+        "duaIds": [
+          "genel-3",
+          "genel-2",
+          "aksam-2"
+        ],
+        "label": "Anxiety / Stress",
+        "keywords": [
+          "anxious",
+          "anxiety",
+          "stress",
+          "worried",
+          "sad",
+          "upset",
+          "panic",
+          "restless"
+        ]
+      },
+      {
+        "key": "sukur",
+        "icon": "heart-outline",
+        "duaIds": [
+          "yemek-2",
+          "ns-1",
+          "sabah-1"
+        ],
+        "label": "Gratitude",
+        "keywords": [
+          "grateful",
+          "thankful",
+          "thanks",
+          "happy",
+          "joy",
+          "blessing"
+        ]
+      },
+      {
+        "key": "yolculuk",
+        "icon": "airplane-outline",
+        "duaIds": [
+          "yolculuk-1",
+          "yolculuk-2"
+        ],
+        "label": "Travel",
+        "keywords": [
+          "travel",
+          "trip",
+          "journey",
+          "flight",
+          "driving",
+          "car",
+          "plane"
+        ]
+      },
+      {
+        "key": "korunma",
+        "icon": "shield-outline",
+        "duaIds": [
+          "aksam-2",
+          "uyku-3",
+          "genel-3"
+        ],
+        "label": "Fear / Protection",
+        "keywords": [
+          "fear",
+          "afraid",
+          "scared",
+          "protection",
+          "evil eye",
+          "harm",
+          "nightmare"
+        ]
+      },
+      {
+        "key": "uyku",
+        "icon": "moon-outline",
+        "duaIds": [
+          "uyku-1",
+          "uyku-2",
+          "uyku-3"
+        ],
+        "label": "Sleep",
+        "keywords": [
+          "sleep",
+          "night",
+          "bed",
+          "insomnia",
+          "tired"
+        ]
+      },
+      {
+        "key": "tovbe",
+        "icon": "refresh-outline",
+        "duaIds": [
+          "ns-2",
+          "genel-3"
+        ],
+        "label": "Repentance",
+        "keywords": [
+          "repent",
+          "repentance",
+          "forgive",
+          "forgiveness",
+          "sin",
+          "regret"
+        ]
+      },
+      {
+        "key": "huzur",
+        "icon": "leaf-outline",
+        "duaIds": [
+          "genel-2",
+          "genel-1",
+          "ns-3"
+        ],
+        "label": "Peace / Heart",
+        "keywords": [
+          "peace",
+          "heart",
+          "calm",
+          "serenity",
+          "tranquil"
+        ]
+      },
+      {
+        "key": "sabah",
+        "icon": "sunny-outline",
+        "duaIds": [
+          "sabah-1",
+          "sabah-2",
+          "sabah-3"
+        ],
+        "label": "Starting the Day",
+        "keywords": [
+          "morning",
+          "woke up",
+          "new day",
+          "start"
+        ]
+      }
+    ]
+  },
+  "ar": {
+    "categories": [
+      {
+        "id": "sabah",
+        "title": "أذكار الصباح",
+        "icon": "sunny-outline",
+        "duas": [
+          {
+            "id": "sabah-1",
+            "title": "دعاء الاستيقاظ",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَحْيَانَا بَعْدَ مَآ أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "البخاري ومسلم"
+          },
+          {
+            "id": "sabah-2",
+            "title": "ذكر الصباح",
+            "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "مسلم"
+          },
+          {
+            "id": "sabah-3",
+            "title": "دعاء الصباح",
+            "arabic": "اَللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "الترمذي"
+          }
+        ]
+      },
+      {
+        "id": "aksam",
+        "title": "أذكار المساء",
+        "icon": "moon-outline",
+        "duas": [
+          {
+            "id": "aksam-1",
+            "title": "ذكر المساء",
+            "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلّٰهِ وَالْحَمْدُ لِلّٰهِ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "مسلم"
+          },
+          {
+            "id": "aksam-2",
+            "title": "دعاء الحفظ في المساء",
+            "arabic": "اَللَّهُمَّ إِنِّى أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللّٰهُ لَا إِلٰهَ إِلَّا أَنْتَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "أبو داود"
+          }
+        ]
+      },
+      {
+        "id": "yemek",
+        "title": "أدعية الطعام",
+        "icon": "restaurant-outline",
+        "duas": [
+          {
+            "id": "yemek-1",
+            "title": "قبل الطعام",
+            "arabic": "بِسْمِ اللّٰهِ وَعَلَى بَرَكَةِ اللّٰهِ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "أبو داود"
+          },
+          {
+            "id": "yemek-2",
+            "title": "بعد الطعام",
+            "arabic": "اَلْحَمْدُ لِلّٰهِ الَّذِى أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "الترمذي"
+          },
+          {
+            "id": "yemek-3",
+            "title": "إذا نسي التسمية",
+            "arabic": "بِسْمِ اللّٰهِ أَوَّلَهُ وَآخِرَهُ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "أبو داود والترمذي"
+          }
+        ]
+      },
+      {
+        "id": "uyku",
+        "title": "أدعية النوم",
+        "icon": "bed-outline",
+        "duas": [
+          {
+            "id": "uyku-1",
+            "title": "قبل النوم",
+            "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+            "transliteration": "",
+            "turkish": "",
+            "source": "البخاري"
+          },
+          {
+            "id": "uyku-2",
+            "title": "عند الاضطجاع",
+            "arabic": "اَللَّهُمَّ قِنِى عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "أبو داود والترمذي"
+          },
+          {
+            "id": "uyku-3",
+            "title": "عند الفزع في النوم",
+            "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّةِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "الترمذي"
+          }
+        ]
+      },
+      {
+        "id": "yolculuk",
+        "title": "أدعية السفر",
+        "icon": "car-outline",
+        "duas": [
+          {
+            "id": "yolculuk-1",
+            "title": "دعاء الركوب",
+            "arabic": "بِسْمِ اللّٰهِ وَالْحَمْدُ لِلّٰهِ سُبْحَانَ الَّذِى سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "الترمذي"
+          },
+          {
+            "id": "yolculuk-2",
+            "title": "دعاء السفر",
+            "arabic": "اَللَّهُمَّ إِنَّا نَسْأَلُكَ فِى سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى",
+            "transliteration": "",
+            "turkish": "",
+            "source": "مسلم"
+          }
+        ]
+      },
+      {
+        "id": "namaz-sonrasi",
+        "title": "بعد الصلاة",
+        "icon": "hand-left-outline",
+        "duas": [
+          {
+            "id": "ns-1",
+            "title": "دعاء دبر الصلاة",
+            "arabic": "اَللَّهُمَّ أَعِنِّى عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "أبو داود"
+          },
+          {
+            "id": "ns-2",
+            "title": "سيد الاستغفار",
+            "arabic": "اَللَّهُمَّ أَنْتَ رَبِّى لَا إِلٰهَ إِلَّا أَنْتَ خَلَقْتَنِى وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "البخاري"
+          },
+          {
+            "id": "ns-3",
+            "title": "قل هو الله أحد",
+            "arabic": "قُلْ هُوَ اللّٰهُ أَحَدٌ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "القرآن، سورة الإخلاص"
+          }
+        ]
+      },
+      {
+        "id": "genel",
+        "title": "أدعية عامة",
+        "icon": "heart-outline",
+        "duas": [
+          {
+            "id": "genel-1",
+            "title": "دعاء ربنا آتنا",
+            "arabic": "رَبَّنَا آتِنَا فِى الدُّنْيَا حَسَنَةً وَفِى الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "القرآن، البقرة 201"
+          },
+          {
+            "id": "genel-2",
+            "title": "دعاء الثبات",
+            "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِى عَلَى دِينِكَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "الترمذي"
+          },
+          {
+            "id": "genel-3",
+            "title": "دعاء الكرب",
+            "arabic": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّى كُنْتُ مِنَ الظَّالِمِينَ",
+            "transliteration": "",
+            "turkish": "",
+            "source": "القرآن، الأنبياء 87"
+          }
+        ]
+      }
+    ],
+    "situations": [
+      {
+        "key": "kaygi",
+        "icon": "rainy-outline",
+        "duaIds": [
+          "genel-3",
+          "genel-2",
+          "aksam-2"
+        ],
+        "label": "القلق / التوتر",
+        "keywords": [
+          "قلق",
+          "توتر",
+          "هم",
+          "حزن",
+          "ضيق",
+          "خوف"
+        ]
+      },
+      {
+        "key": "sukur",
+        "icon": "heart-outline",
+        "duaIds": [
+          "yemek-2",
+          "ns-1",
+          "sabah-1"
+        ],
+        "label": "الشكر",
+        "keywords": [
+          "شكر",
+          "حمد",
+          "سعيد",
+          "فرح",
+          "نعمة"
+        ]
+      },
+      {
+        "key": "yolculuk",
+        "icon": "airplane-outline",
+        "duaIds": [
+          "yolculuk-1",
+          "yolculuk-2"
+        ],
+        "label": "السفر",
+        "keywords": [
+          "سفر",
+          "رحلة",
+          "طائرة",
+          "سيارة"
+        ]
+      },
+      {
+        "key": "korunma",
+        "icon": "shield-outline",
+        "duaIds": [
+          "aksam-2",
+          "uyku-3",
+          "genel-3"
+        ],
+        "label": "الخوف / الحفظ",
+        "keywords": [
+          "خوف",
+          "حفظ",
+          "حسد",
+          "عين",
+          "شر",
+          "كابوس"
+        ]
+      },
+      {
+        "key": "uyku",
+        "icon": "moon-outline",
+        "duaIds": [
+          "uyku-1",
+          "uyku-2",
+          "uyku-3"
+        ],
+        "label": "النوم",
+        "keywords": [
+          "نوم",
+          "ليل",
+          "أرق"
+        ]
+      },
+      {
+        "key": "tovbe",
+        "icon": "refresh-outline",
+        "duaIds": [
+          "ns-2",
+          "genel-3"
+        ],
+        "label": "التوبة / الاستغفار",
+        "keywords": [
+          "توبة",
+          "استغفار",
+          "ذنب",
+          "مغفرة",
+          "ندم"
+        ]
+      },
+      {
+        "key": "huzur",
+        "icon": "leaf-outline",
+        "duaIds": [
+          "genel-2",
+          "genel-1",
+          "ns-3"
+        ],
+        "label": "الطمأنينة / القلب",
+        "keywords": [
+          "طمأنينة",
+          "قلب",
+          "سكينة",
+          "راحة",
+          "هدوء"
+        ]
+      },
+      {
+        "key": "sabah",
+        "icon": "sunny-outline",
+        "duaIds": [
+          "sabah-1",
+          "sabah-2",
+          "sabah-3"
+        ],
+        "label": "بداية اليوم",
+        "keywords": [
+          "صباح",
+          "استيقظت",
+          "يوم جديد"
+        ]
+      }
+    ]
+  }
+}

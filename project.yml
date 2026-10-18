@@ -1,0 +1,271 @@
+# Salah iOS (SwiftUI). Xcode projesi bu dosyadan üretilir, elle düzenlenmez:
+#   xcodegen generate
+# Metinler, vakit ikonları ve il/ilçe verisi Shared/mobile/ içindeki RN kaynak
+# kopyasından okunur. Kaynaklar güncellendiğinde bu kopyayı da yenile.
+name: Salah
+options:
+  bundleIdPrefix: com.onur6541
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: tr
+  createIntermediateGroups: true
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: T9F78GA3Y9
+    SWIFT_VERSION: "6.0"
+    SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+    SWIFT_APPROACHABLE_CONCURRENCY: YES
+    MARKETING_VERSION: "1.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SALAH_API_URL: https://api.onur-yilmaz.com/salah
+    # Google Cloud (proje SALAH) > Google Auth Platform > Clients, tür iOS. Bir iOS istemcisi
+    # tek bundle ID kabul eder: bu Release (com.onur6541.salah), Debug'ınki aşağıda.
+    # Sunucuda salah-api .env: GOOGLE_CLIENT_IDS=<ikisi virgülle>.
+    GOOGLE_IOS_CLIENT_ID: 321984727488-chpfrev1ss25t5o40dfg6ulp1q7a17lf.apps.googleusercontent.com
+
+targets:
+  Salah:
+    type: application
+    platform: iOS
+    sources:
+      - path: Salah
+        excludes:
+          - "Resources/Fonts/*.ttf"
+      - path: Salah/Resources/Fonts
+        buildPhase: resources
+      # Uygulama ve widget aynı Keychain öğesini okur; dosya ortak.
+      - path: Shared/mobile/widget-src/SalahKeychain.swift
+      # AlarmKit alarmlarına eşlik eden veri; widget uzantısıyla aynı tip olmalı.
+      - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
+      # Live Activity içerik tipi; widget uzantısı aynı dosyayı derler.
+      - path: Shared/mobile/widget-src/SitePongActivityAttributes.swift
+      # RN kaynaklarının bu depoya alınmış kopyaları
+      - path: Shared/mobile/src/i18n/locales
+        buildPhase: resources
+        type: folder
+      - path: Shared/mobile/src/constants/prayerIcons.json
+        buildPhase: resources
+      - path: Shared/mobile/src/constants/states.json
+        buildPhase: resources
+      - path: Shared/mobile/src/constants/all-districts.json
+        buildPhase: resources
+      - path: Shared/mobile/src/data/surahNamesEn.json
+        buildPhase: resources
+      - path: Shared/mobile/assets/data/hadiths_v2.db
+        buildPhase: resources
+      - path: Shared/mobile/assets/fonts/UthmanicHafs.ttf
+        buildPhase: resources
+      - path: Shared/mobile/assets/audio
+        type: folder
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/alarm_imsak.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/alarm_ogle.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/alarm_ikindi.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/alarm_aksam.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/alarm_yatsi.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/tone_chime.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/tone_soft.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/tone_beep.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan.caf
+        buildPhase: resources
+      # RN ile aynı gerçek Mushaf örnekleri; XCTest ve izole Debug önizlemesi.
+      - path: Shared/mobile/src/services/__tests__/fixtures/mushaf-pages.json
+        buildPhase: resources
+    dependencies:
+      - target: SalahNotificationContent
+        embed: true
+      - target: SalahWidgets
+        embed: true
+    entitlements:
+      path: Salah/Salah.entitlements
+      properties:
+        # Live Activity push token'ı (sunucu vakit geçişlerini APNs ile gönderir).
+        aps-environment: development
+        # Widget'larla paylaşılan veri (RN ile aynı grup ve anahtarlar).
+        com.apple.security.application-groups:
+          - group.com.onur6541.salah.shared
+        keychain-access-groups:
+          - $(AppIdentifierPrefix)com.onur6541.salah.shared
+        com.apple.developer.applesignin:
+          - Default
+    info:
+      path: Salah/Info.plist
+      properties:
+        CFBundleDisplayName: $(SALAH_DISPLAY_NAME)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: tr
+        CFBundleLocalizations: [tr, en, ar]
+        CFBundleAllowMixedLocalizations: true
+        LSRequiresIPhoneOS: true
+        UIRequiredDeviceCapabilities: [arm64]
+        # ProMotion ekranlarda animasyonlar 120 Hz (RN sürümünde de açık).
+        CADisableMinimumFrameDurationOnPhone: true
+        AppIdentifierPrefix: $(AppIdentifierPrefix)
+        SalahAPIURL: $(SALAH_API_URL)
+        GoogleIOSClientID: $(GOOGLE_IOS_CLIENT_ID)
+        ITSAppUsesNonExemptEncryption: false
+        # Widget bağlantıları (salah://home, salah://tracker/quran ...). RN ile aynı şemalar.
+        CFBundleURLTypes:
+          - CFBundleURLName: com.onur6541.salah
+            CFBundleURLSchemes: [salah, com.onur6541.salah]
+        # Simülatörün Mac'teki geliştirme sunucusuna HTTP ile erişebilmesi için.
+        # Genel HTTP izni verilmez; Release API adresi HTTPS olarak kalır.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        # Statik açılış: düz zümrüt (Salah/Resources/Launch); animasyon SwiftUI'de (Features/Launch).
+        UILaunchStoryboardName: LaunchScreen
+        UIAppFonts:
+          - Ionicons.ttf
+          - Bungee-Regular.ttf
+          - UthmanicHafs.ttf
+        UIUserInterfaceStyle: Automatic
+        UIViewControllerBasedStatusBarAppearance: false
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        NSAlarmKitUsageDescription: Namaz, teheccüd ve sahur alarmlarınızı sessiz modda da çalabilmek için alarm izni gerekir.
+        NSLocationWhenInUseUsageDescription: Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.
+        UIBackgroundModes: [audio]
+        NSSupportsLiveActivities: true
+        NSSupportsLiveActivitiesFrequentUpdates: true
+        # Delege Mushaf dışındaki ekranları dikey tutar.
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        ENABLE_PREVIEWS: YES
+        # İkonlar: sh scripts/gen-app-icons.sh (Shared/mobile/assets'ten).
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: AppIconClassic AppIconNight AppIconGold
+      configs:
+        # Geliştirme sürümü mağaza uygulamasının yanına ayrı kurulur (üstüne yazmaz).
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.dev
+          SALAH_DISPLAY_NAME: Salah Dev
+          # Google iOS istemcisi "Salah-ios-dev" (bundle com.onur6541.salah.dev).
+          GOOGLE_IOS_CLIENT_ID: 321984727488-r0fu1gtt5oi46v2nais6dqokdcqc2m3j.apps.googleusercontent.com
+          # Debug da canlıdaki native backend'e gider (telefonda 127.0.0.1 telefonun kendisidir).
+          # Mac'teki yerel backend'le denemek için geçici olarak http://127.0.0.1:3000 yap.
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah
+          SALAH_DISPLAY_NAME: Salah
+          EXCLUDED_SOURCE_FILE_NAMES: [QuranPreview.json, mushaf-pages.json, HijriCalendarPreview.json]
+
+  SalahNotificationContent:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Shared/mobile/widget-src/NotificationContent
+        excludes: [Info.plist]
+    info:
+      path: NotificationContent/Info.plist
+      properties:
+        CFBundleDisplayName: SalahNotificationContent
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.usernotifications.content-extension
+          NSExtensionMainStoryboard: MainInterface
+          NSExtensionAttributes:
+            UNNotificationExtensionCategory: spiritual_reminder
+            UNNotificationExtensionInitialContentSizeRatio: 0.5
+            UNNotificationExtensionDefaultContentHidden: true
+            UNNotificationExtensionUserInteractionEnabled: false
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        APPLICATION_EXTENSION_API_ONLY: YES
+        # RN uzantısı aynı kaynaklarla ve kendi izolasyon ayarıyla derlenir.
+        SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+        OTHER_LDFLAGS: ["$(inherited)", "-framework", UserNotifications, "-framework", UserNotificationsUI]
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.dev.NotificationContent
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.NotificationContent
+
+  # Ana ekran, kilit ekranı, StandBy widget'ları ve Live Activity. Kaynaklar RN sürümüyle
+  # ortak kaynakların kopyasından (Shared/mobile/widget-src/Extension) derlenir. Release kimliği mağazadaki
+  # uzantıyla aynı kalmalı; kullanıcıların eklediği widget'lar güncellemede korunur.
+  SalahWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Shared/mobile/widget-src/Extension
+        excludes: [Info.plist, "*.entitlements"]
+      - path: Shared/mobile/widget-src/SitePongActivityAttributes.swift
+      - path: Shared/mobile/widget-src/SalahKeychain.swift
+      - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
+      - path: Shared/mobile/assets/fonts/UthmanicHafs.ttf
+        buildPhase: resources
+      - path: Widgets/PrivacyInfo.xcprivacy
+        buildPhase: resources
+    entitlements:
+      path: Widgets/SalahWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.onur6541.salah.shared
+        keychain-access-groups:
+          - $(AppIdentifierPrefix)com.onur6541.salah.shared
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: SitePongLiveActivityWidget
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        AppIdentifierPrefix: $(AppIdentifierPrefix)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        UIAppFonts: [UthmanicHafs.ttf]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        APPLICATION_EXTENSION_API_ONLY: YES
+        # RN'deki gibi Swift 5 kipinde, varsayılan izolasyonsuz derlenir.
+        SWIFT_VERSION: "5.0"
+        SWIFT_DEFAULT_ACTOR_ISOLATION: nonisolated
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.dev.SitePongLiveActivityWidget
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.SitePongLiveActivityWidget
+
+  SalahTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - SalahTests
+      # RN testleriyle ortak fixture'lar (aynı girdi, aynı beklenti).
+      - path: Shared/mobile/src/modules/hutbe/__tests__/fixtures
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - target: Salah
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.onur6541.salah.tests
+
+schemes:
+  Salah:
+    build:
+      targets:
+        Salah: all
+        SalahTests: [test]
+    test:
+      targets: [SalahTests]
+      environmentVariables:
+        SALAH_TEST_ISOLATED: "1"

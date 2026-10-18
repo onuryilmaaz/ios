@@ -1,0 +1,1329 @@
+{
+  "account": {
+    "finalConfirm": "Final confirmation",
+    "deletedTitle": "Account deleted",
+    "continue": "Continue",
+    "dangerSub": "Deactivating your account can be undone, but be careful",
+    "dangerZone": "Danger zone",
+    "deactivate": "Deactivate",
+    "deactivateFailed": "Couldn't deactivate account",
+    "deactivateMessage": "Are you sure you want to deactivate your account? This can be undone, but access to your account will be restricted.",
+    "deactivateTitle": "Deactivate account",
+    "deactivated": "Account deactivated",
+    "deleteConfirm": "Delete permanently",
+    "deleteFailed": "Couldn't delete the account. Please try again.",
+    "deleteFinal": "Your account and all your data will now be permanently deleted. There is no way back.",
+    "deleteMessage": "This CANNOT be undone. Your account and all your data (prayer and worship records) will be permanently deleted. Do you want to continue?",
+    "deleteSection": "Permanently delete account",
+    "deleteSectionSub": "Your account and all your data are permanently deleted. This cannot be undone.",
+    "deleteTitle": "Permanently delete my account",
+    "deleted": "Your account has been permanently deleted.",
+    "signOut": "Sign out",
+    "signOutMessage": "Are you sure you want to sign out?",
+    "signOutOthersFailed": "Couldn't sign out of other devices",
+    "signOutOthersMessage": "You'll be signed out on all devices except this one. Are you sure?",
+    "signOutOthersTitle": "Sign out of other devices",
+    "signOutSub": "Sign out of your account securely",
+    "signedOutOthers": "Signed out of other devices"
+  },
+  "activities": {
+    "book": {
+      "description": "Log the religious or scholarly book and pages you read",
+      "label": "Book reading",
+      "unit": "pages"
+    },
+    "dua": {
+      "description": "Log the time you spent on dua",
+      "label": "Dua time",
+      "unit": "min"
+    },
+    "fasting": {
+      "description": "Log today's fast",
+      "label": "Fasting",
+      "unit": ""
+    },
+    "memorization": {
+      "description": "Log the verses you memorized and reviewed",
+      "label": "Memorization",
+      "unit": "verses"
+    },
+    "nafile": {
+      "description": "Log the voluntary prayer you performed",
+      "label": "Voluntary prayer",
+      "unit": "rak'ahs"
+    },
+    "quran": {
+      "description": "Enter how many pages you read today",
+      "label": "Quran reading",
+      "unit": "pages"
+    },
+    "sadaka": {
+      "description": "Log the charity you gave",
+      "label": "Charity",
+      "unit": ""
+    }
+  },
+  "adhan": {
+    "dismiss": "Stop Adhan",
+    "takbir": "Allahu Akbar",
+    "time": "Adhan Time",
+    "title": "{{prayer}} Adhan"
+  },
+  "alarm": {
+    "button": {
+      "mark": "Prayed",
+      "snooze": "Snooze",
+      "stop": "Stop"
+    },
+    "channel": "Alarms",
+    "custom": {
+      "add": "Add Alarm",
+      "emptyTitle": "No custom alarms",
+      "emptyMessage": "Alarms with your own time and days appear here.",
+      "once": "Once",
+      "everyDay": "Every day",
+      "weekdays": "Weekdays",
+      "weekend": "Weekends",
+      "label": "Label",
+      "labelPlaceholder": "For example Duha prayer",
+      "repeat": "Repeat",
+      "newTitle": "New Alarm",
+      "editTitle": "Edit Alarm",
+      "deleteTitle": "Delete this alarm?",
+      "deleteMessage": "This alarm will be removed.",
+      "hourUp": "Increase hour",
+      "hourDown": "Decrease hour",
+      "minuteUp": "Increase minute",
+      "minuteDown": "Decrease minute"
+    },
+    "footer": "Alarms are set for the prayer times of the next 14 days and refresh whenever you open the app.",
+    "limit": "Some later days could not be set because of a system limit. They will be added as you open the app.",
+    "offset": {
+      "atTime": "On time",
+      "before": "{{min}} min before",
+      "after": "{{min}} min after"
+    },
+    "options": {
+      "sound": "Alarm sound",
+      "adhan": "Adhan",
+      "system": "System sound",
+      "secondary": "Second button on the alarm",
+      "markInfo": "The Prayed button appears on alarms that ring after the prayer time begins and marks the prayer. Other alarms show Snooze.",
+      "snoozeMinutes": "Snooze length",
+      "minutes": "{{min}} min",
+      "tone": {
+        "chime": "Chime",
+        "soft": "Gentle",
+        "beep": "Classic"
+      },
+      "soundInfo": "The adhan plays only on prayer alarms; tahajjud, suhoor and custom alarms use the system sound. Other sounds apply to every alarm."
+    },
+    "permission": {
+      "allow": "Allow",
+      "denied": "Alarm access is off. You can allow alarms for Salah in Settings.",
+      "message": "Allow alarms so they can ring in silent mode and during Focus.",
+      "message_android": "Allow notifications and \"Alarms & reminders\" so alarms ring on time, even in silent mode.",
+      "openSettings": "Open Settings",
+      "title": "Alarm permission needed"
+    },
+    "quick": {
+      "title": "{{prayer}} alarm",
+      "message": "Set an alarm for this prayer that rings like a Clock alarm.",
+      "activeMessage": "Alarm is on: {{when}}.",
+      "turnOn": "Set alarm ({{when}})",
+      "turnOff": "Turn off alarm",
+      "more": "Alarm settings",
+      "pill": "Alarm"
+    },
+    "sahur": {
+      "label": "Suhoor",
+      "sub": "{{min}} min before Fajr",
+      "onlyRamadan": "Only in Ramadan",
+      "onlyRamadanSub": "When off, rings every day"
+    },
+    "screen": {
+      "title": "Alarms",
+      "next": "Next alarm",
+      "noNext": "No alarms set",
+      "today": "Today {{time}}",
+      "tomorrow": "Tomorrow {{time}}"
+    },
+    "section": {
+      "prayers": "Prayer alarms",
+      "night": "Night and suhoor",
+      "custom": "Custom alarms",
+      "options": "Alarm options"
+    },
+    "snoozed": "Snoozed",
+    "tahajjud": {
+      "label": "Tahajjud",
+      "sub": "Last third of the night",
+      "start": "At start"
+    },
+    "title": {
+      "atTime": "It's time for {{prayer}}",
+      "before": "{{min}} min until {{prayer}}",
+      "after": "{{prayer}}, {{min}} min in",
+      "tahajjud": "Time for tahajjud",
+      "sahur": "Time for suhoor",
+      "custom": "Alarm"
+    },
+    "unsupported": {
+      "title": "Not available on this device",
+      "message": "Alarms require iOS 26 or later."
+    },
+    "customOffset": {
+      "chip": "Custom",
+      "before": "Before",
+      "after": "After",
+      "minutes": "Minutes",
+      "apply": "Apply",
+      "invalid": "Enter a number of minutes between 0 and {{max}}."
+    }
+  },
+  "alarmCard": {
+    "empty": "Alarms that follow the prayer times automatically",
+    "setFajr": "Set a Fajr alarm",
+    "setDone": "Alarm set",
+    "setDoneMessage": "Relative to Fajr: {{when}}. You can change it in Alarms.",
+    "manage": "Manage alarms",
+    "custom": "{{count}} custom alarms"
+  },
+  "appIcon": {
+    "classic": "Classic",
+    "default": "Forest",
+    "failed": "The icon could not be changed.",
+    "gold": "Gold",
+    "night": "Night",
+    "title": "App icon"
+  },
+  "assistant": {
+    "clear": "Clear chat",
+    "clearConfirm": "Delete all messages?",
+    "clearConfirmButton": "Clear",
+    "clearTitle": "Clear chat",
+    "copied": "Copied",
+    "copiedMessage": "Message copied to clipboard.",
+    "delete": "Delete",
+    "error": "Something went wrong, please try again.",
+    "fallbackReply": "Sorry, I can't answer right now. Could you try again?",
+    "introText": "Anything you wonder about Islam, prayer, wudu and worship.",
+    "introTitle": "Ask what's on your mind",
+    "placeholder": "Type a question…",
+    "send": "Send",
+    "suggest": {
+      "prayerDuas": "Which duas are recited in prayer?",
+      "qada": "How do I make up missed prayers?",
+      "travel": "What is the traveler's prayer?",
+      "wudu": "How do I perform wudu?"
+    },
+    "title": "Ask",
+    "unavailable": "The AI assistant is unavailable right now."
+  },
+  "auth": {
+    "or": "or",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "emailRequired": "Email is required",
+    "forgot": {
+      "send": "Send Code",
+      "sending": "Sending...",
+      "subtitle": "We'll send a reset code to your email",
+      "title": "Forgot Password"
+    },
+    "login": {
+      "failed": "Sign in failed. Please check your details.",
+      "forgot": "Forgot password?",
+      "inactive": "Your account is inactive. Please contact support.",
+      "invalid": "Incorrect email or password.",
+      "locked": "Your account is locked. Please try again later.",
+      "noAccount": "Don't have an account? ",
+      "required": "Email and password are required",
+      "submit": "Sign in",
+      "subtitle": "Sign in and continue your spiritual journey where you left off.",
+      "welcome": "Welcome back"
+    },
+    "otp": {
+      "enterCode": "Enter the 6-digit code",
+      "failed": "Verification failed",
+      "invalid": "The code is invalid or expired",
+      "resend": "Didn't get a code? Resend",
+      "sendFailed": "Couldn't send the code",
+      "sent": "Code sent",
+      "subtitle": "Enter the 6-digit code sent to {{email}}",
+      "title": "Verification Code",
+      "verify": "Verify"
+    },
+    "password": "Password",
+    "register": {
+      "haveAccount": "Already have an account? ",
+      "failed": "Sign up failed",
+      "firstName": "First name",
+      "firstNamePh": "Your first name",
+      "lastName": "Last name",
+      "lastNamePh": "Your last name",
+      "passwordPh": "Choose a strong password",
+      "required": "Please fill in all fields",
+      "submit": "Sign Up",
+      "submitting": "Signing up...",
+      "subtitle": "Join now and start tracking your worship",
+      "title": "Create Account"
+    },
+    "requestFailed": "Request failed",
+    "reset": {
+      "changeCode": "Change code",
+      "confirm": "Confirm password",
+      "confirmPh": "Re-enter the password",
+      "continue": "Continue",
+      "failed": "Password reset failed. Please check the code.",
+      "mismatch": "Passwords don't match",
+      "newPassword": "New password",
+      "newPasswordPh": "At least 6 characters",
+      "subtitleNew": "Set a new password for your account",
+      "titleNew": "New Password",
+      "titleOtp": "Enter Code",
+      "tooShort": "Password must be at least 6 characters",
+      "update": "Update Password",
+      "updating": "Updating..."
+    },
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "social": {
+      "failed": "Something went wrong while signing in. Please try again.",
+      "incomplete": "Sign in couldn't be completed. Please try again."
+    },
+    "welcome": {
+      "accent": "journey",
+      "and": "and",
+      "apple": "Continue with Apple",
+      "email": "Continue with email",
+      "google": "Continue with Google",
+      "line1": "Continue",
+      "line2": "your spiritual",
+      "privacy": "Privacy Policy",
+      "subtitle": "Sign in with one tap and start tracking your worship.",
+      "terms": "Terms of Use",
+      "termsPrefix": "By continuing you agree to the",
+      "termsSuffix": "."
+    }
+  },
+  "authWall": {
+    "later": "Later",
+    "assistant": {
+      "description": "Sign in to ask your religious questions.",
+      "title": "Sign in to the AI assistant"
+    },
+    "defaultDescription": "Please sign in or create an account to use this feature and save your progress.",
+    "defaultTitle": "Sign in required",
+    "prayer": {
+      "description": "Please sign in to track your prayers.",
+      "title": "Sign in to track prayers"
+    },
+    "quran": {
+      "description": "Sign in to read surahs, explore translations and save where you left off.",
+      "title": "Sign in to read the Quran"
+    },
+    "tracker": {
+      "description": "Sign in to see your worship records.",
+      "title": "Sign in to your worship log"
+    }
+  },
+  "badges": {
+    "empty": "No badges yet. Start by tracking your first prayer!",
+    "names": {
+      "erken_kuş": "Early Bird",
+      "ilk_adim": "First Step",
+      "ilk_hatim": "First Khatm",
+      "mukemmel_ay": "Perfect Month",
+      "mukemmel_hafta": "Perfect Week",
+      "sabah_ustasi": "Fajr Master",
+      "seri_100_gun": "100-Day Legend",
+      "seri_14_gun": "Two-Week Streak",
+      "seri_30_gun": "Monthly Champion",
+      "seri_3_gun": "3-Day Streak",
+      "seri_7_gun": "Weekly Streak",
+      "tum_vakit_ustasi": "All Prayers Master"
+    },
+    "next": "Next Badge",
+    "title": "My Badges"
+  },
+  "calendar": {
+    "backToToday": "Back to today",
+    "daysLeft": "{{count}} days left",
+    "daysLeftShort": "days left",
+    "friday": "Friday",
+    "legendSpecial": "Special day",
+    "legendToday": "Today",
+    "nextMonth": "Next month",
+    "prevMonth": "Previous month",
+    "thisMonth": "Special days this month",
+    "title": "Calendar",
+    "today": "Today",
+    "todayLine": "Today · {{date}}",
+    "upcoming": "Upcoming special days"
+  },
+  "celebration": {
+    "a11y": "All prayers completed. {{count}}-day streak. Tap to close",
+    "message": "Your streak continues. May Allah accept it.",
+    "streakLabel": "day streak",
+    "title": "Today's prayers are complete"
+  },
+  "changeEmail": {
+    "code": "Verification code",
+    "codeRequired": "Code and new email are required",
+    "codeSent": "Verification code sent",
+    "confirmFailed": "Couldn't confirm the email",
+    "intro": "Enter your new address to change your email. We'll send you a verification code.",
+    "newEmail": "New email",
+    "newRequired": "New email is required",
+    "placeholder": "new@email.com",
+    "resend": "Resend code",
+    "sendCode": "Send verification code",
+    "startFailed": "Couldn't start the email change",
+    "title": "Change email",
+    "update": "Update email",
+    "updated": "Email updated"
+  },
+  "changePassword": {
+    "current": "Current password",
+    "currentPlaceholder": "Enter your current password",
+    "failed": "Couldn't update password",
+    "intro": "For your security, enter your current password and set a new one.",
+    "new": "New password",
+    "newPlaceholder": "Enter your new password",
+    "required": "Password fields are required",
+    "title": "Change password",
+    "update": "Update password",
+    "updated": "Password updated"
+  },
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "cancelAlt": "Cancel",
+    "close": "Close",
+    "decrease": "Decrease",
+    "delete": "Delete",
+    "error": "Error",
+    "increase": "Increase",
+    "loading": "Loading...",
+    "ok": "OK",
+    "profile": "Profile",
+    "qibla": "Qibla",
+    "retry": "Try again",
+    "save": "Save",
+    "share": "Share",
+    "success": "Success",
+    "weekdaysShort": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "yes": "Yes"
+  },
+  "countdown": {
+    "channel": "Lock screen countdown",
+    "endsAt": "Ends at {{time}}",
+    "startsAt": "Starts at {{time}}"
+  },
+  "cuma": {
+    "a11y": "{{label}}. Open the Diyanet Friday sermon",
+    "default": {
+      "label": "Friday sermon",
+      "subtitle": "View Diyanet sermons anytime"
+    },
+    "done": {
+      "label": "Jumu'ah Mubarak",
+      "subtitle": "Have a look if you haven't read the sermon yet"
+    },
+    "openFailed": "Couldn't open the sermon page.",
+    "today": {
+      "label": "Today is Friday",
+      "subtitle": "See this week's Diyanet Friday sermon"
+    },
+    "tomorrow": {
+      "label": "Tomorrow is Friday",
+      "subtitle": "You can read this week's sermon now"
+    }
+  },
+  "dayRing": {
+    "title": "Day circle",
+    "subtitle": "Prayer times, makruh times and now",
+    "hours": "hours:minutes",
+    "minutes": "minutes",
+    "forbidden": "Makruh time"
+  },
+  "dua": {
+    "count": "{{count}} duas",
+    "favAdd": "Add to favorites",
+    "favRemove": "Remove from favorites",
+    "favorites": "Favorites",
+    "meaning": "Meaning",
+    "mood": {
+      "fallback": "No exact match, here's a heartfelt dua:",
+      "matched": "Duas for \"{{label}}\":",
+      "placeholder": "What's on your mind? (e.g. I'm anxious)",
+      "subtitle": "How are you feeling? Pick a situation or type it.",
+      "suggest": "Suggest",
+      "title": "A Dua for You"
+    },
+    "share": "Share dua",
+    "source": "Source: {{source}}",
+    "title": "Dua Collection",
+    "transliteration": "Transliteration",
+    "categories": "Categories"
+  },
+  "errors": {
+    "boundaryMessage": "An unexpected error occurred. Please try again.",
+    "boundaryTitle": "Something went wrong",
+    "genericMessage": "Please try again later.",
+    "genericTitle": "Something went wrong"
+  },
+  "esma": {
+    "clearSearch": "Clear search",
+    "empty": "No name found",
+    "meaning": "Meaning",
+    "nth": "NAME {{n}}",
+    "search": "Search name or meaning",
+    "title": "Asma ul-Husna",
+    "count": "{{count}} names"
+  },
+  "forbidden": {
+    "a11y": "Disliked prayer time, {{label}}. Until {{time}}, {{remaining}} left",
+    "min": "{{m}} min {{s}} s",
+    "sec": "{{s}} s",
+    "sunrise": {
+      "description": "Voluntary prayers are not performed from the start of sunrise until the sun has risen.",
+      "label": "Sunrise"
+    },
+    "sunset": {
+      "description": "Voluntary prayers are not performed from the start of sunset until Maghrib begins.",
+      "label": "Before sunset"
+    },
+    "until": "until {{time}}",
+    "zawal": {
+      "description": "The short time when the sun is at its zenith; voluntary prayers are not performed until Dhuhr begins.",
+      "label": "Zawal (solar noon)"
+    }
+  },
+  "hijri": {
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi al-Awwal",
+      "Rabi al-Thani",
+      "Jumada al-Ula",
+      "Jumada al-Akhirah",
+      "Rajab",
+      "Sha'ban",
+      "Ramadan",
+      "Shawwal",
+      "Dhu al-Qadah",
+      "Dhu al-Hijjah"
+    ]
+  },
+  "history": {
+    "count": "{{count}}/5 prayers",
+    "actionFailed": "Action failed.",
+    "fivePrayers": "Five daily prayers",
+    "info": "Your streak updates automatically when you edit past days. Prayers you add are recorded as prayed on that date, not as qada.",
+    "loadFailed": "Couldn't load data.",
+    "pastDay": "Past day",
+    "prayed": "✓ Prayed",
+    "title": "Edit history",
+    "today": "Today"
+  },
+  "home": {
+    "editLayout": "Edit home screen",
+    "hero": {
+      "entry": "Starts {{time}}",
+      "fallback": "Prayer time",
+      "now": "now",
+      "untilEnd": "Until {{prayer}} ends",
+      "untilStart": "Until {{prayer}}"
+    },
+    "inspiration": {
+      "hadith": "Hadith of the day",
+      "readMore": "Read more",
+      "refresh": "Refresh",
+      "showLess": "Show less",
+      "verse": "Verse of the day"
+    },
+    "quick": {
+      "calendar": "Calendar",
+      "dua": "Duas",
+      "esma": "Names of Allah",
+      "history": "Past prayers",
+      "short": {
+        "dua": "Duas",
+        "calendar": "Calendar",
+        "esma": "Asma ul-Husna",
+        "history": "Past Prayers"
+      }
+    },
+    "streak": {
+      "a11y": "Prayer streak {{streak}} days, longest {{longest}} days",
+      "dayA11y": "{{day}}: {{count}} of 5 prayers",
+      "days": "days",
+      "label": "prayer streak",
+      "longest": "Longest"
+    },
+    "tracker": {
+      "completed": "Completed",
+      "kaza": "Qada",
+      "ozelGunActive": "Exemption mode is on, your streak is protected",
+      "ozelGunEnd": "End",
+      "ozelGunEndA11y": "End exemption mode",
+      "ozelGunMine": "My exemption days",
+      "progress": "{{done}} of {{total}} prayed",
+      "status": {
+        "done": "prayed",
+        "expired": "time has passed, can be marked as qada",
+        "kaza": "made up (qada)",
+        "notDone": "not prayed",
+        "upcoming": "not yet time"
+      },
+      "title": "Today's prayers"
+    }
+  },
+  "homeLayout": {
+    "info": "Reorder cards with the arrows and show or hide them with the switch. The prayer times card always stays at the top.",
+    "moveDown": "Move {{label}} card down",
+    "moveUp": "Move {{label}} card up",
+    "reset": "Reset",
+    "resetA11y": "Restore default layout",
+    "resetMessage": "The home screen card layout will be reset to default. Continue?",
+    "resetTitle": "Reset layout",
+    "title": "Home layout",
+    "toggleA11y": "Show {{label}} card"
+  },
+  "homeSections": {
+    "dailyInspiration": {
+      "description": "Verse or hadith of the day",
+      "label": "Daily inspiration"
+    },
+    "prayerTracker": {
+      "description": "Mark today's daily prayers",
+      "label": "Prayer tracker"
+    },
+    "quickActions": {
+      "description": "Duas, calendar and other shortcuts",
+      "label": "Quick access"
+    },
+    "streak": {
+      "description": "Your unbroken prayer streak",
+      "label": "Streak card"
+    },
+    "dayRing": {
+      "label": "Day Circle",
+      "description": "Today's prayer and makruh times in one circle"
+    },
+    "alarms": {
+      "label": "Alarms",
+      "description": "Next alarm and a one-tap Fajr alarm"
+    }
+  },
+  "hutbe": {
+    "title": "Friday Sermon",
+    "thisWeek": "This week's sermon",
+    "listen": "Audio sermon",
+    "play": "Play audio sermon",
+    "pause": "Pause",
+    "back15": "Back 15 seconds",
+    "forward15": "Forward 15 seconds",
+    "previous": "Previous sermons",
+    "footnotes": "References",
+    "source": "Source: Presidency of Religious Affairs (Diyanet)",
+    "textLoading": "Preparing the sermon text...",
+    "openPdf": "Open as PDF",
+    "pdfOnly": "The sermon text in this language opens as a PDF.",
+    "textFailed": "The sermon text could not be loaded. You can open it as a PDF.",
+    "loadFailed": "Sermons could not be loaded",
+    "loadFailedMessage": "Check your internet connection and try again.",
+    "openWeb": "Open Diyanet page"
+  },
+  "input": {
+    "hidePassword": "Hide password",
+    "showPassword": "Show password"
+  },
+  "insights": {
+    "section": "Statistics",
+    "heatmap": {
+      "title": "Prayer history",
+      "summary": "Last 12 months · {{prayers}} prayers · {{perfect}} full days",
+      "a11y": "{{prayers}} prayers in the last 12 months, {{perfect}} days with all five prayers",
+      "ozelGun": "Special days",
+      "less": "Less",
+      "more": "More"
+    },
+    "hatim": {
+      "title": "Khatm {{n}}",
+      "progress": "{{pages}} / {{total}} pages",
+      "a11y": "{{pct}} percent of the Khatm read, {{done}} completed",
+      "completed": "{{count}} Khatm completed · {{pages}} pages in total",
+      "hint": "Juz fill up as you log your Quran reading"
+    },
+    "recap": {
+      "week": "This week",
+      "month": "This month",
+      "share": "Share summary",
+      "prayers": "{{done}} / {{total}} prayers",
+      "ofPrayers": "/ {{total}} prayers",
+      "perfectDays": "Full days",
+      "kaza": "Qada",
+      "quranPages": "Quran pages",
+      "streak": "Day streak"
+    }
+  },
+  "location": {
+    "changedBody": "Prayer times are currently shown for {{current}}. Update to {{next}}?",
+    "changedTitle": "Your location seems to have changed",
+    "chooseState": "Choose a province",
+    "keep": "Keep",
+    "loadingDistricts": "Loading districts...",
+    "noDistricts": "No districts found for this province",
+    "title": "Choose location",
+    "update": "Update",
+    "updated": "Updated",
+    "updatedBody": "Prayer times set for {{name}}",
+    "updatedTitle": "Location updated"
+  },
+  "mushaf": {
+    "chooseSurah": "Choose surah",
+    "continuePage": "Continue from page {{page}}",
+    "goToMark": "Go to bookmark, page {{page}}",
+    "hint": "Verse number: translation · Hold a line: bookmark",
+    "juz": "Juz {{juz}}",
+    "lineA11y": "Line {{line}}",
+    "lineMarkedA11y": "Line {{line}}, where you left off",
+    "loadFailed": "Couldn't load the page. Check your internet connection.",
+    "markHint": "Press and hold to mark where you left off",
+    "markRemoved": "Bookmark removed",
+    "marked": "Saved where you left off",
+    "markedAt": "Where you left off: page {{page}}, line {{line}}",
+    "markedDetail": "Page {{page}}, line {{line}}",
+    "openA11y": "Read the Mushaf page by page",
+    "page": "Page {{page}} of {{total}}",
+    "pageA11y": "Page {{page}}",
+    "pageShort": "p. {{page}}",
+    "subtitle": "Read page by page, also in landscape",
+    "surahPickA11y": "{{name}}, page {{page}}",
+    "theme": "Reading theme",
+    "themes": {
+      "auto": "Automatic",
+      "light": "Light",
+      "night": "Night",
+      "sepia": "Sepia"
+    },
+    "title": "Mushaf",
+    "verseA11y": "Translation of verse {{verse}}"
+  },
+  "mute": {
+    "enabled": "Turned on",
+    "enabledMessage": "Notifications are back on.",
+    "ended": "ended",
+    "hours": "{{count}} h",
+    "hoursMinutes": "{{h}} h {{m}} min",
+    "minutes": "{{count}} min",
+    "on": "Unmute",
+    "remaining": "{{time}} left",
+    "title": "Notifications muted",
+    "turnOff": "Turn off silent mode"
+  },
+  "notif": {
+    "blessedDay": "Blessed Day",
+    "channelAdhan": "Prayer Times with Adhan",
+    "channelPrayer": "Prayer Times",
+    "channelReminders": "Verses, Hadith and Reminders",
+    "cumaBody": "Today is Friday. Get ready for Jumu'ah prayer.",
+    "cumaEveBody": "Tomorrow is Friday. Don't forget Jumu'ah prayer and reading Surah Al-Kahf. Jumu'ah Mubarak.",
+    "cumaEveSubtitle": "Getting ready for Jumu'ah",
+    "cumaEveTitle": "🕌 Tomorrow is Friday",
+    "cumaSubtitle": "Jumu'ah Mubarak",
+    "cumaTitle": "🌙 Today is Friday",
+    "dayBeforeBody": "Tomorrow is {{name}} ({{date}}). Wishing you a blessed day.",
+    "dayBeforeBodyNoDate": "Tomorrow is {{name}}. Wishing you a blessed day.",
+    "dayBeforeTitle": "🌙 {{name}} is approaching",
+    "dayOfBody": "Today is {{name}} ({{date}}). May it be blessed.",
+    "dayOfBodyNoDate": "Today is {{name}}. May it be blessed.",
+    "dayOfTitle": "🕌 Today is {{name}}",
+    "hadithTitle": "✨ Drops of Light",
+    "prayerBody": "The time for {{prayer}} prayer has begun. May your prayers be accepted.",
+    "prayerSubtitle": "Prayer Time",
+    "prayerTitle": "It's time for {{prayer}} 🕌",
+    "reminderBody": "Time to get ready for {{prayer}} prayer.",
+    "reminderSubtitle": "Prayer time is near",
+    "reminderTitle": "{{minutes}} minutes until {{prayer}} ⏰",
+    "tapForMore": "tap to read more",
+    "testBody": "Notifications are working! You'll receive prayer time and verse/hadith notifications.",
+    "testSubtitle": "Daily Inspiration",
+    "testTitle": "Test Notification 🔔",
+    "verseRef": "{{surah}}, verse {{verse}}",
+    "verseTitle": "📖 Divine Word"
+  },
+  "offline": {
+    "backOnline": "Back online",
+    "pending": " • {{count}} entries will sync",
+    "synced": "{{count}} pending records synced",
+    "title": "Offline mode"
+  },
+  "onboarding": {
+    "allowLocation": "Allow Location",
+    "allowNotifications": "Turn On Notifications",
+    "continue": "Continue",
+    "location": {
+      "desc": "We need your location for accurate prayer times. Allow it and we'll find your city automatically, or choose it manually later.",
+      "title": "Set Your Location"
+    },
+    "next": "Next",
+    "notifications": {
+      "desc": "Get a gentle reminder at every prayer time. Adhan sound and verse/hadith notifications are optional and can be turned off anytime in settings.",
+      "title": "Turn On Notifications"
+    },
+    "s1": {
+      "desc": "Designed to make your daily worship easier and enrich your spiritual life.",
+      "title": "Welcome to Salah"
+    },
+    "s2": {
+      "desc": "Accurate prayer times for your location. Never miss a prayer with adhan notifications.",
+      "title": "Prayer Times"
+    },
+    "s3": {
+      "desc": "Find the qibla direction to the Kaaba from anywhere with a precise compass.",
+      "title": "Qibla Finder"
+    },
+    "s4": {
+      "desc": "All surahs with translations and audio recitation. Save your place and continue anytime.",
+      "title": "The Holy Qur'an"
+    },
+    "s5": {
+      "desc": "Log prayers, Qur'an, voluntary prayers, fasting, charity, dua and memorization day by day.",
+      "title": "Worship Tracker"
+    },
+    "s6": {
+      "desc": "Grow your streak by praying regularly. Earn badges and see your spiritual progress.",
+      "title": "Streaks & Badges"
+    },
+    "skip": "Skip",
+    "skipForNow": "Skip for now",
+    "skipIntro": "Skip intro",
+    "slideA11y": "Page {{n}} of {{total}}",
+    "start": "Get Started"
+  },
+  "ozelGun": {
+    "end": "End",
+    "endMessage": "Are you sure you want to turn off exemption mode?",
+    "endTitle": "End exemption days",
+    "screen": {
+      "active": "Active period",
+      "loadFailed": "Period information could not be loaded. Please try again.",
+      "startFailed": "The period could not be started. Please try again.",
+      "endFailed": "The period could not be ended. Please try again.",
+      "day": "Day {{day}}",
+      "endMessage": "Do you want to end the active period as of today?",
+      "endTitle": "End period",
+      "endToday": "End period today",
+      "ended": "Ended",
+      "endedMessage": "Period ended.",
+      "inactive": "No active period",
+      "prayerTime": "Prayer time now",
+      "private": "This information is private and is never shared with anyone.",
+      "protection": "Streak protection",
+      "protectionText": "During an active period, missed prayers won't break your streak or be added to your qada list. These days are marked as \"exempt\".",
+      "startDate": "Started:",
+      "startMessage": "Do you want to record the start of your exemption period today? Your prayer streak will be protected during this time.",
+      "startNew": "Start new period",
+      "startTitle": "Start period",
+      "started": "Started",
+      "startedMessage": "Period recorded.",
+      "title": "Exemption tracking",
+      "womenOnly": "This feature is for women",
+      "womenOnlyHint": "Update your gender in your profile settings to use this page."
+    },
+    "start": "Start",
+    "startMessage": "During your exemption days your streak is frozen and prayers are paused.",
+    "startTitle": "Start exemption mode"
+  },
+  "paywall": {
+    "active": "Premium is active. May Allah accept it.",
+    "bestValue": "Best value",
+    "features": {
+      "ai": "AI \"Ask\" assistant",
+      "widgets": "Prayer Tracker, Worship Tracker and StandBy widgets",
+      "widgets_android": "Prayer Tracker and Worship Tracker widgets",
+      "stats": "Monthly summary, 12-month prayer map and Khatm progress",
+      "icons": "Exclusive app icons"
+    },
+    "includes": "What's included",
+    "legal": "Your subscription renews automatically at the same price unless cancelled at least 24 hours before the end of the period. You can manage or cancel it in your Apple ID settings.",
+    "legal_android": "Your subscription renews automatically at the same price unless cancelled before the end of the period. You can manage or cancel it in Google Play under Payments & subscriptions.",
+    "manage": "Manage subscription",
+    "monthly": "Monthly",
+    "monthlyEquivalent": "Only {{price}} per month",
+    "notFound": "Not found",
+    "notReady": "Subscription plans aren't ready yet.",
+    "nothingToRestore": "There's no active subscription to restore.",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "preparing": "Getting ready",
+    "privacy": "Privacy Policy",
+    "purchaseFailed": "The purchase couldn't be completed.",
+    "restore": "Restore purchases",
+    "restoreFailed": "Restore failed.",
+    "restored": "Restored",
+    "restoredMessage": "Your Premium subscription is active.",
+    "savings": "Save {{pct}}%",
+    "secure": "Secure payment with Apple, cancel anytime",
+    "secure_android": "Secure payment with Google Play, cancel anytime",
+    "startMonthly": "Start monthly",
+    "startYearly": "Start yearly",
+    "subtitle": "Deepen your spiritual journey.",
+    "terms": "Terms of Use",
+    "title": "Salah Premium",
+    "welcome": "Welcome!",
+    "yearly": "Yearly"
+  },
+  "prayers": {
+    "aksam": "Maghrib",
+    "gunes": "Sunrise",
+    "ikindi": "Asr",
+    "imsak": "Imsak",
+    "ogle": "Dhuhr",
+    "sabah": "Fajr",
+    "yatsi": "Isha"
+  },
+  "premiumTeaser": {
+    "unlock": "Unlock with Premium",
+    "locked": "Premium"
+  },
+  "profile": {
+    "ozelGunHint": "The streak freeze for special days (menstruation) will be enabled.",
+    "account": "Account",
+    "adminPanel": "Admin panel",
+    "adminSub": "User and role management",
+    "avatarUploadFailed": "Couldn't upload photo",
+    "avatarUploaded": "Photo uploaded",
+    "changeEmail": "Change email",
+    "changePassword": "Change password",
+    "changePhoto": "Change profile photo",
+    "editInfo": "Edit personal information",
+    "email": "Email",
+    "female": "Female",
+    "firstName": "First name",
+    "firstNamePlaceholder": "Your first name",
+    "fullName": "Full name",
+    "galleryPermission": "Please allow access to your photo library.",
+    "gender": "Gender",
+    "imagePickFailed": "Couldn't select image",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Your last name",
+    "loadFailed": "Couldn't load profile",
+    "male": "Male",
+    "menu": {
+      "account": "Account",
+      "accountSub": "Sign out, sessions and account settings",
+      "appSettings": "App settings",
+      "appSettingsSub": "Notifications, theme and more",
+      "changeEmail": "Change email",
+      "changeEmailSub": "Update your email address",
+      "changePassword": "Change password",
+      "changePasswordSub": "Update your account password"
+    },
+    "open": "Open",
+    "permission": "Permission required",
+    "personalInfo": "Personal information",
+    "phone": "Phone",
+    "settings": "Settings",
+    "theme": "Theme",
+    "themeDark": "Dark theme on",
+    "themeLight": "Light theme on",
+    "title": "Profile",
+    "updateFailed": "Couldn't update profile",
+    "updated": "Your profile has been updated",
+    "uploading": "Uploading photo",
+    "username": "Username",
+    "usernamePlaceholder": "username"
+  },
+  "qibla": {
+    "aligned": "You're facing the Qibla",
+    "angle": "Qibla angle",
+    "e": "E",
+    "hint": "Hold your phone flat and turn around",
+    "n": "N",
+    "permissionDenied": "Location permission denied. We need it to find the Qibla.",
+    "locationUnavailable": "Your location could not be obtained. Check Location Services and try again.",
+    "headingUnavailable": "Compass data is unavailable. Make sure your device has a compass and try again away from magnetic objects.",
+    "s": "S",
+    "title": "Qibla finder",
+    "w": "W",
+    "locating": "Getting your location...",
+    "kaaba": "Kaaba",
+    "turnRight": "Turn {{deg}}° right",
+    "turnLeft": "Turn {{deg}}° left"
+  },
+  "quran": {
+    "clearSearch": "Clear search",
+    "continue": "Continue reading",
+    "continueA11y": "Continue reading: {{name}}, verse {{verse}}",
+    "continueVerse": "{{name}}, verse {{verse}}",
+    "detail": "Surah",
+    "notFound": "No surah found",
+    "notFoundHint": "Try typing the surah name or number.",
+    "search": "Search surahs",
+    "surahA11y": "{{id}}. {{name}}, {{count}} verses",
+    "surahWithName": "Surah {{name}}",
+    "title": "Surahs",
+    "verseCount": "{{count}} verses"
+  },
+  "quranSettings": {
+    "fontLg": "Large",
+    "fontMd": "Medium",
+    "fontSm": "Small",
+    "fontXl": "Largest"
+  },
+  "religiousDays": {
+    "asure": "Day of Ashura",
+    "berat": "Laylat al-Bara'ah",
+    "hicri_yilbasi": "Islamic New Year",
+    "kadir": "Laylat al-Qadr",
+    "kurban_bayram_1": "Eid al-Adha, day 1",
+    "kurban_bayram_2": "Eid al-Adha, day 2",
+    "kurban_bayram_3": "Eid al-Adha, day 3",
+    "kurban_bayram_4": "Eid al-Adha, day 4",
+    "kurban_bayram_arife": "Day of Arafah",
+    "mevlid": "Mawlid al-Nabi",
+    "mirac": "Laylat al-Mi'raj",
+    "ramazan_arife": "Eve of Ramadan",
+    "ramazan_bayram_1": "Eid al-Fitr, day 1",
+    "ramazan_bayram_2": "Eid al-Fitr, day 2",
+    "ramazan_bayram_3": "Eid al-Fitr, day 3",
+    "ramazan_bayram_arife": "Eve of Eid al-Fitr",
+    "ramazan_start": "Start of Ramadan",
+    "regaib": "Laylat al-Raghaib",
+    "uc_aylar": "Start of the three holy months"
+  },
+  "settings": {
+    "adhan": {
+      "foregroundHint": "The adhan plays while the app is open. Tap “Stop Adhan” to stop it.",
+      "section": "Adhan sound",
+      "stop": "Stop",
+      "test": "Test adhan sound",
+      "testQuestion": "Which prayer's adhan do you want to test?",
+      "testSub": "Admin: each prayer plays a different adhan",
+      "testTitle": "Adhan test",
+      "title": "Adhan at prayer time",
+      "which": "Which prayers should play the adhan?"
+    },
+    "app": {
+      "developer": "Developer",
+      "developerSub": "Made for good deeds",
+      "privacy": "Privacy Policy",
+      "privacySub": "Read how we protect your data",
+      "section": "App",
+      "terms": "Terms of Use",
+      "termsSub": "View the terms of service",
+      "version": "Version"
+    },
+    "data": {
+      "backupMessage": "All your data from the Salah app ({{stamp}})",
+      "backupTitle": "Salah backup ({{stamp}})",
+      "export": "Back up my data",
+      "exportSub": "Export all prayer and worship records as JSON",
+      "failed": "Couldn't create the backup.",
+      "preparing": "Preparing backup…",
+      "section": "My data"
+    },
+    "holidays": {
+      "friday": "Friday reminder",
+      "fridaySub": "Jumu'ah prayer and sermon reminder on Thursday evening and Friday morning",
+      "section": "Holy nights and blessed days",
+      "sub": "Reminders the day before and on the morning of holy nights and Eids",
+      "title": "Holy night & Eid notifications"
+    },
+    "inspiration": {
+      "info": "A verse or hadith is sent about every 2 hours during the day. You won't be disturbed between 23:00 and 07:00.",
+      "section": "Verse & hadith notifications",
+      "sub": "Get spiritual reminders throughout the day"
+    },
+    "language": {
+      "restartMessage": "Close and reopen the app so the layout can switch to the new language.",
+      "restartTitle": "Restart required",
+      "system": "Phone language",
+      "title": "Language"
+    },
+    "location": {
+      "auto": "Detect automatically",
+      "autoSub": "Find your city automatically with GPS",
+      "denied": "Location permission was not granted.",
+      "detecting": "Getting location…",
+      "failed": "Couldn't get your location.",
+      "notFound": "Not found",
+      "notRecognized": "We couldn't recognize your location, please choose it manually.",
+      "notSelected": "No location selected",
+      "permission": "Permission required",
+      "prayerLocation": "Prayer times location",
+      "section": "Location"
+    },
+    "mute": {
+      "15m": "15 minutes",
+      "1h": "1 hour",
+      "3h": "3 hours",
+      "activeLabel": "Muted: {{time}}",
+      "endOfDay": "Until end of day",
+      "mute": "Mute",
+      "muteSub": "Temporarily silence notifications for meetings, sleep or travel",
+      "muted": "Muted",
+      "mutedMessage": "Notifications muted for {{time}}.",
+      "question": "How long should notifications be muted?",
+      "resumesAt": "Resumes {{date}}",
+      "title": "Silent mode",
+      "turnOff": "Turn off silent mode",
+      "turnOffSub": "Turn notifications back on now",
+      "unmutedMessage": "Notifications are back on. They'll be scheduled at the next refresh."
+    },
+    "notifications": {
+      "atTime": "On time",
+      "battery": "Battery optimization",
+      "batteryOff": "Your phone restricts Salah, so notifications may be late. Set Salah to \"Don't optimize\" in the list.",
+      "batteryOn": "Salah isn't restricted, so notifications arrive on time.",
+      "countdown": "Lock screen countdown",
+      "countdownSub": "Time to the next prayer stays in your notifications",
+      "exactAlarm": "On-time notifications",
+      "exactAlarmOff": "Off. Notifications may be a few minutes late. Tap to turn on.",
+      "exactAlarmOn": "On. Notifications arrive exactly on time.",
+      "exactPromptMessage": "To get adhan and prayer notifications exactly on time, allow \"Alarms & reminders\" for Salah.",
+      "exactPromptTitle": "Get notifications on time?",
+      "minutesBefore": "{{min}} min before",
+      "notNow": "Not now",
+      "openSettings": "Open settings",
+      "permissionMessage": "Please allow notifications in Settings > Notifications.",
+      "prayer": "Prayer time notifications",
+      "prayerSub": "Get reminders at prayer times",
+      "scheduled": "Scheduled notifications",
+      "scheduledDetail": "Scheduled notifications: {{total}}\n• Prayer times: {{prayer}}\n• Verse/Hadith etc.: {{other}}",
+      "section": "Notifications",
+      "test": "Send test notification",
+      "testSent": "Test sent",
+      "testSentMessage": "The test notification will arrive in a few seconds.\n\n{{detail}}",
+      "testSub": "Check that notifications are working",
+      "turnOn": "Turn on",
+      "when": "When should we remind you?",
+      "whichPrayers": "For which prayers?"
+    },
+    "personal": {
+      "ozelGun": "Exemption tracking",
+      "ozelGunActive": "Active period, streak protected",
+      "ozelGunSub": "Start or end a period, streak protection",
+      "section": "Personal"
+    },
+    "premium": {
+      "monthly": "Monthly subscriber",
+      "pitch": "AI assistant, premium widgets and more",
+      "title": "Salah Premium",
+      "until": "until {{date}}",
+      "yearly": "Yearly subscriber"
+    },
+    "title": "Settings",
+    "alarms": {
+      "label": "Alarms",
+      "sub": "Prayer, tahajjud and suhoor alarms"
+    }
+  },
+  "share": {
+    "dialogTitle": "Share with Salah",
+    "shareImage": "Share Image"
+  },
+  "shareCards": {
+    "streak": {
+      "label": "Streak",
+      "headline": "Day {{count}} of five daily prayers",
+      "longest": "Longest streak: {{count}}",
+      "shareA11y": "Share streak"
+    },
+    "dua": {
+      "label": "Dua"
+    },
+    "greeting": {
+      "kandil": "Blessed Holy Night",
+      "kadir": "Blessed Laylat al-Qadr",
+      "bayram": "Eid Mubarak",
+      "arife": "Blessed Day of Arafah",
+      "ramazan": "Ramadan Mubarak",
+      "ucAylar": "Blessed Three Holy Months",
+      "hicriYil": "Happy Hijri New Year",
+      "asure": "Blessed Day of Ashura",
+      "cuma": "Jumu'ah Mubarak",
+      "prayer": "May your prayers be accepted.",
+      "cta": "Share a greeting card",
+      "cumaA11y": "Share a Jumu'ah greeting card"
+    }
+  },
+  "surah": {
+    "audioFailed": "Audio could not be loaded. Try playing again.",
+    "loadFailed": "Verses could not be loaded. Check your internet connection.",
+    "searchResults": "{{count}} results",
+    "closeSearch": "Close search",
+    "fontSize": "Font size",
+    "layoutMode": "View mode",
+    "listenVerse": "Listen to verse {{n}}",
+    "loading": "Loading verses...",
+    "modeMushaf": "Mushaf",
+    "modeVerse": "Verses",
+    "noMatch": "No matching verses",
+    "nthVerse": "Verse {{n}}",
+    "pause": "Pause",
+    "play": "Play",
+    "readingTheme": "Reading theme",
+    "searchPlaceholder": "Verse text, number or word",
+    "searchVerse": "Search verses",
+    "shareTitle": "Surah {{name}} · Verse {{verse}}",
+    "shareVerse": "Share verse",
+    "tafsir": "Meaning and tafsir",
+    "tajweed": "Tajweed",
+    "tajweedToggle": "Tajweed colors"
+  },
+  "tabs": {
+    "assistant": "Ask",
+    "home": "Home",
+    "quran": "Quran",
+    "tracker": "Worship"
+  },
+  "tajweed": {
+    "ghunnah": "Ghunnah",
+    "idgham": "Idgham",
+    "ikhfa": "Ikhfa",
+    "iqlab": "Iqlab",
+    "legendA11y": "Tajweed color legend",
+    "legendTitle": "Tajweed Colors",
+    "madd": "Madd (elongation)",
+    "qalqalah": "Qalqalah",
+    "silent": "Silent"
+  },
+  "tracker": {
+    "addA11y": "{{label}}: {{summary}}. Add entry",
+    "delete": {
+      "a11y": "Delete {{label}} entry",
+      "confirm": "Delete",
+      "message": "Are you sure you want to delete this entry?",
+      "title": "Delete entry"
+    },
+    "errors": {
+      "amount": "Please enter an amount",
+      "memorization": "Please fill in at least one field",
+      "minutes": "Please enter the minutes",
+      "pages": "Please enter the number of pages",
+      "rakaat": "Please enter the number of rak'ahs",
+      "saveFailed": "Something went wrong while saving."
+    },
+    "fasting": {
+      "kaza": "Make-up fast",
+      "nafile": "Voluntary fast",
+      "pazartesi_persembe": "Monday-Thursday",
+      "pazartesi_persembeShort": "Mon-Thu fast"
+    },
+    "form": {
+      "amount": "Amount *",
+      "amountPlaceholder": "e.g. 100",
+      "bookName": "Book title (optional)",
+      "bookPlaceholder": "e.g. Riyad as-Salihin",
+      "description": "Description (optional)",
+      "descriptionPlaceholder": "e.g. food donation",
+      "fastingType": "Type of fast",
+      "minutesOptional": "How many minutes? (optional)",
+      "minutesPlaceholder": "e.g. 20",
+      "minutesRequired": "How many minutes? *",
+      "newVerses": "Newly memorized verses",
+      "note": "Note (optional)",
+      "notePlaceholder": {
+        "default": "Add a note…",
+        "dua": "e.g. For friends who are ill",
+        "fasting": "e.g. Monday voluntary fast",
+        "memorization": "e.g. Ya-Sin verses 1-5",
+        "quran": "e.g. Al-Baqarah pages 15-18"
+      },
+      "pages": "Number of pages *",
+      "prayerType": "Prayer type",
+      "rakaat": "Number of rak'ahs *",
+      "revisedVerses": "Reviewed verses"
+    },
+    "hero": {
+      "entries": "entries",
+      "types": "kinds of worship"
+    },
+    "nafile": {
+      "aksam_sunnet": "Maghrib sunnah",
+      "diger": "Other",
+      "duha": "Duha",
+      "evvabin": "Awwabin",
+      "ikindi_sunnet": "Asr sunnah",
+      "ogle_sunnet": "Dhuhr sunnah",
+      "sabah_sunnet": "Fajr sunnah",
+      "teheccud": "Tahajjud",
+      "teravih": "Tarawih",
+      "vitir": "Witr",
+      "yatsi_sunnet": "Isha sunnah"
+    },
+    "summary": {
+      "entries": "{{count}} entries",
+      "moreEntries": ", {{count}} entries",
+      "none": "No entries yet"
+    },
+    "title": "Worship log",
+    "todayEntries": "Today's entries",
+    "value": {
+      "memorization": "{{new}} new verses",
+      "memorizationRevision": "{{new}} new · {{revision}} reviewed verses",
+      "minutes": "{{count}} minutes",
+      "minutesShort": "{{count}} min",
+      "pages": "{{count}} pages",
+      "rakaat": "{{count}} rak'ahs"
+    }
+  },
+  "update": {
+    "later": "Later",
+    "openStore": "Open App Store",
+    "openStore_android": "Open Google Play",
+    "optionalMessage": "Salah {{version}} is on the App Store. Update for new features and fixes.",
+    "optionalMessage_android": "Salah {{version}} is on Google Play. Update for new features and fixes.",
+    "optionalTitle": "New version available",
+    "requiredMessage": "To keep using Salah, please update to the latest version from the App Store.",
+    "requiredMessage_android": "To keep using Salah, please update to the latest version from Google Play.",
+    "requiredTitle": "Update required",
+    "update": "Update"
+  },
+  "upload": {
+    "loading": "Uploading...",
+    "wait": "Please wait..."
+  },
+  "verse": {
+    "loadFailed": "The translation could not be loaded.",
+    "footnotes": "Notes",
+    "noWords": "No word data found.",
+    "tabMeaning": "Meaning",
+    "tabWords": "Word by Word",
+    "wordsNote": "Tap a word to see its transliteration and meaning."
+  },
+  "widget": {
+    "amel": {
+      "quran": "Qur'an",
+      "nafile": "Nafl",
+      "fasting": "Fasting",
+      "sadaka": "Charity",
+      "dua": "Dua",
+      "memorization": "Memorize",
+      "book": "Book"
+    },
+    "amelCount": "{{count}} types logged",
+    "amelNone": "Nothing logged today",
+    "amelTitle": "Today's Worship",
+    "hadith": "Hadith of the day",
+    "inspirationEmpty": "Open the app to see today's verse",
+    "inspirationFallback": "Daily inspiration",
+    "openApp": "Open the app for prayer times",
+    "premiumCta": "Go Premium",
+    "premiumLocked": "This widget is part of Premium",
+    "ringTitle": "Day Circle",
+    "trackerAllDone": "Done for today",
+    "trackerLeft": "{{count}} prayers left",
+    "trackerSignIn": "Sign in to mark prayers",
+    "trackerTitle": "Prayer Tracker",
+    "until": "Until {{prayer}}",
+    "untilEnd": "Until {{prayer}} ends",
+    "verse": "Verse of the day"
+  }
+}

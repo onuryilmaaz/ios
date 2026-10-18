@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Açılış ekranı: yalnız koyu zümrüt zemin (Accent 900, #113C2F). Animasyonlu açılış
+     SwiftUI'de (Features/Launch/SplashView.swift) aynı zeminden başlar. Renk belgeye gömülü
+     namedColor: simülatörde splashboardd uygulamanın asset catalog'unu okuyamıyordu. -->
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24093.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SALAH-LAUNCH-VC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24053.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="SALAH-LAUNCH-SCENE">
+            <objects>
+                <viewController storyboardIdentifier="SalahLaunchViewController" id="SALAH-LAUNCH-VC" sceneMemberID="viewController">
+                    <view key="view" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SALAH-LAUNCH-VIEW" userLabel="ContainerView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <viewLayoutGuide key="safeArea" id="SALAH-LAUNCH-SAFE"/>
+                        <color key="backgroundColor" name="SalahLaunchBackground"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SALAH-LAUNCH-FR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="SalahLaunchBackground">
+            <color alpha="1.000" blue="0.184313725490196" green="0.235294117647059" red="0.0666666666666667" customColorSpace="sRGB" colorSpace="custom"/>
+        </namedColor>
+    </resources>
+</document>

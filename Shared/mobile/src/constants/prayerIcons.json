@@ -1,0 +1,47 @@
+{
+  "$comment": "Vakit ikonlarının tek kaynağı. Uygulama (Ionicons) bu dosyayı doğrudan okur; widget/Live Activity (SF Symbols) için `node scripts/gen-prayer-icons.js` PrayerIcons.generated.swift üretir.",
+  "prayers": [
+    {
+      "key": "sabah",
+      "label": "Sabah",
+      "aliases": ["fajr", "imsak", "İmsak", "Sabah"],
+      "ionicon": "cloudy-night-outline",
+      "sfSymbol": "sun.haze.fill"
+    },
+    {
+      "key": "gunes",
+      "label": "Güneş",
+      "aliases": ["sunrise", "Güneş"],
+      "ionicon": "sunny-outline",
+      "sfSymbol": "sunrise.fill"
+    },
+    {
+      "key": "ogle",
+      "label": "Öğle",
+      "aliases": ["dhuhr", "Öğle"],
+      "ionicon": "sunny",
+      "sfSymbol": "sun.max.fill"
+    },
+    {
+      "key": "ikindi",
+      "label": "İkindi",
+      "aliases": ["asr", "İkindi"],
+      "ionicon": "partly-sunny",
+      "sfSymbol": "sun.min.fill"
+    },
+    {
+      "key": "aksam",
+      "label": "Akşam",
+      "aliases": ["maghrib", "Akşam"],
+      "ionicon": "contrast",
+      "sfSymbol": "sunset.fill"
+    },
+    {
+      "key": "yatsi",
+      "label": "Yatsı",
+      "aliases": ["isha", "Yatsı"],
+      "ionicon": "moon",
+      "sfSymbol": "moon.stars.fill"
+    }
+  ]
+}

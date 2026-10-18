@@ -1,0 +1,1329 @@
+{
+  "account": {
+    "finalConfirm": "Son Onay",
+    "deletedTitle": "Hesap Silindi",
+    "continue": "Devam Et",
+    "dangerSub": "Hesabınızı devre dışı bırakmak geri alınabilir ancak dikkatli olun",
+    "dangerZone": "Tehlikeli Bölge",
+    "deactivate": "Devre Dışı Bırak",
+    "deactivateFailed": "Hesap devre dışı bırakılamadı",
+    "deactivateMessage": "Hesabınızı devre dışı bırakmak istediğinize emin misiniz? Bu işlem geri alınabilir ancak hesabınıza erişiminiz kısıtlanacaktır.",
+    "deactivateTitle": "Hesabı Devre Dışı Bırak",
+    "deactivated": "Hesap devre dışı bırakıldı",
+    "deleteConfirm": "Kalıcı Olarak Sil",
+    "deleteFailed": "Hesap silinemedi. Lütfen tekrar deneyin.",
+    "deleteFinal": "Hesabınız ve tüm verileriniz şimdi kalıcı olarak silinecek. Bu işlemin geri dönüşü yoktur.",
+    "deleteMessage": "Bu işlem GERİ ALINAMAZ. Hesabınız ve tüm verileriniz (namaz ve ibadet kayıtları) kalıcı olarak silinecektir. Devam etmek istiyor musunuz?",
+    "deleteSection": "Hesabı Kalıcı Olarak Sil",
+    "deleteSectionSub": "Hesabınız ve tüm verileriniz kalıcı olarak silinir. Bu işlem geri alınamaz.",
+    "deleteTitle": "Hesabımı Kalıcı Olarak Sil",
+    "deleted": "Hesabınız kalıcı olarak silindi.",
+    "signOut": "Çıkış Yap",
+    "signOutMessage": "Çıkış yapmak istediğinize emin misiniz?",
+    "signOutOthersFailed": "Oturumlar kapatılamadı",
+    "signOutOthersMessage": "Bu cihaz hariç tüm cihazlardaki oturumlar kapatılacak. Emin misiniz?",
+    "signOutOthersTitle": "Diğer Cihazlardan Çıkış Yap",
+    "signOutSub": "Hesabınızdan güvenli bir şekilde çıkış yapın",
+    "signedOutOthers": "Diğer cihazlardaki oturumlar kapatıldı"
+  },
+  "activities": {
+    "book": {
+      "description": "Okuduğun dini/ilmi kitabı ve sayfayı kaydet",
+      "label": "Kitap Okuma",
+      "unit": "sayfa"
+    },
+    "dua": {
+      "description": "Dua için ayırdığın süreyi kaydet",
+      "label": "Dua Vakti",
+      "unit": "dk"
+    },
+    "fasting": {
+      "description": "Bugün tuttuğun orucu kaydet",
+      "label": "Oruç",
+      "unit": ""
+    },
+    "memorization": {
+      "description": "Ezberleyip tekrar ettiğin ayetleri kaydet",
+      "label": "Hafızlık / Tekrar",
+      "unit": "ayet"
+    },
+    "nafile": {
+      "description": "Kıldığın nafile namazı kaydet",
+      "label": "Nafile Namaz",
+      "unit": "rekat"
+    },
+    "quran": {
+      "description": "Bugün okuduğun sayfa sayısını gir",
+      "label": "Kuran Okuma",
+      "unit": "sayfa"
+    },
+    "sadaka": {
+      "description": "Verdiğin sadakayı kaydet",
+      "label": "Sadaka",
+      "unit": "₺"
+    }
+  },
+  "adhan": {
+    "dismiss": "Ezanı Kapat",
+    "takbir": "Allah-u Ekber",
+    "time": "Ezan Vakti",
+    "title": "{{prayer}} Ezanı"
+  },
+  "alarm": {
+    "button": {
+      "mark": "Kıldım",
+      "snooze": "Ertele",
+      "stop": "Durdur"
+    },
+    "channel": "Alarmlar",
+    "custom": {
+      "add": "Alarm Ekle",
+      "emptyTitle": "Serbest alarm yok",
+      "emptyMessage": "Kendi saatini ve günlerini seçtiğin alarmlar burada görünür.",
+      "once": "Bir kez",
+      "everyDay": "Her gün",
+      "weekdays": "Hafta içi",
+      "weekend": "Hafta sonu",
+      "label": "Etiket",
+      "labelPlaceholder": "Örneğin Kuşluk namazı",
+      "repeat": "Tekrar",
+      "newTitle": "Yeni Alarm",
+      "editTitle": "Alarmı Düzenle",
+      "deleteTitle": "Alarm silinsin mi?",
+      "deleteMessage": "Bu alarm kaldırılacak.",
+      "hourUp": "Saati artır",
+      "hourDown": "Saati azalt",
+      "minuteUp": "Dakikayı artır",
+      "minuteDown": "Dakikayı azalt"
+    },
+    "footer": "Alarmlar önümüzdeki 14 günün vakitlerine göre kurulur ve uygulamayı açtıkça yenilenir.",
+    "limit": "Sistem sınırı nedeniyle ileriki günlerin bir kısmı kurulamadı. Uygulamayı açtıkça tamamlanır.",
+    "offset": {
+      "atTime": "Tam vaktinde",
+      "before": "{{min}} dk önce",
+      "after": "{{min}} dk sonra"
+    },
+    "options": {
+      "sound": "Alarm sesi",
+      "adhan": "Ezan",
+      "system": "Sistem sesi",
+      "secondary": "Alarm ekranındaki ikinci düğme",
+      "markInfo": "Kıldım düğmesi vakit girdikten sonra çalan alarmlarda görünür ve namazı işaretler. Diğer alarmlarda Ertele gösterilir.",
+      "snoozeMinutes": "Erteleme süresi",
+      "minutes": "{{min}} dk",
+      "tone": {
+        "chime": "Çan",
+        "soft": "Yumuşak",
+        "beep": "Klasik"
+      },
+      "soundInfo": "Ezan yalnız vakit alarmlarında çalar; teheccüd, sahur ve özel alarmlarda sistem sesi kullanılır. Diğer sesler tüm alarmlarda geçerlidir."
+    },
+    "permission": {
+      "allow": "İzin Ver",
+      "denied": "Alarm izni kapalı. Ayarlar'dan Salah için alarmlara izin verebilirsin.",
+      "message": "Alarmların sessiz modda ve Odak açıkken de çalabilmesi için izin ver.",
+      "message_android": "Alarmların sessiz modda da tam vaktinde çalabilmesi için bildirim ve \"Alarmlar ve hatırlatıcılar\" izni ver.",
+      "openSettings": "Ayarları Aç",
+      "title": "Alarm izni gerekiyor"
+    },
+    "quick": {
+      "title": "{{prayer}} alarmı",
+      "message": "Bu vakit için Saat uygulamasındaki gibi çalan bir alarm kur.",
+      "activeMessage": "Alarm açık: {{when}}.",
+      "turnOn": "Alarm kur ({{when}})",
+      "turnOff": "Alarmı kapat",
+      "more": "Alarm ayarları",
+      "pill": "Alarm"
+    },
+    "sahur": {
+      "label": "Sahur",
+      "sub": "İmsaktan {{min}} dk önce",
+      "onlyRamadan": "Yalnız Ramazan'da",
+      "onlyRamadanSub": "Kapalıysa her gün çalar"
+    },
+    "screen": {
+      "title": "Alarmlar",
+      "next": "Sıradaki alarm",
+      "noNext": "Kurulu alarm yok",
+      "today": "Bugün {{time}}",
+      "tomorrow": "Yarın {{time}}"
+    },
+    "section": {
+      "prayers": "Vakit alarmları",
+      "night": "Gece ve sahur",
+      "custom": "Serbest alarmlar",
+      "options": "Alarm ayarları"
+    },
+    "snoozed": "Ertelendi",
+    "tahajjud": {
+      "label": "Teheccüd",
+      "sub": "Gecenin son üçte biri",
+      "start": "Başında"
+    },
+    "title": {
+      "atTime": "{{prayer}} vakti girdi",
+      "before": "{{prayer}} vaktine {{min}} dk kaldı",
+      "after": "{{prayer}} vakti, {{min}} dk geçti",
+      "tahajjud": "Teheccüd vakti",
+      "sahur": "Sahur vakti",
+      "custom": "Alarm"
+    },
+    "unsupported": {
+      "title": "Bu cihazda kullanılamıyor",
+      "message": "Alarmlar iOS 26 ve üzeri sürümlerde kullanılabilir."
+    },
+    "customOffset": {
+      "chip": "Özel",
+      "before": "Önce",
+      "after": "Sonra",
+      "minutes": "Dakika",
+      "apply": "Uygula",
+      "invalid": "0 ile {{max}} arasında bir dakika girin."
+    }
+  },
+  "alarmCard": {
+    "empty": "Namaz vakitlerine göre kendiliğinden ayarlanan alarmlar",
+    "setFajr": "Sabah namazı alarmı kur",
+    "setDone": "Alarm kuruldu",
+    "setDoneMessage": "İmsak vaktine göre: {{when}}. Alarmlar ekranından değiştirebilirsin.",
+    "manage": "Alarmları yönet",
+    "custom": "{{count}} serbest alarm"
+  },
+  "appIcon": {
+    "classic": "Klasik",
+    "default": "Orman",
+    "failed": "İkon değiştirilemedi.",
+    "gold": "Altın",
+    "night": "Gece",
+    "title": "Uygulama ikonu"
+  },
+  "assistant": {
+    "clear": "Sohbeti temizle",
+    "clearConfirm": "Tüm mesajlar silinsin mi?",
+    "clearConfirmButton": "Temizle",
+    "clearTitle": "Sohbeti Temizle",
+    "copied": "Kopyalandı",
+    "copiedMessage": "Mesaj panoya kopyalandı.",
+    "delete": "Sil",
+    "error": "Bir hata oluştu, lütfen tekrar dene.",
+    "fallbackReply": "Üzgünüm, şu an yanıt veremiyorum. Lütfen tekrar dener misin?",
+    "introText": "İslam, namaz, abdest ve ibadet hakkında merak ettiğin her şey.",
+    "introTitle": "Aklındaki soruyu sor",
+    "placeholder": "Bir soru yaz…",
+    "send": "Gönder",
+    "suggest": {
+      "prayerDuas": "Namazda okunan dualar nelerdir?",
+      "qada": "Kaza namazı nasıl kılınır?",
+      "travel": "Seferi namaz nedir?",
+      "wudu": "Abdest nasıl alınır?"
+    },
+    "title": "Sor",
+    "unavailable": "AI asistanı şu anda kullanılamıyor."
+  },
+  "auth": {
+    "or": "veya",
+    "email": "E-posta",
+    "emailPlaceholder": "ornek@email.com",
+    "emailRequired": "E-posta zorunlu",
+    "forgot": {
+      "send": "Kod Gönder",
+      "sending": "Gönderiliyor...",
+      "subtitle": "E-posta adresine sıfırlama kodu gönderelim",
+      "title": "Şifremi Unuttum"
+    },
+    "login": {
+      "failed": "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.",
+      "forgot": "Şifremi unuttum?",
+      "inactive": "Hesabınız pasif durumda. Lütfen yönetici ile iletişime geçin.",
+      "invalid": "E-posta veya şifre hatalı.",
+      "locked": "Hesabınız kilitlenmiş. Lütfen daha sonra tekrar deneyin.",
+      "noAccount": "Hesabın yok mu? ",
+      "required": "E-posta ve şifre zorunlu",
+      "submit": "Giriş yap",
+      "subtitle": "Hesabına giriş yap ve manevi yolculuğuna kaldığın yerden devam et.",
+      "welcome": "Hoş geldin"
+    },
+    "otp": {
+      "enterCode": "6 haneli kodu girin",
+      "failed": "Doğrulama başarısız",
+      "invalid": "Kod geçersiz veya süresi dolmuş",
+      "resend": "Kod gelmedi mi? Tekrar gönder",
+      "sendFailed": "Kod gönderilemedi",
+      "sent": "Kod gönderildi",
+      "subtitle": "{{email}} adresine gönderilen 6 haneli kodu gir",
+      "title": "Doğrulama Kodu",
+      "verify": "Doğrula"
+    },
+    "password": "Şifre",
+    "register": {
+      "haveAccount": "Zaten hesabın var mı? ",
+      "failed": "Kayıt başarısız",
+      "firstName": "Ad",
+      "firstNamePh": "Adın",
+      "lastName": "Soyad",
+      "lastNamePh": "Soyadın",
+      "passwordPh": "Güçlü bir şifre seç",
+      "required": "Tüm alanları doldurun",
+      "submit": "Kayıt Ol",
+      "submitting": "Kayıt Olunuyor...",
+      "subtitle": "Hemen aramıza katıl, ibadetlerini takip etmeye başla",
+      "title": "Hesap Oluştur"
+    },
+    "requestFailed": "İstek başarısız",
+    "reset": {
+      "changeCode": "Kodu değiştir",
+      "confirm": "Şifre Tekrar",
+      "confirmPh": "Şifreyi tekrar girin",
+      "continue": "Devam Et",
+      "failed": "Şifre sıfırlama başarısız. Kodu kontrol edin.",
+      "mismatch": "Şifreler eşleşmiyor",
+      "newPassword": "Yeni Şifre",
+      "newPasswordPh": "En az 6 karakter",
+      "subtitleNew": "Hesabın için yeni bir şifre belirle",
+      "titleNew": "Yeni Şifre",
+      "titleOtp": "Kodu Gir",
+      "tooShort": "Şifre en az 6 karakter olmalı",
+      "update": "Şifreyi Güncelle",
+      "updating": "Güncelleniyor..."
+    },
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol",
+    "social": {
+      "failed": "Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.",
+      "incomplete": "Giriş tamamlanamadı. Lütfen tekrar deneyin."
+    },
+    "welcome": {
+      "accent": "devam et",
+      "and": "ve",
+      "apple": "Apple ile devam et",
+      "email": "E-posta ile devam et",
+      "google": "Google ile devam et",
+      "line1": "Manevi",
+      "line2": "yolculuğuna",
+      "privacy": "Gizlilik Politikası",
+      "subtitle": "Tek dokunuşla giriş yap, ibadetlerini takip etmeye başla.",
+      "terms": "Kullanım Koşulları",
+      "termsPrefix": "Devam ederek",
+      "termsSuffix": "'nı kabul edersin."
+    }
+  },
+  "authWall": {
+    "later": "Daha Sonra",
+    "assistant": {
+      "description": "Dini sorularınızı sormak için lütfen oturum açın.",
+      "title": "AI Asistan İçin Giriş Yapın"
+    },
+    "defaultDescription": "Bu özelliği kullanabilmek ve ilerlemenizi kaydetmek için lütfen giriş yapın veya kayıt olun.",
+    "defaultTitle": "Oturum Açmanız Gerekiyor",
+    "prayer": {
+      "description": "Namazlarınızı takip etmek için lütfen oturum açın.",
+      "title": "Namaz Takibi İçin Giriş Yapın"
+    },
+    "quran": {
+      "description": "Sureleri okumak, mealleri incelemek ve kaldığınız yeri kaydetmek için lütfen oturum açın.",
+      "title": "Kur'an-ı Kerim İçin Giriş Yapın"
+    },
+    "tracker": {
+      "description": "İbadet kayıtlarınızı görmek için lütfen oturum açın.",
+      "title": "İbadet Defteri İçin Giriş Yapın"
+    }
+  },
+  "badges": {
+    "empty": "Henüz rozet kazanmadın. İlk namazını takip ederek başla!",
+    "names": {
+      "erken_kuş": "Erken Kuş",
+      "ilk_adim": "İlk Adım",
+      "ilk_hatim": "İlk Hatim",
+      "mukemmel_ay": "Mükemmel Ay",
+      "mukemmel_hafta": "Mükemmel Hafta",
+      "sabah_ustasi": "Sabah Ustası",
+      "seri_100_gun": "100 Günlük Efsane",
+      "seri_14_gun": "İki Haftalık Seri",
+      "seri_30_gun": "Aylık Şampiyon",
+      "seri_3_gun": "3 Günlük Seri",
+      "seri_7_gun": "Haftalık Seri",
+      "tum_vakit_ustasi": "Tüm Vakit Ustası"
+    },
+    "next": "Sıradaki Rozet",
+    "title": "Rozetlerim"
+  },
+  "calendar": {
+    "backToToday": "Bugüne Dön",
+    "daysLeft": "{{count}} gün kaldı",
+    "daysLeftShort": "gün kaldı",
+    "friday": "Cuma",
+    "legendSpecial": "Önemli Gün",
+    "legendToday": "Bugün",
+    "nextMonth": "Sonraki ay",
+    "prevMonth": "Önceki ay",
+    "thisMonth": "Bu aydaki özel günler",
+    "title": "Takvim",
+    "today": "Bugün",
+    "todayLine": "Bugün · {{date}}",
+    "upcoming": "Yaklaşan özel günler"
+  },
+  "celebration": {
+    "a11y": "Tüm namazlar tamamlandı. Seri {{count}} gün. Kapatmak için dokunun",
+    "message": "Serin devam ediyor. Allah kabul etsin.",
+    "streakLabel": "günlük seri",
+    "title": "Bugünün namazları tamam"
+  },
+  "changeEmail": {
+    "code": "Doğrulama Kodu",
+    "codeRequired": "Kod ve yeni email zorunlu",
+    "codeSent": "Doğrulama kodu gönderildi",
+    "confirmFailed": "E-posta onaylanamadı",
+    "intro": "E-posta adresinizi değiştirmek için yeni adresinizi girin. Size bir doğrulama kodu göndereceğiz.",
+    "newEmail": "Yeni E-posta",
+    "newRequired": "Yeni email zorunlu",
+    "placeholder": "yeni@email.com",
+    "resend": "Kodu Tekrar Gönder",
+    "sendCode": "Doğrulama Kodu Gönder",
+    "startFailed": "E-posta değişikliği başlatılamadı",
+    "title": "E-posta Değiştir",
+    "update": "E-postayı Güncelle",
+    "updated": "E-posta güncellendi"
+  },
+  "changePassword": {
+    "current": "Mevcut Şifre",
+    "currentPlaceholder": "Mevcut şifrenizi girin",
+    "failed": "Şifre güncellenemedi",
+    "intro": "Güvenliğiniz için mevcut şifrenizi girin ve yeni şifrenizi belirleyin.",
+    "new": "Yeni Şifre",
+    "newPlaceholder": "Yeni şifrenizi girin",
+    "required": "Şifre alanları zorunlu",
+    "title": "Şifre Değiştir",
+    "update": "Şifreyi Güncelle",
+    "updated": "Şifre güncellendi"
+  },
+  "common": {
+    "back": "Geri",
+    "cancel": "Vazgeç",
+    "cancelAlt": "İptal",
+    "close": "Kapat",
+    "decrease": "Azalt",
+    "delete": "Sil",
+    "error": "Hata",
+    "increase": "Artır",
+    "loading": "Yükleniyor...",
+    "ok": "Tamam",
+    "profile": "Profil",
+    "qibla": "Kıble",
+    "retry": "Tekrar dene",
+    "save": "Kaydet",
+    "share": "Paylaş",
+    "success": "Başarılı",
+    "weekdaysShort": ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
+    "yes": "Evet"
+  },
+  "countdown": {
+    "channel": "Kilit ekranı geri sayımı",
+    "endsAt": "Çıkış {{time}}",
+    "startsAt": "Giriş {{time}}"
+  },
+  "cuma": {
+    "a11y": "{{label}}. Diyanet Cuma hutbesini aç",
+    "default": {
+      "label": "Cuma Hutbesi",
+      "subtitle": "Diyanet hutbelerini her zaman görüntüle"
+    },
+    "done": {
+      "label": "Cuma Mübarek Olsun",
+      "subtitle": "Hutbeyi henüz okumadıysan göz at"
+    },
+    "openFailed": "Hutbe sayfası açılamadı.",
+    "today": {
+      "label": "Bugün Cuma",
+      "subtitle": "Bu haftanın Diyanet Cuma hutbesini gör"
+    },
+    "tomorrow": {
+      "label": "Yarın Cuma",
+      "subtitle": "Bu haftanın hutbesini şimdiden okuyabilirsin"
+    }
+  },
+  "dayRing": {
+    "title": "Gün çemberi",
+    "subtitle": "Vakitler, kerahat ve şu an",
+    "hours": "saat:dakika",
+    "minutes": "dakika",
+    "forbidden": "Kerahat vakti"
+  },
+  "dua": {
+    "count": "{{count}} dua",
+    "favAdd": "Favorilere ekle",
+    "favRemove": "Favorilerden çıkar",
+    "favorites": "Favoriler",
+    "meaning": "Türkçe Anlamı",
+    "mood": {
+      "fallback": "Tam eşleşme bulamadım, gönülden gelen dualardan biri:",
+      "matched": "\"{{label}}\" durumuna uygun dualar:",
+      "placeholder": "İçinden ne geçiyor? (ör. kaygılıyım)",
+      "subtitle": "Nasıl hissediyorsun? Bir durum seç ya da yaz.",
+      "suggest": "Öner",
+      "title": "Sana Özel Dua"
+    },
+    "share": "Duayı paylaş",
+    "source": "Kaynak: {{source}}",
+    "title": "Dua Koleksiyonu",
+    "transliteration": "Okunuş",
+    "categories": "Kategoriler"
+  },
+  "errors": {
+    "boundaryMessage": "Beklenmedik bir hata oluştu. Lütfen tekrar deneyin.",
+    "boundaryTitle": "Bir şeyler ters gitti",
+    "genericMessage": "Lütfen daha sonra tekrar deneyin.",
+    "genericTitle": "Bir hata oluştu"
+  },
+  "esma": {
+    "clearSearch": "Aramayı temizle",
+    "empty": "İsim bulunamadı",
+    "meaning": "Anlamı",
+    "nth": "{{n}}. İSİM",
+    "search": "İsim veya anlam ara",
+    "title": "Esmaül Hüsna",
+    "count": "{{count}} isim"
+  },
+  "forbidden": {
+    "a11y": "Kerahat vakti, {{label}}. {{time}}'a kadar, {{remaining}} kaldı",
+    "min": "{{m}} dk {{s}} sn",
+    "sec": "{{s}} sn",
+    "sunrise": {
+      "description": "Güneşin doğmaya başladığı andan yükselişine kadar nafile namaz kılınmaz.",
+      "label": "Güneş Doğuş Vakti"
+    },
+    "sunset": {
+      "description": "Güneş batmaya başladığı andan akşam vakti girene kadar nafile namaz kılınmaz.",
+      "label": "Akşam Kerahat Vakti"
+    },
+    "until": "{{time}}'a kadar",
+    "zawal": {
+      "description": "Güneşin tam tepede olduğu kısa vakit; öğle vakti girene kadar nafile namaz kılınmaz.",
+      "label": "İstiva (Zeval) Vakti"
+    }
+  },
+  "hijri": {
+    "months": [
+      "Muharrem",
+      "Safer",
+      "Rebiulevvel",
+      "Rebiulahir",
+      "Cemaziyelevvel",
+      "Cemaziyelahir",
+      "Receb",
+      "Şaban",
+      "Ramazan",
+      "Şevval",
+      "Zilkade",
+      "Zilhicce"
+    ]
+  },
+  "history": {
+    "count": "{{count}}/5 namaz",
+    "actionFailed": "İşlem başarısız.",
+    "fivePrayers": "Beş vakit",
+    "info": "Geçmiş günleri düzeltirken seri de otomatik olarak güncellenir. Yeni eklediğin namazlar kaza olarak değil, eski tarihte kılınmış olarak kaydedilir.",
+    "loadFailed": "Veriler yüklenemedi.",
+    "pastDay": "Geçmiş Gün",
+    "prayed": "✓ Kılındı",
+    "title": "Geçmiş Düzenle",
+    "today": "Bugün"
+  },
+  "home": {
+    "editLayout": "Ana sayfayı düzenle",
+    "hero": {
+      "entry": "Giriş {{time}}",
+      "fallback": "Namaz vakti",
+      "now": "şu an",
+      "untilEnd": "{{prayer}} vaktinin çıkmasına",
+      "untilStart": "{{prayer}} vaktine"
+    },
+    "inspiration": {
+      "hadith": "Günün hadisi",
+      "readMore": "Devamını oku",
+      "refresh": "Yenile",
+      "showLess": "Daha az göster",
+      "verse": "Günün ayeti"
+    },
+    "quick": {
+      "calendar": "Takvim",
+      "dua": "Dualar",
+      "esma": "Esmaül Hüsna",
+      "history": "Geçmiş namazlar",
+      "short": {
+        "dua": "Dualar",
+        "calendar": "Takvim",
+        "esma": "Esmaül Hüsna",
+        "history": "Geçmiş Namazlar"
+      }
+    },
+    "streak": {
+      "a11y": "Namaz serisi {{streak}} gün, en uzun {{longest}} gün",
+      "dayA11y": "{{day}}: {{count}} / 5 namaz",
+      "days": "gün",
+      "label": "namaz serisi",
+      "longest": "En uzun"
+    },
+    "tracker": {
+      "completed": "Tamamlandı",
+      "kaza": "Kaza",
+      "ozelGunActive": "Özel gün modu açık, seriniz korunuyor",
+      "ozelGunEnd": "Bitir",
+      "ozelGunEndA11y": "Özel gün modunu bitir",
+      "ozelGunMine": "Özel günlerim",
+      "progress": "{{done}} / {{total}} kılındı",
+      "status": {
+        "done": "kılındı",
+        "expired": "vakti geçti, kaza olarak işaretlenebilir",
+        "kaza": "kaza olarak kılındı",
+        "notDone": "kılınmadı",
+        "upcoming": "vakti girmedi"
+      },
+      "title": "Bugünkü namazlar"
+    }
+  },
+  "homeLayout": {
+    "info": "Kartların sırasını oklarla değiştir, görünürlüğünü anahtarla aç/kapat. Namaz Vakitleri kartı her zaman en üstte kalır.",
+    "moveDown": "{{label}} kartını aşağı taşı",
+    "moveUp": "{{label}} kartını yukarı taşı",
+    "reset": "Sıfırla",
+    "resetA11y": "Varsayılan düzene dön",
+    "resetMessage": "Ana sayfa kart düzeni varsayılana döndürülecek. Devam edilsin mi?",
+    "resetTitle": "Düzeni Sıfırla",
+    "title": "Ana Sayfa Düzeni",
+    "toggleA11y": "{{label}} kartını göster"
+  },
+  "homeSections": {
+    "dailyInspiration": {
+      "description": "Günün ayeti / hadisi",
+      "label": "Günün İlhamı"
+    },
+    "prayerTracker": {
+      "description": "Günün vakit namazlarını işaretle",
+      "label": "Namaz Takibi"
+    },
+    "quickActions": {
+      "description": "Dua, takvim ve diğer kısayollar",
+      "label": "Hızlı Erişim"
+    },
+    "streak": {
+      "description": "Kesintisiz ibadet serisi",
+      "label": "Seri Kartı"
+    },
+    "dayRing": {
+      "label": "Gün Çemberi",
+      "description": "Günün vakitleri ve kerahat vakitleri tek çemberde"
+    },
+    "alarms": {
+      "label": "Alarmlar",
+      "description": "Sıradaki alarm ve tek dokunuşla sabah alarmı"
+    }
+  },
+  "hutbe": {
+    "title": "Cuma Hutbesi",
+    "thisWeek": "Bu haftanın hutbesi",
+    "listen": "Sesli hutbe",
+    "play": "Sesli hutbeyi oynat",
+    "pause": "Duraklat",
+    "back15": "15 saniye geri",
+    "forward15": "15 saniye ileri",
+    "previous": "Önceki hutbeler",
+    "footnotes": "Kaynaklar",
+    "source": "Kaynak: Diyanet İşleri Başkanlığı",
+    "textLoading": "Hutbe metni hazırlanıyor...",
+    "openPdf": "PDF olarak aç",
+    "pdfOnly": "Bu dildeki hutbe metni PDF olarak açılır.",
+    "textFailed": "Hutbe metni yüklenemedi. PDF olarak açabilirsin.",
+    "loadFailed": "Hutbeler yüklenemedi",
+    "loadFailedMessage": "İnternet bağlantını kontrol edip tekrar dene.",
+    "openWeb": "Diyanet sayfasını aç"
+  },
+  "input": {
+    "hidePassword": "Şifreyi gizle",
+    "showPassword": "Şifreyi göster"
+  },
+  "insights": {
+    "section": "İstatistikler",
+    "heatmap": {
+      "title": "Namaz geçmişi",
+      "summary": "Son 12 ay · {{prayers}} vakit · {{perfect}} tam gün",
+      "a11y": "Son 12 ayda {{prayers}} vakit kılındı, {{perfect}} gün beş vakit tamamlandı",
+      "ozelGun": "Özel gün",
+      "less": "Az",
+      "more": "Çok"
+    },
+    "hatim": {
+      "title": "{{n}}. hatim",
+      "progress": "{{pages}} / {{total}} sayfa",
+      "a11y": "Hatmin yüzde {{pct}} kadarı okundu, {{done}} hatim tamamlandı",
+      "completed": "{{count}} hatim tamamlandı · toplam {{pages}} sayfa",
+      "hint": "Kur'an okumalarını kaydettikçe cüzler dolar"
+    },
+    "recap": {
+      "week": "Bu hafta",
+      "month": "Bu ay",
+      "share": "Özeti paylaş",
+      "prayers": "{{done}} / {{total}} vakit",
+      "ofPrayers": "/ {{total}} vakit",
+      "perfectDays": "Tam gün",
+      "kaza": "Kaza",
+      "quranPages": "Kur'an sayfası",
+      "streak": "Günlük seri"
+    }
+  },
+  "location": {
+    "changedBody": "Namaz vakitleri şu an {{current}} için gösteriliyor. {{next}} olarak güncellensin mi?",
+    "changedTitle": "Konumunuz değişmiş görünüyor",
+    "chooseState": "İl Seçin",
+    "keep": "Kalsın",
+    "loadingDistricts": "İlçe verileri yükleniyor...",
+    "noDistricts": "Bu il için ilçe bulunamadı",
+    "title": "Konum Seç",
+    "update": "Güncelle",
+    "updated": "Güncellendi",
+    "updatedBody": "Namaz vakitleri {{name}} için ayarlandı",
+    "updatedTitle": "Konum güncellendi"
+  },
+  "mushaf": {
+    "chooseSurah": "Sure seç",
+    "continuePage": "{{page}}. sayfadan devam et",
+    "goToMark": "İşaretli yere git, {{page}}. sayfa",
+    "hint": "Ayet numarası: meal · Satıra basılı tut: işaretle",
+    "juz": "{{juz}}. cüz",
+    "lineA11y": "{{line}}. satır",
+    "lineMarkedA11y": "{{line}}. satır, kaldığın yer",
+    "loadFailed": "Sayfa yüklenemedi. İnternet bağlantını kontrol et.",
+    "markHint": "Kaldığın yer olarak işaretlemek için basılı tut",
+    "markRemoved": "İşaret kaldırıldı",
+    "marked": "Kaldığın yer işaretlendi",
+    "markedAt": "Kaldığın yer: {{page}}. sayfa, {{line}}. satır",
+    "markedDetail": "{{page}}. sayfa, {{line}}. satır",
+    "openA11y": "Mushafı sayfa sayfa oku",
+    "page": "Sayfa {{page}} / {{total}}",
+    "pageA11y": "Sayfa {{page}}",
+    "pageShort": "s. {{page}}",
+    "subtitle": "Sayfa sayfa oku, yan çevirerek de okuyabilirsin",
+    "surahPickA11y": "{{name}}, sayfa {{page}}",
+    "theme": "Okuma teması",
+    "themes": {
+      "auto": "Otomatik",
+      "light": "Açık",
+      "night": "Gece",
+      "sepia": "Sepya"
+    },
+    "title": "Mushaf",
+    "verseA11y": "{{verse}}. ayetin meali"
+  },
+  "mute": {
+    "enabled": "Aktifleştirildi",
+    "enabledMessage": "Bildirimler tekrar açıldı.",
+    "ended": "sona erdi",
+    "hours": "{{count}} saat",
+    "hoursMinutes": "{{h}} sa {{m}} dk",
+    "minutes": "{{count}} dakika",
+    "on": "Aç",
+    "remaining": "{{time}} kaldı",
+    "title": "Bildirimler sessizde",
+    "turnOff": "Sessiz modu kapat"
+  },
+  "notif": {
+    "blessedDay": "Mübarek Gün",
+    "channelAdhan": "Ezanlı Vakit Bildirimleri",
+    "channelPrayer": "Namaz Vakitleri",
+    "channelReminders": "Ayet, Hadis ve Hatırlatmalar",
+    "cumaBody": "Bugün Cuma. Cuma namazına hazırlanın; bu haftanın Diyanet hutbesini uygulamadan okuyabilirsiniz.",
+    "cumaEveBody": "Yarın Cuma günü. Cuma namazını ve Kehf Suresi okumayı unutmayın. Hayırlı Cumalar.",
+    "cumaEveSubtitle": "Cuma Hazırlığı",
+    "cumaEveTitle": "🕌 Yarın Cuma",
+    "cumaSubtitle": "Hayırlı Cumalar",
+    "cumaTitle": "🌙 Bugün Cuma",
+    "dayBeforeBody": "Yarın {{name}} ({{date}}). Hayırlı bir gün diliyoruz.",
+    "dayBeforeBodyNoDate": "Yarın {{name}}. Hayırlı bir gün diliyoruz.",
+    "dayBeforeTitle": "🌙 {{name}} Yaklaşıyor",
+    "dayOfBody": "Bugün {{name}} ({{date}}). Hayırlı olsun.",
+    "dayOfBodyNoDate": "Bugün {{name}}. Hayırlı olsun.",
+    "dayOfTitle": "🕌 Bugün {{name}}",
+    "hadithTitle": "✨ Nurdan Damlalar",
+    "prayerBody": "{{prayer}} namazı vakti girmiştir. Hayırlı namazlar dileriz.",
+    "prayerSubtitle": "Namaz Vakti",
+    "prayerTitle": "{{prayer}} Vakti Girdi 🕌",
+    "reminderBody": "{{prayer}} namazı için hazırlanma vakti.",
+    "reminderSubtitle": "Vakit Yaklaşıyor",
+    "reminderTitle": "{{prayer}} Vaktine {{minutes}} Dakika Kaldı ⏰",
+    "tapForMore": "devamı için dokun",
+    "testBody": "Bildirimler başarıyla çalışıyor! Namaz vakitleri ve ayet/hadis bildirimleri alacaksınız.",
+    "testSubtitle": "Günün İlhamı",
+    "testTitle": "Test Bildirimi 🔔",
+    "verseRef": "{{surah}}, {{verse}}. Ayet",
+    "verseTitle": "📖 İlahi Kelam"
+  },
+  "offline": {
+    "backOnline": "Bağlantı geri geldi",
+    "pending": " • {{count}} kayıt eşitlenecek",
+    "synced": "{{count}} bekleyen kayıt eşitlendi",
+    "title": "Çevrimdışı mod"
+  },
+  "onboarding": {
+    "allowLocation": "Konum İznini Ver",
+    "allowNotifications": "Bildirimleri Aç",
+    "continue": "Devam Et",
+    "location": {
+      "desc": "Doğru namaz vakitleri için konumunuza ihtiyacımız var. İzin verirseniz şehrinizi otomatik buluruz; istemezseniz daha sonra elle seçebilirsiniz.",
+      "title": "Konumunuzu Ayarlayın"
+    },
+    "next": "İleri",
+    "notifications": {
+      "desc": "Her namaz vaktinde nazikçe hatırlatma alın. Ezan sesi ve ayet/hadis bildirimleri opsiyoneldir, her zaman ayarlardan kapatabilirsiniz.",
+      "title": "Bildirimleri Aç"
+    },
+    "s1": {
+      "desc": "Günlük ibadetlerinizi kolaylaştırmak, manevi hayatınızı zenginleştirmek için tasarlandı.",
+      "title": "Salah'a Hoş Geldiniz"
+    },
+    "s2": {
+      "desc": "Bulunduğunuz konuma göre hassas namaz vakitleri. Ezan bildirimleri ile hiçbir vakti kaçırmayın.",
+      "title": "Namaz Vakitleri"
+    },
+    "s3": {
+      "desc": "Dünyanın her yerinden Kabe'ye doğru kıble yönünü hassas pusula ile anında bulun.",
+      "title": "Kıble Bulucu"
+    },
+    "s4": {
+      "desc": "Tüm sureler, Türkçe mealler ve sesli okuma. Kaldığınız sayfayı kaydedin, her an devam edin.",
+      "title": "Kur'an-ı Kerim"
+    },
+    "s5": {
+      "desc": "Namaz, Kur'an, nafile, oruç, sadaka, dua ve ezber ibadetlerinizi kaydedin ve gün gün takip edin.",
+      "title": "İbadet Takibi"
+    },
+    "s6": {
+      "desc": "Namazlarınızı düzenli kılarak serinizi büyütün. Rozetler kazanarak manevi ilerlemenizi görün.",
+      "title": "Seri & Rozetler"
+    },
+    "skip": "Geç",
+    "skipForNow": "Şimdilik atla",
+    "skipIntro": "Tanıtımı geç",
+    "slideA11y": "Sayfa {{n}} / {{total}}",
+    "start": "Başla"
+  },
+  "ozelGun": {
+    "end": "Bitir",
+    "endMessage": "Özel gün modunu kapatmak istediğinize emin misiniz?",
+    "endTitle": "Özel Günleri Bitir",
+    "screen": {
+      "active": "Aktif Dönem",
+      "loadFailed": "Dönem bilgisi alınamadı. Lütfen tekrar deneyin.",
+      "startFailed": "Dönem başlatılamadı. Lütfen tekrar deneyin.",
+      "endFailed": "Dönem sonlandırılamadı. Lütfen tekrar deneyin.",
+      "day": "{{day}}. gün",
+      "endMessage": "Aktif dönemi bugün itibarıyla sonlandırmak istiyor musun?",
+      "endTitle": "Dönemi Bitir",
+      "endToday": "Dönemi Bugün Sonlandır",
+      "ended": "Bitirildi",
+      "endedMessage": "Dönem sonlandırıldı.",
+      "inactive": "Aktif Dönem Yok",
+      "prayerTime": "Şu an namaz vakti",
+      "private": "Bu bilgi gizlidir, hiçbir kullanıcı ile paylaşılmaz.",
+      "protection": "Streak Koruması",
+      "protectionText": "Aktif dönem boyunca kaçırılan namazlar için streak'in bozulmaz, kaza listene eklenmez. İstatistikler bu günleri \"muaf\" olarak işaretler.",
+      "startDate": "Başlangıç:",
+      "startMessage": "Bugün için özel gün döneminin başlangıcını kaydetmek istiyor musun? Bu süre boyunca namaz streak'in korunacak.",
+      "startNew": "Yeni Dönem Başlat",
+      "startTitle": "Dönemi Başlat",
+      "started": "Başladı",
+      "startedMessage": "Dönem kaydedildi.",
+      "title": "Özel Gün Takibi",
+      "womenOnly": "Bu Özellik Kadın Kullanıcılara Özel",
+      "womenOnlyHint": "Profil ayarlarından cinsiyet bilgini güncellersen bu sayfayı kullanabilirsin."
+    },
+    "start": "Başlat",
+    "startMessage": "Özel günlerinizde seri sayınız donacak ve namazlar devre dışı kalacak.",
+    "startTitle": "Özel Gün Modunu Başlat"
+  },
+  "paywall": {
+    "active": "Premium aktif. Allah kabul etsin.",
+    "bestValue": "En iyi değer",
+    "features": {
+      "ai": "AI \"Sor\" asistanı",
+      "widgets": "Namaz Takibi, İbadet Takibi ve StandBy widget'ları",
+      "widgets_android": "Namaz Takibi ve İbadet Takibi widget'ları",
+      "stats": "Aylık özet, 12 aylık namaz haritası ve hatim takibi",
+      "icons": "Özel uygulama ikonları"
+    },
+    "includes": "Premium ile gelenler",
+    "legal": "Abonelik otomatik yenilenir; dönem bitiminden 24 saat önce iptal edilmezse aynı ücretle yenilenir. Aboneliğini Apple Kimliği ayarlarından yönetebilir veya iptal edebilirsin.",
+    "legal_android": "Abonelik otomatik yenilenir; dönem bitiminden önce iptal edilmezse aynı ücretle yenilenir. Aboneliğini Google Play'de Ödemeler ve abonelikler bölümünden yönetebilir veya iptal edebilirsin.",
+    "manage": "Aboneliği yönet",
+    "monthly": "Aylık",
+    "monthlyEquivalent": "Ayda yalnızca {{price}}",
+    "notFound": "Bulunamadı",
+    "notReady": "Abonelik paketleri henüz hazır değil.",
+    "nothingToRestore": "Geri yüklenecek aktif abonelik yok.",
+    "perMonth": "/ay",
+    "perYear": "/yıl",
+    "preparing": "Hazırlanıyor",
+    "privacy": "Gizlilik Politikası",
+    "purchaseFailed": "Satın alma tamamlanamadı.",
+    "restore": "Satın alımları geri yükle",
+    "restoreFailed": "Geri yükleme başarısız.",
+    "restored": "Geri yüklendi",
+    "restoredMessage": "Premium aboneliğin aktif.",
+    "savings": "%{{pct}} tasarruf",
+    "secure": "Apple ile güvenli ödeme, istediğin zaman iptal",
+    "secure_android": "Google Play ile güvenli ödeme, istediğin zaman iptal",
+    "startMonthly": "Aylık başlat",
+    "startYearly": "Yıllık başlat",
+    "subtitle": "Manevi yolculuğunu derinleştir.",
+    "terms": "Kullanım Koşulları",
+    "title": "Salah Premium",
+    "welcome": "Hoş geldin!",
+    "yearly": "Yıllık"
+  },
+  "prayers": {
+    "aksam": "Akşam",
+    "gunes": "Güneş",
+    "ikindi": "İkindi",
+    "imsak": "İmsak",
+    "ogle": "Öğle",
+    "sabah": "Sabah",
+    "yatsi": "Yatsı"
+  },
+  "premiumTeaser": {
+    "unlock": "Premium ile aç",
+    "locked": "Premium"
+  },
+  "profile": {
+    "ozelGunHint": "Özel gün (hayız) seri dondurma özelliği aktif olacak.",
+    "account": "Hesap",
+    "adminPanel": "Admin Paneli",
+    "adminSub": "Kullanıcı ve rol yönetimi",
+    "avatarUploadFailed": "Avatar yüklenemedi",
+    "avatarUploaded": "Avatar yüklendi",
+    "changeEmail": "E-posta Değiştir",
+    "changePassword": "Şifre Değiştir",
+    "changePhoto": "Profil fotoğrafını değiştir",
+    "editInfo": "Kişisel bilgileri düzenle",
+    "email": "E-posta",
+    "female": "Kadın",
+    "firstName": "Ad",
+    "firstNamePlaceholder": "Adınız",
+    "fullName": "Ad Soyad",
+    "galleryPermission": "Galeriye erişim izni vermeniz gerekiyor.",
+    "gender": "Cinsiyet",
+    "imagePickFailed": "Resim seçilemedi",
+    "lastName": "Soyad",
+    "lastNamePlaceholder": "Soyadınız",
+    "loadFailed": "Profil bilgileri alınamadı",
+    "male": "Erkek",
+    "menu": {
+      "account": "Hesap",
+      "accountSub": "Çıkış yap, oturumlar ve hesap ayarları",
+      "appSettings": "Uygulama Ayarları",
+      "appSettingsSub": "Bildirimler, tema ve daha fazlası",
+      "changeEmail": "E-posta Değiştir",
+      "changeEmailSub": "E-posta adresinizi güncelleyin",
+      "changePassword": "Şifre Değiştir",
+      "changePasswordSub": "Hesap şifrenizi güncelleyin"
+    },
+    "open": "Aç",
+    "permission": "İzin Gerekli",
+    "personalInfo": "Kişisel Bilgiler",
+    "phone": "Telefon",
+    "settings": "Ayarlar",
+    "theme": "Tema",
+    "themeDark": "Karanlık tema aktif",
+    "themeLight": "Aydınlık tema aktif",
+    "title": "Profil",
+    "updateFailed": "Profil güncellenemedi",
+    "updated": "Profil bilgileriniz güncellendi",
+    "uploading": "Fotoğraf yükleniyor",
+    "username": "Kullanıcı Adı",
+    "usernamePlaceholder": "kullaniciadi"
+  },
+  "qibla": {
+    "aligned": "Kıble yönündesin",
+    "angle": "Kıble Açısı",
+    "e": "D",
+    "hint": "Telefonu yatay tutup döndürün",
+    "n": "K",
+    "permissionDenied": "Konum izni reddedildi. Kıbleyi bulmak için izne ihtiyacımız var.",
+    "locationUnavailable": "Konum alınamadı. Konum servislerini kontrol edip tekrar deneyin.",
+    "headingUnavailable": "Pusula verisi alınamadı. Cihazınızda pusula olduğundan emin olun ve manyetik nesnelerden uzaklaşarak tekrar deneyin.",
+    "s": "G",
+    "title": "Kıble Bulucu",
+    "w": "B",
+    "locating": "Konum alınıyor...",
+    "kaaba": "Kâbe",
+    "turnRight": "{{deg}}° sağa çevir",
+    "turnLeft": "{{deg}}° sola çevir"
+  },
+  "quran": {
+    "clearSearch": "Aramayı temizle",
+    "continue": "Okumaya devam et",
+    "continueA11y": "Okumaya devam et: {{name}}, {{verse}}. ayet",
+    "continueVerse": "{{name}}, {{verse}}. ayet",
+    "detail": "Sure Detayı",
+    "notFound": "Sure bulunamadı",
+    "notFoundHint": "Sure adını ya da numarasını yazmayı deneyin.",
+    "search": "Sure ara",
+    "surahA11y": "{{id}}. {{name}}, {{count}} ayet",
+    "surahWithName": "{{name}} Suresi",
+    "title": "Sureler",
+    "verseCount": "{{count}} ayet"
+  },
+  "quranSettings": {
+    "fontLg": "Büyük",
+    "fontMd": "Orta",
+    "fontSm": "Küçük",
+    "fontXl": "En Büyük"
+  },
+  "religiousDays": {
+    "asure": "Aşure Günü",
+    "berat": "Berat Kandili",
+    "hicri_yilbasi": "Hicri Yılbaşı",
+    "kadir": "Kadir Gecesi",
+    "kurban_bayram_1": "Kurban Bayramı 1. Gün",
+    "kurban_bayram_2": "Kurban Bayramı 2. Gün",
+    "kurban_bayram_3": "Kurban Bayramı 3. Gün",
+    "kurban_bayram_4": "Kurban Bayramı 4. Gün",
+    "kurban_bayram_arife": "Kurban Bayramı Arifesi",
+    "mevlid": "Mevlid Kandili",
+    "mirac": "Miraç Kandili",
+    "ramazan_arife": "Ramazan Arifesi",
+    "ramazan_bayram_1": "Ramazan Bayramı 1. Gün",
+    "ramazan_bayram_2": "Ramazan Bayramı 2. Gün",
+    "ramazan_bayram_3": "Ramazan Bayramı 3. Gün",
+    "ramazan_bayram_arife": "Ramazan Bayramı Arifesi",
+    "ramazan_start": "Ramazan Başlangıcı",
+    "regaib": "Regaib Kandili",
+    "uc_aylar": "Üç Ayların Başlangıcı"
+  },
+  "settings": {
+    "adhan": {
+      "foregroundHint": "Uygulama açıkken ezan çalar, “Ezanı Kapat” ile durdurabilirsin",
+      "section": "Ezan Sesi",
+      "stop": "Durdur",
+      "test": "Ezan Sesini Test Et",
+      "testQuestion": "Hangi vaktin ezanını test etmek istiyorsun?",
+      "testSub": "Admin: her vakit farklı ezan çalar",
+      "testTitle": "Ezan Testi",
+      "title": "Namaz Vaktinde Ezan Sesi",
+      "which": "Hangi vakitlerde ezan çalsın?"
+    },
+    "app": {
+      "developer": "Geliştirici",
+      "developerSub": "Hayırlı işler için yapıldı",
+      "privacy": "Gizlilik Politikası",
+      "privacySub": "Verilerinizi nasıl koruduğumuzu okuyun",
+      "section": "Uygulama",
+      "terms": "Kullanım Koşulları",
+      "termsSub": "Hizmet şartlarını görüntüleyin",
+      "version": "Sürüm"
+    },
+    "data": {
+      "backupMessage": "Salah uygulamasındaki tüm verilerin ({{stamp}})",
+      "backupTitle": "Salah Yedek ({{stamp}})",
+      "export": "Verilerimi Yedekle",
+      "exportSub": "Tüm namaz ve ibadet kayıtlarını JSON olarak dışa aktar",
+      "failed": "Yedek oluşturulamadı.",
+      "preparing": "Yedek hazırlanıyor…",
+      "section": "Verilerim"
+    },
+    "holidays": {
+      "friday": "Cuma Hatırlatması",
+      "fridaySub": "Perşembe akşamı ve Cuma sabahı Cuma namazı + hutbe hatırlatması",
+      "section": "Kandil ve Mübarek Günler",
+      "sub": "Kandiller, kutsal geceler ve bayramlardan bir gün önce ve o gün sabahı hatırlatma",
+      "title": "Kandil & Bayram Bildirimleri"
+    },
+    "inspiration": {
+      "info": "Gün boyunca yaklaşık 2 saatte bir ayet veya hadis gönderilir. Gece 23:00-07:00 arası rahatsız edilmezsin.",
+      "section": "Ayet & Hadis Bildirimleri",
+      "sub": "Gün boyunca manevi hatırlatmalar al"
+    },
+    "language": {
+      "restartMessage": "Düzenin yeni dile göre değişmesi için uygulamayı kapatıp yeniden aç.",
+      "restartTitle": "Yeniden başlatma gerekli",
+      "system": "Telefon dili",
+      "title": "Dil"
+    },
+    "location": {
+      "auto": "Otomatik Algıla",
+      "autoSub": "GPS ile şehrini otomatik bul",
+      "denied": "Konum izni verilmedi.",
+      "detecting": "Konum alınıyor…",
+      "failed": "Konum alınamadı.",
+      "notFound": "Bulunamadı",
+      "notRecognized": "Konumunuz tanınamadı, lütfen elle seçin.",
+      "notSelected": "Konum seçilmedi",
+      "permission": "İzin Gerekli",
+      "prayerLocation": "Namaz Vakti Konumu",
+      "section": "Konum"
+    },
+    "mute": {
+      "15m": "15 dakika",
+      "1h": "1 saat",
+      "3h": "3 saat",
+      "activeLabel": "Sessiz: {{time}}",
+      "endOfDay": "Gün sonuna kadar",
+      "mute": "Sessize Al",
+      "muteSub": "Toplantı, uyku veya yolculuk için bildirimleri geçici olarak sustur",
+      "muted": "Sessize Alındı",
+      "mutedMessage": "Bildirimler {{time}} boyunca susturuldu.",
+      "question": "Bildirimler ne kadar süre sessize alınsın?",
+      "resumesAt": "{{date}} tarihinde aktifleşir",
+      "title": "Sessiz Mod",
+      "turnOff": "Sessiz Modu Kapat",
+      "turnOffSub": "Bildirimleri hemen geri aç",
+      "unmutedMessage": "Bildirimler tekrar açıldı. Sonraki vakit yenilenince planlanır."
+    },
+    "notifications": {
+      "atTime": "Tam Vakit",
+      "battery": "Pil optimizasyonu",
+      "batteryOff": "Telefonun Salah'ı kısıtlıyor, bildirimler gecikebilir. Listeden Salah'ı \"Optimize etme\" olarak ayarla.",
+      "batteryOn": "Salah kısıtlanmıyor, bildirimler zamanında gelir.",
+      "countdown": "Kilit ekranında geri sayım",
+      "countdownSub": "Sıradaki vakte kalan süre bildirimde görünür",
+      "exactAlarm": "Tam zamanında bildirim",
+      "exactAlarmOff": "Kapalı. Bildirimler birkaç dakika gecikebilir, açmak için dokun.",
+      "exactAlarmOn": "Açık. Bildirimler tam vaktinde gelir.",
+      "exactPromptMessage": "Ezan ve vakit bildirimlerinin tam vaktinde gelmesi için Salah'a \"Alarmlar ve hatırlatıcılar\" iznini vermen gerekiyor.",
+      "exactPromptTitle": "Bildirimler zamanında gelsin mi?",
+      "minutesBefore": "{{min}} dk önce",
+      "notNow": "Şimdi değil",
+      "openSettings": "Ayarları aç",
+      "permissionMessage": "Lütfen Ayarlar > Bildirimler'den izin verin.",
+      "prayer": "Namaz Vakti Bildirimleri",
+      "prayerSub": "Namaz vakitlerinde hatırlatma al",
+      "scheduled": "Planlı Bildirimler",
+      "scheduledDetail": "Planlı bildirim: {{total}}\n• Namaz vakti: {{prayer}}\n• Ayet/Hadis vb.: {{other}}",
+      "section": "Bildirimler",
+      "test": "Test Bildirimi Gönder",
+      "testSent": "Test Gönderildi",
+      "testSentMessage": "Test bildirimi birkaç saniye içinde gelecek.\n\n{{detail}}",
+      "testSub": "Bildirimlerin çalışıp çalışmadığını test et",
+      "turnOn": "Aç",
+      "when": "Ne zaman hatırlatılsın?",
+      "whichPrayers": "Hangi namazlar için?"
+    },
+    "personal": {
+      "ozelGun": "Özel Gün Takibi",
+      "ozelGunActive": "Aktif dönem, seri korunuyor",
+      "ozelGunSub": "Dönem başlat/bitir, streak koruması",
+      "section": "Kişisel"
+    },
+    "premium": {
+      "monthly": "Aylık abone",
+      "pitch": "AI asistan, premium widget'lar ve daha fazlası",
+      "title": "Salah Premium",
+      "until": "{{date}}'e kadar",
+      "yearly": "Yıllık abone"
+    },
+    "title": "Ayarlar",
+    "alarms": {
+      "label": "Alarmlar",
+      "sub": "Namaz, teheccüd ve sahur alarmları"
+    }
+  },
+  "share": {
+    "dialogTitle": "Salah ile paylaş",
+    "shareImage": "Görseli Paylaş"
+  },
+  "shareCards": {
+    "streak": {
+      "label": "Seri",
+      "headline": "{{count}}. gün, beş vakit",
+      "longest": "En uzun seri: {{count}} gün",
+      "shareA11y": "Seriyi paylaş"
+    },
+    "dua": {
+      "label": "Dua"
+    },
+    "greeting": {
+      "kandil": "Kandiliniz mübarek olsun",
+      "kadir": "Kadir Geceniz mübarek olsun",
+      "bayram": "Bayramınız mübarek olsun",
+      "arife": "Hayırlı arefeler",
+      "ramazan": "Hayırlı Ramazanlar",
+      "ucAylar": "Üç aylarınız mübarek olsun",
+      "hicriYil": "Hicri yeni yılınız mübarek olsun",
+      "asure": "Aşure gününüz mübarek olsun",
+      "cuma": "Hayırlı Cumalar",
+      "prayer": "Dualarınız kabul olsun.",
+      "cta": "Tebrik kartı paylaş",
+      "cumaA11y": "Cuma tebrik kartı paylaş"
+    }
+  },
+  "surah": {
+    "audioFailed": "Ses yüklenemedi. Yeniden oynatmayı deneyin.",
+    "loadFailed": "Ayetler yüklenemedi. İnternet bağlantını kontrol et.",
+    "searchResults": "{{count}} sonuç",
+    "closeSearch": "Aramayı kapat",
+    "fontSize": "Yazı boyutu",
+    "layoutMode": "Görünüm modu",
+    "listenVerse": "{{n}}. ayeti dinle",
+    "loading": "Ayetler yükleniyor...",
+    "modeMushaf": "Mushaf",
+    "modeVerse": "Ayet",
+    "noMatch": "Eşleşen ayet yok",
+    "nthVerse": "{{n}}. ayet",
+    "pause": "Duraklat",
+    "play": "Oynat",
+    "readingTheme": "Okuma teması",
+    "searchPlaceholder": "Ayet metni, numara veya kelime",
+    "searchVerse": "Ayet ara",
+    "shareTitle": "{{name}} Suresi · {{verse}}. Ayet",
+    "shareVerse": "Ayeti paylaş",
+    "tafsir": "Meal ve tefsir",
+    "tajweed": "Tecvid",
+    "tajweedToggle": "Tecvid renklendirme"
+  },
+  "tabs": {
+    "assistant": "Sor",
+    "home": "Ana Sayfa",
+    "quran": "Kur'an",
+    "tracker": "İbadet"
+  },
+  "tajweed": {
+    "ghunnah": "Ğunne",
+    "idgham": "İdgam",
+    "ikhfa": "İhfa",
+    "iqlab": "İklab",
+    "legendA11y": "Tecvid renk açıklaması",
+    "legendTitle": "Tecvid Renkleri",
+    "madd": "Med (uzatma)",
+    "qalqalah": "Kalkale",
+    "silent": "Okunmayan"
+  },
+  "tracker": {
+    "addA11y": "{{label}}: {{summary}}. Kayıt ekle",
+    "delete": {
+      "a11y": "{{label}} kaydını sil",
+      "confirm": "Sil",
+      "message": "Bu kaydı silmek istediğinize emin misiniz?",
+      "title": "Kaydı Sil"
+    },
+    "errors": {
+      "amount": "Miktar giriniz",
+      "memorization": "En az bir alan doldurunuz",
+      "minutes": "Dakika giriniz",
+      "pages": "Sayfa sayısı giriniz",
+      "rakaat": "Rekat sayısı giriniz",
+      "saveFailed": "Kayıt eklenirken bir sorun oluştu."
+    },
+    "fasting": {
+      "kaza": "Kaza Orucu",
+      "nafile": "Nafile Oruç",
+      "pazartesi_persembe": "Pazartesi-Perşembe",
+      "pazartesi_persembeShort": "Pzt-Prş Orucu"
+    },
+    "form": {
+      "amount": "Miktar (₺) *",
+      "amountPlaceholder": "örn: 100",
+      "bookName": "Kitap adı (opsiyonel)",
+      "bookPlaceholder": "örn: Riyazü's Salihin",
+      "description": "Açıklama (opsiyonel)",
+      "descriptionPlaceholder": "örn: yemek yardımı",
+      "fastingType": "Oruç türü",
+      "minutesOptional": "Kaç dakika? (opsiyonel)",
+      "minutesPlaceholder": "örn: 20",
+      "minutesRequired": "Kaç dakika? *",
+      "newVerses": "Yeni ezberlenen ayet sayısı",
+      "note": "Not (opsiyonel)",
+      "notePlaceholder": {
+        "default": "Bir not ekle…",
+        "dua": "Örn: Hasta dostlar için",
+        "fasting": "Örn: Pazartesi nafile orucu",
+        "memorization": "Örn: Yâsîn 1-5. ayet ezber",
+        "quran": "Örn: Bakara 15-18. sayfa"
+      },
+      "pages": "Sayfa sayısı *",
+      "prayerType": "Namaz türü",
+      "rakaat": "Rekat sayısı *",
+      "revisedVerses": "Tekrar edilen ayet sayısı"
+    },
+    "hero": {
+      "entries": "kayıt",
+      "types": "farklı ibadet"
+    },
+    "nafile": {
+      "aksam_sunnet": "Akşam Sünneti",
+      "diger": "Diğer",
+      "duha": "Duha (Kuşluk)",
+      "evvabin": "Evvabin",
+      "ikindi_sunnet": "İkindi Sünneti",
+      "ogle_sunnet": "Öğle Sünneti",
+      "sabah_sunnet": "Sabah Sünneti",
+      "teheccud": "Teheccüd",
+      "teravih": "Teravih",
+      "vitir": "Vitir",
+      "yatsi_sunnet": "Yatsı Sünneti"
+    },
+    "summary": {
+      "entries": "{{count}} kayıt",
+      "moreEntries": ", {{count}} giriş",
+      "none": "Henüz kayıt yok"
+    },
+    "title": "İbadet Defteri",
+    "todayEntries": "Bugünkü kayıtlar",
+    "value": {
+      "memorization": "{{new}} yeni ayet",
+      "memorizationRevision": "{{new}} yeni · {{revision}} tekrar ayet",
+      "minutes": "{{count}} dakika",
+      "minutesShort": "{{count}} dk",
+      "pages": "{{count}} sayfa",
+      "rakaat": "{{count}} rekat"
+    }
+  },
+  "update": {
+    "later": "Sonra",
+    "openStore": "App Store'da aç",
+    "openStore_android": "Google Play'de aç",
+    "optionalMessage": "Salah {{version}} App Store'da. Yenilikler ve düzeltmeler için güncelleyebilirsin.",
+    "optionalMessage_android": "Salah {{version}} Google Play'de. Yenilikler ve düzeltmeler için güncelleyebilirsin.",
+    "optionalTitle": "Yeni sürüm hazır",
+    "requiredMessage": "Salah'ı kullanmaya devam etmek için App Store'dan son sürüme güncellemen gerekiyor.",
+    "requiredMessage_android": "Salah'ı kullanmaya devam etmek için Google Play'den son sürüme güncellemen gerekiyor.",
+    "requiredTitle": "Güncelleme gerekli",
+    "update": "Güncelle"
+  },
+  "upload": {
+    "loading": "Yükleniyor...",
+    "wait": "Lütfen bekleyin..."
+  },
+  "verse": {
+    "loadFailed": "Meal yüklenemedi.",
+    "footnotes": "Açıklama / Dipnot",
+    "noWords": "Kelime verisi bulunamadı.",
+    "tabMeaning": "Meal & Tefsir",
+    "tabWords": "Kelime Kelime",
+    "wordsNote": "Kelime anlamları İngilizcedir; okunuş evrenseldir. Bir kelimeye dokunarak detayını gör."
+  },
+  "widget": {
+    "amel": {
+      "quran": "Kur'an",
+      "nafile": "Nafile",
+      "fasting": "Oruç",
+      "sadaka": "Sadaka",
+      "dua": "Dua",
+      "memorization": "Ezber",
+      "book": "Kitap"
+    },
+    "amelCount": "{{count}} tür kaydedildi",
+    "amelNone": "Bugün kayıt yok",
+    "amelTitle": "Bugünün İbadetleri",
+    "hadith": "Günün hadisi",
+    "inspirationEmpty": "Günün ayetini görmek için uygulamayı açın",
+    "inspirationFallback": "Günün ilhamı",
+    "openApp": "Vakitler için uygulamayı açın",
+    "premiumCta": "Premium'a geç",
+    "premiumLocked": "Bu widget Premium ile açılır",
+    "ringTitle": "Gün Çemberi",
+    "trackerAllDone": "Bugün tamamlandı",
+    "trackerLeft": "{{count}} vakit kaldı",
+    "trackerSignIn": "İşaretlemek için giriş yap",
+    "trackerTitle": "Namaz Takibi",
+    "until": "{{prayer}} vaktine",
+    "untilEnd": "{{prayer}} vaktinin çıkmasına",
+    "verse": "Günün ayeti"
+  }
+}

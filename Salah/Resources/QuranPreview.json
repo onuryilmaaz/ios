@@ -1,0 +1,1161 @@
+{
+  "surahs": [
+    {
+      "id": 1,
+      "name": "Fâtiha",
+      "name_arabic": "سُوْرَةُ الْفَاتِحَةِ",
+      "verse_count": 7,
+      "page_number": 1,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 2,
+      "name": "Bakara",
+      "name_arabic": "سُوْرَةُ البَقَرَةِ",
+      "verse_count": 286,
+      "page_number": 2,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 3,
+      "name": "Âl-i İmrân",
+      "name_arabic": "سُوْرَةُ اٰلِ عِمْرٰنَ",
+      "verse_count": 200,
+      "page_number": 50,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 4,
+      "name": "Nisâ",
+      "name_arabic": "سُوْرَةُ النِّسَآءِ",
+      "verse_count": 176,
+      "page_number": 77,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 5,
+      "name": "Mâide",
+      "name_arabic": "سُوْرَةُ المَآئِدَةِ",
+      "verse_count": 120,
+      "page_number": 106,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 6,
+      "name": "En’âm",
+      "name_arabic": "سُوْرَةُ الْاَنْعَامِ",
+      "verse_count": 165,
+      "page_number": 128,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 7,
+      "name": "A’râf",
+      "name_arabic": "سُوْرَةُ الْاَعْرَافِ",
+      "verse_count": 206,
+      "page_number": 151,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 8,
+      "name": "Enfâl",
+      "name_arabic": "سُوْرَةُ الْاَنْفَالِ",
+      "verse_count": 75,
+      "page_number": 177,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 9,
+      "name": "Tevbe",
+      "name_arabic": "سُوْرَةُ التَّوْبَةِ",
+      "verse_count": 129,
+      "page_number": 187,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 10,
+      "name": "Yûnus",
+      "name_arabic": "سُوْرَةُ يُوْنُسَ",
+      "verse_count": 109,
+      "page_number": 208,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 11,
+      "name": "Hud",
+      "name_arabic": "سُوْرَةُ هُوْدٍ",
+      "verse_count": 123,
+      "page_number": 221,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 12,
+      "name": "Yusuf",
+      "name_arabic": "سُوْرَةُ يُوسُفَ",
+      "verse_count": 111,
+      "page_number": 235,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 13,
+      "name": "Ar-Ra'd",
+      "name_arabic": "سُوْرَةُ الرَّعْدِ",
+      "verse_count": 43,
+      "page_number": 249,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 14,
+      "name": "Ibrahim",
+      "name_arabic": "سُوْرَةُ اِبْرَاهِيْمَ",
+      "verse_count": 52,
+      "page_number": 255,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 15,
+      "name": "Al-Hijr",
+      "name_arabic": "سُوْرَةُ الْحِجْرِ",
+      "verse_count": 99,
+      "page_number": 262,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 16,
+      "name": "An-Nahl",
+      "name_arabic": "سُوْرَةُ النَّحْلِ",
+      "verse_count": 128,
+      "page_number": 267,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 17,
+      "name": "Al-Israa",
+      "name_arabic": "سُوْرَةُ الإِسۡرَاءِ",
+      "verse_count": 111,
+      "page_number": 282,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 18,
+      "name": "Al-Kahf",
+      "name_arabic": "سُوْرَةُ الْكَهْفِ",
+      "verse_count": 110,
+      "page_number": 293,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 19,
+      "name": "Maryam",
+      "name_arabic": "سُوْرَةُ مَرْيَمَ",
+      "verse_count": 98,
+      "page_number": 305,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 20,
+      "name": "Taa-Haa",
+      "name_arabic": "سُوْرَةُ طٰهٰ",
+      "verse_count": 135,
+      "page_number": 312,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 21,
+      "name": "Al-Anbiyaa",
+      "name_arabic": "سُوْرَةُ الْاَنْۣبِيَآءِ",
+      "verse_count": 112,
+      "page_number": 322,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 22,
+      "name": "Al-Hajj",
+      "name_arabic": "سُوْرَةُ الْحَجِّ",
+      "verse_count": 78,
+      "page_number": 332,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 23,
+      "name": "Al-Muminoon",
+      "name_arabic": "سُوْرَةُ الْمُؤْمِنُوْنَ",
+      "verse_count": 118,
+      "page_number": 342,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 24,
+      "name": "An-Noor",
+      "name_arabic": "سُوْرَةُ النُّوْرِ",
+      "verse_count": 64,
+      "page_number": 350,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 25,
+      "name": "Al-Furqaan",
+      "name_arabic": "سُوْرَةُ الْفُرْقَانِ",
+      "verse_count": 77,
+      "page_number": 359,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 26,
+      "name": "Ash-Shu'araa",
+      "name_arabic": "سُوْرَةُ الشُّعَرَآءِ",
+      "verse_count": 227,
+      "page_number": 367,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 27,
+      "name": "An-Naml",
+      "name_arabic": "سُوْرَةُ النَّمْلِ",
+      "verse_count": 93,
+      "page_number": 377,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 28,
+      "name": "Al-Qasas",
+      "name_arabic": "سُوْرَةُ الْقَصَصِ",
+      "verse_count": 88,
+      "page_number": 385,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 29,
+      "name": "Al-Ankaboot",
+      "name_arabic": "سُوْرَةُ الْعَنْكَبُوْتِ",
+      "verse_count": 69,
+      "page_number": 396,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 30,
+      "name": "Ar-Room",
+      "name_arabic": "سُوْرَةُ الرُّوْمِ",
+      "verse_count": 60,
+      "page_number": 404,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 31,
+      "name": "Luqman",
+      "name_arabic": "سُوْرَةُ لُقْمَانَ",
+      "verse_count": 34,
+      "page_number": 411,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 32,
+      "name": "As-Sajda",
+      "name_arabic": "سُوْرَةُ السَّجْدَةِ",
+      "verse_count": 30,
+      "page_number": 415,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 33,
+      "name": "Al-Ahzaab",
+      "name_arabic": "سُوْرَةُ الْاَحْزَابِ",
+      "verse_count": 73,
+      "page_number": 418,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 34,
+      "name": "Saba",
+      "name_arabic": "سُوْرَةُ سَبَاٍ",
+      "verse_count": 54,
+      "page_number": 428,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 35,
+      "name": "Faatir",
+      "name_arabic": "سُوْرَةُ فَاطِرٍ",
+      "verse_count": 45,
+      "page_number": 434,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 36,
+      "name": "Yaseen",
+      "name_arabic": "سُوْرَةُ يٰسٓ",
+      "verse_count": 83,
+      "page_number": 440,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 37,
+      "name": "As-Saaffaat",
+      "name_arabic": "سُوْرَةُ الصَّافَّاتِ",
+      "verse_count": 182,
+      "page_number": 446,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 38,
+      "name": "Saad",
+      "name_arabic": "سُوْرَةُ صٓ",
+      "verse_count": 88,
+      "page_number": 453,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 39,
+      "name": "Az-Zumar",
+      "name_arabic": "سُوْرَةُ الزُّمَرِ",
+      "verse_count": 75,
+      "page_number": 458,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 40,
+      "name": "Ghafir",
+      "name_arabic": "سُوْرَةُ الْمُؤْمِنِ",
+      "verse_count": 85,
+      "page_number": 467,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 41,
+      "name": "Fussilat",
+      "name_arabic": "سُوْرَةُ فُصِّلَتۡ",
+      "verse_count": 54,
+      "page_number": 477,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 42,
+      "name": "Ash-Shura",
+      "name_arabic": "سُوْرَةُ الشُّوْرٰي",
+      "verse_count": 53,
+      "page_number": 483,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 43,
+      "name": "Az-Zukhruf",
+      "name_arabic": "سُوْرَةُ الزُّخْرُفِ",
+      "verse_count": 89,
+      "page_number": 489,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 44,
+      "name": "Ad-Dukhaan",
+      "name_arabic": "سُوْرَةُ الدُّخَانِ",
+      "verse_count": 59,
+      "page_number": 496,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 45,
+      "name": "Al-Jaathiya",
+      "name_arabic": "سُوْرَةُ الْجَاثِيَةِ",
+      "verse_count": 37,
+      "page_number": 499,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 46,
+      "name": "Al-Ahqaf",
+      "name_arabic": "سُوْرَةُ الْاَحْقَافِ",
+      "verse_count": 35,
+      "page_number": 502,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 47,
+      "name": "Muhammad",
+      "name_arabic": "سُوْرَةُ مُحَمَّدٍ",
+      "verse_count": 38,
+      "page_number": 507,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 48,
+      "name": "Al-Fath",
+      "name_arabic": "سُوْرَةُ الْفَتْحِ",
+      "verse_count": 29,
+      "page_number": 511,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 49,
+      "name": "Al-Hujuraat",
+      "name_arabic": "سُوْرَةُ الْحُجُراتِ",
+      "verse_count": 18,
+      "page_number": 515,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 50,
+      "name": "Qaaf",
+      "name_arabic": "سُوْرَةُ قٓ",
+      "verse_count": 45,
+      "page_number": 518,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 51,
+      "name": "Adh-Dhaariyat",
+      "name_arabic": "سُوْرَةُ الذَّارِياتِ",
+      "verse_count": 60,
+      "page_number": 520,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 52,
+      "name": "At-Tur",
+      "name_arabic": "سُوْرَةُ الطُّوْرِ",
+      "verse_count": 49,
+      "page_number": 523,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 53,
+      "name": "An-Najm",
+      "name_arabic": "سُوْرَةُ النَّجْمِ",
+      "verse_count": 62,
+      "page_number": 526,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 54,
+      "name": "Al-Qamar",
+      "name_arabic": "سُوْرَةُ الْقَمَرِ",
+      "verse_count": 55,
+      "page_number": 528,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 55,
+      "name": "Ar-Rahmaan",
+      "name_arabic": "سُوْرَةُ الرَّحْمٰنِ",
+      "verse_count": 78,
+      "page_number": 531,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 56,
+      "name": "Al-Waaqia",
+      "name_arabic": "سُوْرَةُ الْوَاقِعَةِ",
+      "verse_count": 96,
+      "page_number": 534,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 57,
+      "name": "Al-Hadid",
+      "name_arabic": "سُوْرَةُ الْحَدِيْدِ",
+      "verse_count": 29,
+      "page_number": 537,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 58,
+      "name": "Al-Mujaadila",
+      "name_arabic": "سُوْرَةُ الْمُجَادَلَةِ",
+      "verse_count": 22,
+      "page_number": 542,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 59,
+      "name": "Al-Hashr",
+      "name_arabic": "سُوْرَةُ الْحَشْرِ",
+      "verse_count": 24,
+      "page_number": 545,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 60,
+      "name": "Al-Mumtahana",
+      "name_arabic": "سُوْرَةُ الْمُمْتَحِنَةِ",
+      "verse_count": 13,
+      "page_number": 549,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 61,
+      "name": "As-Saff",
+      "name_arabic": "سُوْرَةُ الصَّفِّ",
+      "verse_count": 14,
+      "page_number": 551,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 62,
+      "name": "Al-Jumu'a",
+      "name_arabic": "سُوْرَةُ الْجُمُعَةِ",
+      "verse_count": 11,
+      "page_number": 553,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 63,
+      "name": "Al-Munaafiqoon",
+      "name_arabic": "سُوْرَةُ الْمُنَافِقُوْنَ",
+      "verse_count": 11,
+      "page_number": 554,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 64,
+      "name": "At-Taghaabun",
+      "name_arabic": "سُوْرَةُ التَّغَابُنِ",
+      "verse_count": 18,
+      "page_number": 556,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 65,
+      "name": "At-Talaaq",
+      "name_arabic": "سُوْرَةُ الطَّلَاقِ",
+      "verse_count": 12,
+      "page_number": 558,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 66,
+      "name": "At-Tahrim",
+      "name_arabic": "سُوْرَةُ التَّحْرِيْمِ",
+      "verse_count": 12,
+      "page_number": 560,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 67,
+      "name": "Al-Mulk",
+      "name_arabic": "سُوْرَةُ الْمُلْكِ",
+      "verse_count": 30,
+      "page_number": 562,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 68,
+      "name": "Al-Qalam",
+      "name_arabic": "سُوْرَةُ الْقَلَمِ",
+      "verse_count": 52,
+      "page_number": 564,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 69,
+      "name": "Al-Haaqqa",
+      "name_arabic": "سُوْرَةُ الْحَآقَّةِ",
+      "verse_count": 52,
+      "page_number": 566,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 70,
+      "name": "Al-Ma'aarij",
+      "name_arabic": "سُوْرَةُ الْمَعَارِجِ",
+      "verse_count": 44,
+      "page_number": 568,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 71,
+      "name": "Nooh",
+      "name_arabic": "سُوْرَةُ نُوْحٍ",
+      "verse_count": 28,
+      "page_number": 570,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 72,
+      "name": "Al-Jinn",
+      "name_arabic": "سُوْرَةُ الْجِنِّ",
+      "verse_count": 28,
+      "page_number": 572,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 73,
+      "name": "Al-Muzzammil",
+      "name_arabic": "سُوْرَةُ الْمُزَّمِّلِ",
+      "verse_count": 20,
+      "page_number": 574,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 74,
+      "name": "Al-Muddaththir",
+      "name_arabic": "سُوْرَةُ الْمُدَّثِّرِ",
+      "verse_count": 56,
+      "page_number": 575,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 75,
+      "name": "Al-Qiyaama",
+      "name_arabic": "سُوْرَةُ الْقِيَامَةِ",
+      "verse_count": 40,
+      "page_number": 577,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 76,
+      "name": "Al-Insaan",
+      "name_arabic": "سُوْرَةُ الدَّهْرِ",
+      "verse_count": 31,
+      "page_number": 578,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 77,
+      "name": "Al-Mursalaat",
+      "name_arabic": "سُوْرَةُ الْمُرْسَلَاتِ",
+      "verse_count": 50,
+      "page_number": 580,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 78,
+      "name": "An-Naba",
+      "name_arabic": "سُوْرَةُ النَّبَاِ",
+      "verse_count": 40,
+      "page_number": 582,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 79,
+      "name": "An-Naazi'aat",
+      "name_arabic": "سُوْرَةُ النَّازِعَاتِ",
+      "verse_count": 46,
+      "page_number": 583,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 80,
+      "name": "Abasa",
+      "name_arabic": "سُوْرَةُ عَبَسَ",
+      "verse_count": 42,
+      "page_number": 585,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 81,
+      "name": "At-Takwir",
+      "name_arabic": "سُوْرَةُ التَّكْوِيْرِ",
+      "verse_count": 29,
+      "page_number": 586,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 82,
+      "name": "Al-Infitaar",
+      "name_arabic": "سُوْرَةُ الْاِنْفِطَارِ",
+      "verse_count": 19,
+      "page_number": 587,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 83,
+      "name": "Al-Mutaffifin",
+      "name_arabic": "سُوْرَةُ المُطَفِّفِيْنَ",
+      "verse_count": 36,
+      "page_number": 587,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 84,
+      "name": "Al-Inshiqaaq",
+      "name_arabic": "سُوْرَةُ الاِنْشِقَاقِ",
+      "verse_count": 25,
+      "page_number": 589,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 85,
+      "name": "Al-Burooj",
+      "name_arabic": "سُوْرَةُ الْبُرُوْجِ",
+      "verse_count": 22,
+      "page_number": 590,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 86,
+      "name": "At-Taariq",
+      "name_arabic": "سُوْرَةُ الطَّارِقِ",
+      "verse_count": 17,
+      "page_number": 591,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 87,
+      "name": "Al-A'laa",
+      "name_arabic": "سُوْرَةُ الْاَعْلٰي",
+      "verse_count": 19,
+      "page_number": 591,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaashiya",
+      "name_arabic": "سُوْرَةُ الْغَاشِيَةِ",
+      "verse_count": 26,
+      "page_number": 592,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 89,
+      "name": "Al-Fajr",
+      "name_arabic": "سُوْرَةُ الْفَجْرِ",
+      "verse_count": 30,
+      "page_number": 593,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 90,
+      "name": "Al-Balad",
+      "name_arabic": "سُوْرَةُ الْبَلَدِ",
+      "verse_count": 20,
+      "page_number": 594,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 91,
+      "name": "Ash-Shams",
+      "name_arabic": "سُوْرَةُ الشَّمْسِ",
+      "verse_count": 15,
+      "page_number": 595,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 92,
+      "name": "Al-Lail",
+      "name_arabic": "سُوْرَةُ الَّيْلِ",
+      "verse_count": 21,
+      "page_number": 595,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 93,
+      "name": "Ad-Dhuhaa",
+      "name_arabic": "سُوْرَةُ الضُّحٰي",
+      "verse_count": 11,
+      "page_number": 596,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 94,
+      "name": "Ash-Sharh",
+      "name_arabic": "سُوْرَةُ الشَّرْحِ",
+      "verse_count": 8,
+      "page_number": 596,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 95,
+      "name": "At-Tin",
+      "name_arabic": "سُوْرَةُ التِّيْنِ",
+      "verse_count": 8,
+      "page_number": 597,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 96,
+      "name": "Al-Alaq",
+      "name_arabic": "سُوْرَةُ الْعَلَقِ",
+      "verse_count": 19,
+      "page_number": 597,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 97,
+      "name": "Al-Qadr",
+      "name_arabic": "سُوْرَةُ الْقَدْرِ",
+      "verse_count": 5,
+      "page_number": 598,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 98,
+      "name": "Al-Bayyina",
+      "name_arabic": "سُوْرَةُ الْبَيِّنَةِ",
+      "verse_count": 8,
+      "page_number": 598,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 99,
+      "name": "Az-Zalzala",
+      "name_arabic": "سُوْرَةُ الزِّلْزَالِ",
+      "verse_count": 8,
+      "page_number": 599,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 100,
+      "name": "Al-Aadiyaat",
+      "name_arabic": "سُوْرَةُ العٰدِيٰتِ",
+      "verse_count": 11,
+      "page_number": 599,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 101,
+      "name": "Al-Qaari'a",
+      "name_arabic": "سُوْرَةُ الْقَارِعَةِ",
+      "verse_count": 11,
+      "page_number": 600,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 102,
+      "name": "At-Takaathur",
+      "name_arabic": "سُوْرَةُ التَّكَاثُرِ",
+      "verse_count": 8,
+      "page_number": 600,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 103,
+      "name": "Al-Asr",
+      "name_arabic": "سُوْرَةُ الْعَصْرِ",
+      "verse_count": 3,
+      "page_number": 601,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 104,
+      "name": "Al-Humaza",
+      "name_arabic": "سُوْرَةُ الْهُمَزَةِ",
+      "verse_count": 9,
+      "page_number": 601,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 105,
+      "name": "Al-Fil",
+      "name_arabic": "سُوْرَةُ الْفِيْلِ",
+      "verse_count": 5,
+      "page_number": 601,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 106,
+      "name": "Quraish",
+      "name_arabic": "سُوْرَةُ قُرَيْشٍ",
+      "verse_count": 4,
+      "page_number": 602,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 107,
+      "name": "Al-Maa'un",
+      "name_arabic": "سُوْرَةُ الْمَاعُوْنِ",
+      "verse_count": 7,
+      "page_number": 602,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 108,
+      "name": "Al-Kawthar",
+      "name_arabic": "سُوْرَةُ الْكَوْثَرِ",
+      "verse_count": 3,
+      "page_number": 602,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 109,
+      "name": "Al-Kaafiroon",
+      "name_arabic": "سُوْرَةُ الْكَافِرُوْنَ",
+      "verse_count": 6,
+      "page_number": 603,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 110,
+      "name": "An-Nasr",
+      "name_arabic": "سُوْرَةُ النَّصْرِ",
+      "verse_count": 3,
+      "page_number": 603,
+      "revelation_order": null,
+      "revelation_place": "Madina"
+    },
+    {
+      "id": 111,
+      "name": "Al-Masad",
+      "name_arabic": "سُوْرَةُ المَسَدِ",
+      "verse_count": 5,
+      "page_number": 603,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 112,
+      "name": "Al-Ikhlaas",
+      "name_arabic": "سُوْرَةُ الْاِخْلَاصِ",
+      "verse_count": 4,
+      "page_number": 604,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 113,
+      "name": "Al-Falaq",
+      "name_arabic": "سُوْرَةُ الْفَلَقِ",
+      "verse_count": 5,
+      "page_number": 604,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    },
+    {
+      "id": 114,
+      "name": "An-Naas",
+      "name_arabic": "سُوْرَةُ النَّاسِ",
+      "verse_count": 6,
+      "page_number": 604,
+      "revelation_order": null,
+      "revelation_place": "Mecca"
+    }
+  ],
+  "verses": [
+    {
+      "id": 1,
+      "surah_id": 1,
+      "verse_number": 1,
+      "verse_simplified": "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "Bismillahirrahmanirrahim",
+      "translation": {
+        "id": 1,
+        "text": "Rahman ve Rahim olan Allah'ın adıyla",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "surah_id": 1,
+      "verse_number": 2,
+      "verse_simplified": "ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَٰلَمِينَ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "El hamdü lillahi rabbil alemin",
+      "translation": {
+        "id": 2,
+        "text": "Hamd, Alemlerin Rabbi Allah'a mahsustur",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "surah_id": 1,
+      "verse_number": 3,
+      "verse_simplified": "ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "Er rahmanir rahıym",
+      "translation": {
+        "id": 3,
+        "text": "O Rahman ve Rahim'dir",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "surah_id": 1,
+      "verse_number": 4,
+      "verse_simplified": "مَٰلِكِ يَوۡمِ ٱلدِّينِ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "Maliki yevmid din",
+      "translation": {
+        "id": 4,
+        "text": "Din Gününün sahibidir",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "surah_id": 1,
+      "verse_number": 5,
+      "verse_simplified": "إِيَّاكَ نَعۡبُدُ وَإِيَّاكَ نَسۡتَعِينُ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "İyyake na´büdü ve iyyake nesteıyn",
+      "translation": {
+        "id": 5,
+        "text": "Ancak Sana kulluk eder ve yalnız Senden yardım dileriz",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "surah_id": 1,
+      "verse_number": 6,
+      "verse_simplified": "ٱهۡدِنَا ٱلصِّرَٰطَ ٱلۡمُسۡتَقِيمَ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "İhdinas sıratal müstekıym",
+      "translation": {
+        "id": 6,
+        "text": "Bizi doğru yola eriştir",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "surah_id": 1,
+      "verse_number": 7,
+      "verse_simplified": "صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ وَلَا ٱلضَّآلِّينَ",
+      "page_number": 1,
+      "juz_number": 1,
+      "transcription": "Sıratallezine en´amte aleyhim ğayril mağdubi aleyhim ve lad dallin",
+      "translation": {
+        "id": 7,
+        "text": "Nimete erdirdiğin kimselerin yoluna; gazaba uğrayanların, ya da sapıtanların yoluna değil",
+        "author": {
+          "id": "diyanet",
+          "name": "Diyanet İşleri"
+        }
+      }
+    }
+  ],
+  "english": {
+    "1": "In the name of Allah, the Entirely Merciful, the Especially Merciful",
+    "2": "[All] praise is [due] to Allah, Lord of the worlds",
+    "3": "The Entirely Merciful, the Especially Merciful",
+    "4": "Sovereign of the Day of Recompense",
+    "5": "It is You we worship and You we ask for help",
+    "6": "Guide us to the straight path",
+    "7": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray"
+  },
+  "englishAuthor": "Umm Muhammad"
+}
