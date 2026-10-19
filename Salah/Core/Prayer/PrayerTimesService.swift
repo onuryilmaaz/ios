@@ -3,7 +3,8 @@ import Foundation
 /// Vakitleri offline-first getirir. RN'deki services/prayer.service.ts ile aynı
 /// kurallar ve aynı cache anahtarı (`@salah_prayer_times_cache_<ilçe>`):
 /// 1. Cache taze (6 saat) ve en az 3 günü kapsıyorsa ağa çıkmaz.
-/// 2. Değilse aylık (gerekirse haftalık) veriyi çekip cache ile birleştirir.
+/// 2. Değilse aylık (gerekirse haftalık) veriyi çekip cache ile birleştirir: önce kendi
+///    sunucumuz (/prayer/times), olmazsa ezanvakti.imsakiyem.com.
 /// 3. Ağ yoksa elde ne varsa (bayat cache dahil) onu döndürür.
 enum PrayerTimesService {
   static let defaultDistrictId = "9654"
@@ -38,19 +39,33 @@ enum PrayerTimesService {
     // kapsamayabilir, o zaman haftalıkla tamamlanır.
     var fetched = false
     for range in ["monthly", "weekly"] {
-      let url = baseURL.appendingPathComponent("prayer-times/\(districtId)/\(range)")
-      var request = URLRequest(url: url)
-      request.timeoutInterval = 15
-      guard let (data, _) = try? await URLSession.shared.data(for: request),
-        let res = try? JSONDecoder().decode(Response.self, from: data),
-        res.success, let days = res.data, !days.isEmpty
-      else { continue }
+      guard let days = await fetch(districtId: districtId, range: range) else { continue }
       mergeAndSave(districtId, days)
       fetched = true
       let merged = fromToday(readCache(districtId)?.days ?? days)
       if covers(merged) { return merged }
     }
     return fetched ? fromToday(readCache(districtId)?.days ?? []) : cached
+  }
+
+  /// Önce kendi sunucumuz (Diyanet açık veri seti; dış servise bağımlı değil), olmazsa
+  /// ezanvakti.imsakiyem.com. İkisi de aynı JSON biçimini döner.
+  private static func fetch(districtId: String, range: String) async -> [PrayerDay]? {
+    let sources = [
+      URL(string: APIClient.shared.baseURL.absoluteString + "/prayer/times/\(districtId)/\(range)"),
+      baseURL.appendingPathComponent("prayer-times/\(districtId)/\(range)"),
+    ].compactMap { $0 }
+    for url in sources {
+      var request = URLRequest(url: url)
+      request.timeoutInterval = 10
+      guard let (data, response) = try? await URLSession.shared.data(for: request),
+        (response as? HTTPURLResponse)?.statusCode == 200,
+        let res = try? JSONDecoder().decode(Response.self, from: data),
+        res.success, let days = res.data, !days.isEmpty
+      else { continue }
+      return days
+    }
+    return nil
   }
 
   static func today(districtId: String) async -> PrayerDay? {
