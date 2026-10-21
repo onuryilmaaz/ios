@@ -103,6 +103,16 @@ final class InsightsStore {
       if (error as? APIError)?.status == 404 { unavailable = true }
     }
   }
+
+  #if DEBUG
+  /// Mağaza görseli fikstürü: 12 aylık geçmiş, haftalık/aylık özet ve hatim ilerlemesi (yalnız bellek).
+  func preview(history: History, recaps: [String: Recap], quran: QuranProgress) {
+    self.history = history
+    self.recaps = recaps
+    self.quran = quran
+    unavailable = false
+  }
+  #endif
 }
 
 /// Isı haritası hesapları. RN: modules/insights/heatmap.ts

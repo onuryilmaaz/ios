@@ -118,4 +118,9 @@ final class TrackerStore {
       WidgetBridge.updateAmel(types: types, total: logs.count, date: localDateString())
     }
   }
+
+  #if DEBUG
+  /// Mağaza görseli fikstürü: bugünün örnek kayıtları (yalnız bellek).
+  func preview(_ logs: [TrackerLog]) { todayLogs = logs }
+  #endif
 }

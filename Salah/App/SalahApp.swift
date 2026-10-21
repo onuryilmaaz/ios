@@ -9,6 +9,9 @@ struct SalahApp: App {
     // Her store'dan ÖNCE: RN sürümünün verisi (ilçe, tema, dil, cache, kuyruk)
     // ilk açılışta yerel depoya kopyalanır.
     LegacyMigration.runIfNeeded()
+    #if DEBUG
+    if DebugLaunch.sample { StorePreview.install() }
+    #endif
   }
 
   var body: some Scene {

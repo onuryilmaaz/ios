@@ -108,6 +108,9 @@ final class AlarmStore {
   // MARK: - Senkron
 
   private func run(force: Bool) async {
+    #if DEBUG
+    if previewing { return }
+    #endif
     supported = AlarmKitBridge.isSupported
     guard supported, !DebugLaunch.isIsolated else {
       auth = supported ? AlarmKitBridge.authorization : .unsupported
@@ -203,4 +206,17 @@ final class AlarmStore {
       secondary: canMark ? "mark" : "snooze", secondaryLabel: t(canMark ? "alarm.button.mark" : "alarm.button.snooze"),
       snoozeSeconds: Double(settings.snoozeMinutes * 60), snoozeTitle: t("alarm.snoozed"), stopLabel: t("alarm.button.stop"))
   }
+
+  #if DEBUG
+  @ObservationIgnored private var previewing = false
+
+  /// Mağaza görseli fikstürü: örnek alarm ayarları ve sıradaki alarm; sisteme alarm kurmaz.
+  func preview(_ settings: AlarmSettings, next: (fireAt: Date, title: String)?) {
+    previewing = true
+    self.settings = settings
+    self.next = next
+    supported = true
+    auth = .authorized
+  }
+  #endif
 }

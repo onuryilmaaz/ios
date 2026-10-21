@@ -44,7 +44,7 @@ func dirIcon(_ name: String) -> String {
   return mirror[name] ?? name
 }
 
-/// Vakit ikonları; tek kaynak mobile/src/constants/prayerIcons.json.
+/// Vakit ikonları; kaynak Shared/mobile/src/constants/prayerIcons.json (widget tarafı PrayerIcons.generated.swift elle eşlenir; Android kopyası assets/data).
 /// Anahtar olarak tracker kimliği (`fajr`), görünen ad (`İmsak`) ya da widget anahtarı (`sabah`).
 func prayerIcon(_ keyOrName: String) -> String {
   PrayerIcons.byAlias[keyOrName] ?? "time-outline"

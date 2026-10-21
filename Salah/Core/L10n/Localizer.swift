@@ -45,7 +45,7 @@ enum LanguagePreference: Equatable, Sendable {
   }
 }
 
-/// Metinler RN ile ORTAK dosyalardan gelir: mobile/src/i18n/locales/{tr,en,ar}.json.
+/// Metinler Shared/mobile/src/i18n/locales/{tr,en,ar}.json dosyalarından gelir (RN projesinden alınmış, artık iOS'a ait kopya).
 /// Anahtar biçimi (`home.hero.entry`) ve `{{değişken}}` yer tutucuları i18next ile aynıdır.
 ///
 /// SwiftUI gövdesinde `t(...)` çağrısı `language`'ı okuduğu için dil

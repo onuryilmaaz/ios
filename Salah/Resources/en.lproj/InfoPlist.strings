@@ -1,0 +1,3 @@
+/* Permission descriptions (same as RN mobile/ios/Salah/Supporting). No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "Your location is used to show prayer times and the qibla direction.";
+"NSAlarmKitUsageDescription" = "Alarm access lets your prayer, tahajjud and suhoor alarms ring even in silent mode.";

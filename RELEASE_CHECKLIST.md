@@ -11,6 +11,17 @@ Bu dosya ayrı iOS deposuna taşınmıştır. `mobile/` ve `Node-Ts/` adları ö
 - Veri taşıma: RN AsyncStorage kısa/MD5 dosya değerleri ve eski Expo dizinleri okunur; kaynak dosyalar korunur. Tamamlanamayan taşıma yeniden denenir; kısmi taşımada kullanıcı değişiklikleri korunur. Eski AsyncStorage/App Group token'ları doğrulanarak Keychain'e geçirilir; daha taze widget token'ı ve çıkış damgası korunur.
 - Kuyruk: RN JSON'u/tarih/clientRef korunur. Gönderim sürerken ekleme, silme ve düzenleme kaybolmaz. Oturum hazır olmadan gönderilmez. 401/403/408/429, 5xx ve ağ hatasında kayıtlar tutulur; kalıcı diğer 4xx atlanır. Başarıdan sonra güncel depodan yalnız gönderilen kayıt çıkarılır.
 
+## Otomatik yayın kontrolü (21 Ekim 2026)
+
+- [x] 208 XCTest geçti (`build/TestResults/Release-check-2026.10.21.xcresult`); Release `generic/platform=iOS` imzasız derleme başarılı.
+- [x] Release paketi: `com.onur6541.salah` 1.1.0 (1), iki uzantı aynı sürüm/build; görünen ad "Salah"; API `https://api.onur-yilmaz.com/salah`; en düşük iOS 17.0; ikilide `SalahDebug` izi yok; önizleme JSON'ları pakette değil; 45 MB.
+- [x] İzin metinleri artık üç dilde (`Salah/Resources/{tr,en,ar}.lproj/InfoPlist.strings`; konum ve AlarmKit). Önceden yalnız Türkçeydi. Uygulama adı bu dosyalarda yok (Debug "Salah Dev" kalsın).
+- [x] Gizlilik bildirimi: gerekçe isteyen tek API UserDefaults (beyanlı); izleme yok. Fotoğraf seçici izin istemez.
+- [x] Sunucu: `/health` 200, `/auth/apple` ve `/auth/google` boş gövdeye 400, `/assistant/reports` 401 (uçlar canlı).
+- [ ] iOS'ta AI cevabını raporlama arayüzü yok (Android'de Sor ve Dua'da var, uç canlı).
+- [ ] `aps-environment: development`: App Store dağıtımı için dışa aktarırken Xcode üretim değerini koyar; arşivin imzalı entitlements'ında `production` olduğunu doğrula.
+- [ ] `ios/Shared/mobile` kopyası `mobile/`'dan geride (admin.*, assistant.report.*, widget.* anahtarları; `settings.adhan.foregroundHint` iOS'a özgü metinde). iOS'un kullandığı 585 anahtarın hepsi kopyada var; körlemesine eşitleme yapma.
+
 ## Yapılandırma
 
 - [ ] TestFlight arşivinden önce App Store Connect'teki en son sürüm/build değerini kontrol et. `project.yml` şu an `MARKETING_VERSION: 1.1.0`, `CURRENT_PROJECT_VERSION: 1`; RN `mobile/app.json` build 6 ve EAS `autoIncrement: true` kullanıyordu. Yeni `1.1.0` build kimliği benzersiz olmalı; build değerini seçip `xcodegen generate` çalıştır, sonra Xcode'da Release/`com.onur6541.salah` ile dağıtım imzalı arşiv al. Bu listedeki `Salah-email-ready-2026.10.19.xcarchive` yalnız imzasız derleme doğrulamasıdır.

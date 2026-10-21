@@ -287,4 +287,12 @@ final class GamificationStore {
     // Kılınan namaz vakit widget'ının ve Live Activity'nin penceresini değiştirir.
     WidgetSync.updatePrayer(nil)
   }
+
+  #if DEBUG
+  /// Mağaza görseli fikstürü: bugünkü namazlar, seri ve haftalık görünüm (yalnız bellek).
+  func preview(stats: Stats, weekly: JSONValue?) {
+    self.stats = stats
+    weeklyStats = weekly
+  }
+  #endif
 }

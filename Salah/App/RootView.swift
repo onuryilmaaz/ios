@@ -106,9 +106,18 @@ enum DebugLaunch {
   static var isIsolated: Bool {
     #if DEBUG
       let env = ProcessInfo.processInfo.environment
-      return env["SALAH_TEST_ISOLATED"] == "1" || UserDefaults.standard.bool(forKey: "SalahDebugOffline") || splashPreview || adminPreview || notifications != nil || quran != nil || qibla != nil || calendar != nil || ozelGun != nil
+      return env["SALAH_TEST_ISOLATED"] == "1" || UserDefaults.standard.bool(forKey: "SalahDebugOffline") || splashPreview || adminPreview || notifications != nil || quran != nil || qibla != nil || calendar != nil || ozelGun != nil || sample
         || env["XCTestConfigurationFilePath"] != nil || env["XCTestBundlePath"] != nil
         || NSClassFromString("XCTestCase") != nil
+    #else
+      return false
+    #endif
+  }
+
+  /// Mağaza görseli örnek oturumu (StorePreview); izole çalışır.
+  static var sample: Bool {
+    #if DEBUG
+      return UserDefaults.standard.bool(forKey: "SalahDebugSample")
     #else
       return false
     #endif

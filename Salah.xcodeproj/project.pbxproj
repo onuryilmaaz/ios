@@ -104,6 +104,7 @@
 		7B3BFFFA41A3035865313CCF /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25474C18EC276429C04AFBEB /* JSONValue.swift */; };
 		7BC01AFE1816328B64BB0CD1 /* UthmanicHafs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3764F4AE470045987AE09 /* UthmanicHafs.ttf */; };
 		7C32E89B2FCD884BA39BE33B /* MushafReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA5547C03FB1B64B2FF2E0 /* MushafReaderView.swift */; };
+		7F5F0719C942EE27D482135E /* StorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E10BC1F8302CD8A869F15D /* StorePreview.swift */; };
 		82DEE9BFE039DE8C08B00DF1 /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E668511777EBAFC01AD289 /* states.json */; };
 		839B15838343F738B3F26CB4 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEED74D3A83B0A37A8C95A8 /* Controls.swift */; };
 		83EBB0FFA6CDF564E127BFB8 /* StandbyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8472098AA5F9E098CF953 /* StandbyWidget.swift */; };
@@ -195,6 +196,7 @@
 		EF63D6C575246A94657CA3BA /* ReligiousCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564072825D4F0C5AE4C77EED /* ReligiousCalendar.swift */; };
 		EFDC4CA7651CB250B4BBAFE1 /* OfflineQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DE74B91097BE414B8C4A38 /* OfflineQueue.swift */; };
 		F09C301662521C90922B0815 /* HijriCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321727F6662E6F3112FA9B47 /* HijriCalendarView.swift */; };
+		F0A09A5A643E36023DE0BCAE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D7C31823A6572A8BEC95E94 /* InfoPlist.strings */; };
 		F1FE60C977D195238873CD78 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723673953F59D7D0C03779D8 /* HomeRoute.swift */; };
 		F2C6FBB840DE16164C23837B /* WidgetSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88D79BA20084E5B661BA01 /* WidgetSync.swift */; };
 		F39AA86D1D17A836D45CE0A1 /* SalahAlarmLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9EA48BDA05096C57B1C14 /* SalahAlarmLiveActivity.swift */; };
@@ -332,6 +334,7 @@
 		61777C40E2416E7B802943CD /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		6182A5CD648CD8336403ECDD /* PrayerTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimes.swift; sourceTree = "<group>"; };
 		6371FBCE01469BC6D5D22E02 /* QiblaFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaFinderView.swift; sourceTree = "<group>"; };
+		63D7790DD56F776C5E34182F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65E87C28910AB9BC3FEB8065 /* SharedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedColors.swift; sourceTree = "<group>"; };
 		66DE74B91097BE414B8C4A38 /* OfflineQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueue.swift; sourceTree = "<group>"; };
 		675E12A5542DB2974F16B36F /* OzelGunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunView.swift; sourceTree = "<group>"; };
@@ -405,6 +408,7 @@
 		BA49DC603E070229EF988A21 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		BAA03FF485CA26BDDD8F1E65 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		BB4E8E3B27E42E12B371DB0D /* AlarmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStore.swift; sourceTree = "<group>"; };
+		BCDA627D53D5F4F206583F96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BD6B18C581B7DC2DEE057323 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		C25B02E513E43C07608ED977 /* QiblaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaTests.swift; sourceTree = "<group>"; };
 		C2BC39DFFA4BAFA068081944 /* AccountFormViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFormViews.swift; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 		C8CA2E65405E5DEB34F6ABED /* SalahNotificationContent.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SalahNotificationContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C1BDBCB829B0D8D8CE1813 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		C9E173586CFB9360C9533984 /* QiblaMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaMath.swift; sourceTree = "<group>"; };
+		CB71852EC1426737A47DCF65 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD3C5B110F9BCFF62159C132 /* QuranReadingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranReadingStore.swift; sourceTree = "<group>"; };
 		CF2C0444A25AD417755E0B01 /* QiblaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaStore.swift; sourceTree = "<group>"; };
 		D08544C223F1CD8A69C6B4D3 /* AmelWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmelWidget.swift; sourceTree = "<group>"; };
@@ -425,6 +430,7 @@
 		D2ACD3A5177559FE66B1C3E1 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		D406F2D9E60D30E62307EA7C /* SVGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
 		D496B3539DC7A0C8FDD1696A /* HomeLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayoutView.swift; sourceTree = "<group>"; };
+		D4E10BC1F8302CD8A869F15D /* StorePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePreview.swift; sourceTree = "<group>"; };
 		D625A5AF193F17EE5001F3FD /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D7A9EA48BDA05096C57B1C14 /* SalahAlarmLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahAlarmLiveActivity.swift; sourceTree = "<group>"; };
 		D88502AFE7A692141AF1321B /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
@@ -626,6 +632,7 @@
 				72B2B4F437243809E1B0912F /* DebugSession.swift */,
 				36264E6E136C8B18AA92A6A8 /* RootView.swift */,
 				5CCDC01270443ADA8787FCBF /* SalahApp.swift */,
+				D4E10BC1F8302CD8A869F15D /* StorePreview.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -722,6 +729,7 @@
 				744BFB28CD9C4D1740B92B13 /* PrivacyInfo.xcprivacy */,
 				F6426D83C4D0FF4A6CC4EB94 /* QuranPreview.json */,
 				8BF370CA2FCBCEA6556FB910 /* Fonts */,
+				1D7C31823A6572A8BEC95E94 /* InfoPlist.strings */,
 				31D60BEF503BDF3FFE034EBA /* Launch */,
 			);
 			path = Resources;
@@ -1234,6 +1242,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				ar,
+				en,
 				tr,
 			);
 			mainGroup = 3156B5A1C25ADFF79E3DCE77;
@@ -1284,6 +1294,7 @@
 				F911E9AB6665647466482C4A /* Assets.xcassets in Resources */,
 				A8834A372FF5157BB5B6A8C5 /* Bungee-Regular.ttf in Resources */,
 				D50B93C00B965C62938460CB /* HijriCalendarPreview.json in Resources */,
+				F0A09A5A643E36023DE0BCAE /* InfoPlist.strings in Resources */,
 				9BD7E6437A59C662F84CBAA9 /* Ionicons.glyphmap.json in Resources */,
 				766FC8B5B80F567560A8D004 /* Ionicons.ttf in Resources */,
 				483472FA9494D5CEB4C6A06A /* LaunchScreen.storyboard in Resources */,
@@ -1482,6 +1493,7 @@
 				98DCC7032D106EA3E02832DF /* StandardHeader.swift in Sources */,
 				2596210867A3BFDA44234004 /* StatusBanners.swift in Sources */,
 				23C318E4789F9713E5F0F28B /* StatusBar.swift in Sources */,
+				7F5F0719C942EE27D482135E /* StorePreview.swift in Sources */,
 				4DA0CA2186222B94C87C8CCF /* StreakCard.swift in Sources */,
 				8CADF54CC490DB5DA8077920 /* SurahBrowserView.swift in Sources */,
 				888CC011620D57AADD96B6C7 /* SurahDetailView.swift in Sources */,
@@ -1527,6 +1539,19 @@
 			targetProxy = B9C2DEDFF54D710518253281 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1D7C31823A6572A8BEC95E94 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63D7790DD56F776C5E34182F /* ar */,
+				BCDA627D53D5F4F206583F96 /* en */,
+				CB71852EC1426737A47DCF65 /* tr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0285469BC1EFE3AB274D71AF /* Debug */ = {

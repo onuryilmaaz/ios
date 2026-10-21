@@ -48,6 +48,37 @@ struct LocalizerTests {
     #expect(!Localizer.shared.t("home.hero.entry", ["time": "05:12"]).contains("{{"))
   }
 
+  /// Üç dilde aynı anahtar ve `{{değişken}}` kümesi (önceden RN locales.test.ts denetliyordu).
+  @Test func localesHaveSameKeysAndVariables() throws {
+    func flatten(_ value: Any, _ prefix: String = "", into out: inout [String: String]) {
+      if let dict = value as? [String: Any] {
+        for (k, v) in dict { flatten(v, prefix + k + ".", into: &out) }
+      } else if let array = value as? [Any] {
+        out[String(prefix.dropLast())] = "[\(array.count)]"
+      } else {
+        out[String(prefix.dropLast())] = "\(value)"
+      }
+    }
+    func load(_ code: String) throws -> [String: String] {
+      let url = try #require(Bundle.main.url(forResource: code, withExtension: "json", subdirectory: "locales"))
+      var out: [String: String] = [:]
+      flatten(try JSONSerialization.jsonObject(with: Data(contentsOf: url)), into: &out)
+      return out
+    }
+    let regex = try NSRegularExpression(pattern: #"\{\{\s*(\w+)\s*\}\}"#)
+    func vars(_ s: String) -> Set<String> {
+      Set(regex.matches(in: s, range: NSRange(s.startIndex..., in: s)).compactMap { m in
+        Range(m.range(at: 1), in: s).map { String(s[$0]) }
+      })
+    }
+    let tr = try load("tr")
+    for code in ["en", "ar"] {
+      let other = try load(code)
+      #expect(Set(tr.keys) == Set(other.keys), "\(code) anahtarları farklı")
+      for (key, value) in tr { #expect(vars(value) == vars(other[key] ?? ""), "\(code) \(key) değişkenleri") }
+    }
+  }
+
   @Test func missingKeyFallsBackToKey() {
     #expect(Localizer.shared.t("does.not.exist") == "does.not.exist")
   }

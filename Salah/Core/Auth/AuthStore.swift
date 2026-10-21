@@ -120,4 +120,13 @@ final class AuthStore {
     GamificationStore.shared.reset()
     TrackerStore.shared.reset()
   }
+
+  #if DEBUG
+  /// Mağaza görseli fikstürü (`-SalahDebugSample YES`): örnek kullanıcıyla oturum açık görünüm, yalnız bellek.
+  func preview(_ user: AuthUser) {
+    self.user = user
+    isAuthenticated = true
+    hydrated = true
+  }
+  #endif
 }
