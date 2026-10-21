@@ -72,24 +72,36 @@ final class NotificationNavigation {
 final class SalahNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
   static let shared = SalahNotificationDelegate()
 
-  nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+  // async varyantlar kullanılmıyor: sistem tamamlama bloğunu Task bitince arka plan
+  // iş parçacığından çağırıyor, UIKit "Call must be made on main thread" ile çöküyordu
+  // (bildirime basınca). Tamamlama her zaman ana iş parçacığında çağrılır.
+  nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping @Sendable (UNNotificationPresentationOptions) -> Void) {
     let payload = NotificationPayload(notification.request.content.userInfo)
-    let options: UNNotificationPresentationOptions = await MainActor.run {
-      if NotificationStore.shared.preferences.isMuted() { return [] }
-      let plays = payload.type == "prayer_time" && payload.adhanSound && AdhanPlayer.shared.play(payload.prayerKey)
-      // Tam ezan çalınmıyorsa (ör. ses dosyası okunamadıysa) kısa sesi koru.
-      return plays ? [.banner, .list] : [.banner, .list, .sound]
+    DispatchQueue.main.async {
+      MainActor.assumeIsolated {
+        if NotificationStore.shared.preferences.isMuted() { return completionHandler([]) }
+        let plays = payload.type == "prayer_time" && payload.adhanSound && AdhanPlayer.shared.play(payload.prayerKey)
+        // Tam ezan çalınmıyorsa (ör. ses dosyası okunamadıysa) kısa sesi koru.
+        completionHandler(plays ? [.banner, .list] : [.banner, .list, .sound])
+      }
     }
-    return options
   }
 
-  nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-    guard response.actionIdentifier != UNNotificationDismissActionIdentifier else { return }
+  nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping @Sendable () -> Void) {
+    guard response.actionIdentifier != UNNotificationDismissActionIdentifier else {
+      DispatchQueue.main.async(execute: completionHandler)
+      return
+    }
     let payload = NotificationPayload(response.notification.request.content.userInfo)
     let id = response.notification.request.identifier
-    await MainActor.run {
-      NotificationNavigation.shared.receive(payload, id: id)
-      if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
+    DispatchQueue.main.async {
+      MainActor.assumeIsolated {
+        NotificationNavigation.shared.receive(payload, id: id)
+        if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
+      }
+      completionHandler()
     }
   }
 }
