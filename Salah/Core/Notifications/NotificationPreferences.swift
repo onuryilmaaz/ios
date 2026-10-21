@@ -4,10 +4,12 @@ import Foundation
 struct NotificationPreferences: Equatable, Sendable {
   static let prayers = ["imsak", "gunes", "ogle", "ikindi", "aksam", "yatsi"]
   static let defaultPrayers = Dictionary(uniqueKeysWithValues: prayers.map { ($0, $0 != "gunes") })
+  /// Ezan sesi isteğe bağlı: kullanıcı açana kadar vakit bildirimi varsayılan sesle gelir.
+  static let defaultAdhan = Dictionary(uniqueKeysWithValues: prayers.map { ($0, false) })
   var enabled = false
   var offsets = [0]
   var prayerEnabled = defaultPrayers
-  var adhanEnabled = defaultPrayers
+  var adhanEnabled = defaultAdhan
   var inspiration = true
   var religiousDays = true
   var friday = true

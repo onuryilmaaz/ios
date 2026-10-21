@@ -3,7 +3,9 @@ import Foundation
 @Observable
 final class NotificationStore {
   static let shared = NotificationStore()
-  static let lastScheduleKey = "NOTIF_LAST_RESCHEDULE_AT_V2"
+  /// V3: ezan sesi varsayılanı kapandı; güncellemeden sonraki ilk açılış eski (ezan sesi
+  /// gömülü) planı throttle'a takılmadan yeniden kursun. RN'in V2 damgası da devralınmaz.
+  static let lastScheduleKey = "NOTIF_LAST_RESCHEDULE_AT_V3"
 
   private(set) var preferences: NotificationPreferences
   private(set) var permission = NotificationPermission.unknown
@@ -63,6 +65,7 @@ final class NotificationStore {
     change(&preferences)
     revision += 1
     forceNext = true
+    invalidateSchedule()
     if persists { save() }
     // Bir ağ isteği sürerken kapat/sessize al hemen etkili olsun.
     if !preferences.enabled || preferences.isMuted(at: now()) { delivery.removePending() }
@@ -85,6 +88,9 @@ final class NotificationStore {
 
   func reschedule(force: Bool = false) async {
     guard !DebugLaunch.isIsolated || !persists else { return }
+    // Zorunlu yenileme kalıcı olsun: uygulama kapanır, ağ düşer ya da araya başka
+    // bir yenileme girerse eski plan (ör. ezan sesi gömülü bildirimler) throttle'a takılmasın.
+    if force { invalidateSchedule() }
     forceNext = forceNext || force
     revision += 1
     if let worker { await worker.value; return }
@@ -98,14 +104,15 @@ final class NotificationStore {
     isScheduling = true
     defer { isScheduling = false }
     while true {
+      // forceNext yalnız plan kurulunca düşer; yarıda kalan tur (continue) zorunluluğu kaybetmez.
       let version = revision, force = forceNext
-      forceNext = false
       refreshMute()
       let snapshot = preferences
       permission = await delivery.permission()
       guard version == revision else { continue }
       guard snapshot.enabled, permission == .allowed else {
         delivery.removePending()
+        forceNext = false
         return
       }
       let pending = await delivery.pending()
@@ -115,25 +122,28 @@ final class NotificationStore {
       guard version == revision else { continue }
       // Ağ başarısızsa eldeki bildirimleri koru ve throttle damgası yazma.
       guard !days.isEmpty else { return }
+      // Tam vaktinde alarm çalan vakitte ayrıca "vakit girdi" bildirimi gelmesin.
+      let alarmCovered = AlarmStore.shared.coveredPrayerKeys
+      // 1. aşama: vakit bildirimleri içerik indirmeyi beklemeden hemen kurulur; ezan
+      // sesi gibi ayar değişiklikleri saniyeler içinde eski bildirimlerin yerini alır.
+      let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered)
+        .filter(\.isPrayer)
+      delivery.removePending()
+      lastError = nil
+      var succeeded = await add(prayers, version: version)
+      guard version == revision else { continue }
+      // 2. aşama: ayet/hadis, dini gün ve cuma bildirimleri (ağdan içerik gerekir).
       let pools = snapshot.inspiration ? await loadPools() : (verses: [], hadiths: [])
       guard version == revision else { continue }
       let calendar = snapshot.religiousDays ? await loadCalendar() : ReligiousCalendar()
       guard version == revision else { continue }
-      let plan = NotificationPlan.build(days: days, preferences: snapshot, now: now(), verses: pools.verses,
+      let rest = NotificationPlan.build(days: days, preferences: snapshot, now: now(), verses: pools.verses,
                                         hadiths: pools.hadiths, religiousDays: calendar.religiousDays(now: now()),
-                                        // Tam vaktinde alarm çalan vakitte ayrıca "vakit girdi" bildirimi gelmesin.
-                                        alarmCovered: AlarmStore.shared.coveredPrayerKeys)
-      delivery.removePending()
-      lastError = nil
-      var succeeded = true
-      for notice in plan {
-        guard version == revision else { break }
-        // İçerik indirilirken vakit geçmiş olabilir.
-        guard notice.date > now() else { continue }
-        do { try await delivery.add(notice) }
-        catch { lastError = String(describing: error); succeeded = false }
-      }
+                                        alarmCovered: alarmCovered)
+        .filter { !$0.isPrayer }
+      succeeded = await add(rest, version: version) && succeeded
       guard version == revision else { continue }
+      forceNext = false
       if succeeded {
         lastScheduled = now().timeIntervalSince1970 * 1000
         if persists { LocalStore.set(String(lastScheduled!), for: Self.lastScheduleKey) }
@@ -143,6 +153,25 @@ final class NotificationStore {
       }
       return
     }
+  }
+
+  /// Planı sırayla kurar; ayar değişirse (revision) yarıda bırakır. Hepsi eklendiyse true.
+  private func add(_ notices: [PlannedNotification], version: Int) async -> Bool {
+    var succeeded = true
+    for notice in notices {
+      guard version == revision else { break }
+      // İçerik indirilirken vakit geçmiş olabilir.
+      guard notice.date > now() else { continue }
+      do { try await delivery.add(notice) }
+      catch { lastError = String(describing: error); succeeded = false }
+    }
+    return succeeded
+  }
+
+  /// Throttle damgasını siler: sonraki reschedule() (yeniden açılışta da) planı mutlaka yeniden kurar.
+  private func invalidateSchedule() {
+    lastScheduled = nil
+    if persists { LocalStore.set(nil, for: Self.lastScheduleKey) }
   }
 
   func summary() async -> (total: Int, prayer: Int, other: Int) {

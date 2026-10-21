@@ -20,13 +20,18 @@ enum AdhanTiming {
   }
 }
 
-/// Tam ezan yalnız foreground'da çalar. Kapalı uygulamada kısa UN sesi kullanılır.
+/// Ezan sesi foreground'da da kısa çalar (en çok `maxDuration`, sonda kısılarak).
+/// Kapalı uygulamada aynı uzunluktaki UN sesi (notif_ezan.caf) kullanılır.
 @Observable
 final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   static let shared = AdhanPlayer()
+  /// Bildirim sesiyle aynı üst sınır; tam ezan okunmaz.
+  static let maxDuration: TimeInterval = 5
+  static let fadeDuration: TimeInterval = 1
   private(set) var activePrayer: String?
   @ObservationIgnored private var player: AVAudioPlayer?
   @ObservationIgnored private var timer: Task<Void, Never>?
+  @ObservationIgnored private var cutoff: Task<Void, Never>?
   @ObservationIgnored private var lastKey: String?
   @ObservationIgnored private var lastDate: Date?
   @ObservationIgnored private var days: [PrayerDay] = []
@@ -84,6 +89,7 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
       lastKey = key
       lastDate = now
       window.show()
+      limit(audio)
       return true
     } catch {
       stop()
@@ -92,6 +98,8 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   }
 
   func stop() {
+    cutoff?.cancel()
+    cutoff = nil
     let hadPlayer = player != nil
     player?.stop()
     player = nil
@@ -99,6 +107,19 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
     window.hide()
     // Foreground ezan yokken Kur'an'ın arka plan ses oturumunu kapatma.
     if hadPlayer { try? AVAudioSession.sharedInstance().setActive(false, options: [.notifyOthersOnDeactivation]) }
+  }
+
+  /// Ses dosyası uzunsa `maxDuration` dolmadan kısar ve durdurur.
+  private func limit(_ audio: AVAudioPlayer) {
+    guard audio.duration > Self.maxDuration else { return }
+    let id = ObjectIdentifier(audio)
+    cutoff = Task { [weak self] in
+      do { try await Task.sleep(for: .seconds(Self.maxDuration - Self.fadeDuration)) } catch { return }
+      audio.setVolume(0, fadeDuration: Self.fadeDuration)
+      do { try await Task.sleep(for: .seconds(Self.fadeDuration)) } catch { return }
+      guard let self, self.player.map({ ObjectIdentifier($0) }) == id else { return }
+      self.stop()
+    }
   }
 
   private func scheduleNext() {

@@ -999,7 +999,7 @@
   },
   "settings": {
     "adhan": {
-      "foregroundHint": "The adhan plays while the app is open. Tap “Stop Adhan” to stop it.",
+      "foregroundHint": "Off by default. On selected prayers, the notification plays a few seconds of the adhan.",
       "section": "Adhan sound",
       "stop": "Stop",
       "test": "Test adhan sound",

@@ -15,6 +15,8 @@ struct PlannedNotification: Equatable, Sendable {
   var body = ""
   var arabic = ""
   var contentType = "ayet"
+
+  var isPrayer: Bool { kind == .prayerTime || kind == .prayerReminder }
 }
 
 struct NotificationInspiration: Equatable, Sendable {

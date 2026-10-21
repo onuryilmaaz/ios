@@ -1,3 +1,4 @@
+import AVFoundation
 import Foundation
 import Testing
 import UserNotifications
@@ -29,14 +30,15 @@ struct NotificationPreferencesTests {
   @Test func defaultsMatchRN() {
     let p = NotificationPreferences.read(get: { _ in nil })
     #expect(!p.enabled && p.offsets == [0])
-    #expect(p.prayerEnabled["gunes"] == false && p.adhanEnabled["imsak"] == true)
+    // Ezan sesi isteğe bağlı: hiçbir vakitte varsayılan olarak açık değil.
+    #expect(p.prayerEnabled["gunes"] == false && p.adhanEnabled.values.allSatisfy { !$0 })
     #expect(p.inspiration && p.religiousDays && p.friday)
   }
 
   @Test func restoresPartialRNDictionariesAndEpochMilliseconds() {
     let now = NotificationFixtures.date()
     let entries = ["PRAYER_NOTIFICATIONS_ENABLED": "true", "PRAYER_NOTIFICATION_EACH": #"{"ogle":false}"#,
-      "ADHAN_PRAYERS_V2": #"{"imsak":false}"#, "NOTIFICATION_MUTE_UNTIL": String(now.addingTimeInterval(3600).timeIntervalSince1970 * 1000)]
+      "ADHAN_PRAYERS_V2": #"{"ogle":true}"#, "NOTIFICATION_MUTE_UNTIL": String(now.addingTimeInterval(3600).timeIntervalSince1970 * 1000)]
     let p = NotificationPreferences.read(now: now, get: { entries[$0] })
     #expect(p.enabled && p.prayerEnabled["ogle"] == false && p.prayerEnabled["yatsi"] == true)
     #expect(p.adhanEnabled["imsak"] == false && p.adhanEnabled["ogle"] == true)
@@ -71,9 +73,17 @@ struct NotificationPlanTests {
     let prayer = build().filter { $0.kind == .prayerTime }
     #expect(prayer.count == 15)
     #expect(!prayer.contains { $0.prayerKey == "gunes" })
-    #expect(prayer.allSatisfy { $0.adhan })
+    #expect(!prayer.contains { $0.adhan })
     #expect(Set(prayer.map(\.id)).count == prayer.count)
     #expect(prayer.allSatisfy { F.calendar.component(.day, from: $0.date) <= 21 })
+  }
+
+  @Test func adhanOnlyOnPrayersTheUserEnabled() {
+    var p = F.enabled
+    p.adhanEnabled["ogle"] = true
+    let prayer = build(p).filter { $0.kind == .prayerTime }
+    #expect(prayer.filter(\.adhan).map(\.prayerKey) == ["ogle", "ogle", "ogle"])
+    #expect(SystemNotificationDelivery.content(prayer.first { !$0.adhan }!).sound == .default)
   }
 
   @Test func masterOffCancelsEveryKind() {
@@ -213,6 +223,9 @@ struct AdhanTimingTests {
   @Test func dedupesForNinetySecondsAndNeverPlaysSunriseOrMuted() {
     let now = NotificationFixtures.date()
     var p = NotificationFixtures.enabled
+    // Varsayılan kapalı: kullanıcı açmadan çalmaz.
+    #expect(!AdhanTiming.allowed(key: "ogle", preferences: p, now: now, lastKey: nil, lastDate: nil))
+    p.adhanEnabled["ogle"] = true
     #expect(!AdhanTiming.allowed(key: "ogle", preferences: p, now: now, lastKey: "ogle", lastDate: now.addingTimeInterval(-89)))
     #expect(AdhanTiming.allowed(key: "ogle", preferences: p, now: now, lastKey: "ogle", lastDate: now.addingTimeInterval(-90)))
     p.adhanEnabled["gunes"] = true
@@ -285,6 +298,79 @@ struct NotificationStoreTests {
     let s = store(d, days: { [] })
     await s.reschedule(force: true)
     #expect(d.notices.map(\.id) == ["existing"])
+  }
+
+  /// Önce başarılı bir plan kurar (throttle damgası taze), sonra eski ezanlı bildirim bırakır.
+  func stalePlan(_ d: FakeNotificationDelivery, _ s: NotificationStore) async {
+    await s.reschedule(force: true)
+    d.notices = [.init(id: "stale", date: F.date(20), kind: .prayerTime, prayerKey: "ogle", adhan: true)]
+  }
+
+  @Test func forcedRefreshSurvivesPlainRescheduleDuringLoad() async {
+    let d = FakeNotificationDelivery()
+    var s: NotificationStore!
+    var interrupt = false
+    s = store(d, days: {
+      // Yenileme sürerken uygulama öne gelir: zorlamasız reschedule() araya girer.
+      if interrupt { interrupt = false; Task { await s.reschedule() }; await Task.yield() }
+      return F.days
+    })
+    await stalePlan(d, s)
+    interrupt = true
+    await s.reschedule(force: true)
+    #expect(!d.notices.contains { $0.id == "stale" })
+    #expect(d.notices.contains { $0.kind == .prayerTime })
+  }
+
+  @Test func forcedRefreshThatFailsOfflineIsRetriedWithoutThrottle() async {
+    let d = FakeNotificationDelivery()
+    var offline = false
+    let s = store(d, days: { offline ? [] : F.days })
+    await stalePlan(d, s)
+    offline = true
+    await s.reschedule(force: true)
+    #expect(d.notices.map(\.id) == ["stale"])
+    offline = false
+    await s.reschedule()
+    #expect(!d.notices.contains { $0.id == "stale" })
+  }
+
+  @Test func settingChangeInvalidatesThrottleBeforeRescheduleRuns() async {
+    let d = FakeNotificationDelivery(), s = store(d)
+    await stalePlan(d, s)
+    // update() içindeki Task hiç çalışmasa da (uygulama kapandı) sonraki reschedule() yeniden kurar.
+    s.update { $0.adhanEnabled["ogle"] = false }
+    await s.reschedule()
+    #expect(!d.notices.contains { $0.id == "stale" || $0.adhan })
+  }
+
+  @Test func prayerNoticesAreInstalledBeforeContentDownload() async {
+    let d = FakeNotificationDelivery()
+    d.notices = [.init(id: "stale", date: F.date(20), kind: .prayerTime, prayerKey: "ogle", adhan: true)]
+    var duringDownload: [PlannedNotification] = []
+    let s = NotificationStore(preferences: F.enabled, delivery: d, now: { F.date() }, loadDays: { F.days },
+      loadPools: { duringDownload = d.notices; return (F.verses, F.hadiths) }, loadCalendar: { ReligiousCalendar() }, persists: false)
+    await s.reschedule(force: true)
+    #expect(!duringDownload.isEmpty && duringDownload.allSatisfy(\.isPrayer))
+    #expect(!duringDownload.contains { $0.id == "stale" })
+    #expect(d.notices.contains { $0.kind == .inspiration })
+    #expect(d.notices.count <= NotificationPlan.budget)
+  }
+
+  @Test func adhanToggleReplacesPendingSounds() async {
+    let d = FakeNotificationDelivery(), s = store(d)
+    s.update { $0.adhanEnabled["ogle"] = true }
+    await s.reschedule()
+    #expect(d.notices.contains { $0.adhan })
+    s.update { $0.adhanEnabled["ogle"] = false }
+    await s.reschedule()
+    #expect(!d.notices.isEmpty && !d.notices.contains { $0.adhan })
+  }
+
+  @Test func notificationAdhanSoundIsAtMostFiveSeconds() throws {
+    let url = try #require(Bundle.main.url(forResource: "notif_ezan", withExtension: "caf"))
+    let file = try AVAudioFile(forReading: url)
+    #expect(Double(file.length) / file.fileFormat.sampleRate <= AdhanPlayer.maxDuration + 0.05)
   }
 
   @Test func testNotificationIsAddedAfterReschedule() async {

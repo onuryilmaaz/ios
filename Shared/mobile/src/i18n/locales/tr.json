@@ -999,7 +999,7 @@
   },
   "settings": {
     "adhan": {
-      "foregroundHint": "Uygulama açıkken ezan çalar, “Ezanı Kapat” ile durdurabilirsin",
+      "foregroundHint": "Varsayılan olarak kapalı. Seçtiğin vakitlerde bildirim birkaç saniyelik ezan sesiyle gelir",
       "section": "Ezan Sesi",
       "stop": "Durdur",
       "test": "Ezan Sesini Test Et",
