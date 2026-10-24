@@ -7,8 +7,8 @@ struct WelcomeView: View {
   @State private var social = SocialAuthModel()
   @State private var error: String?
 
-  private static let termsURL = URL(string: "https://onuryilmaaz.github.io/Salah-privacy-terms/#terms")!
-  private static let privacyURL = URL(string: "https://onuryilmaaz.github.io/Salah-privacy-terms/#privacy")!
+  private static let termsURL = URL(string: "https://salah-app.com/legal/#terms")!
+  private static let privacyURL = URL(string: "https://salah-app.com/legal/#privacy")!
 
   var body: some View {
     let dark = tokens.isDark

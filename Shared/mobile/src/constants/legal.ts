@@ -4,7 +4,7 @@
  *
  * Android'in kendi kopyası var (android/app/src/main/assets/data/legal.json); platforma
  * özel kısımlar (Apple girişi, Canlı Etkinlik, konum kontrolü, mağaza) farklıdır.
- * Web sürümü iki platformu birlikte anlatır: legal-site/index.html (GitHub Pages).
+ * Web sürümü iki platformu birlikte anlatır: web-salah/public/legal/index.html (https://salah-app.com/legal/).
  */
 
 type LegalSection = { title: string; body: string };
