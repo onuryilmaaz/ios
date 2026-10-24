@@ -15,12 +15,14 @@ struct TrackerView: View {
       ScrollView {
         VStack(spacing: 0) {
           hero(store.todayLogs)
+            .tourAnchor("tracker.hero")
             .padding(.bottom, 14)
 
           GroupedCard {
             ForEach(Array(ActivityType.allCases.enumerated()), id: \.element) { i, type in
               if i > 0 { RowDivider(leading: 68) }
               ActivityRow(type: type, logs: store.todayLogs) { open(type) }
+                .tourAnchor(i == 0 ? "tracker.activities" : nil)
             }
           }
 
@@ -37,7 +39,7 @@ struct TrackerView: View {
           if AuthStore.shared.isAuthenticated && !insights.unavailable {
             SectionLabel(t("insights.section")).padding(.top, 21).id("insights")
             VStack(spacing: 14) {
-              RecapCard()
+              RecapCard().tourAnchor("tracker.insights")
               HeatmapCard()
               HatimCard()
             }
@@ -49,6 +51,7 @@ struct TrackerView: View {
       }
       .scrollIndicators(.hidden)
       .refreshable { await load() }
+      .tourScroll(proxy, top: "tracker.hero")
       .task(id: AppLinks.shared.pendingInsights) {
         // salah://istatistik ile gelince istatistikler bölümüne kaydır.
         guard AppLinks.shared.pendingInsights else { return }
@@ -60,6 +63,14 @@ struct TrackerView: View {
     }
     .background(tokens.canvas)
     .task { await load() }
+    // Sekmeye girişliyken ilk girişte bir kez (istatistikler gelsin diye kısa bekler).
+    .task(id: TourStore.shared.replayNonce) {
+      guard AuthStore.shared.isAuthenticated else { return }
+      await TourStore.shared.startIfNeeded(.tracker) {
+        formType == nil && TourStore.shared.anchors["tracker.activities"] != nil
+          && (insights.unavailable || TourStore.shared.anchors["tracker.insights"] != nil)
+      }
+    }
     // İbadet widget'ı / derin bağlantıyla gelen tür: ilgili kayıt formu açılır.
     .task(id: AppLinks.shared.pendingForm) {
       guard let type = AppLinks.shared.pendingForm else { return }

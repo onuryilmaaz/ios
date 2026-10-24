@@ -1195,6 +1195,123 @@
     "qalqalah": "Kalkale",
     "silent": "Okunmayan"
   },
+  "tour": {
+    "a11y": "Uygulama turu",
+    "alarms": {
+      "custom": {
+        "body": "Düzenlemek için dokun, silmek için basılı tut.",
+        "title": "Özel alarm"
+      }
+    },
+    "assistant": {
+      "composer": {
+        "body": "Aklındaki soruyu buraya yaz ve gönder.",
+        "title": "Sorunu yaz"
+      },
+      "copy": {
+        "body": "Bir mesaja basılı tutarak metnini kopyalayabilirsin.",
+        "title": "Cevabı kopyala"
+      },
+      "intro": {
+        "body": "Dini sorularını yaz, yapay zekâ cevaplasın. Cevaplar fetva yerine geçmez.",
+        "title": "Sor"
+      },
+      "suggestions": {
+        "body": "Ne soracağını bilmiyorsan bu önerilerden biriyle başla.",
+        "title": "Hazır sorular"
+      }
+    },
+    "done": "Bitir",
+    "home": {
+      "alarms": {
+        "body": "Namaz vakitlerine göre kendiliğinden kurulan alarmları buradan yönet.",
+        "title": "Alarm"
+      },
+      "hero": {
+        "body": "Bir sonraki namaza kalan süre ve günün tüm vakitleri burada.",
+        "title": "Sıradaki vakit"
+      },
+      "location": {
+        "body": "Namaz vakitleri bu ilçeye göre hesaplanır. Değiştirmek için dokun.",
+        "title": "Konumun"
+      },
+      "profile": {
+        "body": "Hesabın, bildirimler, dil ve tema ayarları burada.",
+        "title": "Profil ve ayarlar"
+      },
+      "qibla": {
+        "body": "Pusulayla bulunduğun yerden kıble yönünü bul.",
+        "title": "Kıble"
+      },
+      "quickActions": {
+        "body": "Dualar, Hicri takvim, Esmaül Hüsna ve namaz geçmişine buradan ulaş.",
+        "title": "Hızlı erişim"
+      },
+      "streak": {
+        "body": "Beş vakti kıldığın her gün serin bir artar. Haftanı buradan takip et.",
+        "title": "Namaz serin"
+      },
+      "tabs": {
+        "body": "Kur'an okumak, ibadetlerini takip etmek ve soru sormak için alttaki sekmeleri kullan.",
+        "title": "Diğer bölümler"
+      },
+      "times": {
+        "body": "Bir vakte dokunarak o vakit için hızlıca alarm kur.",
+        "title": "Vakte alarm"
+      },
+      "tracker": {
+        "body": "Vakti giren namazı kıldığında dokunarak işaretle. Serin ve istatistiklerin buradan oluşur.",
+        "title": "Bugünkü namazlar"
+      }
+    },
+    "mushaf": {
+      "page": {
+        "body": "Sayfayı yana kaydırarak çevir. Ayet numarasına dokununca meali açılır, satıra basılı tutunca kaldığın yer işaretlenir.",
+        "title": "Sayfa ve ayetler"
+      },
+      "surahs": {
+        "body": "İstediğin sureye buradan atla.",
+        "title": "Sure seç"
+      }
+    },
+    "next": "İleri",
+    "progress": "{{current}} / {{total}}",
+    "quran": {
+      "continue": {
+        "body": "Son okuduğun ayete buradan tek dokunuşla dön.",
+        "title": "Kaldığın yer"
+      },
+      "list": {
+        "body": "Bir sureye dokunarak mealiyle ve tilavetiyle birlikte oku.",
+        "title": "Sureler"
+      },
+      "mushaf": {
+        "body": "Kur'an'ı sayfa sayfa oku, kaldığın yeri işaretle.",
+        "title": "Mushaf"
+      },
+      "search": {
+        "body": "Sure adını ya da numarasını yazarak hızlıca bul.",
+        "title": "Sure ara"
+      }
+    },
+    "replay": "Uygulama turlarını tekrar izle",
+    "replaySub": "Sayfaların tanıtımlarını yeniden gösterir",
+    "skip": "Turu geç",
+    "tracker": {
+      "activities": {
+        "body": "Kur'an, kitap, nafile, oruç, sadaka, dua ve hafızlık kayıtlarını buradan ekle.",
+        "title": "İbadet ekle"
+      },
+      "hero": {
+        "body": "Bugün eklediğin kayıtlar ve kaç farklı ibadet yaptığın burada.",
+        "title": "Bugünün özeti"
+      },
+      "insights": {
+        "body": "Dönem özetin, ibadet haritan ve hatim ilerlemen burada.",
+        "title": "İstatistikler"
+      }
+    }
+  },
   "tracker": {
     "addA11y": "{{label}}: {{summary}}. Kayıt ekle",
     "delete": {

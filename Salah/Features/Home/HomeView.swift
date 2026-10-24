@@ -60,6 +60,7 @@ struct HomeView: View {
         onQibla: { push(.qibla) },
         onProfile: { auth.isAuthenticated ? push(.profile) : AuthFlow.shared.present() }
       )
+      ScrollViewReader { proxy in
       ScrollView {
         VStack(spacing: 0) {
           PrayerHeroCard(
@@ -72,6 +73,7 @@ struct HomeView: View {
             tokens.hero.frame(height: 600).offset(y: -600)
           }
           .background(tokens.hero, in: UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32))
+          .tourAnchor("home.hero")
           .padding(.bottom, 17.5)
 
           MuteBanner()
@@ -106,11 +108,28 @@ struct HomeView: View {
       }
       .scrollIndicators(.hidden)
       .refreshable { await refresh() }
+      .tourScroll(proxy, top: "home.hero")
+      }
     }
     .background(tokens.canvas)
     // Başlık her iki temada da koyu zümrüt: durum çubuğu yazıları açık.
     .statusBar(.light)
     .task { await refresh() }
+    // İlk açılışta (güncelleme alanlar dahil) bir kez ana sayfa turu; misafirken gördüyse girişten sonra
+    // yalnız girişle gelen kartların kısa turu.
+    .task(id: HomeTourTrigger(nonce: TourStore.shared.replayNonce, signedIn: auth.isAuthenticated, idle: TourStore.shared.tour == nil)) {
+      let store = TourStore.shared
+      let signedIn = auth.isAuthenticated
+      let tour: Tour? = !store.isDone("home") ? .home(signedIn: signedIn) : signedIn && !store.isDone(Tour.homeAccount.id) ? .homeAccount : nil
+      guard let tour else { return }
+      await store.startIfNeeded(tour) {
+        let anchors = TourStore.shared.anchors
+        let screenReady = tour.id == "home"
+          ? anchors["home.hero"] != nil && anchors["home.location"] != nil
+          : anchors["home.streak"] != nil || anchors["home.quickActions"] != nil
+        return screenReady && nav.path.isEmpty && !AuthFlow.shared.isPresented && celebrationStreak == nil
+      }
+    }
     .onChange(of: scenePhase) { _, phase in
       if phase == .active { Task { await refresh() } }
     }
@@ -128,9 +147,9 @@ struct HomeView: View {
         onCelebrate: { celebrationStreak = $0 }
       )
     case .streak:
-      if isAuthenticated { StreakCard() }
+      if isAuthenticated { StreakCard().tourAnchor("home.streak") }
     case .quickActions:
-      if isAuthenticated { QuickActionsCard { push($0) } }
+      if isAuthenticated { QuickActionsCard { push($0) }.tourAnchor("home.quickActions") }
     case .dailyInspiration:
       DailyInspirationCard()
     case .dayRing:
@@ -142,6 +161,12 @@ struct HomeView: View {
 
   private func push(_ route: HomeRoute) {
     nav.path.append(route)
+  }
+
+  private struct HomeTourTrigger: Equatable {
+    let nonce: Int
+    let signedIn: Bool
+    let idle: Bool
   }
 
   private struct Celebration: Identifiable {

@@ -1195,6 +1195,123 @@
     "qalqalah": "Qalqalah",
     "silent": "Silent"
   },
+  "tour": {
+    "a11y": "App tour",
+    "alarms": {
+      "custom": {
+        "body": "Tap to edit, press and hold to delete.",
+        "title": "Custom alarm"
+      }
+    },
+    "assistant": {
+      "composer": {
+        "body": "Type your question here and send it.",
+        "title": "Ask your question"
+      },
+      "copy": {
+        "body": "Press and hold a message to copy its text.",
+        "title": "Copy an answer"
+      },
+      "intro": {
+        "body": "Ask your religious questions and AI will answer. Answers are not a fatwa.",
+        "title": "Ask"
+      },
+      "suggestions": {
+        "body": "Not sure what to ask? Start with one of these suggestions.",
+        "title": "Suggested questions"
+      }
+    },
+    "done": "Done",
+    "home": {
+      "alarms": {
+        "body": "Manage alarms that are set automatically from prayer times.",
+        "title": "Alarm"
+      },
+      "hero": {
+        "body": "Time left until the next prayer and all of today's prayer times are here.",
+        "title": "Next prayer"
+      },
+      "location": {
+        "body": "Prayer times are calculated for this district. Tap to change it.",
+        "title": "Your location"
+      },
+      "profile": {
+        "body": "Your account, notifications, language and theme settings are here.",
+        "title": "Profile and settings"
+      },
+      "qibla": {
+        "body": "Use the compass to find the qibla direction from where you are.",
+        "title": "Qibla"
+      },
+      "quickActions": {
+        "body": "Reach duas, the Hijri calendar, the 99 Names and your prayer history from here.",
+        "title": "Quick access"
+      },
+      "streak": {
+        "body": "Your streak grows each day you pray all five prayers. Follow your week here.",
+        "title": "Your prayer streak"
+      },
+      "tabs": {
+        "body": "Use the tabs below to read the Qur'an, track your worship and ask questions.",
+        "title": "More sections"
+      },
+      "times": {
+        "body": "Tap a prayer time to quickly set an alarm for it.",
+        "title": "Alarm for a prayer"
+      },
+      "tracker": {
+        "body": "Tap a prayer to mark it once you have prayed it. Your streak and statistics are built from here.",
+        "title": "Today's prayers"
+      }
+    },
+    "mushaf": {
+      "page": {
+        "body": "Swipe sideways to turn pages. Tap a verse number to see its translation, and press and hold a line to mark where you stopped.",
+        "title": "Pages and verses"
+      },
+      "surahs": {
+        "body": "Jump to any surah from here.",
+        "title": "Choose a surah"
+      }
+    },
+    "next": "Next",
+    "progress": "{{current}} / {{total}}",
+    "quran": {
+      "continue": {
+        "body": "Jump back to the last verse you read with one tap.",
+        "title": "Where you left off"
+      },
+      "list": {
+        "body": "Tap a surah to read it with its translation and recitation.",
+        "title": "Surahs"
+      },
+      "mushaf": {
+        "body": "Read the Qur'an page by page and mark where you stopped.",
+        "title": "Mushaf"
+      },
+      "search": {
+        "body": "Type a surah name or number to find it quickly.",
+        "title": "Search surahs"
+      }
+    },
+    "replay": "Replay app tours",
+    "replaySub": "Shows the screen introductions again",
+    "skip": "Skip tour",
+    "tracker": {
+      "activities": {
+        "body": "Log Qur'an and book reading, voluntary prayers, fasting, charity, dua and memorization here.",
+        "title": "Add worship"
+      },
+      "hero": {
+        "body": "Today's entries and how many kinds of worship you did are shown here.",
+        "title": "Today's summary"
+      },
+      "insights": {
+        "body": "Your period recap, worship map and khatm progress are here.",
+        "title": "Statistics"
+      }
+    }
+  },
   "tracker": {
     "addA11y": "{{label}}: {{summary}}. Add entry",
     "delete": {

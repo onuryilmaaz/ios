@@ -7,19 +7,17 @@ struct OtpInput: View {
   var length = 6
   @Binding var value: String
   var onComplete: (String) -> Void = { _ in }
-  @FocusState private var focused: Bool
+  @State private var focused = false
 
   var body: some View {
     ZStack {
-      TextField("", text: $value)
-        .keyboardType(.numberPad)
-        .textContentType(.oneTimeCode)
-        .focused($focused)
+      // SwiftUI TextField'ı klavyedeki kod önerisini karakter karakter alır ve içeriği her değişiklikte
+      // yeniden yazınca yalnız ilk hane kalır; UIKit alanı kodu tek seferde işler.
+      OneTimeCodeField(value: $value, length: length, focused: focused) { focused = $0 }
+        .frame(height: 56)
         .opacity(0.02)
         .onChange(of: value) { _, new in
-          let digits = String(new.filter(\.isNumber).prefix(length))
-          if digits != new { value = digits }
-          if digits.count == length { onComplete(digits) }
+          if new.count == length { onComplete(new) }
         }
 
       HStack(spacing: 7) {
@@ -44,6 +42,64 @@ struct OtpInput: View {
     .contentShape(.rect)
     .onTapGesture { focused = true }
     .onAppear { focused = true }
+  }
+}
+
+/// Kod alanının UIKit karşılığı: yalnız rakam, en fazla `length` hane; yapıştırma ve klavye kod önerisi
+/// tamamı tek seferde yazılır.
+struct OneTimeCodeField: UIViewRepresentable {
+  @Binding var value: String
+  let length: Int
+  let focused: Bool
+  let onFocusChange: (Bool) -> Void
+
+  func makeUIView(context: Context) -> UITextField {
+    let field = UITextField()
+    field.keyboardType = .numberPad
+    field.textContentType = .oneTimeCode
+    field.delegate = context.coordinator
+    field.addTarget(context.coordinator, action: #selector(Coordinator.changed(_:)), for: .editingChanged)
+    field.setContentHuggingPriority(.defaultLow, for: .horizontal)
+    return field
+  }
+
+  func updateUIView(_ field: UITextField, context: Context) {
+    context.coordinator.parent = self
+    if field.text != value { field.text = value }
+    // Odak SwiftUI tarafından istenince klavye açılır (görünüm pencereye girince).
+    DispatchQueue.main.async {
+      if focused, !field.isFirstResponder, field.window != nil { field.becomeFirstResponder() }
+      if !focused, field.isFirstResponder { field.resignFirstResponder() }
+    }
+  }
+
+  func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+  final class Coordinator: NSObject, UITextFieldDelegate {
+    var parent: OneTimeCodeField
+    init(_ parent: OneTimeCodeField) { self.parent = parent }
+
+    func textField(_ field: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+      let current = field.text ?? ""
+      guard let swiftRange = Range(range, in: current) else { return false }
+      let next = current.replacingCharacters(in: swiftRange, with: string)
+      let digits = String(next.filter(\.isNumber).prefix(parent.length))
+      // Kod önerisi ya da yapıştırma: süzülmüş halini doğrudan yaz.
+      if digits != next {
+        field.text = digits
+        changed(field)
+        return false
+      }
+      return true
+    }
+
+    @objc func changed(_ field: UITextField) {
+      let text = field.text ?? ""
+      if parent.value != text { parent.value = text }
+    }
+
+    func textFieldDidBeginEditing(_ field: UITextField) { parent.onFocusChange(true) }
+    func textFieldDidEndEditing(_ field: UITextField) { parent.onFocusChange(false) }
   }
 }
 

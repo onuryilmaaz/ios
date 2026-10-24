@@ -24,6 +24,7 @@ struct SurahBrowserView: View {
           ProfileButton()
         }
         QuranSearchField(text: $query, placeholder: t("quran.search"), clearLabel: t("quran.clearSearch"))
+          .tourAnchor("quran.search")
           .padding(.horizontal, 14).padding(.top, 10.5).padding(.bottom, 7)
         ScrollView {
           LazyVStack(spacing: 0) {
@@ -60,6 +61,7 @@ struct SurahBrowserView: View {
                 }
                 .buttonStyle(PressableStyle(pressedOpacity: 0.6))
                 .accessibilityLabel(t("quran.surahA11y", ["id": surah.id, "name": surahName(surah), "count": surah.verse_count]))
+                .tourAnchor(surah.id == filtered.first?.id ? "quran.list" : nil)
                 Rectangle().fill(tokens.line).frame(height: 1).padding(.leading, 31.5)
               }
             }
@@ -71,6 +73,13 @@ struct SurahBrowserView: View {
         switch route { case .surah(let id, let focus): SurahDetailView(surahID: id, focusVerse: focus) }
       }
       .task { await load(); openDebug() }
+      // Sekmeye girişliyken ilk girişte bir kez.
+      .task(id: TourStore.shared.replayNonce) {
+        guard AuthStore.shared.isAuthenticated else { return }
+        await TourStore.shared.startIfNeeded(.quran) {
+          !loading && nav.path.isEmpty && nav.mushaf == nil && TourStore.shared.anchors["quran.list"] != nil
+        }
+      }
     }
     .fullScreenCover(item: $nav.mushaf) { page in
       MushafReaderView(initialPage: page.id).environment(\.tokens, tokens)
@@ -97,7 +106,7 @@ struct SurahBrowserView: View {
           Ionicon(dirIcon("chevron-forward"), size: 18, color: tokens.inkSubtle)
         }.padding(17.5).background(tokens.surface, in: .rect(cornerRadius: 21))
           .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
-      }.buttonStyle(PressableStyle())
+      }.buttonStyle(PressableStyle()).tourAnchor("quran.mushaf")
       if let last = store.lastRead {
         Button { open(last.surahId, verse: last.verseNumber) } label: {
           HStack(spacing: 10.5) {
@@ -109,7 +118,7 @@ struct SurahBrowserView: View {
             }.frame(maxWidth: .infinity, alignment: .leading)
             Ionicon(dirIcon("chevron-forward"), size: 18, color: .white.opacity(0.7))
           }.padding(17.5).background(tokens.isDark ? Accent.s900 : Accent.s800, in: .rect(cornerRadius: 21))
-        }.buttonStyle(PressableStyle())
+        }.buttonStyle(PressableStyle()).tourAnchor("quran.continue")
       }
     }.padding(.bottom, 14)
   }

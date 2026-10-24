@@ -60,10 +60,11 @@ struct VerseShareView: View {
 
   private func share(width: CGFloat) {
     Haptics.notify(.success)
-    let renderer = ImageRenderer(content: card.frame(width: width).environment(\.tokens, tokens)
+    // Görselde köşeler saydam kalmasın: paylaşılan uygulamalar saydamlığı beyaza çevirir.
+    let renderer = ImageRenderer(content: card.frame(width: width).background(Accent.s900).environment(\.tokens, tokens)
       .environment(\.locale, Localizer.shared.locale).environment(\.layoutDirection, Localizer.shared.layoutDirection))
     renderer.scale = 3
-    if let image = renderer.uiImage { shareItems = .init(values: [image]) }
+    if let image = renderer.uiImage.map(ShareImage.opaque) { shareItems = .init(values: [image]) }
     else { shareItems = .init(values: ["\(verse.translation.text)\n\n\(source)\n\n#SalahApp"]) }
   }
 }

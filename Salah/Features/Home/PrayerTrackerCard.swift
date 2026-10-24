@@ -86,6 +86,7 @@ struct PrayerTrackerCard: View {
       .contentShape(.rect)
       .onTapGesture { if !signedIn { onAuthRequired() } }
     }
+    .tourAnchor("home.tracker")
     .padding(.horizontal, 14)
     .padding(.bottom, 10.5)
   }

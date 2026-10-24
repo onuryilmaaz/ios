@@ -67,6 +67,10 @@ struct SettingsView: View {
               sub: l10n.preference == .system ? "\(t("settings.language.system")) (\(current))" : current,
               chevron: true
             ) { chooseLanguage() }
+            row("map-outline", t("tour.replay"), sub: t("tour.replaySub"), chevron: true) {
+              TourStore.shared.replayAll()
+              HomeNavigation.shared.path.removeAll()
+            }
             row("shield-checkmark-outline", t("settings.app.privacy"), sub: t("settings.app.privacySub"), chevron: true) { legal = .privacy }
             row("document-text-outline", t("settings.app.terms"), sub: t("settings.app.termsSub"), chevron: true) { legal = .terms }
             row("information-circle-outline", t("settings.app.version"), sub: Self.versionText)

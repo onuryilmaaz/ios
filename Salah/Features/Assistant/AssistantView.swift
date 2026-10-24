@@ -110,6 +110,7 @@ struct AssistantView: View {
         .scrollIndicators(.hidden)
         .scrollDismissesKeyboard(.interactively)
         .onChange(of: model.messages.count) { withAnimation { proxy.scrollTo("bottom", anchor: .bottom) } }
+        .tourScroll(proxy, top: nil)
         .onChange(of: model.loading) { withAnimation { proxy.scrollTo("bottom", anchor: .bottom) } }
       }
 
@@ -117,6 +118,21 @@ struct AssistantView: View {
     }
     .background(tokens.canvas)
     .toolbar(.hidden, for: .navigationBar)
+    // İlk cevap gelince bir kez: basılı tutup kopyalama.
+    .task(id: model.messages.count) {
+      guard AuthStore.shared.isAuthenticated, !TourStore.shared.isDone(Tour.assistantChat.id),
+        !model.loading, model.messages.contains(where: { $0.role == .model })
+      else { return }
+      focused = false
+      await TourStore.shared.startIfNeeded(.assistantChat) { !model.loading && TourStore.shared.anchors["assistant.copy"] != nil }
+    }
+    // Sekmeye girişliyken ilk girişte bir kez (boş sohbet ekranında).
+    .task(id: TourStore.shared.replayNonce) {
+      guard AuthStore.shared.isAuthenticated else { return }
+      await TourStore.shared.startIfNeeded(.assistant) {
+        model.messages.isEmpty && !focused && TourStore.shared.anchors["assistant.intro"] != nil
+      }
+    }
   }
 
   // MARK: - Boş durum
@@ -142,6 +158,7 @@ struct AssistantView: View {
       .padding(17.5)
       .frame(maxWidth: .infinity, alignment: .leading)
       .background(dark ? Accent.s900 : Accent.s800, in: .rect(cornerRadius: 21))
+      .tourAnchor("assistant.intro")
 
       LazyVGrid(columns: [GridItem(.flexible(), spacing: 10.5), GridItem(.flexible(), spacing: 10.5)], spacing: 10.5) {
         ForEach(Self.suggestions, id: \.key) { s in
@@ -168,6 +185,7 @@ struct AssistantView: View {
           .buttonStyle(PressableStyle())
         }
       }
+      .tourAnchor("assistant.suggestions")
     }
     .padding(.top, 7)
   }
@@ -199,6 +217,7 @@ struct AssistantView: View {
           .background(tokens.surface, in: UnevenRoundedRectangle(topLeadingRadius: 21, bottomLeadingRadius: 7, bottomTrailingRadius: 21, topTrailingRadius: 21))
           .overlay(UnevenRoundedRectangle(topLeadingRadius: 21, bottomLeadingRadius: 7, bottomTrailingRadius: 21, topTrailingRadius: 21).stroke(tokens.line, lineWidth: 1))
           .onLongPressGesture { copy(m.text) }
+          .tourAnchor(m.id == model.messages.last(where: { $0.role == .model })?.id ? "assistant.copy" : nil)
         Spacer(minLength: 32)
       }
     }
@@ -254,6 +273,7 @@ struct AssistantView: View {
     .background(.ultraThinMaterial, in: .rect(cornerRadius: 21))
     .background(dark ? Forest.s900.opacity(0.4) : Color.white.opacity(0.4), in: .rect(cornerRadius: 21))
     .overlay(RoundedRectangle(cornerRadius: 21).stroke(dark ? Color.white.opacity(0.1) : Color.white.opacity(0.5), lineWidth: 1))
+    .tourAnchor("assistant.composer")
     .padding(.horizontal, 10.5)
     .padding(.top, 7)
     .padding(.bottom, 8)

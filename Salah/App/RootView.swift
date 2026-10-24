@@ -31,6 +31,15 @@ struct RootView: View {
     }
     // RN: aktif #1f7356 / koyu #2e8a6a
     .tint(tokens.isDark ? Accent.s500 : Accent.s600)
+    // Tur, sekme çubuğu dahil her şeyin üstünde: saydam tam ekran katman (kayarak değil, solarak açılır).
+    .fullScreenCover(isPresented: Binding(get: { TourStore.shared.tour.map { !$0.inline } ?? false }, set: { _ in })) {
+      TourOverlay()
+        .presentationBackground(.clear)
+        .environment(\.tokens, tokens)
+        .environment(\.layoutDirection, Localizer.shared.layoutDirection)
+        .environment(\.locale, Localizer.shared.locale)
+    }
+    .transaction(value: TourStore.shared.tour.map { !$0.inline } ?? false) { $0.disablesAnimations = true }
     .fullScreenCover(isPresented: Bindable(AuthFlow.shared).isPresented) {
       AuthFlowView()
         .environment(\.tokens, tokens)

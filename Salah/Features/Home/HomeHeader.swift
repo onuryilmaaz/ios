@@ -15,6 +15,7 @@ struct HomeHeader: View {
       }
       .buttonStyle(PressableStyle())
       .accessibilityLabel(t("common.qibla"))
+      .tourAnchor("home.qibla")
 
       Spacer()
 
@@ -38,6 +39,7 @@ struct HomeHeader: View {
       }
       .buttonStyle(PressableStyle())
       .accessibilityLabel(t("common.profile"))
+      .tourAnchor("home.profile")
     }
     .padding(.horizontal, 16)
     .frame(height: 56)

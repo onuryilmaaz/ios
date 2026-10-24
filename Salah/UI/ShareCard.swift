@@ -113,13 +113,14 @@ struct ShareImageSheet<Card: View>: View {
 
   private func share(width: CGFloat) {
     Haptics.notify(.success)
+    // Görselde köşeler saydam kalmasın: paylaşılan uygulamalar saydamlığı beyaza çevirir.
     let renderer = ImageRenderer(
-      content: framed.frame(width: width)
+      content: framed.frame(width: width).background(Accent.s900)
         .environment(\.tokens, tokens)
         .environment(\.locale, Localizer.shared.locale)
         .environment(\.layoutDirection, Localizer.shared.layoutDirection))
     renderer.scale = 3
-    if let image = renderer.uiImage {
+    if let image = renderer.uiImage.map(ShareImage.opaque) {
       shareItems = ShareItems(values: [image])
     } else {
       shareItems = ShareItems(values: ["\(fallbackText)\n\n#SalahApp"])
@@ -158,5 +159,24 @@ struct GoldDivider: View {
       Rectangle().frame(width: 35, height: 1)
     }
     .foregroundStyle(Gold.s300)
+  }
+}
+
+enum ShareImage {
+  /// Paylaşılan görsel opak olsun: kart yüksekliği tam piksele denk gelmeyince en alt sıra yarı saydam kalır,
+  /// paylaşılan uygulamalar da saydamlığı beyaz çizgi/köşe olarak gösterir. Kartın yeşilinin üstüne çizilir.
+  static func opaque(_ image: UIImage) -> UIImage {
+    let format = UIGraphicsImageRendererFormat()
+    format.scale = image.scale
+    format.opaque = true
+    // Yarım piksel sırası atılır (aşağı yuvarlanır).
+    let size = CGSize(
+      width: floor(image.size.width * image.scale) / image.scale,
+      height: floor(image.size.height * image.scale) / image.scale)
+    return UIGraphicsImageRenderer(size: size, format: format).image { context in
+      UIColor(Accent.s900).setFill()
+      context.fill(CGRect(origin: .zero, size: size))
+      image.draw(at: .zero)
+    }
   }
 }

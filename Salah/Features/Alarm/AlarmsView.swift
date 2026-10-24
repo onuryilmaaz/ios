@@ -35,6 +35,13 @@ struct AlarmsView: View {
       await store.sync()
       checked = true
     }
+    // İlk özel alarm olunca bir kez: dokun düzenle, basılı tut sil.
+    .task(id: AlarmTourTrigger(nonce: TourStore.shared.replayNonce, hasCustom: !store.settings.custom.isEmpty)) {
+      guard !store.settings.custom.isEmpty else { return }
+      await TourStore.shared.startIfNeeded(.alarms) {
+        draft == nil && TourStore.shared.anchors["alarms.custom"] != nil
+      }
+    }
     // Ayarlar'dan izin verip dönünce durumu tazele.
     .onChange(of: scenePhase) { _, phase in
       if phase == .active { Task { await store.sync() } }
@@ -61,10 +68,16 @@ struct AlarmsView: View {
     }
   }
 
+  private struct AlarmTourTrigger: Equatable {
+    let nonce: Int
+    let hasCustom: Bool
+  }
+
   private func content(_ store: AlarmStore) -> some View {
     let s = store.settings
     let dark = tokens.isDark
-    return ScrollView {
+    return ScrollViewReader { proxy in
+    ScrollView {
       VStack(alignment: .leading, spacing: 24) {
         if store.auth == .authorized {
           HStack(spacing: 14) {
@@ -167,6 +180,7 @@ struct AlarmsView: View {
               GroupedCard {
                 ForEach(Array(s.custom.enumerated()), id: \.element.id) { i, c in
                   customRow(c, store: store)
+                    .tourAnchor(i == 0 ? "alarms.custom" : nil)
                   if i < s.custom.count - 1 { RowDivider() }
                 }
               }
@@ -189,6 +203,8 @@ struct AlarmsView: View {
       .padding(.bottom, 24)
     }
     .scrollIndicators(.hidden)
+    .tourScroll(proxy, top: nil)
+    }
   }
 
   private func section<Content: View>(_ title: String, @ViewBuilder _ content: () -> Content) -> some View {

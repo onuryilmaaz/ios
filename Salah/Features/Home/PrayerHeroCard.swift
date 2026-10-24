@@ -55,6 +55,7 @@ struct PrayerHeroCard: View {
           }
           .buttonStyle(PressableStyle())
           .accessibilityLabel(t("alarm.screen.title"))
+          .tourAnchor("home.alarms")
         }
         if !locationName.isEmpty {
           Button {
@@ -74,6 +75,7 @@ struct PrayerHeroCard: View {
           }
           .buttonStyle(PressableStyle())
           .accessibilityLabel("\(t("settings.location.prayerLocation")): \(locationName)")
+          .tourAnchor("home.location")
         }
       }
 
@@ -102,6 +104,8 @@ struct PrayerHeroCard: View {
       }
 
       timesRow(window: window)
+        // Vakte dokununca hızlı alarm menüsü açılır (yalnız alarm destekli cihazda).
+        .tourAnchor(AlarmStore.shared.supported ? "home.times" : nil)
         .padding(.top, 17.5)
     }
     .padding(.horizontal, 17.5)

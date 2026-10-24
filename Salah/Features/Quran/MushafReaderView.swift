@@ -41,7 +41,7 @@ struct MushafReaderView: View {
         palette.canvas.ignoresSafeArea()
         TabView(selection: $page) {
           ForEach(1...604, id: \.self) { number in
-            MushafPageView(page: number, size: fullSize(geometry), insets: geometry.safeAreaInsets, surahs: surahs,
+            MushafPageView(page: number, isCurrent: number == page, size: fullSize(geometry), insets: geometry.safeAreaInsets, surahs: surahs,
               palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" },
               onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) })
               .environment(\.layoutDirection, Localizer.shared.layoutDirection).tag(number)
@@ -64,6 +64,7 @@ struct MushafReaderView: View {
             }
             CircleIconButton(icon: "contrast-outline", size: 35, iconSize: 18, accessibilityLabel: t("mushaf.theme")) { Haptics.impact(.light); themes = true }
             CircleIconButton(icon: "list", size: 35, iconSize: 19, accessibilityLabel: t("mushaf.chooseSurah")) { Haptics.impact(.light); picker = true }
+              .tourAnchor("mushaf.surahs")
           }.padding(.horizontal, 14).padding(.top, geometry.safeAreaInsets.top + 6).padding(.bottom, 10.5)
             .background(tokens.canvas).overlay(alignment: .bottom) { RowDivider(leading: 0) }.ignoresSafeArea(edges: .top)
         }
@@ -75,6 +76,8 @@ struct MushafReaderView: View {
             .frame(maxHeight: .infinity, alignment: .bottom).padding(.bottom, 44).allowsHitTesting(false)
         }
       }
+      // Tur bu tam ekran pencerenin içinde çizilir (RootView'un katmanı bunun altında kalır).
+      .overlay { TourOverlay() }
       .statusBarHidden(!chrome)
       .statusBar(palette.isDark ? .light : .dark)
     }
@@ -91,8 +94,18 @@ struct MushafReaderView: View {
       MushafService.prefetch(page)
       if DebugLaunch.quran == nil {
         try? await Task.sleep(for: .milliseconds(2500))
-        if !Task.isCancelled { withAnimation { chrome = false } }
+        // Tur sürerken üst çubuk (sure seçimi) açık kalır.
+        if !Task.isCancelled, TourStore.shared.tour == nil { withAnimation { chrome = false } }
       }
+    }
+    // İlk açılışta bir kez: sayfa hareketleri ve sure seçimi.
+    .task(id: TourStore.shared.replayNonce) {
+      await TourStore.shared.startIfNeeded(.mushaf) {
+        chrome && detail == nil && !picker && !themes && TourStore.shared.anchors["mushaf.page"] != nil
+      }
+    }
+    .onChange(of: TourStore.shared.tour == nil) { _, ended in
+      if ended, chrome { withAnimation { chrome = false } }
     }
     .onChange(of: page) { _, value in Haptics.impact(.light); QuranReadingStore.shared.setPage(value); MushafService.prefetch(value) }
     .sheet(isPresented: $themes) { themePicker.presentationDetents([.height(220)]).presentationDragIndicator(.visible) }
@@ -163,6 +176,8 @@ struct MushafReaderView: View {
 
 private struct MushafPageView: View {
   let page: Int
+  /// Ekrandaki sayfa: tur yalnız onun bir satırını işaretler.
+  var isCurrent = false
   let size: CGSize
   let insets: EdgeInsets
   let surahs: [Surah]
@@ -259,6 +274,7 @@ private struct MushafPageView: View {
     }
     .accessibilityLabel(t(marked ? "mushaf.lineMarkedA11y" : "mushaf.lineA11y", ["line": index + 1]))
     .accessibilityHint(t("mushaf.markHint"))
+    .tourAnchor(isCurrent && index == pageData.lines.count / 2 ? "mushaf.page" : nil)
   }
 
   private func verseText(_ key: String, pageData: MushafPage) -> String {
