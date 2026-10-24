@@ -29,14 +29,40 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
     guard status == .authorizedWhenInUse || status == .authorizedAlways else { throw Failure.denied }
 
+    guard locationContinuation == nil else { throw Failure.unavailable }
     let location = try await withCheckedThrowingContinuation { continuation in
       locationContinuation = continuation
       manager.requestLocation()
     }
+    guard let found = await resolve(location) else { throw Failure.notRecognized }
+    return found
+  }
+
+  /// İzin zaten verilmiş mi (sormadan).
+  var hasPermission: Bool {
+    let status = manager.authorizationStatus
+    return status == .authorizedWhenInUse || status == .authorizedAlways
+  }
+
+  /// İzin istemeden tek seferlik konum; izin yoksa ya da alınamazsa nil.
+  /// Son 10 dakikadaki bilinen konum il tespiti için yeterli (Android `currentLocation`).
+  func currentLocation() async -> CLLocation? {
+    guard hasPermission else { return nil }
+    if let last = manager.location, -last.timestamp.timeIntervalSinceNow < 10 * 60 { return last }
+    // Başka bir istek sürüyorsa (ör. Ayarlar'daki konum bulma) çakıştırma; bir sonraki açılışta denenir.
+    guard locationContinuation == nil else { return nil }
+    return try? await withCheckedThrowingContinuation { continuation in
+      locationContinuation = continuation
+      manager.requestLocation()
+    }
+  }
+
+  /// Koordinat → il ve merkez ilçesi; bulunamazsa nil.
+  func resolve(_ location: CLLocation) async -> (state: Locations.State, district: Locations.District)? {
     let placemarks = try? await CLGeocoder().reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "tr_TR"))
     let region = placemarks?.first?.administrativeArea ?? placemarks?.first?.locality ?? ""
     guard let state = Locations.state(matching: region), let district = Locations.defaultDistrict(ofState: state._id) else {
-      throw Failure.notRecognized
+      return nil
     }
     return (state, district)
   }

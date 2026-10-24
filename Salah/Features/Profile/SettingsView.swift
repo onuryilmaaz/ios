@@ -220,8 +220,8 @@ struct ShareSheet: UIViewControllerRepresentable {
   func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }
 
-/// Gizlilik Politikası ve Kullanım Koşulları (TR/EN). Metinler
-/// mobile/src/constants/legal.ts'ten üretilir (ios/scripts/gen-legal.ts).
+/// Gizlilik Politikası ve Kullanım Koşulları (TR/EN/AR). Metinler iOS'a özeldir:
+/// Shared/mobile/src/constants/legal.ts'ten üretilir (ios/scripts/gen-legal.ts).
 /// RN: components/layout/LegalModal.tsx
 struct LegalSheet: View {
   enum Doc: String, Identifiable { case privacy, terms; var id: String { rawValue } }
@@ -233,8 +233,7 @@ struct LegalSheet: View {
 
   init(initial: Doc) {
     _doc = State(initialValue: initial)
-    // Yasal metinler TR/EN; diğer dillerde İngilizce açılır.
-    _lang = State(initialValue: Localizer.shared.language == .tr ? "tr" : "en")
+    _lang = State(initialValue: Localizer.shared.language.rawValue)
   }
 
   private struct Content: Decodable {
@@ -255,6 +254,7 @@ struct LegalSheet: View {
   private static let labels: [String: (privacy: String, terms: String, close: String)] = [
     "tr": ("Gizlilik", "Koşullar", "Kapat"),
     "en": ("Privacy", "Terms", "Close"),
+    "ar": ("الخصوصية", "الشروط", "إغلاق"),
   ]
 
   var body: some View {
@@ -308,7 +308,7 @@ struct LegalSheet: View {
         Text(content?.updated ?? "").font(.system(size: 10.5)).foregroundStyle(tokens.textSecondary)
         Spacer()
         HStack(spacing: 0) {
-          ForEach(["tr", "en"], id: \.self) { l in
+          ForEach(["tr", "en", "ar"], id: \.self) { l in
             Button {
               Haptics.impact(.light)
               lang = l
@@ -342,6 +342,8 @@ struct LegalSheet: View {
         .padding(.horizontal, 16)
         .padding(.top, 8)
         .padding(.bottom, 40)
+        // Metin, arayüz dilinden bağımsız olarak seçilen dilin yönünde akar.
+        .environment(\.layoutDirection, lang == "ar" ? .rightToLeft : .leftToRight)
       }
       .scrollIndicators(.hidden)
     }

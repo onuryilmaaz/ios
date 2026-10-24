@@ -674,6 +674,7 @@
     "changedBody": "Namaz vakitleri şu an {{current}} için gösteriliyor. {{next}} olarak güncellensin mi?",
     "changedTitle": "Konumunuz değişmiş görünüyor",
     "chooseState": "İl Seçin",
+    "currentFallback": "mevcut konumunuz",
     "keep": "Kalsın",
     "loadingDistricts": "İlçe verileri yükleniyor...",
     "noDistricts": "Bu il için ilçe bulunamadı",

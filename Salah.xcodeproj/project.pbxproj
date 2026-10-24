@@ -104,6 +104,7 @@
 		7B3BFFFA41A3035865313CCF /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25474C18EC276429C04AFBEB /* JSONValue.swift */; };
 		7BC01AFE1816328B64BB0CD1 /* UthmanicHafs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3764F4AE470045987AE09 /* UthmanicHafs.ttf */; };
 		7C32E89B2FCD884BA39BE33B /* MushafReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA5547C03FB1B64B2FF2E0 /* MushafReaderView.swift */; };
+		7F3A351131E9B6619FB6A61D /* LocationWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */; };
 		7F5F0719C942EE27D482135E /* StorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E10BC1F8302CD8A869F15D /* StorePreview.swift */; };
 		82DEE9BFE039DE8C08B00DF1 /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E668511777EBAFC01AD289 /* states.json */; };
 		839B15838343F738B3F26CB4 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEED74D3A83B0A37A8C95A8 /* Controls.swift */; };
@@ -138,6 +139,7 @@
 		9FAB6761DB299AB07874A079 /* SalahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDC01270443ADA8787FCBF /* SalahApp.swift */; };
 		A2DFFB554A2041DC1C450A1B /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C34D1C386A70AE5BB19958A /* LocalStore.swift */; };
 		A440DC2D18F410DF1A21C999 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B4807BB3B87ED162CEB73 /* OnboardingView.swift */; };
+		A712C9E3FA6A7216305D6AEF /* LocationWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77470DBA965A6BF6E127F30 /* LocationWatch.swift */; };
 		A8834A372FF5157BB5B6A8C5 /* Bungee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CFD6C7662F80AEA92F24822 /* Bungee-Regular.ttf */; };
 		A8E8AD7E97BCA46172CCD96C /* AuthComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DB7F1E0553B8F7B3358AAA /* AuthComponents.swift */; };
 		A9A028424385120842ACD089 /* locales in Resources */ = {isa = PBXBuildFile; fileRef = 1076DA819BC3496E0F85C8C4 /* locales */; };
@@ -349,6 +351,7 @@
 		70B5E90E570E1E240F1C9133 /* InsightCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCards.swift; sourceTree = "<group>"; };
 		723673953F59D7D0C03779D8 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
 		72B2B4F437243809E1B0912F /* DebugSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSession.swift; sourceTree = "<group>"; };
+		74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWatchTests.swift; sourceTree = "<group>"; };
 		744BFB28CD9C4D1740B92B13 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		74E3D2B51E52D26FFB727BA8 /* OverlayModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayModal.swift; sourceTree = "<group>"; };
 		752217A304D6CF66CFE98220 /* QuranDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranDetailsService.swift; sourceTree = "<group>"; };
@@ -441,6 +444,7 @@
 		E2E34AC73DEA9E769C17A9A5 /* DuaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuaView.swift; sourceTree = "<group>"; };
 		E3E987422567A969490CA49A /* OzelGunStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunStore.swift; sourceTree = "<group>"; };
 		E69A7BC9D6A5123AA117379B /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		E77470DBA965A6BF6E127F30 /* LocationWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWatch.swift; sourceTree = "<group>"; };
 		EACD2857084E2F73AADF4650 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EC66533845486FCFA4E09393 /* QuranPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranPreview.swift; sourceTree = "<group>"; };
 		ECA7B3782CB0ECDC496A548E /* ForbiddenTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForbiddenTimes.swift; sourceTree = "<group>"; };
@@ -482,6 +486,7 @@
 				7A46711268EE853863C7E38B /* HijriCalendarTests.swift */,
 				D88502AFE7A692141AF1321B /* HomeTests.swift */,
 				709583DB08096CA148D1DEF2 /* HutbeTests.swift */,
+				74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */,
 				888E6A69D9AD07B07F3B2C9E /* MigrationUpgradeTests.swift */,
 				D2ACD3A5177559FE66B1C3E1 /* NotificationTests.swift */,
 				3C43AC78DB17B8F86BAE6320 /* OfflineQueueTests.swift */,
@@ -906,6 +911,7 @@
 				ECA7B3782CB0ECDC496A548E /* ForbiddenTimes.swift */,
 				758B8C3DB714977DC17EED13 /* Locations.swift */,
 				1A10DADA2CD1A6810F90ACDB /* LocationService.swift */,
+				E77470DBA965A6BF6E127F30 /* LocationWatch.swift */,
 				E3E987422567A969490CA49A /* OzelGunStore.swift */,
 				6182A5CD648CD8336403ECDD /* PrayerTimes.swift */,
 				4C3316ABA0BECCEA21A396D4 /* PrayerTimesService.swift */,
@@ -1363,6 +1369,7 @@
 				68AB135ECF89A378C57884AC /* HijriCalendarTests.swift in Sources */,
 				004E0FE0C66329A5ECC253F1 /* HomeTests.swift in Sources */,
 				6879B8D81793AC7021DB0073 /* HutbeTests.swift in Sources */,
+				7F3A351131E9B6619FB6A61D /* LocationWatchTests.swift in Sources */,
 				1DA71B996E4D8E702AE7A5BE /* MigrationUpgradeTests.swift in Sources */,
 				4553E42F48DE61BCFCADE4CC /* NotificationTests.swift in Sources */,
 				776DD7A2F1ED77F28650C49E /* OfflineQueueTests.swift in Sources */,
@@ -1435,6 +1442,7 @@
 				B35AF0C2BD269D698EAD2864 /* Localizer.swift in Sources */,
 				9D85798B1FA709FE11D8EA45 /* LocationSelectionView.swift in Sources */,
 				CDF43D8365DF92A99BC18101 /* LocationService.swift in Sources */,
+				A712C9E3FA6A7216305D6AEF /* LocationWatch.swift in Sources */,
 				B1054BEC4EFEBB9DEBE13E1F /* Locations.swift in Sources */,
 				36F0FC687FEE816C340D5D61 /* LogFormView.swift in Sources */,
 				3B2F9CF60AD6B18D2792EC6A /* LoginView.swift in Sources */,

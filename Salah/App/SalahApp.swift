@@ -37,6 +37,7 @@ struct SalahApp: App {
             Task { await OfflineQueue.shared.flush() }
             Task { await AdhanPlayer.shared.activate() }
             Task { await WidgetSync.activate() }
+            Task { await LocationWatch.check() }
             Task {
               await AlarmStore.shared.sync()
               await NotificationStore.shared.reschedule()

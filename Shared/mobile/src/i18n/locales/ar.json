@@ -674,6 +674,7 @@
     "changedBody": "تُعرض مواقيت الصلاة حاليًا لـ {{current}}. هل تريد التحديث إلى {{next}}؟",
     "changedTitle": "يبدو أن موقعك قد تغيّر",
     "chooseState": "اختر المحافظة",
+    "currentFallback": "موقعك الحالي",
     "keep": "إبقاء",
     "loadingDistricts": "جارٍ تحميل المناطق...",
     "noDistricts": "لم يُعثر على مناطق لهذه المحافظة",

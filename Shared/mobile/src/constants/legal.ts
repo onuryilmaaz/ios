@@ -1,200 +1,322 @@
 /**
- * Yasal metinler — Gizlilik Politikası ve Kullanım Koşulları (TR + EN).
- * Uygulama içi LegalModal tarafından okunur.
+ * Yasal metinler: Gizlilik Politikası ve Kullanım Koşulları (TR + EN + AR), iOS sürümü.
+ * Uygulama içi LegalSheet okur: değişince `bun ios/scripts/gen-legal.ts`.
  *
- * NOT: Bu metinler genel bir şablondur; mümkünse bir hukukçuya gözden geçirt.
- * App Store Connect ayrıca herkese açık bir Gizlilik Politikası URL'i (web)
- * istediği için aynı metni basit bir web sayfasında da yayınla
- * (bkz. proje kökü: legal-site/index.html → GitHub Pages).
+ * Android'in kendi kopyası var (android/app/src/main/assets/data/legal.json); platforma
+ * özel kısımlar (Apple girişi, Canlı Etkinlik, konum kontrolü, mağaza) farklıdır.
+ * Web sürümü iki platformu birlikte anlatır: legal-site/index.html (GitHub Pages).
  */
 
 type LegalSection = { title: string; body: string };
 type LegalDoc = { heading: string; updated: string; sections: LegalSection[] };
-
-const SUPPORT_EMAIL = 'onuryilm.41@gmail.com';
+type Lang = 'tr' | 'en' | 'ar';
 
 export const LEGAL: {
-  privacy: { tr: LegalDoc; en: LegalDoc };
-  terms: { tr: LegalDoc; en: LegalDoc };
+  privacy: Record<Lang, LegalDoc>;
+  terms: Record<Lang, LegalDoc>;
 } = {
-  privacy: {
-    tr: {
-      heading: 'Gizlilik Politikası',
-      updated: 'Son güncelleme: 5 Ekim 2026',
-      sections: [
+  "privacy": {
+    "tr": {
+      "heading": "Gizlilik Politikası",
+      "updated": "Son güncelleme: 24 Ekim 2026",
+      "sections": [
         {
-          title: '1. Genel',
-          body: 'Salah ("uygulama", "biz") gizliliğinize önem verir. Bu politika, uygulamayı kullandığınızda hangi verileri topladığımızı, bunları nasıl kullandığımızı ve haklarınızı açıklar. Uygulamayı kullanarak bu politikayı kabul etmiş olursunuz.',
+          "title": "1. Genel",
+          "body": "Bu politika Salah'ın iOS uygulaması için geçerlidir. Uygulamayı kullandığınızda hangi verileri topladığımızı, neden kullandığımızı, kimlerle çalıştığımızı ve haklarınızı açıklar. Veri sorumlusu Salah geliştiricisidir; iletişim: onuryilm.41@gmail.com."
         },
         {
-          title: '2. Topladığımız Veriler',
-          body: '• Hesap bilgileri: e-posta, ad-soyad, kullanıcı adı, (varsa) telefon, cinsiyet ve profil fotoğrafı.\n• İbadet ve aktivite verileri: namaz kayıtları, Kuran okuma, oruç, sadaka ve dua kayıtları.\n• Konum: namaz vakitleri ve kıble yönü için (yalnızca uygulamayı kullanırken).\n• Cihaz ve bildirim: bildirim gönderebilmek için push token ve temel cihaz bilgileri.',
+          "title": "2. Topladığımız Veriler",
+          "body": "• Hesap bilgileri: e-posta, ad-soyad ve kullanıcı adı; isteğe bağlı olarak telefon, cinsiyet ve profil fotoğrafı. Google veya Apple ile giriş yaparsanız bu hizmetten adınızı, e-posta adresinizi ve hesap kimliğinizi alırız.\n• İbadet kayıtları: kıldığınız ve kaza ettiğiniz namazlar; Kur'an ve kitap okuma, nafile namaz, oruç, sadaka, dua ve hafızlık kayıtları, eklediğiniz notlar, seri, rozet ve istatistikler.\n• Özel gün (isteğe bağlı): kadın kullanıcıların girdiği özel gün başlangıç ve bitiş tarihleri. Yalnızca bu dönemde namaz takibini duraklatmak için kullanılır.\n• Konum: namaz vakitleri için seçtiğiniz il ve ilçe. Cihazınızın konumu yalnızca izin verdiğinizde, ilçenizi bulmak ve kıble yönünü göstermek için cihazınızda kullanılır; koordinatlarınız sunucumuza gönderilmez.\n• Sor ve yapay zekâ özellikleri: yazdığınız sorular ve dua istekleri. Bir cevabı bildirirseniz bildirdiğiniz cevap ve seçtiğiniz neden.\n• Teknik veriler: iOS'ta Canlı Etkinlik kartını (kilit ekranı ve Dynamic Island) güncellemek için cihazın bildirim anahtarı ve yaklaşan namaz vakitleri; sunucuda sorunları çözmek için hata kayıtları. Uygulamada reklam veya analiz aracı bulunmaz."
         },
         {
-          title: '3. Verileri Nasıl Kullanıyoruz',
-          body: 'Verilerinizi yalnızca; hesabınızı yönetmek, ibadet takibi sunmak, namaz vakti/kıble gibi özellikleri sağlamak, bildirim göndermek, uygulamayı iyileştirmek ve güvenliği sağlamak için kullanırız. Verilerinizi reklam amacıyla satmayız ve üçüncü taraflara pazarlama için aktarmayız.',
+          "title": "3. Verileri Nasıl Kullanıyoruz",
+          "body": "Verilerinizi yalnızca hesabınızı yönetmek, ibadet takibini ve istatistikleri sunmak, namaz vakti, kıble, Kur'an ve dua gibi özellikleri sağlamak, sorularınıza cevap üretmek, uygulamayı güvenli tutmak ve hataları gidermek için kullanırız. Namaz bildirimleri, alarmlar ve widget'lar cihazınızda hazırlanır; uygulama ayarlarınız, önbelleğe alınan namaz vakitleri ve internetsizken yaptığınız kayıtlar da cihazınızda tutulur ve bağlantı gelince hesabınıza işlenir. Verilerinizi satmayız, reklam için kullanmayız ve sizi başka uygulamalarda izlemeyiz."
         },
         {
-          title: '4. Üçüncü Taraf Hizmetler',
-          body: "Hizmeti sağlamak için bazı güvenilir sağlayıcılarla çalışırız:\n• Clerk — Google/Apple ile güvenli giriş ve kimlik doğrulama.\n• Sentry — çökme ve hata teşhisi.\n• Cloudinary — profil görselleri.\n• Apple / Google Play / RevenueCat — abonelik işlemleri; kart bilgilerinizi biz görmeyiz.\n• İçerik API'leri (Diyanet, quran.com, islamic.network) — namaz vakti, Kuran ve hadis içeriği.",
+          "title": "4. Üçüncü Taraf Hizmetler",
+          "body": "Hizmeti sunmak için, verileri bizim adımıza işleyen şu sağlayıcılarla çalışırız:\n• Google ve Apple: hesabınızla giriş.\n• Apple Anında Bildirim Servisi (APNs): iOS'ta Canlı Etkinlik güncellemeleri.\n• Google Gemini API: Sor ekranı ve yapay zekâ destekli dua önerileri. Yazdığınız metin cevap üretilmesi için Google'a iletilir ve Google'ın Gemini API koşullarına tabidir. Bu alanlara kişisel veya hassas bilgi yazmamanızı öneririz.\n• Cloudinary: profil fotoğrafının saklanması.\n• Brevo: doğrulama kodu ve şifre sıfırlama e-postaları.\n• Sentry: sunucu hatalarının teşhisi.\n• Clerk: yalnızca uygulamanın eski sürümlerinde giriş ve kimlik doğrulama.\n• İçerik kaynakları: Diyanet (namaz vakitleri, Cuma hutbesi), acikkuran.com, quran.com ve islamic.network (Kur'an metni, meal ve ses) ve hadis kaynakları. Bu isteklerde hesap bilgileriniz gönderilmez.\n• App Store: uygulamanın dağıtımı."
         },
         {
-          title: '5. Konum Verisi',
-          body: 'Konumunuz yalnızca uygulamayı kullanırken ve izin verdiğinizde alınır; namaz vakitlerini hesaplamak, ve kıble yönünü göstermek için kullanılır. Konumunuz reklam veya takip amacıyla kullanılmaz. İzni cihaz ayarlarından dilediğiniz zaman kapatabilirsiniz.',
+          "title": "5. Konum Verisi",
+          "body": "Konumunuz yalnızca uygulamayı kullanırken ve izin verdiğinizde alınır; arka planda konum toplanmaz. Konum; ilçenizi bulmak (ilk kurulumda veya ayarlardan) ve kıble pusulası için kullanılır. İzin vermişseniz uygulama, açıldığında en fazla yarım saatte bir konumunuza bakarak başka bir şehre geçtiyseniz ilçenizi günceller veya size sorar. Konumunuz reklam ya da takip için kullanılmaz. İzni cihaz ayarlarından dilediğiniz zaman kapatabilir, ilçenizi elle seçebilirsiniz."
         },
         {
-          title: '6. Veri Saklama ve Güvenlik',
-          body: 'Verileriniz, hesabınız aktif olduğu sürece saklanır. Verileri yetkisiz erişime karşı korumak için makul teknik ve idari önlemler (şifreli bağlantı, erişim kısıtları) uygularız. Hiçbir sistem %100 güvenli olmasa da güvenliği sağlamak için sürekli çalışırız.',
+          "title": "6. Yapay Zekâ Özellikleri",
+          "body": "Sor ekranındaki cevaplar ve dua önerileri yapay zekâ tarafından üretilir; hatalı veya eksik olabilir ve fetva yerine geçmez. Önemli dini konularda yetkili kaynaklara danışın. Uygunsuz ya da yanlış bir cevabı uygulama içinden bildirebilirsiniz; bildirimler, hizmeti iyileştirmek için ekibimiz tarafından incelenir ve hesabınızla birlikte silinir."
         },
         {
-          title: '7. Haklarınız',
-          body: 'KVKK ve ilgili mevzuat kapsamında; verilerinize erişme, düzeltme, dışa aktarma ve silme haklarına sahipsiniz. Verilerinizi uygulama içindeki "Verilerimi Yedekle" ile JSON olarak dışa aktarabilirsiniz.',
+          "title": "7. Çocuklar",
+          "body": "Salah 13 yaşın altındaki çocuklara yönelik değildir ve bu yaştaki çocuklardan bilerek veri toplamayız. Böyle bir veriye sahip olduğumuzu öğrenirsek sileriz."
         },
         {
-          title: '8. Hesap ve Veri Silme',
-          body: 'Hesabınızı ve tüm verilerinizi uygulama içinden kalıcı olarak silebilirsiniz: Ayarlar → Hesap → "Hesabımı Kalıcı Olarak Sil". Bu işlem geri alınamaz ve tüm ibadet kayıtlarınız kalıcı olarak silinir. Uygulamaya erişiminiz yoksa, hesabınıza kayıtlı e-posta adresinden onuryilm.41@gmail.com adresine "Hesap silme talebi" konulu bir e-posta göndererek de silme talep edebilirsiniz; talebiniz en geç 30 gün içinde işlenir.',
+          "title": "8. Veri Saklama ve Güvenlik",
+          "body": "Verileriniz hesabınız açık olduğu sürece saklanır ve hesabınızı sildiğinizde silinir. Sunucu yedekleri en fazla 14 gün tutulur; silinen veriler bu süre sonunda yedeklerden de kalkar. Tüm bağlantılar şifrelidir (HTTPS), oturum anahtarlarınız cihazınızda şifreli olarak saklanır ve verilere erişim sınırlıdır. Hiçbir sistem tamamen güvenli olmasa da verilerinizi korumak için makul önlemleri alırız."
         },
         {
-          title: '9. Değişiklikler ve İletişim',
-          body: `Bu politikayı zaman zaman güncelleyebiliriz; önemli değişiklikleri uygulama üzerinden bildiririz. Sorularınız için: ${SUPPORT_EMAIL}`,
+          "title": "9. Haklarınız",
+          "body": "KVKK ve ilgili mevzuat kapsamında verilerinize erişme, düzeltme, dışa aktarma ve silme haklarına sahipsiniz. Profil bilgilerinizi uygulamadan düzenleyebilir, namaz ve ibadet kayıtlarınızı Ayarlar → Verilerim → \"Verilerimi Yedekle\" ile JSON olarak dışa aktarabilirsiniz. Diğer talepleriniz için onuryilm.41@gmail.com adresine yazabilirsiniz."
         },
-      ],
+        {
+          "title": "10. Hesap ve Veri Silme",
+          "body": "Hesabınızı ve tüm verilerinizi uygulamadan kalıcı olarak silebilirsiniz: Profil → Hesap → \"Hesabımı Kalıcı Olarak Sil\". Bu işlem geri alınamaz; hesabınız, namaz ve ibadet kayıtlarınız, özel gün kayıtlarınız, istatistik ve rozetleriniz, yapay zekâ bildirimleriniz, oturumlarınız ve profil fotoğrafınız silinir. Apple ile giriş yaptıysanız Apple yetkisi de geri alınır. Uygulamaya erişiminiz yoksa, hesabınıza kayıtlı e-posta adresinden onuryilm.41@gmail.com adresine \"Hesap silme talebi\" konulu bir e-posta göndererek de silme isteyebilirsiniz; talebiniz en geç 30 gün içinde işlenir."
+        },
+        {
+          "title": "11. Değişiklikler ve İletişim",
+          "body": "Bu politikayı zaman zaman güncelleyebiliriz; önemli değişiklikleri uygulama üzerinden bildiririz. Sorularınız için: onuryilm.41@gmail.com"
+        }
+      ]
     },
-    en: {
-      heading: 'Privacy Policy',
-      updated: 'Last updated: October 5, 2026',
-      sections: [
+    "en": {
+      "heading": "Privacy Policy",
+      "updated": "Last updated: October 24, 2026",
+      "sections": [
         {
-          title: '1. Overview',
-          body: 'Salah ("the app", "we") respects your privacy. This policy explains what data we collect when you use the app, how we use it, and your rights. By using the app, you agree to this policy.',
+          "title": "1. Overview",
+          "body": "This policy applies to the Salah app for iOS. It explains what data we collect when you use the app, why we use it, who we work with, and your rights. The data controller is the Salah developer; contact: onuryilm.41@gmail.com."
         },
         {
-          title: '2. Data We Collect',
-          body: "• Account info: email, name, username, phone (optional), gender, and profile photo.\n• Worship & activity data: prayer logs, Qur'an reading, fasting, charity, and dua records.\n• Location: for prayer times and qibla direction (only while using the app).\n• Device & notifications: push token and basic device info to send notifications.",
+          "title": "2. Data We Collect",
+          "body": "• Account info: email, name, and username; optionally phone, gender, and profile photo. If you sign in with Google or Apple, we receive your name, email address, and account ID from that service.\n• Worship records: prayers you performed or made up (kaza); Qur'an and book reading, voluntary prayers, fasting, charity, dua, and memorization logs, your notes, streaks, badges, and statistics.\n• Special days (optional): start and end dates entered by female users, used only to pause prayer tracking during that period.\n• Location: the province and district you choose for prayer times. Your device location is used on your device only, and only with your permission, to find your district and show the qibla direction; your coordinates are not sent to our server.\n• Ask and AI features: the questions and dua requests you type. If you report an answer, the reported answer and the reason you choose.\n• Technical data: on iOS, the device notification token and upcoming prayer times used to update the Live Activity (Lock Screen and Dynamic Island); on our server, error logs used to fix problems. The app contains no advertising or analytics tools."
         },
         {
-          title: '3. How We Use Data',
-          body: 'We use your data only to manage your account, provide worship tracking, deliver features like prayer times/qibla, send notifications, improve the app, and ensure security. We do not sell your data for advertising or share it with third parties for marketing.',
+          "title": "3. How We Use Data",
+          "body": "We use your data only to manage your account, provide worship tracking and statistics, deliver features such as prayer times, qibla, Qur'an, and duas, generate answers to your questions, keep the app secure, and fix errors. Prayer notifications, alarms, and widgets are prepared on your device; your app settings, cached prayer times, and entries you make while offline are also kept on your device and synced to your account once you are back online. We do not sell your data, use it for advertising, or track you across other apps."
         },
         {
-          title: '4. Third-Party Services',
-          body: "We rely on trusted providers to deliver the service:\n• Clerk — secure sign-in and authentication with Google/Apple.\n• Sentry — crash and error diagnostics.\n• Cloudinary — profile images.\n• Apple / Google Play / RevenueCat — subscription processing; we never see your card details.\n• Content APIs (Diyanet, quran.com, islamic.network) — prayer times, Qur'an, and hadith content.",
+          "title": "4. Third-Party Services",
+          "body": "To deliver the service we work with these providers, who process data on our behalf:\n• Google and Apple: sign-in with your account.\n• Apple Push Notification service (APNs): Live Activity updates on iOS.\n• Google Gemini API: the Ask screen and AI-assisted dua suggestions. The text you type is sent to Google to generate an answer and is subject to Google's Gemini API terms. We recommend not entering personal or sensitive information there.\n• Cloudinary: storage of your profile photo.\n• Brevo: verification code and password reset emails.\n• Sentry: server error diagnostics.\n• Clerk: sign-in and authentication in older app versions only.\n• Content sources: Diyanet (prayer times, Friday sermon), acikkuran.com, quran.com, and islamic.network (Qur'an text, translation, and audio), and hadith sources. Your account information is not sent with these requests.\n• The App Store: app distribution."
         },
         {
-          title: '5. Location Data',
-          body: 'Your location is accessed only while using the app and with your permission, to calculate prayer times, and show qibla direction. It is never used for advertising or tracking. You can disable the permission at any time in your device settings.',
+          "title": "5. Location Data",
+          "body": "Your location is accessed only while you use the app and only with your permission; it is never collected in the background. It is used to find your district (during setup or from settings) and for the qibla compass. If you have granted permission, the app checks your location when opened, at most once every 30 minutes, and updates your district or asks you if you have moved to another city. Your location is never used for advertising or tracking. You can turn the permission off in your device settings at any time and choose your district manually."
         },
         {
-          title: '6. Data Retention & Security',
-          body: 'Your data is retained while your account is active. We apply reasonable technical and organizational measures (encrypted connections, access controls) to protect it from unauthorized access. No system is 100% secure, but we work continuously to keep your data safe.',
+          "title": "6. AI Features",
+          "body": "Answers on the Ask screen and dua suggestions are generated by AI; they may be inaccurate or incomplete and are not a religious ruling (fatwa). Consult qualified sources for important religious matters. You can report an inappropriate or wrong answer from within the app; reports are reviewed by our team to improve the service and are deleted together with your account."
         },
         {
-          title: '7. Your Rights',
-          body: 'You have the right to access, correct, export, and delete your data. You can export your data as JSON via "Back Up My Data" in the app.',
+          "title": "7. Children",
+          "body": "Salah is not directed at children under 13, and we do not knowingly collect data from children of that age. If we learn that we hold such data, we will delete it."
         },
         {
-          title: '8. Account & Data Deletion',
-          body: 'You can permanently delete your account and all data from within the app: Settings → Account → "Permanently Delete My Account". This is irreversible and permanently removes all your worship records. If you no longer have access to the app, you can also request deletion by emailing onuryilm.41@gmail.com from the address registered to your account with the subject "Account deletion request"; requests are processed within 30 days.',
+          "title": "8. Data Retention & Security",
+          "body": "Your data is kept while your account is open and is deleted when you delete your account. Server backups are kept for at most 14 days; deleted data is removed from backups after that period. All connections are encrypted (HTTPS), your session keys are stored encrypted on your device, and access to data is restricted. No system is completely secure, but we take reasonable measures to protect your data."
         },
         {
-          title: '9. Changes & Contact',
-          body: `We may update this policy from time to time and will notify you of significant changes in the app. Questions: ${SUPPORT_EMAIL}`,
+          "title": "9. Your Rights",
+          "body": "Under applicable data protection law (including Türkiye's KVKK), you have the right to access, correct, export, and delete your data. You can edit your profile in the app and export your prayer and worship records as JSON via Settings → My data → \"Back up my data\". For other requests, write to onuryilm.41@gmail.com."
         },
-      ],
+        {
+          "title": "10. Account & Data Deletion",
+          "body": "You can permanently delete your account and all data from within the app: Profile → Account → \"Permanently delete my account\". This is irreversible and deletes your account, prayer and worship records, special day records, statistics and badges, AI reports, sessions, and profile photo. If you signed in with Apple, your Apple authorization is revoked as well. If you no longer have access to the app, you can request deletion by emailing onuryilm.41@gmail.com from the address registered to your account with the subject \"Account deletion request\"; requests are processed within 30 days."
+        },
+        {
+          "title": "11. Changes & Contact",
+          "body": "We may update this policy from time to time and will notify you of significant changes in the app. Questions: onuryilm.41@gmail.com"
+        }
+      ]
     },
+    "ar": {
+      "heading": "سياسة الخصوصية",
+      "updated": "آخر تحديث: 24 أكتوبر 2026",
+      "sections": [
+        {
+          "title": "1. نظرة عامة",
+          "body": "تسري هذه السياسة على تطبيق Salah لنظام iOS. وهي توضح البيانات التي نجمعها عند استخدامك للتطبيق، وسبب استخدامها، والجهات التي نتعامل معها، وحقوقك. المسؤول عن البيانات هو مطوّر تطبيق Salah، وللتواصل: onuryilm.41@gmail.com."
+        },
+        {
+          "title": "2. البيانات التي نجمعها",
+          "body": "• بيانات الحساب: البريد الإلكتروني والاسم الكامل واسم المستخدم، واختياريًا رقم الهاتف والجنس وصورة الملف الشخصي. إذا سجّلت الدخول عبر Google أو Apple نتلقى من الخدمة اسمك وبريدك الإلكتروني ومعرّف حسابك.\n• سجلات العبادة: الصلوات التي أدّيتها أو قضيتها، وسجلات قراءة القرآن والكتب وصلاة النافلة والصيام والصدقة والدعاء والحفظ، وملاحظاتك، والسلاسل والشارات والإحصاءات.\n• الأيام الخاصة (اختياري): تاريخا البداية والنهاية اللذان تُدخلهما المستخدمات، ويُستخدمان فقط لإيقاف تتبع الصلاة مؤقتًا خلال تلك الفترة.\n• الموقع: المحافظة والمنطقة اللتان تختارهما لمواقيت الصلاة. يُستخدم موقع جهازك على جهازك فقط وبإذنك، لتحديد منطقتك وعرض اتجاه القبلة، ولا تُرسل إحداثياتك إلى خادمنا.\n• ميزة «اسأل» وميزات الذكاء الاصطناعي: الأسئلة وطلبات الدعاء التي تكتبها. وإذا أبلغت عن إجابة، فالإجابة المُبلَّغ عنها والسبب الذي تختاره.\n• البيانات التقنية: على iOS، رمز إشعارات الجهاز ومواقيت الصلاة القادمة لتحديث النشاط المباشر (شاشة القفل وDynamic Island)؛ وعلى خادمنا، سجلات الأخطاء لإصلاح المشكلات. لا يحتوي التطبيق على أي أدوات إعلانية أو تحليلية."
+        },
+        {
+          "title": "3. كيف نستخدم البيانات",
+          "body": "نستخدم بياناتك فقط لإدارة حسابك، وتقديم تتبع العبادات والإحصاءات، وتوفير ميزات مثل مواقيت الصلاة والقبلة والقرآن والأدعية، وتوليد إجابات لأسئلتك، والحفاظ على أمان التطبيق، وإصلاح الأخطاء. تُجهَّز إشعارات الصلاة والمنبّهات والأدوات (Widgets) على جهازك، كما تُحفظ على جهازك إعدادات التطبيق ومواقيت الصلاة المخزّنة مؤقتًا والسجلات التي تُدخلها دون اتصال، ثم تُزامَن مع حسابك عند عودة الاتصال. لا نبيع بياناتك، ولا نستخدمها للإعلانات، ولا نتتبعك عبر التطبيقات الأخرى."
+        },
+        {
+          "title": "4. خدمات الأطراف الثالثة",
+          "body": "لتقديم الخدمة نتعامل مع المزوّدين التاليين الذين يعالجون البيانات نيابةً عنا:\n• Google وApple: تسجيل الدخول بحسابك.\n• خدمة الإشعارات الفورية من Apple ‏(APNs): تحديثات النشاط المباشر على iOS.\n• Google Gemini API: شاشة «اسأل» واقتراحات الدعاء المدعومة بالذكاء الاصطناعي. يُرسل النص الذي تكتبه إلى Google لتوليد الإجابة ويخضع لشروط Gemini API الخاصة بـ Google. ننصحك بعدم كتابة معلومات شخصية أو حساسة في هذه الحقول.\n• Cloudinary: تخزين صورة الملف الشخصي.\n• Brevo: رسائل رمز التحقق وإعادة تعيين كلمة المرور.\n• Sentry: تشخيص أخطاء الخادم.\n• Clerk: تسجيل الدخول والمصادقة في الإصدارات القديمة من التطبيق فقط.\n• مصادر المحتوى: رئاسة الشؤون الدينية التركية (Diyanet) لمواقيت الصلاة وخطبة الجمعة، وacikkuran.com وquran.com وislamic.network لنص القرآن وترجمته وتلاوته، ومصادر الحديث. لا تُرسل بيانات حسابك مع هذه الطلبات.\n• App Store: توزيع التطبيق."
+        },
+        {
+          "title": "5. بيانات الموقع",
+          "body": "لا يتم الوصول إلى موقعك إلا أثناء استخدامك للتطبيق وبإذنك، ولا يُجمع الموقع في الخلفية أبدًا. يُستخدم الموقع لتحديد منطقتك (عند الإعداد الأول أو من الإعدادات) ولبوصلة القبلة. إذا منحت الإذن، يتحقق التطبيق من موقعك عند فتحه مرة واحدة كل 30 دقيقة على الأكثر، فيحدّث منطقتك أو يسألك إذا انتقلت إلى مدينة أخرى. لا يُستخدم موقعك للإعلانات أو التتبع. يمكنك إيقاف الإذن من إعدادات جهازك في أي وقت واختيار منطقتك يدويًا."
+        },
+        {
+          "title": "6. ميزات الذكاء الاصطناعي",
+          "body": "تُولَّد إجابات شاشة «اسأل» واقتراحات الدعاء بواسطة الذكاء الاصطناعي، وقد تكون غير دقيقة أو ناقصة، ولا تُعدّ فتوى. ارجع إلى المصادر المختصة في المسائل الدينية المهمة. يمكنك الإبلاغ عن أي إجابة غير لائقة أو خاطئة من داخل التطبيق؛ يراجع فريقنا البلاغات لتحسين الخدمة، وتُحذف مع حسابك."
+        },
+        {
+          "title": "7. الأطفال",
+          "body": "تطبيق Salah غير موجّه للأطفال دون سن 13 عامًا، ولا نجمع عن قصد بيانات من أطفال في هذا العمر. وإذا علمنا أننا نحتفظ بمثل هذه البيانات فسنحذفها."
+        },
+        {
+          "title": "8. الاحتفاظ بالبيانات وأمانها",
+          "body": "تُحفظ بياناتك ما دام حسابك مفتوحًا، وتُحذف عند حذف حسابك. تُحفظ النسخ الاحتياطية للخادم مدة أقصاها 14 يومًا، وتُزال البيانات المحذوفة من النسخ الاحتياطية بعد انقضاء هذه المدة. جميع الاتصالات مشفّرة (HTTPS)، وتُخزَّن مفاتيح جلستك مشفّرةً على جهازك، والوصول إلى البيانات مقيّد. لا يوجد نظام آمن تمامًا، لكننا نتخذ تدابير معقولة لحماية بياناتك."
+        },
+        {
+          "title": "9. حقوقك",
+          "body": "بموجب قوانين حماية البيانات المعمول بها (ومنها قانون حماية البيانات الشخصية التركي KVKK)، يحق لك الوصول إلى بياناتك وتصحيحها وتصديرها وحذفها. يمكنك تعديل ملفك الشخصي من التطبيق، وتصدير سجلات الصلاة والعبادة بصيغة JSON من الإعدادات ← بياناتي ← «نسخ بياناتي احتياطيًا». ولأي طلبات أخرى راسلنا على onuryilm.41@gmail.com."
+        },
+        {
+          "title": "10. حذف الحساب والبيانات",
+          "body": "يمكنك حذف حسابك وجميع بياناتك نهائيًا من داخل التطبيق: الملف الشخصي ← الحساب ← «حذف حسابي نهائيًا». لا يمكن التراجع عن هذا الإجراء؛ إذ يُحذف حسابك وسجلات الصلاة والعبادة وسجلات الأيام الخاصة والإحصاءات والشارات وبلاغات الذكاء الاصطناعي والجلسات وصورة الملف الشخصي. وإذا سجّلت الدخول عبر Apple يُلغى تفويض Apple أيضًا. وإذا لم يعد بإمكانك الوصول إلى التطبيق، يمكنك طلب الحذف بإرسال بريد إلكتروني من العنوان المسجّل في حسابك إلى onuryilm.41@gmail.com بعنوان «طلب حذف الحساب»، وتُعالج الطلبات خلال 30 يومًا كحد أقصى."
+        },
+        {
+          "title": "11. التغييرات والتواصل",
+          "body": "قد نحدّث هذه السياسة من حين لآخر، وسنُعلمك بالتغييرات المهمة داخل التطبيق. للاستفسارات: onuryilm.41@gmail.com"
+        }
+      ]
+    }
   },
-  terms: {
-    tr: {
-      heading: 'Kullanım Koşulları',
-      updated: 'Son güncelleme: 5 Ekim 2026',
-      sections: [
+  "terms": {
+    "tr": {
+      "heading": "Kullanım Koşulları",
+      "updated": "Son güncelleme: 24 Ekim 2026",
+      "sections": [
         {
-          title: '1. Koşulların Kabulü',
-          body: "Salah uygulamasını kullanarak bu Kullanım Koşulları'nı kabul etmiş olursunuz. Koşulları kabul etmiyorsanız lütfen uygulamayı kullanmayın.",
+          "title": "1. Koşulların Kabulü",
+          "body": "Salah uygulamasını kullanarak bu Kullanım Koşulları'nı kabul etmiş olursunuz. Koşulları kabul etmiyorsanız lütfen uygulamayı kullanmayın."
         },
         {
-          title: '2. Hesap ve Sorumluluklar',
-          body: 'Hesabınızın güvenliğinden ve hesabınız altında gerçekleşen işlemlerden siz sorumlusunuz. Kayıt sırasında doğru bilgi vermeyi ve giriş bilgilerinizi gizli tutmayı kabul edersiniz.',
+          "title": "2. Hesap ve Sorumluluklar",
+          "body": "Hesabınızın güvenliğinden ve hesabınız altında gerçekleşen işlemlerden siz sorumlusunuz. Kayıt sırasında doğru bilgi vermeyi ve giriş bilgilerinizi gizli tutmayı kabul edersiniz."
         },
         {
-          title: '3. Kabul Edilebilir Kullanım',
-          body: 'Uygulamayı yalnızca yasal amaçlarla kullanmayı kabul edersiniz. Uygulamaya zarar vermek, başkalarının haklarını ihlal etmek, izinsiz erişim sağlamak veya hizmeti kötüye kullanmak yasaktır.',
+          "title": "3. Kabul Edilebilir Kullanım",
+          "body": "Uygulamayı yalnızca yasal amaçlarla kullanmayı kabul edersiniz. Uygulamaya zarar vermek, başkalarının haklarını ihlal etmek, izinsiz erişim sağlamaya çalışmak, yapay zekâ özelliklerini zararlı içerik üretmek için kullanmak veya hizmeti kötüye kullanmak yasaktır."
         },
         {
-          title: '4. Dini İçerik Hakkında',
-          body: 'Namaz vakitleri, kıble yönü ve diğer dini içerikler üçüncü taraf kaynaklardan ve hesaplamalardan elde edilir; yaklaşık değerler içerebilir. Önemli durumlarda yerel resmi kaynaklardan teyit etmeniz önerilir. Bu bilgilerin doğruluğu konusunda kesin garanti veremeyiz.',
+          "title": "4. Dini İçerik, Bildirimler ve Alarmlar",
+          "body": "Namaz vakitleri, kıble yönü ve diğer dini içerikler üçüncü taraf kaynaklardan ve hesaplamalardan elde edilir; yaklaşık değerler içerebilir. Önemli durumlarda yerel resmi kaynaklardan teyit etmeniz önerilir. Bildirim, alarm ve widget'ların zamanında çalışması cihazınızın izinlerine, pil tasarrufu ve sessiz mod ayarlarına bağlıdır. Bu bilgilerin doğruluğu ve hatırlatmaların her zaman çalışacağı konusunda kesin garanti veremeyiz."
         },
         {
-          title: '5. Fikri Mülkiyet',
-          body: 'Uygulamanın tasarımı, logosu, yazılımı ve özgün içeriği bize aittir ve telif haklarıyla korunur. İzinsiz kopyalanamaz, dağıtılamaz veya türev çalışma oluşturulamaz. Üçüncü taraf içerikleri ilgili sahiplerine aittir.',
+          "title": "5. Yapay Zekâ Cevapları",
+          "body": "Sor ekranındaki cevaplar ve dua önerileri yapay zekâ tarafından üretilir; hatalı veya eksik olabilir ve fetva yerine geçmez. Bu cevaplara dayanarak verdiğiniz kararlardan siz sorumlusunuz. Uygunsuz bir cevabı uygulama içinden bildirebilirsiniz."
         },
         {
-          title: '6. Abonelikler ve Satın Alımlar',
-          body: 'Uygulama şu anda temel özellikleriyle ücretsizdir. Premium abonelik ödemeleri Apple App Store veya Google Play üzerinden işlenir; ücretlendirme, yenileme ve iade koşulları ilgili mağazanın kurallarına tabidir. Aboneliği App Store ya da Google Play abonelik ayarlarından yönetebilir veya iptal edebilirsiniz.',
+          "title": "6. Fikri Mülkiyet",
+          "body": "Uygulamanın tasarımı, logosu, yazılımı ve özgün içeriği bize aittir ve telif haklarıyla korunur. İzinsiz kopyalanamaz, dağıtılamaz veya türev çalışma oluşturulamaz. Üçüncü taraf içerikleri ilgili sahiplerine aittir."
         },
         {
-          title: '7. Hizmetin Sonlandırılması',
-          body: 'Bu koşulları ihlal etmeniz halinde hesabınızı askıya alma veya sonlandırma hakkımız saklıdır. Siz de dilediğiniz zaman hesabınızı uygulama içinden silebilirsiniz.',
+          "title": "7. Ücretler",
+          "body": "Uygulama şu anda ücretsizdir ve uygulama içi satın alma sunmaz. İleride ücretli bir özellik eklenirse ödemeler App Store üzerinden işlenir ve koşulları önceden bildirilir."
         },
         {
-          title: '8. Garanti Reddi ve Sorumluluk Sınırı',
-          body: 'Uygulama "olduğu gibi" sunulur. Yürürlükteki yasaların izin verdiği ölçüde, uygulamanın kesintisiz veya hatasız olacağını garanti etmeyiz ve dolaylı zararlardan sorumlu tutulamayız.',
+          "title": "8. Hizmetin Sonlandırılması",
+          "body": "Bu koşulları ihlal etmeniz halinde hesabınızı askıya alma veya sonlandırma hakkımız saklıdır. Siz de dilediğiniz zaman hesabınızı uygulama içinden silebilirsiniz."
         },
         {
-          title: '9. Uygulanacak Hukuk',
-          body: 'Bu koşullar Türkiye Cumhuriyeti yasalarına tabidir ve bu yasalara göre yorumlanır.',
+          "title": "9. Garanti Reddi ve Sorumluluk Sınırı",
+          "body": "Uygulama \"olduğu gibi\" sunulur. Yürürlükteki yasaların izin verdiği ölçüde, uygulamanın kesintisiz veya hatasız olacağını garanti etmeyiz ve dolaylı zararlardan sorumlu tutulamayız."
         },
         {
-          title: '10. Değişiklikler ve İletişim',
-          body: `Bu koşulları zaman zaman güncelleyebiliriz. Güncellemelerden sonra uygulamayı kullanmaya devam etmeniz yeni koşulları kabul ettiğiniz anlamına gelir. İletişim: ${SUPPORT_EMAIL}`,
+          "title": "10. Uygulanacak Hukuk",
+          "body": "Bu koşullar Türkiye Cumhuriyeti yasalarına tabidir ve bu yasalara göre yorumlanır."
         },
-      ],
+        {
+          "title": "11. Değişiklikler ve İletişim",
+          "body": "Bu koşulları zaman zaman güncelleyebiliriz. Güncellemelerden sonra uygulamayı kullanmaya devam etmeniz yeni koşulları kabul ettiğiniz anlamına gelir. İletişim: onuryilm.41@gmail.com"
+        }
+      ]
     },
-    en: {
-      heading: 'Terms of Use',
-      updated: 'Last updated: October 5, 2026',
-      sections: [
+    "en": {
+      "heading": "Terms of Use",
+      "updated": "Last updated: October 24, 2026",
+      "sections": [
         {
-          title: '1. Acceptance of Terms',
-          body: 'By using the Salah app, you agree to these Terms of Use. If you do not accept these terms, please do not use the app.',
+          "title": "1. Acceptance of Terms",
+          "body": "By using the Salah app, you agree to these Terms of Use. If you do not accept these terms, please do not use the app."
         },
         {
-          title: '2. Account & Responsibilities',
-          body: 'You are responsible for the security of your account and for activity that occurs under it. You agree to provide accurate information at sign-up and to keep your login credentials confidential.',
+          "title": "2. Account & Responsibilities",
+          "body": "You are responsible for the security of your account and for activity that occurs under it. You agree to provide accurate information at sign-up and to keep your login credentials confidential."
         },
         {
-          title: '3. Acceptable Use',
-          body: "You agree to use the app only for lawful purposes. Harming the app, infringing others' rights, gaining unauthorized access, or misusing the service is prohibited.",
+          "title": "3. Acceptable Use",
+          "body": "You agree to use the app only for lawful purposes. Harming the app, infringing others' rights, attempting unauthorized access, using the AI features to produce harmful content, or otherwise misusing the service is prohibited."
         },
         {
-          title: '4. About Religious Content',
-          body: 'Prayer times, qibla direction, and other religious content are derived from third-party sources and calculations and may be approximate. For important matters, we recommend verifying with local official sources. We cannot guarantee absolute accuracy of this information.',
+          "title": "4. Religious Content, Notifications & Alarms",
+          "body": "Prayer times, qibla direction, and other religious content are derived from third-party sources and calculations and may be approximate. For important matters, we recommend verifying with local official sources. Whether notifications, alarms, and widgets fire on time depends on your device permissions, battery saving, and silent mode settings. We cannot guarantee the absolute accuracy of this information or that reminders will always work."
         },
         {
-          title: '5. Intellectual Property',
-          body: "The app's design, logo, software, and original content belong to us and are protected by copyright. They may not be copied, distributed, or used to create derivative works without permission. Third-party content belongs to its respective owners.",
+          "title": "5. AI Answers",
+          "body": "Answers on the Ask screen and dua suggestions are generated by AI; they may be inaccurate or incomplete and are not a religious ruling (fatwa). You are responsible for decisions you make based on them. You can report an inappropriate answer from within the app."
         },
         {
-          title: '6. Subscriptions & Purchases',
-          body: "The app is currently free with its core features. Premium subscription payments are processed through the Apple App Store or Google Play; billing, renewal, and refund terms are subject to the respective store's rules. You can manage or cancel a subscription in your App Store or Google Play subscription settings.",
+          "title": "6. Intellectual Property",
+          "body": "The app's design, logo, software, and original content belong to us and are protected by copyright. They may not be copied, distributed, or used to create derivative works without permission. Third-party content belongs to its respective owners."
         },
         {
-          title: '7. Termination',
-          body: 'We reserve the right to suspend or terminate your account if you violate these terms. You may also delete your account at any time from within the app.',
+          "title": "7. Fees",
+          "body": "The app is currently free and offers no in-app purchases. If a paid feature is added in the future, payments will be processed through the App Store and the terms will be announced in advance."
         },
         {
-          title: '8. Disclaimer & Limitation of Liability',
-          body: 'The app is provided "as is". To the extent permitted by applicable law, we do not warrant that the app will be uninterrupted or error-free, and we are not liable for indirect damages.',
+          "title": "8. Termination",
+          "body": "We reserve the right to suspend or terminate your account if you violate these terms. You may also delete your account at any time from within the app."
         },
         {
-          title: '9. Governing Law',
-          body: 'These terms are governed by and construed in accordance with the laws of the Republic of Türkiye.',
+          "title": "9. Disclaimer & Limitation of Liability",
+          "body": "The app is provided \"as is\". To the extent permitted by applicable law, we do not warrant that the app will be uninterrupted or error-free, and we are not liable for indirect damages."
         },
         {
-          title: '10. Changes & Contact',
-          body: `We may update these terms from time to time. Continuing to use the app after updates means you accept the new terms. Contact: ${SUPPORT_EMAIL}`,
+          "title": "10. Governing Law",
+          "body": "These terms are governed by and construed in accordance with the laws of the Republic of Türkiye."
         },
-      ],
+        {
+          "title": "11. Changes & Contact",
+          "body": "We may update these terms from time to time. Continuing to use the app after updates means you accept the new terms. Contact: onuryilm.41@gmail.com"
+        }
+      ]
     },
-  },
+    "ar": {
+      "heading": "شروط الاستخدام",
+      "updated": "آخر تحديث: 24 أكتوبر 2026",
+      "sections": [
+        {
+          "title": "1. قبول الشروط",
+          "body": "باستخدامك تطبيق Salah فإنك توافق على شروط الاستخدام هذه. إذا كنت لا توافق عليها، فيُرجى عدم استخدام التطبيق."
+        },
+        {
+          "title": "2. الحساب والمسؤوليات",
+          "body": "أنت مسؤول عن أمان حسابك وعن كل ما يجري من خلاله. وتوافق على تقديم معلومات صحيحة عند التسجيل وعلى الحفاظ على سرية بيانات تسجيل الدخول."
+        },
+        {
+          "title": "3. الاستخدام المقبول",
+          "body": "توافق على استخدام التطبيق للأغراض المشروعة فقط. ويُحظر الإضرار بالتطبيق، أو انتهاك حقوق الآخرين، أو محاولة الوصول غير المصرّح به، أو استخدام ميزات الذكاء الاصطناعي لإنتاج محتوى ضار، أو إساءة استخدام الخدمة بأي شكل آخر."
+        },
+        {
+          "title": "4. المحتوى الديني والإشعارات والمنبّهات",
+          "body": "تُستمد مواقيت الصلاة واتجاه القبلة وغيرها من المحتوى الديني من مصادر خارجية وحسابات، وقد تكون تقريبية. ننصح بالتحقق من المصادر الرسمية المحلية في الأمور المهمة. يعتمد عمل الإشعارات والمنبّهات والأدوات في وقتها على أذونات جهازك وإعدادات توفير البطارية والوضع الصامت. ولا يمكننا ضمان دقة هذه المعلومات ضمانًا مطلقًا ولا عمل التذكيرات في جميع الأحوال."
+        },
+        {
+          "title": "5. إجابات الذكاء الاصطناعي",
+          "body": "تُولَّد إجابات شاشة «اسأل» واقتراحات الدعاء بواسطة الذكاء الاصطناعي، وقد تكون غير دقيقة أو ناقصة، ولا تُعدّ فتوى. وأنت مسؤول عن القرارات التي تتخذها بناءً عليها. يمكنك الإبلاغ عن أي إجابة غير لائقة من داخل التطبيق."
+        },
+        {
+          "title": "6. الملكية الفكرية",
+          "body": "تصميم التطبيق وشعاره وبرمجياته ومحتواه الأصلي ملك لنا ومحمية بحقوق النشر، ولا يجوز نسخها أو توزيعها أو إنشاء أعمال مشتقة منها دون إذن. أما محتوى الأطراف الثالثة فهو ملك لأصحابه."
+        },
+        {
+          "title": "7. الرسوم",
+          "body": "التطبيق مجاني حاليًا ولا يتضمن مشتريات داخلية. وإذا أُضيفت ميزة مدفوعة مستقبلًا فستُعالَج المدفوعات عبر App Store، وسيُعلن عن شروطها مسبقًا."
+        },
+        {
+          "title": "8. إنهاء الخدمة",
+          "body": "نحتفظ بحق تعليق حسابك أو إنهائه إذا خالفت هذه الشروط. ويمكنك أنت أيضًا حذف حسابك في أي وقت من داخل التطبيق."
+        },
+        {
+          "title": "9. إخلاء المسؤولية وحدودها",
+          "body": "يُقدَّم التطبيق «كما هو». وفي الحدود التي يسمح بها القانون المعمول به، لا نضمن أن يعمل التطبيق دون انقطاع أو أخطاء، ولا نتحمل المسؤولية عن الأضرار غير المباشرة."
+        },
+        {
+          "title": "10. القانون الواجب التطبيق",
+          "body": "تخضع هذه الشروط لقوانين جمهورية تركيا وتُفسَّر وفقًا لها."
+        },
+        {
+          "title": "11. التغييرات والتواصل",
+          "body": "قد نحدّث هذه الشروط من حين لآخر، ويُعدّ استمرارك في استخدام التطبيق بعد التحديث قبولًا للشروط الجديدة. للتواصل: onuryilm.41@gmail.com"
+        }
+      ]
+    }
+  }
 };

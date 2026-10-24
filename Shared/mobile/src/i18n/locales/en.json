@@ -674,6 +674,7 @@
     "changedBody": "Prayer times are currently shown for {{current}}. Update to {{next}}?",
     "changedTitle": "Your location seems to have changed",
     "chooseState": "Choose a province",
+    "currentFallback": "your current location",
     "keep": "Keep",
     "loadingDistricts": "Loading districts...",
     "noDistricts": "No districts found for this province",
