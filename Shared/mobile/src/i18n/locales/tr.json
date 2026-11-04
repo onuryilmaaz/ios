@@ -649,7 +649,10 @@
       "a11y": "Son 12 ayda {{prayers}} vakit kılındı, {{perfect}} gün beş vakit tamamlandı",
       "ozelGun": "Özel gün",
       "less": "Az",
-      "more": "Çok"
+      "more": "Çok",
+      "nafile": "Nafile",
+      "nafileSummary": "{{rakaat}} rekat nafile",
+      "nafileA11y": "{{rakaat}} rekat nafile namaz kılındı"
     },
     "hatim": {
       "title": "{{n}}. hatim",
@@ -682,7 +685,12 @@
     "update": "Güncelle",
     "updated": "Güncellendi",
     "updatedBody": "Namaz vakitleri {{name}} için ayarlandı",
-    "updatedTitle": "Konum güncellendi"
+    "updatedTitle": "Konum güncellendi",
+    "chooseCountry": "Ülke Seçin",
+    "chooseRegion": "Bölge Seçin",
+    "searchCountry": "Ülke ara",
+    "noResults": "Sonuç bulunamadı",
+    "changeCountry": "Ülkeyi değiştir"
   },
   "mushaf": {
     "chooseSurah": "Sure seç",
@@ -755,7 +763,9 @@
     "testSubtitle": "Günün İlhamı",
     "testTitle": "Test Bildirimi 🔔",
     "verseRef": "{{surah}}, {{verse}}. Ayet",
-    "verseTitle": "📖 İlahi Kelam"
+    "verseTitle": "📖 İlahi Kelam",
+    "comebackTitle": "Bildirimlerin aksamasın",
+    "comebackBody": "Birkaç gündür uygulamayı açmadın. Namaz vakti ve ayet/hadis bildirimlerinin devam etmesi için uygulamayı bir kez açman yeterli."
   },
   "offline": {
     "backOnline": "Bağlantı geri geldi",

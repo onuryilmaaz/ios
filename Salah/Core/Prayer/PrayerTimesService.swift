@@ -68,6 +68,11 @@ enum PrayerTimesService {
     return nil
   }
 
+  /// Önbellekteki bugün ve sonraki günler (ağa çıkmaz; widget'lar için).
+  static func cachedDays(districtId: String) -> [PrayerDay] {
+    fromToday(readCache(districtId)?.days ?? [])
+  }
+
   static func today(districtId: String) async -> PrayerDay? {
     let days = await upcomingDays(districtId: districtId)
     let today = Calendar.current.startOfDay(for: Date())

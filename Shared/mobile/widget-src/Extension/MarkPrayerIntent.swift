@@ -16,12 +16,17 @@ struct MarkPrayerIntent: AppIntent {
 
     let backendId = widgetToBackendPrayerID[prayerId] ?? prayerId
 
-    // Detect kaza: check if prayer window has expired
-    var isKaza = false
-    if let raw = ud.data(forKey: "salah_widget_data"),
-       let widget = try? JSONDecoder().decode(WidgetData.self, from: raw) {
-      isKaza = prayerIsExpired(prayerId: prayerId, widget: widget)
+    // Vakti girmemiş namaz işaretlenmez (widget eski çizimde kalmış olabilir; uygulamadaki kural).
+    guard let widget = WidgetData.load(),
+          let info = allPrayers.first(where: { $0.id == prayerId }),
+          isPrayerAvailable(info, widget: widget)
+    else {
+      WidgetCenter.shared.reloadAllTimelines()
+      return .result()
     }
+
+    // Detect kaza: check if prayer window has expired
+    let isKaza = prayerIsExpired(prayerId: prayerId, widget: widget)
 
     // Optimistic local update so widget refreshes instantly
     applyLocalUpdate(ud: ud, backendId: backendId, isKaza: isKaza)

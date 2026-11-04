@@ -44,6 +44,7 @@ struct SalahApp: App {
             }
           } else if phase != .active {
             AdhanPlayer.shared.deactivate()
+            if phase == .background { BackgroundRefresh.schedule() }
           }
         }
         .onChange(of: AuthStore.shared.isAuthenticated) { _, authenticated in
@@ -66,6 +67,9 @@ struct SalahApp: App {
         .onChange(of: NotificationStore.shared.preferences.muteUntil) {
           if NotificationStore.shared.preferences.isMuted() { AdhanPlayer.shared.stop() }
         }
+    }
+    .backgroundTask(.appRefresh(BackgroundRefresh.identifier)) {
+      await BackgroundRefresh.run()
     }
   }
 }

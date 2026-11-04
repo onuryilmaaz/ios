@@ -56,7 +56,9 @@ enum StorePreview {
         quranPages: n * 3, activities: ["quran": n, "nafile": 3, "sadaka": 1], currentStreak: 12, highestStreak: 30)
     }
     InsightsStore.shared.preview(
-      history: .init(from: days.first?.date ?? todayKey, to: todayKey, days: days, ozelGun: Array(ozel)),
+      history: .init(
+        from: days.first?.date ?? todayKey, to: todayKey, days: days, ozelGun: Array(ozel),
+        nafile: days.enumerated().filter { $0.offset % 4 == 1 && $0.element.count > 0 }.map { .init(date: $0.element.date, count: 1, rakaat: 2) }),
       recaps: [
         "week": recap("week", weekStart, max(3, weekday)),
         "month": recap("month", monthStart, max(5, cal.component(.day, from: today))),

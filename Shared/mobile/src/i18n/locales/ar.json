@@ -649,7 +649,10 @@
       "a11y": "{{prayers}} صلاة في آخر 12 شهرًا، و{{perfect}} يومًا بالصلوات الخمس",
       "ozelGun": "أيام خاصة",
       "less": "أقل",
-      "more": "أكثر"
+      "more": "أكثر",
+      "nafile": "نافلة",
+      "nafileSummary": "{{rakaat}} ركعة نافلة",
+      "nafileA11y": "صُلّيت {{rakaat}} ركعة نافلة"
     },
     "hatim": {
       "title": "الختمة {{n}}",
@@ -682,7 +685,12 @@
     "update": "تحديث",
     "updated": "تم التحديث",
     "updatedBody": "تم ضبط مواقيت الصلاة لـ {{name}}",
-    "updatedTitle": "تم تحديث الموقع"
+    "updatedTitle": "تم تحديث الموقع",
+    "chooseCountry": "اختر الدولة",
+    "chooseRegion": "اختر المنطقة",
+    "searchCountry": "ابحث عن دولة",
+    "noResults": "لا توجد نتائج",
+    "changeCountry": "تغيير الدولة"
   },
   "mushaf": {
     "chooseSurah": "اختر سورة",
@@ -755,7 +763,9 @@
     "testSubtitle": "إلهام اليوم",
     "testTitle": "إشعار تجريبي 🔔",
     "verseRef": "{{surah}}، الآية {{verse}}",
-    "verseTitle": "📖 كلام الله"
+    "verseTitle": "📖 كلام الله",
+    "comebackTitle": "لا تدع تنبيهاتك تتوقف",
+    "comebackBody": "لم تفتح التطبيق منذ بضعة أيام. افتحه مرة واحدة لتستمر تنبيهات أوقات الصلاة والآيات والأحاديث."
   },
   "offline": {
     "backOnline": "عاد الاتصال",

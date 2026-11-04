@@ -46,6 +46,12 @@ private func buildTrackerTimeline(theme: SalahTheme) -> Timeline<PrayerTrackerEn
     }
   }
 
+  // 04:00: sunucu yeni güne geçer, imsaka kadar işaretleme kapanır.
+  if let rollover = cal.date(bySettingHour: 4, minute: 0, second: 1, of: now), rollover > now {
+    entries.append(PrayerTrackerEntry(date: rollover, tracker: tracker, widget: widget, theme: theme))
+  }
+  entries.sort { $0.date < $1.date }
+
   let midnight = cal.startOfDay(for: cal.date(byAdding: .day, value: 1, to: now)!)
   return Timeline(entries: entries, policy: .after(midnight))
 }
@@ -66,7 +72,19 @@ let allPrayers: [PrayerInfo] = [
   PrayerInfo(id: "yatsi",  label: WL.prayer("yatsi"),  timeKey: "yatsi"),
 ]
 
-func isPrayerAvailable(_ p: PrayerInfo, widget: WidgetData?) -> Bool {
+/// Sunucunun namaz günü 04:00'te değişir (backend islamicDateStr). 04:00 ile imsak arasında yapılan işaret
+/// bugünün henüz girmemiş vaktine yazılırdı; bu arada hiçbir vakit işaretlenemez (uygulamadaki kural).
+let trackerDayRolloverMinutes = 4 * 60
+
+private func hhmmMinutes(_ s: String) -> Int? {
+  let parts = s.split(separator: ":").compactMap { Int($0) }
+  guard parts.count >= 2 else { return nil }
+  return parts[0] * 60 + parts[1]
+}
+
+/// Vakit girdi mi (işaretlenebilir mi)? Uygulamadaki PrayerTrackerCard.slotState ile aynı kural:
+/// gece yarısı–imsak arası önceki namaz günü (Sabah…Akşam kaza, Yatsı o anki vakit), yalnız 04:00'ten önce.
+func isPrayerAvailable(_ p: PrayerInfo, widget: WidgetData?, at date: Date = Date()) -> Bool {
   guard let w = widget else { return false }
   let timeStr: String
   switch p.timeKey {
@@ -77,12 +95,12 @@ func isPrayerAvailable(_ p: PrayerInfo, widget: WidgetData?) -> Bool {
   case "yatsi":  timeStr = w.yatsi
   default: return false
   }
-  guard !timeStr.isEmpty else { return false }
-  let parts = timeStr.split(separator: ":").compactMap { Int($0) }
-  guard parts.count >= 2 else { return false }
-  let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
-  let pMin = parts[0] * 60 + parts[1]
+  guard let pMin = hhmmMinutes(timeStr) else { return false }
+  let now = Calendar.current.dateComponents([.hour, .minute], from: date)
   let nowMin = (now.hour ?? 0) * 60 + (now.minute ?? 0)
+  if let imsakMin = hhmmMinutes(w.imsak), nowMin < imsakMin {
+    return nowMin < trackerDayRolloverMinutes
+  }
   return nowMin >= pMin
 }
 
@@ -179,18 +197,21 @@ struct PrayerCircleView: View {
   let theme: SalahTheme
 
   var body: some View {
-    if #available(iOS 17.0, *) {
-      // .disabled içeriği soldurduğu için kullanılmaz; dokunma doğrudan kapatılır.
-      Button(intent: MarkPrayerIntent(prayerId: prayer.id)) {
-        content
+    // Widget'ta allowsHitTesting dikkate alınmaz: işaretlenemeyen vakit düğme olarak hiç çizilmez,
+    // dokunma widget'ın kendi bağlantısına (uygulama) düşer.
+    if !isDone && isAvailable {
+      if #available(iOS 17.0, *) {
+        Button(intent: MarkPrayerIntent(prayerId: prayer.id)) {
+          content
+        }
+        .buttonStyle(.plain)
+      } else {
+        Link(destination: URL(string: "salah://home")!) {
+          content
+        }
       }
-      .buttonStyle(.plain)
-      .allowsHitTesting(!isDone && isAvailable)
     } else {
-      Link(destination: URL(string: "salah://home")!) {
-        content
-      }
-      .allowsHitTesting(!isDone && isAvailable)
+      content
     }
   }
 
@@ -266,7 +287,7 @@ struct PrayerTrackerMediumView: View {
           PrayerCircleView(
             prayer: prayer,
             isDone: s.isDone(prayer.id),
-            isAvailable: isPrayerAvailable(prayer, widget: entry.widget),
+            isAvailable: isPrayerAvailable(prayer, widget: entry.widget, at: entry.date),
             isKaza: s.isKaza(prayer.id),
             theme: t
           )

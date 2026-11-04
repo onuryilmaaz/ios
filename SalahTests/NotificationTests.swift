@@ -69,20 +69,51 @@ struct NotificationPlanTests {
     NotificationPlan.build(days: F.days, preferences: p, now: now, calendar: F.calendar, verses: verses, hadiths: hadiths)
   }
 
-  @Test func threeDaysFivePrayersAndNoSunrise() {
+  @Test func allCachedDaysUpToSevenFivePrayersAndNoSunrise() {
     let prayer = build().filter { $0.kind == .prayerTime }
-    #expect(prayer.count == 15)
+    #expect(prayer.count == 20)
     #expect(!prayer.contains { $0.prayerKey == "gunes" })
     #expect(!prayer.contains { $0.adhan })
     #expect(Set(prayer.map(\.id)).count == prayer.count)
-    #expect(prayer.allSatisfy { F.calendar.component(.day, from: $0.date) <= 21 })
+    #expect(prayer.allSatisfy { F.calendar.component(.day, from: $0.date) <= 22 })
+  }
+
+  @Test func comebackReminderThreeDaysLaterInDaytime() {
+    let cal = F.calendar
+    let lateNight = cal.date(from: DateComponents(year: 2026, month: 10, day: 19, hour: 23, minute: 30))!
+    let plan = NotificationPlan.build(days: F.days, preferences: F.enabled, now: lateNight, calendar: cal)
+    let comeback = plan.filter { $0.kind == .comeback }
+    #expect(comeback.count == 1)
+    #expect(comeback.first?.id == "comeback")
+    #expect(cal.component(.day, from: comeback[0].date) == 22 && cal.component(.hour, from: comeback[0].date) == 20)
+    #expect(!comeback[0].title.isEmpty && !comeback[0].body.isEmpty)
+    let early = cal.date(from: DateComponents(year: 2026, month: 10, day: 19, hour: 3))!
+    #expect(cal.component(.hour, from: NotificationPlan.comebackDate(after: early, calendar: cal)!) == 10)
+    var off = F.enabled
+    off.inspiration = false
+    for key in off.prayerEnabled.keys { off.prayerEnabled[key] = false }
+    #expect(!NotificationPlan.build(days: F.days, preferences: off, now: lateNight, calendar: cal).contains { $0.kind == .comeback })
+  }
+
+  @Test func sevenDayCapAndPendingLimitKeepNearestDays() {
+    let days = (19...30).map { PrayerDay(date: "2026-10-\($0)T00:00:00.000Z", times: F.times) }
+    var p = F.enabled
+    p.offsets = [0, 15]
+    let plan = NotificationPlan.build(days: days, preferences: p, now: F.date(), calendar: F.calendar)
+    let prayers = plan.filter { $0.kind == .prayerTime || $0.kind == .prayerReminder }
+    #expect(prayers.count <= NotificationPlan.prayerLimit)
+    // Bütçe + "uygulamayı aç" hatırlatması: iOS 64 bekleyen bildirim sınırının altında.
+    #expect(plan.count <= 64)
+    #expect(prayers.allSatisfy { F.calendar.component(.day, from: $0.date) < 19 + NotificationPlan.daysAhead })
+    // Bütçe dolunca yakın günler kalır: ilk günün sabahı planda.
+    #expect(prayers.contains { F.calendar.component(.day, from: $0.date) == 19 })
   }
 
   @Test func adhanOnlyOnPrayersTheUserEnabled() {
     var p = F.enabled
     p.adhanEnabled["ogle"] = true
     let prayer = build(p).filter { $0.kind == .prayerTime }
-    #expect(prayer.filter(\.adhan).map(\.prayerKey) == ["ogle", "ogle", "ogle"])
+    #expect(prayer.filter(\.adhan).map(\.prayerKey) == ["ogle", "ogle", "ogle", "ogle"])  // fixture: 4 gün
     #expect(SystemNotificationDelivery.content(prayer.first { !$0.adhan }!).sound == .default)
   }
 

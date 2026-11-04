@@ -153,6 +153,8 @@ struct RecapCard: View {
 /// Son 12 ayın namaz ısı haritası. RN: components/insights/HeatmapCard.tsx
 struct HeatmapCard: View {
   @Environment(\.tokens) private var tokens
+  @State private var visible = false
+  @State private var scrolled = false
 
   private let cell: CGFloat = 12
   private let gap: CGFloat = 3
@@ -167,7 +169,7 @@ struct HeatmapCard: View {
         Text(t("insights.heatmap.title"))
           .font(.system(size: 17, weight: .semibold))
           .foregroundStyle(tokens.textPrimary)
-        Text(t("insights.heatmap.summary", ["prayers": summary.prayers.formatted(.number.locale(Localizer.shared.locale)), "perfect": summary.perfectDays]))
+        Text(summaryText(summary))
           .font(.system(size: 13))
           .foregroundStyle(tokens.textSecondary)
           .tabularNumbers()
@@ -207,27 +209,47 @@ struct HeatmapCard: View {
                     VStack(spacing: gap) {
                       ForEach(col.cells, id: \.date) { c in
                         RoundedRectangle(cornerRadius: 3).fill(color(c)).frame(width: cell, height: cell)
+                          .overlay {
+                            // İbadet Defteri'ne nafile namaz girilen gün: ortada altın nokta.
+                            if c.nafile > 0 && !c.future { Circle().fill(nafileColor).frame(width: 4, height: 4) }
+                          }
                       }
                     }
-                    .id(i)
+                    // Ay etiketleri de aynı sıra numaralarını kullanıyor: kaydırma hedefi ayrı kimlikle.
+                    .id("week\(i)")
                   }
                 }
               }
+              // Son sütundaki ay etiketi ("Kas") kesilmesin.
+              .padding(.trailing, 14)
             }
             .scrollIndicators(.hidden)
-            .defaultScrollAnchor(.trailing)
-            .onAppear { proxy.scrollTo(columns.count - 1, anchor: .trailing) }
+            // Ekran dışındaki kaydırma uygulanmıyor: kart görünür olunca, geçmişten bugünün ayına yumuşakça kayar.
+            .onGeometryChange(for: Bool.self) { geo in
+              let f = geo.frame(in: .global)
+              return f.maxY > 0 && f.minY < (UIScreen.main.bounds.height - 40)
+            } action: { visible = $0 }
+            .task(id: visible ? history.to : "") {
+              guard visible, !scrolled else { return }
+              try? await Task.sleep(for: .milliseconds(250))
+              scrolled = true
+              withAnimation(.smooth(duration: 1.1)) { proxy.scrollTo("week\(columns.count - 1)", anchor: .trailing) }
+            }
           }
         }
         .padding(.top, 14)
         .environment(\.layoutDirection, .leftToRight)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(t("insights.heatmap.a11y", ["prayers": summary.prayers, "perfect": summary.perfectDays]))
+        .accessibilityLabel(
+          t("insights.heatmap.a11y", ["prayers": summary.prayers, "perfect": summary.perfectDays])
+            + (summary.nafileRakaat > 0 ? ". " + t("insights.heatmap.nafileA11y", ["rakaat": summary.nafileRakaat]) : ""))
 
         HStack {
           HStack(spacing: 5.25) {
             RoundedRectangle(cornerRadius: 3).fill(ozelColor).frame(width: 8.75, height: 8.75)
             Text(t("insights.heatmap.ozelGun")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary)
+            Circle().fill(nafileColor).frame(width: 5.25, height: 5.25).padding(.leading, 5.25)
+            Text(t("insights.heatmap.nafile")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary)
           }
           Spacer()
           HStack(spacing: 3.5) {
@@ -241,6 +263,16 @@ struct HeatmapCard: View {
         .padding(.top, 14)
       }
     }
+  }
+
+  private var nafileColor: Color { tokens.isDark ? Gold.s300 : Gold.s500 }
+
+  /// "Son 12 ay · 889 vakit · 177 tam gün · 120 rekat nafile"
+  private func summaryText(_ s: (prayers: Int, perfectDays: Int, nafileRakaat: Int)) -> String {
+    let locale = Localizer.shared.locale
+    let base = t("insights.heatmap.summary", ["prayers": s.prayers.formatted(.number.locale(locale)), "perfect": s.perfectDays])
+    guard s.nafileRakaat > 0 else { return base }
+    return base + " · " + t("insights.heatmap.nafileSummary", ["rakaat": s.nafileRakaat.formatted(.number.locale(locale))])
   }
 
   private var ozelColor: Color { tokens.isDark ? Gold.s700.opacity(0.3) : Gold.s100 }
@@ -350,3 +382,4 @@ struct ProgressBar: View {
     .clipShape(.capsule)
   }
 }
+

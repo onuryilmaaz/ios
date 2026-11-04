@@ -16,7 +16,7 @@ settings:
     SWIFT_VERSION: "6.0"
     SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
     SWIFT_APPROACHABLE_CONCURRENCY: YES
-    MARKETING_VERSION: "1.1.0"
+    MARKETING_VERSION: "1.1.1"
     CURRENT_PROJECT_VERSION: "1"
     SALAH_API_URL: https://api.onur-yilmaz.com/salah
     # Google Cloud (proje SALAH) > Google Auth Platform > Clients, tür iOS. Bir iOS istemcisi
@@ -49,6 +49,8 @@ targets:
       - path: Shared/mobile/src/constants/states.json
         buildPhase: resources
       - path: Shared/mobile/src/constants/all-districts.json
+        buildPhase: resources
+      - path: Shared/mobile/src/constants/world-locations.json
         buildPhase: resources
       - path: Shared/mobile/src/data/surahNamesEn.json
         buildPhase: resources
@@ -133,7 +135,9 @@ targets:
         UIStatusBarStyle: UIStatusBarStyleLightContent
         NSAlarmKitUsageDescription: Namaz, teheccüd ve sahur alarmlarınızı sessiz modda da çalabilmek için alarm izni gerekir.
         NSLocationWhenInUseUsageDescription: Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.
-        UIBackgroundModes: [audio]
+        UIBackgroundModes: [audio, fetch]
+        # Arka plan yenilemesi (Salah/App/BackgroundRefresh.swift).
+        BGTaskSchedulerPermittedIdentifiers: [com.onur6541.salah.refresh]
         NSSupportsLiveActivities: true
         NSSupportsLiveActivitiesFrequentUpdates: true
         # Delege Mushaf dışındaki ekranları dikey tutar.

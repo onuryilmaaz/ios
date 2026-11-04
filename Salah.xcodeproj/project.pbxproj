@@ -51,9 +51,11 @@
 		382A4628A56013B55911C231 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A565E1D24819DD81C2748 /* Haptics.swift */; };
 		3891AAB8D3DDBE27A9DAA8C1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C70ECCA6B653D08FC629B9 /* TokenStore.swift */; };
 		3936FDC06A59E1061997584C /* NotificationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDDE5FF7F67D3A12F3214A /* NotificationViews.swift */; };
+		394D5DE07AB8487817FD720C /* BackgroundRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */; };
 		39B15143E39D6BE5B73EF8FE /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406F2D9E60D30E62307EA7C /* SVGPath.swift */; };
 		3A3478D73FCEEAF9E32CA8C5 /* legal.generated.json in Resources */ = {isa = PBXBuildFile; fileRef = 417C2019B1DA79F10BD7F8DE /* legal.generated.json */; };
 		3B2F9CF60AD6B18D2792EC6A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D91E1E832FC49D42D923FF /* LoginView.swift */; };
+		3D68754355817BE3E5342F8A /* world-locations.json in Resources */ = {isa = PBXBuildFile; fileRef = EA4CD44E830A43AFBCCD1E75 /* world-locations.json */; };
 		3DC971D64A9F1E6E22FA63D1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DF420CB07144FD8978A52E /* WelcomeView.swift */; };
 		3FC9A40D8F540B7B0111C965 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344792F63AD9E0076411C6BD /* Badge.swift */; };
 		40AF1D84A401D10543E4CD26 /* AccountFormViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BC39DFFA4BAFA068081944 /* AccountFormViews.swift */; };
@@ -376,6 +378,7 @@
 		8A6E8052CFB84E297FAB7A42 /* HijriCalendarPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HijriCalendarPreview.json; sourceTree = "<group>"; };
 		8AA388482C2FBF20A8AFB0BC /* AdminPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPreview.swift; sourceTree = "<group>"; };
 		8AA70FBAA735905226DB3324 /* SitePongLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitePongLiveActivityWidget.swift; sourceTree = "<group>"; };
+		8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRefresh.swift; sourceTree = "<group>"; };
 		8CFD6C7662F80AEA92F24822 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		8EB233DFAB6DFA9B9B7C9134 /* tone_soft.caf */ = {isa = PBXFileReference; path = tone_soft.caf; sourceTree = "<group>"; };
 		8EBFCEC669D095B620D55326 /* NotificationDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelivery.swift; sourceTree = "<group>"; };
@@ -453,6 +456,7 @@
 		E3E987422567A969490CA49A /* OzelGunStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunStore.swift; sourceTree = "<group>"; };
 		E69A7BC9D6A5123AA117379B /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		E77470DBA965A6BF6E127F30 /* LocationWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWatch.swift; sourceTree = "<group>"; };
+		EA4CD44E830A43AFBCCD1E75 /* world-locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-locations.json"; sourceTree = "<group>"; };
 		EACD2857084E2F73AADF4650 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EC66533845486FCFA4E09393 /* QuranPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranPreview.swift; sourceTree = "<group>"; };
 		ECA7B3782CB0ECDC496A548E /* ForbiddenTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForbiddenTimes.swift; sourceTree = "<group>"; };
@@ -644,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA52A173C357E93302F90E2 /* AppLinks.swift */,
+				8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */,
 				72B2B4F437243809E1B0912F /* DebugSession.swift */,
 				36264E6E136C8B18AA92A6A8 /* RootView.swift */,
 				5CCDC01270443ADA8787FCBF /* SalahApp.swift */,
@@ -686,6 +691,7 @@
 				32AA8A562E388B3E9E51D654 /* all-districts.json */,
 				547C50097DE9A2FE40A0B83A /* prayerIcons.json */,
 				D1E668511777EBAFC01AD289 /* states.json */,
+				EA4CD44E830A43AFBCCD1E75 /* world-locations.json */,
 			);
 			path = constants;
 			sourceTree = "<group>";
@@ -1347,6 +1353,7 @@
 				BECA1FD7D05B227AB3548839 /* tone_beep.caf in Resources */,
 				28C810E162362E55FAEDA48F /* tone_chime.caf in Resources */,
 				1808BFDA65E21250208CA068 /* tone_soft.caf in Resources */,
+				3D68754355817BE3E5342F8A /* world-locations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1428,6 +1435,7 @@
 				A8E8AD7E97BCA46172CCD96C /* AuthComponents.swift in Sources */,
 				ED4F740BB9F2B50E9CB9D0CC /* AuthFlow.swift in Sources */,
 				BC03D825BC9B580878798195 /* AuthStore.swift in Sources */,
+				394D5DE07AB8487817FD720C /* BackgroundRefresh.swift in Sources */,
 				3FC9A40D8F540B7B0111C965 /* Badge.swift in Sources */,
 				C1754B50937DCF8A1C659314 /* BrandMarks.swift in Sources */,
 				2B99C87CD55E7051A241285F /* Card.swift in Sources */,
@@ -1749,7 +1757,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GOOGLE_IOS_CLIENT_ID = "321984727488-chpfrev1ss25t5o40dfg6ulp1q7a17lf.apps.googleusercontent.com";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1881,7 +1889,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GOOGLE_IOS_CLIENT_ID = "321984727488-chpfrev1ss25t5o40dfg6ulp1q7a17lf.apps.googleusercontent.com";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

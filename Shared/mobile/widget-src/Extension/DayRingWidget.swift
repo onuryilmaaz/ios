@@ -29,7 +29,9 @@ struct DayRingProvider: TimelineProvider {
     let now = Date()
     let start = now.addingTimeInterval(-now.timeIntervalSince1970.truncatingRemainder(dividingBy: 900))
     let entries = (0..<48).map { i in
-      DayRingEntry(date: i == 0 ? now : start.addingTimeInterval(Double(i) * 900), data: data, tracker: tracker)
+      let date = i == 0 ? now : start.addingTimeInterval(Double(i) * 900)
+      // Gece yarısını aşan karelerde ertesi günün vakitleri.
+      return DayRingEntry(date: date, data: data?.resolved(for: date), tracker: tracker)
     }
     completion(Timeline(entries: entries, policy: .atEnd))
   }

@@ -13,14 +13,37 @@ struct WidgetData: Codable {
   var ikindi: String
   var aksam: String
   var yatsi: String
+  /// Önümüzdeki günlerin vakitleri ("yyyy-MM-dd"); uygulama günlerce açılmasa da widget o günün
+  /// saatlerini kullanır. Eski sürümün yazdığı veride yok.
+  var days: [DayTimes]?
 
-  static func load() -> WidgetData? {
+  struct DayTimes: Codable {
+    var date: String
+    var imsak: String
+    var gunes: String
+    var ogle: String
+    var ikindi: String
+    var aksam: String
+    var yatsi: String
+  }
+
+  /// `date` gününün vakitleri; listede o gün yoksa son yazılan gün.
+  static func load(at date: Date = Date()) -> WidgetData? {
     guard
       let ud = UserDefaults(suiteName: appGroupID),
       let data = ud.data(forKey: "salah_widget_data"),
       let obj = try? JSONDecoder().decode(WidgetData.self, from: data)
     else { return nil }
-    return obj
+    return obj.resolved(for: date)
+  }
+
+  func resolved(for date: Date) -> WidgetData {
+    let key = dayKey(date)
+    guard let d = days?.first(where: { $0.date == key }) else { return self }
+    var w = self
+    w.imsak = d.imsak; w.gunes = d.gunes; w.ogle = d.ogle
+    w.ikindi = d.ikindi; w.aksam = d.aksam; w.yatsi = d.yatsi
+    return w
   }
 }
 

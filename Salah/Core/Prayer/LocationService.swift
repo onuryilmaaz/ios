@@ -60,11 +60,30 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
   /// Koordinat → il ve merkez ilçesi; bulunamazsa nil.
   func resolve(_ location: CLLocation) async -> (state: Locations.State, district: Locations.District)? {
     let placemarks = try? await CLGeocoder().reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "tr_TR"))
+    // Yurtdışı: Diyanet'in o ülkedeki şehir/eyalet listesinden.
+    if let pm = placemarks?.first, let iso = pm.isoCountryCode, iso != "TR" {
+      // Diyanet adları yerel yazımla ("Munchen", "Bayern"): ülkenin kendi diliyle de çözümlenir.
+      var marks = [pm]
+      if let native = Self.nativeLocale(iso),
+        let local = try? await CLGeocoder().reverseGeocodeLocation(location, preferredLocale: native).first
+      {
+        marks.insert(local, at: 0)
+      }
+      let names = marks.flatMap { [$0.locality, $0.subAdministrativeArea, $0.administrativeArea] }.compactMap { $0 }
+      return Locations.foreignMatch(iso: iso, names: names)
+    }
     let region = placemarks?.first?.administrativeArea ?? placemarks?.first?.locality ?? ""
     guard let state = Locations.state(matching: region), let district = Locations.defaultDistrict(ofState: state._id) else {
       return nil
     }
     return (state, district)
+  }
+
+  /// Ülkenin yerel dili (DE → de_DE); bulunamazsa ülkedeki ilk dil.
+  private static func nativeLocale(_ iso: String) -> Locale? {
+    let ids = Locale.availableIdentifiers.filter { $0.hasSuffix("_\(iso)") }.sorted()
+    let id = ids.first { $0 == "\(iso.lowercased())_\(iso)" } ?? ids.first { !$0.hasPrefix("en_") } ?? ids.first
+    return id.map(Locale.init(identifier:))
   }
 
   nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

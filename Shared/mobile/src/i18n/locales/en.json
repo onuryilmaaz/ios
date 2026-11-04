@@ -649,7 +649,10 @@
       "a11y": "{{prayers}} prayers in the last 12 months, {{perfect}} days with all five prayers",
       "ozelGun": "Special days",
       "less": "Less",
-      "more": "More"
+      "more": "More",
+      "nafile": "Voluntary",
+      "nafileSummary": "{{rakaat}} voluntary rakats",
+      "nafileA11y": "{{rakaat}} rakats of voluntary prayer"
     },
     "hatim": {
       "title": "Khatm {{n}}",
@@ -682,7 +685,12 @@
     "update": "Update",
     "updated": "Updated",
     "updatedBody": "Prayer times set for {{name}}",
-    "updatedTitle": "Location updated"
+    "updatedTitle": "Location updated",
+    "chooseCountry": "Choose Country",
+    "chooseRegion": "Choose Region",
+    "searchCountry": "Search country",
+    "noResults": "No results",
+    "changeCountry": "Change country"
   },
   "mushaf": {
     "chooseSurah": "Choose surah",
@@ -755,7 +763,9 @@
     "testSubtitle": "Daily Inspiration",
     "testTitle": "Test Notification 🔔",
     "verseRef": "{{surah}}, verse {{verse}}",
-    "verseTitle": "📖 Divine Word"
+    "verseTitle": "📖 Divine Word",
+    "comebackTitle": "Keep your reminders coming",
+    "comebackBody": "You haven't opened the app for a few days. Open it once to keep prayer time and verse/hadith notifications coming."
   },
   "offline": {
     "backOnline": "Back online",

@@ -15,11 +15,20 @@ final class InsightsStore {
     var kaza: Int?
   }
 
+  /// İbadet Defteri'ne girilen nafile namazlar (gün başına kayıt ve toplam rekat).
+  struct NafileDay: Codable, Equatable, Sendable {
+    var date: String
+    var count: Int
+    var rakaat: Int
+  }
+
   struct History: Codable, Equatable, Sendable {
     var from: String
     var to: String
     var days: [HistoryDay]
     var ozelGun: [String]
+    /// Eski sunucuda yok.
+    var nafile: [NafileDay]?
   }
 
   struct Recap: Codable, Equatable, Sendable {
@@ -123,6 +132,8 @@ enum Heatmap {
     let ozelGun: Bool
     /// Bugünden sonraki (son sütunun boş kalan) günler.
     let future: Bool
+    /// O gün kaydedilen nafile namaz sayısı.
+    var nafile: Int = 0
   }
 
   struct Column: Equatable {
@@ -137,6 +148,7 @@ enum Heatmap {
     let cal = Calendar.current
     let counts = Dictionary(history.days.map { ($0.date, $0.count) }, uniquingKeysWith: { a, _ in a })
     let ozel = Set(history.ozelGun)
+    let nafile = Dictionary((history.nafile ?? []).map { ($0.date, $0.count) }, uniquingKeysWith: { a, _ in a })
     guard let today = parse(history.to) else { return [] }
     let mondayOffset = (cal.component(.weekday, from: today) + 5) % 7
     let start = cal.date(byAdding: .day, value: -mondayOffset - (weeks - 1) * 7, to: today)!
@@ -147,7 +159,7 @@ enum Heatmap {
       let cells = (0..<7).map { r -> Cell in
         let d = cal.date(byAdding: .day, value: w * 7 + r, to: start)!
         let key = localDateString(d)
-        return Cell(date: key, count: counts[key] ?? 0, ozelGun: ozel.contains(key), future: d > today)
+        return Cell(date: key, count: counts[key] ?? 0, ozelGun: ozel.contains(key), future: d > today, nafile: nafile[key] ?? 0)
       }
       let month = cal.component(.month, from: parse(cells[0].date)!) - 1
       columns.append(Column(cells: cells, monthStart: month != prevMonth && w > 0 ? month : nil))
@@ -161,8 +173,9 @@ enum Heatmap {
     count >= 5 ? 3 : count >= 3 ? 2 : count >= 1 ? 1 : 0
   }
 
-  static func summarize(_ history: InsightsStore.History) -> (prayers: Int, perfectDays: Int) {
-    (history.days.reduce(0) { $0 + $1.count }, history.days.filter { $0.count >= 5 }.count)
+  static func summarize(_ history: InsightsStore.History) -> (prayers: Int, perfectDays: Int, nafileRakaat: Int) {
+    (history.days.reduce(0) { $0 + $1.count }, history.days.filter { $0.count >= 5 }.count,
+     (history.nafile ?? []).reduce(0) { $0 + $1.rakaat })
   }
 
   /// "YYYY-MM-DD" → yerel gün.

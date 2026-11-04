@@ -42,6 +42,12 @@ enum WidgetBridge {
         "prayerName": window.prayerName, "prayerTime": formatHHMM(window.end), "nextPrayer": window.nextPrayer,
         "endTimeMs": window.end.timeIntervalSince1970 * 1000,
         "imsak": times.imsak, "gunes": times.gunes, "ogle": times.ogle, "ikindi": times.ikindi, "aksam": times.aksam, "yatsi": times.yatsi,
+        // Uygulama günlerce açılmasa da widget'lar o günün saatlerini kullansın (önbellekteki aylık veri).
+        "days": PrayerTimesService.cachedDays(districtId: Locations.selectedDistrictId).prefix(31).compactMap { d -> [String: String]? in
+          guard let day = d.localDay else { return nil }
+          return ["date": localDateString(day), "imsak": d.times.imsak, "gunes": d.times.gunes, "ogle": d.times.ogle,
+                  "ikindi": d.times.ikindi, "aksam": d.times.aksam, "yatsi": d.times.yatsi]
+        },
       ], key: "salah_widget_data", reload: "SalahPrayerTimesWidget")
   }
 

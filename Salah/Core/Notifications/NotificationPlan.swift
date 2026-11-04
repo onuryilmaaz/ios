@@ -1,7 +1,7 @@
 import Foundation
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder" }
   var id: String
   var date: Date
   var kind: Kind
@@ -32,7 +32,8 @@ struct NotificationInspiration: Equatable, Sendable {
 enum NotificationPlan {
   static let budget = 62
   static let prayerLimit = 44
-  static let daysAhead = 3
+  /// Uygulama açılmasa da bu kadar gün kurulur; prayerLimit (64 bekleyen bildirim sınırı) yakın günlerden başlayarak keser.
+  static let daysAhead = 7
   static let throttle: TimeInterval = 48 * 3600
 
   static func shouldRefresh(last: Double?, now: Date, force: Bool, hasPending: Bool) -> Bool {
@@ -115,7 +116,24 @@ enum NotificationPlan {
         }
       }
     }
+    // Uygulama 3 gün açılmazsa (arka plan yenilemesi de çalışmadıysa) bildirimler tükenmeden "aç" hatırlatması.
+    // Her planlamada ileri kayar; bütçe 62 olduğundan 64 bekleyen bildirim sınırı aşılmaz.
+    if p.inspiration || p.prayerEnabled.values.contains(true), let date = comebackDate(after: cutoff, calendar: calendar) {
+      plan.append(.init(id: "comeback", date: date, kind: .comeback,
+                        title: t("notif.comebackTitle"), body: t("notif.comebackBody")))
+    }
     return plan
+  }
+
+  static let comebackAfter: TimeInterval = 3 * 24 * 3600
+
+  /// 3 gün sonrası; gece rahatsız etmesin diye 10:00–20:00 aralığına çekilir.
+  static func comebackDate(after start: Date, calendar: Calendar = .current) -> Date? {
+    let target = start.addingTimeInterval(comebackAfter)
+    let hour = calendar.component(.hour, from: target)
+    if hour < 10 { return calendar.date(bySettingHour: 10, minute: 0, second: 0, of: target) }
+    if hour >= 20 { return calendar.date(bySettingHour: 20, minute: 0, second: 0, of: target) }
+    return target
   }
 
   static func inspirationSlots(now: Date, calendar: Calendar = .current) -> [Date] {

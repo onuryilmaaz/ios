@@ -185,6 +185,9 @@ struct PrayerTrackerCard: View {
     }
     // Gece yarısı ile imsak arası hâlâ önceki namaz günü.
     let inIslamicBridge = nowMin < minutes(times.imsak)
+    // 04:00'ten sonra sunucu yeni güne geçmiş olur (islamicDateString): imsaka kadar yapılan işaret
+    // bugünün henüz girmemiş vaktine yazılırdı. Bu arada hiçbir vakit işaretlenemez.
+    if inIslamicBridge && nowMin >= 4 * 60 { return .upcoming }
     let start = minutes(times[prayer.timeKey] ?? "00:00")
 
     if prayer.id == "isha" {
