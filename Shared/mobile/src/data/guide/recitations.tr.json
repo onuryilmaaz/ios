@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "status": "draft",
+  "note": "Namaz rehberinde geçen dua ve zikirler. Arapça metin, Türkçe okunuş ve Türkçe anlam. Sureler Kur'an modülüne surah numarasıyla bağlanır (quranSurah). Kaynak: Diyanet namaz portalı Sureler-Dualar bölümü (namaz.diyanet.gov.tr), Arapça metinler standart imla ile yeniden yazıldı.",
+  "items": [
+    {
+      "id": "niyet",
+      "title": "Niyet",
+      "arabic": "",
+      "transliteration": "",
+      "meaning": "Niyet kalben yapılır. Dil ile de söylenmesi güzeldir, örneğin: Niyet ettim Allah rızası için bugünkü sabah namazının farzını kılmaya.",
+      "madhhab": null
+    },
+    {
+      "id": "tekbir",
+      "title": "Tekbir",
+      "arabic": "اَللّٰهُ اَكْبَرُ",
+      "transliteration": "Allâhu ekber",
+      "meaning": "Allah en büyüktür.",
+      "madhhab": null
+    },
+    {
+      "id": "subhaneke",
+      "title": "Sübhâneke",
+      "arabic": "سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالٰى جَدُّكَ وَجَلَّ ثَنَاؤُكَ وَلَا اِلٰهَ غَيْرُكَ",
+      "transliteration": "Sübhânekellâhümme ve bihamdik ve tebârekesmük ve teâlâ ceddük ve celle senâük ve lâ ilâhe ğayruk.",
+      "meaning": "Allah'ım! Seni her türlü noksanlıktan uzak tutar, sana hamd ederim. Adın mübarektir, şanın yücedir, övgün büyüktür. Senden başka ilah yoktur.",
+      "note": "\"ve celle senâük\" kısmı yalnız cenaze namazında okunur.",
+      "madhhab": ["hanefi", "hanbeli"]
+    },
+    {
+      "id": "iftitah-safii",
+      "title": "İftitah duası (Veccehtü)",
+      "arabic": "وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمٰوَاتِ وَالْاَرْضَ حَنِيفًا وَمَا اَنَا مِنَ الْمُشْرِكِينَ اِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلّٰهِ رَبِّ الْعَالَمِينَ لَا شَرِيكَ لَهُ وَبِذٰلِكَ اُمِرْتُ وَاَنَا مِنَ الْمُسْلِمِينَ",
+      "transliteration": "Vecchehtü vechiye lillezî fataras-semâvâti vel-arda hanîfen ve mâ ene minel-müşrikîn. İnne salâtî ve nüsükî ve mahyâye ve memâtî lillâhi rabbil-âlemîn. Lâ şerîke leh ve bi zâlike ümirtü ve ene minel-müslimîn.",
+      "meaning": "Hakka yönelen biri olarak yüzümü gökleri ve yeri yaratana döndürdüm, ben ortak koşanlardan değilim. Namazım, ibadetlerim, hayatım ve ölümüm âlemlerin Rabbi Allah içindir. O'nun ortağı yoktur. Bununla emrolundum ve ben müslümanlardanım.",
+      "madhhab": ["safii"]
+    },
+    {
+      "id": "euzu-besmele",
+      "title": "Eûzü-Besmele",
+      "arabic": "اَعُوذُ بِاللّٰهِ مِنَ الشَّيْطَانِ الرَّجِيمِ بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ",
+      "transliteration": "Eûzü billâhi mineş-şeytânir-racîm. Bismillâhir-rahmânir-rahîm.",
+      "meaning": "Kovulmuş şeytandan Allah'a sığınırım. Rahmân ve Rahîm olan Allah'ın adıyla.",
+      "madhhab": null
+    },
+    {
+      "id": "besmele",
+      "title": "Besmele",
+      "arabic": "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ",
+      "transliteration": "Bismillâhir-rahmânir-rahîm.",
+      "meaning": "Rahmân ve Rahîm olan Allah'ın adıyla.",
+      "madhhab": null
+    },
+    {
+      "id": "fatiha",
+      "title": "Fâtiha sûresi",
+      "quranSurah": 1,
+      "arabic": "اَلْحَمْدُ لِلّٰهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِينُ ۝ اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+      "transliteration": "Elhamdü lillâhi rabbil-âlemîn. Errahmânir-rahîm. Mâliki yevmid-dîn. İyyâke na'büdü ve iyyâke neste'în. İhdinas-sırâtal-müstakîm. Sırâtallezîne en'amte aleyhim ğayril-mağdûbi aleyhim ve leddâllîn.",
+      "meaning": "Hamd, âlemlerin Rabbi Allah'a mahsustur. O Rahmân'dır, Rahîm'dir. Din gününün sahibidir. Yalnız sana kulluk eder, yalnız senden yardım dileriz. Bizi doğru yola ilet; nimet verdiklerinin yoluna, gazaba uğrayanların ve sapanların yoluna değil.",
+      "madhhab": null
+    },
+    {
+      "id": "amin",
+      "title": "Âmin",
+      "arabic": "آمِينَ",
+      "transliteration": "Âmîn",
+      "meaning": "Allah'ım kabul eyle.",
+      "madhhab": null
+    },
+    {
+      "id": "zamm-sure",
+      "title": "Zamm-ı sûre",
+      "arabic": "",
+      "transliteration": "",
+      "meaning": "Fâtiha'dan sonra Kur'an'dan en az üç kısa âyet ya da buna denk bir uzun âyet okunur. Kısa sûreler: Fîl, Kureyş, Mâûn, Kevser, Kâfirûn, Nasr, Tebbet, İhlâs, Felak, Nâs.",
+      "quranSurahs": [105, 106, 107, 108, 109, 110, 111, 112, 113, 114],
+      "madhhab": null
+    },
+    {
+      "id": "ruku-tesbih",
+      "title": "Rükû tesbihi",
+      "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+      "transliteration": "Sübhâne rabbiyel-azîm",
+      "meaning": "Yüce Rabbim her türlü noksanlıktan uzaktır.",
+      "repeat": 3,
+      "madhhab": null
+    },
+    {
+      "id": "semiallah",
+      "title": "Rükûdan kalkarken",
+      "arabic": "سَمِعَ اللّٰهُ لِمَنْ حَمِدَهُ",
+      "transliteration": "Semiallâhu limen hamideh",
+      "meaning": "Allah, kendisine hamd edeni işitir.",
+      "madhhab": null
+    },
+    {
+      "id": "rabbena-lekel-hamd",
+      "title": "Doğrulunca",
+      "arabic": "رَبَّنَا لَكَ الْحَمْدُ",
+      "transliteration": "Rabbenâ lekel-hamd",
+      "meaning": "Rabbimiz, hamd sanadır.",
+      "madhhab": null
+    },
+    {
+      "id": "secde-tesbih",
+      "title": "Secde tesbihi",
+      "arabic": "سُبْحَانَ رَبِّيَ الْاَعْلٰى",
+      "transliteration": "Sübhâne rabbiyel-a'lâ",
+      "meaning": "Yüceler yücesi Rabbim her türlü noksanlıktan uzaktır.",
+      "repeat": 3,
+      "madhhab": null
+    },
+    {
+      "id": "tahiyyat",
+      "title": "Ettehiyyâtü",
+      "arabic": "اَلتَّحِيَّاتُ لِلّٰهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ اَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِينَ اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      "transliteration": "Ettehiyyâtü lillâhi ves-salavâtü vet-tayyibât. Esselâmü aleyke eyyühen-nebiyyü ve rahmetullâhi ve berekâtüh. Esselâmü aleynâ ve alâ ibâdillâhis-sâlihîn. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
+      "meaning": "Dil, beden ve malla yapılan bütün ibadetler Allah içindir. Ey Peygamber! Selam, Allah'ın rahmeti ve bereketi senin üzerine olsun. Selam bizim ve Allah'ın salih kullarının üzerine olsun. Şahitlik ederim ki Allah'tan başka ilah yoktur ve yine şahitlik ederim ki Muhammed O'nun kulu ve elçisidir.",
+      "madhhab": ["hanefi", "hanbeli"]
+    },
+    {
+      "id": "tahiyyat-safii",
+      "title": "Tahiyyât (Şâfiî)",
+      "arabic": "اَلتَّحِيَّاتُ الْمُبَارَكَاتُ الصَّلَوَاتُ الطَّيِّبَاتُ لِلّٰهِ اَلسَّلَامُ عَلَيْكَ اَيُّهَا النَّبِيُّ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ اَلسَّلَامُ عَلَيْنَا وَعَلٰى عِبَادِ اللّٰهِ الصَّالِحِينَ اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ وَاَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ",
+      "transliteration": "Ettehiyyâtül-mübârekâtüs-salavâtüt-tayyibâtü lillâh. Esselâmü aleyke eyyühen-nebiyyü ve rahmetullâhi ve berekâtüh. Esselâmü aleynâ ve alâ ibâdillâhis-sâlihîn. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden rasûlullâh.",
+      "meaning": "Bütün övgüler, bereketli şeyler, dil, beden ve malla yapılan ibadetler Allah içindir. Ey Peygamber! Selam, Allah'ın rahmeti ve bereketi senin üzerine olsun. Selam bizim ve Allah'ın salih kullarının üzerine olsun. Şahitlik ederim ki Allah'tan başka ilah yoktur ve Muhammed Allah'ın elçisidir.",
+      "madhhab": ["safii"]
+    },
+    {
+      "id": "salli",
+      "title": "Allâhümme salli",
+      "arabic": "اَللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَعَلٰى اٰلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلٰى اِبْرَاهِيمَ وَعَلٰى اٰلِ اِبْرَاهِيمَ اِنَّكَ حَمِيدٌ مَجِيدٌ",
+      "transliteration": "Allâhümme salli alâ Muhammedin ve alâ âli Muhammed. Kemâ salleyte alâ İbrâhîme ve alâ âli İbrâhîm. İnneke hamîdün mecîd.",
+      "meaning": "Allah'ım! İbrahim'e ve ailesine rahmet ettiğin gibi Muhammed'e ve ailesine de rahmet et. Şüphesiz sen övülmeye layıksın, şanı yücesin.",
+      "madhhab": null
+    },
+    {
+      "id": "barik",
+      "title": "Allâhümme bârik",
+      "arabic": "اَللّٰهُمَّ بَارِكْ عَلٰى مُحَمَّدٍ وَعَلٰى اٰلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلٰى اِبْرَاهِيمَ وَعَلٰى اٰلِ اِبْرَاهِيمَ اِنَّكَ حَمِيدٌ مَجِيدٌ",
+      "transliteration": "Allâhümme bârik alâ Muhammedin ve alâ âli Muhammed. Kemâ bârekte alâ İbrâhîme ve alâ âli İbrâhîm. İnneke hamîdün mecîd.",
+      "meaning": "Allah'ım! İbrahim'e ve ailesine bereket verdiğin gibi Muhammed'e ve ailesine de bereket ver. Şüphesiz sen övülmeye layıksın, şanı yücesin.",
+      "madhhab": null
+    },
+    {
+      "id": "rabbena-atina",
+      "title": "Rabbenâ âtinâ",
+      "arabic": "رَبَّنَا اٰتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْاٰخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "transliteration": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhirati haseneten ve kınâ azâben-nâr.",
+      "meaning": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+      "madhhab": null
+    },
+    {
+      "id": "rabbenagfirli",
+      "title": "Rabbenağfirlî",
+      "arabic": "رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+      "transliteration": "Rabbenağfirlî ve li-vâlideyye ve lil-mü'minîne yevme yekûmül-hisâb.",
+      "meaning": "Rabbimiz! Hesap gününde beni, anne babamı ve bütün müminleri bağışla.",
+      "madhhab": null
+    },
+    {
+      "id": "selam",
+      "title": "Selam",
+      "arabic": "اَلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ",
+      "transliteration": "Esselâmü aleyküm ve rahmetullâh",
+      "meaning": "Selam ve Allah'ın rahmeti üzerinize olsun.",
+      "madhhab": null
+    },
+    {
+      "id": "kunut-1",
+      "title": "Kunut duası 1",
+      "arabic": "اَللّٰهُمَّ اِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ وَنُؤْمِنُ بِكَ وَنَتُوبُ اِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ",
+      "transliteration": "Allâhümme innâ nesteînüke ve nestağfirüke ve nestehdîk. Ve nü'minü bike ve netûbü ileyk. Ve netevekkelü aleyke ve nüsnî aleykel-hayra küllehû neşkürüke ve lâ nekfürük. Ve nahleu ve netrükü men yefcürük.",
+      "meaning": "Allah'ım! Senden yardım, bağışlanma ve hidayet dileriz. Sana inanır, sana tövbe eder, sana güveniriz. Seni bütün hayırlarla överiz. Sana şükreder, nimetlerini inkâr etmeyiz. Sana karşı geleni bırakır, ondan uzak dururuz.",
+      "madhhab": ["hanefi"]
+    },
+    {
+      "id": "kunut-2",
+      "title": "Kunut duası 2",
+      "arabic": "اَللّٰهُمَّ اِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَاِلَيْكَ نَسْعٰى وَنَحْفِدُ نَرْجُو رَحْمَتَكَ وَنَخْشٰى عَذَابَكَ اِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
+      "transliteration": "Allâhümme iyyâke na'büdü ve leke nusallî ve nescüdü ve ileyke nes'â ve nahfidü nercû rahmeteke ve nahşâ azâbeke inne azâbeke bil-küffâri mülhık.",
+      "meaning": "Allah'ım! Yalnız sana kulluk eder, yalnız senin için namaz kılar ve secde ederiz. Sana koşar, sana yaklaştıracak şeylere çalışırız. Rahmetini umar, azabından korkarız. Şüphesiz azabın inkâr edenlere ulaşır.",
+      "madhhab": ["hanefi"]
+    },
+    {
+      "id": "kunut-safii",
+      "title": "Kunut duası (Şâfiî)",
+      "arabic": "اَللّٰهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ وَعَافِنِي فِيمَنْ عَافَيْتَ وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ وَبَارِكْ لِي فِيمَا اَعْطَيْتَ وَقِنِي شَرَّ مَا قَضَيْتَ فَاِنَّكَ تَقْضِي وَلَا يُقْضٰى عَلَيْكَ وَاِنَّهُ لَا يَذِلُّ مَنْ وَالَيْتَ وَلَا يَعِزُّ مَنْ عَادَيْتَ تَبَارَكْتَ رَبَّنَا وَتَعَالَيْتَ",
+      "transliteration": "Allâhümmehdinî fîmen hedeyt. Ve âfinî fîmen âfeyt. Ve tevellenî fîmen tevelleyt. Ve bârik lî fîmâ a'tayt. Ve kınî şerra mâ kadayt. Fe inneke takdî ve lâ yukdâ aleyk. Ve innehû lâ yezillü men vâleyt. Ve lâ yeizzü men âdeyt. Tebârekte rabbenâ ve teâleyt.",
+      "meaning": "Allah'ım! Hidayet verdiklerinle birlikte beni de hidayete erdir, afiyet verdiklerinle birlikte bana da afiyet ver, himaye ettiklerinle birlikte beni de himayene al. Verdiklerini bana bereketli kıl, takdir ettiğin şeylerin kötülüğünden beni koru. Hükmeden sensin, sana hükmedilmez. Senin dost edindiğin alçalmaz, düşman olduğun yücelmez. Rabbimiz, sen yüce ve mübareksin.",
+      "madhhab": ["safii", "hanbeli"]
+    },
+    {
+      "id": "zevaid-tekbir-ara",
+      "title": "Tekbirler arasında",
+      "arabic": "سُبْحَانَ اللّٰهِ الْعَظِيمِ",
+      "transliteration": "Sübhânallâhil-azîm",
+      "meaning": "Yüce Allah her türlü noksanlıktan uzaktır. Bayram namazında tekbirler arasında üç kez söyleyecek kadar beklenir.",
+      "madhhab": ["hanefi"]
+    },
+    {
+      "id": "teshrik",
+      "title": "Teşrik tekbiri",
+      "arabic": "اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ لَا اِلٰهَ اِلَّا اللّٰهُ وَاللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ وَلِلّٰهِ الْحَمْدُ",
+      "transliteration": "Allâhu ekber Allâhu ekber, lâ ilâhe illallâhu vallâhu ekber, Allâhu ekber ve lillâhil-hamd.",
+      "meaning": "Allah en büyüktür, Allah en büyüktür. Allah'tan başka ilah yoktur. Allah en büyüktür, Allah en büyüktür ve hamd Allah'a mahsustur.",
+      "madhhab": null
+    },
+    {
+      "id": "cenaze-duasi",
+      "title": "Cenaze duası",
+      "arabic": "اَللّٰهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا وَشَاهِدِنَا وَغَائِبِنَا وَصَغِيرِنَا وَكَبِيرِنَا وَذَكَرِنَا وَاُنْثَانَا اَللّٰهُمَّ مَنْ اَحْيَيْتَهُ مِنَّا فَاَحْيِهِ عَلَى الْاِسْلَامِ وَمَنْ تَوَفَّيْتَهُ مِنَّا فَتَوَفَّهُ عَلَى الْاِيمَانِ",
+      "transliteration": "Allâhümmağfir li hayyinâ ve meyyitinâ ve şâhidinâ ve ğâibinâ ve sağîrinâ ve kebîrinâ ve zekerinâ ve ünsânâ. Allâhümme men ahyeytehû minnâ fe ahyihî alel-islâm. Ve men teveffeytehû minnâ fe teveffehû alel-îmân.",
+      "meaning": "Allah'ım! Dirimizi ve ölümüzü, burada olanımızı ve olmayanımızı, küçüğümüzü ve büyüğümüzü, erkeğimizi ve kadınımızı bağışla. Allah'ım! Aramızdan yaşattığını İslam üzere yaşat, vefat ettirdiğini iman üzere vefat ettir.",
+      "note": "Bu duayı bilmeyen başka bir dua ya da Fâtiha'yı dua niyetiyle okuyabilir.",
+      "madhhab": null
+    },
+    {
+      "id": "kamet",
+      "title": "Kamet",
+      "arabic": "اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ ، اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ ، اَشْهَدُ اَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ ، حَيَّ عَلَى الصَّلَاةِ ، حَيَّ عَلَى الْفَلَاحِ ، قَدْ قَامَتِ الصَّلَاةُ قَدْ قَامَتِ الصَّلَاةُ ، اَللّٰهُ اَكْبَرُ اَللّٰهُ اَكْبَرُ ، لَا اِلٰهَ اِلَّا اللّٰهُ",
+      "transliteration": "Allâhu ekber Allâhu ekber. Eşhedü en lâ ilâhe illallâh. Eşhedü enne Muhammeden rasûlullâh. Hayye ales-salâh. Hayye alel-felâh. Kad kâmetis-salâtü kad kâmetis-salâh. Allâhu ekber Allâhu ekber. Lâ ilâhe illallâh.",
+      "meaning": "Allah en büyüktür. Allah'tan başka ilah olmadığına şahitlik ederim. Muhammed'in Allah'ın elçisi olduğuna şahitlik ederim. Haydi namaza, haydi kurtuluşa. Namaz başladı. Allah en büyüktür. Allah'tan başka ilah yoktur.",
+      "note": "Hanefîlerde kametin cümleleri ezandaki gibi ikişer kez söylenir (\"Kad kâmetis-salâh\" da iki kez). Yukarıdaki tek sıralı şekil Şâfiî ve Hanbelîlerin kametidir.",
+      "madhhab": null
+    },
+    {
+      "id": "abdest-sonrasi",
+      "title": "Abdestten sonra",
+      "arabic": "اَشْهَدُ اَنْ لَا اِلٰهَ اِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَاَشْهَدُ اَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ اَللّٰهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+      "transliteration": "Eşhedü en lâ ilâhe illallâhu vahdehû lâ şerîke leh ve eşhedü enne Muhammeden abdühû ve rasûlüh. Allâhümmec'alnî minet-tevvâbîne vec'alnî minel-mütetahhirîn.",
+      "meaning": "Şahitlik ederim ki Allah'tan başka ilah yoktur, O birdir, ortağı yoktur. Şahitlik ederim ki Muhammed O'nun kulu ve elçisidir. Allah'ım! Beni çok tövbe edenlerden ve çok temizlenenlerden eyle.",
+      "madhhab": null
+    }
+  ]
+}

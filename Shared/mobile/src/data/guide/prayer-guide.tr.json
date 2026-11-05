@@ -1,0 +1,2059 @@
+{
+  "version": 1,
+  "locale": "tr",
+  "status": "draft",
+  "review": "Yayından önce bir din görevlisinin kontrolü gerekir. \"check\": true olan bloklar indirilen kaynak metinde birebir doğrulanmadı, genel ilmihal bilgisinden yazıldı; önce bunlar kontrol edilmeli.",
+  "basis": "Temel anlatım Hanefî mezhebine göredir (Diyanet). Şâfiî, Mâlikî ve Hanbelî farkları her adımda ve \"madhhab\" bloklarında verilir.",
+  "schema": {
+    "topic": "id, group (taharet | namaz | ozel), title, summary, sections[]",
+    "section": "id, title, blocks[]",
+    "blocks": {
+      "text": "{ type, text }",
+      "list": "{ type, style: bullet | number, items[] }",
+      "steps": "{ type, steps[] } ; step: id, pose (Lottie animasyon anahtarı), title, text, recite[] (recitations.json id), gender { male, female }, madhhab { safii | maliki | hanbeli: { text?, recite? } }",
+      "rakatTable": "{ type, rows[] } ; row: prayer, parts[] { kind: sunnet | farz | vitir, rakat, note? }",
+      "madhhab": "{ type, title, views { hanefi, safii, maliki, hanbeli } }",
+      "note": "{ type, text }"
+    },
+    "common": "Her blokta isteğe bağlı src[] (sources id) ve check (doğrulanmadı) alanları olabilir."
+  },
+  "madhhabs": [
+    {
+      "id": "hanefi",
+      "title": "Hanefî"
+    },
+    {
+      "id": "safii",
+      "title": "Şâfiî"
+    },
+    {
+      "id": "maliki",
+      "title": "Mâlikî"
+    },
+    {
+      "id": "hanbeli",
+      "title": "Hanbelî"
+    }
+  ],
+  "sources": [
+    {
+      "id": "diyanet-namaz",
+      "title": "Namazın Kılınışı (resimli anlatım)",
+      "publisher": "Diyanet İşleri Başkanlığı",
+      "url": "https://namaz.diyanet.gov.tr/namaz/#namaz-kilinisi.html"
+    },
+    {
+      "id": "diyanet-abdest",
+      "title": "Abdest ve Teyemmüm Anlatımı",
+      "publisher": "Diyanet İşleri Başkanlığı",
+      "url": "https://namaz.diyanet.gov.tr/namaz/#abdest-anlatim.html"
+    },
+    {
+      "id": "diyanet-cuma-bayram",
+      "title": "Cuma ve Bayram Namazı",
+      "publisher": "Diyanet İşleri Başkanlığı",
+      "url": "https://namaz.diyanet.gov.tr/namaz/#cuma-ve-bayram-namazi.html"
+    },
+    {
+      "id": "diyanet-dualar",
+      "title": "Sureler ve Dualar",
+      "publisher": "Diyanet İşleri Başkanlığı",
+      "url": "https://namaz.diyanet.gov.tr/namaz/#sureler-dualar.html"
+    },
+    {
+      "id": "tdv-namaz",
+      "title": "Namaz",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/namaz"
+    },
+    {
+      "id": "tdv-abdest",
+      "title": "Abdest",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/abdest"
+    },
+    {
+      "id": "tdv-gusul",
+      "title": "Gusül",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/gusul"
+    },
+    {
+      "id": "tdv-teyemmum",
+      "title": "Teyemmüm",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/teyemmum"
+    },
+    {
+      "id": "tdv-vitir",
+      "title": "Vitir Namazı",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/vitir-namazi"
+    },
+    {
+      "id": "tdv-teravih",
+      "title": "Teravih",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/teravih"
+    },
+    {
+      "id": "tdv-cenaze",
+      "title": "Cenaze",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/cenaze"
+    },
+    {
+      "id": "tdv-cuma",
+      "title": "Cuma",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/cuma"
+    },
+    {
+      "id": "tdv-bayram",
+      "title": "Bayram",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/bayram"
+    },
+    {
+      "id": "tdv-sehiv",
+      "title": "Sehiv Secdesi",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/sehiv-secdesi"
+    },
+    {
+      "id": "tdv-kaza",
+      "title": "Kazâ (İbadet)",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/kaza--ibadet"
+    },
+    {
+      "id": "tdv-hayiz",
+      "title": "Hayız",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/hayiz"
+    },
+    {
+      "id": "tdv-nifas",
+      "title": "Nifas",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/nifas"
+    },
+    {
+      "id": "tdv-mest",
+      "title": "Mest",
+      "publisher": "TDV İslâm Ansiklopedisi",
+      "url": "https://islamansiklopedisi.org.tr/mest"
+    }
+  ],
+  "topics": [
+    {
+      "id": "abdest",
+      "group": "taharet",
+      "title": "Abdest",
+      "summary": "Namaz, Kur'an'a dokunmak ve tavaf için gerekli olan temizlik.",
+      "sections": [
+        {
+          "id": "abdest-farz",
+          "title": "Abdestin farzları",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-abdest"
+              ],
+              "items": [
+                "Yüzü bir kez yıkamak",
+                "Kolları dirseklerle birlikte bir kez yıkamak",
+                "Başın dörtte birini meshetmek",
+                "Ayakları topuklarla birlikte bir kez yıkamak"
+              ]
+            },
+            {
+              "type": "text",
+              "src": [
+                "tdv-abdest"
+              ],
+              "text": "Bu dört farz Mâide sûresinin 6. âyetinde bildirilir ve dört mezhep bunlarda birleşir. Yıkanan yerlerde kuru yer kalmamalı, suyun deriye ulaşmasını engelleyen bir şey bulunmamalıdır."
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezheplere göre ek farzlar",
+              "src": [
+                "tdv-abdest",
+                "tdv-namaz"
+              ],
+              "views": {
+                "hanefi": "Yalnız âyetteki dört farz. Niyet, sıra (tertip) ve ara vermeden yıkamak sünnettir. Başın dörtte biri meshedilir.",
+                "safii": "Dört farza niyet ve sıra (tertip) eklenir. Başın bir kısmını meshetmek yeterlidir.",
+                "maliki": "Dört farza niyet, organları ara vermeden yıkamak (muvâlât) ve ovmak (tedlîk) eklenir. Başın tamamı meshedilir.",
+                "hanbeli": "Dört farza sıra (tertip) ve ara vermeden yıkamak (muvâlât) eklenir. Başın tamamı meshedilir, kulaklar da baştan sayılır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "abdest-sunnet",
+          "title": "Abdestin sünnetleri",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "check": true,
+              "items": [
+                "Niyet etmek",
+                "Eûzü-besmele ile başlamak",
+                "Elleri bileklere kadar yıkamak",
+                "Ağza ve burna üçer kez su vermek",
+                "Misvak kullanmak ya da dişleri temizlemek",
+                "Her organı üçer kez yıkamak",
+                "Başın tamamını ve kulakları meshetmek",
+                "Parmak aralarını hilallemek",
+                "Sıraya uymak ve ara vermeden yıkamak",
+                "Sağdan başlamak"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "abdest-alinis",
+          "title": "Abdest nasıl alınır",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "diyanet-abdest"
+              ],
+              "steps": [
+                {
+                  "id": "a1",
+                  "pose": "wudu_niyet",
+                  "title": "Niyet",
+                  "text": "Kollar dirseklerin üstüne kadar sıvanır. \"Niyet ettim Allah rızası için abdest almaya\" diye niyet edilir, eûzü-besmele çekilir.",
+                  "recite": [
+                    "euzu-besmele"
+                  ]
+                },
+                {
+                  "id": "a2",
+                  "pose": "wudu_hands",
+                  "title": "Elleri yıkamak",
+                  "text": "Eller bileklere kadar üç kez yıkanır. Parmak araları ovulur, yüzük varsa oynatılarak altı ıslatılır."
+                },
+                {
+                  "id": "a3",
+                  "pose": "wudu_mouth",
+                  "title": "Ağza su vermek",
+                  "text": "Sağ avuçla ağza üç kez ayrı ayrı su alınır ve her seferinde iyice çalkalanır."
+                },
+                {
+                  "id": "a4",
+                  "pose": "wudu_nose",
+                  "title": "Burna su vermek",
+                  "text": "Sağ avuçla buruna üç kez su çekilir, sol elle sümkürülerek burun temizlenir."
+                },
+                {
+                  "id": "a5",
+                  "pose": "wudu_face",
+                  "title": "Yüzü yıkamak",
+                  "text": "Saçların bittiği yerden çene altına, iki kulak yumuşağına kadar yüzün her yeri üç kez yıkanır."
+                },
+                {
+                  "id": "a6",
+                  "pose": "wudu_arm_right",
+                  "title": "Sağ kolu yıkamak",
+                  "text": "Sağ kol dirsekle birlikte üç kez yıkanır, kuru yer kalmayacak şekilde ovulur."
+                },
+                {
+                  "id": "a7",
+                  "pose": "wudu_arm_left",
+                  "title": "Sol kolu yıkamak",
+                  "text": "Sol kol dirsekle birlikte üç kez yıkanır, kuru yer kalmayacak şekilde ovulur."
+                },
+                {
+                  "id": "a8",
+                  "pose": "wudu_head",
+                  "title": "Başı meshetmek",
+                  "text": "Eller yeniden ıslatılır, sağ elin içi ve parmaklar başın üzerine konularak bir kez meshedilir.",
+                  "madhhab": {
+                    "safii": {
+                      "text": "Başın bir kısmını meshetmek farzı yerine getirir, tamamını meshetmek sünnettir."
+                    },
+                    "maliki": {
+                      "text": "Başın tamamı meshedilir. Eller alından enseye, oradan alına doğru götürülür."
+                    },
+                    "hanbeli": {
+                      "text": "Başın tamamı kulaklarla birlikte meshedilir."
+                    }
+                  }
+                },
+                {
+                  "id": "a9",
+                  "pose": "wudu_ears",
+                  "title": "Kulakları meshetmek",
+                  "text": "Islak şehadet parmaklarıyla kulakların içi, başparmaklarla kulakların arkası meshedilir."
+                },
+                {
+                  "id": "a10",
+                  "pose": "wudu_neck",
+                  "title": "Boynu meshetmek",
+                  "text": "Elleri yeniden ıslatmadan, kalan üçer parmağın dış yüzüyle boyun meshedilir.",
+                  "note": "Boyun meshi Hanefîlerde edeptir; diğer mezheplerde yer almaz.",
+                  "check": true
+                },
+                {
+                  "id": "a11",
+                  "pose": "wudu_foot_right",
+                  "title": "Sağ ayağı yıkamak",
+                  "text": "Sağ ayak topukla birlikte üç kez yıkanır. Parmak uçlarından başlanır, parmak araları sol elin serçe parmağıyla temizlenir."
+                },
+                {
+                  "id": "a12",
+                  "pose": "wudu_foot_left",
+                  "title": "Sol ayağı yıkamak",
+                  "text": "Sol ayak da topukla birlikte aynı şekilde üç kez yıkanır. Abdestten sonra kelime-i şehadet getirilir.",
+                  "recite": [
+                    "abdest-sonrasi"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "abdest-bozan",
+          "title": "Abdesti bozan şeyler",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-abdest"
+              ],
+              "items": [
+                "Ön ve arka yoldan herhangi bir şeyin çıkması",
+                "Uyumak, bayılmak, aklın gitmesi, sarhoşluk",
+                "Vücuttan kan, irin gibi şeylerin çıkıp akması",
+                "Ağız dolusu kusmak",
+                "Namazda yanındakinin duyacağı kadar gülmek (Hanefî)"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-abdest"
+              ],
+              "views": {
+                "hanefi": "Kanın akması ve ağız dolusu kusmak abdesti bozar. Kadın ile erkeğin tenlerinin birbirine değmesi bozmaz.",
+                "safii": "Kan akması abdesti bozmaz. Nâmahrem kadın ile erkeğin tenlerinin değmesi, şehvet olsun olmasın abdesti bozar.",
+                "maliki": "Mahrem ya da nâmahrem fark etmeksizin şehvetle dokunmak abdesti bozar.",
+                "hanbeli": "Şehvetle dokunmak abdesti bozar. Mahrem ile nâmahrem arasında fark gözetilmez."
+              }
+            }
+          ]
+        },
+        {
+          "id": "mest",
+          "title": "Mest üzerine mesh",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-abdest"
+              ],
+              "text": "Abdestli iken giyilen ve ayağı topuklarla birlikte örten mestin üzerine, ayakları yıkamak yerine mesh yapılabilir. Mesh, ıslak elin parmaklarıyla mestin üst yüzüne yapılır."
+            },
+            {
+              "type": "madhhab",
+              "title": "Mesh süresi",
+              "check": true,
+              "views": {
+                "hanefi": "Mukim için bir gün bir gece (24 saat), yolcu için üç gün üç gece (72 saat). Süre, mest giyildikten sonra abdestin ilk bozulduğu andan başlar. Ayağın üstünde el parmaklarının üçü kadar yer meshedilir.",
+                "safii": "Mukim için 24 saat, yolcu için 72 saat. Mestin üst yüzünde az bir yeri meshetmek yeterlidir.",
+                "maliki": "Belirli bir süre yoktur. Haftada bir, cuma günü çıkarılması tavsiye edilir. Mestin üstü ve altı meshedilir.",
+                "hanbeli": "Mukim için 24 saat, yolcu için 72 saat. Mestin üst yüzünün büyük kısmı meshedilir."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gusul",
+      "group": "taharet",
+      "title": "Gusül",
+      "summary": "Cünüplük, âdet ve lohusalık sonrasında bütün vücudu yıkamak.",
+      "sections": [
+        {
+          "id": "gusul-ne-zaman",
+          "title": "Ne zaman gusül gerekir",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-gusul"
+              ],
+              "items": [
+                "Cünüplük (cinsel ilişki ya da şehvetle meni gelmesi)",
+                "Âdet (hayız) halinin bitmesi",
+                "Lohusalık (nifas) halinin bitmesi"
+              ]
+            },
+            {
+              "type": "text",
+              "src": [
+                "tdv-gusul"
+              ],
+              "text": "Gusül gerektiren haldeki kişi gusül almadan namaz kılamaz, Kur'an'a dokunamaz, camiye giremez ve Kâbe'yi tavaf edemez. Gusül namaz vaktine kadar ertelenebilir, ancak bir an önce yapılması tavsiye edilir. Cuma ve bayram namazlarından önce gusül almak sünnettir."
+            }
+          ]
+        },
+        {
+          "id": "gusul-farz",
+          "title": "Guslün farzları",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-gusul"
+              ],
+              "items": [
+                "Ağza su vermek",
+                "Burna su vermek",
+                "Bütün vücudu kuru yer kalmayacak şekilde yıkamak"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-gusul"
+              ],
+              "views": {
+                "hanefi": "Ağız ve burnun yıkanması dahil üç farz vardır. Niyet sünnettir.",
+                "safii": "Niyet ve bütün vücudu yıkamak farzdır. Ağız ve burna su vermek sünnettir.",
+                "maliki": "Niyet, bütün vücudu yıkamak ve ovmak farzdır. Ağız ve burna su vermek sünnettir.",
+                "hanbeli": "Niyet, ağız ve burun dahil bütün vücudu yıkamak farzdır. Besmele ile başlamak da gereklidir."
+              }
+            },
+            {
+              "type": "note",
+              "src": [
+                "tdv-gusul"
+              ],
+              "text": "Saç, sakal ve kaşların dipleri ıslatılmalıdır. Örgülü saçı çözmeden diplerini ıslatmak yeterlidir; Hanbelîler âdet ve lohusalık guslünde örgünün çözülmesini gerekli görür. Küpe delikleri ve dar yüzüğün altı da ıslatılmalıdır."
+            }
+          ]
+        },
+        {
+          "id": "gusul-alinis",
+          "title": "Gusül nasıl alınır",
+          "blocks": [
+            {
+              "type": "steps",
+              "check": true,
+              "steps": [
+                {
+                  "id": "g1",
+                  "pose": "ghusl_niyet",
+                  "title": "Niyet",
+                  "text": "\"Niyet ettim Allah rızası için gusül abdesti almaya\" diye niyet edilir, besmele çekilir.",
+                  "recite": [
+                    "besmele"
+                  ]
+                },
+                {
+                  "id": "g2",
+                  "pose": "wudu_hands",
+                  "title": "Elleri ve avret yerini yıkamak",
+                  "text": "Önce eller yıkanır, sonra avret yerleri ve vücutta pislik varsa o yerler temizlenir."
+                },
+                {
+                  "id": "g3",
+                  "pose": "wudu_niyet",
+                  "title": "Namaz abdesti almak",
+                  "text": "Namaz abdesti gibi abdest alınır. Ayakların bulunduğu yerde su birikiyorsa ayaklar sona bırakılır."
+                },
+                {
+                  "id": "g4",
+                  "pose": "ghusl_mouth_nose",
+                  "title": "Ağız ve burun",
+                  "text": "Ağza ve buruna boğaz ve burun kemiğine ulaşacak şekilde bolca su verilir."
+                },
+                {
+                  "id": "g5",
+                  "pose": "ghusl_pour",
+                  "title": "Vücudu yıkamak",
+                  "text": "Önce başa, sonra sağ omuza, sonra sol omuza üçer kez su dökülür. Her seferinde vücut iyice ovulur, kuru yer bırakılmaz."
+                },
+                {
+                  "id": "g6",
+                  "pose": "wudu_foot_right",
+                  "title": "Ayaklar",
+                  "text": "Abdestte ayaklar bırakıldıysa gusül yerinden biraz çekilerek yıkanır."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teyemmum",
+      "group": "taharet",
+      "title": "Teyemmüm",
+      "summary": "Su bulunamadığında ya da kullanılamadığında abdest ve gusül yerine yapılan temizlik.",
+      "sections": [
+        {
+          "id": "teyemmum-ne-zaman",
+          "title": "Ne zaman teyemmüm yapılır",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "items": [
+                "Abdest ya da gusle yetecek su bulunamazsa",
+                "Su kullanmak hastalığı artıracak ya da iyileşmeyi geciktirecekse",
+                "Su ile arada can, mal ya da düşman tehlikesi varsa",
+                "Su içmek için gerekliyse"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Suya uzaklık",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "views": {
+                "hanefi": "Su en az 1 mil (yaklaşık 2 km) uzakta ise teyemmüm yapılabilir.",
+                "safii": "Su yaklaşık 400 kulaç (200 m) içinde aranır. Su yetersizse önce yettiği kadar kullanılır, sonra teyemmüm yapılır.",
+                "maliki": "Su 2 mil uzakta ise teyemmüm yapılabilir.",
+                "hanbeli": "Su örfen yakın sayılan mesafede aranır. Su yetersizse önce yettiği kadar kullanılır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "teyemmum-farz",
+          "title": "Teyemmümün farzları",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "items": [
+                "Niyet",
+                "Elleri temiz toprağa vurup yüzü meshetmek",
+                "Elleri yeniden toprağa vurup kolları dirseklerle birlikte meshetmek"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "views": {
+                "hanefi": "İki vuruş farzdır: birincisi yüz, ikincisi dirseklere kadar kollar için. Toprak, taş, kum, kireç gibi yer cinsinden her şeyle yapılabilir.",
+                "safii": "İki vuruş farzdır, kollar dirseklere kadar meshedilir, organlar arasında sıra farzdır. Yalnız elde toz bırakan temiz toprak ya da kumla yapılır.",
+                "maliki": "Bir vuruş ve yüzle birlikte bileklere kadar elleri meshetmek farzdır; ikinci vuruş ve dirseklere kadar meshetmek sünnettir. Yer cinsinden her şeyle yapılabilir.",
+                "hanbeli": "Bir vuruş ve yüzle birlikte bileklere kadar elleri meshetmek farzdır; ikinci vuruş sünnettir. Yalnız elde toz bırakan temiz toprakla yapılır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "teyemmum-alinis",
+          "title": "Teyemmüm nasıl yapılır",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "diyanet-abdest"
+              ],
+              "steps": [
+                {
+                  "id": "t1",
+                  "pose": "tayammum_niyet",
+                  "title": "Niyet",
+                  "text": "Eûzü-besmele çekilir ve \"Niyet ettim Allah rızası için teyemmüm etmeye\" diye niyet edilir. Niyette abdest yerine mi gusül yerine mi yapıldığı belirtilir.",
+                  "recite": [
+                    "euzu-besmele"
+                  ]
+                },
+                {
+                  "id": "t2",
+                  "pose": "tayammum_strike",
+                  "title": "Elleri toprağa vurmak",
+                  "text": "Parmaklar açık olarak eller temiz toprağa ya da taş, kum, kiremit gibi toprak cinsinden bir şeye vurulur, ileri geri hareket ettirilir."
+                },
+                {
+                  "id": "t3",
+                  "pose": "tayammum_shake",
+                  "title": "Elleri silkelemek",
+                  "text": "Eller kaldırılır ve birbirine hafifçe vurularak silkelenir."
+                },
+                {
+                  "id": "t4",
+                  "pose": "tayammum_face",
+                  "title": "Yüzü meshetmek",
+                  "text": "İki elin içiyle yüzün tamamı bir kez meshedilir."
+                },
+                {
+                  "id": "t5",
+                  "pose": "tayammum_strike",
+                  "title": "Elleri yeniden toprağa vurmak",
+                  "text": "Eller tekrar toprağa vurulur ve silkelenir."
+                },
+                {
+                  "id": "t6",
+                  "pose": "tayammum_arm_right",
+                  "title": "Sağ kolu meshetmek",
+                  "text": "Sol elin içiyle sağ kol dirsekle birlikte bir kez meshedilir."
+                },
+                {
+                  "id": "t7",
+                  "pose": "tayammum_arm_left",
+                  "title": "Sol kolu meshetmek",
+                  "text": "Sağ elin içiyle sol kol dirsekle birlikte bir kez meshedilir."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "teyemmum-bozan",
+          "title": "Teyemmümü bozan şeyler",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "items": [
+                "Abdesti ve guslü bozan her şey",
+                "Yetecek kadar suyu bulmak ve kullanabilir hale gelmek",
+                "Teyemmüme izin veren özrün (hastalık, tehlike) ortadan kalkması"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Namazda suyu görmek",
+              "src": [
+                "tdv-teyemmum"
+              ],
+              "views": {
+                "hanefi": "Namaz kılarken su görülürse namaz bozulur.",
+                "safii": "Namaz bozulmaz. Ancak su bulma ihtimali yüksek bir yerdeyse bozulur.",
+                "maliki": "Namaz bozulmaz. Teyemmüm ile namaz arasına uzun ara girerse teyemmüm bozulur.",
+                "hanbeli": "Namaz kılarken su görülürse namaz bozulur."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "namaz-temel",
+      "group": "namaz",
+      "title": "Namazın farzları ve vacipleri",
+      "summary": "Namazın geçerli olması için gerekenler: dışındaki şartlar ve içindeki rükünler.",
+      "sections": [
+        {
+          "id": "sartlar",
+          "title": "Namazın şartları (dışındaki farzlar)",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-namaz"
+              ],
+              "items": [
+                "Hadesten taharet: abdestli olmak, gerekiyorsa gusül almak",
+                "Necasetten taharet: beden, elbise ve namaz kılınacak yerin temiz olması",
+                "Setr-i avret: örtülmesi gereken yerleri örtmek",
+                "İstikbâl-i kıble: kıbleye yönelmek",
+                "Vakit: namazın vaktinin girmiş olması",
+                "Niyet: hangi namazın kılındığını kalben belirlemek"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Avret yerleri (namazda örtülecek yerler)",
+              "check": true,
+              "views": {
+                "hanefi": "Erkek: göbek ile diz kapağı arası (diz dahil). Kadın: yüz, eller ve ayaklar dışında bütün vücut.",
+                "safii": "Erkek: göbek ile diz arası. Kadın: yüz ve eller dışında bütün vücut, ayaklar da örtülür.",
+                "maliki": "Erkek: göbek ile diz arası. Kadın: yüz ve eller dışında bütün vücut.",
+                "hanbeli": "Erkek: göbek ile diz arası. Kadın: yüz dışında bütün vücut; ellerin açık kalması konusunda iki görüş vardır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "rukunler",
+          "title": "Namazın rükünleri (içindeki farzlar)",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-namaz"
+              ],
+              "items": [
+                "İftitah tekbiri: \"Allâhu ekber\" diyerek namaza başlamak",
+                "Kıyam: gücü yeten için ayakta durmak",
+                "Kıraat: ayakta Kur'an'dan bir miktar okumak",
+                "Rükû: eller dizlere ulaşacak kadar eğilmek",
+                "Secde: alnı ve burnu yere koymak, her rekâtta iki kez",
+                "Ka'de-i ahîre: namazın sonunda Ettehiyyâtü okunacak kadar oturmak"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-namaz"
+              ],
+              "views": {
+                "hanefi": "Kıraatte her rekâtta en az üç kısa âyet ya da bir uzun âyet okumak farzdır; Fâtiha okumak vaciptir. Rükünleri düzgün yapmak (ta'dîl-i erkân) vaciptir. Selam vaciptir.",
+                "safii": "Niyet bir rükündür. Her rekâtta Fâtiha okumak farzdır. Ta'dîl-i erkân, son oturuşta teşehhüd ve salavat, ilk selam ve rükünler arasında sıra farzdır.",
+                "maliki": "Her rekâtta Fâtiha okumak farzdır. Ta'dîl-i erkân farzdır. İlk selam farzdır.",
+                "hanbeli": "Her rekâtta Fâtiha okumak farzdır. Ta'dîl-i erkân, rükünler arasında sıra ve iki tarafa selam vermek farzdır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "vacipler",
+          "title": "Namazın vacipleri (Hanefî)",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-namaz"
+              ],
+              "text": "Vacip, Hanefî mezhebine özgü bir derecedir. Vaciplerden biri unutularak terk edilirse sehiv secdesi gerekir, bilerek terk edilirse namaz yeniden kılınır. Diğer mezheplerde bunların bir kısmı farz, bir kısmı sünnettir."
+            },
+            {
+              "type": "list",
+              "style": "number",
+              "src": [
+                "tdv-namaz"
+              ],
+              "items": [
+                "Namaza \"Allâhu ekber\" sözüyle başlamak",
+                "Her rekâtta Fâtiha okumak",
+                "Farzların ilk iki rekâtında, vitir ve sünnetlerin her rekâtında Fâtiha'dan sonra sûre ya da âyet okumak",
+                "Farz olan kıraati ilk iki rekâtta yapmak",
+                "Fâtiha'yı sûreden önce okumak",
+                "Secdede alınla birlikte burnu da yere koymak",
+                "Üç ve dört rekâtlı namazlarda ikinci rekâttan sonra oturmak (ka'de-i ûlâ)",
+                "İlk ve son oturuşta Ettehiyyâtü okumak",
+                "Namazın sonunda sağa ve sola selam vermek",
+                "Farzları sırasıyla yapmak ve geciktirmemek",
+                "Ta'dîl-i erkâna uymak: rükû, secde ve aralarda bir an durmak",
+                "Vitirde kunut tekbiri alıp kunut okumak, bayram namazında zevâid tekbirlerini almak",
+                "İmamın sabah, cuma, bayram, teravih ve akşam ile yatsının ilk iki rekâtında sesli, öğle ve ikindide gizli okuması"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bozanlar",
+          "title": "Namazı bozan şeyler",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "check": true,
+              "items": [
+                "Konuşmak, yemek, içmek",
+                "Abdestin bozulması",
+                "Göğsü kıbleden çevirmek",
+                "Kendisinin duyacağı kadar gülmek; yanındakinin duyacağı kadar gülmek abdesti de bozar (Hanefî)",
+                "Dışarıdan bakan kişiye namazda değil izlenimi veren çok hareket (amel-i kesîr)",
+                "Namazın bir farzını terk etmek",
+                "Avret yerinin bir rüknü yapacak süre açık kalması",
+                "Kur'an'ı anlamı bozacak şekilde yanlış okumak"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bes-vakit",
+      "group": "namaz",
+      "title": "Beş vakit namaz ve rekâtları",
+      "summary": "Günlük namazların sünnet, farz ve vitir rekâtları.",
+      "sections": [
+        {
+          "id": "rekat-tablosu",
+          "title": "Rekât sayıları (Hanefî)",
+          "blocks": [
+            {
+              "type": "rakatTable",
+              "src": [
+                "diyanet-namaz",
+                "tdv-namaz"
+              ],
+              "rows": [
+                {
+                  "prayer": "Sabah",
+                  "parts": [
+                    {
+                      "kind": "sunnet",
+                      "rakat": 2
+                    },
+                    {
+                      "kind": "farz",
+                      "rakat": 2
+                    }
+                  ]
+                },
+                {
+                  "prayer": "Öğle",
+                  "parts": [
+                    {
+                      "kind": "sunnet",
+                      "rakat": 4
+                    },
+                    {
+                      "kind": "farz",
+                      "rakat": 4
+                    },
+                    {
+                      "kind": "sunnet",
+                      "rakat": 2
+                    }
+                  ]
+                },
+                {
+                  "prayer": "İkindi",
+                  "parts": [
+                    {
+                      "kind": "sunnet",
+                      "rakat": 4,
+                      "note": "gayr-i müekked"
+                    },
+                    {
+                      "kind": "farz",
+                      "rakat": 4
+                    }
+                  ]
+                },
+                {
+                  "prayer": "Akşam",
+                  "parts": [
+                    {
+                      "kind": "farz",
+                      "rakat": 3
+                    },
+                    {
+                      "kind": "sunnet",
+                      "rakat": 2
+                    }
+                  ]
+                },
+                {
+                  "prayer": "Yatsı",
+                  "parts": [
+                    {
+                      "kind": "sunnet",
+                      "rakat": 4,
+                      "note": "gayr-i müekked"
+                    },
+                    {
+                      "kind": "farz",
+                      "rakat": 4
+                    },
+                    {
+                      "kind": "sunnet",
+                      "rakat": 2
+                    },
+                    {
+                      "kind": "vitir",
+                      "rakat": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "text": "Günde 17 rekât farz kılınır. Hanefîlere göre vitir vaciptir."
+            }
+          ]
+        },
+        {
+          "id": "rekat-mezhep",
+          "title": "Diğer mezheplerde sünnetler",
+          "blocks": [
+            {
+              "type": "madhhab",
+              "title": "Farzlara bağlı sünnetler",
+              "src": [
+                "tdv-namaz"
+              ],
+              "views": {
+                "hanefi": "Sabahın sünneti 2, öğlenin ilk sünneti 4 ve son sünneti 2, akşamın sünneti 2, yatsının son sünneti 2 rekât müekked sünnettir. İkindi ve yatsının ilk sünnetleri gayr-i müekkeddir.",
+                "safii": "Müekked sünnetler on rekâttır: sabahtan önce 2, öğleden önce 2 ve sonra 2, akşamdan sonra 2, yatsıdan sonra 2. Vitir de müekked sünnettir.",
+                "maliki": "Sabahın sünneti ve vitir sünnettir. Öğleden önce ve sonra, ikindiden önce ve akşamdan sonra kılınanlar fazilet namazlarıdır, sayıları belirli değildir.",
+                "hanbeli": "Müekked sünnetler on rekâttır: sabahtan önce 2, öğleden önce 2 ve sonra 2, akşamdan sonra 2, yatsıdan sonra 2. Vitir müekked sünnettir."
+              },
+              "check": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "namaz-kilinisi",
+      "group": "namaz",
+      "title": "Namaz nasıl kılınır",
+      "summary": "İki rekâtlı sabah farzının adım adım kılınışı; kadın ve erkek farklarıyla.",
+      "sections": [
+        {
+          "id": "iki-rekat",
+          "title": "İki rekâtlı namaz (sabah farzı örneği)",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "diyanet-namaz"
+              ],
+              "text": "İki rekâtlı bir namazdaki hareketler diğer namazlardakiyle aynıdır. Aşağıdaki adımlar sabah namazının farzına göre anlatılmıştır."
+            },
+            {
+              "type": "steps",
+              "src": [
+                "diyanet-namaz",
+                "tdv-namaz"
+              ],
+              "steps": [
+                {
+                  "id": "n1",
+                  "pose": "stand",
+                  "title": "Kıbleye dönmek ve niyet",
+                  "text": "Ayakların arası dört parmak açık, parmak uçları kıbleye dönük olarak ayakta durulur. Erkekler kamet getirir. \"Niyet ettim Allah rızası için bugünkü sabah namazının farzını kılmaya\" diye niyet edilir.",
+                  "recite": [
+                    "niyet"
+                  ],
+                  "gender": {
+                    "female": "Kadınlar kamet getirmez."
+                  },
+                  "madhhab": {
+                    "safii": {
+                      "text": "Niyet bir rükündür ve iftitah tekbiriyle birlikte kalpte bulunmalıdır. Kadınlar da kamet getirebilir.",
+                      "check": true
+                    }
+                  }
+                },
+                {
+                  "id": "n2",
+                  "pose": "takbir",
+                  "title": "İftitah tekbiri",
+                  "text": "\"Allâhu ekber\" diyerek namaza başlanır. Avuç içleri kıbleye dönük, parmaklar normal açıklıkta olur.",
+                  "recite": [
+                    "tekbir"
+                  ],
+                  "gender": {
+                    "male": "Eller, başparmaklar kulak yumuşağına değecek hizaya kaldırılır.",
+                    "female": "Eller, parmak uçları omuz hizasına gelecek şekilde kaldırılır."
+                  },
+                  "madhhab": {
+                    "safii": {
+                      "text": "Erkekler de ellerini omuz hizasına kaldırır."
+                    },
+                    "maliki": {
+                      "text": "Erkekler de ellerini omuz hizasına kaldırır."
+                    },
+                    "hanbeli": {
+                      "text": "Elleri omuz ya da kulak hizasına kaldırmakta serbesttir."
+                    }
+                  }
+                },
+                {
+                  "id": "n3",
+                  "pose": "qiyam",
+                  "title": "Kıyam",
+                  "text": "Tekbirden sonra eller bağlanır, secde edilecek yere bakılır. Sırasıyla Sübhâneke, Eûzü-besmele, Fâtiha okunur, \"âmin\" denir ve bir sûre okunur.",
+                  "recite": [
+                    "subhaneke",
+                    "euzu-besmele",
+                    "fatiha",
+                    "amin",
+                    "zamm-sure"
+                  ],
+                  "gender": {
+                    "male": "Sağ elin avucu sol elin üzerinde, sağ elin başparmağı ve serçe parmağı sol bileği kavrar. Eller göbek altında bağlanır.",
+                    "female": "Sağ el sol elin üzerinde olacak şekilde eller göğüs üstüne konur, bilek kavranmaz."
+                  },
+                  "madhhab": {
+                    "safii": {
+                      "text": "Sübhâneke yerine Veccehtü okunur. Eller göbeğin üstünde, göğsün altında bağlanır. Besmele Fâtiha'nın âyetidir. Sesli okunan namazlarda âmin sesli söylenir.",
+                      "recite": [
+                        "iftitah-safii",
+                        "euzu-besmele",
+                        "fatiha",
+                        "amin",
+                        "zamm-sure"
+                      ]
+                    },
+                    "maliki": {
+                      "text": "Eller bağlanmaz, iki yana salıverilir. İftitah duası okunmaz, farzlarda Fâtiha'dan önce besmele okunmaz. Âmin gizli söylenir.",
+                      "recite": [
+                        "fatiha",
+                        "amin",
+                        "zamm-sure"
+                      ]
+                    },
+                    "hanbeli": {
+                      "text": "Eller göbek altında bağlanır. Sesli okunan namazlarda âmin sesli söylenir."
+                    }
+                  }
+                },
+                {
+                  "id": "n4",
+                  "pose": "ruku",
+                  "title": "Rükû",
+                  "text": "\"Allâhu ekber\" diyerek rükûa eğilinir, ayakların üzerine bakılır ve üç kez \"Sübhâne rabbiyel-azîm\" denir.",
+                  "recite": [
+                    "tekbir",
+                    "ruku-tesbih"
+                  ],
+                  "gender": {
+                    "male": "Parmaklar açık olarak dizler kavranır, sırt ve baş düz bir çizgi olur, dizler ve dirsekler dik tutulur.",
+                    "female": "Erkeklerden daha az eğilinir, sırt biraz meyilli olur. Parmaklar açılmadan eller dizlerin üstüne konur, dizler hafif bükülür."
+                  },
+                  "madhhab": {
+                    "safii": {
+                      "text": "Rükûa giderken eller tekbirdeki gibi kaldırılır."
+                    },
+                    "hanbeli": {
+                      "text": "Rükûa giderken eller tekbirdeki gibi kaldırılır."
+                    }
+                  }
+                },
+                {
+                  "id": "n5",
+                  "pose": "itidal",
+                  "title": "Rükûdan kalkış",
+                  "text": "\"Semiallâhu limen hamideh\" diyerek doğrulunur, ayakta \"Rabbenâ lekel-hamd\" denir.",
+                  "recite": [
+                    "semiallah",
+                    "rabbena-lekel-hamd"
+                  ],
+                  "madhhab": {
+                    "safii": {
+                      "text": "Doğrulurken eller tekbirdeki gibi kaldırılır."
+                    },
+                    "hanbeli": {
+                      "text": "Doğrulurken eller tekbirdeki gibi kaldırılır."
+                    }
+                  }
+                },
+                {
+                  "id": "n6",
+                  "pose": "sujud",
+                  "title": "Secde",
+                  "text": "\"Allâhu ekber\" diyerek secdeye varılır. Önce dizler, sonra eller, sonra alın ve burun yere konur. Baş iki elin arasında olur, burnun kenarlarına bakılır ve üç kez \"Sübhâne rabbiyel-a'lâ\" denir. Ayaklar yerden kaldırılmaz.",
+                  "recite": [
+                    "tekbir",
+                    "secde-tesbih"
+                  ],
+                  "gender": {
+                    "male": "Dirsekler yanlardan uzak, kollar yerden kalkık olur. Ayak parmakları dik ve uçları kıbleye dönük olarak yere konur.",
+                    "female": "Kollar yanlara bitişik tutulur, karın uyluklara yakın olur. Ayak parmakları dik ve uçları kıbleye dönük olarak yere konur."
+                  },
+                  "madhhab": {
+                    "maliki": {
+                      "text": "Secdeye inerken önce ellerin, sonra dizlerin yere konması tavsiye edilir.",
+                      "check": true
+                    }
+                  }
+                },
+                {
+                  "id": "n7",
+                  "pose": "jalsa",
+                  "title": "İki secde arası oturuş",
+                  "text": "\"Allâhu ekber\" diyerek baş kaldırılıp dizler üzerine oturulur. Eller, parmaklar diz hizasında olacak şekilde uylukların üzerine konur, kucağa bakılır. \"Sübhânallah\" diyecek kadar oturulur.",
+                  "recite": [
+                    "tekbir"
+                  ],
+                  "gender": {
+                    "male": "Sol ayak yere yayılıp üzerine oturulur, sağ ayak parmakları kıbleye dönük olarak dik tutulur.",
+                    "female": "Ayaklar yatık olarak sağ tarafa çıkarılır ve öyle oturulur."
+                  }
+                },
+                {
+                  "id": "n8",
+                  "pose": "sujud",
+                  "title": "İkinci secde",
+                  "text": "\"Allâhu ekber\" diyerek ikinci kez secdeye varılır ve üç kez \"Sübhâne rabbiyel-a'lâ\" denir. Buraya kadar yapılanlara bir rekât denir.",
+                  "recite": [
+                    "tekbir",
+                    "secde-tesbih"
+                  ]
+                },
+                {
+                  "id": "n9",
+                  "pose": "rise",
+                  "title": "İkinci rekâta kalkış",
+                  "text": "\"Allâhu ekber\" diyerek ayağa kalkılır ve eller bağlanır. Kalkarken önce baş, sonra eller kaldırılır, eller dizlere dayanarak dizler yerden kaldırılır.",
+                  "recite": [
+                    "tekbir"
+                  ],
+                  "madhhab": {
+                    "safii": {
+                      "text": "Kalkmadan önce kısa bir an oturulur (istirahat oturuşu) ve ellerle yere dayanarak kalkılır."
+                    }
+                  }
+                },
+                {
+                  "id": "n10",
+                  "pose": "qiyam",
+                  "title": "İkinci rekât",
+                  "text": "Ayakta besmele, Fâtiha ve bir sûre okunur. Birinci rekâttaki gibi rükû, kalkış ve iki secde yapılır.",
+                  "recite": [
+                    "besmele",
+                    "fatiha",
+                    "amin",
+                    "zamm-sure",
+                    "ruku-tesbih",
+                    "semiallah",
+                    "rabbena-lekel-hamd",
+                    "secde-tesbih"
+                  ],
+                  "madhhab": {
+                    "safii": {
+                      "text": "Sabah namazının ikinci rekâtında rükûdan doğrulunca eller açılarak kunut duası okunur.",
+                      "recite": [
+                        "besmele",
+                        "fatiha",
+                        "amin",
+                        "zamm-sure",
+                        "ruku-tesbih",
+                        "semiallah",
+                        "rabbena-lekel-hamd",
+                        "kunut-safii",
+                        "secde-tesbih"
+                      ]
+                    },
+                    "maliki": {
+                      "text": "Sabah namazında kunut, ikinci rekâtta rükûdan önce gizlice okunur.",
+                      "check": true
+                    }
+                  }
+                },
+                {
+                  "id": "n11",
+                  "pose": "tashahhud",
+                  "title": "Son oturuş",
+                  "text": "İkinci secdeden sonra oturulur. Eller uyluklar üzerinde, kucağa bakılır. Sırasıyla Ettehiyyâtü, Allâhümme salli, Allâhümme bârik ve Rabbenâ duaları okunur.",
+                  "recite": [
+                    "tahiyyat",
+                    "salli",
+                    "barik",
+                    "rabbena-atina",
+                    "rabbenagfirli"
+                  ],
+                  "gender": {
+                    "male": "Sol ayak yere yayılıp üzerine oturulur, sağ ayak dik tutulur.",
+                    "female": "Ayaklar yatık olarak sağ tarafa çıkarılır ve öyle oturulur."
+                  },
+                  "madhhab": {
+                    "safii": {
+                      "text": "Son oturuşta teverrük yapılır: sol ayak sağ tarafa çıkarılıp kalça üzerine oturulur. Şâfiî tahiyyâtı ve salavat okunur; salavat farzdır.",
+                      "recite": [
+                        "tahiyyat-safii",
+                        "salli",
+                        "barik",
+                        "rabbena-atina"
+                      ]
+                    },
+                    "maliki": {
+                      "text": "Oturuşlarda teverrük yapılır.",
+                      "check": true
+                    },
+                    "hanbeli": {
+                      "text": "İki oturuşlu namazların son oturuşunda teverrük yapılır.",
+                      "check": true
+                    }
+                  }
+                },
+                {
+                  "id": "n12",
+                  "pose": "salam_right",
+                  "title": "Selam",
+                  "text": "Baş önce sağa çevrilerek \"Esselâmü aleyküm ve rahmetullâh\" denir, sonra sola çevrilerek aynısı söylenir. Selam verirken omuz başlarına bakılır. Böylece namaz tamamlanır.",
+                  "recite": [
+                    "selam"
+                  ],
+                  "madhhab": {
+                    "safii": {
+                      "text": "İlk selam farz, ikinci selam sünnettir."
+                    },
+                    "maliki": {
+                      "text": "Yalnız ilk selam farzdır; tek selamla yetinmek yeterlidir."
+                    },
+                    "hanbeli": {
+                      "text": "İki tarafa selam vermek farzdır."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uc-dort-rekat",
+          "title": "Üç ve dört rekâtlı namazlar",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-namaz",
+                "tdv-vitir"
+              ],
+              "check": true,
+              "items": [
+                "İkinci rekâttan sonra ilk oturuş yapılır ve yalnız Ettehiyyâtü okunur, sonra üçüncü rekâta kalkılır.",
+                "Farzların üçüncü ve dördüncü rekâtlarında yalnız Fâtiha okunur, sûre okunmaz.",
+                "Sünnetlerin ve vitrin bütün rekâtlarında Fâtiha'dan sonra sûre okunur.",
+                "İkindi ve yatsının ilk sünnetlerinde (gayr-i müekked) ilk oturuşta Salli ve Bârik de okunur, üçüncü rekâta kalkınca Sübhâneke okunur.",
+                "Akşamın farzı üç rekâttır: ikinci rekâttan sonra ilk oturuş, üçüncü rekâtın sonunda son oturuş yapılır.",
+                "Son oturuşta Ettehiyyâtü, Salli, Bârik ve Rabbenâ duaları okunur, selam verilir."
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-namaz"
+              ],
+              "views": {
+                "hanefi": "Farzların son iki rekâtında Fâtiha okumak sünnettir.",
+                "safii": "Her rekâtta Fâtiha farzdır. Sünnet namazlarda iki rekâtta bir selam verilir.",
+                "maliki": "Her rekâtta Fâtiha farzdır.",
+                "hanbeli": "Her rekâtta Fâtiha farzdır."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sonra",
+          "title": "Namazdan sonra",
+          "blocks": [
+            {
+              "type": "text",
+              "check": true,
+              "text": "Farz namazlardan sonra 33 kez \"Sübhânallah\", 33 kez \"Elhamdülillah\", 33 kez \"Allâhu ekber\" demek ve dua etmek sünnettir. Bu tesbihat, farzın ardından son sünnet varsa sünnetten sonra yapılır."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vitir",
+      "group": "ozel",
+      "title": "Vitir namazı",
+      "summary": "Yatsıdan sonra sabaha kadar kılınan tek rekâtlı namaz.",
+      "sections": [
+        {
+          "id": "vitir-hukum",
+          "title": "Hükmü ve vakti",
+          "blocks": [
+            {
+              "type": "madhhab",
+              "title": "Hükmü",
+              "src": [
+                "tdv-vitir"
+              ],
+              "views": {
+                "hanefi": "Vaciptir. Kılınmazsa kazâ edilir.",
+                "safii": "Müekked sünnettir.",
+                "maliki": "Müekked sünnettir.",
+                "hanbeli": "Müekked sünnettir, terk edilmemesi gerekir."
+              }
+            },
+            {
+              "type": "text",
+              "src": [
+                "tdv-vitir"
+              ],
+              "text": "Vakti yatsı namazı kılındıktan sonra başlar, sabah namazı vaktine kadar sürer. Yatsıdan önce kılınmaz."
+            }
+          ]
+        },
+        {
+          "id": "vitir-kilinis",
+          "title": "Kılınışı (Hanefî)",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "tdv-vitir",
+                "diyanet-dualar"
+              ],
+              "steps": [
+                {
+                  "id": "v1",
+                  "pose": "takbir",
+                  "title": "Niyet ve tekbir",
+                  "text": "\"Niyet ettim Allah rızası için vitir namazını kılmaya\" diye niyet edilip tekbir alınır.",
+                  "recite": [
+                    "niyet",
+                    "tekbir"
+                  ]
+                },
+                {
+                  "id": "v2",
+                  "pose": "qiyam",
+                  "title": "Birinci ve ikinci rekât",
+                  "text": "Akşam namazının farzı gibi kılınır: birinci rekâtta Sübhâneke, Eûzü-besmele, Fâtiha ve sûre; ikinci rekâtta besmele, Fâtiha ve sûre okunur. İkinci rekâtın sonunda oturulup yalnız Ettehiyyâtü okunur.",
+                  "recite": [
+                    "subhaneke",
+                    "fatiha",
+                    "zamm-sure",
+                    "tahiyyat"
+                  ]
+                },
+                {
+                  "id": "v3",
+                  "pose": "qiyam",
+                  "title": "Üçüncü rekât",
+                  "text": "Üçüncü rekâtta besmele, Fâtiha ve bir sûre okunur.",
+                  "recite": [
+                    "besmele",
+                    "fatiha",
+                    "zamm-sure"
+                  ]
+                },
+                {
+                  "id": "v4",
+                  "pose": "takbir",
+                  "title": "Kunut tekbiri",
+                  "text": "Rükûa gitmeden \"Allâhu ekber\" denilerek eller kulak hizasına kaldırılır ve yeniden bağlanır.",
+                  "recite": [
+                    "tekbir"
+                  ],
+                  "gender": {
+                    "female": "Eller omuz hizasına kaldırılır."
+                  }
+                },
+                {
+                  "id": "v5",
+                  "pose": "qiyam",
+                  "title": "Kunut duaları",
+                  "text": "Kunut duaları okunur. Bilmeyen üç kez \"Rabbenâ âtinâ\" ya da üç kez \"Allâhümmağfirlî\" diyebilir.",
+                  "recite": [
+                    "kunut-1",
+                    "kunut-2"
+                  ]
+                },
+                {
+                  "id": "v6",
+                  "pose": "tashahhud",
+                  "title": "Rükû, secdeler ve son oturuş",
+                  "text": "Rükû ve secdeler yapılır, son oturuşta Ettehiyyâtü, Salli, Bârik ve Rabbenâ duaları okunup selam verilir.",
+                  "recite": [
+                    "tahiyyat",
+                    "salli",
+                    "barik",
+                    "rabbena-atina",
+                    "rabbenagfirli",
+                    "selam"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "src": [
+                "tdv-vitir"
+              ],
+              "text": "Birinci rekâtta A'lâ, ikincide Kâfirûn, üçüncüde İhlâs sûresini okumak menduptur; ancak hep aynı sûreler okunmamalıdır."
+            }
+          ]
+        },
+        {
+          "id": "vitir-mezhep",
+          "title": "Diğer mezheplerde vitir",
+          "blocks": [
+            {
+              "type": "madhhab",
+              "title": "Rekât ve kunut",
+              "src": [
+                "tdv-vitir"
+              ],
+              "views": {
+                "hanefi": "Tek selamla üç rekât. Kunut, üçüncü rekâtta rükûdan önce ve bütün yıl okunur.",
+                "safii": "En az bir, en çok on bir rekât; en az üç rekât tavsiye edilir. Üç rekât kılınacaksa iki rekâttan sonra selam verilip üçüncü ayrıca kılınabilir. Kunut, Ramazan'ın ikinci yarısında son rekâtta rükûdan sonra okunur.",
+                "maliki": "Önce iki rekâtlık şef' namazı kılınıp selam verilir, ardından tek rekât vitir kılınır. Vitirde kunut okunmaz.",
+                "hanbeli": "En az bir, en çok on bir rekât. İki rekâtta selam verip bir rekât ayrıca kılınır. Kunut, son rekâtta rükûdan sonra bütün yıl okunur."
+              },
+              "check": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cuma",
+      "group": "ozel",
+      "title": "Cuma namazı",
+      "summary": "Cuma günü öğle vaktinde cemaatle kılınan, hutbeli namaz.",
+      "sections": [
+        {
+          "id": "cuma-hukum",
+          "title": "Hükmü",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-cuma"
+              ],
+              "text": "Cuma namazı; hür, akıllı, ergen, mukim, sağlıklı erkeklere farz-ı ayndır. Kadınlara, yolculara ve hastalara farz değildir; kılarlarsa o günün öğle namazı yerine geçer. Cuma namazı kılınan yerde o günün öğle namazı kılınmaz."
+            },
+            {
+              "type": "madhhab",
+              "title": "Cemaat sayısı",
+              "check": true,
+              "views": {
+                "hanefi": "İmamdan başka en az üç kişi.",
+                "safii": "İmam dahil cumaya mükellef en az kırk kişi.",
+                "maliki": "İmamdan başka en az on iki kişi.",
+                "hanbeli": "İmam dahil cumaya mükellef en az kırk kişi."
+              }
+            }
+          ]
+        },
+        {
+          "id": "cuma-kilinis",
+          "title": "Kılınışı",
+          "blocks": [
+            {
+              "type": "rakatTable",
+              "src": [
+                "diyanet-cuma-bayram"
+              ],
+              "rows": [
+                {
+                  "prayer": "Cuma",
+                  "parts": [
+                    {
+                      "kind": "sunnet",
+                      "rakat": 4,
+                      "note": "ilk sünnet"
+                    },
+                    {
+                      "kind": "farz",
+                      "rakat": 2,
+                      "note": "cemaatle"
+                    },
+                    {
+                      "kind": "sunnet",
+                      "rakat": 4,
+                      "note": "son sünnet"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "src": [
+                "diyanet-cuma-bayram"
+              ],
+              "steps": [
+                {
+                  "id": "c1",
+                  "pose": "qiyam",
+                  "title": "İlk sünnet",
+                  "text": "Öğle namazının ilk sünneti gibi dört rekât kılınır."
+                },
+                {
+                  "id": "c2",
+                  "pose": "sit_listen",
+                  "title": "Hutbe",
+                  "text": "İmam minbere çıkar, iç ezan okunur. İmam iki bölümlü hutbeyi okur. Hutbe sessizce dinlenir."
+                },
+                {
+                  "id": "c3",
+                  "pose": "stand",
+                  "title": "Farz",
+                  "text": "Kamet getirilir. İmam ile birlikte cumanın farzına niyet edilir ve cemaatle iki rekât kılınır. İmam Fâtiha ve sûreyi sesli okur, cemaat dinler."
+                },
+                {
+                  "id": "c4",
+                  "pose": "qiyam",
+                  "title": "Son sünnet",
+                  "text": "Öğle namazının ilk sünneti gibi dört rekât kılınır."
+                }
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Cumanın sünnetleri",
+              "src": [
+                "tdv-namaz"
+              ],
+              "views": {
+                "hanefi": "Farzdan önce dört, sonra dört rekât sünnet.",
+                "safii": "Farzdan önce iki, sonra iki rekât müekked sünnet.",
+                "maliki": "Belirli bir sünneti yoktur, nafile kılınabilir.",
+                "hanbeli": "Farzdan sonra iki ya da dört rekât sünnet."
+              },
+              "check": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bayram",
+      "group": "ozel",
+      "title": "Bayram namazı",
+      "summary": "Ramazan ve Kurban bayramlarının sabahında cemaatle kılınan iki rekâtlı namaz.",
+      "sections": [
+        {
+          "id": "bayram-hukum",
+          "title": "Hükmü",
+          "blocks": [
+            {
+              "type": "madhhab",
+              "title": "Hükmü",
+              "src": [
+                "tdv-bayram"
+              ],
+              "views": {
+                "hanefi": "Cuma kılmakla yükümlü olanlara vaciptir; cemaatle kılınması şarttır.",
+                "safii": "Beş vakit namazla yükümlü her kadın ve erkeğe sünnettir; tek başına da kılınabilir.",
+                "maliki": "Müekked sünnettir; cemaatle kılınması şarttır.",
+                "hanbeli": "Farz-ı kifâyedir; cemaatle kılınması şarttır."
+              }
+            },
+            {
+              "type": "text",
+              "src": [
+                "diyanet-cuma-bayram"
+              ],
+              "text": "Güneş doğup kerahat vakti çıktıktan sonra kılınır. Ezan okunmaz, kamet getirilmez. Hutbe namazdan sonra okunur."
+            }
+          ]
+        },
+        {
+          "id": "bayram-kilinis",
+          "title": "Kılınışı (Hanefî)",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "diyanet-cuma-bayram"
+              ],
+              "steps": [
+                {
+                  "id": "b1",
+                  "pose": "takbir",
+                  "title": "Niyet ve tekbir",
+                  "text": "İmama uyarak Ramazan ya da Kurban bayramı namazına niyet edilir. \"Allâhu ekber\" diyerek tekbir alınıp eller bağlanır ve Sübhâneke okunur.",
+                  "recite": [
+                    "niyet",
+                    "tekbir",
+                    "subhaneke"
+                  ]
+                },
+                {
+                  "id": "b2",
+                  "pose": "takbir",
+                  "title": "Birinci rekâtın zevâid tekbirleri",
+                  "text": "Üç kez tekbir alınır. İlk ikisinde eller kulak hizasına kaldırılıp yanlara salınır, üçüncüsünde eller bağlanır. Tekbirler arasında üç kez \"Sübhânallâhil-azîm\" diyecek kadar beklenir.",
+                  "recite": [
+                    "tekbir",
+                    "zevaid-tekbir-ara"
+                  ]
+                },
+                {
+                  "id": "b3",
+                  "pose": "qiyam",
+                  "title": "Kıraat ve birinci rekât",
+                  "text": "İmam Fâtiha ve sûreyi sesli okur. Rükû ve secdeler yapılır, ikinci rekâta kalkılır."
+                },
+                {
+                  "id": "b4",
+                  "pose": "qiyam",
+                  "title": "İkinci rekâtın kıraati",
+                  "text": "İmam Fâtiha ve sûreyi sesli okur."
+                },
+                {
+                  "id": "b5",
+                  "pose": "takbir",
+                  "title": "İkinci rekâtın zevâid tekbirleri",
+                  "text": "Rükûdan önce üç kez tekbir alınır; üçünde de eller kulak hizasına kaldırılıp yanlara salınır. Dördüncü tekbirle rükûa gidilir.",
+                  "recite": [
+                    "tekbir",
+                    "zevaid-tekbir-ara"
+                  ]
+                },
+                {
+                  "id": "b6",
+                  "pose": "tashahhud",
+                  "title": "Secdeler, oturuş ve selam",
+                  "text": "Secdelerden sonra oturulur, Ettehiyyâtü, Salli, Bârik ve Rabbenâ duaları okunup selam verilir. Ardından hutbe dinlenir.",
+                  "recite": [
+                    "tahiyyat",
+                    "salli",
+                    "barik",
+                    "rabbena-atina",
+                    "rabbenagfirli",
+                    "selam"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Zevâid tekbirleri",
+              "src": [
+                "tdv-bayram",
+                "diyanet-cuma-bayram"
+              ],
+              "views": {
+                "hanefi": "Birinci rekâtta Sübhâneke'den sonra üç, ikinci rekâtta kıraatten sonra rükûdan önce üç tekbir. Vaciptir.",
+                "safii": "Birinci rekâtta iftitah duasından sonra yedi, ikinci rekâta kalkınca kıraatten önce beş tekbir. Sünnettir.",
+                "maliki": "Birinci rekâtta iftitah tekbirinden sonra altı, ikinci rekâta kalkınca beş tekbir. Sünnettir.",
+                "hanbeli": "Birinci rekâtta iftitah duasından sonra altı, ikinci rekâta kalkınca beş tekbir."
+              }
+            }
+          ]
+        },
+        {
+          "id": "teshrik",
+          "title": "Teşrik tekbirleri",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "diyanet-cuma-bayram",
+                "tdv-bayram"
+              ],
+              "text": "Kurban Bayramı'nda arefe günü sabah namazından bayramın dördüncü günü ikindi namazına kadar 23 vakit, farz namazların ardından teşrik tekbiri getirilir.",
+              "recite": [
+                "teshrik"
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Hükmü ve süresi",
+              "src": [
+                "tdv-bayram"
+              ],
+              "views": {
+                "hanefi": "Vaciptir. Arefe sabahından bayramın dördüncü günü ikindisine kadar 23 vakit.",
+                "safii": "Sünnettir. Uygulamada arefe sabahından dördüncü gün ikindisine kadar getirilir.",
+                "maliki": "Menduptur. Bayramın birinci günü öğleden dördüncü gün sabahına kadar 15 vakit.",
+                "hanbeli": "Sünnettir. Arefe sabahından dördüncü gün ikindisine kadar 23 vakit."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teravih",
+      "group": "ozel",
+      "title": "Teravih namazı",
+      "summary": "Ramazan gecelerinde yatsıdan sonra kılınan namaz.",
+      "sections": [
+        {
+          "id": "teravih-hukum",
+          "title": "Hükmü ve vakti",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-teravih"
+              ],
+              "text": "Teravih kadın ve erkek her müslüman için Ramazan ayının sünnetidir. Oruç tutamayanlar da kılar. Vakti yatsı namazından sonra başlar, sabaha kadar sürer; uygulamada vitirden önce kılınır. Ezan ve kamet yoktur, kılınamazsa kazâ edilmez."
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-teravih"
+              ],
+              "views": {
+                "hanefi": "Müekked sünnettir, 20 rekât. Cemaatle kılınması sünnet-i kifâyedir. Dört rekâtta bir selam da verilebilir.",
+                "safii": "Müekked sünnettir, 20 rekât. İki rekâtta bir selam vermek farzdır; bilerek dört rekâtta bir selam verilirse namaz geçersiz olur.",
+                "maliki": "Sünnettir. İmam Mâlik'ten 36 ve 20 rekât görüşleri nakledilir. Camiler boş kalmamak şartıyla evde kılmak müstehaptır.",
+                "hanbeli": "Müekked sünnettir, 20 rekât. Cemaatle ve gecenin ilk vaktinde kılmak daha faziletlidir."
+              }
+            },
+            {
+              "type": "note",
+              "src": [
+                "tdv-teravih"
+              ],
+              "text": "Teravihin sekiz rekât olduğunu söyleyen âlimler de vardır. Diyanet uygulamasında 20 rekât kılınır."
+            }
+          ]
+        },
+        {
+          "id": "teravih-kilinis",
+          "title": "Kılınışı",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-teravih"
+              ],
+              "text": "İki rekâtta bir selam verilecekse sabah namazının sünneti gibi, dört rekâtta bir selam verilecekse ikindinin sünneti gibi kılınır. Cemaatle kılınırken imam bütün rekâtlarda sesli okur. Teravih başladıktan sonra camiye gelen önce yatsıyı kılar, sonra imama uyar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cenaze",
+      "group": "ozel",
+      "title": "Cenaze namazı",
+      "summary": "Vefat eden müslüman için kılınan, rükû ve secdesi olmayan namaz.",
+      "sections": [
+        {
+          "id": "cenaze-hukum",
+          "title": "Hükmü",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-cenaze"
+              ],
+              "text": "Cenaze namazı farz-ı kifâyedir: bir kişinin kılmasıyla da diğerlerinin üzerinden düşer. Rükû, secde ve oturuş yoktur; ayakta dört tekbirle kılınır. Namazın farzları niyet, dört tekbir ve ayakta durmaktır."
+            }
+          ]
+        },
+        {
+          "id": "cenaze-kilinis",
+          "title": "Kılınışı (Hanefî)",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "tdv-cenaze"
+              ],
+              "steps": [
+                {
+                  "id": "z1",
+                  "pose": "stand",
+                  "title": "Niyet",
+                  "text": "İmam cenazenin göğsü hizasında durur. Cenazenin erkek, kadın ya da çocuk olmasına göre niyet edilir: \"Niyet ettim Allah rızası için şu hazır olan erkek (kadın) cenaze namazını kılmaya, uydum hazır olan imama.\"",
+                  "recite": [
+                    "niyet"
+                  ]
+                },
+                {
+                  "id": "z2",
+                  "pose": "takbir",
+                  "title": "Birinci tekbir",
+                  "text": "Eller kaldırılarak tekbir alınır ve bağlanır. Sübhâneke \"ve celle senâük\" eklenerek gizlice okunur.",
+                  "recite": [
+                    "tekbir",
+                    "subhaneke"
+                  ]
+                },
+                {
+                  "id": "z3",
+                  "pose": "qiyam",
+                  "title": "İkinci tekbir",
+                  "text": "Eller kaldırılmadan tekbir alınır, Allâhümme salli ve Allâhümme bârik okunur.",
+                  "recite": [
+                    "tekbir",
+                    "salli",
+                    "barik"
+                  ]
+                },
+                {
+                  "id": "z4",
+                  "pose": "qiyam",
+                  "title": "Üçüncü tekbir",
+                  "text": "Eller kaldırılmadan tekbir alınır, cenaze duası okunur.",
+                  "recite": [
+                    "tekbir",
+                    "cenaze-duasi"
+                  ]
+                },
+                {
+                  "id": "z5",
+                  "pose": "salam_right",
+                  "title": "Dördüncü tekbir ve selam",
+                  "text": "Eller kaldırılmadan tekbir alınır, sağa ve sola selam verilir. Eller sol tarafa selam verildikten sonra bırakılır.",
+                  "recite": [
+                    "tekbir",
+                    "selam"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Mezhep farkları",
+              "src": [
+                "tdv-cenaze"
+              ],
+              "views": {
+                "hanefi": "Birinci tekbirden sonra Sübhâneke okunur, yalnız birinci tekbirde eller kaldırılır. İki tarafa selam verilir. Gıyabi cenaze namazı kılınmaz.",
+                "safii": "Birinci tekbirden sonra Fâtiha okunur, her tekbirde eller kaldırılır. Yalnız sağa selam vermek gereklidir. Gıyabi cenaze namazı kılınabilir.",
+                "maliki": "Yalnız birinci tekbirde eller kaldırılır. Tekbirlerden sonra dua edilir. Yalnız sağa selam vermek gereklidir. Gıyabi cenaze namazı kılınmaz.",
+                "hanbeli": "Birinci tekbirden sonra Fâtiha okunur, her tekbirde eller kaldırılır. Yalnız sağa selam vermek gereklidir. Gıyabi cenaze namazı kılınabilir."
+              }
+            },
+            {
+              "type": "note",
+              "src": [
+                "tdv-cenaze"
+              ],
+              "text": "Namaz başladıktan sonra yetişen, imam selam verince eksik kalan tekbirleri dua okumadan peş peşe alıp selam verir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kaza",
+      "group": "ozel",
+      "title": "Kazâ namazı",
+      "summary": "Vaktinde kılınamayan namazın sonradan kılınması.",
+      "sections": [
+        {
+          "id": "kaza-hukum",
+          "title": "Hükmü",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-kaza"
+              ],
+              "text": "Vaktinde kılınmayan farz namazın kazâ edilmesi, dört mezhebe göre de farzdır. Kazâ geciktirilmeden yapılmalıdır. Kerahat vakitleri dışında her zaman kılınabilir. Cuma namazı kazâ edilmez; kaçırılırsa o günün öğle namazı kılınır."
+            },
+            {
+              "type": "list",
+              "style": "bullet",
+              "check": true,
+              "items": [
+                "Hanefîlere göre farzlar ve vitir kazâ edilir. Sünnetler kazâ edilmez; yalnız sabahın sünneti, farzıyla birlikte aynı gün öğleden önce kazâ edilebilir.",
+                "Âdet ve lohusalık halinde kılınmayan namazlar kazâ edilmez.",
+                "Kazâ namazı, kılınmayan namazın aynısı gibi kılınır. Niyette hangi namazın kazâsı olduğu belirtilir: \"Niyet ettim Allah rızası için kılamadığım ilk (ya da son) sabah namazının farzını kılmaya.\""
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kaza-tertip",
+          "title": "Sıraya uymak (tertip)",
+          "blocks": [
+            {
+              "type": "madhhab",
+              "title": "Kazâ namazlarında sıra",
+              "check": true,
+              "views": {
+                "hanefi": "Kazâya kalmış namazı altı vakitten az olan kişi (sâhib-i tertip) önce kazâyı, sonra vakit namazını kılar. Vakit dar ise, unutulmuşsa ya da kazâlar altı vakte ulaşmışsa sıra düşer.",
+                "safii": "Sıraya uymak sünnettir, gerekli değildir.",
+                "maliki": "Az sayıdaki (beş vakte kadar) kazâ namazında sıraya uymak gereklidir.",
+                "hanbeli": "Sayıya bakılmaksızın sıraya uymak gereklidir; unutma ya da vaktin çıkma endişesi halinde düşer."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sehiv",
+      "group": "ozel",
+      "title": "Sehiv secdesi",
+      "summary": "Namazda yanılınca yapılan iki secde.",
+      "sections": [
+        {
+          "id": "sehiv-ne-zaman",
+          "title": "Ne zaman gerekir",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "tdv-sehiv",
+                "tdv-namaz"
+              ],
+              "items": [
+                "Bir vacip unutularak terk edilirse ya da geciktirilirse (Hanefî)",
+                "Bir rükün tekrarlanır, öne alınır ya da geciktirilirse",
+                "Kılınan rekât sayısında şüphe edilirse; ağır basan kanaate, yoksa en az sayıya göre tamamlanır"
+              ]
+            },
+            {
+              "type": "note",
+              "src": [
+                "tdv-sehiv"
+              ],
+              "text": "Bir namazda birden fazla yanılma olsa da bir kez sehiv secdesi yeterlidir. İmamın yanılmasında cemaat de secde eder; cemaatin kendi yanılmasından dolayı secde gerekmez."
+            }
+          ]
+        },
+        {
+          "id": "sehiv-yapilis",
+          "title": "Yapılışı (Hanefî)",
+          "blocks": [
+            {
+              "type": "steps",
+              "src": [
+                "tdv-sehiv"
+              ],
+              "steps": [
+                {
+                  "id": "s1",
+                  "pose": "tashahhud",
+                  "title": "Son oturuş",
+                  "text": "Son oturuşta Ettehiyyâtü okunur.",
+                  "recite": [
+                    "tahiyyat"
+                  ]
+                },
+                {
+                  "id": "s2",
+                  "pose": "salam_right",
+                  "title": "Selam",
+                  "text": "Yalnız sağa selam verilir. İki tarafa selam verilip sonra secde edilmesi de caizdir."
+                },
+                {
+                  "id": "s3",
+                  "pose": "sujud",
+                  "title": "İki secde",
+                  "text": "Tekbirle iki kez secde yapılır.",
+                  "recite": [
+                    "tekbir",
+                    "secde-tesbih"
+                  ]
+                },
+                {
+                  "id": "s4",
+                  "pose": "tashahhud",
+                  "title": "Oturuş ve selam",
+                  "text": "Oturulup Ettehiyyâtü, Salli, Bârik ve Rabbenâ duaları okunur, iki tarafa selam verilir.",
+                  "recite": [
+                    "tahiyyat",
+                    "salli",
+                    "barik",
+                    "rabbena-atina",
+                    "selam"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "madhhab",
+              "title": "Hükmü ve yeri",
+              "src": [
+                "tdv-sehiv"
+              ],
+              "views": {
+                "hanefi": "Vaciptir. Selamdan sonra yapılır.",
+                "safii": "Sünnettir. Selamdan önce yapılır.",
+                "maliki": "Sünnettir. Eksiklik varsa selamdan önce, fazlalık varsa selamdan sonra yapılır.",
+                "hanbeli": "Tercih edilen görüşe göre vaciptir. Selamdan önce ya da sonra yapılabilir."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kadin",
+      "group": "ozel",
+      "title": "Kadınlara özel haller",
+      "summary": "Âdet, lohusalık ve özür hallerinde namaz.",
+      "sections": [
+        {
+          "id": "hayiz-nifas",
+          "title": "Âdet ve lohusalık",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-namaz",
+                "tdv-gusul",
+                "tdv-hayiz"
+              ],
+              "text": "Âdet (hayız) ve lohusalık (nifas) halindeki kadın namaz kılmaz ve bu süredeki namazları kazâ etmez. Kan kesilince gusül alıp namaza başlar. Bu hallerde oruç tutulmaz ama oruç sonradan kazâ edilir. Kur'an'a dokunulmaz; Mâlikîler dışındaki mezheplere göre Kur'an okunmaz, dua ve zikir niyetiyle okumak caizdir."
+            },
+            {
+              "type": "madhhab",
+              "title": "Süreler",
+              "src": [
+                "tdv-hayiz"
+              ],
+              "check": true,
+              "views": {
+                "hanefi": "Âdet en az 3, en çok 10 gün. Lohusalık en çok 40 gün, en azı için sınır yoktur.",
+                "safii": "Âdet en az 1 gün 1 gece, en çok 15 gün. Lohusalık en çok 60 gün.",
+                "maliki": "Âdetin en azı için sınır yoktur, en çoğu 15 gün. Lohusalık en çok 60 gün.",
+                "hanbeli": "Âdet en az 1 gün 1 gece, en çok 15 gün. Lohusalık en çok 40 gün."
+              }
+            }
+          ]
+        },
+        {
+          "id": "istihaze",
+          "title": "Özür kanı (istihâze)",
+          "blocks": [
+            {
+              "type": "text",
+              "src": [
+                "tdv-gusul"
+              ],
+              "check": true,
+              "text": "Âdet ve lohusalık için belirlenen süreleri aşan ya da en az sürenin altında kalan kanama özür kanıdır. Bu durumdaki kadın namazını kılar ve orucunu tutar. Hanefîlere göre özürlü kişi her namaz vakti için abdest alır ve o vakit içinde dilediği kadar namaz kılar."
+            }
+          ]
+        },
+        {
+          "id": "kadin-namaz",
+          "title": "Kadınların namazdaki farkları",
+          "blocks": [
+            {
+              "type": "list",
+              "style": "bullet",
+              "src": [
+                "diyanet-namaz",
+                "tdv-namaz"
+              ],
+              "items": [
+                "Tekbirde eller omuz hizasına kaldırılır.",
+                "Kıyamda eller göğüs üstünde bağlanır, bilek kavranmaz.",
+                "Rükûda daha az eğilinir, parmaklar açılmaz, dizler hafif bükülür.",
+                "Secdede kollar yanlara bitişik, karın uyluklara yakın tutulur.",
+                "Oturuşlarda ayaklar sağ tarafa çıkarılarak oturulur.",
+                "Kamet getirilmez; Hanefîlere göre kadınlar sesli okumaz."
+              ]
+            },
+            {
+              "type": "note",
+              "text": "Adım adım anlatımda her adımın kadın ve erkek farkı ayrıca gösterilir."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
