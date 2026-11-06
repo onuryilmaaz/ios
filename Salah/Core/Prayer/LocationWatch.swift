@@ -4,10 +4,11 @@ import Foundation
 /// Kullanıcı şehir değiştirdiğinde namaz vakitlerinin kendiliğinden güncellenmesi.
 /// Android `LocationWatch.kt` ile aynı kurallar (RN services/locationWatch.service.ts).
 ///
-/// Arka planda konum izlenmez; uygulama öne geldiğinde ucuz bir kontrol yapılır:
+/// Arka planda konum izlenmez; uygulama öne geldiğinde ve ana sayfaya dönüldüğünde ucuz bir kontrol yapılır:
 /// en fazla 30 dakikada bir, yalnız izin ZATEN verilmişse (sormadan), 25 km'den az hareket
 /// ve aynı ilçede ters coğrafi kodlama bile yapılmaz. İlçe değiştiyse: otomatik seçilmişse
-/// sessizce güncellenir, elle seçilmişse sorulur.
+/// sessizce güncellenir, elle seçilmişse sorulur. Elle başka ilçe seçilince sınır sıfırlanır: ana sayfaya
+/// dönüldüğünde gerçek konum farklıysa hemen sorulur (daha önce reddedilen öneri dahil).
 @MainActor
 enum LocationWatch {
   static let lastCheckKey = "@salah_location_last_check"
@@ -49,6 +50,16 @@ enum LocationWatch {
     if source == "auto" { return .silentUpdate }
     if declinedDistrictId == resolvedDistrictId { return .none }
     return .ask
+  }
+
+  /// Kullanıcı elle başka bir ilçe seçti mi? (İlk seçim de sayılır.)
+  nonisolated static func isManualChange(previousDistrictId: String?, districtId: String, source: String) -> Bool {
+    source == "manual" && previousDistrictId != districtId
+  }
+
+  static func resetAfterManualChange() {
+    LocalStore.set(nil, for: lastCheckKey)
+    LocalStore.set(nil, for: declinedDistrictKey)
   }
 
   private static var running = false

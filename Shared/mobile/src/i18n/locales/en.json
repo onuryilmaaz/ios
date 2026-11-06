@@ -1133,6 +1133,12 @@
     "alarms": {
       "label": "Alarms",
       "sub": "Prayer, tahajjud and suhoor alarms"
+    },
+    "widgetTheme": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "Phone theme",
+      "title": "Widget theme"
     }
   },
   "share": {

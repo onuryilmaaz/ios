@@ -92,3 +92,9 @@ bun run typecheck
 ```
 
 Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugOffline YES -SalahDebugAdmin YES -SalahDebugRoute admin|adminUsers|adminDetail|adminRoles -rn.@salah_onboarding_done true`. Dil/tema için mevcut `-rn.@salah_language` ve `-rn.@salah_theme_mode` argümanları kullanılır. Bu araçlar Release'te etkisizdir.
+
+## Widget teması (2026-11-05)
+- Ayarlar > Uygulama > Widget teması (Telefon teması / Aydınlık / Karanlık), anahtar App Group `salah_widget_theme`. Namaz Vakitleri ve Gün Çemberi artık temaya uyar; koyu zemin `#113c2f` (Android ile aynı). Kilit ekranı, StandBy ve Live Activity değişmedi.
+- Cihazda kontrol edilecek: gerçek ana ekranda üç seçenek, telefon modu değişince geçiş, Renklendirilmiş ve Saydam görünüm.
+- Widget boşlukları: ana ekran widget'larında `contentMarginsDisabled`; kenar boşluğu yalnız görünümlerin kendi padding'i (14-18 pt, küçük Gün Çemberi 8 pt). Cihazda kontrol: ayet/hadis taşması, köşelere yakınlık, StandBy'daki küçük widget.
+- Kilit ekranı (2026-11-06; Dinamik Ada denendi, kullanıcı eskisini tercih etti, geri alındı): Live Activity kilit ekranı kartı ve dikdörtgen kilit widget'ında canlı `ProgressView(timerInterval:)`, yuvarlak vakit widget'ında saat, Takip'te vakit ikonları, ayette satır içi ikon. Açılış animasyonu ~2,2 sn. Cihazda kontrol: dikdörtgen kilit widget'ı kesiliyor mu, çubuk rengi. ImageRenderer canlı çubuğu ve kilit ekranı ölçeğini doğru göstermiyor.

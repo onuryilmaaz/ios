@@ -73,6 +73,7 @@
 		4DA0CA2186222B94C87C8CCF /* StreakCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9285FF880F805A290409D9D8 /* StreakCard.swift */; };
 		4F2D1B743E4A0202162DEDC5 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B7C4C2472AC37333DE2E9B /* SplashView.swift */; };
 		4F5030B0733BC27B1A4DBFC8 /* AccountViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA6D9A84871248597B484E /* AccountViews.swift */; };
+		507C631D9F03D088A65D1CE7 /* WidgetTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8CAB68C3781F61282003FC /* WidgetTheme.swift */; };
 		50BD843B6C5012B5D6E3C4B9 /* AdminViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A2A9589D57C2CB33116B0 /* AdminViews.swift */; };
 		50C2D5A2CB6ED6CF904E1023 /* hadiths_v2.db in Resources */ = {isa = PBXBuildFile; fileRef = 2743EF87A3C0A3EDB6136EAF /* hadiths_v2.db */; };
 		52BE56FFDDBFBF2D4140111D /* AppLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA52A173C357E93302F90E2 /* AppLinks.swift */; };
@@ -208,6 +209,7 @@
 		F1FE60C977D195238873CD78 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723673953F59D7D0C03779D8 /* HomeRoute.swift */; };
 		F2C6FBB840DE16164C23837B /* WidgetSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88D79BA20084E5B661BA01 /* WidgetSync.swift */; };
 		F39AA86D1D17A836D45CE0A1 /* SalahAlarmLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9EA48BDA05096C57B1C14 /* SalahAlarmLiveActivity.swift */; };
+		F3B66EEE8A771C59583B21FA /* WidgetThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9200DD28F40C1A92A2A55D48 /* WidgetThemeTests.swift */; };
 		F579CF7E9EB9F28678EBC8BF /* AmelWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08544C223F1CD8A69C6B4D3 /* AmelWidget.swift */; };
 		F911E9AB6665647466482C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F857A0DD8834B0A1240E1C7 /* Assets.xcassets */; };
 		FC70BB6C6CC6E100499C4E1A /* PrayerTrackerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C5CBA42808F9C679DEEDE /* PrayerTrackerCard.swift */; };
@@ -351,6 +353,7 @@
 		69114D82EBC55C58DE1C8BA6 /* DayRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRingWidget.swift; sourceTree = "<group>"; };
 		6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingArt.swift; sourceTree = "<group>"; };
 		6E65C5F29C70CFC9110EA0B0 /* Ornaments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ornaments.swift; sourceTree = "<group>"; };
+		6E8CAB68C3781F61282003FC /* WidgetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTheme.swift; sourceTree = "<group>"; };
 		6F88D79BA20084E5B661BA01 /* WidgetSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSync.swift; sourceTree = "<group>"; };
 		70468BEA1F7AC82EBB41FA7F /* TrackerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerModels.swift; sourceTree = "<group>"; };
 		709583DB08096CA148D1DEF2 /* HutbeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutbeTests.swift; sourceTree = "<group>"; };
@@ -383,6 +386,7 @@
 		8EB233DFAB6DFA9B9B7C9134 /* tone_soft.caf */ = {isa = PBXFileReference; path = tone_soft.caf; sourceTree = "<group>"; };
 		8EBFCEC669D095B620D55326 /* NotificationDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelivery.swift; sourceTree = "<group>"; };
 		91D1D9078FBFABBFF3C959EB /* NotificationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPlan.swift; sourceTree = "<group>"; };
+		9200DD28F40C1A92A2A55D48 /* WidgetThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThemeTests.swift; sourceTree = "<group>"; };
 		9285FF880F805A290409D9D8 /* StreakCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCard.swift; sourceTree = "<group>"; };
 		949A565E1D24819DD81C2748 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		9572439A490C31896F211CB6 /* DailyInspirationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInspirationCard.swift; sourceTree = "<group>"; };
@@ -511,6 +515,7 @@
 				3F578466A4FB36727914DB1B /* SplashTests.swift */,
 				1D29E10A4F2F0F79664E67EB /* StorageTests.swift */,
 				9A02269AEAEB6C3E65768730 /* TrackerTests.swift */,
+				9200DD28F40C1A92A2A55D48 /* WidgetThemeTests.swift */,
 			);
 			path = SalahTests;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 			children = (
 				A167886099A6023671A224C9 /* WidgetBridge.swift */,
 				6F88D79BA20084E5B661BA01 /* WidgetSync.swift */,
+				6E8CAB68C3781F61282003FC /* WidgetTheme.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -1409,6 +1415,7 @@
 				5FE8A2AB3B4D973BE15B1134 /* SplashTests.swift in Sources */,
 				75ACA1B59041AFC353D03A70 /* StorageTests.swift in Sources */,
 				129D12BA462A40339B17ED40 /* TrackerTests.swift in Sources */,
+				F3B66EEE8A771C59583B21FA /* WidgetThemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,6 +1556,7 @@
 				3DC971D64A9F1E6E22FA63D1 /* WelcomeView.swift in Sources */,
 				D577AD5CCC3BC9EEE70C3706 /* WidgetBridge.swift in Sources */,
 				F2C6FBB840DE16164C23837B /* WidgetSync.swift in Sources */,
+				507C631D9F03D088A65D1CE7 /* WidgetTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

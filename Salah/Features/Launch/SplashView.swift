@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Soğuk açılışta ~1,4 sn'lik marka animasyonu. Statik açılış ekranıyla aynı zümrüt zeminden
+/// Soğuk açılışta ~2,2 sn'lik marka animasyonu. Statik açılış ekranıyla aynı zümrüt zeminden
 /// başlar (LaunchScreen.storyboard), bitince hafifçe büyüyerek kaybolur ve alttaki uygulama görünür.
 /// "Derin Orman" dili: gradyan/parlama yok; altın çizgi, hilal ve Bungee logo.
 struct SplashView: View {
@@ -78,24 +78,24 @@ struct SplashView: View {
       try await SplashSequence.run(reduceMotion: motionReduced) { event in
         switch event {
         case .drawMark:
-          withAnimation(.easeInOut(duration: 0.6)) { starTrim = 1 }
-          withAnimation(.easeOut(duration: 0.9)) { starAngle = 0 }
+          withAnimation(.easeInOut(duration: 0.9)) { starTrim = 1 }
+          withAnimation(.easeOut(duration: 1.3)) { starAngle = 0 }
         case .revealMoon:
-          withAnimation(.spring(response: 0.5, dampingFraction: 0.62)) {
+          withAnimation(.spring(response: 0.65, dampingFraction: 0.68)) {
             moonScale = 1
             moonOpacity = 1
           }
         case .revealLetter(let count):
-          withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) { lettersShown = count }
+          withAnimation(.spring(response: 0.45, dampingFraction: 0.72)) { lettersShown = count }
         case .pulse:
           ringOpacity = 0.7
-          withAnimation(.easeOut(duration: 0.7)) {
+          withAnimation(.easeOut(duration: 0.9)) {
             ringScale = 1.75
             ringOpacity = 0
           }
         case .showBrand: showBrand()
         case .fade:
-          withAnimation(.easeOut(duration: motionReduced ? 0.25 : 0.3)) { leaving = true }
+          withAnimation(.easeOut(duration: motionReduced ? 0.25 : 0.4)) { leaving = true }
         case .finish:
           guard !finished else { return }
           finished = true

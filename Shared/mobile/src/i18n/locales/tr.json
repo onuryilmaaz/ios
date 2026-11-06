@@ -1133,6 +1133,12 @@
     "alarms": {
       "label": "Alarmlar",
       "sub": "Namaz, teheccüd ve sahur alarmları"
+    },
+    "widgetTheme": {
+      "dark": "Karanlık",
+      "light": "Aydınlık",
+      "system": "Telefon teması",
+      "title": "Widget teması"
     }
   },
   "share": {

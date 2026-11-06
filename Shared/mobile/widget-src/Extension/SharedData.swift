@@ -2,6 +2,24 @@ import Foundation
 
 let appGroupID = "group.com.onur6541.salah.shared"
 
+/// Ayarlar'daki widget teması (uygulama yazar: WidgetBridge.setWidgetTheme). Anahtar yoksa telefon teması.
+enum WidgetThemeChoice: String {
+  case system, light, dark
+
+  static func load() -> WidgetThemeChoice {
+    UserDefaults(suiteName: appGroupID)?.string(forKey: "salah_widget_theme").flatMap(WidgetThemeChoice.init) ?? .system
+  }
+
+  /// Sabit temada koyu mu; telefon temasını izliyorsa nil.
+  var forcedDark: Bool? {
+    switch self {
+    case .system: return nil
+    case .light: return false
+    case .dark: return true
+    }
+  }
+}
+
 struct WidgetData: Codable {
   var prayerName: String
   var prayerTime: String

@@ -68,6 +68,13 @@ struct RootView: View {
       if NotificationNavigation.shared.inspiration != nil { tab = .home }
     }
     .onOpenURL { open($0) }
+    // Ana sayfaya dönüş: ayarlardan ilçe değiştiyse gerçek konumla karşılaştırılır (30 dk sınırı seçimle sıfırlanır).
+    .onChange(of: HomeNavigation.shared.path.isEmpty) { _, atRoot in
+      if atRoot, tab == .home { Task { await LocationWatch.check() } }
+    }
+    .onChange(of: tab) { _, next in
+      if next == .home, HomeNavigation.shared.path.isEmpty { Task { await LocationWatch.check() } }
+    }
     .onChange(of: NotificationNavigation.shared.homeRequest) {
       tab = .home
     }

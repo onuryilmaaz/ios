@@ -13,7 +13,7 @@ struct SplashTests {
     }
     #expect(events.suffix(2) == [.fade, .finish])
     #expect(events.filter { $0 == .finish }.count == 1)
-    #expect(elapsed == (reduceMotion ? .milliseconds(700) : .milliseconds(1365)))
+    #expect(elapsed == (reduceMotion ? .milliseconds(700) : .milliseconds(2200)))
     if reduceMotion {
       // Hareketi Azalt: döndürme, yaylanma ve halka animasyonu yok; marka hemen görünür.
       #expect(events == [.showBrand, .fade, .finish])

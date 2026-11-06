@@ -90,7 +90,7 @@ struct AmelSmallView: View {
       }
       .widgetAccentable()
     }
-    .padding(15)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
   }
 }
@@ -127,7 +127,7 @@ struct AmelMediumView: View {
         }
       }
     }
-    .padding(15)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
   }
 }
@@ -161,6 +161,7 @@ struct AmelWidget: Widget {
       }
       .widgetURL(URL(string: isWidgetPremiumActive() ? "salah://home" : "salah://paywall"))
     }
+    .contentMarginsDisabled()
     .configurationDisplayName(WL.t("amelW.name"))
     .description(WL.t("amelW.desc"))
     .supportedFamilies([.systemSmall, .systemMedium])

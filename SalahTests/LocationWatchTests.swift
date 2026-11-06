@@ -5,6 +5,13 @@ import Testing
 /// Android LocationWatchTest ile aynı kararlar (RN services/locationWatch.service.ts).
 @MainActor
 struct LocationWatchTests {
+  @Test func manualChangeDetection() {
+    #expect(LocationWatch.isManualChange(previousDistrictId: "1", districtId: "2", source: "manual"))
+    #expect(LocationWatch.isManualChange(previousDistrictId: nil, districtId: "2", source: "manual"))
+    #expect(!LocationWatch.isManualChange(previousDistrictId: "2", districtId: "2", source: "manual"))
+    #expect(!LocationWatch.isManualChange(previousDistrictId: "1", districtId: "2", source: "auto"))
+  }
+
   // İzmit (Kocaeli) ve İstanbul Kadıköy: ~85 km; İzmit içinde birkaç km.
   private let izmit = (40.7654, 29.9408)
   private let kadikoy = (40.9909, 29.0303)

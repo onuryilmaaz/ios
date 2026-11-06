@@ -74,6 +74,49 @@ private struct LAModel {
 /// Uygulamadaki ana sayfa üst alanıyla aynı koyu zümrüt.
 private let bannerBackground = SalahTheme.hero.canvas
 
+/// Vaktin içindeyken canlı ilerleme çubuğu (sistem kendi yürütür; ayrı güncelleme gerekmez).
+private struct LiveBar: View {
+  let model: LAModel
+
+  var body: some View {
+    if !model.expired, model.state.startTimeMs > 0, model.state.endTimeMs > model.state.startTimeMs {
+      ProgressView(
+        timerInterval: Date(timeIntervalSince1970: model.state.startTimeMs / 1000)...model.endDate,
+        countsDown: false
+      ) {
+        EmptyView()
+      } currentValueLabel: {
+        EmptyView()
+      }
+      .progressViewStyle(.linear)
+      .tint(model.tint)
+    }
+  }
+}
+
+/// Bitiş saati bilgisi (sağ üst).
+private struct TrailingTime: View {
+  let model: LAModel
+  let labelSize: CGFloat
+  let timeSize: CGFloat
+
+  var body: some View {
+    if !model.expired {
+      VStack(alignment: .trailing, spacing: 1) {
+        Text(model.trailingLabel)
+          .font(.system(size: labelSize, weight: .medium))
+          .foregroundColor(.white.opacity(0.65))
+          .lineLimit(1)
+        Text(model.endTime)
+          .font(.system(size: timeSize, weight: .semibold))
+          .monospacedDigit()
+          .foregroundColor(.white)
+          .lineLimit(1)
+      }
+    }
+  }
+}
+
 private struct Ring: View {
   let progress: Double
   let tint: Color
@@ -117,9 +160,9 @@ struct SalahLockScreenView: View {
 
   var body: some View {
     let m = LAModel(state, isStale: isStale)
-    VStack(alignment: .leading, spacing: 12) {
+    VStack(alignment: .leading, spacing: 10) {
       HStack(alignment: .center, spacing: 12) {
-        PrayerBadge(key: m.key, theme: .dark, size: 40)
+        PrayerBadge(key: m.key, theme: .dark, size: 44)
 
         VStack(alignment: .leading, spacing: 2) {
           Text(m.expired ? m.displayName : m.headline)
@@ -127,31 +170,18 @@ struct SalahLockScreenView: View {
             .foregroundColor(.white.opacity(0.72))
             .lineLimit(1)
             .minimumScaleFactor(0.8)
-          Countdown(model: m, size: 32)
+          Countdown(model: m, size: 36)
         }
 
         Spacer(minLength: 8)
 
-        if !m.expired {
-          VStack(alignment: .trailing, spacing: 2) {
-            Text(m.trailingLabel)
-              .font(.system(size: 12, weight: .medium))
-              .foregroundColor(.white.opacity(0.6))
-              .lineLimit(1)
-            Text(m.endTime)
-              .font(.system(size: 17, weight: .semibold, design: .default))
-              .monospacedDigit()
-              .foregroundColor(.white)
-          }
-        }
+        TrailingTime(model: m, labelSize: 12, timeSize: 18)
       }
 
-      if !m.expired, let p = m.progress {
-        ProgressCapsule(progress: p, tint: m.tint, track: Color.white.opacity(0.14), height: 3)
-      }
+      LiveBar(model: m)
     }
-    .padding(.horizontal, 18)
-    .padding(.vertical, 16)
+    .padding(.horizontal, 16)
+    .padding(.vertical, 14)
     .frame(maxWidth: .infinity)
   }
 }

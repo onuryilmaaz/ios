@@ -67,6 +67,9 @@ struct SettingsView: View {
               sub: l10n.preference == .system ? "\(t("settings.language.system")) (\(current))" : current,
               chevron: true
             ) { chooseLanguage() }
+            row("color-palette-outline", t("settings.widgetTheme.title"), sub: t("settings.widgetTheme.\(WidgetThemeStore.shared.theme.rawValue)"), chevron: true) {
+              chooseWidgetTheme()
+            }
             row("map-outline", t("tour.replay"), sub: t("tour.replaySub"), chevron: true) {
               TourStore.shared.replayAll()
               HomeNavigation.shared.path.removeAll()
@@ -190,6 +193,13 @@ struct SettingsView: View {
       .init(text: Self.languageNames[.ar]!) { pick(.fixed(.ar)) },
       .init(text: t("common.cancel"), style: .cancel),
     ])
+  }
+
+  private func chooseWidgetTheme() {
+    let options = WidgetTheme.allCases.map { theme in
+      AppAlert.Button(text: t("settings.widgetTheme.\(theme.rawValue)")) { WidgetThemeStore.shared.set(theme) }
+    }
+    AppAlert.show(.confirm, t("settings.widgetTheme.title"), nil, buttons: options + [.init(text: t("common.cancel"), style: .cancel)])
   }
 
   private func export() async {

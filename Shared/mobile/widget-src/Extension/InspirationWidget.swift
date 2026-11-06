@@ -116,12 +116,13 @@ struct InspirationSmallView: View {
         .font(quoteFont(.subheadline))
         .foregroundColor(t.textPrimary)
         .lineSpacing(2)
-        .lineLimit(5)
+        .lineLimit(6)
         .minimumScaleFactor(0.8)
+        .layoutPriority(1)
       Spacer(minLength: 0)
       SourceLine(source: entry.data?.source, style: style, theme: t, size: 10)
     }
-    .padding(15)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .accessibilityElement(children: .combine)
   }
@@ -141,8 +142,9 @@ struct InspirationMediumView: View {
         .font(quoteFont(.callout))
         .foregroundColor(t.textPrimary)
         .lineSpacing(3)
-        .lineLimit(4)
-        .minimumScaleFactor(0.85)
+        .lineLimit(5)
+        .minimumScaleFactor(0.8)
+        .layoutPriority(1)
       Spacer(minLength: 0)
       SourceLine(source: entry.data?.source, style: style, theme: t)
     }
@@ -185,8 +187,9 @@ struct InspirationLargeView: View {
         .font(quoteFont(.title3))
         .foregroundColor(t.textPrimary)
         .lineSpacing(5)
-        .lineLimit(arabic.isEmpty ? 10 : 7)
+        .lineLimit(arabic.isEmpty ? 13 : 9)
         .minimumScaleFactor(0.8)
+        .layoutPriority(1)
 
       Spacer(minLength: 0)
       SourceLine(source: entry.data?.source, style: style, theme: t, size: 12)
@@ -205,21 +208,14 @@ struct InspirationAccessoryRectangularView: View {
   private var style: InspirationStyle { styleForType("ayet") }
 
   var body: some View {
-    // Kilit ekranı slotu sabit boyutlu; başlık satırını kaldırıp tüm alanı
-    // ayet metnine ayırıyoruz. Tip ikonu satır başında kalır, metin
-    // 4 satıra kadar açılır ve gerekirse ölçeklenir — böylece mümkün olan en
-    // çok içerik görünür.
-    HStack(alignment: .top, spacing: 5) {
-      Image(systemName: style.icon)
-        .font(.system(size: 11, weight: .bold))
-      Text(entry.verse?.text ?? WL.t("insp.loading"))
-        .font(.caption.weight(.medium))
-        .lineLimit(4)
-        .minimumScaleFactor(0.65)
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-    .widgetAccentable()
+    // Kilit ekranı slotu sabit boyutlu: ikon metnin içinde akar, ayrı sütun kaplamaz; tüm alan
+    // ayete kalır, metin gerekirse küçülerek 4 satıra kadar açılır.
+    Text("\(Image(systemName: style.icon)) \(entry.verse?.text ?? WL.t("insp.loading"))")
+      .font(.caption.weight(.medium))
+      .lineLimit(4)
+      .minimumScaleFactor(0.7)
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+      .widgetAccentable()
   }
 }
 
@@ -290,6 +286,7 @@ struct InspirationWidget: Widget {
       }
       .widgetURL(URL(string: "salah://home"))
     }
+    .contentMarginsDisabled()
     .configurationDisplayName(WL.t("insp.name"))
     .description(WL.t("insp.desc"))
     .supportedFamilies(inspirationSupportedFamilies())

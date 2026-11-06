@@ -157,6 +157,7 @@ private struct EmptyPrayerState: View {
         .multilineTextAlignment(.center)
     }
     .foregroundColor(theme.textSecondary)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 }
@@ -230,7 +231,7 @@ struct PrayerTimesSmallView: View {
         WindowFooter(window: w, now: entry.date, theme: t)
       }
       .accessibilityElement(children: .combine)
-      .padding(15)
+      .padding(16)
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     } else {
       EmptyPrayerState(theme: t)
@@ -246,7 +247,7 @@ struct PrayerTimesMediumView: View {
 
   var body: some View {
     if let w = entry.window {
-      HStack(spacing: 16) {
+      HStack(spacing: 12) {
         VStack(alignment: .leading, spacing: 0) {
           HStack(spacing: 7) {
             HeaderBadge(key: w.key, now: entry.date, theme: t, size: 28)
@@ -270,9 +271,9 @@ struct PrayerTimesMediumView: View {
         }
         // Sıkışık liste: büyük yazı boyutunda taşmasın diye varsayılanda sabit.
         .dynamicTypeSize(...DynamicTypeSize.large)
-        .frame(width: 118)
+        .frame(width: 128)
       }
-      .padding(15)
+      .padding(16)
     } else {
       EmptyPrayerState(theme: t)
     }
@@ -300,6 +301,8 @@ private struct CompactSlotRow: View {
         .font(.system(.footnote, design: .default, weight: slot.isActive ? .semibold : .regular))
         .foregroundColor(
           slot.isActive ? theme.textPrimary : slot.isPast || slot.isMarker ? theme.textTertiary : theme.textSecondary)
+        .lineLimit(1)
+        .layoutPriority(1)
       Spacer(minLength: 4)
       if slot.isPrayed {
         Image(systemName: "checkmark")
@@ -334,8 +337,8 @@ struct PrayerTimesLargeView: View {
         .accessibilityElement(children: .combine)
 
         DayRail(data: entry.data, now: entry.date, tint: tint, theme: t)
-          .padding(.top, 16)
-          .padding(.bottom, 14)
+          .padding(.top, 12)
+          .padding(.bottom, 8)
 
         VStack(spacing: 2) {
           ForEach(buildDaySlots(entry: entry), id: \.id) { slot in
@@ -343,7 +346,6 @@ struct PrayerTimesLargeView: View {
           }
         }
         .dynamicTypeSize(...DynamicTypeSize.large)
-        Spacer(minLength: 0)
       }
       .padding(16)
     } else {
@@ -388,7 +390,8 @@ private struct LargeSlotRow: View {
         .frame(width: 46, alignment: .trailing)
     }
     .padding(.horizontal, 10)
-    .frame(height: 36)
+    // Satırlar kalan yüksekliği paylaşır: küçük iPhone'da taşmaz, büyükte altta boşluk kalmaz.
+    .frame(minHeight: 26, maxHeight: 44)
     .accessibilityElement(children: .ignore)
     .accessibilityLabel(slotAccessibilityLabel(slot))
     .background(
@@ -431,8 +434,14 @@ struct NextPrayerLockView: View {
         Gauge(value: w.progress(at: entry.date) ?? 0) {
           Image(systemName: prayerIcon(w.key))
         } currentValueLabel: {
-          Image(systemName: prayerIcon(w.key))
-            .font(.system(size: 16, weight: .semibold))
+          VStack(spacing: 0) {
+            Image(systemName: prayerIcon(w.key))
+              .font(.system(size: 13, weight: .semibold))
+            Text(w.endTime)
+              .font(.system(size: 11, weight: .semibold).monospacedDigit())
+              .lineLimit(1)
+              .minimumScaleFactor(0.7)
+          }
         }
         .gaugeStyle(.accessoryCircularCapacity)
         .widgetAccentable()
@@ -484,6 +493,16 @@ struct NextPrayerRectContent: View {
           .lineLimit(1)
           .fixedSize()
       }
+      // Vaktin içindeyken canlı ilerleme (sıradaki vakte sayarken giriş anı bilinmez).
+      if let start = window.startDate, start < window.endDate {
+        ProgressView(timerInterval: start...window.endDate, countsDown: false) {
+          EmptyView()
+        } currentValueLabel: {
+          EmptyView()
+        }
+        .progressViewStyle(.linear)
+        .widgetAccentable()
+      }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }
@@ -511,11 +530,12 @@ struct PrayerTimesWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: PrayerTimesProvider(theme: .dark)) { entry in
-      HeroThemed { theme in
+      SystemThemed { theme in
         PrayerTimesWidgetEntryView(entry: PrayerTimesEntry(date: entry.date, data: entry.data, tracker: entry.tracker, theme: theme))
       }
       .widgetURL(URL(string: "salah://home"))
     }
+    .contentMarginsDisabled()
     .configurationDisplayName(WL.t("times.list.name"))
     .description(WL.t("times.list.desc"))
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])

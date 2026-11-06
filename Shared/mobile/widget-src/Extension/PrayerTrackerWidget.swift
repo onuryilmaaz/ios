@@ -182,7 +182,7 @@ struct PrayerTrackerSmallView: View {
       .accessibilityHidden(true)
     }
     .accessibilityElement(children: .combine)
-    .padding(15)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
   }
 }
@@ -295,7 +295,7 @@ struct PrayerTrackerMediumView: View {
         }
       }
     }
-    .padding(15)
+    .padding(16)
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
   }
 }
@@ -340,59 +340,67 @@ struct TrackerLockView: View {
     Gauge(value: Double(count), in: 0...Double(total)) {
       EmptyView()
     } currentValueLabel: {
-      VStack(spacing: 0) {
-        Text("\(count)")
-          .font(.system(size: 18, weight: .black, design: .default))
-          .widgetAccentable()
-        Text("/ \(total)")
-          .font(.system(size: 9, weight: .bold))
-          .foregroundStyle(.secondary)
+      if count == total {
+        Image(systemName: "checkmark")
+          .font(.system(size: 20, weight: .bold))
+      } else {
+        HStack(alignment: .firstTextBaseline, spacing: 0) {
+          Text("\(count)")
+            .font(.system(size: 20, weight: .semibold).monospacedDigit())
+          Text("/\(total)")
+            .font(.system(size: 11, weight: .semibold))
+            .foregroundStyle(.secondary)
+        }
       }
     }
-    .gaugeStyle(.accessoryCircular)
-    .tint(.white)
+    .gaugeStyle(.accessoryCircularCapacity)
     .widgetAccentable()
     .withAccessoryBackground()
   }
 
   private var rectangularBody: some View {
-    VStack(alignment: .leading, spacing: 4) {
+    VStack(alignment: .leading, spacing: 5) {
       HStack(spacing: 5) {
-        Image(systemName: "checklist")
-          .font(.system(size: 12, weight: .bold))
+        Image(systemName: count == total ? "checkmark.seal.fill" : "checklist")
+          .font(.system(size: 11, weight: .semibold))
           .widgetAccentable()
         Text(WL.t("tracker.title"))
-          .font(.footnote.weight(.black))
+          .font(.footnote.weight(.semibold))
+          .lineLimit(1)
+          .minimumScaleFactor(0.8)
           .widgetAccentable()
-        Spacer()
+        Spacer(minLength: 4)
         Text("\(count)/\(total)")
-          .font(.caption.weight(.bold))
+          .font(.footnote.weight(.semibold).monospacedDigit())
           .foregroundStyle(.secondary)
+          .fixedSize()
       }
       prayerIconRow
     }
-    .padding(.horizontal, 2)
+    .frame(maxWidth: .infinity, alignment: .leading)
   }
 
   private var prayerIconRow: some View {
-    HStack(spacing: 8) {
+    HStack(spacing: 0) {
       ForEach(lockPrayerIDs, id: \.self) { prayerId in
-        prayerIcon(for: prayerId)
+        slotIcon(for: prayerId)
+          .frame(maxWidth: .infinity)
       }
-      Spacer()
     }
   }
 
   @ViewBuilder
-  private func prayerIcon(for id: String) -> some View {
+  private func slotIcon(for id: String) -> some View {
     if isPrayerCompleted(id, in: completed) {
       Image(systemName: "checkmark.circle.fill")
-        .font(.system(size: 16, weight: .semibold))
+        .font(.system(size: 19, weight: .semibold))
         .widgetAccentable()
     } else {
-      Image(systemName: "circle")
-        .font(.system(size: 16, weight: .semibold))
+      // Kılınmayan vakit kendi ikonuyla: hangisinin kaldığı bir bakışta görünür.
+      Image(systemName: prayerIcon(id))
+        .font(.system(size: 15, weight: .medium))
         .foregroundStyle(.secondary)
+        .frame(height: 22)
     }
   }
 }
@@ -427,6 +435,7 @@ struct PrayerTrackerWidget: Widget {
       }
       .widgetURL(URL(string: isWidgetPremiumActive() ? "salah://home" : "salah://paywall"))
     }
+    .contentMarginsDisabled()
     .configurationDisplayName(WL.t("tracker.title"))
     .description(WL.t("tracker.desc.large"))
     .supportedFamilies([.systemSmall, .systemMedium])

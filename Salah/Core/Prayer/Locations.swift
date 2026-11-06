@@ -135,6 +135,9 @@ enum Locations {
   /// Seçimi kaydeder (RN ile aynı anahtarlar) ve ekranlara yeniden okuma sinyali verir.
   /// - Parameter source: "manual" (kullanıcı seçti) ya da "auto" (konumdan bulundu).
   static func select(stateId: String, districtId: String, source: String) {
+    if LocationWatch.isManualChange(previousDistrictId: LocalStore.string(districtIdKey), districtId: districtId, source: source) {
+      LocationWatch.resetAfterManualChange()
+    }
     LocalStore.set(stateId, for: stateIdKey)
     LocalStore.set(districtId, for: districtIdKey)
     LocalStore.set(source, for: sourceKey)

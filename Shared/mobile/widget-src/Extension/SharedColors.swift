@@ -14,9 +14,8 @@ extension Color {
   static func brand(_ theme: SalahTheme) -> Color {
     switch theme {
     case .light: return Color(red: 0.122, green: 0.451, blue: 0.337)
-    case .dark: return Color(red: 0.310, green: 0.639, blue: 0.514)
     // Koyu zümrüt zeminde zümrüt kaybolur: açık nane (accent-200).
-    case .hero: return Color(red: 0.682, green: 0.839, blue: 0.765)
+    case .dark, .hero: return Color(red: 0.682, green: 0.839, blue: 0.765)
     }
   }
   /// Altın vurgu (gold-500 / koyu zeminde gold-300).
@@ -28,7 +27,7 @@ extension Color {
 enum SalahTheme {
   case light
   case dark
-  /// Koyu zümrüt kahraman yüzeyi (uygulamadaki ana sayfa üst alanı gibi).
+  /// Koyu zümrüt kahraman yüzeyi: StandBy ve Live Activity (ana ekran widget'ları temaya uyar).
   case hero
 
   var isDark: Bool { self != .light }
@@ -36,21 +35,21 @@ enum SalahTheme {
   var canvas: Color {
     switch self {
     case .light: return .white
-    case .dark: return Color(red: 0.133, green: 0.176, blue: 0.157)  // #222d28
+    case .dark: return Color(red: 0.067, green: 0.235, blue: 0.184)  // #113c2f (Android widget'larıyla aynı)
     case .hero: return Color(red: 0.067, green: 0.235, blue: 0.184)  // #113c2f
     }
   }
   var textPrimary: Color { isDark ? Color(red: 0.961, green: 0.969, blue: 0.961) : Color(red: 0.086, green: 0.114, blue: 0.102) }
   var textSecondary: Color {
-    isDark ? Color.white.opacity(self == .hero ? 0.72 : 0.62) : Color(red: 0.306, green: 0.349, blue: 0.325)
+    isDark ? Color.white.opacity(0.72) : Color(red: 0.306, green: 0.349, blue: 0.325)
   }
   var textTertiary: Color {
-    isDark ? Color.white.opacity(self == .hero ? 0.5 : 0.38) : Color(red: 0.592, green: 0.639, blue: 0.612)
+    isDark ? Color.white.opacity(0.5) : Color(red: 0.416, green: 0.463, blue: 0.435)  // #6a766f
   }
   /// İnce ayraçlar ve pasif ray.
-  var hairline: Color { isDark ? Color.white.opacity(self == .hero ? 0.14 : 0.10) : Color(red: 0.875, green: 0.898, blue: 0.882) }
+  var hairline: Color { isDark ? Color.white.opacity(0.14) : Color(red: 0.875, green: 0.898, blue: 0.882) }
   /// Pasif dolgu (boş ilerleme, pasif daire).
-  var fill: Color { isDark ? Color.white.opacity(self == .hero ? 0.10 : 0.07) : Color(red: 0.929, green: 0.945, blue: 0.933) }
+  var fill: Color { isDark ? Color.white.opacity(0.10) : Color(red: 0.929, green: 0.945, blue: 0.933) }
 }
 
 // MARK: - Prayer Key & Accent
@@ -216,30 +215,20 @@ struct PrayerBadge: View {
 
 // MARK: - System Theme
 
-/// Widget'ı iOS'un açık/koyu moduna göre çizer: temayı içeriğe verir ve arka
-/// planı da aynı temayla uygular (ayrı açık/koyu widget'lara gerek kalmaz).
+/// Widget'ı Ayarlar'daki widget temasına, seçim "telefon teması"ysa iOS'un açık/koyu moduna göre
+/// çizer: temayı içeriğe verir ve arka planı da aynı temayla uygular.
 struct SystemThemed<Content: View>: View {
   @Environment(\.colorScheme) private var colorScheme
   let content: (SalahTheme) -> Content
 
   var body: some View {
-    let theme: SalahTheme = colorScheme == .dark ? .dark : .light
+    let dark = WidgetThemeChoice.load().forcedDark ?? (colorScheme == .dark)
+    let theme: SalahTheme = dark ? .dark : .light
     content(theme)
+      .environment(\.colorScheme, dark ? .dark : .light)
       // Sistem yazı boyutuyla büyür; sabit widget alanını taşırmayacak sınırda durur.
       .dynamicTypeSize(...DynamicTypeSize.xLarge)
       .salahWidgetBackground(theme)
-  }
-}
-
-/// Ana vakit widget'ı: sistem temasından bağımsız, uygulamadaki ana sayfa üst
-/// alanı gibi koyu zümrüt kahraman yüzeyi.
-struct HeroThemed<Content: View>: View {
-  let content: (SalahTheme) -> Content
-
-  var body: some View {
-    content(.hero)
-      .dynamicTypeSize(...DynamicTypeSize.xLarge)
-      .salahWidgetBackground(.hero)
   }
 }
 

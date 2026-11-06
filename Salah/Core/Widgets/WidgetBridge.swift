@@ -23,6 +23,17 @@ enum WidgetBridge {
     WidgetCenter.shared.reloadAllTimelines()
   }
 
+  /// Widget teması (SharedData.swift `WidgetThemeChoice` okur); widget'lar hemen yeniden çizilir.
+  static func setWidgetTheme(_ raw: String) {
+    guard let ud = defaults, ud.string(forKey: widgetThemeKey) != raw else { return }
+    ud.set(raw, forKey: widgetThemeKey)
+    WidgetCenter.shared.reloadAllTimelines()
+  }
+
+  static var widgetTheme: String? { defaults?.string(forKey: widgetThemeKey) }
+
+  private static let widgetThemeKey = "salah_widget_theme"
+
   /// Premium widget'ların erişim hakkı. Premium kapalıyken herkes erişir (kilit yok).
   static func setPremiumAccess(_ active: Bool) {
     guard let ud = defaults, ud.object(forKey: "salah_is_premium") as? Bool != active else { return }

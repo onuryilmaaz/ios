@@ -15,11 +15,11 @@ enum SplashSequence {
     let steps: [(Duration, Event)] = reduceMotion ? [
       (.zero, .showBrand), (.milliseconds(450), .fade), (.milliseconds(250), .finish)
     ] : [
-      (.zero, .drawMark), (.milliseconds(120), .revealMoon),
-      (.milliseconds(230), .revealLetter(1)), (.milliseconds(45), .revealLetter(2)),
-      (.milliseconds(45), .revealLetter(3)), (.milliseconds(45), .revealLetter(4)),
-      (.milliseconds(45), .revealLetter(5)), (.milliseconds(215), .pulse),
-      (.milliseconds(320), .fade), (.milliseconds(300), .finish)
+      (.zero, .drawMark), (.milliseconds(220), .revealMoon),
+      (.milliseconds(400), .revealLetter(1)), (.milliseconds(70), .revealLetter(2)),
+      (.milliseconds(70), .revealLetter(3)), (.milliseconds(70), .revealLetter(4)),
+      (.milliseconds(70), .revealLetter(5)), (.milliseconds(350), .pulse),
+      (.milliseconds(550), .fade), (.milliseconds(400), .finish)
     ]
     for (delay, event) in steps {
       try Task.checkCancellation()

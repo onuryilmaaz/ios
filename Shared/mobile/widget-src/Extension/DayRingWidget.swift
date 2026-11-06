@@ -79,7 +79,7 @@ private enum Segment: String, CaseIterable {
     let hex: (light: UInt32, dark: UInt32) = {
       switch self {
       case .night: return (0xc7d0ca, 0x2d3933)
-      case .imsak: return (0x7fbea2, 0x195c46)
+      case .imsak: return (0x7fbea2, 0x4fa383)
       case .gunes: return (0xf7ebcd, 0x7c581c)
       case .ogle: return (0xefd596, 0xa07221)
       case .ikindi: return (0xe6bd62, 0xc48f2b)
@@ -199,7 +199,7 @@ private struct DayRingSmallView: View {
       ZStack {
         RingView(ring: ring, now: entry.date, theme: theme, lineWidth: 11)
         Countdown(window: w, theme: theme, size: 20)
-          .frame(maxWidth: 86)
+          .frame(maxWidth: 92)
       }
       .padding(8)
       .accessibilityElement(children: .ignore)
@@ -216,7 +216,7 @@ private struct DayRingMediumView: View {
 
   var body: some View {
     if let data = entry.data, let ring = RingData(data), let w = entry.window {
-      HStack(spacing: 16) {
+      HStack(spacing: 14) {
         RingView(ring: ring, now: entry.date, theme: theme, lineWidth: 12)
           .aspectRatio(1, contentMode: .fit)
         VStack(alignment: .leading, spacing: 8) {
@@ -329,12 +329,12 @@ struct DayRingWidget: Widget {
 
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: DayRingProvider()) { entry in
-      // Vakit widget'ı gibi koyu zümrüt kahraman yüzeyi.
-      HeroThemed { theme in
+      SystemThemed { theme in
         DayRingWidgetEntryView(entry: entry, theme: theme)
       }
       .widgetURL(URL(string: "salah://home"))
     }
+    .contentMarginsDisabled()
     .configurationDisplayName(WL.t("ring.name"))
     .description(WL.t("ring.desc"))
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
