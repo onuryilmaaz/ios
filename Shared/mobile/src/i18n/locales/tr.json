@@ -631,6 +631,8 @@
     "source": "Kaynak: Diyanet İşleri Başkanlığı",
     "textLoading": "Hutbe metni hazırlanıyor...",
     "openPdf": "PDF olarak aç",
+    "pdfFailed": "PDF yüklenemedi. Tekrar dene ya da tarayıcıda aç.",
+    "openBrowser": "Tarayıcıda aç",
     "pdfOnly": "Bu dildeki hutbe metni PDF olarak açılır.",
     "textFailed": "Hutbe metni yüklenemedi. PDF olarak açabilirsin.",
     "loadFailed": "Hutbeler yüklenemedi",

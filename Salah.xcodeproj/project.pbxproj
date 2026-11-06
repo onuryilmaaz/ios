@@ -132,6 +132,7 @@
 		93A55E43414EA7EABCDD8191 /* DayRingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C493D346437B47D853EF6AC1 /* DayRingCard.swift */; };
 		94F9050EA2906CA5A4D3C8ED /* AppIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C1BDBCB829B0D8D8CE1813 /* AppIconPicker.swift */; };
 		95422BDEBB4A552D270D07D0 /* esma.generated.json in Resources */ = {isa = PBXBuildFile; fileRef = 52114CF02BE4A2D0C89849B2 /* esma.generated.json */; };
+		95982457E44F44B6E8BE263F /* HutbePdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C43D072C766BF7F8F5A /* HutbePdfView.swift */; };
 		97170ACE33FD214D4660C1B2 /* alarm_ikindi.caf in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC09421DDA9332FF1DB37 /* alarm_ikindi.caf */; };
 		9839719482BB449259188D7B /* DuaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CC6B58AD65D6A1AF54DDE2 /* DuaTests.swift */; };
 		9895FD3B372CF0F4D156086B /* mushaf-pages.json in Resources */ = {isa = PBXBuildFile; fileRef = 170B9C0E40FB3326E2BD7508 /* mushaf-pages.json */; };
@@ -353,6 +354,7 @@
 		69114D82EBC55C58DE1C8BA6 /* DayRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRingWidget.swift; sourceTree = "<group>"; };
 		6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingArt.swift; sourceTree = "<group>"; };
 		6E65C5F29C70CFC9110EA0B0 /* Ornaments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ornaments.swift; sourceTree = "<group>"; };
+		6E803C43D072C766BF7F8F5A /* HutbePdfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutbePdfView.swift; sourceTree = "<group>"; };
 		6E8CAB68C3781F61282003FC /* WidgetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTheme.swift; sourceTree = "<group>"; };
 		6F88D79BA20084E5B661BA01 /* WidgetSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSync.swift; sourceTree = "<group>"; };
 		70468BEA1F7AC82EBB41FA7F /* TrackerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerModels.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			children = (
 				E2E34AC73DEA9E769C17A9A5 /* DuaView.swift */,
 				430087092B6448E2635AFBDA /* EsmaulHusnaView.swift */,
+				6E803C43D072C766BF7F8F5A /* HutbePdfView.swift */,
 				F261D05107478B1257BB7EB9 /* HutbeView.swift */,
 			);
 			path = Dua;
@@ -1467,6 +1470,7 @@
 				F1FE60C977D195238873CD78 /* HomeRoute.swift in Sources */,
 				29714C5B13BF40820A527BB3 /* HomeView.swift in Sources */,
 				DA56611C85C75EF6FFE74C5C /* HutbeParser.swift in Sources */,
+				95982457E44F44B6E8BE263F /* HutbePdfView.swift in Sources */,
 				6A4CB8D5D47F60F25F5A16C5 /* HutbeService.swift in Sources */,
 				1EDAC70165081D9F494A318B /* HutbeView.swift in Sources */,
 				112B43AC064083B60B36C725 /* InsightCards.swift in Sources */,

@@ -631,6 +631,8 @@
     "source": "Source: Presidency of Religious Affairs (Diyanet)",
     "textLoading": "Preparing the sermon text...",
     "openPdf": "Open as PDF",
+    "pdfFailed": "The PDF could not be loaded. Try again or open it in the browser.",
+    "openBrowser": "Open in browser",
     "pdfOnly": "The sermon text in this language opens as a PDF.",
     "textFailed": "The sermon text could not be loaded. You can open it as a PDF.",
     "loadFailed": "Sermons could not be loaded",

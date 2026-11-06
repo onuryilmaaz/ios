@@ -81,6 +81,24 @@ enum HutbeService {
     return parsed
   }
 
+  /// Görüntüleyici için PDF dosyası: bir kez indirilir, önbellekte durur (hutbe değişmez). Sistem yer açmak için
+  /// silerse yeniden iner.
+  static func pdfFile(_ lang: Lang, item: HutbeParser.Item) async throws -> URL {
+    guard let raw = item.pdfUrl, let url = URL(string: raw), !DebugLaunch.isIsolated else { throw URLError(.resourceUnavailable) }
+    let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("hutbe", isDirectory: true)
+    try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+    let target = dir.appendingPathComponent("\(lang.rawValue)-\(item.id.filter { $0.isLetter || $0.isNumber }).pdf")
+    if FileManager.default.fileExists(atPath: target.path) { return target }
+    var request = URLRequest(url: url)
+    request.timeoutInterval = 30
+    let (data, response) = try await URLSession.shared.data(for: request)
+    guard (response as? HTTPURLResponse)?.statusCode == 200, data.starts(with: Array("%PDF".utf8)) else {
+      throw URLError(.cannotDecodeContentData)
+    }
+    try data.write(to: target, options: .atomic)
+    return target
+  }
+
   private static func fetchHTML(_ url: String) async throws -> String {
     var request = URLRequest(url: URL(string: url)!)
     request.timeoutInterval = 15

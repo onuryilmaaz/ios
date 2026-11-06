@@ -9,6 +9,7 @@ struct HutbeView: View {
   @State private var text: HutbeParser.Parsed?
   @State private var textState: TextState = .idle
   @State private var audio = HutbeAudio()
+  @State private var pdfItem: HutbeParser.Item?
 
   private enum TextState { case idle, loading, error }
   private let lang = HutbeService.lang
@@ -30,7 +31,8 @@ struct HutbeView: View {
     .background(tokens.canvas)
     .toolbar(.hidden, for: .navigationBar)
     .task { await loadList() }
-    .onDisappear { audio.stop() }
+    .onDisappear { if pdfItem == nil { audio.stop() } }
+    .fullScreenCover(item: $pdfItem) { HutbePdfView(item: $0, lang: lang) }
   }
 
   private var errorView: some View {
@@ -103,6 +105,12 @@ struct HutbeView: View {
                     .overlay(alignment: .top) { Rectangle().fill(tokens.line).frame(height: 1) }
                   }
                   Text(t("hutbe.source")).font(.system(size: 13)).foregroundStyle(tokens.textSecondary)
+                  if selected.pdfUrl != nil {
+                    AppButton(title: t("hutbe.openPdf"), variant: .outline) {
+                      Haptics.impact(.light)
+                      pdfItem = selected
+                    }
+                  }
                 }
               }
             }
@@ -110,10 +118,10 @@ struct HutbeView: View {
             Card {
               Text(t(textState == .error ? "hutbe.textFailed" : "hutbe.pdfOnly"))
                 .font(.system(size: 15)).lineSpacing(5).foregroundStyle(dark ? Forest.s300 : Forest.s600)
-              if let pdf = selected.pdfUrl {
+              if selected.pdfUrl != nil {
                 AppButton(title: t("hutbe.openPdf")) {
                   Haptics.impact(.light)
-                  open(pdf)
+                  pdfItem = selected
                 }
                 .padding(.top, 16)
               }
