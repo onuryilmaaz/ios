@@ -139,7 +139,8 @@ final class NotificationStore {
       guard version == revision else { continue }
       let rest = NotificationPlan.build(days: days, preferences: snapshot, now: now(), verses: pools.verses,
                                         hadiths: pools.hadiths, religiousDays: calendar.religiousDays(now: now()),
-                                        alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil)
+                                        alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil,
+                                        nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil)
         .filter { !$0.isPrayer }
       succeeded = await add(rest, version: version) && succeeded
       guard version == revision else { continue }

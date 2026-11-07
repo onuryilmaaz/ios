@@ -739,6 +739,10 @@
     "turnOff": "Sessiz modu kapat"
   },
   "notif": {
+    "nightTitle": "Son on gece",
+    "nightBody": "Bu geceyi ibadet ve duayla değerlendirmeyi unutma.",
+    "kadirTitle": "Bu gece Kadir Gecesi",
+    "kadirBody": "Kadir Gecesi'ni ibadet ve duayla değerlendir.",
     "hatimTitle": "Hatim planı",
     "hatimBody": "Bugünkü hedefin {{pages}} sayfa.",
     "blessedDay": "Mübarek Gün",
@@ -1473,6 +1477,13 @@
     "verse": "Günün ayeti"
   },
   "ramadan": {
+    "teravih": {"mark": "Teravih kıldım", "done": "Teravih kılındı", "count": "{{count}} / {{total}} teravih"},
+    "tab": {"fast": "Oruç", "teravih": "Teravih"},
+    "kaza": {"title": "İşaretlenmeyen {{count}} gün", "ozel": "{{count}} gün özel gün dönemine denk geliyor.", "body": "Tutamadığın günleri kaza sayacına ekleyebilirsin.", "add": "{{count}} günü kazaya ekle", "added": "Kaza sayacına eklendi"},
+    "nights": {"title": "Son on gece", "count": "{{done}} / 10 gece", "hint": "İbadetle geçirdiğin geceleri işaretle.", "kadir": "Kadir"},
+    "verse": {"title": "Ramazan'ın {{day}}. gününün ayeti"},
+    "more": {"groups": "Grup hatmi"},
+    "tile": {"zakat": "Zekât", "zakatHint": "Fitre ve fidye", "groups": "Grup hatmi", "groupsHint": "Birlikte oku", "hatim": "Hatim planı", "hatimHint": "Planını kur"},
     "nextPrayer": "Sıradaki {{prayer}} {{time}}",
     "journey": { "title": "Ramazan yolculuğu" },
     "journal": {
@@ -1502,6 +1513,8 @@
       "subtitle": "{{date}} · İmsakiye ve hatim planı"
     }
   },
+  "zakat": {"title": "Zekât ve fitre", "gold": "Altın", "goldPrice": "Gram altın fiyatı", "cash": "Nakit ve döviz", "trade": "Ticaret malı", "receivable": "Tahsil edilebilir alacak", "debt": "Bir yıllık borç", "nisab": "Nisap: {{amount}} TL (80,18 gram altın)", "due": "Zekâtın: {{amount}} TL", "below": "Nisabın altında, zekât gerekmez.", "conditions": "Zekât için malın temel ihtiyaçlar ve borçlar dışında nisaba ulaşması ve üzerinden bir yıl geçmesi gerekir. Oran kırkta birdir.", "fitreSection": "Fitre", "people": "Kişi sayısı", "fitreNote": "Diyanet'in {{period}} dönemi fitresi kişi başı {{amount}} TL.", "fitrePaid": "Fitremi verdim", "fitreDone": "Fitren verildi", "fidyeSection": "Fidye", "fidyeNote": "Yaşlılık ya da iyileşme umudu olmayan hastalık nedeniyle oruç tutamayan ve kaza edemeyecek olanlar içindir. Geçici engeli olan oruçlarını kaza eder.", "days": "Gün sayısı", "source": "Diyanet kaynağını aç", "disclaimer": "Özel durumlar için müftülüğe danışın.", "tabZakat": "Zekât", "tabFitre": "Fitre", "tabFidye": "Fidye", "goldPriceHint": "Nisap bu fiyata göre hesaplanır. Güncel fiyatı kuyumcundan ya da bankandan öğrenebilirsin.", "assets": "Varlıkların", "deduct": "Düşülecek", "unitGram": "gram", "unitTl": "TL", "money": "{{amount}} TL", "resultDue": "Zekâtın", "resultNone": "Zekât gerekmiyor", "resultNeedPrice": "Önce gram altın fiyatını gir", "resultNeedPriceBody": "Nisabı bu fiyatla hesaplıyoruz.", "netVsNisab": "Net malın {{net}} TL  ·  Nisap {{nisab}} TL", "whoTitle": "Zekât kimlere gerekir?", "fitreResult": "Toplam fitre", "fitreCalc": "{{count}} kişi x {{amount}} TL", "fidyeResult": "Toplam fidye", "fidyeCalc": "{{count}} gün x {{amount}} TL", "whoFidye": "Fidye kimler için?", "keyboardDone": "Bitti", "decrease": "Azalt", "increase": "Artır"},
+  "hatimGroups": {"title": "Grup hatmi", "emptyTitle": "Henüz grubun yok", "emptyBody": "Bir grup kur, davet kodunu paylaş, 30 cüzü birlikte okuyun.", "create": "Grup kur", "join": "Kodla katıl", "name": "Grup adı", "code": "Davet kodu", "members": "{{count}} üye", "progress": "{{done}} / 30 cüz", "completed": "{{count}} hatim tamamlandı", "invite": "Davet et", "inviteCode": "Davet kodu: {{code}}", "inviteText": "{{name}} grup hatmine katıl. Salah uygulamasında Grup hatmi bölümünden şu kodu gir: {{code}}", "juzTitle": "{{juz}}. cüz", "take": "Bu cüzü al", "done": "Okudum", "undone": "Okumadım", "release": "Cüzü bırak", "takenBy": "{{name}} okuyor", "doneBy": "{{name}} okudu", "mine": "Senin", "free": "Boş", "read": "Okundu", "others": "Başkasında", "membersTitle": "Üyeler", "owner": "Kurucu", "leave": "Gruptan ayrıl", "leaveConfirm": "Gruptan ayrılmak istiyor musun? Bitirmediğin cüzler boşa düşer.", "delete": "Grubu sil", "deleteConfirm": "Grup herkes için silinecek. Emin misin?", "remove": "Üyeyi çıkar", "removeConfirm": "{{name}} gruptan çıkarılsın mı?", "invalidCode": "Bu davet kodu geçerli değil.", "full": "Bu grup dolu.", "tooMany": "En fazla 20 gruba katılabilirsin.", "taken": "Bu cüzü az önce başkası aldı.", "failed": "İşlem yapılamadı. Bağlantını kontrol edip tekrar dene.", "signIn": "Grup hatmi için giriş yapmalısın.", "empty": "Grup bulunamadı.", "createTitle": "Yeni grup", "createHint": "Aile, arkadaşlar ya da cemaat için bir ad yaz. Sonra davet kodunu paylaşırsın.", "namePlaceholder": "Örneğin Aile", "joinTitle": "Gruba katıl", "joinHint": "Sana gönderilen davet kodunu yaz.", "how1": "Grup kur ya da kodla katıl", "how2": "Davet kodunu paylaş", "how3": "Herkes bir cüz alsın, okuyunca işaretlesin", "heroRead": "{{done}} / 30 cüz okundu", "heroState": "{{reading}} okunuyor  ·  {{free}} boş", "myTitle": "Senin cüzlerin", "pages": "Sayfa {{from}}-{{to}}", "readNow": "Oku", "takeNext": "Sıradaki cüzü al ({{juz}}. cüz)", "noneMine": "Şu anda okuduğun cüz yok.", "allTaken": "Bütün cüzler alındı.", "gridTitle": "Tüm cüzler", "freeStatus": "Bu cüz boş.", "mineStatus": "Bu cüz sende.", "mineDoneStatus": "Bu cüzü okudun.", "inviteTitle": "Davet kodu", "inviteAlone": "Şimdilik yalnızsın. Kodu paylaş, birlikte okuyun.", "copy": "Kopyala", "copied": "Kod kopyalandı", "memberStats": "{{read}} okudu  ·  {{reading}} okuyor", "memberIdle": "Henüz cüz almadı"},
   "iftarMoment": {
     "title": "Hayırlı iftarlar",
     "accept": "Allah kabul etsin.",

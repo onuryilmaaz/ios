@@ -50,7 +50,17 @@ private struct LAModel {
   var isUpcoming: Bool { state.mode == "upcoming" && !expired }
   var name: String { enteredName ?? state.prayerName }
   var key: String { prayerKeyFromName(name) }
-  var tint: Color { prayerAccent(key, .dark) }
+  /// Ramazan sayacı: iftara Mihrap Bordosu, sahura Gece Laciverti. Ada'nın zemini sistem gereği siyah
+  /// kaldığı için orada ikisini vurgu rengi ayırır.
+  private var isIftar: Bool { state.prayerName == "İftar" }
+  private var isSahur: Bool { state.prayerName == "Sahur" }
+  var ramadanAccent: Color? {
+    isIftar ? Color(red: 0.914, green: 0.753, blue: 0.478) : isSahur ? Color(red: 0.725, green: 0.796, blue: 0.937) : nil
+  }
+  var background: Color {
+    isIftar ? Color(red: 0.247, green: 0.078, blue: 0.125) : isSahur ? Color(red: 0.063, green: 0.125, blue: 0.247) : bannerBackground
+  }
+  var tint: Color { ramadanAccent ?? prayerAccent(key, .dark) }
   var icon: String { expired && !entered ? "checkmark" : prayerIcon(key) }
   var endDate: Date { Date(timeIntervalSince1970: state.endTimeMs / 1000) }
   var endTime: String { hhmm(state.endTimeMs) }
@@ -162,7 +172,7 @@ struct SalahLockScreenView: View {
     let m = LAModel(state, isStale: isStale)
     VStack(alignment: .leading, spacing: 10) {
       HStack(alignment: .center, spacing: 12) {
-        PrayerBadge(key: m.key, theme: .dark, size: 44)
+        PrayerBadge(key: m.key, theme: .dark, size: 44, accent: m.ramadanAccent)
 
         VStack(alignment: .leading, spacing: 2) {
           Text(m.expired ? m.displayName : m.headline)
@@ -192,7 +202,7 @@ struct SitePongLiveActivityWidgetLiveActivity: Widget {
   var body: some WidgetConfiguration {
     ActivityConfiguration(for: SitePongActivityAttributes.self) { context in
       SalahLockScreenView(state: context.state, isStale: context.isStale)
-        .activityBackgroundTint(bannerBackground)
+        .activityBackgroundTint(LAModel(context.state, isStale: context.isStale).background)
         .activitySystemActionForegroundColor(.white)
 
     } dynamicIsland: { context in
@@ -201,7 +211,7 @@ struct SitePongLiveActivityWidgetLiveActivity: Widget {
       return DynamicIsland {
         DynamicIslandExpandedRegion(.leading) {
           HStack(spacing: 8) {
-            PrayerBadge(key: m.key, theme: .dark, size: 30)
+            PrayerBadge(key: m.key, theme: .dark, size: 30, accent: m.ramadanAccent)
             Text(m.displayName)
               .font(.system(size: 16, weight: .semibold))
               .foregroundColor(.white)

@@ -739,6 +739,10 @@
     "turnOff": "Turn off silent mode"
   },
   "notif": {
+    "nightTitle": "Last ten nights",
+    "nightBody": "Remember to spend tonight in worship and dua.",
+    "kadirTitle": "Tonight is Laylat al-Qadr",
+    "kadirBody": "Spend Laylat al-Qadr in worship and dua.",
     "hatimTitle": "Quran plan",
     "hatimBody": "Today's goal is {{pages}} pages.",
     "blessedDay": "Blessed Day",
@@ -1473,6 +1477,13 @@
     "verse": "Verse of the day"
   },
   "ramadan": {
+    "teravih": {"mark": "I prayed Tarawih", "done": "Tarawih prayed", "count": "{{count}} / {{total}} Tarawih"},
+    "tab": {"fast": "Fasting", "teravih": "Tarawih"},
+    "kaza": {"title": "{{count}} unmarked days", "ozel": "{{count}} days fall in your special days.", "body": "You can add the days you could not fast to your make-up count.", "add": "Add {{count}} days to make-up", "added": "Added to make-up count"},
+    "nights": {"title": "Last ten nights", "count": "{{done}} / 10 nights", "hint": "Mark the nights you spent in worship.", "kadir": "Qadr"},
+    "verse": {"title": "Verse for day {{day}} of Ramadan"},
+    "more": {"groups": "Group khatm"},
+    "tile": {"zakat": "Zakat", "zakatHint": "Fitr and fidya", "groups": "Group khatm", "groupsHint": "Read together", "hatim": "Khatm plan", "hatimHint": "Make a plan"},
     "nextPrayer": "Next {{prayer}} {{time}}",
     "journey": { "title": "Ramadan journey" },
     "journal": {
@@ -1502,6 +1513,8 @@
       "subtitle": "{{date}} · Timetable and Quran plan"
     }
   },
+  "zakat": {"title": "Zakat and fitr", "gold": "Gold", "goldPrice": "Gold price per gram", "cash": "Cash and currency", "trade": "Trade goods", "receivable": "Collectable receivables", "debt": "Debts due within a year", "nisab": "Nisab: {{amount}} TRY (80.18 g of gold)", "due": "Your zakat: {{amount}} TRY", "below": "Below nisab, no zakat is due.", "conditions": "Zakat is due when wealth beyond basic needs and debts reaches nisab and a year has passed. The rate is one fortieth.", "fitreSection": "Fitr", "people": "Number of people", "fitreNote": "Diyanet's fitr for {{period}} is {{amount}} TRY per person.", "fitrePaid": "I gave my fitr", "fitreDone": "Fitr given", "fidyeSection": "Fidya", "fidyeNote": "For those who cannot fast because of old age or an illness with no hope of recovery and cannot make up the fasts. Those with a temporary excuse make up their fasts.", "days": "Number of days", "source": "Open Diyanet source", "disclaimer": "For special cases, consult a mufti.", "tabZakat": "Zakat", "tabFitre": "Fitr", "tabFidye": "Fidya", "goldPriceHint": "Nisab is calculated from this price. You can get the current price from a jeweller or your bank.", "assets": "Your wealth", "deduct": "To deduct", "unitGram": "grams", "unitTl": "TRY", "money": "{{amount}} TRY", "resultDue": "Your zakat", "resultNone": "No zakat is due", "resultNeedPrice": "Enter the gold price first", "resultNeedPriceBody": "Nisab is calculated from this price.", "netVsNisab": "Net wealth {{net}} TRY  ·  Nisab {{nisab}} TRY", "whoTitle": "Who owes zakat?", "fitreResult": "Total fitr", "fitreCalc": "{{count}} people x {{amount}} TRY", "fidyeResult": "Total fidya", "fidyeCalc": "{{count}} days x {{amount}} TRY", "whoFidye": "Who is fidya for?", "keyboardDone": "Done", "decrease": "Decrease", "increase": "Increase"},
+  "hatimGroups": {"title": "Group khatm", "emptyTitle": "You have no groups yet", "emptyBody": "Create a group, share the invite code and read the 30 juz together.", "create": "Create group", "join": "Join with code", "name": "Group name", "code": "Invite code", "members": "{{count}} members", "progress": "{{done}} / 30 juz", "completed": "{{count}} khatms completed", "invite": "Invite", "inviteCode": "Invite code: {{code}}", "inviteText": "Join the {{name}} group khatm. In the Salah app, enter this code under Group khatm: {{code}}", "juzTitle": "Juz {{juz}}", "take": "Take this juz", "done": "I read it", "undone": "Not read", "release": "Release juz", "takenBy": "{{name}} is reading", "doneBy": "{{name}} read it", "mine": "Yours", "free": "Free", "read": "Read", "others": "Taken", "membersTitle": "Members", "owner": "Owner", "leave": "Leave group", "leaveConfirm": "Leave this group? Juz you have not finished become free.", "delete": "Delete group", "deleteConfirm": "The group will be deleted for everyone. Are you sure?", "remove": "Remove member", "removeConfirm": "Remove {{name}} from the group?", "invalidCode": "This invite code is not valid.", "full": "This group is full.", "tooMany": "You can join up to 20 groups.", "taken": "Someone else just took this juz.", "failed": "That did not work. Check your connection and try again.", "signIn": "Sign in to use group khatm.", "empty": "Group not found.", "createTitle": "New group", "createHint": "Name it for your family, friends or congregation. You can share the invite code next.", "namePlaceholder": "For example, Family", "joinTitle": "Join a group", "joinHint": "Enter the invite code you received.", "how1": "Create a group or join with a code", "how2": "Share the invite code", "how3": "Everyone takes a juz and marks it when read", "heroRead": "{{done}} / 30 juz read", "heroState": "{{reading}} being read  ·  {{free}} free", "myTitle": "Your juz", "pages": "Pages {{from}}-{{to}}", "readNow": "Read", "takeNext": "Take the next juz (Juz {{juz}})", "noneMine": "You are not reading a juz right now.", "allTaken": "Every juz has been taken.", "gridTitle": "All juz", "freeStatus": "This juz is free.", "mineStatus": "This juz is yours.", "mineDoneStatus": "You read this juz.", "inviteTitle": "Invite code", "inviteAlone": "You are on your own for now. Share the code and read together.", "copy": "Copy", "copied": "Code copied", "memberStats": "{{read}} read  ·  {{reading}} reading", "memberIdle": "No juz taken yet"},
   "iftarMoment": {
     "title": "Blessed iftar",
     "accept": "May Allah accept it.",

@@ -136,11 +136,13 @@ enum PrayerLiveActivity {
 
   static func sync(times: PrayerTimes, completed: [String], now: Date = Date()) {
     guard !DebugLaunch.isIsolated, ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-    let w = PrayerWindow.compute(times, completed: completed, now: now)
+    // Ramazan modunda Dinamik Ada iftar ve sahura sayar; görünüm aynı.
+    let ramadan = RamadanSchedule.liveTimeline(today: times, now: now)
+    let w = ramadan?.first?.window ?? PrayerWindow.compute(times, completed: completed, now: now)
     let key = "\(w.mode.rawValue)|\(w.prayerName)|\(Int(w.end.timeIntervalSince1970))"
     guard key != lastKey else { return }
     lastKey = key
-    let timeline = PrayerWindow.timeline(times, completed: completed, now: now)
+    let timeline = ramadan ?? PrayerWindow.timeline(times, completed: completed, now: now)
     Task { await start(w, timeline: timeline) }
   }
 

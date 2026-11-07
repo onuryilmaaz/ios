@@ -35,6 +35,7 @@ struct ImsakiyeView: View {
 
   private func header(_ window: RamadanWindow) -> some View {
     let now = Date()
+    let tint = RamadanTint.current(nil, now: now)
     let calendar = Calendar.current
     let row = days?.first { $0.localDay.map(calendar.isDateInToday) == true }
     let times = row?.times ?? PrayerTimesService.cachedDays(districtId: Locations.selectedDistrictId).first { $0.localDay.map(calendar.isDateInToday) == true }?.times
@@ -54,8 +55,8 @@ struct ImsakiyeView: View {
       Text(t("imsakiye.todayLine", ["date": date, "place": Locations.selectedDisplayName]))
         .font(.system(size: 13)).foregroundStyle(.white.opacity(0.8)).padding(.top, 12)
       HStack(spacing: 10) {
-        tile(t("prayers.imsak"), times?["imsak"] ?? "--:--", background: Accent.s800, ink: .white)
-        tile(t("ramadan.iftar"), times?["aksam"] ?? "--:--", background: Gold.s300, ink: Accent.s900)
+        tile(t("prayers.imsak"), times?["imsak"] ?? "--:--", background: tint.surface, ink: .white)
+        tile(t("ramadan.iftar"), times?["aksam"] ?? "--:--", background: tint.accent, ink: tint.hero)
       }
       .padding(.top, 9)
       if let left = RamadanPlan.kadirDaysLeft(window, now: now, calendar: calendar) {
@@ -67,7 +68,7 @@ struct ImsakiyeView: View {
     .padding(.top, 7)
     .padding(.bottom, 17.5)
     .background {
-      UnevenRoundedRectangle(bottomLeadingRadius: 28, bottomTrailingRadius: 28).fill(tokens.hero).ignoresSafeArea(edges: .top)
+      UnevenRoundedRectangle(bottomLeadingRadius: 28, bottomTrailingRadius: 28).fill(tint.hero).ignoresSafeArea(edges: .top)
     }
   }
 
@@ -181,6 +182,7 @@ struct ImsakiyeView: View {
 
 /// Paylaşılan imsakiye kartı: ayet ve hadis kartlarıyla aynı zemin, ayın tamamı iki sütunda.
 struct ImsakiyeShareSheet: View {
+  private let tint = RamadanTint.current(nil)
   let days: [PrayerDay]
   let place: String
   let window: RamadanWindow
@@ -192,16 +194,16 @@ struct ImsakiyeShareSheet: View {
     let fallback = ([t("imsakiye.shareTitle", ["place": place])] + days.enumerated().map { i, d in
       "\(i + 1). \(d.localDay.map(dateText) ?? "")  \(d.times["imsak"] ?? "")  \(d.times["aksam"] ?? "")"
     }).joined(separator: "\n")
-    ShareImageSheet(fallbackText: fallback) {
+    ShareImageSheet(fallbackText: fallback, cardColor: tint.hero) {
       ShareCardHeader(label: nil)
-      RamadanMoonView(day: (todayIndex ?? 13) + 1, size: 58, disc: Accent.s800, lit: Gold.s300)
+      RamadanMoonView(day: (todayIndex ?? 13) + 1, size: 58, disc: tint.surface, lit: tint.accent)
       Text(t("imsakiye.title")).font(.system(size: 24, weight: .bold)).foregroundStyle(.white).multilineTextAlignment(.center).padding(.top, 12)
-      Text(place).font(.system(size: 14, weight: .medium)).foregroundStyle(Gold.s300).multilineTextAlignment(.center).padding(.top, 3)
+      Text(place).font(.system(size: 14, weight: .medium)).foregroundStyle(tint.accent).multilineTextAlignment(.center).padding(.top, 3)
       GoldDivider().padding(.vertical, 15)
       if let i = todayIndex {
         HStack(spacing: 8) {
-          tile(t("prayers.imsak"), days[i].times["imsak"] ?? "", background: Accent.s800, ink: .white)
-          tile(t("ramadan.iftar"), days[i].times["aksam"] ?? "", background: Gold.s300, ink: Accent.s900)
+          tile(t("prayers.imsak"), days[i].times["imsak"] ?? "", background: tint.surface, ink: .white)
+          tile(t("ramadan.iftar"), days[i].times["aksam"] ?? "", background: tint.accent, ink: tint.hero)
         }
         .padding(.bottom, 14)
       }
@@ -240,16 +242,16 @@ struct ImsakiyeShareSheet: View {
         HStack(spacing: 3) {
           Text("\(i + 1)").frame(width: 15, alignment: .leading)
           Text(days[i].localDay.map(dateText) ?? "").font(.system(size: 10, weight: on ? .semibold : .regular)).lineLimit(1).frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundStyle(on ? Accent.s900 : .white.opacity(0.72))
+            .foregroundStyle(on ? tint.hero : .white.opacity(0.72))
           Text(days[i].times["imsak"] ?? "").frame(width: 34, alignment: .trailing)
           Text(days[i].times["aksam"] ?? "").frame(width: 34, alignment: .trailing)
         }
         .font(.system(size: 11, weight: on ? .semibold : .regular))
-        .foregroundStyle(on ? Accent.s900 : .white)
+        .foregroundStyle(on ? tint.hero : .white)
         .tabularNumbers()
         .padding(.horizontal, 5)
         .padding(.vertical, 3.5)
-        .background(on ? Gold.s300 : .clear, in: .rect(cornerRadius: 7))
+        .background(on ? tint.accent : .clear, in: .rect(cornerRadius: 7))
       }
     }
     .frame(maxWidth: .infinity)

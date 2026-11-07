@@ -66,3 +66,33 @@ enum Amber {
   static let s600 = Color(hex: 0xd97706)
   static let s700 = Color(hex: 0xb45309)
 }
+
+/// Ramazan renkleri: yalnız Ramazan ekranlarında, günün saatine göre (CLAUDE.md'deki istisna).
+/// Gece laciverti akşamdan imsaka, şafak moru imsaktan öğleye, mihrap bordosu öğleden iftara.
+struct RamadanTint: Equatable {
+  var hero: Color
+  var surface: Color
+  var accent: Color
+
+  static let night = RamadanTint(hero: Color(hex: 0x10203F), surface: Color(hex: 0x1B3158), accent: Color(hex: 0xE6BD62))
+  static let dawn = RamadanTint(hero: Color(hex: 0x2A1E4A), surface: Color(hex: 0x3A2C63), accent: Color(hex: 0xF0C987))
+  static let dusk = RamadanTint(hero: Color(hex: 0x3F1420), surface: Color(hex: 0x561E2C), accent: Color(hex: 0xE9C07A))
+
+  static func of(_ phase: RamadanTintPhase) -> RamadanTint {
+    switch phase {
+    case .night: night
+    case .dawn: dawn
+    case .dusk: dusk
+    }
+  }
+
+  /// Şu anki ton; Debug'da `-SalahDebugTint night|dawn|dusk`.
+  @MainActor
+  static func current(_ today: PrayerTimes?, now: Date = Date()) -> RamadanTint {
+    #if DEBUG
+    if let raw = UserDefaults.standard.string(forKey: "SalahDebugTint"), let phase = RamadanTintPhase(rawValue: raw) { return of(phase) }
+    #endif
+    let times = today ?? PrayerTimesService.cachedDays(districtId: Locations.selectedDistrictId).first { $0.localDay.map(Calendar.current.isDateInToday) == true }?.times
+    return of(RamadanPlan.tint(now: now, today: times, calendar: .current))
+  }
+}

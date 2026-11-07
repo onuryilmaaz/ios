@@ -59,6 +59,8 @@ enum SalahTheme {
 /// Türkçe küçük harf: "İkindi".lowercased() Türkçe dışı locale'de "i̇kindi" olur.
 func prayerKeyFromName(_ name: String) -> String {
   let n = name.lowercased(with: Locale(identifier: "tr_TR"))
+  if n.contains("iftar") { return "aksam" }
+  if n.contains("sahur") { return "sabah" }
   if n.contains("güneş") || n.contains("gunes") || n.contains("sunrise") { return "gunes" }
   if n.contains("sabah") || n.contains("imsak") || n.contains("fajr") { return "sabah" }
   if n.contains("öğle") || n.contains("ogle") || n.contains("dhuhr") { return "ogle" }
@@ -199,9 +201,10 @@ struct PrayerBadge: View {
   let key: String
   let theme: SalahTheme
   var size: CGFloat = 28
+  var accent: Color? = nil
 
   var body: some View {
-    let tint = prayerAccent(key, theme)
+    let tint = accent ?? prayerAccent(key, theme)
     ZStack {
       Circle().fill(tint.opacity(theme.isDark ? 0.18 : 0.13))
       Image(systemName: prayerIcon(key))

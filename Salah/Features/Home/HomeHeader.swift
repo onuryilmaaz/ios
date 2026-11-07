@@ -3,6 +3,7 @@ import SwiftUI
 /// RN: navigation/HomeNavigator.tsx `HomeHeader` (56 pt, koyu zümrüt zemin).
 struct HomeHeader: View {
   @Environment(\.tokens) private var tokens
+  var color: Color?
   var onQibla: () -> Void = {}
   var onProfile: () -> Void = {}
 
@@ -43,7 +44,7 @@ struct HomeHeader: View {
     }
     .padding(.horizontal, 16)
     .frame(height: 56)
-    .background(tokens.hero)
+    .background(color ?? tokens.hero)
   }
 }
 

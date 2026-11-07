@@ -24,6 +24,9 @@ enum HomeRoute: Hashable {
   case imsakiye
   case hatimPlan
   case fastJournal
+  case zakat
+  case hatimGroups
+  case hatimGroup(String)
 
   @ViewBuilder
   var destination: some View {
@@ -50,6 +53,9 @@ enum HomeRoute: Hashable {
     case .imsakiye: ImsakiyeView()
     case .hatimPlan: HatimPlanView()
     case .fastJournal: FastJournalView()
+    case .zakat: ZakatView()
+    case .hatimGroups: HatimGroupsView()
+    case .hatimGroup(let id): HatimGroupView(id: id)
     }
   }
 }

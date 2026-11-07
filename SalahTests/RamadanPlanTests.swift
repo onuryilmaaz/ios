@@ -92,6 +92,96 @@ struct RamadanPlanTests {
     #expect(RamadanMoon.outline(day: 25)[14].x < 0)
   }
 
+  @Test func tintFollowsTheDay() {
+    #expect(RamadanPlan.tint(now: date(2027, 2, 12, 5, 29), today: times, calendar: cal) == .night)
+    #expect(RamadanPlan.tint(now: date(2027, 2, 12, 5, 30), today: times, calendar: cal) == .dawn)
+    #expect(RamadanPlan.tint(now: date(2027, 2, 12, 13), today: times, calendar: cal) == .dusk)
+    #expect(RamadanPlan.tint(now: date(2027, 2, 12, 18, 30), today: times, calendar: cal) == .night)
+    #expect(RamadanPlan.tint(now: date(2027, 2, 12, 13), today: nil, calendar: cal) == .night)
+  }
+
+  @Test func amountParsingAcceptsLocalFormats() {
+    #expect(ZakatCalc.parseAmount("1.250") == 1250)
+    #expect(ZakatCalc.parseAmount("1,250") == 1250)
+    #expect(ZakatCalc.parseAmount("1.250,50") == 1250.5)
+    #expect(ZakatCalc.parseAmount("1,250.50") == 1250.5)
+    #expect(ZakatCalc.parseAmount("1.250.000") == 1_250_000)
+    #expect(ZakatCalc.parseAmount("6250,75") == 6250.75)
+    #expect(ZakatCalc.parseAmount("0,500") == 0.5)
+    #expect(ZakatCalc.parseAmount("12.500", grouped: false) == 12.5)
+    #expect(ZakatCalc.parseAmount("١٢٥٠") == 1250)
+    #expect(ZakatCalc.parseAmount("") == 0)
+    #expect(ZakatCalc.parseAmount("abc") == 0)
+  }
+
+  @MainActor @Test func juzPagesCoverTheWholeMushaf() {
+    #expect(HatimGroupAPI.pages(ofJuz: 1) == 1...21)
+    #expect(HatimGroupAPI.pages(ofJuz: 7) == 121...141)
+    #expect(HatimGroupAPI.pages(ofJuz: 30) == 582...604)
+  }
+
+  @Test func dailyVerseCoversEveryDay() {
+    #expect(RamadanPlan.dailyVerse(day: 1) == (2, 183))
+    #expect(RamadanPlan.dailyVerse(day: 26) == (97, 1))
+    #expect(RamadanPlan.dailyVerse(day: 30) == (73, 4))
+    #expect(Set(RamadanPlan.dailyVerses.map { "\($0.surah):\($0.verse)" }).count == 30)
+  }
+
+  @Test func lastNightsAndKadir() {
+    let nights = RamadanPlan.lastNights(window, calendar: cal)
+    #expect(nights.count == 10)
+    #expect(nights.first == date(2027, 2, 27))
+    #expect(nights.last == date(2027, 3, 8))
+    #expect(RamadanPlan.kadirDate(window, calendar: cal) == date(2027, 3, 5))
+  }
+
+  @Test func unmarkedSkipsTodayAndFuture() {
+    #expect(RamadanPlan.unmarkedDays(window, now: date(2027, 2, 12, 9), marked: ["2027-02-09"], calendar: cal) == ["2027-02-08", "2027-02-10", "2027-02-11"])
+    #expect(RamadanPlan.unmarkedDays(window, now: date(2027, 2, 1), marked: [], calendar: cal).isEmpty)
+  }
+
+  @Test func marksWaitUntilServerConfirms() {
+    let marked = RamadanLedger().settingMark(1448, kind: "taraweeh", day: "2027-02-08", on: true)
+    let old = marked.merged(1448, sent: [:], sentKaza: 0, serverDays: [], serverKaza: 0, sentMarks: marked.pendingMarks["1448"]!, serverMarks: nil)
+    #expect(old.markDays(1448, kind: "taraweeh") == ["2027-02-08"])
+    #expect(old.pendingMarks["1448"]?.count == 1)
+    let fresh = marked.merged(1448, sent: [:], sentKaza: 0, serverDays: [], serverKaza: 0, sentMarks: marked.pendingMarks["1448"]!, serverMarks: ["taraweeh": ["2027-02-08"], "night": ["2027-03-05"]], serverOzelGun: ["2027-02-10"])
+    #expect(fresh.pendingMarks.isEmpty)
+    #expect(fresh.markDays(1448, kind: "night") == ["2027-03-05"])
+    #expect(fresh.ozelGun["1448"] == ["2027-02-10"])
+  }
+
+  @Test func kazaAppliedOncePerDay() {
+    let once = RamadanLedger().applyingKaza(1448, days: ["2027-02-08", "2027-02-09"])
+    #expect(once.kaza == 2 && once.kazaPending == 2)
+    #expect(once.applyingKaza(1448, days: ["2027-02-09", "2027-02-10"]).kaza == 3)
+    let preview = RamadanLedger().applyingKaza(RamadanPlan.previewHijriYear, days: ["2026-11-03"])
+    #expect(preview.kaza == 1 && preview.kazaPending == 0 && preview.pendingMarks.isEmpty)
+  }
+
+  @Test func oldLedgerStillDecodes() throws {
+    let json = #"{"fasts":{"1448":["2027-02-08"]},"pending":{},"kaza":2,"kazaPending":1}"#
+    let ledger = try JSONDecoder().decode(RamadanLedger.self, from: Data(json.utf8))
+    #expect(ledger.kaza == 2 && ledger.marks.isEmpty)
+  }
+
+  @Test func countdownStepsAlternateAndStopAfterLastDay() {
+    let steps = RamadanPlan.countdownSteps(window, now: date(2027, 2, 12, 4), calendar: cal) { _ in times }
+    #expect(steps[0].kind == .sahur && steps[0].target == date(2027, 2, 12, 5, 30))
+    #expect(steps[1].kind == .iftar && steps[1].target == date(2027, 2, 12, 18, 30))
+    #expect(steps[2].kind == .sahur && steps[2].target == date(2027, 2, 13, 5, 30))
+    #expect(RamadanPlan.countdownSteps(window, now: date(2027, 3, 8, 19), calendar: cal) { _ in times }.isEmpty)
+    #expect(RamadanPlan.countdownSteps(window, now: date(2027, 1, 1, 12), calendar: cal) { _ in times }.isEmpty)
+  }
+
+  @Test func zakatFollowsNisabAndFortieth() {
+    #expect(!ZakatCalc.compute(goldGrams: 10, goldPrice: 5000, cash: 0, trade: 0, receivable: 0, debt: 0).due)
+    #expect(!ZakatCalc.compute(goldGrams: 100, goldPrice: 5000, cash: 100000, trade: 0, receivable: 0, debt: 200000).due)
+    let paid = ZakatCalc.compute(goldGrams: 100, goldPrice: 5000, cash: 100000, trade: 0, receivable: 0, debt: 0)
+    #expect(paid.due && paid.amount == 15000)
+    #expect(!ZakatCalc.compute(goldGrams: 100, goldPrice: 0, cash: 1000000, trade: 0, receivable: 0, debt: 0).due)
+  }
+
   @Test func hiddenFarAhead() {
     #expect(RamadanPlan.phase(window, now: date(2026, 11, 6), today: times, tomorrow: times, calendar: cal) == .none)
   }

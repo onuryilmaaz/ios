@@ -60,6 +60,8 @@ final class RamadanStore {
     struct Payload: Decodable {
       var days: [String]
       var kaza: Int
+      var marks: [String: [String]]?
+      var ozel_gun_days: [String]?
     }
     var data: Payload?
   }
@@ -94,6 +96,20 @@ final class RamadanStore {
     await sync(force: true)
   }
 
+  func isMarked(_ kind: String, day: String, hijriYear: Int) -> Bool {
+    ledger.markDays(hijriYear, kind: kind).contains(day)
+  }
+
+  func toggleMark(_ kind: String, day: String, hijriYear: Int) async {
+    save(ledger.settingMark(hijriYear, kind: kind, day: day, on: !isMarked(kind, day: day, hijriYear: hijriYear)))
+    await sync(force: true)
+  }
+
+  func applyKaza(hijriYear: Int, days: [String]) async {
+    save(ledger.applyingKaza(hijriYear, days: days))
+    await sync(force: true)
+  }
+
   /// Widget düğmesinin bıraktığı işaretler (uygulama açılınca).
   func applyWidgetMarks(_ marks: [String: Bool], hijriYear: Int) async {
     guard !marks.isEmpty else { return }
@@ -106,24 +122,35 @@ final class RamadanStore {
   /// Bekleyenleri gönderir ve yılın güncel halini alır; bekleyen yoksa ve yakın zamanda eşitlendiyse ağa çıkmaz.
   func sync(force: Bool = false) async {
     guard !DebugLaunch.isIsolated, AuthStore.shared.isAuthenticated, !syncing else { return }
-    let waiting = !ledger.pending.isEmpty || ledger.kazaPending != 0
+    let waiting = !ledger.pending.isEmpty || !ledger.pendingMarks.isEmpty || ledger.kazaPending != 0
     if !force, !waiting, let lastSync, Date().timeIntervalSince(lastSync) < Self.refreshInterval { return }
     syncing = true
     defer { syncing = false }
-    let current = RamadanPlan.window(ReligiousCalendarService.cached(), now: Date(), calendar: .current).hijriYear
-    let years = Set(ledger.pending.keys.compactMap { Int($0) }).union([current])
+    let window = RamadanPlan.window(ReligiousCalendarService.cached(), now: Date(), calendar: .current)
+    let current = window.hijriYear
+    let years = Set(ledger.pending.keys.compactMap { Int($0) }).union(ledger.pendingMarks.keys.compactMap { Int($0) }).union([current])
     do {
       for year in years.sorted() {
         let sent = ledger.pending[String(year)] ?? [:]
+        let sentMarks = ledger.pendingMarks[String(year)] ?? [:]
         let sentKaza = ledger.kazaPending
-        let body: JSONValue = .object([
+        var fields: [String: JSONValue] = [
           "hijri_year": .number(Double(year)),
           "changes": .array(sent.map { .object(["day": .string($0.key), "fasted": .bool($0.value)]) }),
           "kaza_delta": .number(Double(sentKaza)),
-        ])
+          "marks": .array(sentMarks.compactMap { id, on in
+            let parts = id.split(separator: "|", maxSplits: 1).map(String.init)
+            guard parts.count == 2 else { return nil }
+            return .object(["kind": .string(parts[0]), "day": .string(parts[1]), "on": .bool(on)])
+          }),
+        ]
+        if year == current {
+          fields["window"] = .object(["start": .string(localDateString(window.start)), "end": .string(localDateString(window.last))])
+        }
+        let body: JSONValue = .object(fields)
         let res = try await APIClient.shared.post("/ramadan/sync", body: body, as: SyncResponse.self)
         guard let data = res.data else { return }
-        save(ledger.merged(year, sent: sent, sentKaza: sentKaza, serverDays: data.days, serverKaza: data.kaza))
+        save(ledger.merged(year, sent: sent, sentKaza: sentKaza, serverDays: data.days, serverKaza: data.kaza, sentMarks: sentMarks, serverMarks: data.marks, serverOzelGun: data.ozel_gun_days))
       }
       lastSync = Date()
     } catch {
@@ -145,6 +172,31 @@ final class RamadanStore {
 
   private static func todayLog(_ day: String) -> TrackerLog? {
     TrackerStore.shared.todayLogs.first { $0.date.hasPrefix(day) && $0.type == .fasting && $0.text("type") == "ramazan" }
+  }
+}
+
+/// Zekât ve fitre ölçüleri: sunucudan gelir, yoksa son bilinen Diyanet değeri.
+@MainActor
+@Observable
+final class RamadanConfigStore {
+  static let shared = RamadanConfigStore()
+  private static let key = "@salah_ramadan_config_v1"
+
+  struct Config: Codable, Equatable {
+    var fitreAmount = 240.0
+    var fidyeAmount = 240.0
+    var currency = "TRY"
+    var period = "2026-2027"
+    var nisabGoldGrams = 80.18
+  }
+  private struct Response: Decodable { let data: Config? }
+
+  private(set) var config = LocalStore.decode(Config.self, key) ?? Config()
+
+  func refresh() async {
+    guard !DebugLaunch.isIsolated, let fresh = try? await APIClient.shared.get("/ramadan/config", as: Response.self).data else { return }
+    config = fresh
+    LocalStore.encode(fresh, for: Self.key)
   }
 }
 

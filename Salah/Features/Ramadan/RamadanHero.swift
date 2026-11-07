@@ -52,7 +52,7 @@ struct HomeHero: View {
     TimelineView(.everyMinute) { context in
       let window = RamadanSchedule.window(religious, now: context.date)
       if case .active(let day, _, let countdown) = RamadanSchedule.phase(window, now: context.date, today: today?.times) {
-        RamadanHero(window: window, day: day, countdown: countdown, today: today, locationName: locationName, onLocation: onLocation, onAlarms: onAlarms, onImsakiye: onImsakiye)
+        RamadanHero(tint: RamadanTint.current(today?.times, now: context.date), window: window, day: day, countdown: countdown, today: today, locationName: locationName, onLocation: onLocation, onAlarms: onAlarms, onImsakiye: onImsakiye)
       } else {
         PrayerHeroCard(today: today, isLoading: isLoading, locationName: locationName, onLocation: onLocation, onAlarms: onAlarms)
       }
@@ -63,6 +63,7 @@ struct HomeHero: View {
 
 /// Hilal yönü: gün, ay ve iftar/sahur sayacı tek alanda.
 struct RamadanHero: View {
+  let tint: RamadanTint
   let window: RamadanWindow
   let day: Int
   let countdown: RamadanCountdown?
@@ -85,7 +86,7 @@ struct RamadanHero: View {
     let headline = t(countdown?.kind == .sahur ? "ramadan.untilSahur" : "ramadan.untilIftar")
     return VStack(alignment: .leading, spacing: 0) {
       Text(t("ramadan.day", ["day": day]))
-        .font(.system(size: 15, weight: .semibold)).foregroundStyle(Gold.s300)
+        .font(.system(size: 15, weight: .semibold)).foregroundStyle(tint.accent)
       // Ay sağ üstte: hapların uzun adı ona binmesin.
       pills.padding(.top, 8).padding(.trailing, 100)
       Text(headline).font(.system(size: 16)).foregroundStyle(.white.opacity(0.85)).padding(.top, 26)
@@ -107,12 +108,12 @@ struct RamadanHero: View {
           Task { await store.toggle(key, hijriYear: window.hijriYear) }
         } label: {
           HStack(spacing: 7) {
-            Ionicon(fasted ? "checkmark-circle" : "ellipse-outline", size: 18, color: fasted ? Accent.s900 : Gold.s300)
+            Ionicon(fasted ? "checkmark-circle" : "ellipse-outline", size: 18, color: fasted ? tint.hero : tint.accent)
             Text(t(fasted ? "ramadan.fasted" : "ramadan.fastToday")).font(.system(size: 15, weight: .semibold))
-              .foregroundStyle(fasted ? Accent.s900 : .white).lineLimit(1)
+              .foregroundStyle(fasted ? tint.hero : .white).lineLimit(1)
           }
           .padding(.horizontal, 17).padding(.vertical, 12)
-          .background(fasted ? Gold.s300 : .white.opacity(0.1), in: .capsule)
+          .background(fasted ? tint.accent : .white.opacity(0.1), in: .capsule)
         }
         .buttonStyle(PressableStyle())
         Button {
@@ -132,7 +133,7 @@ struct RamadanHero: View {
     .padding(.bottom, 17.5)
     .frame(maxWidth: .infinity, alignment: .leading)
     .background(alignment: .topTrailing) {
-      RamadanMoonView(day: day, size: 92, disc: Accent.s800, lit: Gold.s300).padding(.top, 10.5).padding(.trailing, 17.5)
+      RamadanMoonView(day: day, size: 92, disc: tint.surface, lit: tint.accent).padding(.top, 10.5).padding(.trailing, 17.5)
     }
   }
 
@@ -161,7 +162,7 @@ struct RamadanHero: View {
           onAlarms()
         } label: {
           HStack(spacing: 3.5) {
-            Ionicon(next == nil ? "alarm-outline" : "alarm", size: 12, color: next == nil ? .white.opacity(0.75) : Gold.s300)
+            Ionicon(next == nil ? "alarm-outline" : "alarm", size: 12, color: next == nil ? .white.opacity(0.75) : tint.accent)
             Text(next.map { formatHHMM($0.fireAt) } ?? t("alarm.quick.pill"))
               .font(.system(size: 13, weight: .medium)).foregroundStyle(.white.opacity(0.85)).tabularNumbers()
           }
@@ -230,24 +231,60 @@ struct RamadanJourneyCard: View {
         .contentShape(.rect)
       }
       .buttonStyle(PressableStyle(pressedOpacity: 0.85))
-      if HatimPlanStore.shared.plan == nil {
-        Button {
-          Haptics.impact(.light)
-          onHatim()
-        } label: {
-          HStack(spacing: 7) {
-            Ionicon("book-outline", size: 15, color: tokens.accent)
-            Text(t("ramadan.hatimCta")).font(.system(size: 14, weight: .medium)).foregroundStyle(tokens.textPrimary)
-            Spacer(minLength: 0)
-            Ionicon(dirIcon("chevron-forward"), size: 14, color: tokens.inkSubtle)
-          }
-        }
-        .buttonStyle(PressableStyle())
-        .padding(.top, 14)
+      teravihRow(today: today).padding(.top, 14)
+      HStack(spacing: 8) {
+        tile("calculator-outline", "ramadan.tile.zakat", "ramadan.tile.zakatHint") { HomeNavigation.shared.path.append(.zakat) }
+        tile("people-outline", "ramadan.tile.groups", "ramadan.tile.groupsHint") { HomeNavigation.shared.path.append(.hatimGroups) }
+        if HatimPlanStore.shared.plan == nil { tile("book-outline", "ramadan.tile.hatim", "ramadan.tile.hatimHint", onHatim) }
       }
+      .fixedSize(horizontal: false, vertical: true)
+      .padding(.top, 10)
     }
     .padding(.horizontal, 14)
     .padding(.bottom, 14)
+  }
+
+  private func teravihRow(today: String) -> some View {
+    let store = RamadanStore.shared
+    let on = store.isMarked("taraweeh", day: today, hijriYear: window.hijriYear)
+    return Button {
+      Haptics.impact(.medium)
+      Task { await store.toggleMark("taraweeh", day: today, hijriYear: window.hijriYear) }
+    } label: {
+      HStack(spacing: 7) {
+        Ionicon(on ? "checkmark-circle" : "ellipse-outline", size: 18, color: on ? tokens.surface : tokens.accent)
+        Text(t(on ? "ramadan.teravih.done" : "ramadan.teravih.mark")).font(.system(size: 14, weight: .semibold)).foregroundStyle(on ? tokens.surface : tokens.textPrimary)
+        Spacer(minLength: 0)
+        Text(t("ramadan.teravih.count", ["count": store.ledger.markDays(window.hijriYear, kind: "taraweeh").count, "total": total]))
+          .font(.system(size: 13)).foregroundStyle(on ? tokens.surface : tokens.textSecondary).tabularNumbers()
+      }
+      .padding(.horizontal, 14).padding(.vertical, 10)
+      .background(on ? tokens.accent : tokens.fill, in: .capsule)
+    }
+    .buttonStyle(PressableStyle())
+  }
+
+  private func tile(_ icon: String, _ title: String, _ hint: String, _ action: @escaping () -> Void) -> some View {
+    Button {
+      Haptics.impact(.light)
+      action()
+    } label: {
+      VStack(alignment: .leading, spacing: 10) {
+        Ionicon(icon, size: 18, color: tokens.accent)
+          .frame(width: 36, height: 36)
+          .background(tokens.surface, in: .circle)
+        VStack(alignment: .leading, spacing: 1) {
+          Text(t(title)).font(.system(size: 14, weight: .semibold)).foregroundStyle(tokens.textPrimary).lineLimit(2).minimumScaleFactor(0.85)
+          Text(t(hint)).font(.system(size: 12)).foregroundStyle(tokens.textSecondary).lineLimit(2).minimumScaleFactor(0.85)
+        }
+        Spacer(minLength: 0)
+      }
+      .padding(12)
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+      .background(tokens.fill, in: .rect(cornerRadius: 16))
+      .contentShape(.rect(cornerRadius: 16))
+    }
+    .buttonStyle(PressableStyle())
   }
 
   private func moon(_ day: Int, today: String) -> some View {
@@ -255,7 +292,117 @@ struct RamadanJourneyCard: View {
     let done = RamadanStore.shared.isFasted(date, hijriYear: window.hijriYear)
     let isToday = date == today
     let lit: Color = done || isToday ? Gold.s300 : date < today ? Forest.s400 : tokens.inkSubtle.opacity(0.3)
-    return RamadanMoonView(day: day, size: 18, disc: done || isToday ? Accent.s900 : tokens.fill, lit: lit, ring: isToday ? Gold.s500 : nil)
+    return RamadanMoonView(day: day, size: 18, disc: done || isToday ? RamadanTint.night.hero : tokens.fill, lit: lit, ring: isToday ? Gold.s500 : nil)
+  }
+}
+
+/// Son on gecede ana sayfada.
+struct LastNightsCard: View {
+  @Environment(\.tokens) private var tokens
+  let window: RamadanWindow
+
+  var body: some View {
+    let calendar = Calendar.current
+    let today = calendar.startOfDay(for: Date())
+    let nights = RamadanPlan.lastNights(window, calendar: calendar)
+    if let first = nights.first, today >= first, today <= window.last {
+      let done = nights.filter { RamadanStore.shared.isMarked("night", day: localDateString($0), hijriYear: window.hijriYear) }.count
+      Card {
+        HStack {
+          Text(t("ramadan.nights.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+          Spacer(minLength: 6)
+          Text(t("ramadan.nights.count", ["done": done])).font(.system(size: 13)).foregroundStyle(tokens.textSecondary).tabularNumbers()
+        }
+        if let left = RamadanPlan.kadirDaysLeft(window, now: today, calendar: calendar) {
+          Text(left == 0 ? t("imsakiye.kadirTonight") : t("imsakiye.kadir", ["days": left]))
+            .font(.system(size: 13, weight: .medium)).foregroundStyle(tokens.gold).padding(.top, 2)
+        }
+        NightsRow(window: window, doneColor: Gold.s300, idleColor: tokens.fill, ink: tokens.textPrimary, doneInk: RamadanTint.night.hero).padding(.top, 12)
+      }
+      .padding(.horizontal, 14)
+      .padding(.bottom, 14)
+    }
+  }
+}
+
+/// On gece, tek sıra. Gelecek geceler işaretlenmez.
+struct NightsRow: View {
+  let window: RamadanWindow
+  let doneColor: Color
+  let idleColor: Color
+  let ink: Color
+  let doneInk: Color
+
+  var body: some View {
+    let calendar = Calendar.current
+    let today = calendar.startOfDay(for: Date())
+    let kadir = RamadanPlan.kadirDate(window, calendar: calendar)
+    HStack(spacing: 4) {
+      ForEach(RamadanPlan.lastNights(window, calendar: calendar), id: \.self) { night in
+        let key = localDateString(night)
+        let on = RamadanStore.shared.isMarked("night", day: key, hijriYear: window.hijriYear)
+        let number = (calendar.dateComponents([.day], from: window.start, to: night).day ?? 0) + 1
+        Button {
+          Haptics.impact(.light)
+          Task { await RamadanStore.shared.toggleMark("night", day: key, hijriYear: window.hijriYear) }
+        } label: {
+          Text("\(number)").font(.system(size: 12, weight: night == kadir ? .bold : .medium)).foregroundStyle(on ? doneInk : ink).tabularNumbers()
+            .frame(maxWidth: .infinity).frame(height: 38)
+            .background(on ? doneColor : idleColor, in: .rect(cornerRadius: 10))
+            .overlay { if night == kadir { RoundedRectangle(cornerRadius: 10).stroke(doneColor, lineWidth: 1.5) } }
+        }
+        .buttonStyle(PressableStyle())
+        .disabled(night > today)
+        .accessibilityLabel("\(t(night == kadir ? "ramadan.nights.kadir" : "ramadan.nights.title")) \(number)")
+      }
+    }
+  }
+}
+
+/// Ramazan gününün ayeti: metin uygulamanın Kur'an verisinden, paylaşılabilir.
+struct RamadanVerseCard: View {
+  @Environment(\.tokens) private var tokens
+  let day: Int
+  @State private var verse: Verse?
+  @State private var source = ""
+  @State private var sharing = false
+
+  var body: some View {
+    // Boş Group'a bağlı .task hiç çalışmaz: görevin sahibi her zaman var olan bir kapsayıcı.
+    VStack(spacing: 0) {
+      if let verse {
+        Card {
+          HStack {
+            Text(t("ramadan.verse.title", ["day": day])).font(.system(size: 13, weight: .semibold)).foregroundStyle(tokens.textSecondary)
+            Spacer(minLength: 6)
+            Button {
+              Haptics.impact(.light)
+              sharing = true
+            } label: {
+              Ionicon("share-outline", size: 17, color: tokens.inkSubtle).frame(width: 36, height: 36)
+            }
+            .buttonStyle(PressableStyle())
+            .accessibilityLabel(t("common.share"))
+          }
+          Text(verse.translation.text).font(.system(size: 15)).lineSpacing(4).foregroundStyle(tokens.textPrimary).padding(.top, 2)
+          Text(source).font(.system(size: 13, weight: .medium)).foregroundStyle(tokens.gold).padding(.top, 8)
+        }
+        .padding(.horizontal, 14)
+        .padding(.bottom, 14)
+        .fullScreenCover(isPresented: $sharing) {
+          ShareCardSheet(arabic: verse.verse_simplified, text: verse.translation.text, source: source, label: t("ramadan.verse.title", ["day": day]))
+            .environment(\.tokens, tokens)
+            .presentationBackground(.clear)
+        }
+      }
+    }
+    .task(id: day) {
+      let ref = RamadanPlan.dailyVerse(day: day)
+      guard let found = await QuranService.verse(surahId: ref.surah, verseNumber: ref.verse),
+        let surah = await QuranService.surahs().first(where: { $0.id == ref.surah }) else { return }
+      source = t("notif.verseRef", ["surah": surahName(surah, withSuffix: true), "verse": ref.verse])
+      verse = found
+    }
   }
 }
 
@@ -311,6 +458,7 @@ struct IftarMomentView: View {
   let window: RamadanWindow
   let today: PrayerDay?
   let onClose: () -> Void
+  private let tint = RamadanTint.night
 
   var body: some View {
     let store = RamadanStore.shared
@@ -322,12 +470,12 @@ struct IftarMomentView: View {
     let next = calendar.startOfDay(for: calendar.date(byAdding: .day, value: 1, to: now) ?? now)
     let sahur = next <= window.last ? PrayerTimesService.cachedDays(districtId: Locations.selectedDistrictId).first { $0.localDay == next }?.times["imsak"] : nil
     return ZStack {
-      Accent.s900.ignoresSafeArea()
+      tint.hero.ignoresSafeArea()
       GeometryReader { geo in
         let h = geo.size.height
         ZStack {
-          Circle().fill(Accent.s800).frame(width: h * 1.12, height: h * 1.12).position(x: geo.size.width / 2, y: h)
-          Circle().fill(Accent.s700).frame(width: h * 0.72, height: h * 0.72).position(x: geo.size.width / 2, y: h)
+          Circle().fill(tint.surface).frame(width: h * 1.12, height: h * 1.12).position(x: geo.size.width / 2, y: h)
+          Circle().fill(.white.opacity(0.06)).frame(width: h * 0.72, height: h * 0.72).position(x: geo.size.width / 2, y: h)
         }
       }
       .ignoresSafeArea()
@@ -343,9 +491,9 @@ struct IftarMomentView: View {
           .buttonStyle(PressableStyle())
           .accessibilityLabel(t("common.close"))
         }
-        RamadanMoonView(day: day, size: 130, disc: Accent.s800, lit: Gold.s300).padding(.top, 8)
+        RamadanMoonView(day: day, size: 130, disc: tint.surface, lit: tint.accent).padding(.top, 8)
         Text(t("iftarMoment.adhan", ["time": today?.times["aksam"] ?? ""]))
-          .font(.system(size: 15, weight: .semibold)).foregroundStyle(Gold.s300).tabularNumbers().padding(.top, 30)
+          .font(.system(size: 15, weight: .semibold)).foregroundStyle(tint.accent).tabularNumbers().padding(.top, 30)
         Text(t("iftarMoment.title")).font(.system(size: 32, weight: .bold)).foregroundStyle(.white).multilineTextAlignment(.center).padding(.top, 7)
         Text(t("iftarMoment.accept")).font(.system(size: 16)).foregroundStyle(.white.opacity(0.85)).padding(.top, 9)
         VStack(spacing: 10.5) {
@@ -354,8 +502,8 @@ struct IftarMomentView: View {
               Haptics.impact(.medium)
               Task { await store.toggle(key, hijriYear: window.hijriYear) }
             } label: {
-              Text(t("iftarMoment.mark")).font(.system(size: 16, weight: .semibold)).foregroundStyle(Accent.s900)
-                .frame(maxWidth: .infinity).padding(.vertical, 15).background(Gold.s300, in: .capsule)
+              Text(t("iftarMoment.mark")).font(.system(size: 16, weight: .semibold)).foregroundStyle(tint.hero)
+                .frame(maxWidth: .infinity).padding(.vertical, 15).background(tint.accent, in: .capsule)
             }
             .buttonStyle(PressableStyle())
           }
@@ -390,6 +538,6 @@ struct IftarMomentView: View {
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding(.horizontal, 16).padding(.vertical, 13)
-    .background(Accent.s900, in: .rect(cornerRadius: 21))
+    .background(tint.hero, in: .rect(cornerRadius: 21))
   }
 }

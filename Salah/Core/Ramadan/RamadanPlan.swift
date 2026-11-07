@@ -40,6 +40,77 @@ enum RamadanPlan {
     stored == true && phase(real, now: now, today: nil, tomorrow: nil, calendar: calendar) == .none
   }
 
+  /// Hilal tonu: akşamdan imsaka gece, imsaktan öğleye şafak, öğleden akşama mihrap. Vakit yoksa gece.
+  static func tint(now: Date, today: PrayerTimes?, calendar: Calendar) -> RamadanTintPhase {
+    let day = calendar.startOfDay(for: now)
+    guard let today, let imsak = clock(today["imsak"], on: day, calendar), let ogle = clock(today["ogle"], on: day, calendar),
+      let aksam = clock(today["aksam"], on: day, calendar) else { return .night }
+    if now < imsak || now >= aksam { return .night }
+    return now < ogle ? .dawn : .dusk
+  }
+
+  /// Ramazan gününün ayeti (sure, ayet). Metin uygulamanın Kur'an verisinden gelir.
+  static let dailyVerses: [(surah: Int, verse: Int)] = [
+    (2, 183), (2, 184), (2, 185), (2, 186), (3, 134), (2, 153), (2, 152), (13, 28), (3, 133), (39, 53),
+    (2, 261), (3, 92), (2, 274), (57, 7), (40, 60), (3, 8), (14, 40), (33, 41), (49, 13), (44, 3),
+    (66, 8), (3, 200), (39, 10), (17, 9), (54, 17), (97, 1), (97, 3), (97, 5), (38, 29), (73, 4),
+  ]
+
+  static func dailyVerse(day: Int) -> (surah: Int, verse: Int) {
+    dailyVerses[min(max(day - 1, 0), dailyVerses.count - 1)]
+  }
+
+  /// Son on gün (29 ya da 30 günlük ayda).
+  static func lastNights(_ window: RamadanWindow, calendar: Calendar) -> [Date] {
+    (0...9).reversed().compactMap { calendar.date(byAdding: .day, value: -$0, to: window.last) }
+  }
+
+  static func kadirDate(_ window: RamadanWindow, calendar: Calendar) -> Date {
+    calendar.date(byAdding: .day, value: 25, to: window.start) ?? window.start
+  }
+
+  /// Geçmiş günlerden oruç işareti olmayanlar; bugün sayılmaz.
+  static func unmarkedDays(_ window: RamadanWindow, now: Date, marked: Set<String>, calendar: Calendar) -> [String] {
+    let today = calendar.startOfDay(for: now)
+    var out: [String] = []
+    var day = window.start
+    while day <= window.last, day < today {
+      let key = dayString(day, calendar)
+      if !marked.contains(key) { out.append(key) }
+      guard let next = calendar.date(byAdding: .day, value: 1, to: day) else { break }
+      day = next
+    }
+    return out
+  }
+
+  struct CountdownStep: Equatable {
+    var at: Date
+    var kind: RamadanCountdown.Kind
+    var target: Date
+  }
+
+  /// Dinamik çizelge: imsaka sahur, akşama iftar, akşamdan sonra yarının sahuru.
+  static func countdownSteps(_ window: RamadanWindow, now: Date, calendar: Calendar, times: (Date) -> PrayerTimes?) -> [CountdownStep] {
+    var out: [CountdownStep] = []
+    var day = calendar.startOfDay(for: now)
+    var at = now
+    for _ in 0..<4 {
+      guard day >= window.start, day <= window.last, let t = times(day),
+        let imsak = clock(t["imsak"], on: day, calendar), let aksam = clock(t["aksam"], on: day, calendar) else { return out }
+      if at < imsak {
+        out.append(.init(at: at, kind: .sahur, target: imsak))
+        at = imsak
+      }
+      if at < aksam {
+        out.append(.init(at: at, kind: .iftar, target: aksam))
+        at = aksam
+      }
+      guard let next = calendar.date(byAdding: .day, value: 1, to: day) else { return out }
+      day = next
+    }
+    return out
+  }
+
   /// Kadir Gecesi: 26. günün akşamı (27. gece). Bugünse 0, geçtiyse nil.
   static func kadirDaysLeft(_ window: RamadanWindow, now: Date, calendar: Calendar) -> Int? {
     guard let night = calendar.date(byAdding: .day, value: 25, to: window.start) else { return nil }
@@ -189,8 +260,30 @@ struct RamadanLedger: Codable, Equatable, Sendable {
   var pending: [String: [String: Bool]] = [:]
   var kaza = 0
   var kazaPending = 0
+  /// Hicri yıl -> tür (taraweeh, night, kaza) -> günler.
+  var marks: [String: [String: [String]]] = [:]
+  /// Hicri yıl -> "tür|gün" -> açık mı.
+  var pendingMarks: [String: [String: Bool]] = [:]
+  /// Hicri yıl -> sunucudan gelen özel gün günleri.
+  var ozelGun: [String: [String]] = [:]
+
+  init() {}
+
+  /// Önceki sürümün kaydı yeni alanlar olmadan da açılır.
+  init(from decoder: Decoder) throws {
+    let c = try decoder.container(keyedBy: CodingKeys.self)
+    fasts = try c.decodeIfPresent([String: [String]].self, forKey: .fasts) ?? [:]
+    pending = try c.decodeIfPresent([String: [String: Bool]].self, forKey: .pending) ?? [:]
+    kaza = try c.decodeIfPresent(Int.self, forKey: .kaza) ?? 0
+    kazaPending = try c.decodeIfPresent(Int.self, forKey: .kazaPending) ?? 0
+    marks = try c.decodeIfPresent([String: [String: [String]]].self, forKey: .marks) ?? [:]
+    pendingMarks = try c.decodeIfPresent([String: [String: Bool]].self, forKey: .pendingMarks) ?? [:]
+    ozelGun = try c.decodeIfPresent([String: [String]].self, forKey: .ozelGun) ?? [:]
+  }
 
   func days(_ year: Int) -> Set<String> { Set(fasts[String(year)] ?? []) }
+
+  func markDays(_ year: Int, kind: String) -> Set<String> { Set(marks[String(year)]?[kind] ?? []) }
 
   func marking(_ year: Int, day: String, fasted: Bool) -> RamadanLedger {
     var next = self
@@ -201,6 +294,15 @@ struct RamadanLedger: Codable, Equatable, Sendable {
     return next
   }
 
+  func settingMark(_ year: Int, kind: String, day: String, on: Bool) -> RamadanLedger {
+    var next = self
+    var set = markDays(year, kind: kind)
+    if on { set.insert(day) } else { set.remove(day) }
+    next.marks[String(year), default: [:]][kind] = set.sorted()
+    if year != RamadanPlan.previewHijriYear { next.pendingMarks[String(year), default: [:]]["\(kind)|\(day)"] = on }
+    return next
+  }
+
   func addingKaza(_ delta: Int) -> RamadanLedger {
     var next = self
     next.kaza = max(0, kaza + delta)
@@ -208,8 +310,26 @@ struct RamadanLedger: Codable, Equatable, Sendable {
     return next
   }
 
+  /// Tutulmayan günleri bir kez kazaya aktarır; aynı gün iki kez sayılmaz. Önizlemede sunucuya gitmez.
+  func applyingKaza(_ year: Int, days: [String]) -> RamadanLedger {
+    let done = markDays(year, kind: "kaza")
+    let fresh = days.filter { !done.contains($0) }
+    guard !fresh.isEmpty else { return self }
+    var next = self
+    for day in fresh { next = next.settingMark(year, kind: "kaza", day: day, on: true) }
+    if year == RamadanPlan.previewHijriYear {
+      next.kaza += fresh.count
+      return next
+    }
+    return next.addingKaza(fresh.count)
+  }
+
   /// Sunucu yanıtı; istek sürerken yapılan değişiklikler bekler ve görünümde korunur.
-  func merged(_ year: Int, sent: [String: Bool], sentKaza: Int, serverDays: [String], serverKaza: Int) -> RamadanLedger {
+  /// `serverMarks` nil ise (eski sunucu) işaretler bekler, kaybolmaz.
+  func merged(
+    _ year: Int, sent: [String: Bool], sentKaza: Int, serverDays: [String], serverKaza: Int,
+    sentMarks: [String: Bool] = [:], serverMarks: [String: [String]]? = nil, serverOzelGun: [String]? = nil
+  ) -> RamadanLedger {
     var next = self
     let key = String(year)
     let left = (pending[key] ?? [:]).filter { sent[$0.key] != $0.value }
@@ -221,6 +341,67 @@ struct RamadanLedger: Codable, Equatable, Sendable {
     next.pending[key] = left.isEmpty ? nil : left
     next.kazaPending = kazaPending - sentKaza
     next.kaza = max(0, serverKaza + next.kazaPending)
+    if let serverMarks {
+      let leftMarks = (pendingMarks[key] ?? [:]).filter { sentMarks[$0.key] != $0.value }
+      var shownMarks = serverMarks.mapValues { Set($0) }
+      for (id, value) in leftMarks {
+        let parts = id.split(separator: "|", maxSplits: 1).map(String.init)
+        guard parts.count == 2 else { continue }
+        if value { shownMarks[parts[0], default: []].insert(parts[1]) } else { shownMarks[parts[0], default: []].remove(parts[1]) }
+      }
+      next.marks[key] = shownMarks.mapValues { $0.sorted() }
+      next.pendingMarks[key] = leftMarks.isEmpty ? nil : leftMarks
+    }
+    if let serverOzelGun { next.ozelGun[key] = serverOzelGun }
     return next
+  }
+}
+
+enum RamadanTintPhase: String, Sendable { case night, dawn, dusk }
+
+/// Diyanet ölçüleriyle zekât: nisap 80,18 gram altın değeri, oran kırkta bir.
+enum ZakatCalc {
+  struct Result: Equatable {
+    var net: Double
+    var nisab: Double
+    var due: Bool
+    var amount: Double
+  }
+
+  /// Klavye diline bakmadan okur: "1.250" ve "1,250" bin ayraçlıdır (gram için ondalık), "1.250,50" = 1250,5.
+  static func parseAmount(_ text: String, grouped: Bool = true) -> Double {
+    var s = ""
+    for scalar in text.unicodeScalars {
+      switch scalar.value {
+      case 0x0660...0x0669: s.unicodeScalars.append(Unicode.Scalar(scalar.value - 0x0660 + 48)!)
+      case 0x06F0...0x06F9: s.unicodeScalars.append(Unicode.Scalar(scalar.value - 0x06F0 + 48)!)
+      case 0x066B: s.append(",")
+      case 0x066C: s.append(".")
+      case 48...57, 44, 46: s.unicodeScalars.append(scalar)
+      default: break
+      }
+    }
+    let dots = s.filter { $0 == "." }.count
+    let commas = s.filter { $0 == "," }.count
+    if dots > 0, commas > 0, let lastDot = s.lastIndex(of: "."), let lastComma = s.lastIndex(of: ",") {
+      let decimal: Character = lastDot > lastComma ? "." : ","
+      let group: Character = decimal == "." ? "," : "."
+      s = s.filter { $0 != group }.map { $0 == decimal ? "." : String($0) }.joined()
+    } else if dots + commas > 1 {
+      s = s.filter { $0 != "." && $0 != "," }
+    } else if dots + commas == 1 {
+      let parts = s.split(separator: dots == 1 ? "." : ",", omittingEmptySubsequences: false)
+      let thousands = grouped && parts[1].count == 3 && (1...3).contains(parts[0].count) && !parts[0].hasPrefix("0")
+      s = thousands ? parts.joined() : parts.joined(separator: ".")
+    }
+    return Double(s) ?? 0
+  }
+
+  static func compute(goldGrams: Double, goldPrice: Double, cash: Double, trade: Double, receivable: Double, debt: Double, nisabGrams: Double = 80.18) -> Result {
+    let price = max(0, goldPrice)
+    let net = max(0, goldGrams) * price + max(0, cash) + max(0, trade) + max(0, receivable) - max(0, debt)
+    let nisab = nisabGrams * price
+    let due = nisab > 0 && net >= nisab
+    return Result(net: net, nisab: nisab, due: due, amount: due ? net / 40 : 0)
   }
 }

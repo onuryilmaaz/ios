@@ -40,6 +40,8 @@ enum WL {
     else if n.contains("ikindi") { key = "ikindi" }
     else if n.contains("akşam") || n.contains("aksam") { key = "aksam" }
     else if n.contains("yatsı") || n.contains("yatsi") { key = "yatsi" }
+    else if n.contains("iftar") { return t("ramadanW.iftar") }
+    else if n.contains("sahur") { return t("ramadanW.sahur") }
     else { return nameOrKey }
     return t("prayer.\(key)")
   }

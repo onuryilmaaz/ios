@@ -15,7 +15,10 @@ struct RamadanCard: View {
       switch RamadanSchedule.phase(window, now: context.date, today: today?.times) {
       case .none: EmptyView()
       case .upcoming(let daysLeft, let start): upcoming(daysLeft, start)
-      case .active(_, let total, _): RamadanJourneyCard(window: window, total: total, onJournal: onJournal, onHatim: onHatim)
+      case .active(let day, let total, _):
+        RamadanJourneyCard(window: window, total: total, onJournal: onJournal, onHatim: onHatim)
+        LastNightsCard(window: window)
+        RamadanVerseCard(day: day)
       }
     }
     .task { religious = await ReligiousCalendarService.load() }
@@ -120,6 +123,31 @@ enum RamadanSchedule {
     let real = RamadanPlan.window(religious, now: now, calendar: calendar)
     return RamadanPlan.usesPreview(stored: RamadanMode.shared.stored, real: real, now: now, calendar: calendar)
       ? RamadanPlan.previewWindow(now: now, calendar: calendar) : real
+  }
+
+  /// Mod açıksa son on gece bildirimi. Önizlemede de gerçek takvime bakar: kurgusal geceye bildirim kurulmaz.
+  static func nightsReminder(now: Date = Date(), calendar: Calendar = .current) -> RamadanNightsReminder? {
+    guard RamadanMode.shared.isOn(now: now, calendar: calendar) else { return nil }
+    let real = RamadanPlan.window(ReligiousCalendarService.cached(), now: now, calendar: calendar)
+    return .init(nights: RamadanPlan.lastNights(real, calendar: calendar), kadir: RamadanPlan.kadirDate(real, calendar: calendar))
+  }
+
+  /// Ramazan'da Dinamik Ada çizelgesi; mod kapalı ya da gün dışındaysa nil.
+  static func liveTimeline(today: PrayerTimes, now: Date = Date(), calendar: Calendar = .current) -> [(at: Date, window: PrayerWindow)]? {
+    guard RamadanMode.shared.isOn(now: now, calendar: calendar) else { return nil }
+    let w = window(ReligiousCalendarService.cached(), now: now, calendar: calendar)
+    let days = PrayerTimesService.cachedDays(districtId: Locations.selectedDistrictId)
+    let steps = RamadanPlan.countdownSteps(w, now: now, calendar: calendar) { day in
+      calendar.isDate(day, inSameDayAs: now) ? today : days.first { $0.localDay == day }?.times
+    }
+    guard !steps.isEmpty else { return nil }
+    return steps.map { step in
+      var iftar = step.kind == .iftar
+      #if DEBUG
+      if let forced = UserDefaults.standard.string(forKey: "SalahDebugLive") { iftar = forced == "iftar" }
+      #endif
+      return (step.at, PrayerWindow(mode: .upcoming, prayerName: iftar ? "İftar" : "Sahur", start: nil, end: step.target, nextPrayer: iftar ? "Sahur" : "İftar"))
+    }
   }
 
   static func phase(_ window: RamadanWindow, now: Date = Date(), today: PrayerTimes?, calendar: Calendar = .current) -> RamadanPhase {

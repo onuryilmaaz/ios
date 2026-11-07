@@ -29,6 +29,10 @@ final class AppLinks {
     case "hatim": return .home(.hatimPlan)
     case "imsakiye": return .home(.imsakiye)
     case "oruc": return .home(.fastJournal)
+    case "zekat": return .home(.zakat)
+    case "grup":
+      if let code = parts.dropFirst().first { MainActor.assumeIsolated { HatimGroupAPI.pendingCode = code } }
+      return .home(.hatimGroups)
     case "istatistik": return .tracker(nil, insights: true)
     case "tracker": return .tracker(parts.dropFirst().first.flatMap { ActivityType(rawValue: $0) }, insights: false)
     default: return nil

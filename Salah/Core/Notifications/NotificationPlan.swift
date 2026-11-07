@@ -1,7 +1,7 @@
 import Foundation
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night" }
   var id: String
   var date: Date
   var kind: Kind
@@ -17,6 +17,12 @@ struct PlannedNotification: Equatable, Sendable {
   var contentType = "ayet"
 
   var isPrayer: Bool { kind == .prayerTime || kind == .prayerReminder }
+}
+
+/// Son on gece hatırlatması: her gece yatsı vaktinde, Kadir Gecesi'nde özel metin.
+struct RamadanNightsReminder: Equatable, Sendable {
+  var nights: [Date]
+  var kadir: Date
 }
 
 /// Hatim planı hatırlatması (plan sürüyorsa).
@@ -55,7 +61,7 @@ enum NotificationPlan {
   static func build(
     days: [PrayerDay], preferences p: NotificationPreferences, now: Date,
     calendar: Calendar = .current, verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = [],
-    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil
+    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil, nights: RamadanNightsReminder? = nil
   ) -> [PlannedNotification] {
     guard p.enabled else { return [] }
     // Sessiz aralık sonrasını ŞİMDİ kur: uygulama kapalıyken de süre bitince
@@ -88,6 +94,16 @@ enum NotificationPlan {
         else { continue }
         plan.append(.init(id: "hatim.\(Int(date.timeIntervalSince1970))", date: date, kind: .hatim,
                           title: t("notif.hatimTitle"), body: t("notif.hatimBody", ["pages": hatim.dailyPages])))
+      }
+    }
+
+    if let nights {
+      for day in days {
+        guard let base = parseDay(day.date, calendar: calendar), nights.nights.contains(calendar.startOfDay(for: base)),
+          let raw = day.times["yatsi"], let date = clock(raw, on: base, calendar: calendar), date > cutoff else { continue }
+        let kadir = calendar.startOfDay(for: base) == nights.kadir
+        plan.append(.init(id: "ramadan_night.\(Int(date.timeIntervalSince1970))", date: date, kind: .ramadanNight,
+                          title: t(kadir ? "notif.kadirTitle" : "notif.nightTitle"), body: t(kadir ? "notif.kadirBody" : "notif.nightBody")))
       }
     }
 

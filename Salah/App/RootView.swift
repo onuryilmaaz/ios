@@ -226,6 +226,15 @@ enum DebugLaunch {
     return nil
     #endif
   }
+  /// Grup hatmi ve zekât ekranlarında alt sayfa/sekme: -SalahDebugSheet join|create|free|mine|fitre|fidye|filled
+  static var sheet: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugSheet")
+    #else
+    return nil
+    #endif
+  }
+
   static var mushafPage: Int? {
     #if DEBUG
     return UserDefaults.standard.object(forKey: "SalahDebugMushafPage").map { _ in UserDefaults.standard.integer(forKey: "SalahDebugMushafPage") }
@@ -272,6 +281,9 @@ enum DebugLaunch {
       case "imsakiye": return .imsakiye
       case "hatim": return .hatimPlan
       case "oruc": return .fastJournal
+      case "zekat": return .zakat
+      case "gruplar": return .hatimGroups
+      case "grup": return .hatimGroup("sample")
       case "profile": return .profile
       case "account": return .account
       case "location": return .location

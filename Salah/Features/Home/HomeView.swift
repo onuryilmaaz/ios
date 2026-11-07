@@ -39,6 +39,7 @@ struct HomeView: View {
   @Bindable private var nav = HomeNavigation.shared
   @State private var celebrationStreak: Int?
   @State private var homeVisible = false
+  @State private var tintClock = Date()
 
   var body: some View {
     NavigationStack(path: $nav.path) {
@@ -56,8 +57,10 @@ struct HomeView: View {
   private var content: some View {
     let auth = AuthStore.shared
     let layout = HomeLayoutStore.shared
+    let hero = ramadanHero
     return VStack(spacing: 0) {
       HomeHeader(
+        color: hero,
         onQibla: { push(.qibla) },
         onProfile: { auth.isAuthenticated ? push(.profile) : AuthFlow.shared.present() }
       )
@@ -72,9 +75,10 @@ struct HomeView: View {
           )
           .background(alignment: .top) {
             // Aşağı çekince (bounce) üstte açık zemin görünmesin.
-            tokens.hero.frame(height: 600).offset(y: -600)
+            hero.frame(height: 600).offset(y: -600)
           }
-          .background(tokens.hero, in: UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32))
+          .background(hero, in: UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32))
+          .animation(.easeInOut(duration: 0.3), value: hero)
           .tourAnchor("home.hero")
           .padding(.bottom, 17.5)
 
@@ -123,6 +127,7 @@ struct HomeView: View {
       )
     }
     .onAppear { homeVisible = true }
+    .onReceive(Timer.publish(every: 60, on: .main, in: .common).autoconnect()) { tintClock = $0 }
     .onDisappear { homeVisible = false }
     // Başlık her iki temada da koyu zümrüt: durum çubuğu yazıları açık.
     .statusBar(.light)
@@ -169,6 +174,13 @@ struct HomeView: View {
     case .alarms:
       AlarmsCard { push(.alarms) }
     }
+  }
+
+  /// Ramazan gününde üst alan rengi saate göre değişir; gerisi temada kalır.
+  private var ramadanHero: Color {
+    let window = RamadanSchedule.window(ReligiousCalendarService.cached())
+    if case .active = RamadanSchedule.phase(window, today: model.today?.times) { return RamadanTint.current(model.today?.times, now: tintClock).hero }
+    return tokens.hero
   }
 
   private func push(_ route: HomeRoute) {

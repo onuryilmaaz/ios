@@ -66,6 +66,8 @@ struct ShareImageSheet<Card: View>: View {
   @Environment(\.tokens) private var tokens
   /// Görsel üretilemezse (ör. simülatör) paylaşılacak metin.
   let fallbackText: String
+  /// Kart zemini; imsakiye kartı Ramazan rengini kullanır.
+  var cardColor: Color = Accent.s900
   @ViewBuilder var card: Card
   @State private var shareItems: ShareItems?
 
@@ -108,14 +110,14 @@ struct ShareImageSheet<Card: View>: View {
       .padding(.top, 24.5)
       .padding(.bottom, 21)
       .frame(maxWidth: .infinity)
-      .background(Accent.s900, in: .rect(cornerRadius: 21))
+      .background(cardColor, in: .rect(cornerRadius: 21))
   }
 
   private func share(width: CGFloat) {
     Haptics.notify(.success)
     // Görselde köşeler saydam kalmasın: paylaşılan uygulamalar saydamlığı beyaza çevirir.
     let renderer = ImageRenderer(
-      content: framed.frame(width: width).background(Accent.s900)
+      content: framed.frame(width: width).background(cardColor)
         .environment(\.tokens, tokens)
         .environment(\.locale, Localizer.shared.locale)
         .environment(\.layoutDirection, Localizer.shared.layoutDirection))

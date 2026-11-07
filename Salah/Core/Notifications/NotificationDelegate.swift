@@ -101,6 +101,7 @@ final class SalahNotificationDelegate: NSObject, UNUserNotificationCenterDelegat
         NotificationNavigation.shared.receive(payload, id: id)
         if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
         if payload.type == "hatim_reminder", let url = URL(string: "salah://tracker/quran") { UIApplication.shared.open(url) }
+        if payload.type == "ramadan_night", let url = URL(string: "salah://oruc") { UIApplication.shared.open(url) }
       }
       completionHandler()
     }
