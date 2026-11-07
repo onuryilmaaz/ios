@@ -18,15 +18,24 @@ struct InspirationEntry: TimelineEntry {
     let todays = app?.date == day ? app : nil
     return InspirationEntry(date: date, data: todays ?? verse ?? app, verse: verse, theme: theme)
   }
+
+  /// Widget galerisi: saklı ilk ayetin kısa hali; hiç yoksa genel başlık.
+  static func gallerySample(theme: SalahTheme) -> InspirationEntry {
+    let stored = InspirationVerse.loadAll().first
+    var text = stored?.text ?? WL.t("insp.fallback")
+    if text.count > 140 { text = String(text.prefix(140)) + "…" }
+    let sample = InspirationData(text: text, source: stored?.source ?? "", type: "ayet", arabic: "", date: stored?.date ?? "")
+    return InspirationEntry(date: Date(), data: sample, verse: sample, theme: theme)
+  }
 }
 
 struct InspirationProvider: TimelineProvider {
   let theme: SalahTheme
 
-  func placeholder(in _: Context) -> InspirationEntry {
-    InspirationEntry(date: Date(), data: nil, verse: nil, theme: theme)
-  }
-  func getSnapshot(in _: Context, completion: @escaping (InspirationEntry) -> Void) {
+  func placeholder(in _: Context) -> InspirationEntry { .gallerySample(theme: theme) }
+  func getSnapshot(in context: Context, completion: @escaping (InspirationEntry) -> Void) {
+    // Galeri önizlemesi süre sınırına takılırsa sistem boş iskelet gösterir: kısa metin, Arapça font yok.
+    if context.isPreview { return completion(.gallerySample(theme: theme)) }
     completion(.make(at: Date(), app: InspirationData.loadRaw(), verses: InspirationVerse.loadAll(), theme: theme))
   }
   func getTimeline(in _: Context, completion: @escaping (Timeline<InspirationEntry>) -> Void) {
@@ -283,6 +292,7 @@ struct InspirationWidget: Widget {
       SystemThemed { theme in
         InspirationWidgetEntryView(
           entry: InspirationEntry(date: entry.date, data: entry.data, verse: entry.verse, theme: theme))
+          .galleryPlaceholderReadable()
       }
       .widgetURL(URL(string: "salah://home"))
     }

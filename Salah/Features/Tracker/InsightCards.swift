@@ -301,6 +301,7 @@ struct HeatmapCard: View {
 /// Mevcut hatmin ilerlemesi: 30 cüz. RN: components/insights/HatimCard.tsx
 struct HatimCard: View {
   @Environment(\.tokens) private var tokens
+  @Environment(\.openURL) private var openURL
   private static let juz = 30
 
   var body: some View {
@@ -359,6 +360,14 @@ struct HatimCard: View {
           .foregroundStyle(tokens.textSecondary)
         }
         .padding(.top, 14)
+
+        if RamadanMode.shared.isOn() {
+          AppButton(title: t(HatimPlanStore.shared.plan == nil ? "insights.hatim.planCreate" : "insights.hatim.planOpen"), variant: .outline) {
+            Haptics.impact(.light)
+            if let url = URL(string: "salah://hatim") { openURL(url) }
+          }
+          .padding(.top, 14)
+        }
       }
     }
   }

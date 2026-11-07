@@ -657,6 +657,8 @@
       "nafileA11y": "{{rakaat}} rakats of voluntary prayer"
     },
     "hatim": {
+      "planCreate": "Create a completion plan",
+      "planOpen": "My completion plan",
       "title": "Khatm {{n}}",
       "progress": "{{pages}} / {{total}} pages",
       "a11y": "{{pct}} percent of the Khatm read, {{done}} completed",
@@ -737,6 +739,8 @@
     "turnOff": "Turn off silent mode"
   },
   "notif": {
+    "hatimTitle": "Quran plan",
+    "hatimBody": "Today's goal is {{pages}} pages.",
     "blessedDay": "Blessed Day",
     "channelAdhan": "Prayer Times with Adhan",
     "channelPrayer": "Prayer Times",
@@ -1136,6 +1140,11 @@
       "label": "Alarms",
       "sub": "Prayer, tahajjud and suhoor alarms"
     },
+    "ramadanMode": {
+      "preview": "Preview: real prayer times, sample Ramadan days",
+      "sub": "Ramadan card, timetable and completion plan",
+      "title": "Ramadan mode"
+    },
     "widgetTheme": {
       "dark": "Dark",
       "light": "Light",
@@ -1347,6 +1356,7 @@
       "saveFailed": "Something went wrong while saving."
     },
     "fasting": {
+      "ramazan": "Ramadan fast",
       "kaza": "Make-up fast",
       "nafile": "Voluntary fast",
       "pazartesi_persembe": "Monday-Thursday",
@@ -1461,5 +1471,86 @@
     "until": "Until {{prayer}}",
     "untilEnd": "Until {{prayer}} ends",
     "verse": "Verse of the day"
+  },
+  "ramadan": {
+    "nextPrayer": "Next {{prayer}} {{time}}",
+    "journey": { "title": "Ramadan journey" },
+    "journal": {
+      "title": "Fasting journal",
+      "ofTotal": "/ {{total}} days fasted",
+      "fasted": "Fasted",
+      "today": "Today",
+      "upcoming": "Ahead",
+      "missed": "Not fasted",
+      "kaza": "Make-up fasts",
+      "kazaCount": "{{count}} days",
+      "kazaAdd": "Add a make-up fast",
+      "kazaRemove": "Remove a make-up fast"
+    },
+    "day": "Day {{day}} of Ramadan",
+    "untilIftar": "Until iftar",
+    "untilSahur": "Until suhoor",
+    "sahur": "Suhoor",
+    "iftar": "Iftar",
+    "fastToday": "I'm fasting today",
+    "fasted": "Fasting",
+    "fastCount": "{{count}} / {{total}} days fasted",
+    "hatimCta": "Create a Quran completion plan for Ramadan",
+    "upcoming": {
+      "title": "{{days}} days until Ramadan",
+      "tomorrow": "Ramadan starts tomorrow",
+      "subtitle": "{{date}} · Timetable and Quran plan"
+    }
+  },
+  "iftarMoment": {
+    "title": "Blessed iftar",
+    "accept": "May Allah accept it.",
+    "adhan": "Maghrib adhan {{time}}",
+    "mark": "Mark today's fast",
+    "duas": "Duas",
+    "tomorrowSahur": "Suhoor tomorrow",
+    "progress": "Ramadan"
+  },
+  "imsakiye": {
+    "todayLine": "Today, {{date}}, {{place}}",
+    "kadir": "{{days}} days to Laylat al-Qadr",
+    "kadirTonight": "Laylat al-Qadr is tonight",
+    "shareTitle": "{{place}} Ramadan Timetable",
+    "title": "Ramadan Timetable",
+    "short": "Timetable",
+    "dayColumn": "Day",
+    "dateColumn": "Date",
+    "loadFailed": "The timetable could not be loaded. Check your connection and try again.",
+    "notReady": "This Ramadan's timetable isn't ready yet. It will be here in January."
+  },
+  "hatim": {
+    "card": {
+      "title": "Quran completion plan",
+      "today": "Today {{read}} / {{target}} pages · {{days}} days left",
+      "log": "Log my reading",
+      "logMore": "Log more",
+      "finished": "Quran completed. May Allah accept it.",
+      "overdue": "The target date has passed. You can update the plan."
+    },
+    "plan": {
+      "title": "Quran Completion Plan",
+      "subtitle": "When do you want to finish? We'll work out your daily pages.",
+      "ramadanEnd": "By the end of Ramadan",
+      "days": "{{count}} days",
+      "custom": "Choose a date",
+      "daily": "{{pages}} pages a day",
+      "remaining": "{{pages}} pages left · {{days}} days",
+      "start": "Start plan",
+      "update": "Update plan",
+      "saved": "Your plan has been saved",
+      "delete": "Delete plan",
+      "deleteTitle": "Delete this plan?",
+      "deleteBody": "Pages you've read won't be deleted.",
+      "reminder": "Daily reminder",
+      "reminderNeeds": "Turn on notifications in Settings first",
+      "status": "{{pages}} pages left in {{days}} days. Daily goal: {{daily}} pages.",
+      "signIn": "The plan uses your Quran reading logs. Sign in to continue.",
+      "signInButton": "Sign in"
+    }
   }
 }

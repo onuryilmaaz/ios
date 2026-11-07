@@ -232,6 +232,23 @@ struct SystemThemed<Content: View>: View {
   }
 }
 
+// MARK: - Galeri
+
+/// iOS galeride önizleme yerine placeholder'a düşünce içeriği iskelete çevirir (gerçek cihazda büyük boyda görüldü).
+/// Bu widget'ların placeholder'ı gerçek örnek taşıdığı için iskelet kaldırılır. Yalnız placeholder: gizlilik
+/// karartmasına (kilitli ekran) dokunmaz.
+private struct GalleryPlaceholderReadable: ViewModifier {
+  @Environment(\.redactionReasons) private var reasons
+
+  func body(content: Content) -> some View {
+    if reasons.contains(.placeholder) { content.unredacted() } else { content }
+  }
+}
+
+extension View {
+  func galleryPlaceholderReadable() -> some View { modifier(GalleryPlaceholderReadable()) }
+}
+
 // MARK: - Widget Background
 
 extension View {

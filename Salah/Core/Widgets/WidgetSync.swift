@@ -14,7 +14,21 @@ enum WidgetSync {
     // Premium kapalı: widget'lar herkese açık (RN: setPremiumStatus(!PREMIUM_ENABLED || isPremium)).
     WidgetBridge.setPremiumAccess(true)
     await processPendingPrayers()
+    await processRamadanMarks()
+    ramadanChanged()
     await syncVerses()
+  }
+
+  /// Oruç işareti ya da Ramazan modu değişti.
+  static func ramadanChanged() {
+    let window = RamadanSchedule.window(ReligiousCalendarService.cached())
+    WidgetBridge.updateRamadan(on: RamadanMode.shared.isOn(), window: window, fasted: RamadanStore.shared.ledger.days(window.hijriYear).sorted())
+  }
+
+  private static func processRamadanMarks() async {
+    let marks = WidgetBridge.takeRamadanMarks()
+    guard !marks.isEmpty else { return }
+    await RamadanStore.shared.applyWidgetMarks(marks, hijriYear: RamadanSchedule.window(ReligiousCalendarService.cached()).hijriYear)
   }
 
   static func languageChanged() async {

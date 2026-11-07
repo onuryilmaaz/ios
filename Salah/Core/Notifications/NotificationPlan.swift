@@ -1,7 +1,7 @@
 import Foundation
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder" }
   var id: String
   var date: Date
   var kind: Kind
@@ -19,6 +19,15 @@ struct PlannedNotification: Equatable, Sendable {
   var isPrayer: Bool { kind == .prayerTime || kind == .prayerReminder }
 }
 
+/// Hatim planı hatırlatması (plan sürüyorsa).
+struct HatimReminder: Equatable, Sendable {
+  var hour: Int
+  var minute: Int
+  var dailyPages: Int
+  /// Bitiş günü "yyyy-MM-dd": sonrasına kurulmaz.
+  var targetDate: String
+}
+
 struct NotificationInspiration: Equatable, Sendable {
   var id: String
   var contentType: String
@@ -31,6 +40,7 @@ struct NotificationInspiration: Equatable, Sendable {
 /// RN: services/notification.service.ts. Tarihler mutlak, saatler yereldir.
 enum NotificationPlan {
   static let budget = 62
+  static let hatimDays = 3
   static let prayerLimit = 44
   /// Uygulama açılmasa da bu kadar gün kurulur; prayerLimit (64 bekleyen bildirim sınırı) yakın günlerden başlayarak keser.
   static let daysAhead = 7
@@ -45,7 +55,7 @@ enum NotificationPlan {
   static func build(
     days: [PrayerDay], preferences p: NotificationPreferences, now: Date,
     calendar: Calendar = .current, verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = [],
-    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = []
+    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil
   ) -> [PlannedNotification] {
     guard p.enabled else { return [] }
     // Sessiz aralık sonrasını ŞİMDİ kur: uygulama kapalıyken de süre bitince
@@ -65,6 +75,19 @@ enum NotificationPlan {
                             kind: offset == 0 ? .prayerTime : .prayerReminder, prayerKey: key, offset: offset,
                             adhan: offset == 0 && key != "gunes" && p.adhanEnabled[key] == true))
         }
+      }
+    }
+
+    // Uygulama günlerce açılmasa da hedef hatırlatılsın; sayfa sayısı her planlamada güncellenir.
+    if let hatim {
+      let start = calendar.startOfDay(for: now)
+      let last = HatimPlan.parse(hatim.targetDate, calendar: calendar)
+      for delta in 0..<hatimDays {
+        guard let day = calendar.date(byAdding: .day, value: delta, to: start), last.map({ day <= $0 }) ?? false,
+          let date = calendar.date(bySettingHour: hatim.hour, minute: hatim.minute, second: 0, of: day), date > cutoff
+        else { continue }
+        plan.append(.init(id: "hatim.\(Int(date.timeIntervalSince1970))", date: date, kind: .hatim,
+                          title: t("notif.hatimTitle"), body: t("notif.hatimBody", ["pages": hatim.dailyPages])))
       }
     }
 

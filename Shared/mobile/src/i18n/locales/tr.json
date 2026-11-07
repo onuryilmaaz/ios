@@ -657,6 +657,8 @@
       "nafileA11y": "{{rakaat}} rekat nafile namaz kılındı"
     },
     "hatim": {
+      "planCreate": "Hatim planı oluştur",
+      "planOpen": "Hatim planım",
       "title": "{{n}}. hatim",
       "progress": "{{pages}} / {{total}} sayfa",
       "a11y": "Hatmin yüzde {{pct}} kadarı okundu, {{done}} hatim tamamlandı",
@@ -737,6 +739,8 @@
     "turnOff": "Sessiz modu kapat"
   },
   "notif": {
+    "hatimTitle": "Hatim planı",
+    "hatimBody": "Bugünkü hedefin {{pages}} sayfa.",
     "blessedDay": "Mübarek Gün",
     "channelAdhan": "Ezanlı Vakit Bildirimleri",
     "channelPrayer": "Namaz Vakitleri",
@@ -1136,6 +1140,11 @@
       "label": "Alarmlar",
       "sub": "Namaz, teheccüd ve sahur alarmları"
     },
+    "ramadanMode": {
+      "preview": "Önizleme: vakitler gerçek, Ramazan günleri örnek",
+      "sub": "Ramazan kartı, imsakiye ve hatim planı",
+      "title": "Ramazan modu"
+    },
     "widgetTheme": {
       "dark": "Karanlık",
       "light": "Aydınlık",
@@ -1347,6 +1356,7 @@
       "saveFailed": "Kayıt eklenirken bir sorun oluştu."
     },
     "fasting": {
+      "ramazan": "Ramazan Orucu",
       "kaza": "Kaza Orucu",
       "nafile": "Nafile Oruç",
       "pazartesi_persembe": "Pazartesi-Perşembe",
@@ -1461,5 +1471,86 @@
     "until": "{{prayer}} vaktine",
     "untilEnd": "{{prayer}} vaktinin çıkmasına",
     "verse": "Günün ayeti"
+  },
+  "ramadan": {
+    "nextPrayer": "Sıradaki {{prayer}} {{time}}",
+    "journey": { "title": "Ramazan yolculuğu" },
+    "journal": {
+      "title": "Oruç defteri",
+      "ofTotal": "/ {{total}} gün oruç",
+      "fasted": "Tutuldu",
+      "today": "Bugün",
+      "upcoming": "Sırada",
+      "missed": "Tutulmadı",
+      "kaza": "Kaza orucum",
+      "kazaCount": "{{count}} gün",
+      "kazaAdd": "Kaza orucu ekle",
+      "kazaRemove": "Kaza orucu azalt"
+    },
+    "day": "Ramazan'ın {{day}}. günü",
+    "untilIftar": "İftara kalan",
+    "untilSahur": "Sahura kalan",
+    "sahur": "Sahur",
+    "iftar": "İftar",
+    "fastToday": "Bugün oruçluyum",
+    "fasted": "Oruçlusun",
+    "fastCount": "{{count}} / {{total}} gün oruç",
+    "hatimCta": "Ramazan için hatim planı oluştur",
+    "upcoming": {
+      "title": "Ramazan'a {{days}} gün",
+      "tomorrow": "Ramazan yarın başlıyor",
+      "subtitle": "{{date}} · İmsakiye ve hatim planı"
+    }
+  },
+  "iftarMoment": {
+    "title": "Hayırlı iftarlar",
+    "accept": "Allah kabul etsin.",
+    "adhan": "Akşam ezanı {{time}}",
+    "mark": "Bugünkü orucumu işaretle",
+    "duas": "Dualar",
+    "tomorrowSahur": "Yarın sahur",
+    "progress": "Ramazan'da"
+  },
+  "imsakiye": {
+    "todayLine": "Bugün, {{date}}, {{place}}",
+    "kadir": "Kadir Gecesi'ne {{days}} gün",
+    "kadirTonight": "Bu gece Kadir Gecesi",
+    "shareTitle": "{{place}} Ramazan İmsakiyesi",
+    "title": "Ramazan İmsakiyesi",
+    "short": "İmsakiye",
+    "dayColumn": "Gün",
+    "dateColumn": "Tarih",
+    "loadFailed": "İmsakiye yüklenemedi. İnternet bağlantını kontrol edip tekrar dene.",
+    "notReady": "Bu Ramazan'ın imsakiyesi henüz hazır değil. Ocak ayında burada olacak."
+  },
+  "hatim": {
+    "card": {
+      "title": "Hatim planı",
+      "today": "Bugün {{read}} / {{target}} sayfa · {{days}} gün kaldı",
+      "log": "Okumamı kaydet",
+      "logMore": "Daha fazla kaydet",
+      "finished": "Hatim tamamlandı. Allah kabul etsin.",
+      "overdue": "Hedef tarih geçti. Planı güncelleyebilirsin."
+    },
+    "plan": {
+      "title": "Hatim Planı",
+      "subtitle": "Ne zaman bitirmek istiyorsun? Günlük sayfa hedefini hesaplayalım.",
+      "ramadanEnd": "Ramazan sonuna kadar",
+      "days": "{{count}} gün",
+      "custom": "Tarih seç",
+      "daily": "Günde {{pages}} sayfa",
+      "remaining": "Kalan {{pages}} sayfa · {{days}} gün",
+      "start": "Planı başlat",
+      "update": "Planı güncelle",
+      "saved": "Hatim planın kaydedildi",
+      "delete": "Planı sil",
+      "deleteTitle": "Hatim planı silinsin mi?",
+      "deleteBody": "Okuduğun sayfalar silinmez.",
+      "reminder": "Günlük hatırlatma",
+      "reminderNeeds": "Önce Ayarlar'dan bildirimleri aç",
+      "status": "Kalan {{pages}} sayfa, {{days}} gün. Günlük hedef {{daily}} sayfa.",
+      "signIn": "Hatim planı Kur'an kayıtlarınla çalışır. Devam etmek için giriş yap.",
+      "signInButton": "Giriş yap"
+    }
   }
 }

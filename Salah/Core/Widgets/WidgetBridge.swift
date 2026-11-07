@@ -75,6 +75,26 @@ enum WidgetBridge {
     write(["completedPrayers": completed, "kazaPrayers": kaza, "date": date], key: "salah_tracker_data", reload: nil)
   }
 
+  /// Oruç ve imsakiye widget'ları: Ramazan penceresi ve tutulan günler (vakitler `salah_widget_data` içinde).
+  static func updateRamadan(on: Bool, window: RamadanWindow, fasted: [String]) {
+    guard let ud = defaults, let data = try? JSONSerialization.data(withJSONObject: [
+      "on": on, "hijriYear": window.hijriYear, "start": localDateString(window.start), "last": localDateString(window.last),
+      "total": window.days, "fasted": fasted,
+    ] as [String: Any]) else { return }
+    if ud.data(forKey: "salah_ramadan_data") == data { return }
+    ud.set(data, forKey: "salah_ramadan_data")
+    WidgetCenter.shared.reloadTimelines(ofKind: "SalahRamadanFastWidget")
+    WidgetCenter.shared.reloadTimelines(ofKind: "SalahRamadanTimetableWidget")
+    WidgetCenter.shared.reloadTimelines(ofKind: "SalahRamadanLockWidget")
+  }
+
+  /// Widget düğmesinin bıraktığı oruç işaretleri (gün -> tutuldu mu).
+  static func takeRamadanMarks() -> [String: Bool] {
+    guard let ud = defaults, let marks = ud.dictionary(forKey: "salah_ramadan_widget_marks") as? [String: Bool] else { return [:] }
+    ud.removeObject(forKey: "salah_ramadan_widget_marks")
+    return marks
+  }
+
   static func updateAmel(types: [String], total: Int, date: String) {
     write(["types": types, "totalCount": total, "date": date], key: "salah_amel_data", reload: "SalahAmelWidget")
   }

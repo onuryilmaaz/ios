@@ -173,7 +173,7 @@ struct PrayerHeroCard: View {
 }
 
 /// Saniyelik geri sayım; rakamlar yuvarlanarak değişir (RN'deki RollingCountdown).
-private struct Countdown: View {
+struct Countdown: View {
   let target: Date?
   let now: Date
 

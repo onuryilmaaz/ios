@@ -181,6 +181,15 @@ enum DebugLaunch {
     #endif
   }
 
+  /// -SalahDebugRamadan upcoming|day|last → kurgusal Ramazan penceresiyle kart ve imsakiye (ağsız).
+  static var ramadan: String? {
+    #if DEBUG
+      return UserDefaults.standard.string(forKey: "SalahDebugRamadan")
+    #else
+      return nil
+    #endif
+  }
+
   static var notifications: String? {
     #if DEBUG
       return UserDefaults.standard.string(forKey: "SalahDebugNotifications")
@@ -260,6 +269,9 @@ enum DebugLaunch {
     #if DEBUG
       switch UserDefaults.standard.string(forKey: "SalahDebugRoute") {
       case "settings": return .settings
+      case "imsakiye": return .imsakiye
+      case "hatim": return .hatimPlan
+      case "oruc": return .fastJournal
       case "profile": return .profile
       case "account": return .account
       case "location": return .location

@@ -26,6 +26,9 @@ final class AppLinks {
     case "qibla": return .home(.qibla)
     case "alarms": return .home(.alarms)
     case "hutbe": return .home(.hutbe)
+    case "hatim": return .home(.hatimPlan)
+    case "imsakiye": return .home(.imsakiye)
+    case "oruc": return .home(.fastJournal)
     case "istatistik": return .tracker(nil, insights: true)
     case "tracker": return .tracker(parts.dropFirst().first.flatMap { ActivityType(rawValue: $0) }, insights: false)
     default: return nil

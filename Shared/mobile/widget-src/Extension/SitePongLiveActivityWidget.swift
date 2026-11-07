@@ -14,6 +14,11 @@ struct SitePongLiveActivityWidgetBundle: WidgetBundle {
     SalahNextPrayerLockWidget()
     SalahTrackerLockWidget()
 
+    // Ramazan
+    RamadanFastWidget()
+    RamadanTimetableWidget()
+    RamadanLockWidget()
+
     // Gün çemberi
     DayRingWidget()
 

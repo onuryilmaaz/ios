@@ -38,6 +38,7 @@ struct HomeView: View {
   @State private var model = HomeModel()
   @Bindable private var nav = HomeNavigation.shared
   @State private var celebrationStreak: Int?
+  @State private var homeVisible = false
 
   var body: some View {
     NavigationStack(path: $nav.path) {
@@ -63,10 +64,11 @@ struct HomeView: View {
       ScrollViewReader { proxy in
       ScrollView {
         VStack(spacing: 0) {
-          PrayerHeroCard(
+          HomeHero(
             today: model.today, isLoading: model.isLoading, locationName: model.locationName,
             onLocation: { push(.location) },
-            onAlarms: { push(.alarms) }
+            onAlarms: { push(.alarms) },
+            onImsakiye: { push(.imsakiye) }
           )
           .background(alignment: .top) {
             // Aşağı çekince (bounce) üstte açık zemin görünmesin.
@@ -79,6 +81,8 @@ struct HomeView: View {
           MuteBanner()
           ForbiddenTimeBanner(times: model.today?.times)
           CumaCard { push(.hutbe) }
+          RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
+          HatimPlanCard { push(.hatimPlan) }
           HolidayGreetingCard()
 
           if NotificationNavigation.shared.inspiration != nil, !layout.sections.contains(where: { $0.key == .dailyInspiration && $0.visible }) {
@@ -112,6 +116,14 @@ struct HomeView: View {
       }
     }
     .background(tokens.canvas)
+    .background {
+      IftarMomentHost(
+        today: model.today,
+        blocked: !homeVisible || !nav.path.isEmpty || AuthFlow.shared.isPresented || TourStore.shared.tour != nil || celebrationStreak != nil
+      )
+    }
+    .onAppear { homeVisible = true }
+    .onDisappear { homeVisible = false }
     // Başlık her iki temada da koyu zümrüt: durum çubuğu yazıları açık.
     .statusBar(.light)
     .task { await refresh() }

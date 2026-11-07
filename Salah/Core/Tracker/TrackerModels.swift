@@ -89,7 +89,7 @@ enum TrackerText {
     "sabah_sunnet", "ogle_sunnet", "ikindi_sunnet", "aksam_sunnet", "yatsi_sunnet",
     "vitir", "teheccud", "duha", "evvabin", "teravih", "diger",
   ]
-  static let fastingTypes = ["nafile", "pazartesi_persembe", "kaza"]
+  static let fastingTypes = ["nafile", "ramazan", "pazartesi_persembe", "kaza"]
 
   static func nafile(_ type: String) -> String {
     let key = "tracker.nafile.\(type)"

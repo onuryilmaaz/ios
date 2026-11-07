@@ -119,6 +119,7 @@ final class AuthStore {
     isAuthenticated = false
     GamificationStore.shared.reset()
     TrackerStore.shared.reset()
+    RamadanStore.shared.reset()
   }
 
   #if DEBUG

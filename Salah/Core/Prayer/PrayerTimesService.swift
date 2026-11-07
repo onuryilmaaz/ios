@@ -68,6 +68,18 @@ enum PrayerTimesService {
     return nil
   }
 
+  /// Bu Ramazan'ın imsakiyesi: yıllık vakitlerden süzülür, ilçe ve yıl başına saklanır. Yıllık veri takvim yılını
+  /// kapsadığından Ocak'tan önce gelecek Ramazan için boş dönebilir.
+  static func imsakiye(districtId: String, window: RamadanWindow) async throws -> [PrayerDay] {
+    let key = "@salah_imsakiye_v1_\(districtId)_\(window.hijriYear)"
+    let keep = window.hijriYear != RamadanPlan.previewHijriYear
+    if keep, let saved = LocalStore.decode([PrayerDay].self, key), saved.count >= 29 { return saved }
+    guard !DebugLaunch.isIsolated, let year = await fetch(districtId: districtId, range: "yearly") else { throw URLError(.cannotLoadFromNetwork) }
+    let days = RamadanPlan.imsakiye(year, window: window, calendar: .current)
+    if keep, days.count >= 29 { LocalStore.encode(days, for: key) }
+    return days
+  }
+
   /// Önbellekteki bugün ve sonraki günler (ağa çıkmaz; widget'lar için).
   static func cachedDays(districtId: String) -> [PrayerDay] {
     fromToday(readCache(districtId)?.days ?? [])
