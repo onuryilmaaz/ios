@@ -100,6 +100,14 @@ struct RamadanPlanTests {
     #expect(RamadanPlan.tint(now: date(2027, 2, 12, 13), today: nil, calendar: cal) == .night)
   }
 
+  @Test func qiblaThemeFallsBackToForest() {
+    #expect(QiblaTheme.all.count == 5)
+    #expect(Set(QiblaTheme.all.map(\.id)).count == 5)
+    #expect(QiblaTheme.find("dusk").motif == .mihrab)
+    #expect(QiblaTheme.find("yok").id == "forest")
+    #expect(QiblaTheme.find(nil).id == "forest")
+  }
+
   @Test func amountParsingAcceptsLocalFormats() {
     #expect(ZakatCalc.parseAmount("1.250") == 1250)
     #expect(ZakatCalc.parseAmount("1,250") == 1250)

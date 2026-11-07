@@ -961,6 +961,12 @@
     "usernamePlaceholder": "kullaniciadi"
   },
   "qibla": {
+    "themeLabel": "Pusula teması: {{name}}",
+    "themeForest": "Derin Orman",
+    "themeNight": "Gece Laciverti",
+    "themeDawn": "Şafak Moru",
+    "themeDusk": "Mihrap Bordosu",
+    "themeSand": "Kum ve Akik",
     "aligned": "Kıble yönündesin",
     "angle": "Kıble Açısı",
     "e": "D",

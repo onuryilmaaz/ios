@@ -166,6 +166,7 @@
 		B260BEEC23A6A22AC0E63E6F /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A83B00A78EA5DF93E7B0AC /* UserAPI.swift */; };
 		B35AF0C2BD269D698EAD2864 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B9C492BC66266E207CDC53 /* Localizer.swift */; };
 		B4537AC1FB0B25D465770D67 /* SalahKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5D0B6EEC66C6448D65AF5A /* SalahKeychain.swift */; };
+		B56974AB43188DBF144A1D4C /* QiblaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42429A9B5C16E96736E18D4 /* QiblaTheme.swift */; };
 		B5E2990EA65A7652ADBB40B6 /* QuranAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900BBAB93F57F44818D67C1 /* QuranAudioPlayer.swift */; };
 		B5EACFC9B9F2BC1194F11C66 /* NotificationPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D21B9D2CD2FCF2314C55344 /* NotificationPreferences.swift */; };
 		B649FA8616256342045AB315 /* GamificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23BDAA34BBDCE390B8AD338 /* GamificationStore.swift */; };
@@ -451,6 +452,7 @@
 		C25B02E513E43C07608ED977 /* QiblaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaTests.swift; sourceTree = "<group>"; };
 		C2BC39DFFA4BAFA068081944 /* AccountFormViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFormViews.swift; sourceTree = "<group>"; };
 		C420F22A81CC11F3F6E07617 /* SitePongLiveActivityWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitePongLiveActivityWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		C42429A9B5C16E96736E18D4 /* QiblaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaTheme.swift; sourceTree = "<group>"; };
 		C493D346437B47D853EF6AC1 /* DayRingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRingCard.swift; sourceTree = "<group>"; };
 		C5DB7F1E0553B8F7B3358AAA /* AuthComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComponents.swift; sourceTree = "<group>"; };
 		C7D26D845F6DFA0938D28DBB /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 				7784B32FEF0F484EF5E677B7 /* PrayerHistoryView.swift */,
 				2E6C5CBA42808F9C679DEEDE /* PrayerTrackerCard.swift */,
 				6371FBCE01469BC6D5D22E02 /* QiblaFinderView.swift */,
+				C42429A9B5C16E96736E18D4 /* QiblaTheme.swift */,
 				44D0591C168649C03FD6ED81 /* QuickActionsCard.swift */,
 				3FA99883FDCD3F89F215B49F /* StatusBanners.swift */,
 				9285FF880F805A290409D9D8 /* StreakCard.swift */,
@@ -1576,6 +1579,7 @@
 				EDE0C1DA4DA236BE7E987098 /* QiblaFinderView.swift in Sources */,
 				2D9D3FC2358DF73A54424107 /* QiblaMath.swift in Sources */,
 				EDE764BEC2D6B19B12E0F02F /* QiblaStore.swift in Sources */,
+				B56974AB43188DBF144A1D4C /* QiblaTheme.swift in Sources */,
 				48C54A91321D0A432EF76C8F /* QuickActionsCard.swift in Sources */,
 				B5E2990EA65A7652ADBB40B6 /* QuranAudioPlayer.swift in Sources */,
 				ED703FA35B880FB8169379FF /* QuranDetailsService.swift in Sources */,

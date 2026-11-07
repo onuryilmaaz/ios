@@ -961,6 +961,12 @@
     "usernamePlaceholder": "username"
   },
   "qibla": {
+    "themeLabel": "Compass theme: {{name}}",
+    "themeForest": "Deep Forest",
+    "themeNight": "Night Navy",
+    "themeDawn": "Dawn Purple",
+    "themeDusk": "Mihrab Burgundy",
+    "themeSand": "Sand and Carnelian",
     "aligned": "You're facing the Qibla",
     "angle": "Qibla angle",
     "e": "E",

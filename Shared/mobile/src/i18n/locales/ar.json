@@ -961,6 +961,12 @@
     "usernamePlaceholder": "اسم_المستخدم"
   },
   "qibla": {
+    "themeLabel": "سمة البوصلة: {{name}}",
+    "themeForest": "الغابة العميقة",
+    "themeNight": "كحلي الليل",
+    "themeDawn": "بنفسجي الفجر",
+    "themeDusk": "عنابي المحراب",
+    "themeSand": "الرمل والعقيق",
     "aligned": "أنت باتجاه القبلة",
     "angle": "زاوية القبلة",
     "e": "شر",
