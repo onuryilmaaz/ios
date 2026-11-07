@@ -32,8 +32,12 @@ struct SalahApp: App {
           await AlarmStore.shared.sync()
           await NotificationStore.shared.reschedule()
         }
+        .task(id: scenePhase) {
+          if scenePhase == .active { await AppControlStore.shared.run() }
+        }
         .onChange(of: scenePhase) { _, phase in
           if phase == .active, !DebugLaunch.isIsolated {
+            Task { await PushStore.shared.sync() }
             Task { await OfflineQueue.shared.flush() }
             Task { await AdhanPlayer.shared.activate() }
             Task { await WidgetSync.activate() }
@@ -52,6 +56,14 @@ struct SalahApp: App {
           Task { await OfflineQueue.shared.flush() }
           Task { await WidgetSync.activate() }
         }
+        .onChange(of: AuthStore.shared.user?.id) {
+          Task { await PushStore.shared.sync() }
+        }
+        .onChange(of: RamadanMode.shared.scheduleKey) {
+          guard !DebugLaunch.isIsolated else { return }
+          WidgetSync.ramadanChanged()
+          Task { await NotificationStore.shared.reschedule(force: true) }
+        }
         .onChange(of: LocationChanges.shared.nonce) {
           guard !DebugLaunch.isIsolated else { return }
           Task { await NotificationStore.shared.reschedule(force: true) }
@@ -59,6 +71,7 @@ struct SalahApp: App {
           Task { await AlarmStore.shared.sync(force: true) }
         }
         .onChange(of: Localizer.shared.language) {
+          Task { await PushStore.shared.sync() }
           Task { await WidgetSync.languageChanged() }
           Task { await NotificationStore.shared.reschedule(force: true) }
           // Alarm başlıkları ve düğme metinleri yeni dilde kurulsun.

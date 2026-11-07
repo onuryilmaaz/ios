@@ -84,9 +84,9 @@ struct HomeView: View {
 
           MuteBanner()
           ForbiddenTimeBanner(times: model.today?.times)
-          CumaCard { push(.hutbe) }
+          if AppControlStore.shared.isOn("hutbe") { CumaCard { push(.hutbe) } }
           RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
-          HatimPlanCard { push(.hatimPlan) }
+          if AppControlStore.shared.isOn("hatim_plan") { HatimPlanCard { push(.hatimPlan) } }
           HolidayGreetingCard()
 
           if NotificationNavigation.shared.inspiration != nil, !layout.sections.contains(where: { $0.key == .dailyInspiration && $0.visible }) {
@@ -172,7 +172,7 @@ struct HomeView: View {
     case .dayRing:
       if let times = model.today?.times { DayRingCard(times: times) }
     case .alarms:
-      AlarmsCard { push(.alarms) }
+      if AppControlStore.shared.isOn("alarms") { AlarmsCard { push(.alarms) } }
     }
   }
 

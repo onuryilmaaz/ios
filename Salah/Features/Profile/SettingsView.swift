@@ -70,11 +70,6 @@ struct SettingsView: View {
             row("color-palette-outline", t("settings.widgetTheme.title"), sub: t("settings.widgetTheme.\(WidgetThemeStore.shared.theme.rawValue)"), chevron: true) {
               chooseWidgetTheme()
             }
-            row("moon-outline", t("settings.ramadanMode.title"), sub: t(RamadanMode.shared.isPreview() ? "settings.ramadanMode.preview" : "settings.ramadanMode.sub"),
-                toggle: Binding(get: { RamadanMode.shared.isOn() }, set: { value in
-                  Haptics.impact(.medium)
-                  RamadanMode.shared.set(value)
-                }))
             row("map-outline", t("tour.replay"), sub: t("tour.replaySub"), chevron: true) {
               TourStore.shared.replayAll()
               HomeNavigation.shared.path.removeAll()

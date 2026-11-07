@@ -10,6 +10,9 @@ final class SalahApplicationDelegate: NSObject, UIApplicationDelegate {
     center.setNotificationCategories([UNNotificationCategory(identifier: "spiritual_reminder", actions: [], intentIdentifiers: [])])
     return true
   }
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    MainActor.assumeIsolated { PushStore.shared.didRegister(deviceToken: deviceToken) }
+  }
 }
 
 struct NotificationPayload: Sendable {
@@ -20,6 +23,8 @@ struct NotificationPayload: Sendable {
   let subtitle: String
   let arabic: String
   let contentType: String
+  /// Duyuru bildiriminin bağlantısı.
+  let url: String
 
   nonisolated init(_ info: [AnyHashable: Any]) {
     type = info["type"] as? String ?? ""
@@ -29,6 +34,7 @@ struct NotificationPayload: Sendable {
     subtitle = info["subtitle"] as? String ?? ""
     arabic = info["arabic"] as? String ?? ""
     contentType = info["contentType"] as? String ?? "ayet"
+    url = info["url"] as? String ?? ""
   }
 
   var inspiration: InspirationModel.Item? {
@@ -102,6 +108,7 @@ final class SalahNotificationDelegate: NSObject, UNUserNotificationCenterDelegat
         if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
         if payload.type == "hatim_reminder", let url = URL(string: "salah://tracker/quran") { UIApplication.shared.open(url) }
         if payload.type == "ramadan_night", let url = URL(string: "salah://oruc") { UIApplication.shared.open(url) }
+        if payload.type == "announcement", AppControlLogic.isAllowedLink(payload.url), let url = URL(string: payload.url) { UIApplication.shared.open(url) }
       }
       completionHandler()
     }

@@ -14,7 +14,7 @@ struct QuickActionsCard: View {
 
   var body: some View {
     HStack(alignment: .top, spacing: 0) {
-      ForEach(Self.actions, id: \.key) { action in
+      ForEach(Self.actions.filter { $0.key == "history" || AppControlStore.shared.isOn($0.key) }, id: \.key) { action in
         Button {
           Haptics.impact(.light)
           onSelect(action.route)

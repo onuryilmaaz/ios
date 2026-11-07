@@ -1,15 +1,11 @@
 import Foundation
 import Observation
 
-/// Ayarlar'daki Ramazan modu: kart, imsakiye girişi, hatim planı ve hatırlatmasının tek anahtarı.
+/// Ramazan bölümünün tek karar noktası: panel kapalıysa herkese kapalı. Panel açıkken herkes takvime göre görür,
+/// yönetici hesabı Ramazan dışında da örnek pencereyle görür.
 @MainActor
-@Observable
 final class RamadanMode {
   static let shared = RamadanMode()
-  private static let key = "@salah_ramadan_mode_v1"
-
-  /// nil: kullanıcı hiç seçmedi, takvime göre.
-  private(set) var stored: Bool? = LocalStore.decode(Bool.self, key)
 
   private var debugForced: Bool {
     #if DEBUG
@@ -19,28 +15,20 @@ final class RamadanMode {
     #endif
   }
 
-  /// Kullanıcı kapattı: takvimde Ramazan olsa da görünmez.
-  var isForcedOff: Bool { stored == false && !debugForced }
+  var isAdmin: Bool { AuthStore.shared.user?.roles?.contains("admin") == true }
+
+  /// Panelden kapalı: takvimde Ramazan olsa da görünmez.
+  var isForcedOff: Bool { !AppControlStore.shared.isOn("ramadan") && !debugForced }
 
   func isOn(now: Date = Date(), calendar: Calendar = .current) -> Bool {
     if debugForced { return true }
-    if let stored { return stored }
+    if !AppControlStore.shared.isOn("ramadan") { return false }
     let real = RamadanPlan.window(ReligiousCalendarService.cached(), now: now, calendar: calendar)
-    return RamadanPlan.isModeOn(stored: nil, real: real, now: now, calendar: calendar)
+    return RamadanPlan.isModeOn(admin: isAdmin, real: real, now: now, calendar: calendar)
   }
 
-  func isPreview(now: Date = Date(), calendar: Calendar = .current) -> Bool {
-    guard stored == true else { return false }
-    let real = RamadanPlan.window(ReligiousCalendarService.cached(), now: now, calendar: calendar)
-    return RamadanPlan.usesPreview(stored: stored, real: real, now: now, calendar: calendar)
-  }
-
-  func set(_ value: Bool) {
-    stored = value
-    LocalStore.encode(value, for: Self.key)
-    Task { await NotificationStore.shared.reschedule(force: true) }
-    WidgetSync.ramadanChanged()
-  }
+  /// Değişince hatırlatmalar ve widget'lar yenilenir: panel, zamanlama ya da yönetici girişi.
+  var scheduleKey: [Bool] { [isOn(), AppControlStore.shared.isOn("hatim_plan")] }
 }
 
 /// Oruç defteri ve kaza sayacı. Yerelde hemen yazılır, girişliyse /ramadan/sync ile eşitlenir (bkz. RamadanLedger).
@@ -295,7 +283,7 @@ final class HatimPlanStore {
 
   /// Bildirim planına giden hatırlatma: plan sürüyorsa.
   func reminder(now: Date = Date()) -> HatimReminder? {
-    guard RamadanMode.shared.isOn(now: now), let plan, let hour = plan.reminderHour, let minute = plan.reminderMinute, let p = progress(now: now), !p.finished, !p.overdue else { return nil }
+    guard RamadanMode.shared.isOn(now: now), AppControlStore.shared.isOn("hatim_plan"), let plan, let hour = plan.reminderHour, let minute = plan.reminderMinute, let p = progress(now: now), !p.finished, !p.overdue else { return nil }
     return .init(hour: hour, minute: minute, dailyPages: p.dailyTarget, targetDate: plan.targetDate)
   }
 }

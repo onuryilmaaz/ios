@@ -80,8 +80,14 @@ extension SettingsView {
     SectionLabel(t("settings.holidays.section")).padding(.leading, 10.5)
     group {
       row("moon-outline", t("settings.holidays.title"), sub: t("settings.holidays.sub"), toggle: preferenceBinding(\.religiousDays))
-      row("book-outline", t("settings.holidays.friday"), sub: t("settings.holidays.fridaySub"), last: true, toggle: preferenceBinding(\.friday))
+      row("book-outline", t("settings.holidays.friday"), sub: t("settings.holidays.fridaySub"), toggle: preferenceBinding(\.friday))
+      row("megaphone-outline", t("settings.notifications.announcements"), sub: t("settings.notifications.announcementsSub"), last: true,
+          toggle: Binding(get: { PushStore.shared.enabled }, set: { value in
+            Haptics.impact(.medium)
+            PushStore.shared.setEnabled(value)
+          }))
     }
+    .id("announcements")
     SectionLabel(t("settings.adhan.section")).padding(.leading, 10.5)
     group {
       row("volume-high-outline", t("settings.adhan.title"), sub: t("settings.adhan.foregroundHint"))

@@ -30,14 +30,14 @@ enum RamadanPlan {
   /// Önizleme penceresinin yılı: oruçları gerçek yıllardan ayrı durur, sunucuya gitmez, imsakiyesi saklanmaz.
   static let previewHijriYear = 9999
 
-  /// Ayar: nil ise takvime göre (Ramazan'dan 30 gün önce başlar, bitince kapanır), yoksa kullanıcının seçimi.
-  static func isModeOn(stored: Bool?, real: RamadanWindow, now: Date, calendar: Calendar) -> Bool {
-    stored ?? (phase(real, now: now, today: nil, tomorrow: nil, calendar: calendar) != .none)
+  /// Takvime göre (Ramazan'dan 30 gün önce başlar, bitince kapanır); yönetici hesabı için her zaman açık.
+  static func isModeOn(admin: Bool, real: RamadanWindow, now: Date, calendar: Calendar) -> Bool {
+    admin || phase(real, now: now, today: nil, tomorrow: nil, calendar: calendar) != .none
   }
 
-  /// Kullanıcı açtı ama takvimde Ramazan yok: özellikler örnek pencereyle görünür.
-  static func usesPreview(stored: Bool?, real: RamadanWindow, now: Date, calendar: Calendar) -> Bool {
-    stored == true && phase(real, now: now, today: nil, tomorrow: nil, calendar: calendar) == .none
+  /// Yönetici hesabı ve takvimde Ramazan yok: özellikler örnek pencereyle görünür.
+  static func usesPreview(admin: Bool, real: RamadanWindow, now: Date, calendar: Calendar) -> Bool {
+    admin && phase(real, now: now, today: nil, tomorrow: nil, calendar: calendar) == .none
   }
 
   /// Hilal tonu: akşamdan imsaka gece, imsaktan öğleye şafak, öğleden akşama mihrap. Vakit yoksa gece.

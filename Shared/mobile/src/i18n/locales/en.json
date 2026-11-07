@@ -960,6 +960,7 @@
     "username": "Username",
     "usernamePlaceholder": "username"
   },
+  "module": {"closedTitle": "This section is closed for now", "closedBody": "This section is temporarily unavailable. You can keep using the rest of the app."},
   "qibla": {
     "themeLabel": "Compass theme: {{name}}",
     "themeForest": "Deep Forest",
@@ -1104,6 +1105,8 @@
       "unmutedMessage": "Notifications are back on. They'll be scheduled at the next refresh."
     },
     "notifications": {
+      "announcements": "Announcements",
+      "announcementsSub": "Important news about the app",
       "atTime": "On time",
       "battery": "Battery optimization",
       "batteryOff": "Your phone restricts Salah, so notifications may be late. Set Salah to \"Don't optimize\" in the list.",
@@ -1149,11 +1152,6 @@
     "alarms": {
       "label": "Alarms",
       "sub": "Prayer, tahajjud and suhoor alarms"
-    },
-    "ramadanMode": {
-      "preview": "Preview: real prayer times, sample Ramadan days",
-      "sub": "Ramadan card, timetable and completion plan",
-      "title": "Ramadan mode"
     },
     "widgetTheme": {
       "dark": "Dark",

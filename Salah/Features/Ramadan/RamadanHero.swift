@@ -233,9 +233,9 @@ struct RamadanJourneyCard: View {
       .buttonStyle(PressableStyle(pressedOpacity: 0.85))
       teravihRow(today: today).padding(.top, 14)
       HStack(spacing: 8) {
-        tile("calculator-outline", "ramadan.tile.zakat", "ramadan.tile.zakatHint") { HomeNavigation.shared.path.append(.zakat) }
-        tile("people-outline", "ramadan.tile.groups", "ramadan.tile.groupsHint") { HomeNavigation.shared.path.append(.hatimGroups) }
-        if HatimPlanStore.shared.plan == nil { tile("book-outline", "ramadan.tile.hatim", "ramadan.tile.hatimHint", onHatim) }
+        if AppControlStore.shared.isOn("zakat") { tile("calculator-outline", "ramadan.tile.zakat", "ramadan.tile.zakatHint") { HomeNavigation.shared.path.append(.zakat) } }
+        if AppControlStore.shared.isOn("hatim_groups") { tile("people-outline", "ramadan.tile.groups", "ramadan.tile.groupsHint") { HomeNavigation.shared.path.append(.hatimGroups) } }
+        if HatimPlanStore.shared.plan == nil, AppControlStore.shared.isOn("hatim_plan") { tile("book-outline", "ramadan.tile.hatim", "ramadan.tile.hatimHint", onHatim) }
       }
       .fixedSize(horizontal: false, vertical: true)
       .padding(.top, 10)

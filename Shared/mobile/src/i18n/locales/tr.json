@@ -960,6 +960,7 @@
     "username": "Kullanıcı Adı",
     "usernamePlaceholder": "kullaniciadi"
   },
+  "module": {"closedTitle": "Bu bölüm şu anda kapalı", "closedBody": "Bu bölüm geçici olarak kullanıma kapalı. Uygulamanın diğer bölümlerini kullanmaya devam edebilirsin."},
   "qibla": {
     "themeLabel": "Pusula teması: {{name}}",
     "themeForest": "Derin Orman",
@@ -1104,6 +1105,8 @@
       "unmutedMessage": "Bildirimler tekrar açıldı. Sonraki vakit yenilenince planlanır."
     },
     "notifications": {
+      "announcements": "Duyurular",
+      "announcementsSub": "Uygulamayla ilgili önemli duyurular",
       "atTime": "Tam Vakit",
       "battery": "Pil optimizasyonu",
       "batteryOff": "Telefonun Salah'ı kısıtlıyor, bildirimler gecikebilir. Listeden Salah'ı \"Optimize etme\" olarak ayarla.",
@@ -1149,11 +1152,6 @@
     "alarms": {
       "label": "Alarmlar",
       "sub": "Namaz, teheccüd ve sahur alarmları"
-    },
-    "ramadanMode": {
-      "preview": "Önizleme: vakitler gerçek, Ramazan günleri örnek",
-      "sub": "Ramazan kartı, imsakiye ve hatim planı",
-      "title": "Ramazan modu"
     },
     "widgetTheme": {
       "dark": "Karanlık",

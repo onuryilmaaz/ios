@@ -18,7 +18,7 @@ export const LEGAL: {
   "privacy": {
     "tr": {
       "heading": "Gizlilik Politikası",
-      "updated": "Son güncelleme: 24 Ekim 2026",
+      "updated": "Son güncelleme: 8 Kasım 2026",
       "sections": [
         {
           "title": "1. Genel",
@@ -26,7 +26,7 @@ export const LEGAL: {
         },
         {
           "title": "2. Topladığımız Veriler",
-          "body": "• Hesap bilgileri: e-posta, ad-soyad ve kullanıcı adı; isteğe bağlı olarak telefon, cinsiyet ve profil fotoğrafı. Google veya Apple ile giriş yaparsanız bu hizmetten adınızı, e-posta adresinizi ve hesap kimliğinizi alırız.\n• İbadet kayıtları: kıldığınız ve kaza ettiğiniz namazlar; Kur'an ve kitap okuma, nafile namaz, oruç, sadaka, dua ve hafızlık kayıtları, eklediğiniz notlar, seri, rozet ve istatistikler.\n• Özel gün (isteğe bağlı): kadın kullanıcıların girdiği özel gün başlangıç ve bitiş tarihleri. Yalnızca bu dönemde namaz takibini duraklatmak için kullanılır.\n• Konum: namaz vakitleri için seçtiğiniz il ve ilçe. Cihazınızın konumu yalnızca izin verdiğinizde, ilçenizi bulmak ve kıble yönünü göstermek için cihazınızda kullanılır; koordinatlarınız sunucumuza gönderilmez.\n• Sor ve yapay zekâ özellikleri: yazdığınız sorular ve dua istekleri. Bir cevabı bildirirseniz bildirdiğiniz cevap ve seçtiğiniz neden.\n• Teknik veriler: iOS'ta Canlı Etkinlik kartını (kilit ekranı ve Dynamic Island) güncellemek için cihazın bildirim anahtarı ve yaklaşan namaz vakitleri; sunucuda sorunları çözmek için hata kayıtları. Uygulamada reklam veya analiz aracı bulunmaz."
+          "body": "• Hesap bilgileri: e-posta, ad-soyad ve kullanıcı adı; isteğe bağlı olarak telefon, cinsiyet ve profil fotoğrafı. Google veya Apple ile giriş yaparsanız bu hizmetten adınızı, e-posta adresinizi ve hesap kimliğinizi alırız.\n• İbadet kayıtları: kıldığınız ve kaza ettiğiniz namazlar; Kur'an ve kitap okuma, nafile namaz, oruç, sadaka, dua ve hafızlık kayıtları, eklediğiniz notlar, seri, rozet ve istatistikler.\n• Özel gün (isteğe bağlı): kadın kullanıcıların girdiği özel gün başlangıç ve bitiş tarihleri. Yalnızca bu dönemde namaz takibini duraklatmak için kullanılır.\n• Konum: namaz vakitleri için seçtiğiniz il ve ilçe. Cihazınızın konumu yalnızca izin verdiğinizde, ilçenizi bulmak ve kıble yönünü göstermek için cihazınızda kullanılır; koordinatlarınız sunucumuza gönderilmez.\n• Sor ve yapay zekâ özellikleri: yazdığınız sorular ve dua istekleri. Bir cevabı bildirirseniz bildirdiğiniz cevap ve seçtiğiniz neden.\n• Teknik veriler: iOS'ta Canlı Etkinlik kartını (kilit ekranı ve Dynamic Island) güncellemek için cihazın bildirim anahtarı ve yaklaşan namaz vakitleri; uygulamayla ilgili duyuruları göndermek için cihazın bildirim anahtarı, uygulama dili ve sürümü, giriş yaptıysanız hesabınız (Ayarlar → Duyurular kapatılınca bu kayıt silinir); sunucuda sorunları çözmek için hata kayıtları. Uygulamada reklam veya analiz aracı bulunmaz."
         },
         {
           "title": "3. Verileri Nasıl Kullanıyoruz",
@@ -34,7 +34,7 @@ export const LEGAL: {
         },
         {
           "title": "4. Üçüncü Taraf Hizmetler",
-          "body": "Hizmeti sunmak için, verileri bizim adımıza işleyen şu sağlayıcılarla çalışırız:\n• Google ve Apple: hesabınızla giriş.\n• Apple Anında Bildirim Servisi (APNs): iOS'ta Canlı Etkinlik güncellemeleri.\n• Google Gemini API: Sor ekranı ve yapay zekâ destekli dua önerileri. Yazdığınız metin cevap üretilmesi için Google'a iletilir ve Google'ın Gemini API koşullarına tabidir. Bu alanlara kişisel veya hassas bilgi yazmamanızı öneririz.\n• Cloudinary: profil fotoğrafının saklanması.\n• Brevo: doğrulama kodu ve şifre sıfırlama e-postaları.\n• Sentry: sunucu hatalarının teşhisi.\n• Clerk: yalnızca uygulamanın eski sürümlerinde giriş ve kimlik doğrulama.\n• İçerik kaynakları: Diyanet (namaz vakitleri, Cuma hutbesi), acikkuran.com, quran.com ve islamic.network (Kur'an metni, meal ve ses) ve hadis kaynakları. Bu isteklerde hesap bilgileriniz gönderilmez.\n• App Store: uygulamanın dağıtımı."
+          "body": "Hizmeti sunmak için, verileri bizim adımıza işleyen şu sağlayıcılarla çalışırız:\n• Google ve Apple: hesabınızla giriş.\n• Apple Anında Bildirim Servisi (APNs): iOS'ta Canlı Etkinlik güncellemeleri ve duyuru bildirimleri.\n• Google Gemini API: Sor ekranı ve yapay zekâ destekli dua önerileri. Yazdığınız metin cevap üretilmesi için Google'a iletilir ve Google'ın Gemini API koşullarına tabidir. Bu alanlara kişisel veya hassas bilgi yazmamanızı öneririz.\n• Cloudinary: profil fotoğrafının saklanması.\n• Brevo: doğrulama kodu ve şifre sıfırlama e-postaları.\n• Sentry: sunucu hatalarının teşhisi.\n• Clerk: yalnızca uygulamanın eski sürümlerinde giriş ve kimlik doğrulama.\n• İçerik kaynakları: Diyanet (namaz vakitleri, Cuma hutbesi), acikkuran.com, quran.com ve islamic.network (Kur'an metni, meal ve ses) ve hadis kaynakları. Bu isteklerde hesap bilgileriniz gönderilmez.\n• App Store: uygulamanın dağıtımı."
         },
         {
           "title": "5. Konum Verisi",
@@ -68,7 +68,7 @@ export const LEGAL: {
     },
     "en": {
       "heading": "Privacy Policy",
-      "updated": "Last updated: October 24, 2026",
+      "updated": "Last updated: November 8, 2026",
       "sections": [
         {
           "title": "1. Overview",
@@ -76,7 +76,7 @@ export const LEGAL: {
         },
         {
           "title": "2. Data We Collect",
-          "body": "• Account info: email, name, and username; optionally phone, gender, and profile photo. If you sign in with Google or Apple, we receive your name, email address, and account ID from that service.\n• Worship records: prayers you performed or made up (kaza); Qur'an and book reading, voluntary prayers, fasting, charity, dua, and memorization logs, your notes, streaks, badges, and statistics.\n• Special days (optional): start and end dates entered by female users, used only to pause prayer tracking during that period.\n• Location: the province and district you choose for prayer times. Your device location is used on your device only, and only with your permission, to find your district and show the qibla direction; your coordinates are not sent to our server.\n• Ask and AI features: the questions and dua requests you type. If you report an answer, the reported answer and the reason you choose.\n• Technical data: on iOS, the device notification token and upcoming prayer times used to update the Live Activity (Lock Screen and Dynamic Island); on our server, error logs used to fix problems. The app contains no advertising or analytics tools."
+          "body": "• Account info: email, name, and username; optionally phone, gender, and profile photo. If you sign in with Google or Apple, we receive your name, email address, and account ID from that service.\n• Worship records: prayers you performed or made up (kaza); Qur'an and book reading, voluntary prayers, fasting, charity, dua, and memorization logs, your notes, streaks, badges, and statistics.\n• Special days (optional): start and end dates entered by female users, used only to pause prayer tracking during that period.\n• Location: the province and district you choose for prayer times. Your device location is used on your device only, and only with your permission, to find your district and show the qibla direction; your coordinates are not sent to our server.\n• Ask and AI features: the questions and dua requests you type. If you report an answer, the reported answer and the reason you choose.\n• Technical data: on iOS, the device notification token and upcoming prayer times used to update the Live Activity (Lock Screen and Dynamic Island); to send announcements about the app, the device notification token, app language and version, and your account if you are signed in (turning off Settings → Announcements deletes this record); on our server, error logs used to fix problems. The app contains no advertising or analytics tools."
         },
         {
           "title": "3. How We Use Data",
@@ -84,7 +84,7 @@ export const LEGAL: {
         },
         {
           "title": "4. Third-Party Services",
-          "body": "To deliver the service we work with these providers, who process data on our behalf:\n• Google and Apple: sign-in with your account.\n• Apple Push Notification service (APNs): Live Activity updates on iOS.\n• Google Gemini API: the Ask screen and AI-assisted dua suggestions. The text you type is sent to Google to generate an answer and is subject to Google's Gemini API terms. We recommend not entering personal or sensitive information there.\n• Cloudinary: storage of your profile photo.\n• Brevo: verification code and password reset emails.\n• Sentry: server error diagnostics.\n• Clerk: sign-in and authentication in older app versions only.\n• Content sources: Diyanet (prayer times, Friday sermon), acikkuran.com, quran.com, and islamic.network (Qur'an text, translation, and audio), and hadith sources. Your account information is not sent with these requests.\n• The App Store: app distribution."
+          "body": "To deliver the service we work with these providers, who process data on our behalf:\n• Google and Apple: sign-in with your account.\n• Apple Push Notification service (APNs): Live Activity updates and announcement notifications on iOS.\n• Google Gemini API: the Ask screen and AI-assisted dua suggestions. The text you type is sent to Google to generate an answer and is subject to Google's Gemini API terms. We recommend not entering personal or sensitive information there.\n• Cloudinary: storage of your profile photo.\n• Brevo: verification code and password reset emails.\n• Sentry: server error diagnostics.\n• Clerk: sign-in and authentication in older app versions only.\n• Content sources: Diyanet (prayer times, Friday sermon), acikkuran.com, quran.com, and islamic.network (Qur'an text, translation, and audio), and hadith sources. Your account information is not sent with these requests.\n• The App Store: app distribution."
         },
         {
           "title": "5. Location Data",
@@ -118,7 +118,7 @@ export const LEGAL: {
     },
     "ar": {
       "heading": "سياسة الخصوصية",
-      "updated": "آخر تحديث: 24 أكتوبر 2026",
+      "updated": "آخر تحديث: 8 نوفمبر 2026",
       "sections": [
         {
           "title": "1. نظرة عامة",
@@ -126,7 +126,7 @@ export const LEGAL: {
         },
         {
           "title": "2. البيانات التي نجمعها",
-          "body": "• بيانات الحساب: البريد الإلكتروني والاسم الكامل واسم المستخدم، واختياريًا رقم الهاتف والجنس وصورة الملف الشخصي. إذا سجّلت الدخول عبر Google أو Apple نتلقى من الخدمة اسمك وبريدك الإلكتروني ومعرّف حسابك.\n• سجلات العبادة: الصلوات التي أدّيتها أو قضيتها، وسجلات قراءة القرآن والكتب وصلاة النافلة والصيام والصدقة والدعاء والحفظ، وملاحظاتك، والسلاسل والشارات والإحصاءات.\n• الأيام الخاصة (اختياري): تاريخا البداية والنهاية اللذان تُدخلهما المستخدمات، ويُستخدمان فقط لإيقاف تتبع الصلاة مؤقتًا خلال تلك الفترة.\n• الموقع: المحافظة والمنطقة اللتان تختارهما لمواقيت الصلاة. يُستخدم موقع جهازك على جهازك فقط وبإذنك، لتحديد منطقتك وعرض اتجاه القبلة، ولا تُرسل إحداثياتك إلى خادمنا.\n• ميزة «اسأل» وميزات الذكاء الاصطناعي: الأسئلة وطلبات الدعاء التي تكتبها. وإذا أبلغت عن إجابة، فالإجابة المُبلَّغ عنها والسبب الذي تختاره.\n• البيانات التقنية: على iOS، رمز إشعارات الجهاز ومواقيت الصلاة القادمة لتحديث النشاط المباشر (شاشة القفل وDynamic Island)؛ وعلى خادمنا، سجلات الأخطاء لإصلاح المشكلات. لا يحتوي التطبيق على أي أدوات إعلانية أو تحليلية."
+          "body": "• بيانات الحساب: البريد الإلكتروني والاسم الكامل واسم المستخدم، واختياريًا رقم الهاتف والجنس وصورة الملف الشخصي. إذا سجّلت الدخول عبر Google أو Apple نتلقى من الخدمة اسمك وبريدك الإلكتروني ومعرّف حسابك.\n• سجلات العبادة: الصلوات التي أدّيتها أو قضيتها، وسجلات قراءة القرآن والكتب وصلاة النافلة والصيام والصدقة والدعاء والحفظ، وملاحظاتك، والسلاسل والشارات والإحصاءات.\n• الأيام الخاصة (اختياري): تاريخا البداية والنهاية اللذان تُدخلهما المستخدمات، ويُستخدمان فقط لإيقاف تتبع الصلاة مؤقتًا خلال تلك الفترة.\n• الموقع: المحافظة والمنطقة اللتان تختارهما لمواقيت الصلاة. يُستخدم موقع جهازك على جهازك فقط وبإذنك، لتحديد منطقتك وعرض اتجاه القبلة، ولا تُرسل إحداثياتك إلى خادمنا.\n• ميزة «اسأل» وميزات الذكاء الاصطناعي: الأسئلة وطلبات الدعاء التي تكتبها. وإذا أبلغت عن إجابة، فالإجابة المُبلَّغ عنها والسبب الذي تختاره.\n• البيانات التقنية: على iOS، رمز إشعارات الجهاز ومواقيت الصلاة القادمة لتحديث النشاط المباشر (شاشة القفل وDynamic Island)؛ ولإرسال إعلانات التطبيق، رمز إشعارات الجهاز ولغة التطبيق وإصداره وحسابك إذا كنت مسجّلًا الدخول (يُحذف هذا السجل عند إيقاف الإعدادات ← الإعلانات)؛ وعلى خادمنا، سجلات الأخطاء لإصلاح المشكلات. لا يحتوي التطبيق على أي أدوات إعلانية أو تحليلية."
         },
         {
           "title": "3. كيف نستخدم البيانات",
@@ -134,7 +134,7 @@ export const LEGAL: {
         },
         {
           "title": "4. خدمات الأطراف الثالثة",
-          "body": "لتقديم الخدمة نتعامل مع المزوّدين التاليين الذين يعالجون البيانات نيابةً عنا:\n• Google وApple: تسجيل الدخول بحسابك.\n• خدمة الإشعارات الفورية من Apple ‏(APNs): تحديثات النشاط المباشر على iOS.\n• Google Gemini API: شاشة «اسأل» واقتراحات الدعاء المدعومة بالذكاء الاصطناعي. يُرسل النص الذي تكتبه إلى Google لتوليد الإجابة ويخضع لشروط Gemini API الخاصة بـ Google. ننصحك بعدم كتابة معلومات شخصية أو حساسة في هذه الحقول.\n• Cloudinary: تخزين صورة الملف الشخصي.\n• Brevo: رسائل رمز التحقق وإعادة تعيين كلمة المرور.\n• Sentry: تشخيص أخطاء الخادم.\n• Clerk: تسجيل الدخول والمصادقة في الإصدارات القديمة من التطبيق فقط.\n• مصادر المحتوى: رئاسة الشؤون الدينية التركية (Diyanet) لمواقيت الصلاة وخطبة الجمعة، وacikkuran.com وquran.com وislamic.network لنص القرآن وترجمته وتلاوته، ومصادر الحديث. لا تُرسل بيانات حسابك مع هذه الطلبات.\n• App Store: توزيع التطبيق."
+          "body": "لتقديم الخدمة نتعامل مع المزوّدين التاليين الذين يعالجون البيانات نيابةً عنا:\n• Google وApple: تسجيل الدخول بحسابك.\n• خدمة الإشعارات الفورية من Apple ‏(APNs): تحديثات النشاط المباشر وإشعارات الإعلانات على iOS.\n• Google Gemini API: شاشة «اسأل» واقتراحات الدعاء المدعومة بالذكاء الاصطناعي. يُرسل النص الذي تكتبه إلى Google لتوليد الإجابة ويخضع لشروط Gemini API الخاصة بـ Google. ننصحك بعدم كتابة معلومات شخصية أو حساسة في هذه الحقول.\n• Cloudinary: تخزين صورة الملف الشخصي.\n• Brevo: رسائل رمز التحقق وإعادة تعيين كلمة المرور.\n• Sentry: تشخيص أخطاء الخادم.\n• Clerk: تسجيل الدخول والمصادقة في الإصدارات القديمة من التطبيق فقط.\n• مصادر المحتوى: رئاسة الشؤون الدينية التركية (Diyanet) لمواقيت الصلاة وخطبة الجمعة، وacikkuran.com وquran.com وislamic.network لنص القرآن وترجمته وتلاوته، ومصادر الحديث. لا تُرسل بيانات حسابك مع هذه الطلبات.\n• App Store: توزيع التطبيق."
         },
         {
           "title": "5. بيانات الموقع",

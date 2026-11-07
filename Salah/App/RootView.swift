@@ -19,18 +19,21 @@ struct RootView: View {
       HomeView()
         .tabItem { Label(t("tabs.home"), systemImage: "house.fill") }
         .tag(Tab.home)
-      SurahBrowserView()
+      ModuleGated("quran") { SurahBrowserView() }
         .tabItem { Label(t("tabs.quran"), systemImage: "book.fill") }
         .tag(Tab.quran)
-      TrackerView()
+      ModuleGated("tracker") { TrackerView() }
         .tabItem { Label(t("tabs.tracker"), systemImage: "chart.bar.fill") }
         .tag(Tab.tracker)
-      AssistantView()
+      ModuleGated("assistant") { AssistantView() }
         .tabItem { Label(t("tabs.assistant"), systemImage: "sparkles") }
         .tag(Tab.assistant)
     }
     // RN: aktif #1f7356 / koyu #2e8a6a
     .tint(tokens.isDark ? Accent.s500 : Accent.s600)
+    .overlay {
+      if let url = UpdateGate.shared.requiredStoreURL { UpdateRequiredView(storeURL: url).ignoresSafeArea() }
+    }
     // Tur, sekme çubuğu dahil her şeyin üstünde: saydam tam ekran katman (kayarak değil, solarak açılır).
     .fullScreenCover(isPresented: Binding(get: { TourStore.shared.tour.map { !$0.inline } ?? false }, set: { _ in })) {
       TourOverlay()
@@ -54,6 +57,15 @@ struct RootView: View {
     .onAppear {
       if let route = DebugLaunch.auth { AuthFlow.shared.present(route) }
       if let route = DebugLaunch.route { HomeNavigation.shared.path = [route] }
+      #if DEBUG
+      switch UserDefaults.standard.string(forKey: "SalahDebugUpdate") {
+      case "required": UpdateGate.shared.apply(.required(storeURL: UpdatePolicy.defaultStoreURL))
+      case "optional":
+        UpdateGate.shared.apply(.optional(version: "99.0.0", storeURL: UpdatePolicy.defaultStoreURL))
+        UpdateGate.shared.presentPending()
+      default: break
+      }
+      #endif
       #if DEBUG
       if let link = UserDefaults.standard.string(forKey: "SalahDebugURL"), let url = URL(string: link) {
         Task { try? await Task.sleep(for: .seconds(1)); open(url) }

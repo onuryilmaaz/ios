@@ -29,8 +29,34 @@ enum HomeRoute: Hashable {
   case hatimGroups
   case hatimGroup(String)
 
+  /// Panelden kapatılabilen ekranın modülü.
+  private var module: String? {
+    switch self {
+    case .qibla: "qibla"
+    case .dua: "dua"
+    case .esma: "esma"
+    case .calendar: "calendar"
+    case .hutbe: "hutbe"
+    case .alarms: "alarms"
+    case .imsakiye, .fastJournal: "ramadan"
+    case .zakat: "zakat"
+    case .hatimPlan: "hatim_plan"
+    case .hatimGroups, .hatimGroup: "hatim_groups"
+    default: nil
+    }
+  }
+
   @ViewBuilder
   var destination: some View {
+    if let module, !AppControlStore.shared.isOn(module) {
+      ModuleClosedView()
+    } else {
+      screen
+    }
+  }
+
+  @ViewBuilder
+  private var screen: some View {
     switch self {
     case .layout: HomeLayoutView()
     case .dua: DuaView()

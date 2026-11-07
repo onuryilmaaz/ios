@@ -8,20 +8,19 @@ struct RamadanPlanTests {
   private var times: PrayerTimes { PrayerTimes(imsak: "05:30", gunes: "07:00", ogle: "13:00", ikindi: "16:00", aksam: "18:30", yatsi: "20:00") }
   private var window: RamadanWindow { .init(hijriYear: 1448, start: date(2027, 2, 8), last: date(2027, 3, 8), days: 29) }
 
-  @Test func modeFollowsCalendarUntilChosen() {
+  @Test func modeFollowsCalendarExceptForAdmin() {
     let far = date(2026, 11, 7, 12), during = date(2027, 2, 12, 12)
-    #expect(!RamadanPlan.isModeOn(stored: nil, real: window, now: far, calendar: cal))
-    #expect(RamadanPlan.isModeOn(stored: nil, real: window, now: during, calendar: cal))
-    #expect(RamadanPlan.isModeOn(stored: true, real: window, now: far, calendar: cal))
-    #expect(!RamadanPlan.isModeOn(stored: false, real: window, now: during, calendar: cal))
+    #expect(!RamadanPlan.isModeOn(admin: false, real: window, now: far, calendar: cal))
+    #expect(RamadanPlan.isModeOn(admin: false, real: window, now: during, calendar: cal))
+    #expect(RamadanPlan.isModeOn(admin: true, real: window, now: far, calendar: cal))
+    #expect(RamadanPlan.isModeOn(admin: true, real: window, now: during, calendar: cal))
   }
 
-  @Test func previewOnlyWhenChosenOutsideRamadan() {
+  @Test func previewOnlyForAdminOutsideRamadan() {
     let far = date(2026, 11, 7, 12), during = date(2027, 2, 12, 12)
-    #expect(RamadanPlan.usesPreview(stored: true, real: window, now: far, calendar: cal))
-    #expect(!RamadanPlan.usesPreview(stored: true, real: window, now: during, calendar: cal))
-    #expect(!RamadanPlan.usesPreview(stored: nil, real: window, now: far, calendar: cal))
-    #expect(!RamadanPlan.usesPreview(stored: false, real: window, now: far, calendar: cal))
+    #expect(RamadanPlan.usesPreview(admin: true, real: window, now: far, calendar: cal))
+    #expect(!RamadanPlan.usesPreview(admin: true, real: window, now: during, calendar: cal))
+    #expect(!RamadanPlan.usesPreview(admin: false, real: window, now: far, calendar: cal))
     let preview = RamadanPlan.previewWindow(now: far, calendar: cal)
     #expect(RamadanPlan.phase(preview, now: far, today: times, tomorrow: times, calendar: cal) ==
       .active(day: 5, total: 29, countdown: .init(kind: .iftar, target: date(2026, 11, 7, 18, 30))))
@@ -106,6 +105,28 @@ struct RamadanPlanTests {
     #expect(QiblaTheme.find("dusk").motif == .mihrab)
     #expect(QiblaTheme.find("yok").id == "forest")
     #expect(QiblaTheme.find(nil).id == "forest")
+  }
+
+  @Test func appControlFollowsScheduleAndFailsOpen() {
+    let date = { (text: String) in AppControlLogic.date(text)! }
+    #expect(AppControlLogic.isOn(nil, now: Date()))
+    let closure = AppControlLogic.ModuleState(enabled: true, schedule: .init(from: "2027-01-01T10:00:00.000Z", to: "2027-01-01T12:00:00.000Z", enabled: false))
+    #expect(AppControlLogic.isOn(closure, now: date("2027-01-01T09:00:00Z")))
+    #expect(!AppControlLogic.isOn(closure, now: date("2027-01-01T11:00:00Z")))
+    #expect(AppControlLogic.isOn(closure, now: date("2027-01-01T12:00:00Z")))
+    let open = AppControlLogic.ModuleState(enabled: true, schedule: .init(from: "2027-01-01T10:00:00Z", to: nil, enabled: false))
+    #expect(!AppControlLogic.isOn(open, now: date("2030-01-01T00:00:00Z")))
+  }
+
+  @Test func announcementsRespectPlatformWindowAndSeen() {
+    let item = AppControlLogic.Announcement(id: "a", title: ["tr": "B"], body: ["tr": "M", "en": " "], kind: "info", platforms: ["ios"], frequency: "once", startsAt: "2027-01-01T00:00:00Z", endsAt: "2027-01-03T00:00:00Z")
+    let inside = AppControlLogic.date("2027-01-02T00:00:00Z")!
+    #expect(AppControlLogic.next([item], platform: "ios", now: inside, seen: [])?.id == "a")
+    #expect(AppControlLogic.next([item], platform: "android", now: inside, seen: []) == nil)
+    #expect(AppControlLogic.next([item], platform: "ios", now: inside, seen: ["a"]) == nil)
+    #expect(AppControlLogic.next([item], platform: "ios", now: AppControlLogic.date("2027-01-04T00:00:00Z")!, seen: []) == nil)
+    #expect(AppControlLogic.text(item.body, language: "en") == "M")
+    #expect(AppControlLogic.isAllowedLink("salah://qibla") && !AppControlLogic.isAllowedLink("http://x"))
   }
 
   @Test func amountParsingAcceptsLocalFormats() {
@@ -258,5 +279,26 @@ struct RamadanPlanTests {
     let plan = NotificationPlan.build(days: [], preferences: p, now: date(2027, 3, 7, 8), calendar: cal,
                                       hatim: .init(hour: 21, minute: 0, dailyPages: 20, targetDate: "2027-03-08"))
     #expect(plan.filter { $0.kind == .hatim }.map(\.date) == [date(2027, 3, 7, 21), date(2027, 3, 8, 21)])
+  }
+}
+
+struct UpdatePolicyTests {
+  @Test func comparesNumerically() {
+    #expect(UpdatePolicy.compare("1.0.10", "1.0.9") == 1)
+    #expect(UpdatePolicy.compare("1.1", "1.1.0") == 0)
+    #expect(UpdatePolicy.compare("1.1-beta", "1.1") == 0)
+    #expect(UpdatePolicy.compare("", "0.0.1") == -1)
+  }
+
+  @Test func requiredWinsOverOptional() {
+    let server = UpdatePolicy.Server(minVersion: "1.0.5", latestVersion: "1.0.6", storeUrl: "https://x")
+    #expect(UpdatePolicy.evaluate(current: "1.0.4", server) == .required(storeURL: "https://x"))
+    #expect(UpdatePolicy.evaluate(current: "1.0.5", server) == .optional(version: "1.0.6", storeURL: "https://x"))
+    #expect(UpdatePolicy.evaluate(current: "1.0.6", server) == .none)
+  }
+
+  @Test func emptyPolicyDoesNothing() {
+    #expect(UpdatePolicy.evaluate(current: "1.0.0", .init(minVersion: nil, latestVersion: "", storeUrl: nil)) == .none)
+    #expect(UpdatePolicy.evaluate(current: "1.0.0", .init(minVersion: nil, latestVersion: "2.0", storeUrl: "")) == .optional(version: "2.0", storeURL: UpdatePolicy.defaultStoreURL))
   }
 }

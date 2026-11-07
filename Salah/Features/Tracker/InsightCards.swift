@@ -367,11 +367,13 @@ struct HatimCard: View {
             if let url = URL(string: "salah://hatim") { openURL(url) }
           }
           .padding(.top, 14)
-          AppButton(title: t("ramadan.more.groups"), variant: .outline) {
-            Haptics.impact(.light)
-            if let url = URL(string: "salah://grup") { openURL(url) }
+          if AppControlStore.shared.isOn("hatim_groups") {
+            AppButton(title: t("ramadan.more.groups"), variant: .outline) {
+              Haptics.impact(.light)
+              if let url = URL(string: "salah://grup") { openURL(url) }
+            }
+            .padding(.top, 8)
           }
-          .padding(.top, 8)
         }
       }
     }

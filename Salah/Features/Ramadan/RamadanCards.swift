@@ -121,7 +121,7 @@ enum RamadanSchedule {
     }
     #endif
     let real = RamadanPlan.window(religious, now: now, calendar: calendar)
-    return RamadanPlan.usesPreview(stored: RamadanMode.shared.stored, real: real, now: now, calendar: calendar)
+    return RamadanPlan.usesPreview(admin: RamadanMode.shared.isAdmin, real: real, now: now, calendar: calendar)
       ? RamadanPlan.previewWindow(now: now, calendar: calendar) : real
   }
 
