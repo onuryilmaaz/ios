@@ -491,11 +491,12 @@ struct IftarMomentView: View {
           .buttonStyle(PressableStyle())
           .accessibilityLabel(t("common.close"))
         }
-        RamadanMoonView(day: day, size: 130, disc: tint.surface, lit: tint.accent).padding(.top, 8)
+        RamadanMoonView(day: day, size: 96, disc: tint.surface, lit: tint.accent)
         Text(t("iftarMoment.adhan", ["time": today?.times["aksam"] ?? ""]))
-          .font(.system(size: 15, weight: .semibold)).foregroundStyle(tint.accent).tabularNumbers().padding(.top, 30)
+          .font(.system(size: 15, weight: .semibold)).foregroundStyle(tint.accent).tabularNumbers().padding(.top, 14)
         Text(t("iftarMoment.title")).font(.system(size: 32, weight: .bold)).foregroundStyle(.white).multilineTextAlignment(.center).padding(.top, 7)
-        Text(t("iftarMoment.accept")).font(.system(size: 16)).foregroundStyle(.white.opacity(0.85)).padding(.top, 9)
+        Text(t("iftarMoment.accept")).font(.system(size: 16)).foregroundStyle(.white.opacity(0.85)).padding(.top, 6)
+        duaCard.padding(.top, 16)
         VStack(spacing: 10.5) {
           if !fasted {
             Button {
@@ -518,7 +519,7 @@ struct IftarMomentView: View {
           }
           .buttonStyle(PressableStyle())
         }
-        .padding(.top, 28)
+        .padding(.top, 16)
         Spacer(minLength: 12)
         HStack(spacing: 10.5) {
           if let sahur { tile("iftarMoment.tomorrowSahur", sahur) }
@@ -529,6 +530,21 @@ struct IftarMomentView: View {
       .padding(.vertical, 14)
     }
     .statusBar(.light, priority: 1)
+  }
+
+  private var duaCard: some View {
+    VStack(spacing: 6) {
+      Text(t("iftarMoment.duaTitle")).font(.system(size: 13, weight: .semibold)).foregroundStyle(tint.accent)
+      Text(t("iftarMoment.duaArabic")).font(.system(size: 22, weight: .bold)).lineSpacing(6).foregroundStyle(.white).multilineTextAlignment(.center)
+      if !Localizer.shared.language.isRTL {
+        Text(t("iftarMoment.duaReading")).font(.system(size: 13, weight: .medium)).foregroundStyle(.white).multilineTextAlignment(.center)
+        Text(t("iftarMoment.duaMeaning")).font(.system(size: 13)).foregroundStyle(.white.opacity(0.85)).multilineTextAlignment(.center)
+      }
+      Text(t("iftarMoment.duaSource")).font(.system(size: 12)).foregroundStyle(.white.opacity(0.72))
+    }
+    .frame(maxWidth: .infinity)
+    .padding(14)
+    .background(.white.opacity(0.08), in: .rect(cornerRadius: 21))
   }
 
   private func tile(_ key: String, _ value: String) -> some View {

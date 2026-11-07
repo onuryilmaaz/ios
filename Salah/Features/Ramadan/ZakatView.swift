@@ -23,6 +23,8 @@ struct ZakatView: View {
   @State private var fidyeDays = "1"
   @State private var paid = false
   @State private var showConditions = false
+  /// Sunucudan yazılan altın fiyatı: kullanıcı değiştirdiyse üzerine yazılmaz.
+  @State private var autoPrice: String?
 
   private static let zakatSource = "https://kurul.diyanet.gov.tr/Cevap-Ara/406/farkli-ayarda-altini-bulunan-kimse-zekatini-nasil-hesaplar"
   private static let fidyeSource = "https://fetva.diyanet.gov.tr/Cevap-Ara/532/fidye-nedir-hangi-durumlarda-gerekir"
@@ -81,11 +83,35 @@ struct ZakatView: View {
         price = "6.000"
         cash = "1.250.000"
         showConditions = true
+      case "gold":
+        price = money(6556.39)
+        autoPrice = price
+        cash = "1.250.000"
       default: break
       }
       paid = LocalStore.string(paidKey) == "true"
+      applyGoldPrice()
       await RamadanConfigStore.shared.refresh()
+      applyGoldPrice()
     }
+  }
+
+  private func applyGoldPrice() {
+    guard let value = RamadanConfigStore.shared.config.goldPricePerGram, price.isEmpty || price == autoPrice else { return }
+    price = money(value)
+    autoPrice = price
+  }
+
+  private var priceHint: String {
+    guard price == autoPrice else { return t("zakat.goldPriceHint") }
+    let parser = ISO8601DateFormatter()
+    parser.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    var when = Date()
+    if let raw = RamadanConfigStore.shared.config.goldPriceAt, let parsed = parser.date(from: raw) { when = parsed }
+    let formatter = DateFormatter()
+    formatter.locale = Localizer.shared.locale
+    formatter.dateFormat = "dd.MM HH:mm"
+    return t("zakat.goldPriceAuto", ["time": formatter.string(from: when)])
   }
 
   private var tabs: some View {
@@ -166,7 +192,7 @@ struct ZakatView: View {
   private var zakatForm: some View {
     Card {
       AmountRow(label: t("zakat.goldPrice"), unit: t("zakat.unitTl"), text: $price)
-      Text(t("zakat.goldPriceHint")).font(.system(size: 13)).lineSpacing(3).foregroundStyle(tokens.textSecondary).padding(.top, 2)
+      Text(priceHint).font(.system(size: 13)).lineSpacing(3).foregroundStyle(tokens.textSecondary).tabularNumbers().padding(.top, 2)
     }
     Card {
       sectionTitle("zakat.assets")

@@ -449,6 +449,9 @@ struct HatimGroupView: View {
           } catch { Toast.error(t("common.error"), t("hatimGroups.failed")) }
         }
       }
+      if !group.isOwner {
+        quietButton("hatimGroups.report", color: tokens.textSecondary) { report() }
+      }
       if group.isOwner {
         quietButton("hatimGroups.delete", color: tokens.isDark ? Color(hex: 0xf87171) : Color(hex: 0xdc2626)) {
           AppAlert.confirm(t("hatimGroups.delete"), t("hatimGroups.deleteConfirm"), destructive: true) {
@@ -461,6 +464,25 @@ struct HatimGroupView: View {
       }
     }
     .frame(maxWidth: .infinity)
+  }
+
+  private func report() {
+    let send: (String) async -> Void = { reason in
+      do {
+        try await HatimGroupAPI.report(id, reason: reason)
+        Haptics.notify(.success)
+        Toast.success(t("hatimGroups.reportSent"))
+      } catch {
+        Haptics.notify(.error)
+        Toast.error(t("common.error"), t("hatimGroups.failed"))
+      }
+    }
+    AppAlert.show(.confirm, t("hatimGroups.reportTitle"), nil, buttons: [
+      .init(text: t("hatimGroups.reportName")) { await send("name") },
+      .init(text: t("hatimGroups.reportMember")) { await send("member") },
+      .init(text: t("hatimGroups.reportOther")) { await send("other") },
+      .init(text: t("common.cancel"), style: .cancel),
+    ])
   }
 
   private func quietButton(_ key: String, color: Color, action: @escaping () -> Void) -> some View {

@@ -199,6 +199,7 @@ struct HomeView: View {
   }
 
   private func refresh() async {
+    Task { await HatimPlanStore.shared.sync() }
     GamificationStore.shared.ensureFreshToday()
     async let times: Void = model.load()
     if AuthStore.shared.isAuthenticated {

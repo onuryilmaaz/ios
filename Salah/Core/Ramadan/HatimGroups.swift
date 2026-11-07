@@ -70,7 +70,16 @@ enum HatimGroupAPI {
   }
 
   static func detail(_ id: String) async throws -> Detail {
-    if preview { return sample }
+    if preview {
+      var value = sample
+      #if DEBUG
+      if DebugLaunch.sheet == "member" {
+        value.isOwner = false
+        value.ownerId = "a"
+      }
+      #endif
+      return value
+    }
     guard let data = try await APIClient.shared.get("/hatim-groups/\(id)", as: DetailResponse.self).data else { throw Empty() }
     return data
   }
@@ -104,6 +113,11 @@ enum HatimGroupAPI {
   static func removeMember(_ id: String, userId: String) async throws {
     if preview { return }
     try await APIClient.shared.send("DELETE", "/hatim-groups/\(id)/members/\(userId)")
+  }
+
+  static func report(_ id: String, reason: String) async throws {
+    if preview { return }
+    try await APIClient.shared.send("POST", "/hatim-groups/\(id)/report", body: ["reason": .string(reason)])
   }
 
   static func delete(_ id: String) async throws {

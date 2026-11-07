@@ -137,6 +137,7 @@ struct AdminDashboardView: View {
               VStack(spacing: 7) {
                 menu("people-outline", "Kullanıcılar", "Kullanıcıları görüntüle ve yönet", Color(hex: 0x3b82f6), .adminUsers)
                 menu("key-outline", "Roller", "Sistem rollerini yönet", Color(hex: 0xf59e0b), .adminRoles)
+                menu("flag-outline", "Grup şikâyetleri", "Şikâyet edilen grup hatimlerini incele", tokens.accent, .adminGroupReports)
               }
             }
           }
@@ -582,6 +583,112 @@ extension ISO8601DateFormatter {
 }
 
 // MARK: - Roller
+
+/// Şikâyet edilen grup hatimleri: yoksay, incelendi ya da grubu sil.
+struct AdminGroupReportsView: View {
+  private struct Report: Decodable, Identifiable {
+    let id: String
+    let groupId: String
+    let groupName: String
+    let currentName: String
+    let reason: String
+    let memberCount: Int
+    let createdAt: String
+  }
+  private struct Response: Decodable {
+    struct Payload: Decodable { let items: [Report] }
+    let data: Payload
+  }
+
+  @Environment(\.tokens) private var tokens
+  @State private var reports: [Report] = []
+  @State private var loading = true
+  @State private var failed = false
+
+  var body: some View {
+    AdminScreen(title: "Grup şikâyetleri") {
+      if loading && reports.isEmpty {
+        Spacer()
+        ProgressView().tint(tokens.accent)
+        Spacer()
+      } else if failed && reports.isEmpty {
+        Spacer()
+        EmptyState(icon: "cloud-offline-outline", title: "Yükleme Hatası", message: "Şikâyetler yüklenemedi") {
+          AppButton(title: "Tekrar Dene") { Task { await load() } }.frame(width: 180)
+        }
+        Spacer()
+      } else if reports.isEmpty {
+        Spacer()
+        EmptyState(icon: "flag-outline", title: "Bekleyen şikâyet yok", message: nil) { EmptyView() }
+        Spacer()
+      } else {
+        ScrollView {
+          VStack(spacing: 10.5) {
+            ForEach(reports) { row($0) }
+          }
+          .padding(14)
+          .padding(.bottom, 84)
+        }
+        .scrollIndicators(.hidden)
+        .refreshable { await load() }
+      }
+    }
+    .task { await load() }
+  }
+
+  private func row(_ report: Report) -> some View {
+    Card {
+      VStack(alignment: .leading, spacing: 4) {
+        Text(report.currentName).font(.system(size: 16, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+        if report.groupName != report.currentName {
+          Text("Şikâyet anındaki ad: \(report.groupName)").font(.system(size: 13)).foregroundStyle(tokens.textSecondary)
+        }
+        Text("\(reasonText(report.reason))  ·  \(report.memberCount) üye  ·  \(String(report.createdAt.prefix(10)))")
+          .font(.system(size: 13)).foregroundStyle(tokens.textSecondary).tabularNumbers()
+        HStack(spacing: 7) {
+          AppButton(title: "Yoksay", variant: .outline) { Task { await review(report, "dismissed") } }
+          AppButton(title: "İncelendi", variant: .outline) { Task { await review(report, "reviewed") } }
+        }
+        .padding(.top, 8)
+        AppButton(title: "Grubu sil", variant: .danger) {
+          AppAlert.confirm("Grubu sil", "\"\(report.currentName)\" grubu herkes için silinecek.", destructive: true) {
+            do {
+              try await AdminAPI.send("DELETE", "/admin/hatim-groups/\(report.groupId)")
+              Haptics.notify(.success)
+              await load()
+            } catch { Toast.error("Hata", "İşlem yapılamadı") }
+          }
+        }
+      }
+    }
+  }
+
+  private func reasonText(_ reason: String) -> String {
+    switch reason {
+    case "name": "Uygunsuz grup adı"
+    case "member": "Rahatsız edici üye"
+    default: "Başka bir sorun"
+    }
+  }
+
+  private func review(_ report: Report, _ status: String) async {
+    Haptics.impact(.medium)
+    do {
+      try await AdminAPI.send("PATCH", "/admin/hatim-group-reports/\(report.id)", body: ["status": .string(status)])
+      await load()
+    } catch { Toast.error("Hata", "İşlem yapılamadı") }
+  }
+
+  private func load() async {
+    loading = true
+    defer { loading = false }
+    do {
+      let data = try await AdminAPI.send("GET", "/admin/hatim-group-reports?status=pending")
+      reports = try JSONDecoder().decode(Response.self, from: data).data.items
+      failed = false
+    } catch { if !(error is CancellationError) { failed = true } }
+  }
+}
 
 struct AdminRolesView: View {
   @Environment(\.tokens) private var tokens

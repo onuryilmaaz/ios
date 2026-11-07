@@ -188,6 +188,9 @@ final class RamadanConfigStore {
     var currency = "TRY"
     var period = "2026-2027"
     var nisabGoldGrams = 80.18
+    /// Sunucunun saatte bir aldığı gram altın fiyatı; alınamadıysa nil.
+    var goldPricePerGram: Double?
+    var goldPriceAt: String?
   }
   private struct Response: Decodable { let data: Config? }
 
@@ -200,12 +203,17 @@ final class RamadanConfigStore {
   }
 }
 
-/// Bu cihazdaki hatim planı (sunucuda plan alanı yok; ilerleme zaten sunucudaki Kur'an kayıtlarından gelir).
+/// Hatim planı: yerelde hemen yazılır, girişliyse `/ramadan/hatim-plan` ile eşitlenir. Son değiştiren cihaz kazanır.
+/// İlerleme zaten sunucudaki Kur'an kayıtlarından gelir.
 @MainActor
 @Observable
 final class HatimPlanStore {
   static let shared = HatimPlanStore()
   private static let key = "@salah_hatim_plan_v1"
+  private static let pendingKey = "@salah_hatim_plan_pending_v1"
+  private static let syncedKey = "@salah_hatim_plan_synced_v1"
+  private struct Response: Decodable { let data: HatimPlan? }
+  @ObservationIgnored private var syncing = false
 
   private(set) var plan: HatimPlan? = {
     #if DEBUG
@@ -218,8 +226,59 @@ final class HatimPlanStore {
   }()
 
   func set(_ value: HatimPlan?) {
+    store(value)
+    LocalStore.set("true", for: Self.pendingKey)
+    Task {
+      await NotificationStore.shared.reschedule(force: true)
+      await sync()
+    }
+  }
+
+  private func store(_ value: HatimPlan?) {
     plan = value
     if let value { LocalStore.encode(value, for: Self.key) } else { LocalStore.set(nil, for: Self.key) }
+  }
+
+  /// Bekleyen değişiklik varsa gönderir, yoksa sunucudaki planı alır. Eski sürümden kalan yerel plan bir kez gönderilir.
+  func sync() async {
+    guard !DebugLaunch.isIsolated, AuthStore.shared.isAuthenticated, !syncing else { return }
+    syncing = true
+    defer { syncing = false }
+    let pending = LocalStore.string(Self.pendingKey) == "true" || (plan != nil && LocalStore.string(Self.syncedKey) == nil)
+    do {
+      if pending {
+        let sent = plan
+        try await APIClient.shared.send("PUT", "/ramadan/hatim-plan", body: ["plan": Self.body(sent)])
+        // Gönderim sürerken plan değiştiyse bekleyen işaret kalır, sonraki eşitlemede gider.
+        if plan == sent { LocalStore.set(nil, for: Self.pendingKey) }
+      } else {
+        let remote = try await APIClient.shared.get("/ramadan/hatim-plan", as: Response.self).data
+        if remote != plan {
+          store(remote)
+          await NotificationStore.shared.reschedule(force: true)
+        }
+      }
+      LocalStore.set("true", for: Self.syncedKey)
+    } catch {
+      // Çevrimdışı ya da geçici hata: yerel plan kalır, sonraki açılışta yeniden denenir.
+    }
+  }
+
+  private static func body(_ plan: HatimPlan?) -> JSONValue {
+    guard let plan else { return .null }
+    return .object([
+      "targetDate": .string(plan.targetDate),
+      "startHatims": .number(Double(plan.startHatims)),
+      "reminderHour": plan.reminderHour.map { .number(Double($0)) } ?? .null,
+      "reminderMinute": plan.reminderMinute.map { .number(Double($0)) } ?? .null,
+    ])
+  }
+
+  /// Oturum kapanınca: plan hesabındır, sonraki girişte sunucudan gelir.
+  func reset() {
+    store(nil)
+    LocalStore.set(nil, for: Self.pendingKey)
+    LocalStore.set(nil, for: Self.syncedKey)
     Task { await NotificationStore.shared.reschedule(force: true) }
   }
 

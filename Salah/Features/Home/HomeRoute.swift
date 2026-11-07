@@ -21,6 +21,7 @@ enum HomeRoute: Hashable {
   case adminUsers
   case adminUser(String)
   case adminRoles
+  case adminGroupReports
   case imsakiye
   case hatimPlan
   case fastJournal
@@ -50,6 +51,7 @@ enum HomeRoute: Hashable {
     case .adminUsers: AdminUsersView()
     case .adminUser(let id): AdminUserDetailView(userId: id)
     case .adminRoles: AdminRolesView()
+    case .adminGroupReports: AdminGroupReportsView()
     case .imsakiye: ImsakiyeView()
     case .hatimPlan: HatimPlanView()
     case .fastJournal: FastJournalView()

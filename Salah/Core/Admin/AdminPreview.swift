@@ -13,6 +13,9 @@ enum AdminPreview {
     if path == "/admin/dashboard" {
       value = ["users": ["total": 128, "active": 120, "inactive": 8], "sessions": ["active": 42]]
     } else if path == "/admin/roles" { value = roles }
+    else if path.hasPrefix("/admin/hatim-group-reports") {
+      value = ["data": ["items": [["id": "preview-report", "groupId": "preview-group", "groupName": "Örnek grup", "currentName": "Örnek grup", "reason": "name", "memberCount": 4, "createdAt": "2026-11-07T10:00:00Z"]]]]
+    }
     else if path.hasSuffix("/sessions") { value = ["sessions": [["id": "preview-session"]]] }
     else if path.contains("/admin/users?") {
       let search = URLComponents(string: "https://preview.invalid" + path)?.queryItems?.first { $0.name == "search" }?.value ?? ""

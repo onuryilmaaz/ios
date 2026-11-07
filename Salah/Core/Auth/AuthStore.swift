@@ -120,6 +120,7 @@ final class AuthStore {
     GamificationStore.shared.reset()
     TrackerStore.shared.reset()
     RamadanStore.shared.reset()
+    HatimPlanStore.shared.reset()
   }
 
   #if DEBUG
