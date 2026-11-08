@@ -57,6 +57,8 @@ struct SettingsView: View {
             }
           }
 
+          AppColorPicker().id("appColor")
+
           AppIconPicker().id("appIcon")
 
           SectionLabel(t("settings.app.section")).padding(.leading, 10.5)

@@ -188,7 +188,7 @@ private struct RamadanEmptyView: View {
 }
 
 private func onGold(_ theme: SalahTheme) -> Color {
-  theme.isDark ? Color(red: 0.067, green: 0.235, blue: 0.184) : .white
+  theme.isDark ? WidgetAppColor.palette.accent(9) : .white
 }
 
 private func untilLabel(_ state: RamadanState) -> String {

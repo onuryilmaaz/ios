@@ -22,7 +22,8 @@ struct SplashView: View {
 
   var body: some View {
     ZStack {
-      Accent.s900.ignoresSafeArea()
+      // Her zaman Orman yeşili: sistem açılış ekranıyla (LaunchScreen) aynı renk, seçilen renge geçiş ana ekranda olur.
+      Color(hex: AppColor.forest.scales.accent[9]).ignoresSafeArea()
 
       VStack(spacing: 28) {
         ZStack {

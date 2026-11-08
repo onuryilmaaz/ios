@@ -36,6 +36,7 @@ struct SalahApp: App {
           if scenePhase == .active { await AppControlStore.shared.run() }
         }
         .onChange(of: scenePhase) { _, phase in
+          if phase == .active { AppColorStore.shared.refresh() }
           if phase == .active, !DebugLaunch.isIsolated {
             Task { await PushStore.shared.sync() }
             Task { await OfflineQueue.shared.flush() }
@@ -62,6 +63,7 @@ struct SalahApp: App {
         .onChange(of: RamadanMode.shared.scheduleKey) {
           guard !DebugLaunch.isIsolated else { return }
           WidgetSync.ramadanChanged()
+          AppColorStore.shared.refresh()
           Task { await NotificationStore.shared.reschedule(force: true) }
         }
         .onChange(of: LocationChanges.shared.nonce) {
@@ -114,7 +116,10 @@ private struct AppRoot: View {
       .environment(\.layoutDirection, l10n.layoutDirection)
       .environment(\.locale, l10n.locale)
       .preferredColorScheme(theme.isDark ? .dark : .light)
-      .onAppear { StatusBarStyle.apply() }
+      .onAppear {
+        StatusBarStyle.apply()
+        AppColorStore.shared.start()
+      }
       .onChange(of: theme.isDark) { StatusBarStyle.apply() }
   }
 }

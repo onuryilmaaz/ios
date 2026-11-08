@@ -226,7 +226,7 @@ struct AssistantView: View {
   private var avatar: some View {
     Ionicon("sparkles", size: 18, color: tokens.isDark ? Accent.s400 : Accent.s600)
       .frame(width: 31.5, height: 31.5)
-      .background(tokens.isDark ? Color(hex: 0x14b8a6).opacity(0.2) : Color(hex: 0xccfbf1), in: .rect(cornerRadius: 14))
+      .background(tokens.isDark ? Accent.s400.opacity(0.2) : Accent.s100, in: .rect(cornerRadius: 14))
   }
 
   private var typing: some View {

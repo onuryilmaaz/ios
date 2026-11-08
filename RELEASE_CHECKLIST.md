@@ -101,3 +101,9 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - Ramazan modu ve hatim planı (2026-11-06, 1. aşama; ayrıntı `android/HANDOFF.md`): kartlar, imsakiye, oruç işareti, hatim planı ve hatırlatma. Cihazda kontrol: hatırlatma bildirimi ve kayıt formuna geçiş, gerçek Ramazan tarihi Ocak 2027'de Diyanet verisiyle. Widget ve Dinamik Ada sıradaki aşama.
 - **Ramazan görünürlüğü (2026-11-07):** Ayarlar'daki anahtar kaldırıldı. Panel "Ramazan özellikleri" kapalıysa herkese kapalı; açıkken herkes takvime göre (Ramazan'dan 30 gün önce başlar), yönetici hesabı Ramazan dışında örnek tarihlerle görür. **Yayın öncesi kontrol:** Ramazan widget'ları cihazda (iOS/Android), widget oruç düğmesi, `/ramadan/sync` canlıya alındıktan sonra bekleyen işaretlerin gitmesi. Ayrıca: Ramazan widget'ları cihazda (iOS/Android), widget oruç düğmesi, `/ramadan/sync` canlıya alındıktan sonra bekleyen işaretlerin gitmesi. Fitre yeni yıl tutarı Diyanet açıklayınca `RAMADAN_FITRE_AMOUNT` ve `RAMADAN_FITRE_PERIOD` ile güncellenecek. Dinamik Ada iftar sayacı ve son on gece bildirimi gerçek cihazda denenecek.
 - Ramazan 4. aşama (2026-11-07; ayrıntı `android/HANDOFF.md`): hatim planı eşitleme, saatlik altın fiyatı, iftar duası, grup şikâyeti. Yayından önce backend'de migration `010` canlı olmalı. App Store incelemesi için şikâyetlere yanıt süresi kullanıcıda.
+
+## Uygulama rengi ve simgeler (2026-11-08)
+- Ayarlar > Uygulama rengi: dört rengi sırayla seç; ana sayfa, sekme çubuğu, kartlar ve widget'lar (Live Activity zemini dahil) aynı tona geçmeli. Debug: `-SalahDebugColor navy|purple|burgundy`.
+- Uygulama ikonu: Lacivert, Mor, Bordo simgelerini seç; ana ekranda simge değişmeli.
+- Ramazan önizlemesinde (yönetici hesabı) renk saate göre değişmeli; `-SalahDebugTint night|dawn|dusk` ile dene.
+

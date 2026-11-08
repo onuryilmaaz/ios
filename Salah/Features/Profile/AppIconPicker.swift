@@ -18,6 +18,9 @@ struct AppIconPicker: View {
     ("classic", "AppIconClassic", "appIcon.classic"),
     ("night", "AppIconNight", "appIcon.night"),
     ("gold", "AppIconGold", "appIcon.gold"),
+    ("navy", "AppIconNavy", "appIcon.navy"),
+    ("purple", "AppIconPurple", "appIcon.purple"),
+    ("burgundy", "AppIconBurgundy", "appIcon.burgundy"),
   ]
 
   var body: some View {
@@ -25,9 +28,8 @@ struct AppIconPicker: View {
       if let current {
         VStack(alignment: .leading, spacing: 0) {
           SectionLabel(t("appIcon.title")).padding(.leading, 10.5)
-          HStack {
-            ForEach(Array(Self.icons.enumerated()), id: \.element.id) { i, icon in
-              if i > 0 { Spacer(minLength: 0) }
+          LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 4), spacing: 14) {
+            ForEach(Self.icons, id: \.id) { icon in
               let selected = icon.id == current
               Button { choose(icon) } label: {
                 VStack(spacing: 7) {

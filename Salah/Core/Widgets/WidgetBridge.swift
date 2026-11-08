@@ -34,6 +34,13 @@ enum WidgetBridge {
 
   private static let widgetThemeKey = "salah_widget_theme"
 
+  /// Uygulama rengi (SharedColors.swift `WidgetAppColor` okur); Ramazan tonunu widget kendisi hesaplar.
+  static func setAppColor(_ raw: String) {
+    guard let ud = defaults, ud.string(forKey: "salah_app_color") != raw else { return }
+    ud.set(raw, forKey: "salah_app_color")
+    WidgetCenter.shared.reloadAllTimelines()
+  }
+
   /// Premium widget'ların erişim hakkı. Premium kapalıyken herkes erişir (kilit yok).
   static func setPremiumAccess(_ active: Bool) {
     guard let ud = defaults, ud.object(forKey: "salah_is_premium") as? Bool != active else { return }

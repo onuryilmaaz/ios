@@ -13,6 +13,7 @@
 		055B8D5F754CEB12F8441147 /* HijriCalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812A4EEF9C1003701EDF58F /* HijriCalendarStore.swift */; };
 		0A0484223D347F98E05E9795 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6B18C581B7DC2DEE057323 /* AuthAPI.swift */; };
 		0C0FEEA5D30A50224504F1A5 /* EsmaulHusnaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430087092B6448E2635AFBDA /* EsmaulHusnaView.swift */; };
+		0C96C214946A664CAE0EDC43 /* AppColorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCAC183AB2A78243C53CFF8 /* AppColorStore.swift */; };
 		0DA8CEDECEC83C3F1B813F23 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACD2857084E2F73AADF4650 /* Theme.swift */; };
 		10B4DD105C1A6D30C0823B0A /* Ornaments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E65C5F29C70CFC9110EA0B0 /* Ornaments.swift */; };
 		112B43AC064083B60B36C725 /* InsightCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5E90E570E1E240F1C9133 /* InsightCards.swift */; };
@@ -121,6 +122,7 @@
 		7F3A351131E9B6619FB6A61D /* LocationWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */; };
 		7F5F0719C942EE27D482135E /* StorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E10BC1F8302CD8A869F15D /* StorePreview.swift */; };
 		807A7776FD616AE0A5312FBA /* FastJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B6124081F8EF1BA996273 /* FastJournalView.swift */; };
+		81C04FB775E703AB1C2EE2DF /* AppColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B113E991A412A37FF021771 /* AppColorPicker.swift */; };
 		82DEE9BFE039DE8C08B00DF1 /* states.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E668511777EBAFC01AD289 /* states.json */; };
 		839B15838343F738B3F26CB4 /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEED74D3A83B0A37A8C95A8 /* Controls.swift */; };
 		83EBB0FFA6CDF564E127BFB8 /* StandbyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8472098AA5F9E098CF953 /* StandbyWidget.swift */; };
@@ -178,6 +180,7 @@
 		BB9E16E5C75E5162AED68FC4 /* alarm_yatsi.caf in Resources */ = {isa = PBXBuildFile; fileRef = F9C2C1CE18F599E28173337A /* alarm_yatsi.caf */; };
 		BC03D825BC9B580878798195 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D26D845F6DFA0938D28DBB /* AuthStore.swift */; };
 		BC065C41FBDCD883D48886A6 /* TrackerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70468BEA1F7AC82EBB41FA7F /* TrackerModels.swift */; };
+		BC48C533917CDC97CA6865EF /* AppColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */; };
 		BC84B399E3ECA2EBEEEFE2A0 /* OnboardingArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */; };
 		BCACC2D05ACC6A73A37EBD68 /* InspirationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3A50A100C125289E3F965 /* InspirationWidget.swift */; };
 		BD55F1163A67A1337ECFEF92 /* RamadanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CD747D6ADF333ACEB515B8 /* RamadanStore.swift */; };
@@ -282,6 +285,7 @@
 		0153E5F6E154AC6C16849FAA /* PushStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushStore.swift; sourceTree = "<group>"; };
 		058B5FBC0985AAE76DE7B97B /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		06E598ACB7A64E51F4B44C2B /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorTests.swift; sourceTree = "<group>"; };
 		0D8CF70659F3FB12E63DBDAA /* HadithService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadithService.swift; sourceTree = "<group>"; };
 		0E31E6F68655210276170666 /* PrayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerWindow.swift; sourceTree = "<group>"; };
 		0F6B8C584228EF943412E1D8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 		3F578466A4FB36727914DB1B /* SplashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTests.swift; sourceTree = "<group>"; };
 		3FA52A173C357E93302F90E2 /* AppLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLinks.swift; sourceTree = "<group>"; };
 		3FA99883FDCD3F89F215B49F /* StatusBanners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBanners.swift; sourceTree = "<group>"; };
+		3FCAC183AB2A78243C53CFF8 /* AppColorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorStore.swift; sourceTree = "<group>"; };
 		417C2019B1DA79F10BD7F8DE /* legal.generated.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = legal.generated.json; sourceTree = "<group>"; };
 		41B9C492BC66266E207CDC53 /* Localizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizer.swift; sourceTree = "<group>"; };
 		42533B88E2E9434BBF0CCE08 /* AlarmPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlan.swift; sourceTree = "<group>"; };
@@ -406,6 +411,7 @@
 		8A6E8052CFB84E297FAB7A42 /* HijriCalendarPreview.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HijriCalendarPreview.json; sourceTree = "<group>"; };
 		8AA388482C2FBF20A8AFB0BC /* AdminPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPreview.swift; sourceTree = "<group>"; };
 		8AA70FBAA735905226DB3324 /* SitePongLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitePongLiveActivityWidget.swift; sourceTree = "<group>"; };
+		8B113E991A412A37FF021771 /* AppColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorPicker.swift; sourceTree = "<group>"; };
 		8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRefresh.swift; sourceTree = "<group>"; };
 		8CA7A2C206DA8BB73CEE6FA5 /* RamadanWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamadanWidgets.swift; sourceTree = "<group>"; };
 		8CFD6C7662F80AEA92F24822 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
@@ -531,6 +537,7 @@
 			children = (
 				F8CB8313061692ADE4AAC76B /* AdminTests.swift */,
 				97EC94B518A1156C80D459CB /* AlarmTests.swift */,
+				0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */,
 				7EFD1F0FA7914AE23FC531A4 /* AppLinksTests.swift */,
 				B2CC6B58AD65D6A1AF54DDE2 /* DuaTests.swift */,
 				7A46711268EE853863C7E38B /* HijriCalendarTests.swift */,
@@ -1014,6 +1021,7 @@
 		B136F9BFB54EF00B31F6A66C /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				3FCAC183AB2A78243C53CFF8 /* AppColorStore.swift */,
 				61777C40E2416E7B802943CD /* Palette.swift */,
 				D118C21C788FB1677A4B7621 /* QuranPalette.swift */,
 				EACD2857084E2F73AADF4650 /* Theme.swift */,
@@ -1108,6 +1116,7 @@
 			isa = PBXGroup;
 			children = (
 				E1FA6D9A84871248597B484E /* AccountViews.swift */,
+				8B113E991A412A37FF021771 /* AppColorPicker.swift */,
 				C9C1BDBCB829B0D8D8CE1813 /* AppIconPicker.swift */,
 				B109CBF85D8CB6269DE73BF6 /* LocationSelectionView.swift */,
 				4BF764652662DDC95ABC0B78 /* NotificationSettings.swift */,
@@ -1465,6 +1474,7 @@
 			files = (
 				1DF996FB7A5F0ACBE942000A /* AdminTests.swift in Sources */,
 				DBBA4336E96227BAE6200818 /* AlarmTests.swift in Sources */,
+				BC48C533917CDC97CA6865EF /* AppColorTests.swift in Sources */,
 				8DD542F1C9F4A11AE75F21CC /* AppLinksTests.swift in Sources */,
 				9839719482BB449259188D7B /* DuaTests.swift in Sources */,
 				68AB135ECF89A378C57884AC /* HijriCalendarTests.swift in Sources */,
@@ -1504,6 +1514,8 @@
 				3267D880DDA70C96F5AADC3E /* AlarmStore.swift in Sources */,
 				419CF7E0B55EF7108761C822 /* AlarmsView.swift in Sources */,
 				D1645F850D105C3C6C0ED8A0 /* AlertDialog.swift in Sources */,
+				81C04FB775E703AB1C2EE2DF /* AppColorPicker.swift in Sources */,
+				0C96C214946A664CAE0EDC43 /* AppColorStore.swift in Sources */,
 				E328F27F96C559183C57AF73 /* AppControl.swift in Sources */,
 				94F9050EA2906CA5A4D3C8ED /* AppIconPicker.swift in Sources */,
 				52BE56FFDDBFBF2D4140111D /* AppLinks.swift in Sources */,
@@ -1689,7 +1701,7 @@
 		0285469BC1EFE3AB274D71AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconClassic AppIconNight AppIconGold";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconClassic AppIconNight AppIconGold AppIconNavy AppIconPurple AppIconBurgundy";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Salah/Salah.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1849,7 +1861,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GOOGLE_IOS_CLIENT_ID = "321984727488-chpfrev1ss25t5o40dfg6ulp1q7a17lf.apps.googleusercontent.com";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1909,7 +1921,7 @@
 		CB842037D8611F7106218EA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconClassic AppIconNight AppIconGold";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconClassic AppIconNight AppIconGold AppIconNavy AppIconPurple AppIconBurgundy";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Salah/Salah.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1981,7 +1993,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GOOGLE_IOS_CLIENT_ID = "321984727488-chpfrev1ss25t5o40dfg6ulp1q7a17lf.apps.googleusercontent.com";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

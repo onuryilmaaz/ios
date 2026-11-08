@@ -82,7 +82,7 @@ private struct LAModel {
 // MARK: - Pieces
 
 /// Uygulamadaki ana sayfa üst alanıyla aynı koyu zümrüt.
-private let bannerBackground = SalahTheme.hero.canvas
+private var bannerBackground: Color { SalahTheme.hero.canvas }
 
 /// Vaktin içindeyken canlı ilerleme çubuğu (sistem kendi yürütür; ayrı güncelleme gerekmez).
 private struct LiveBar: View {

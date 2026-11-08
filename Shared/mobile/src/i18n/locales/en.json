@@ -195,7 +195,10 @@
     "failed": "The icon could not be changed.",
     "gold": "Gold",
     "night": "Night",
-    "title": "App icon"
+    "title": "App icon",
+    "navy": "Navy",
+    "purple": "Purple",
+    "burgundy": "Burgundy"
   },
   "assistant": {
     "clear": "Clear chat",
@@ -1579,5 +1582,13 @@
       "signIn": "The plan uses your Quran reading logs. Sign in to continue.",
       "signInButton": "Sign in"
     }
+  },
+  "appColor": {
+    "title": "App color",
+    "forest": "Forest",
+    "navy": "Navy",
+    "purple": "Purple",
+    "burgundy": "Burgundy",
+    "ramadanHint": "During Ramadan the color changes on its own with the time of day."
   }
 }

@@ -195,7 +195,10 @@
     "failed": "İkon değiştirilemedi.",
     "gold": "Altın",
     "night": "Gece",
-    "title": "Uygulama ikonu"
+    "title": "Uygulama ikonu",
+    "navy": "Lacivert",
+    "purple": "Mor",
+    "burgundy": "Bordo"
   },
   "assistant": {
     "clear": "Sohbeti temizle",
@@ -1579,5 +1582,13 @@
       "signIn": "Hatim planı Kur'an kayıtlarınla çalışır. Devam etmek için giriş yap.",
       "signInButton": "Giriş yap"
     }
+  },
+  "appColor": {
+    "title": "Uygulama rengi",
+    "forest": "Orman",
+    "navy": "Lacivert",
+    "purple": "Mor",
+    "burgundy": "Bordo",
+    "ramadanHint": "Ramazan'da renk günün saatine göre kendiliğinden değişir."
   }
 }

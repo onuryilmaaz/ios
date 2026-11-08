@@ -45,7 +45,7 @@ struct WelcomeView: View {
             Text(t("auth.welcome.apple")).font(.system(size: 17, weight: .bold)).foregroundStyle(dark ? Forest.s950 : .white)
           }
           .frame(maxWidth: .infinity, minHeight: 49)
-          .background(dark ? .white : Color(hex: 0x132e29), in: .rect(cornerRadius: 14))
+          .background(dark ? .white : Accent.s900, in: .rect(cornerRadius: 14))
         }
 
         socialButton(.google) {
@@ -85,7 +85,7 @@ struct WelcomeView: View {
     }
     .scrollBounceBehavior(.basedOnSize)
     }
-    .background(dark ? Forest.s950 : Color(hex: 0xf6f8f7))
+    .background(dark ? Forest.s950 : Forest.s50)
     .toolbar(.hidden, for: .navigationBar)
     .statusBar(.auto)
   }

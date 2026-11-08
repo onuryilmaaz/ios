@@ -13,14 +13,64 @@ extension Color {
   /// Marka/onay rengi (accent-600 / dark accent-400).
   static func brand(_ theme: SalahTheme) -> Color {
     switch theme {
-    case .light: return Color(red: 0.122, green: 0.451, blue: 0.337)
-    // Koyu zümrüt zeminde zümrüt kaybolur: açık nane (accent-200).
-    case .dark, .hero: return Color(red: 0.682, green: 0.839, blue: 0.765)
+    case .light: return WidgetAppColor.palette.accent(6)
+    // Koyu zeminde vurgu kaybolur: açık ton (accent-200).
+    case .dark, .hero: return WidgetAppColor.palette.accent(2)
     }
+  }
+
+  init(rgb: UInt32) {
+    self.init(red: Double((rgb >> 16) & 0xff) / 255, green: Double((rgb >> 8) & 0xff) / 255, blue: Double(rgb & 0xff) / 255)
   }
   /// Altın vurgu (gold-500 / koyu zeminde gold-300).
   static func gold(_ theme: SalahTheme) -> Color {
     theme.isDark ? Color(red: 0.902, green: 0.741, blue: 0.384) : Color(red: 0.769, green: 0.561, blue: 0.169)
+  }
+}
+
+/// Uygulama rengi (Ayarlar > Uygulama rengi). Uygulama seçimi `salah_app_color` olarak yazar; Ramazan
+/// günlerinde ton saate göre buradan hesaplanır (akşamdan imsaka lacivert, imsaktan öğleye mor, öğleden
+/// akşama bordo), böylece uygulama açılmasa da widget doğru renkte kalır. Değerler: Salah/Core/Theme/Palette.swift.
+enum WidgetAppColor: String {
+  case forest, navy, purple, burgundy
+
+  var scales: (accent: [UInt32], neutral: [UInt32]) {
+    switch self {
+    case .forest: return (accent: [0xeef6f2, 0xd6ebe1, 0xaed6c3, 0x7fbea2, 0x4fa383, 0x2e8a6a, 0x1f7356, 0x195c46, 0x154a39, 0x113c2f, 0x0f3a2b],
+                       neutral: [0xf5f7f5, 0xedf1ee, 0xdfe5e1, 0xc7d0ca, 0x97a39c, 0x6a766f, 0x4e5953, 0x46534c, 0x2d3933, 0x222d28, 0x131b17])
+    case .navy: return (accent: [0xf2f4f8, 0xe1e6f0, 0xc4cee0, 0xa5b2ca, 0x8594b2, 0x637baa, 0x4b6698, 0x3a517d, 0x2c416a, 0x10203f, 0x0e1c37],
+                       neutral: [0xf6f6f8, 0xeff0f2, 0xe2e4e7, 0xcbced3, 0x9ca0a8, 0x6f737c, 0x53575e, 0x4b5059, 0x32363f, 0x272b33, 0x161920])
+    case .purple: return (accent: [0xf5f4f8, 0xe7e5ef, 0xd0cade, 0xb4adc7, 0x988faf, 0x8174a4, 0x6d5d97, 0x57497d, 0x473a6a, 0x2a1e4a, 0x251a41],
+                       neutral: [0xf7f6f8, 0xf0eff3, 0xe4e3e8, 0xcfcdd5, 0xa29faa, 0x75717e, 0x585561, 0x524e5c, 0x383442, 0x2c2936, 0x1a1822])
+    case .burgundy: return (accent: [0xf8f3f4, 0xf0e3e7, 0xdfc7ce, 0xc9a9b2, 0xb18a94, 0xa66a7b, 0x955164, 0x7a3f50, 0x67303f, 0x3f1420, 0x37121c],
+                       neutral: [0xf8f6f7, 0xf3eff0, 0xe8e2e4, 0xd4ccce, 0xa99da0, 0x7d7074, 0x5f5357, 0x5b4c50, 0x403337, 0x34272b, 0x201719])
+    }
+  }
+
+  func accent(_ step: Int) -> Color { Color(rgb: scales.accent[step]) }
+  func neutral(_ step: Int) -> Color { Color(rgb: scales.neutral[step]) }
+
+  static var palette: WidgetAppColor { current() }
+
+  static func current(now: Date = Date()) -> WidgetAppColor {
+    if let ramadan = ramadan(now) { return ramadan }
+    return UserDefaults(suiteName: appGroupID)?.string(forKey: "salah_app_color").flatMap(WidgetAppColor.init) ?? .forest
+  }
+
+  private static func ramadan(_ now: Date) -> WidgetAppColor? {
+    guard let data = RamadanData.load(), data.on else { return nil }
+    let key = dayKey(now)
+    guard key >= data.start, key <= data.last else { return nil }
+    guard let times = WidgetData.load(at: now) else { return .navy }
+    func minutes(_ s: String) -> Int? {
+      let p = s.split(separator: ":").compactMap { Int($0) }
+      return p.count >= 2 ? p[0] * 60 + p[1] : nil
+    }
+    let c = Calendar.current.dateComponents([.hour, .minute], from: now)
+    let m = (c.hour ?? 0) * 60 + (c.minute ?? 0)
+    guard let imsak = minutes(times.imsak), let ogle = minutes(times.ogle), let aksam = minutes(times.aksam) else { return .navy }
+    if m < imsak || m >= aksam { return .navy }
+    return m < ogle ? .purple : .burgundy
   }
 }
 
@@ -35,21 +85,21 @@ enum SalahTheme {
   var canvas: Color {
     switch self {
     case .light: return .white
-    case .dark: return Color(red: 0.067, green: 0.235, blue: 0.184)  // #113c2f (Android widget'larıyla aynı)
-    case .hero: return Color(red: 0.067, green: 0.235, blue: 0.184)  // #113c2f
+    // accent-900 (#113c2f yeşilde; Android widget'larıyla aynı)
+    case .dark, .hero: return WidgetAppColor.palette.accent(9)
     }
   }
-  var textPrimary: Color { isDark ? Color(red: 0.961, green: 0.969, blue: 0.961) : Color(red: 0.086, green: 0.114, blue: 0.102) }
+  var textPrimary: Color { isDark ? WidgetAppColor.palette.neutral(0) : Color(red: 0.086, green: 0.114, blue: 0.102) }
   var textSecondary: Color {
-    isDark ? Color.white.opacity(0.72) : Color(red: 0.306, green: 0.349, blue: 0.325)
+    isDark ? Color.white.opacity(0.72) : WidgetAppColor.palette.neutral(6)
   }
   var textTertiary: Color {
-    isDark ? Color.white.opacity(0.5) : Color(red: 0.416, green: 0.463, blue: 0.435)  // #6a766f
+    isDark ? Color.white.opacity(0.5) : WidgetAppColor.palette.neutral(5)
   }
   /// İnce ayraçlar ve pasif ray.
-  var hairline: Color { isDark ? Color.white.opacity(0.14) : Color(red: 0.875, green: 0.898, blue: 0.882) }
+  var hairline: Color { isDark ? Color.white.opacity(0.14) : WidgetAppColor.palette.neutral(2) }
   /// Pasif dolgu (boş ilerleme, pasif daire).
-  var fill: Color { isDark ? Color.white.opacity(0.10) : Color(red: 0.929, green: 0.945, blue: 0.933) }
+  var fill: Color { isDark ? Color.white.opacity(0.10) : WidgetAppColor.palette.neutral(1) }
 }
 
 // MARK: - Prayer Key & Accent

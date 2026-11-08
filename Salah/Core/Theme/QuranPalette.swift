@@ -44,12 +44,12 @@ struct MushafPalette {
       gold = Color(hex: 0xa0721e); accent = Color(hex: 0x5f6b2c); header = Color(hex: 0xeadcc0)
       border = Color(hex: 0xc9a464); mark = Color(hex: 0xe6d3a8)
     } else if isDark {
-      canvas = Color(hex: 0x0b110e); ink = Color(hex: theme == .auto ? 0xf5f7f5 : 0xc7d0ca); muted = Color(hex: 0x6a766f)
-      gold = Color(hex: theme == .auto ? 0xdca843 : 0xc9a04f); accent = Color(hex: 0x4fa383)
+      canvas = theme == .auto ? Forest.s950 : Color(hex: 0x0b110e); ink = Color(hex: theme == .auto ? 0xf5f7f5 : 0xc7d0ca); muted = Color(hex: 0x6a766f)
+      gold = Color(hex: theme == .auto ? 0xdca843 : 0xc9a04f); accent = theme == .auto ? Accent.s400 : Color(hex: 0x4fa383)
       header = Color(hex: 0x1a1a10); border = Color(hex: 0x7c581c); mark = Color(hex: 0x2a2414)
     } else {
-      canvas = Color(hex: 0xf5f7f5); ink = Color(hex: 0x161d1a); muted = Color(hex: 0x6a766f)
-      gold = Color(hex: 0xc48f2b); accent = Color(hex: 0x1f7356); header = Color(hex: 0xfcf7ec)
+      canvas = Forest.s50; ink = Color(hex: 0x161d1a); muted = Forest.s500
+      gold = Color(hex: 0xc48f2b); accent = Accent.s600; header = Color(hex: 0xfcf7ec)
       border = Color(hex: 0xe6bd62); mark = Color(hex: 0xf7ebcd)
     }
   }

@@ -16,7 +16,7 @@ settings:
     SWIFT_VERSION: "6.0"
     SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
     SWIFT_APPROACHABLE_CONCURRENCY: YES
-    MARKETING_VERSION: "1.1.1"
+    MARKETING_VERSION: "1.1.2"
     CURRENT_PROJECT_VERSION: "1"
     SALAH_API_URL: https://api.onur-yilmaz.com/salah
     # Google Cloud (proje SALAH) > Google Auth Platform > Clients, tür iOS. Bir iOS istemcisi
@@ -149,7 +149,7 @@ targets:
         ENABLE_PREVIEWS: YES
         # İkonlar: sh scripts/gen-app-icons.sh (Shared/mobile/assets'ten).
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: AppIconClassic AppIconNight AppIconGold
+        ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES: AppIconClassic AppIconNight AppIconGold AppIconNavy AppIconPurple AppIconBurgundy
       configs:
         # Geliştirme sürümü mağaza uygulamasının yanına ayrı kurulur (üstüne yazmaz).
         Debug:
