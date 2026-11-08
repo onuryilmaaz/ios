@@ -272,9 +272,27 @@ struct PrayerBadge: View {
 /// çizer: temayı içeriğe verir ve arka planı da aynı temayla uygular.
 struct SystemThemed<Content: View>: View {
   @Environment(\.colorScheme) private var colorScheme
+  @Environment(\.widgetFamily) private var family
   let content: (SalahTheme) -> Content
 
   var body: some View {
+    if Self.isAccessory(family) {
+      // Kilit ekranı: tema zorlanmaz. iOS metni kendi titreşimli rengiyle çizer; açık tema koyu yazıyı
+      // burada neredeyse saydam yapıyordu.
+      content(.dark)
+        .dynamicTypeSize(...DynamicTypeSize.xLarge)
+        .lockWidgetBackground()
+    } else {
+      themed
+    }
+  }
+
+  private static func isAccessory(_ family: WidgetFamily) -> Bool {
+    family == .accessoryRectangular || family == .accessoryInline || family == .accessoryCircular
+  }
+
+  @ViewBuilder
+  private var themed: some View {
     let dark = WidgetThemeChoice.load().forcedDark ?? (colorScheme == .dark)
     let theme: SalahTheme = dark ? .dark : .light
     content(theme)
