@@ -960,6 +960,11 @@
     "username": "Kullanıcı Adı",
     "usernamePlaceholder": "kullaniciadi"
   },
+  "maintenance": {
+    "continueAdmin": "Yönetici olarak devam et",
+    "retry": "Tekrar dene",
+    "until": "Tahmini bitiş: {{time}}"
+  },
   "module": {"closedTitle": "Bu bölüm şu anda kapalı", "closedBody": "Bu bölüm geçici olarak kullanıma kapalı. Uygulamanın diğer bölümlerini kullanmaya devam edebilirsin."},
   "qibla": {
     "themeLabel": "Pusula teması: {{name}}",

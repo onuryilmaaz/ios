@@ -255,7 +255,7 @@ struct RamadanJourneyCard: View {
         Ionicon(on ? "checkmark-circle" : "ellipse-outline", size: 18, color: on ? tokens.surface : tokens.accent)
         Text(t(on ? "ramadan.teravih.done" : "ramadan.teravih.mark")).font(.system(size: 14, weight: .semibold)).foregroundStyle(on ? tokens.surface : tokens.textPrimary)
         Spacer(minLength: 0)
-        Text(t("ramadan.teravih.count", ["count": store.ledger.markDays(window.hijriYear, kind: "taraweeh").count, "total": total]))
+        Text(t("ramadan.teravih.count", ["count": store.markCount("taraweeh", hijriYear: window.hijriYear, today: today), "total": total]))
           .font(.system(size: 13)).foregroundStyle(on ? tokens.surface : tokens.textSecondary).tabularNumbers()
       }
       .padding(.horizontal, 14).padding(.vertical, 10)

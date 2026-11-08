@@ -10,6 +10,18 @@ enum AppControlLogic {
   struct ModuleState: Codable, Equatable, Sendable {
     var enabled: Bool
     var schedule: Schedule?
+    /** Kapalıyken de yönetici hesaplarında açık. */
+    var adminPreview: Bool?
+    /** Platforma göre kapalı sürümler. */
+    var blockedVersions: [String: [String]]?
+  }
+  struct Maintenance: Codable, Equatable, Sendable {
+    var active: Bool
+    var title: [String: String]
+    var body: [String: String]
+    var platforms: [String]
+    var startsAt: String
+    var endsAt: String?
   }
   struct Announcement: Codable, Equatable, Sendable, Identifiable {
     var id: String
@@ -43,6 +55,19 @@ enum AppControlLogic {
       }
     }
     return state.enabled
+  }
+
+  /// Zamanlama ve sürüm engeli, sonra yöneticiye açıklık. Sunucudaki `moduleVisible` ile aynı.
+  static func visible(_ state: ModuleState?, now: Date, platform: String, version: String, admin: Bool) -> Bool {
+    guard let state else { return true }
+    let blocked = (state.blockedVersions?[platform] ?? []).contains { UpdatePolicy.compare($0, version) == 0 }
+    return (isOn(state, now: now) && !blocked) || (admin && state.adminPreview == true)
+  }
+
+  static func maintenanceActive(_ m: Maintenance?, platform: String, now: Date) -> Bool {
+    guard let m, m.active, m.platforms.contains(platform), let start = date(m.startsAt), start <= now else { return false }
+    if let raw = m.endsAt, let end = date(raw) { return end > now }
+    return true
   }
 
   /// Bu platformda şimdi gösterilebilecek, daha önce görülmemiş ilk duyuru.
@@ -86,9 +111,15 @@ final class AppControlStore {
     var modules: [String: AppControlLogic.ModuleState]?
     var announcements: [AppControlLogic.Announcement]?
     var ios: UpdatePolicy.Server?
+    var maintenance: AppControlLogic.Maintenance?
   }
 
   private(set) var snapshot: Snapshot
+  /// Yalnız sunucudan bu açılışta okunan bakım: ağ yoksa ekran açılmaz.
+  private(set) var maintenance: AppControlLogic.Maintenance?
+  /// Yönetici bakım ekranını bu açılış için geçti.
+  private(set) var maintenanceDismissed = false
+  private(set) var isRetrying = false
   /// Zaman aralığı başlayınca ekranlar yeniden çizilsin diye dakikada bir değişir.
   private(set) var now = Date()
   @ObservationIgnored private var lastFetch: Date?
@@ -96,8 +127,9 @@ final class AppControlStore {
 
   private init() {
     #if DEBUG
-    if let raw = UserDefaults.standard.string(forKey: "SalahDebugControl"), let data = Data(base64Encoded: raw), let value = try? JSONDecoder().decode(Snapshot.self, from: data) {
-      snapshot = value
+    if let raw = UserDefaults.standard.string(forKey: "SalahDebugControl"), let data = Data(base64Encoded: raw), let value = try? JSONDecoder().decode(Config.self, from: data) {
+      snapshot = Snapshot(modules: value.modules, announcements: value.announcements)
+      maintenance = value.maintenance
       return
     }
     #endif
@@ -105,8 +137,24 @@ final class AppControlStore {
   }
 
   func isOn(_ module: String) -> Bool {
-    AppControlLogic.isOn(snapshot.modules?[module], now: now)
+    AppControlLogic.visible(snapshot.modules?[module], now: now, platform: "ios", version: UpdateGate.currentVersion,
+      admin: AuthStore.shared.user?.roles?.contains("admin") == true)
   }
+
+  /// Bakım ekranı şimdi görünür mü (zamanlama dakikada bir yeniden hesaplanır).
+  var showsMaintenance: Bool {
+    !maintenanceDismissed && AppControlLogic.maintenanceActive(maintenance, platform: "ios", now: now)
+  }
+
+  func retryMaintenance() async {
+    guard !isRetrying else { return }
+    isRetrying = true
+    await refresh()
+    now = Date()
+    isRetrying = false
+  }
+
+  func dismissMaintenance() { maintenanceDismissed = true }
 
   /// Uygulama öndeyken çalışır; sahne arka plana geçince görev iptal edilir.
   func run() async {
@@ -115,8 +163,10 @@ final class AppControlStore {
       now = Date()
       if lastFetch.map({ now.timeIntervalSince($0) >= interval }) ?? true { await refresh() }
       interval = Self.refreshInterval
-      UpdateGate.shared.presentPending()
-      presentNext()
+      if !showsMaintenance {
+        UpdateGate.shared.presentPending()
+        presentNext()
+      }
       try? await Task.sleep(for: .seconds(60))
     }
   }
@@ -128,6 +178,7 @@ final class AppControlStore {
     guard !DebugLaunch.isIsolated, let fresh = try? await APIClient.shared.get("/app/config", as: Config.self) else { return }
     lastFetch = Date()
     if let server = fresh.ios { UpdateGate.shared.apply(UpdatePolicy.evaluate(current: UpdateGate.currentVersion, server)) }
+    maintenance = fresh.maintenance
     // Sunucu ayarları okuyamadıysa alanlar gelmez: elde olan korunur.
     guard fresh.modules != nil || fresh.announcements != nil else { return }
     let next = Snapshot(modules: fresh.modules, announcements: fresh.announcements)
@@ -188,5 +239,45 @@ struct ModuleGated<Content: View>: View {
 
   var body: some View {
     if AppControlStore.shared.isOn(module) { content } else { ModuleClosedView(showBack: false) }
+  }
+}
+
+/// Panelden açılan bakım ekranı. Metin panelden gelir; yönetici geçip uygulamayı kullanabilir.
+struct MaintenanceView: View {
+  @Environment(\.tokens) private var tokens
+  let maintenance: AppControlLogic.Maintenance
+
+  var body: some View {
+    let store = AppControlStore.shared
+    let language = Localizer.shared.language.rawValue
+    VStack(spacing: 0) {
+      Spacer()
+      EmptyState(icon: "construct-outline", title: AppControlLogic.text(maintenance.title, language: language), message: message(language)) {
+        VStack(spacing: 10.5) {
+          AppButton(title: t("maintenance.retry"), variant: .primary, loading: store.isRetrying) {
+            Haptics.impact(.medium)
+            Task { await store.retryMaintenance() }
+          }
+          if AuthStore.shared.user?.roles?.contains("admin") == true {
+            AppButton(title: t("maintenance.continueAdmin"), variant: .outline) {
+              Haptics.impact(.light)
+              store.dismissMaintenance()
+            }
+          }
+        }
+      }
+      Spacer()
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(tokens.canvas)
+    .contentShape(.rect)
+    .accessibilityAddTraits(.isModal)
+  }
+
+  private func message(_ language: String) -> String {
+    let body = AppControlLogic.text(maintenance.body, language: language)
+    guard let raw = maintenance.endsAt, let end = AppControlLogic.date(raw) else { return body }
+    let time = end.formatted(.dateTime.day().month(.abbreviated).hour().minute().locale(Localizer.shared.locale))
+    return body + "\n\n" + t("maintenance.until", ["time": time])
   }
 }

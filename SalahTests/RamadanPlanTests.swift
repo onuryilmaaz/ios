@@ -302,3 +302,26 @@ struct UpdatePolicyTests {
     #expect(UpdatePolicy.evaluate(current: "1.0.0", .init(minVersion: nil, latestVersion: "2.0", storeUrl: "")) == .optional(version: "2.0", storeURL: UpdatePolicy.defaultStoreURL))
   }
 }
+
+struct AppControlVisibilityTests {
+  private let now = AppControlLogic.date("2027-01-01T11:00:00Z")!
+
+  @Test func adminPreviewAndBlockedVersions() {
+    let closed = AppControlLogic.ModuleState(enabled: false, schedule: nil, adminPreview: true, blockedVersions: nil)
+    #expect(!AppControlLogic.visible(closed, now: now, platform: "ios", version: "1.2.0", admin: false))
+    #expect(AppControlLogic.visible(closed, now: now, platform: "ios", version: "1.2.0", admin: true))
+    let blocked = AppControlLogic.ModuleState(enabled: true, schedule: nil, adminPreview: nil, blockedVersions: ["ios": ["1.1.1"]])
+    #expect(!AppControlLogic.visible(blocked, now: now, platform: "ios", version: "1.1.1", admin: false))
+    #expect(AppControlLogic.visible(blocked, now: now, platform: "ios", version: "1.1.10", admin: false))
+    #expect(AppControlLogic.visible(blocked, now: now, platform: "android", version: "1.1.1", admin: false))
+    #expect(AppControlLogic.visible(nil, now: now, platform: "ios", version: "1.0.0", admin: false))
+  }
+
+  @Test func maintenanceWindow() {
+    let m = AppControlLogic.Maintenance(active: true, title: ["tr": "B"], body: ["tr": "M"], platforms: ["ios"], startsAt: "2027-01-01T10:00:00Z", endsAt: "2027-01-01T12:00:00Z")
+    #expect(AppControlLogic.maintenanceActive(m, platform: "ios", now: now))
+    #expect(!AppControlLogic.maintenanceActive(m, platform: "android", now: now))
+    #expect(!AppControlLogic.maintenanceActive(m, platform: "ios", now: AppControlLogic.date("2027-01-01T12:00:00Z")!))
+    #expect(!AppControlLogic.maintenanceActive(nil, platform: "ios", now: now))
+  }
+}

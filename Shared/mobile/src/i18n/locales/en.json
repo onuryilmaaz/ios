@@ -960,6 +960,11 @@
     "username": "Username",
     "usernamePlaceholder": "username"
   },
+  "maintenance": {
+    "continueAdmin": "Continue as admin",
+    "retry": "Try again",
+    "until": "Expected to end: {{time}}"
+  },
   "module": {"closedTitle": "This section is closed for now", "closedBody": "This section is temporarily unavailable. You can keep using the rest of the app."},
   "qibla": {
     "themeLabel": "Compass theme: {{name}}",

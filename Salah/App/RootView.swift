@@ -32,6 +32,9 @@ struct RootView: View {
     // RN: aktif #1f7356 / koyu #2e8a6a
     .tint(tokens.isDark ? Accent.s500 : Accent.s600)
     .overlay {
+      if AppControlStore.shared.showsMaintenance, let m = AppControlStore.shared.maintenance { MaintenanceView(maintenance: m).ignoresSafeArea() }
+    }
+    .overlay {
       if let url = UpdateGate.shared.requiredStoreURL { UpdateRequiredView(storeURL: url).ignoresSafeArea() }
     }
     // Tur, sekme çubuğu dahil her şeyin üstünde: saydam tam ekran katman (kayarak değil, solarak açılır).

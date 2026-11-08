@@ -9,7 +9,7 @@ struct FastJournalView: View {
 
   var body: some View {
     let store = RamadanStore.shared
-    let teravih = store.ledger.markDays(window.hijriYear, kind: "taraweeh")
+    let teravihCount = store.markCount("taraweeh", hijriYear: window.hijriYear)
     let now = Date()
     let todayKey = localDateString(now)
     let calendar = Calendar.current
@@ -34,7 +34,7 @@ struct FastJournalView: View {
       ScrollView {
         VStack(alignment: .leading, spacing: 0) {
           HStack(alignment: .lastTextBaseline, spacing: 9) {
-            Text("\(teravihTab ? teravih.count : store.count(hijriYear: window.hijriYear))").font(.system(size: 68, weight: .ultraLight)).foregroundStyle(tint.accent).tabularNumbers()
+            Text("\(teravihTab ? teravihCount : store.count(hijriYear: window.hijriYear))").font(.system(size: 68, weight: .ultraLight)).foregroundStyle(tint.accent).tabularNumbers()
             Text(teravihTab ? "/ \(window.days) \(t("ramadan.tab.teravih"))" : t("ramadan.journal.ofTotal", ["total": window.days])).font(.system(size: 16)).foregroundStyle(.white.opacity(0.85))
           }
           HStack(spacing: 8) {

@@ -362,17 +362,20 @@ struct HatimCard: View {
         .padding(.top, 14)
 
         if RamadanMode.shared.isOn() {
-          AppButton(title: t(HatimPlanStore.shared.plan == nil ? "insights.hatim.planCreate" : "insights.hatim.planOpen"), variant: .outline) {
-            Haptics.impact(.light)
-            if let url = URL(string: "salah://hatim") { openURL(url) }
+          let showsPlan = AppControlStore.shared.isOn("hatim_plan")
+          if showsPlan {
+            AppButton(title: t(HatimPlanStore.shared.plan == nil ? "insights.hatim.planCreate" : "insights.hatim.planOpen"), variant: .outline) {
+              Haptics.impact(.light)
+              if let url = URL(string: "salah://hatim") { openURL(url) }
+            }
+            .padding(.top, 14)
           }
-          .padding(.top, 14)
           if AppControlStore.shared.isOn("hatim_groups") {
             AppButton(title: t("ramadan.more.groups"), variant: .outline) {
               Haptics.impact(.light)
               if let url = URL(string: "salah://grup") { openURL(url) }
             }
-            .padding(.top, 8)
+            .padding(.top, showsPlan ? 8 : 14)
           }
         }
       }

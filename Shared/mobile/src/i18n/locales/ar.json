@@ -960,6 +960,11 @@
     "username": "اسم المستخدم",
     "usernamePlaceholder": "اسم_المستخدم"
   },
+  "maintenance": {
+    "continueAdmin": "المتابعة كمسؤول",
+    "retry": "إعادة المحاولة",
+    "until": "الانتهاء المتوقع: {{time}}"
+  },
   "module": {"closedTitle": "هذا القسم مغلق حاليًا", "closedBody": "هذا القسم غير متاح مؤقتًا. يمكنك مواصلة استخدام بقية أقسام التطبيق."},
   "qibla": {
     "themeLabel": "سمة البوصلة: {{name}}",

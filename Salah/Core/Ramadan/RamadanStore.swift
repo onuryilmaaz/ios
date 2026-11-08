@@ -84,13 +84,35 @@ final class RamadanStore {
     await sync(force: true)
   }
 
+  /// Teravih, İbadet'teki bugünkü teravih nafile kaydıyla eşleşir (oruçtaki gibi).
   func isMarked(_ kind: String, day: String, hijriYear: Int) -> Bool {
-    ledger.markDays(hijriYear, kind: kind).contains(day)
+    ledger.markDays(hijriYear, kind: kind).contains(day) || (kind == Self.teravihKind && hijriYear != RamadanPlan.previewHijriYear && Self.teravihLog(day) != nil)
   }
 
+  func markCount(_ kind: String, hijriYear: Int, today: String = localDateString()) -> Int {
+    let days = ledger.markDays(hijriYear, kind: kind)
+    let extra = !days.contains(today) && kind == Self.teravihKind && hijriYear != RamadanPlan.previewHijriYear && Self.teravihLog(today) != nil
+    return days.count + (extra ? 1 : 0)
+  }
+
+  /// Bugünün teravihi ayrıca 20 rekat nafile kaydı olur; işaret kalkınca kayıt silinir. Geçmiş günler yalnız deftere yazılır.
   func toggleMark(_ kind: String, day: String, hijriYear: Int) async {
-    save(ledger.settingMark(hijriYear, kind: kind, day: day, on: !isMarked(kind, day: day, hijriYear: hijriYear)))
+    let on = !isMarked(kind, day: day, hijriYear: hijriYear)
+    save(ledger.settingMark(hijriYear, kind: kind, day: day, on: on))
+    if kind == Self.teravihKind, hijriYear != RamadanPlan.previewHijriYear {
+      if !on {
+        if let log = Self.teravihLog(day) { try? await TrackerStore.shared.delete(log.id) }
+      } else if day == localDateString(), AuthStore.shared.isAuthenticated {
+        _ = try? await TrackerStore.shared.log(.nafile, value: .object(["type": .string("teravih"), "rakaat": .number(20)]), notes: nil)
+      }
+    }
     await sync(force: true)
+  }
+
+  static let teravihKind = "taraweeh"
+
+  private static func teravihLog(_ day: String) -> TrackerLog? {
+    TrackerStore.shared.todayLogs.first { $0.date.hasPrefix(day) && $0.type == .nafile && $0.text("type") == "teravih" }
   }
 
   func applyKaza(hijriYear: Int, days: [String]) async {
