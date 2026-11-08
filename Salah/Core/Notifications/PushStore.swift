@@ -56,6 +56,12 @@ final class PushStore {
     LocalStore.set(signature, for: Self.signatureKey)
   }
 
+  /// Panel sayacı: bildirime dokunuldu.
+  func recordOpen(_ campaignId: String) {
+    guard !campaignId.isEmpty, !DebugLaunch.isIsolated else { return }
+    Task { _ = try? await APIClient.shared.send("POST", "/push/campaigns/\(campaignId)/open") }
+  }
+
   private func removeFromServer() async {
     guard LocalStore.string(Self.signatureKey) != "", let token = LocalStore.string(Self.tokenKey) else { return }
     guard (try? await APIClient.shared.send("DELETE", "/push/device", body: ["token": .string(token)])) != nil else { return }

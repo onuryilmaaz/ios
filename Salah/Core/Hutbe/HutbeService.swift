@@ -63,8 +63,20 @@ enum HutbeService {
     }
   }
 
-  /// Metin (bölümler + dipnotlar). Bir kez çekilip saklanır; hutbe değişmez.
+  /// Panelde bu Cuma ve dil için düzeltilmiş metin yayınlandıysa o; sürümü (güncelleme zamanı) ile saklanır.
+  private static func correctedText(_ lang: Lang, item: HutbeParser.Item) async throws -> HutbeParser.Parsed? {
+    guard let meta = await AppControlStore.shared.hutbeOverride(lang: lang.rawValue, date: localDateString(item.date)) else { return nil }
+    let key = "HUTBE_OVERRIDE_V1_\(meta.id)_\(meta.updatedAt)"
+    if let cached = LocalStore.decode(HutbeParser.Parsed.self, key) { return cached }
+    struct Response: Decodable { let data: HutbeParser.Parsed }
+    let parsed = try await APIClient.shared.get("/app/content/hutbe/\(meta.id)", as: Response.self).data
+    LocalStore.encode(parsed, for: key)
+    return parsed
+  }
+
+  /// Metin (bölümler + dipnotlar). Bir kez çekilip saklanır; hutbe değişmez. Panelden düzeltme varsa o gösterilir.
   static func text(_ lang: Lang, item: HutbeParser.Item) async throws -> HutbeParser.Parsed {
+    if let corrected = try? await correctedText(lang, item: item), !corrected.sections.isEmpty { return corrected }
     if let cached = LocalStore.decode(HutbeParser.Parsed.self, textKey(lang, item.id)), !cached.sections.isEmpty { return cached }
     guard canReadInApp(lang), let raw = item.pdfUrl, let url = URL(string: raw), !DebugLaunch.isIsolated else {
       throw URLError(.resourceUnavailable)

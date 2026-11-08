@@ -325,3 +325,29 @@ struct AppControlVisibilityTests {
     #expect(!AppControlLogic.maintenanceActive(nil, platform: "ios", now: now))
   }
 }
+
+struct AnnouncementTargetingTests {
+  private let now = AppControlLogic.date("2027-01-02T00:00:00Z")!
+  private func item(_ id: String, display: String? = nil, languages: [String]? = nil, audience: String? = nil, min: [String: String]? = nil) -> AppControlLogic.Announcement {
+    .init(id: id, title: ["tr": "B"], body: ["tr": "M"], kind: "info", platforms: ["ios"], frequency: "once", startsAt: "2027-01-01T00:00:00Z", endsAt: nil,
+          actionLabel: nil, actionUrl: nil, display: display, languages: languages, audience: audience, minVersions: min)
+  }
+
+  @Test func filtersByLanguageAudienceAndVersion() {
+    let tr = AppControlLogic.Viewer(language: "tr", signedIn: false, version: "1.2.0")
+    #expect(AppControlLogic.eligible(item("a"), platform: "ios", now: now, viewer: tr))
+    #expect(!AppControlLogic.eligible(item("a", languages: ["en", "ar"]), platform: "ios", now: now, viewer: tr))
+    #expect(!AppControlLogic.eligible(item("a", audience: "signed_in"), platform: "ios", now: now, viewer: tr))
+    #expect(AppControlLogic.eligible(item("a", audience: "guests"), platform: "ios", now: now, viewer: tr))
+    #expect(!AppControlLogic.eligible(item("a", min: ["ios": "1.3"]), platform: "ios", now: now, viewer: tr))
+    #expect(AppControlLogic.eligible(item("a", min: ["ios": "1.2.0", "android": "9.0"]), platform: "ios", now: now, viewer: tr))
+  }
+
+  @Test func bannersAndPopupsAreSeparate() {
+    let list = [item("p"), item("b", display: "banner")]
+    #expect(AppControlLogic.next(list, platform: "ios", now: now, seen: [])?.id == "p")
+    #expect(AppControlLogic.next(list, platform: "ios", now: now, seen: ["p"]) == nil)
+    #expect(AppControlLogic.banners(list, platform: "ios", now: now, dismissed: [], viewer: nil).map(\.id) == ["b"])
+    #expect(AppControlLogic.banners(list, platform: "ios", now: now, dismissed: ["b"], viewer: nil).isEmpty)
+  }
+}

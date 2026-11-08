@@ -27,6 +27,13 @@ final class InspirationModel {
     guard !isLoading else { return }
     isLoading = true
     defer { isLoading = false }
+    // Panelde bu güne atanmış içerik varsa rastgele seçilmez.
+    if let daily = AppControlStore.shared.dailyItem(for: localDateString()) {
+      let language = Localizer.shared.language.rawValue
+      current = Item(kind: daily.kind == "hadith" ? .hadith : .verse, text: AppControlLogic.text(daily.text, language: language),
+                     arabic: daily.arabic, source: AppControlLogic.text(daily.source, language: language))
+      return
+    }
     if Bool.random(), let r = await QuranService.randomVerse() {
       current = Item(
         kind: .verse,
@@ -67,6 +74,10 @@ struct DailyInspirationCard: View {
       else if model.current == nil { await model.load() }
     }
     .onChange(of: NotificationNavigation.shared.homeRequest) { expanded = true }
+    // Panel içeriği sonradan gelirse (ilk okuma) kart güncellenir.
+    .onChange(of: AppControlStore.shared.dailyItem(for: localDateString())) { _, item in
+      if item != nil, NotificationNavigation.shared.inspiration == nil { Task { await model.load() } }
+    }
     .fullScreenCover(item: $sharing) { item in
       ShareCardSheet(
         arabic: item.arabic.isEmpty ? nil : item.arabic,

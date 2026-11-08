@@ -14,9 +14,13 @@ struct RamadanCard: View {
       let window = RamadanSchedule.window(religious, now: context.date)
       switch RamadanSchedule.phase(window, now: context.date, today: today?.times) {
       case .none: EmptyView()
-      case .upcoming(let daysLeft, let start): upcoming(daysLeft, start)
+      case .upcoming(let daysLeft, let start):
+        upcoming(daysLeft, start)
+        if AppControlStore.shared.isOn("hatim_plan") { HatimPlanCard(onOpen: onHatim) }
       case .active(let day, let total, _):
         RamadanJourneyCard(window: window, total: total, onJournal: onJournal, onHatim: onHatim)
+        // Plan kartı gözden kaçmasın: yolculuğun hemen altında.
+        if AppControlStore.shared.isOn("hatim_plan") { HatimPlanCard(onOpen: onHatim) }
         LastNightsCard(window: window)
         RamadanVerseCard(day: day)
       }

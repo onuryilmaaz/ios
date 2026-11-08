@@ -58,23 +58,22 @@ final class RamadanStore {
   func count(hijriYear: Int) -> Int {
     let today = localDateString()
     let days = ledger.days(hijriYear)
-    let extra = !days.contains(today) && hijriYear != RamadanPlan.previewHijriYear && Self.todayLog(today) != nil
+    let extra = !days.contains(today) && Self.todayLog(today) != nil
     return days.count + (extra ? 1 : 0)
   }
 
   func isFasted(_ day: String, hijriYear: Int) -> Bool {
-    ledger.days(hijriYear).contains(day) || (hijriYear != RamadanPlan.previewHijriYear && Self.todayLog(day) != nil)
+    ledger.days(hijriYear).contains(day) || Self.todayLog(day) != nil
   }
 
   func toggle(_ day: String, hijriYear: Int) async {
     let fasted = !isFasted(day, hijriYear: hijriYear)
     save(ledger.marking(hijriYear, day: day, fasted: fasted))
-    if hijriYear != RamadanPlan.previewHijriYear {
-      if !fasted {
-        if let log = Self.todayLog(day) { try? await TrackerStore.shared.delete(log.id) }
-      } else if day == localDateString(), AuthStore.shared.isAuthenticated {
-        _ = try? await TrackerStore.shared.log(.fasting, value: .object(["type": .string("ramazan")]), notes: nil)
-      }
+    // Önizlemede de eşleşir (yönetici denemesi): bugünün kaydı gerçek İbadet kaydıdır.
+    if !fasted {
+      if let log = Self.todayLog(day) { try? await TrackerStore.shared.delete(log.id) }
+    } else if day == localDateString(), AuthStore.shared.isAuthenticated {
+      _ = try? await TrackerStore.shared.log(.fasting, value: .object(["type": .string("ramazan")]), notes: nil)
     }
     await sync(force: true)
   }
@@ -86,12 +85,12 @@ final class RamadanStore {
 
   /// Teravih, İbadet'teki bugünkü teravih nafile kaydıyla eşleşir (oruçtaki gibi).
   func isMarked(_ kind: String, day: String, hijriYear: Int) -> Bool {
-    ledger.markDays(hijriYear, kind: kind).contains(day) || (kind == Self.teravihKind && hijriYear != RamadanPlan.previewHijriYear && Self.teravihLog(day) != nil)
+    ledger.markDays(hijriYear, kind: kind).contains(day) || (kind == Self.teravihKind && Self.teravihLog(day) != nil)
   }
 
   func markCount(_ kind: String, hijriYear: Int, today: String = localDateString()) -> Int {
     let days = ledger.markDays(hijriYear, kind: kind)
-    let extra = !days.contains(today) && kind == Self.teravihKind && hijriYear != RamadanPlan.previewHijriYear && Self.teravihLog(today) != nil
+    let extra = !days.contains(today) && kind == Self.teravihKind && Self.teravihLog(today) != nil
     return days.count + (extra ? 1 : 0)
   }
 
@@ -99,7 +98,7 @@ final class RamadanStore {
   func toggleMark(_ kind: String, day: String, hijriYear: Int) async {
     let on = !isMarked(kind, day: day, hijriYear: hijriYear)
     save(ledger.settingMark(hijriYear, kind: kind, day: day, on: on))
-    if kind == Self.teravihKind, hijriYear != RamadanPlan.previewHijriYear {
+    if kind == Self.teravihKind {
       if !on {
         if let log = Self.teravihLog(day) { try? await TrackerStore.shared.delete(log.id) }
       } else if day == localDateString(), AuthStore.shared.isAuthenticated {

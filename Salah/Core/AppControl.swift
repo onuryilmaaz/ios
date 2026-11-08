@@ -34,6 +34,41 @@ enum AppControlLogic {
     var endsAt: String?
     var actionLabel: [String: String]?
     var actionUrl: String?
+    /// "popup" ya da "banner" (ana sayfa bandı).
+    var display: String?
+    /// Boş: tüm diller.
+    var languages: [String]?
+    /// "all", "signed_in" ya da "guests".
+    var audience: String?
+    /// Platforma göre en düşük uygulama sürümü.
+    var minVersions: [String: String]?
+  }
+
+  /// Panelden yönetilen içerik: günlere atanan ayet/hadis, tebrik metinleri, hutbe düzeltmeleri (metinsiz).
+  struct Content: Codable, Equatable, Sendable {
+    struct Daily: Codable, Equatable, Sendable {
+      var date: String
+      var kind: String
+      var text: [String: String]
+      var arabic: String
+      var source: [String: String]
+    }
+    struct Hutbe: Codable, Equatable, Sendable {
+      var id: String
+      var lang: String
+      var date: String
+      var updatedAt: String
+    }
+    var daily: [Daily]?
+    var greetings: [String: [String: String]]?
+    var hutbe: [Hutbe]?
+  }
+
+  /// Hedeflemenin bu cihazdaki karşılığı.
+  struct Viewer: Equatable, Sendable {
+    var language: String
+    var signedIn: Bool
+    var version: String
   }
 
   static func date(_ text: String) -> Date? {
@@ -70,13 +105,29 @@ enum AppControlLogic {
     return true
   }
 
-  /// Bu platformda şimdi gösterilebilecek, daha önce görülmemiş ilk duyuru.
-  static func next(_ list: [Announcement], platform: String, now: Date, seen: Set<String>) -> Announcement? {
-    list.first { item in
-      guard item.platforms.contains(platform), !seen.contains(item.id), let start = date(item.startsAt), start <= now else { return false }
-      if let raw = item.endsAt, let end = date(raw), end <= now { return false }
-      return true
+  /// Platform, yayın aralığı ve hedefleme (dil, giriş durumu, en düşük sürüm).
+  static func eligible(_ item: Announcement, platform: String, now: Date, viewer: Viewer?) -> Bool {
+    guard item.platforms.contains(platform), let start = date(item.startsAt), start <= now else { return false }
+    if let raw = item.endsAt, let end = date(raw), end <= now { return false }
+    guard let viewer else { return true }
+    if let languages = item.languages, !languages.isEmpty, !languages.contains(viewer.language) { return false }
+    switch item.audience {
+    case "signed_in": if !viewer.signedIn { return false }
+    case "guests": if viewer.signedIn { return false }
+    default: break
     }
+    if let min = item.minVersions?[platform], !min.isEmpty, UpdatePolicy.compare(viewer.version, min) < 0 { return false }
+    return true
+  }
+
+  /// Bu platformda şimdi gösterilebilecek, daha önce görülmemiş ilk pencere duyurusu.
+  static func next(_ list: [Announcement], platform: String, now: Date, seen: Set<String>, viewer: Viewer? = nil) -> Announcement? {
+    list.first { $0.display != "banner" && !seen.contains($0.id) && eligible($0, platform: platform, now: now, viewer: viewer) }
+  }
+
+  /// Ana sayfa bantları: kapatılmamış olanlar.
+  static func banners(_ list: [Announcement], platform: String, now: Date, dismissed: Set<String>, viewer: Viewer?) -> [Announcement] {
+    list.filter { $0.display == "banner" && !dismissed.contains($0.id) && eligible($0, platform: platform, now: now, viewer: viewer) }
   }
 
   /// Seçili dilde metin yoksa Türkçesi.
@@ -98,6 +149,8 @@ final class AppControlStore {
   static let shared = AppControlStore()
   private static let key = "@salah_app_control_v1"
   private static let seenKey = "@salah_announcements_seen_v1"
+  private static let dismissedKey = "@salah_banners_dismissed_v1"
+  private static let viewedKey = "@salah_announcement_views_v1"
   private static let refreshInterval: TimeInterval = 300
   /// Bildirim merkezi gibi kısa geçişler aynı ayarı tekrar tekrar istemesin.
   private static let foregroundInterval: TimeInterval = 15
@@ -105,6 +158,7 @@ final class AppControlStore {
   struct Snapshot: Codable, Equatable {
     var modules: [String: AppControlLogic.ModuleState]?
     var announcements: [AppControlLogic.Announcement]?
+    var content: AppControlLogic.Content?
   }
 
   private struct Config: Decodable {
@@ -112,6 +166,7 @@ final class AppControlStore {
     var announcements: [AppControlLogic.Announcement]?
     var ios: UpdatePolicy.Server?
     var maintenance: AppControlLogic.Maintenance?
+    var content: AppControlLogic.Content?
   }
 
   private(set) var snapshot: Snapshot
@@ -120,6 +175,8 @@ final class AppControlStore {
   /// Yönetici bakım ekranını bu açılış için geçti.
   private(set) var maintenanceDismissed = false
   private(set) var isRetrying = false
+  /// Kapatılan bantlar (kalıcı).
+  private(set) var dismissedBanners = Set(LocalStore.decode([String].self, AppControlStore.dismissedKey) ?? [])
   /// Zaman aralığı başlayınca ekranlar yeniden çizilsin diye dakikada bir değişir.
   private(set) var now = Date()
   @ObservationIgnored private var lastFetch: Date?
@@ -128,7 +185,7 @@ final class AppControlStore {
   private init() {
     #if DEBUG
     if let raw = UserDefaults.standard.string(forKey: "SalahDebugControl"), let data = Data(base64Encoded: raw), let value = try? JSONDecoder().decode(Config.self, from: data) {
-      snapshot = Snapshot(modules: value.modules, announcements: value.announcements)
+      snapshot = Snapshot(modules: value.modules, announcements: value.announcements, content: value.content)
       maintenance = value.maintenance
       return
     }
@@ -156,6 +213,59 @@ final class AppControlStore {
 
   func dismissMaintenance() { maintenanceDismissed = true }
 
+  /// Panelde bu güne atanmış ayet ya da hadis.
+  func dailyItem(for date: String) -> AppControlLogic.Content.Daily? {
+    snapshot.content?.daily?.first { $0.date == date }
+  }
+
+  /// Panelde değiştirilmiş tebrik metni (seçili dil, yoksa Türkçe).
+  func greeting(_ kind: String) -> String? {
+    guard let message = snapshot.content?.greetings?[kind] else { return nil }
+    let text = AppControlLogic.text(message, language: Localizer.shared.language.rawValue)
+    return text.isEmpty ? nil : text
+  }
+
+  /// O Cuma ve dil için yayınlanmış düzeltilmiş hutbe.
+  func hutbeOverride(lang: String, date: String) -> AppControlLogic.Content.Hutbe? {
+    snapshot.content?.hutbe?.first { $0.lang == lang && $0.date == date }
+  }
+
+  private var viewer: AppControlLogic.Viewer {
+    .init(language: Localizer.shared.language.rawValue, signedIn: AuthStore.shared.isAuthenticated, version: UpdateGate.currentVersion)
+  }
+
+  /// Ana sayfada gösterilecek bantlar.
+  var banners: [AppControlLogic.Announcement] {
+    AppControlLogic.banners(snapshot.announcements ?? [], platform: "ios", now: now, dismissed: dismissedBanners, viewer: viewer)
+  }
+
+  func dismissBanner(_ item: AppControlLogic.Announcement) {
+    dismissedBanners.insert(item.id)
+    LocalStore.encode(Array(dismissedBanners.suffix(100)), for: Self.dismissedKey)
+    record(item.id, "dismiss")
+  }
+
+  func openBanner(_ item: AppControlLogic.Announcement) {
+    guard let raw = item.actionUrl, AppControlLogic.isAllowedLink(raw), let url = URL(string: raw) else { return }
+    record(item.id, "tap")
+    UIApplication.shared.open(url)
+  }
+
+  /// Görülme cihaz başına bir kez sayılır.
+  func markViewed(_ id: String) {
+    var viewed = LocalStore.decode([String].self, Self.viewedKey) ?? []
+    guard !viewed.contains(id) else { return }
+    viewed.append(id)
+    LocalStore.encode(Array(viewed.suffix(200)), for: Self.viewedKey)
+    record(id, "view")
+  }
+
+  /// Panel sayaçları; hata olursa sessizce geçilir.
+  private func record(_ id: String, _ type: String) {
+    guard !DebugLaunch.isIsolated else { return }
+    Task { _ = try? await APIClient.shared.send("POST", "/app/announcements/\(id)/event", body: ["type": .string(type)]) }
+  }
+
   /// Uygulama öndeyken çalışır; sahne arka plana geçince görev iptal edilir.
   func run() async {
     var interval = Self.foregroundInterval
@@ -181,7 +291,7 @@ final class AppControlStore {
     maintenance = fresh.maintenance
     // Sunucu ayarları okuyamadıysa alanlar gelmez: elde olan korunur.
     guard fresh.modules != nil || fresh.announcements != nil else { return }
-    let next = Snapshot(modules: fresh.modules, announcements: fresh.announcements)
+    let next = Snapshot(modules: fresh.modules, announcements: fresh.announcements, content: fresh.content)
     snapshot = next
     LocalStore.encode(next, for: Self.key)
   }
@@ -192,7 +302,7 @@ final class AppControlStore {
 
   private func presentNext() {
     guard AlertCenter.shared.current == nil, !AuthFlow.shared.isPresented, TourStore.shared.tour == nil, OnboardingStore.shared.done,
-      let item = AppControlLogic.next(snapshot.announcements ?? [], platform: "ios", now: now, seen: seen)
+      let item = AppControlLogic.next(snapshot.announcements ?? [], platform: "ios", now: now, seen: seen, viewer: viewer)
     else { return }
     shownThisLaunch.insert(item.id)
     if item.frequency == "once" {
@@ -200,11 +310,15 @@ final class AppControlStore {
       LocalStore.encode(Array(((LocalStore.decode([String].self, Self.seenKey) ?? []) + [item.id]).suffix(100)), for: Self.seenKey)
     }
     let language = Localizer.shared.language.rawValue
+    markViewed(item.id)
     var buttons: [AppAlert.Button] = []
     if let raw = item.actionUrl, AppControlLogic.isAllowedLink(raw), let url = URL(string: raw), let label = item.actionLabel {
-      buttons.append(.init(text: AppControlLogic.text(label, language: language)) { UIApplication.shared.open(url) })
+      buttons.append(.init(text: AppControlLogic.text(label, language: language)) { [weak self] in
+        self?.record(item.id, "tap")
+        UIApplication.shared.open(url)
+      })
     }
-    buttons.append(.init(text: t("common.ok"), style: buttons.isEmpty ? .default : .cancel))
+    buttons.append(.init(text: t("common.ok"), style: buttons.isEmpty ? .default : .cancel) { [weak self] in self?.record(item.id, "dismiss") })
     AppAlert.show(item.kind == "warning" ? .warning : .info, AppControlLogic.text(item.title, language: language), AppControlLogic.text(item.body, language: language), buttons: buttons)
   }
 }
@@ -279,5 +393,52 @@ struct MaintenanceView: View {
     guard let raw = maintenance.endsAt, let end = AppControlLogic.date(raw) else { return body }
     let time = end.formatted(.dateTime.day().month(.abbreviated).hour().minute().locale(Localizer.shared.locale))
     return body + "\n\n" + t("maintenance.until", ["time": time])
+  }
+}
+
+/// Ana sayfadaki duyuru bantları: panelde "Ana sayfa bandı" seçilen duyurular, kapatılana kadar.
+struct AnnouncementBanners: View {
+  @Environment(\.tokens) private var tokens
+
+  var body: some View {
+    let store = AppControlStore.shared
+    let language = Localizer.shared.language.rawValue
+    ForEach(store.banners, id: \.id) { item in
+      let warning = item.kind == "warning"
+      HStack(alignment: .top, spacing: 10.5) {
+        Ionicon(warning ? "alert-circle-outline" : "megaphone-outline", size: 20, color: warning ? Gold.s600 : tokens.accent)
+          .frame(width: 35, height: 35)
+          .background(warning ? Gold.s100.opacity(tokens.isDark ? 0.15 : 1) : (tokens.isDark ? Accent.s900 : Accent.s50), in: .circle)
+        VStack(alignment: .leading, spacing: 1.75) {
+          Text(AppControlLogic.text(item.title, language: language)).font(.system(size: 15, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+          Text(AppControlLogic.text(item.body, language: language)).font(.system(size: 13)).foregroundStyle(tokens.textSecondary)
+            .fixedSize(horizontal: false, vertical: true)
+          if let label = item.actionLabel, item.actionUrl != nil {
+            Button {
+              Haptics.impact(.light)
+              store.openBanner(item)
+            } label: {
+              Text(AppControlLogic.text(label, language: language)).font(.system(size: 13, weight: .semibold)).foregroundStyle(tokens.accent)
+                .padding(.horizontal, 14).padding(.vertical, 7).background(tokens.fill, in: .capsule)
+            }
+            .buttonStyle(PressableStyle()).padding(.top, 7)
+          }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        Button {
+          Haptics.impact(.light)
+          withAnimation(.easeOut(duration: 0.2)) { store.dismissBanner(item) }
+        } label: {
+          Ionicon("close", size: 18, color: tokens.inkSubtle).frame(width: 44, height: 44)
+        }
+        .buttonStyle(PressableStyle()).accessibilityLabel(t("common.close"))
+        .padding(.top, -10).padding(.trailing, -10)
+      }
+      .padding(17.5)
+      .background(tokens.surface, in: .rect(cornerRadius: 21))
+      .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+      .padding(.horizontal, 14).padding(.bottom, 10.5)
+      .onAppear { store.markViewed(item.id) }
+    }
   }
 }

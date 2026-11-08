@@ -48,7 +48,7 @@ struct GreetingShareSheet: View {
   let dateText: String
 
   var body: some View {
-    let message = t("shareCards.greeting.\(kind.rawValue)")
+    let message = AppControlStore.shared.greeting(kind.rawValue) ?? t("shareCards.greeting.\(kind.rawValue)")
     ShareImageSheet(fallbackText: [message, dayName].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: "\n")) {
       ShareCardHeader()
 

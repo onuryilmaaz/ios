@@ -25,6 +25,7 @@ struct NotificationPayload: Sendable {
   let contentType: String
   /// Duyuru bildiriminin bağlantısı.
   let url: String
+  let campaignId: String
 
   nonisolated init(_ info: [AnyHashable: Any]) {
     type = info["type"] as? String ?? ""
@@ -35,6 +36,7 @@ struct NotificationPayload: Sendable {
     arabic = info["arabic"] as? String ?? ""
     contentType = info["contentType"] as? String ?? "ayet"
     url = info["url"] as? String ?? ""
+    campaignId = info["campaignId"] as? String ?? ""
   }
 
   var inspiration: InspirationModel.Item? {
@@ -108,7 +110,10 @@ final class SalahNotificationDelegate: NSObject, UNUserNotificationCenterDelegat
         if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
         if payload.type == "hatim_reminder", let url = URL(string: "salah://tracker/quran") { UIApplication.shared.open(url) }
         if payload.type == "ramadan_night", let url = URL(string: "salah://oruc") { UIApplication.shared.open(url) }
-        if payload.type == "announcement", AppControlLogic.isAllowedLink(payload.url), let url = URL(string: payload.url) { UIApplication.shared.open(url) }
+        if payload.type == "announcement" {
+          PushStore.shared.recordOpen(payload.campaignId)
+          if AppControlLogic.isAllowedLink(payload.url), let url = URL(string: payload.url) { UIApplication.shared.open(url) }
+        }
       }
       completionHandler()
     }
