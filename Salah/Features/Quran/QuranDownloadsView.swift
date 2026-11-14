@@ -87,6 +87,7 @@ struct QuranDownloadsView: View {
       ScrollView {
         VStack(alignment: .leading, spacing: 16) {
           textCard(downloads)
+          mushafCard(downloads)
           audioCard(downloads)
         }.padding(16).padding(.bottom, 24)
       }.scrollIndicators(.hidden)
@@ -95,6 +96,7 @@ struct QuranDownloadsView: View {
     .task {
       surahs = await QuranService.surahs()
       downloads.refreshSize()
+      downloads.refreshMushaf()
     }
   }
 
@@ -118,6 +120,53 @@ struct QuranDownloadsView: View {
           AppButton(title: t("quranOffline.textDownload"), variant: .secondary) {
             Haptics.impact(.medium)
             downloads.downloadAllText()
+          }
+        }
+      }
+    }
+    .padding(17.5).frame(maxWidth: .infinity, alignment: .leading)
+    .background(tokens.surface, in: .rect(cornerRadius: 21))
+    .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+  }
+
+  private func mushafCard(_ downloads: QuranDownloads) -> some View {
+    let script = QuranReadingStore.shared.mushafScript
+    return VStack(alignment: .leading, spacing: 10.5) {
+      HStack {
+        Text(t("quranOffline.mushafTitle")).font(.system(size: 15, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+        Spacer()
+        if downloads.mushafBytes > 0 {
+          Text(t("quranOffline.size", ["size": downloads.mushafBytes.formatted(.byteCount(style: .file).locale(Localizer.shared.locale))]))
+            .font(.system(size: 13)).foregroundStyle(tokens.textSecondary).tabularNumbers()
+        }
+      }
+      Text(t(script == .text ? "quranOffline.mushafHintText" : "quranOffline.mushafHintScript", ["script": t(script.labelKey)]))
+        .font(.system(size: 13)).foregroundStyle(tokens.textSecondary).fixedSize(horizontal: false, vertical: true)
+      if let p = downloads.mushafProgress {
+        ProgressBarLine(value: p)
+        HStack {
+          Text(t("quranOffline.downloading", ["percent": Int(p * 100)])).font(.system(size: 13, weight: .medium)).foregroundStyle(tokens.accent).tabularNumbers()
+          Spacer()
+          Button { Haptics.impact(.light); downloads.cancelMushaf() } label: {
+            Text(t("quranOffline.cancel")).font(.system(size: 13, weight: .semibold)).foregroundStyle(tokens.textSecondary)
+          }.buttonStyle(PressableStyle())
+        }
+      } else {
+        Text(t("quranOffline.mushafCount", ["count": downloads.mushafReady])).font(.system(size: 13, weight: .medium)).foregroundStyle(tokens.textSecondary).tabularNumbers()
+        HStack(spacing: 10.5) {
+          if downloads.mushafReady < 604 {
+            AppButton(title: t("quranOffline.mushafDownload"), variant: .secondary) {
+              Haptics.impact(.medium)
+              downloads.downloadMushaf()
+            }
+          }
+          if downloads.mushafBytes > 0 {
+            AppButton(title: t("quranOffline.delete"), variant: .danger) {
+              Haptics.impact(.light)
+              AppAlert.confirm(t("quranOffline.mushafTitle"), t("quranOffline.mushafDeleteMessage"), confirmText: t("quranOffline.delete"), destructive: true) {
+                downloads.deleteMushaf()
+              }
+            }
           }
         }
       }

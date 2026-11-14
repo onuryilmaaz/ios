@@ -138,7 +138,7 @@ enum DebugLaunch {
   static var isIsolated: Bool {
     #if DEBUG
       let env = ProcessInfo.processInfo.environment
-      return env["SALAH_TEST_ISOLATED"] == "1" || UserDefaults.standard.bool(forKey: "SalahDebugOffline") || splashPreview || adminPreview || notifications != nil || quran != nil || qibla != nil || calendar != nil || ozelGun != nil || sample
+      return env["SALAH_TEST_ISOLATED"] == "1" || UserDefaults.standard.bool(forKey: "SalahDebugOffline") || splashPreview || adminPreview || notifications != nil || (quran != nil && quran != "mushafLive") || qibla != nil || calendar != nil || ozelGun != nil || sample
         || env["XCTestConfigurationFilePath"] != nil || env["XCTestBundlePath"] != nil
         || NSClassFromString("XCTestCase") != nil
     #else

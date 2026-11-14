@@ -109,8 +109,13 @@ extension QuranService {
     return result
   }
 
+  /// Kelime meali dili: Türkçe arayüzde Türkçe, diğerlerinde İngilizce (quran.com kelime kelime çevirileri).
+  static var wordLanguage: String { Localizer.shared.language == .tr ? "tr" : "en" }
+
   static func words(surah: Int, verse: Int) async -> [VerseWord] {
-    let key = "@salah_words_\(surah)_\(verse)"
+    let lang = wordLanguage
+    if let chapter = readChapterWords(surah, language: lang), let words = chapter[verse] { return words }
+    let key = "@salah_words_\(lang)_\(surah)_\(verse)"
     if let cached = LocalStore.decode([VerseWord].self, key) { return cached }
     guard !DebugLaunch.isIsolated else { return [] }
     struct Response: Decodable {
@@ -124,13 +129,73 @@ extension QuranService {
       }
       var verse: Body
     }
-    let url = URL(string: "https://api.quran.com/api/v4/verses/by_key/\(surah):\(verse)?words=true&word_fields=text_uthmani,transliteration")!
+    let url = URL(string: "https://api.quran.com/api/v4/verses/by_key/\(surah):\(verse)?words=true&word_fields=text_uthmani,transliteration&language=\(lang)")!
     guard let result = try? await external(url, as: Response.self) else { return [] }
     let words = result.verse.words.filter { $0.char_type_name == "word" }.map {
       VerseWord(arabic: $0.text_uthmani ?? "", transliteration: $0.transliteration?.text, meaning: $0.translation?.text)
     }
     if !words.isEmpty { LocalStore.encode(words, for: key) }
     return words
+  }
+
+  /// Surenin bütün ayetlerinin kelimeleri (ayet numarası → kelimeler). Dosyada saklanır:
+  /// `Application Support/QuranWords/<dil>/<sure>.json` (yedeğe girmez).
+  static func chapterWords(_ surah: Int) async -> [Int: [VerseWord]] {
+    let lang = wordLanguage
+    if let cached = readChapterWords(surah, language: lang) { return cached }
+    guard !DebugLaunch.isIsolated else { return [:] }
+    struct Response: Decodable {
+      struct Verse: Decodable { var verse_number: Int; var words: [Word] }
+      struct Word: Decodable {
+        struct Text: Decodable { var text: String? }
+        var char_type_name: String
+        var text_qpc_hafs: String?
+        var transliteration: Text?
+        var translation: Text?
+      }
+      struct Pagination: Decodable { var total_pages: Int? }
+      var verses: [Verse]
+      var pagination: Pagination?
+    }
+    var result: [Int: [VerseWord]] = [:]
+    var page = 1, total = 1
+    repeat {
+      let url = URL(string: "https://api.quran.com/api/v4/verses/by_chapter/\(surah)?words=true&word_fields=text_qpc_hafs&per_page=50&page=\(page)&language=\(lang)")!
+      guard let response = try? await external(url, as: Response.self) else { return [:] }
+      for verse in response.verses {
+        result[verse.verse_number] = verse.words.filter { $0.char_type_name == "word" }.map {
+          VerseWord(arabic: $0.text_qpc_hafs ?? "", transliteration: $0.transliteration?.text, meaning: $0.translation?.text)
+        }
+      }
+      total = response.pagination?.total_pages ?? 1
+      page += 1
+    } while page <= total && !Task.isCancelled
+    guard !result.isEmpty, !Task.isCancelled else { return [:] }
+    writeChapterWords(surah, language: lang, result)
+    return result
+  }
+
+  nonisolated private static func chapterWordsFile(_ surah: Int, language: String) -> URL {
+    FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+      .appendingPathComponent("QuranWords/\(language)/\(surah).json")
+  }
+
+  private static func readChapterWords(_ surah: Int, language: String) -> [Int: [VerseWord]]? {
+    guard let data = try? Data(contentsOf: chapterWordsFile(surah, language: language)) else { return nil }
+    return try? JSONDecoder().decode([Int: [VerseWord]].self, from: data)
+  }
+
+  private static func writeChapterWords(_ surah: Int, language: String, _ words: [Int: [VerseWord]]) {
+    let file = chapterWordsFile(surah, language: language)
+    let dir = file.deletingLastPathComponent()
+    if !FileManager.default.fileExists(atPath: dir.path) {
+      try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+      var values = URLResourceValues()
+      values.isExcludedFromBackup = true
+      var root = dir.deletingLastPathComponent()
+      try? root.setResourceValues(values)
+    }
+    if let data = try? JSONEncoder().encode(words) { try? data.write(to: file, options: .atomic) }
   }
 
   private static func external<T: Decodable>(_ url: URL, as type: T.Type) async throws -> T {

@@ -157,7 +157,7 @@ struct SurahBrowserView: View {
     guard !debugOpened, let mode = DebugLaunch.quran else { return }
     debugOpened = true
     if ["detail", "flow", "verse", "share"].contains(mode) { nav.path = [.surah(1, nil)] }
-    if mode == "mushaf" { nav.mushaf = .init(id: DebugLaunch.mushafPage ?? 1) }
+    if mode == "mushaf" || mode == "mushafLive" { nav.mushaf = .init(id: DebugLaunch.mushafPage ?? 1) }
     if mode == "hifz" { nav.path = [.hifz] }
   }
 }

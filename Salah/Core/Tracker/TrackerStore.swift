@@ -57,26 +57,29 @@ final class TrackerStore {
   }
 
   @discardableResult
-  func log(_ type: ActivityType, value: JSONValue, notes: String?) async throws -> TrackerLog? {
+  /// `date` (YYYY-AA-GG) verilirse kayıt o güne yazılır (geçmişe dönük giriş); bugünün listesine yalnız bugünse eklenir.
+  func log(_ type: ActivityType, value: JSONValue, notes: String?, date: String? = nil) async throws -> TrackerLog? {
     struct Response: Decodable {
       var success: Bool
       var data: TrackerLog?
     }
     var body: [String: JSONValue] = ["activity_type": .string(type.rawValue), "value": value]
     if let notes { body["notes"] = .string(notes) }
+    let past = date.map { $0 != localDateString() } ?? false
+    if let date { body["date"] = .string(date) }
     do {
       let res: Response = try await APIClient.shared.post("/tracker", body: .object(body))
       guard res.success, let log = res.data else { return nil }
-      set(todayLogs + [log], date: logsDate)
+      if !past { set(todayLogs + [log], date: logsDate) }
       return log
     } catch where error.isNetworkError {
       let now = Date()
-      let date = localDateString(now)
+      let date = date ?? localDateString(now)
       let tempId = "\(Self.offlinePrefix)\(Int(now.timeIntervalSince1970 * 1000))-\(String(UUID().uuidString.prefix(6)).lowercased())"
       let optimistic = TrackerLog(
         id: tempId, date: date, activity_type: type.rawValue, value: value, notes: notes,
         created_at: ISO8601DateFormatter.withFractionalSeconds.string(from: now))
-      set(todayLogs + [optimistic], date: date)
+      if !past { set(todayLogs + [optimistic], date: date) }
       body["date"] = .string(date)
       OfflineQueue.shared.enqueue(method: "post", url: "/tracker", body: .object(body), clientRef: tempId)
       return optimistic

@@ -21,6 +21,14 @@ final class QuranDownloads {
   /// İndirilen ses boyutu (bayt); `refreshSize` ile güncellenir.
   private(set) var audioBytes: Int64 = 0
 
+  /// Mushaf indirmesi (sayfalar, kelime mealleri, seçili hat): 0...1, yoksa nil.
+  private(set) var mushafProgress: Double?
+  /// Mushaf klasörünün boyutu (bayt).
+  private(set) var mushafBytes: Int64 = 0
+  /// Hazır sayfa sayısı (veri ve seçili hat yazı tipi).
+  private(set) var mushafReady = 0
+
+  @ObservationIgnored private var mushafTask: Task<Void, Never>?
   @ObservationIgnored private var tasks: [String: Task<Void, Never>] = [:]
   @ObservationIgnored private var textTask: Task<Void, Never>?
 
@@ -215,6 +223,75 @@ final class QuranDownloads {
   }
 
   func cancelText() { textTask?.cancel() }
+
+  // MARK: - Mushaf
+
+  /// Mushafın 604 sayfası (seçili dilde kelime mealiyle) ve seçili hattın yazı tipleri; olanlar ağa çıkmaz.
+  func downloadMushaf() {
+    guard mushafTask == nil, !DebugLaunch.isIsolated else { return }
+    let language = MushafService.language
+    let script = QuranReadingStore.shared.mushafScript
+    mushafProgress = 0
+    mushafTask = Task {
+      var done = 0, failed = 0
+      for start in stride(from: 1, through: 604, by: Self.parallel) {
+        if Task.isCancelled { break }
+        let pages = Array(start..<min(605, start + Self.parallel))
+        let results = await withTaskGroup(of: Bool.self) { group in
+          for page in pages { group.addTask { await Self.prepare(page: page, language: language, script: script) } }
+          var ok: [Bool] = []
+          for await result in group { ok.append(result) }
+          return ok
+        }
+        done += pages.count
+        failed += results.filter { !$0 }.count
+        mushafProgress = Double(done) / 604
+      }
+      mushafTask = nil
+      mushafProgress = nil
+      refreshMushaf()
+      if Task.isCancelled { return }
+      if failed == 0 { Toast.success(t("quranOffline.mushafDone")) } else { Toast.error(t("quranOffline.failedTitle"), t("quranOffline.failed")) }
+    }
+  }
+
+  func cancelMushaf() { mushafTask?.cancel() }
+
+  func deleteMushaf() {
+    mushafTask?.cancel()
+    try? FileManager.default.removeItem(at: MushafService.root)
+    refreshMushaf()
+  }
+
+  /// Hazır sayfa sayısını ve klasör boyutunu yeniden hesaplar.
+  func refreshMushaf() {
+    let language = MushafService.language
+    let script = QuranReadingStore.shared.mushafScript
+    Task.detached(priority: .utility) {
+      let ready = (1...604).filter { Self.isReady(page: $0, language: language, script: script) }.count
+      let size = Self.directorySize(MushafService.root)
+      await MainActor.run {
+        QuranDownloads.shared.mushafReady = ready
+        QuranDownloads.shared.mushafBytes = size
+      }
+    }
+  }
+
+  nonisolated private static func isReady(page: Int, language: String, script: MushafScript) -> Bool {
+    MushafService.hasFile(page, language: language) && (script == .text || MushafFonts.hasFile(script, page: page))
+  }
+
+  nonisolated private static func prepare(page: Int, language: String, script: MushafScript) async -> Bool {
+    if Task.isCancelled { return false }
+    if !MushafService.hasFile(page, language: language) {
+      guard let data = try? await MushafService.fetch(page, language: language) else { return false }
+      MushafService.write(data, language: language)
+    }
+    if script != .text, !MushafFonts.hasFile(script, page: page) {
+      guard (try? await MushafFonts.download(script, page: page)) != nil else { return false }
+    }
+    return true
+  }
 
   /// Metni önbellekte olan sure sayısı.
   var cachedTextCount: Int {

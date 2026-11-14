@@ -23,6 +23,7 @@ struct MushafReaderView: View {
   @State private var themes = false
   @State private var surahs: [Surah] = []
   @State private var detail: Verse?
+  @State private var word: MushafWordSelection?
   @State private var initialized = false
 
   /// Sayfalar yatayda tam ekran genişliğine yerleşir (yan boşluk sayfada `side` ile verilir);
@@ -43,7 +44,8 @@ struct MushafReaderView: View {
           ForEach(1...604, id: \.self) { number in
             MushafPageView(page: number, isCurrent: number == page, size: fullSize(geometry), insets: geometry.safeAreaInsets, surahs: surahs,
               palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" },
-              onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) })
+              onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) },
+              onWord: { selected in Haptics.impact(.light); word = selected })
               .environment(\.layoutDirection, Localizer.shared.layoutDirection).tag(number)
           }
         }
@@ -71,7 +73,7 @@ struct MushafReaderView: View {
         if chrome {
           HStack(spacing: 5.25) {
             Ionicon("information-circle-outline", size: 13, color: .white)
-            Text(t("mushaf.hint")).font(.system(size: 12, weight: .medium)).foregroundStyle(.white)
+            Text(t(QuranReadingStore.shared.mushafWords && MushafService.showsMeanings ? "mushaf.hintWords" : "mushaf.hint")).font(.system(size: 12, weight: .medium)).foregroundStyle(.white)
           }.padding(.horizontal, 12.25).padding(.vertical, 7).background(Forest.s900.opacity(0.85), in: .capsule)
             .frame(maxHeight: .infinity, alignment: .bottom).padding(.bottom, 44).allowsHitTesting(false)
         }
@@ -91,6 +93,7 @@ struct MushafReaderView: View {
     .onDisappear { ReadingOrientation.set(.portrait); StatusBarStyle.apply() }
     .task {
       surahs = await QuranService.surahs()
+      MushafService.dropLegacyCache()
       MushafService.prefetch(page)
       if DebugLaunch.quran == nil {
         try? await Task.sleep(for: .milliseconds(2500))
@@ -101,14 +104,23 @@ struct MushafReaderView: View {
     // İlk açılışta bir kez: sayfa hareketleri ve sure seçimi.
     .task(id: TourStore.shared.replayNonce) {
       await TourStore.shared.startIfNeeded(.mushaf) {
-        chrome && detail == nil && !picker && !themes && TourStore.shared.anchors["mushaf.page"] != nil
+        chrome && detail == nil && word == nil && !picker && !themes && TourStore.shared.anchors["mushaf.page"] != nil
       }
     }
     .onChange(of: TourStore.shared.tour == nil) { _, ended in
       if ended, chrome { withAnimation { chrome = false } }
     }
     .onChange(of: page) { _, value in Haptics.impact(.light); QuranReadingStore.shared.setPage(value); MushafService.prefetch(value) }
-    .sheet(isPresented: $themes) { themePicker.presentationDetents([.height(220)]).presentationDragIndicator(.visible) }
+    .sheet(isPresented: $themes) { themePicker.presentationDetents([.height(400)]).presentationDragIndicator(.visible) }
+    .sheet(item: $word) { selected in
+      MushafWordCard(selection: selected, script: QuranReadingStore.shared.mushafScript) {
+        word = nil
+        // Bir pencere kapanırken diğeri açılamaz; kapanış bitince ayet açılır.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) { openVerse(selected.word.verse, text: "") }
+      }
+      .environment(\.tokens, tokens).presentationDetents([.height(330)]).presentationDragIndicator(.visible)
+      .onDisappear { MushafWordAudio.shared.stop() }
+    }
     .sheet(isPresented: $picker) { surahPicker }
     .sheet(item: $detail) { verse in
       VerseDetailView(surahID: verse.surah_id, name: surahs.first(where: { $0.id == verse.surah_id }).map { surahName($0) } ?? "", verse: verse).environment(\.tokens, tokens)
@@ -133,6 +145,30 @@ struct MushafReaderView: View {
             }
           }.buttonStyle(PressableStyle()).accessibilityAddTraits(selected ? .isSelected : [])
         }
+      }
+      Text(t("mushaf.scriptTitle")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+      HStack(spacing: 7) {
+        ForEach(MushafScript.allCases, id: \.self) { script in
+          let selected = QuranReadingStore.shared.mushafScript == script
+          Button { Haptics.impact(.light); QuranReadingStore.shared.setScript(script) } label: {
+            Text(t(script.labelKey)).font(.system(size: 13, weight: selected ? .semibold : .regular))
+              .foregroundStyle(selected ? tokens.textPrimary : tokens.textSecondary).lineLimit(1).minimumScaleFactor(0.8)
+              .frame(maxWidth: .infinity).frame(height: 38.5)
+              .background(tokens.canvas, in: .capsule)
+              .overlay(Capsule().stroke(selected ? tokens.accent : tokens.line, lineWidth: selected ? 2 : 1))
+          }.buttonStyle(PressableStyle()).accessibilityAddTraits(selected ? .isSelected : [])
+        }
+      }
+      if QuranReadingStore.shared.mushafScript != .text {
+        Text(t("mushaf.scriptNote")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary).fixedSize(horizontal: false, vertical: true)
+      }
+      if MushafService.showsMeanings {
+        Toggle(isOn: Binding(get: { QuranReadingStore.shared.mushafWords }, set: { Haptics.impact(.medium); QuranReadingStore.shared.setMushafWords($0) })) {
+          VStack(alignment: .leading, spacing: 2) {
+            Text(t("mushaf.wordsToggle")).font(.system(size: 15)).foregroundStyle(tokens.textPrimary)
+            Text(t("mushaf.wordsHint")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary)
+          }
+        }.tint(tokens.accent)
       }
       Spacer(minLength: 0)
     }.padding(17.5).background(tokens.surface)
@@ -185,10 +221,15 @@ private struct MushafPageView: View {
   let selectedVerse: String?
   let onTap: () -> Void
   let onVerse: (String, String) -> Void
+  let onWord: (MushafWordSelection) -> Void
   @State private var data: MushafPage?
+  /// Medine hattı seçiliyse sayfanın yazı tipi ve en geniş satırı sığdıran boyut (100 punto başına genişlik oranı).
+  @State private var pageFont: CGFont?
+  @State private var widest: CGFloat = 0
   @State private var failed = false
   @State private var attempt = 0
   @Environment(\.tokens) private var tokens
+  private var script: MushafScript { QuranReadingStore.shared.mushafScript }
 
   var body: some View {
     let landscape = size.width > size.height
@@ -229,10 +270,24 @@ private struct MushafPageView: View {
       .contentShape(.rect).onTapGesture { onTap() }
       .environment(\.tokens, tokens)
     }
-    .task(id: attempt) {
+    .task(id: "\(attempt)|\(script.rawValue)|\(MushafService.language)|\(palette.isDark)") {
       failed = false
-      do { let result = try await MushafService.page(page); if !Task.isCancelled { data = result } }
-      catch { if !Task.isCancelled { failed = true } }
+      do {
+        let result = try await MushafService.page(page)
+        if Task.isCancelled { return }
+        data = result
+      } catch {
+        if !Task.isCancelled { failed = true }
+        return
+      }
+      // Hat yazı tipi gelmezse (çevrimdışı, indirilmemiş) sayfa bilgisayar yazısıyla kalır.
+      guard script != .text, let font = try? await MushafFonts.font(script, page: page, dark: palette.isDark), !Task.isCancelled, let data else {
+        if !Task.isCancelled { pageFont = nil }
+        return
+      }
+      let ct = CTFontCreateWithGraphicsFont(font, 100, nil, nil)
+      widest = data.lines.compactMap { line in line.words.map { MushafFonts.width($0.map { $0.code ?? "" }.joined(), font: ct) } }.max() ?? 0
+      pageFont = font
     }
     .accessibilityLabel(t("mushaf.pageA11y", ["page": page]))
   }
@@ -250,12 +305,14 @@ private struct MushafPageView: View {
         } else if line.kind == "basmala" {
           Text(QuranFont.text(QuranScripture.basmala)).font(.custom(QuranFont.name, size: font)).foregroundStyle(palette.ink)
         } else {
-          HStack(spacing: pageData.centered ? font * 0.3 : 0) {
+          HStack(spacing: pageData.centered ? font * (pageFont != nil ? 0.15 : 0.3) : 0) {
             ForEach(Array((line.words ?? []).enumerated()), id: \.offset) { index, word in
-              Text(QuranFont.text(word.text)).font(.custom(QuranFont.name, size: font)).foregroundStyle(word.isEnd ? palette.gold : word.verse == selectedVerse ? palette.accent : palette.ink)
+              wordText(word, font: font, pageData: pageData)
                 .fixedSize().onTapGesture {
                   if word.isEnd {
                     onVerse(word.verse, verseText(word.verse, pageData: pageData))
+                  } else if QuranReadingStore.shared.mushafWords, MushafService.showsMeanings, word.meaning != nil {
+                    onWord(.init(word: word, page: page))
                   } else { onTap() }
                 }
                 .accessibilityLabel(word.isEnd ? t("mushaf.verseA11y", ["verse": word.verse.split(separator: ":").last.map(String.init) ?? ""]) : word.text)
@@ -275,6 +332,20 @@ private struct MushafPageView: View {
     .accessibilityLabel(t(marked ? "mushaf.lineMarkedA11y" : "mushaf.lineA11y", ["line": index + 1]))
     .accessibilityHint(t("mushaf.markHint"))
     .tourAnchor(isCurrent && index == pageData.lines.count / 2 ? "mushaf.page" : nil)
+  }
+
+  /// Kelime: Medine hattı yüklüyse sayfa yazı tipindeki kodu, değilse bilgisayar yazısı.
+  @ViewBuilder private func wordText(_ word: MushafWord, font: Double, pageData: MushafPage) -> some View {
+    let color = word.isEnd && pageFont == nil ? palette.gold : word.verse == selectedVerse ? palette.accent : palette.ink
+    if let pageFont, let code = word.code, widest > 0 {
+      // En geniş satır sayfa genişliğine sığar; satır yüksekliğini de aşmaz.
+      let fit = (size.width - 2 * (18 + max(insets.leading, insets.trailing))) * 0.98 / widest * 100
+      // Ortalanmış ilk iki sayfada kelimeler arasında boşluk var: hat biraz küçülür.
+      let qcfSize = min(fit, font * 2.05) * (pageData.centered ? 0.86 : 1)
+      Text(code).font(Font(CTFontCreateWithGraphicsFont(pageFont, qcfSize, nil, nil))).foregroundStyle(color)
+    } else {
+      Text(QuranFont.text(word.text)).font(.custom(QuranFont.name, size: font)).foregroundStyle(color)
+    }
   }
 
   private func verseText(_ key: String, pageData: MushafPage) -> String {

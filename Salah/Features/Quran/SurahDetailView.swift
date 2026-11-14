@@ -6,6 +6,9 @@ final class SurahDetailModel {
   private(set) var surah: Surah?
   private(set) var loading = true
   private(set) var tajweed: [Int: [TajweedSegment]] = [:]
+  /// Kelime meali: ayet numarası → kelimeler.
+  private(set) var words: [Int: [VerseWord]] = [:]
+  private(set) var wordsFailed = false
 
   func load(_ id: Int) async {
     loading = true
@@ -18,6 +21,14 @@ final class SurahDetailModel {
     loading = false
     QuranAudioPlayer.shared.configure(verses)
     UsageStore.shared.record("quran.surah")
+  }
+  func loadWords(_ id: Int) async {
+    guard words.isEmpty else { return }
+    wordsFailed = false
+    let result = await QuranService.chapterWords(id)
+    if Task.isCancelled { return }
+    words = result
+    wordsFailed = result.isEmpty
   }
   func loadTajweed(_ id: Int) async {
     guard tajweed.isEmpty else { return }
@@ -103,6 +114,7 @@ struct SurahDetailView: View {
     .background(palette.canvas).toolbar(.hidden, for: .navigationBar)
     .task(id: "\(surahID)-\(Localizer.shared.language.rawValue)") { await model.load(surahID) }
     .task(id: settings.tajweed) { if settings.tajweed { await model.loadTajweed(surahID) } }
+    .task(id: "\(settings.wordByWord)-\(Localizer.shared.language.rawValue)") { if wordMode(settings) { await model.loadWords(surahID) } }
     .sheet(item: $detail) { verse in VerseDetailView(surahID: surahID, name: name, verse: verse).environment(\.tokens, tokens) }
     .fullScreenCover(item: $share) { verse in VerseShareView(verse: verse, surahName: name).environment(\.tokens, tokens) }
     .onAppear {
@@ -132,6 +144,11 @@ struct SurahDetailView: View {
           }
           option("color-palette-outline", t("surah.tajweed"), label: t("surah.tajweedToggle"), selected: settings.tajweed) {
             QuranReadingStore.shared.updateSettings { $0.tajweed.toggle() }
+          }
+          if Localizer.shared.language != .ar && settings.layoutMode == .verses {
+            option("language-outline", t("surah.wordByWord"), label: t("surah.wordByWordToggle"), selected: settings.wordByWord) {
+              QuranReadingStore.shared.updateSettings { $0.wordByWord.toggle() }
+            }
           }
           option(settings.readingTheme == .night ? "moon" : "contrast-outline", t(settings.readingTheme.labelKey), label: t("surah.readingTheme")) {
             let values = QuranReadingTheme.allCases
@@ -171,8 +188,12 @@ struct SurahDetailView: View {
         if let text = verse.transcription, !text.isEmpty {
           Text(text).font(.system(size: 24 * scale)).lineSpacing(26 * scale).foregroundStyle(p.primary)
         }
-        QuranArabicText(text: verse.verse_simplified, segments: settings.tajweed ? model.tajweed[verse.verse_number] : nil, color: p.arabic, accent: p.accent, size: 22 * scale)
-          .padding(.vertical, 4)
+        if wordMode(settings), let words = model.words[verse.verse_number], !words.isEmpty {
+          wordGrid(words, scale: scale, palette: p).padding(.vertical, 4)
+        } else {
+          QuranArabicText(text: verse.verse_simplified, segments: settings.tajweed ? model.tajweed[verse.verse_number] : nil, color: p.arabic, accent: p.accent, size: 22 * scale)
+            .padding(.vertical, 4)
+        }
         Rectangle().fill(p.line).frame(height: 1).padding(.vertical, 7)
         Text("\"\(verse.translation.text)\"").font(.system(size: 16 * scale, weight: .medium).italic()).lineSpacing(12 * scale)
           .foregroundStyle(active ? p.accent : p.secondary)
@@ -187,6 +208,29 @@ struct SurahDetailView: View {
     }
     .accessibilityElement(children: .contain)
     .accessibilityLabel(t("surah.listenVerse", ["n": verse.verse_number]))
+  }
+
+  private func wordMode(_ settings: QuranReadingSettings) -> Bool {
+    settings.wordByWord && settings.layoutMode == .verses && Localizer.shared.language != .ar
+  }
+
+  /// Kelime meali: her Arapça kelimenin altında anlamı, sağdan sola akar.
+  private func wordGrid(_ words: [VerseWord], scale: Double, palette p: QuranReadingPalette) -> some View {
+    FlowLayout(spacing: 10.5) {
+      ForEach(Array(words.enumerated()), id: \.offset) { _, word in
+        VStack(spacing: 3.5) {
+          Text(QuranFont.text(word.arabic)).font(.custom(QuranFont.name, size: 22 * scale)).foregroundStyle(p.arabic).fixedSize()
+          Text(word.meaning ?? "").font(.system(size: 12 * scale)).foregroundStyle(p.secondary)
+            .multilineTextAlignment(.center).frame(maxWidth: 110 * scale).fixedSize(horizontal: false, vertical: true)
+            .environment(\.layoutDirection, Localizer.shared.layoutDirection)
+        }
+        .padding(.horizontal, 7).padding(.vertical, 5.25)
+        .background(p.canvas.opacity(0.6), in: .rect(cornerRadius: 10.5))
+        .accessibilityElement(children: .combine)
+      }
+    }
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .environment(\.layoutDirection, .rightToLeft)
   }
 
   private func flowingText(_ settings: QuranReadingSettings, palette: QuranReadingPalette) -> some View {

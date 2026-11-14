@@ -9,12 +9,19 @@ enum QuranReadingTheme: String, Codable, CaseIterable { case system, sepia, nigh
 }
 enum QuranLayout: String, Codable { case verses, mushaf }
 enum MushafTheme: String, Codable, CaseIterable { case auto, light, sepia, night }
+/// Mushaf yazısı: bilgisayar yazısı (KFGQPC, ek indirme yok), Medine mushafı hattı (QCF V2, sayfa başına yazı tipi)
+/// ya da aynı hattın renkli tecvidli sürümü (QCF V4 COLRv1).
+nonisolated enum MushafScript: String, Codable, CaseIterable { case text, madani, tajweed
+  var labelKey: String { "mushaf.script.\(rawValue)" }
+}
 
 struct QuranReadingSettings: Codable, Equatable {
   var fontSize: QuranFontSize = .md
   var readingTheme: QuranReadingTheme = .system
   var layoutMode: QuranLayout = .verses
   var tajweed = false
+  /// Sure okuma ekranında her kelimenin altında anlamı.
+  var wordByWord = false
 
   init() {}
   init(from decoder: Decoder) throws {
@@ -23,6 +30,7 @@ struct QuranReadingSettings: Codable, Equatable {
     readingTheme = (try? c.decode(QuranReadingTheme.self, forKey: .readingTheme)) ?? .system
     layoutMode = (try? c.decode(QuranLayout.self, forKey: .layoutMode)) ?? .verses
     tajweed = (try? c.decode(Bool.self, forKey: .tajweed)) ?? false
+    wordByWord = (try? c.decode(Bool.self, forKey: .wordByWord)) ?? false
   }
 }
 
@@ -41,6 +49,9 @@ final class QuranReadingStore {
   private(set) var mushafPage: Int?
   private(set) var mushafMark: Mark?
   private(set) var mushafTheme: MushafTheme = .auto
+  private(set) var mushafScript: MushafScript = .text
+  /// Mushafta kelimeye dokununca anlam kartı.
+  private(set) var mushafWords = true
   private(set) var settings: QuranReadingSettings = .init()
   @ObservationIgnored private let write: (String, String?) -> Void
 
@@ -58,6 +69,8 @@ final class QuranReadingStore {
     mushafMark = decode(Mark.self, "QURAN_MUSHAF_MARK")
     if let mark = mushafMark, !(1...604).contains(mark.page) || !(0..<15).contains(mark.line) { mushafMark = nil }
     mushafTheme = get("QURAN_MUSHAF_THEME").flatMap(MushafTheme.init(rawValue:)) ?? .auto
+    mushafScript = get("QURAN_MUSHAF_SCRIPT").flatMap(MushafScript.init(rawValue:)) ?? .text
+    mushafWords = get("QURAN_MUSHAF_WORDS") != "0"
     settings = decode(QuranReadingSettings.self, "QURAN_SETTINGS_V2") ?? .init()
   }
 
@@ -78,6 +91,8 @@ final class QuranReadingStore {
     else { write("QURAN_MUSHAF_MARK", nil) }
   }
   func setTheme(_ theme: MushafTheme) { mushafTheme = theme; write("QURAN_MUSHAF_THEME", theme.rawValue) }
+  func setScript(_ script: MushafScript) { mushafScript = script; write("QURAN_MUSHAF_SCRIPT", script.rawValue) }
+  func setMushafWords(_ on: Bool) { mushafWords = on; write("QURAN_MUSHAF_WORDS", on ? "1" : "0") }
   func updateSettings(_ change: (inout QuranReadingSettings) -> Void) {
     change(&settings)
     save(settings, key: "QURAN_SETTINGS_V2")

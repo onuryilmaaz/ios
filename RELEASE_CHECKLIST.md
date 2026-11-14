@@ -117,3 +117,8 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 ## Vakit kilidi (2026-11-14)
 - Apple Family Controls dağıtım onayı gelmeden App Store arşivi DÜZ `xcodegen generate` ile alınır (vakit kilidi girmez).
 - Cihazda denemek: `SALAH_PRAYER_LOCK=YES xcodegen generate`, Debug, gerçek iPhone. Onay gelince App ID'lerde Distribution işaretlenir ve bayrak varsayılan yapılır.
+
+## Mushaf hattı ve kelime meali (2026-11-14)
+- Mushaf ayarlarında Yazı: Bilgisayar / Mushaf hattı / Tecvidli; kelimeye dokununca anlam kartı. Cihazda kontrol: sayfa çevirirken hat yüklenme hızı, gece temasında tecvidli, kelime sesi, İndirilenler'den mushafın tamamı.
+- Sure ekranında "Kelime meali". Ayrıntı `android/HANDOFF.md`.
+- Namaz vakitleri yıllık indirilir; 2027 veri seti sunucuya eklenmeli.

@@ -18,6 +18,8 @@ struct LogFormView: View {
   @State private var revisionAyets = ""
   @State private var notes = ""
   @State private var saving = false
+  /// Kaydın günü: varsayılan bugün; geçmişe sınırsız, ileri tarih yok.
+  @State private var day = Date()
 
   private static let noteLimit = 500
 
@@ -92,6 +94,8 @@ struct LogFormView: View {
         stepper(t("tracker.form.revisedVerses"), $revisionAyets)
       }
 
+      dateRow
+
       let placeholderKey = [.quran, .dua, .fasting, .memorization].contains(type) ? type.rawValue : "default"
       InputField(
         label: t("tracker.form.note"), placeholder: t("tracker.form.notePlaceholder.\(placeholderKey)"),
@@ -104,6 +108,37 @@ struct LogFormView: View {
           .padding(.top, -7)
       }
     }
+  }
+
+  private var dateRow: some View {
+    let today = Calendar.current.isDateInToday(day)
+    return VStack(alignment: .leading, spacing: 0) {
+      FieldLabel(t("tracker.form.date"))
+      HStack(spacing: 10.5) {
+        Ionicon("calendar-outline", size: 18, color: tokens.accent)
+        DatePicker("", selection: $day, in: ...Date(), displayedComponents: .date)
+          .labelsHidden()
+          .tint(tokens.accent)
+          .environment(\.locale, Localizer.shared.locale)
+          .onChange(of: day) { Haptics.impact(.light) }
+        Spacer(minLength: 0)
+        if !today {
+          Button {
+            Haptics.impact(.light)
+            day = Date()
+          } label: {
+            Text(t("tracker.form.today")).font(.system(size: 13, weight: .semibold)).foregroundStyle(tokens.accent)
+          }.buttonStyle(PressableStyle())
+        }
+      }
+      .padding(.horizontal, 14).frame(height: 49)
+      .background(tokens.surface, in: .rect(cornerRadius: 14))
+      .overlay(RoundedRectangle(cornerRadius: 14).stroke(tokens.line, lineWidth: 1))
+      if !today {
+        Text(t("tracker.form.pastHint")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary).padding(.top, 5.25)
+      }
+    }
+    .padding(.bottom, 14)
   }
 
   private func minutesField(_ binding: Binding<String>) -> some View {
@@ -171,8 +206,10 @@ struct LogFormView: View {
     saving = true
     defer { saving = false }
     do {
-      try await TrackerStore.shared.log(type, value: .object(value), notes: notes.isEmpty ? nil : notes)
+      let past = !Calendar.current.isDateInToday(day)
+      try await TrackerStore.shared.log(type, value: .object(value), notes: notes.isEmpty ? nil : notes, date: past ? localDateString(min(day, Date())) : nil)
       Haptics.notify(.success)
+      if past { Toast.success(t("tracker.form.pastSaved", ["date": day.formatted(.dateTime.day().month(.wide).year().locale(Localizer.shared.locale))])) }
       onClose()
     } catch {
       AppAlert.error(t("common.error"), t("tracker.errors.saveFailed"))
