@@ -33,9 +33,14 @@ extension Color {
 /// akşama bordo), böylece uygulama açılmasa da widget doğru renkte kalır. Değerler: Salah/Core/Theme/Palette.swift.
 enum WidgetAppColor: String {
   case forest, navy, purple, burgundy
+  /// Paletten seçilen renk: uygulama `salah_app_color_custom` yazar ("#RRGGBB").
+  case custom
 
   var scales: (accent: [UInt32], neutral: [UInt32]) {
     switch self {
+    case .custom:
+      let hex = UserDefaults(suiteName: appGroupID)?.string(forKey: "salah_app_color_custom").flatMap(CustomPalette.parse) ?? CustomPalette.defaultSeed
+      return CustomPalette.scales(seed: hex)
     case .forest: return (accent: [0xeef6f2, 0xd6ebe1, 0xaed6c3, 0x7fbea2, 0x4fa383, 0x2e8a6a, 0x1f7356, 0x195c46, 0x154a39, 0x113c2f, 0x0f3a2b],
                        neutral: [0xf5f7f5, 0xedf1ee, 0xdfe5e1, 0xc7d0ca, 0x97a39c, 0x6a766f, 0x4e5953, 0x46534c, 0x2d3933, 0x222d28, 0x131b17])
     case .navy: return (accent: [0xf2f4f8, 0xe1e6f0, 0xc4cee0, 0xa5b2ca, 0x8594b2, 0x637baa, 0x4b6698, 0x3a517d, 0x2c416a, 0x10203f, 0x0e1c37],

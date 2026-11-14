@@ -109,3 +109,68 @@ struct PrayerTimelineTests {
     #expect(tl[0].window.mode == .current)
   }
 }
+
+/// Geçmiş ekranı: vakti girmemiş namaz işaretlenemez.
+@MainActor
+struct PrayerSlotGateTests {
+  let times = PrayerTimes(imsak: "05:25", gunes: "06:49", ogle: "12:55", ikindi: "16:13", aksam: "18:51", yatsi: "20:10")
+
+  func at(_ day: Int, _ hhmm: String) -> Date {
+    let p = hhmm.split(separator: ":").compactMap { Int($0) }
+    return Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: day, hour: p[0], minute: p[1]))!
+  }
+
+  @Test(arguments: [
+    ("fajr", false), ("dhuhr", false), ("asr", true), ("maghrib", true), ("isha", true),
+  ])
+  func todayBeforeTimeIsLocked(_ id: String, _ locked: Bool) {
+    #expect(PrayerSlotGate.notYet(id, day: at(1, "00:00"), now: at(1, "13:30"), times: times) == locked)
+  }
+
+  @Test func unlocksExactlyAtTime() {
+    #expect(PrayerSlotGate.notYet("asr", day: at(1, "00:00"), now: at(1, "16:12"), times: times))
+    #expect(!PrayerSlotGate.notYet("asr", day: at(1, "00:00"), now: at(1, "16:13"), times: times))
+  }
+
+  @Test func pastDayIsOpen() {
+    #expect(!PrayerSlotGate.notYet("isha", day: at(1, "00:00"), now: at(2, "06:00"), times: times))
+  }
+
+  @Test func futureDayIsLocked() {
+    #expect(PrayerSlotGate.notYet("fajr", day: at(2, "00:00"), now: at(1, "23:00"), times: times))
+  }
+
+  @Test func unknownTimesStayOpen() {
+    #expect(!PrayerSlotGate.notYet("isha", day: at(1, "00:00"), now: at(1, "08:00"), times: nil))
+  }
+}
+
+/// Takip kartı ve Siri "Kıldım" ortak kuralı.
+@MainActor
+struct PrayerSlotStateTests {
+  let times = PrayerTimes(imsak: "05:25", gunes: "06:49", ogle: "12:55", ikindi: "16:13", aksam: "18:51", yatsi: "20:10")
+
+  func at(_ hhmm: String) -> Date {
+    let p = hhmm.split(separator: ":").compactMap { Int($0) }
+    return Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: 1, hour: p[0], minute: p[1]))!
+  }
+
+  @Test(arguments: [
+    ("fajr", "06:00", PrayerSlotState.current), ("fajr", "07:00", .expired), ("dhuhr", "12:00", .upcoming),
+    ("asr", "16:13", .current), ("maghrib", "20:10", .expired), ("isha", "23:30", .current),
+    // Gece yarısından sonra: yatsı hâlâ kılınabilir, diğerleri kaza.
+    ("isha", "02:00", .current), ("asr", "02:00", .expired),
+    // 04:00–imsak: yeni namaz günü, hiçbir vakit işaretlenemez.
+    ("isha", "04:30", .upcoming), ("fajr", "04:30", .upcoming),
+  ])
+  func state(_ id: String, _ hhmm: String, _ expected: PrayerSlotState) {
+    #expect(PrayerSlotState.of(id, times: times, now: at(hhmm)) == expected)
+  }
+
+  @Test func remainingRoundsUpToMinutes() {
+    Localizer.shared.setPreference(.fixed(.en))
+    defer { Localizer.shared.setPreference(.system) }
+    #expect(SiriPrayer.remaining(from: at("12:00"), to: at("13:05")) == "1 hour, 5 minutes")
+    #expect(SiriPrayer.remaining(from: at("12:00"), to: at("12:00").addingTimeInterval(30)) == "1 minute")
+  }
+}

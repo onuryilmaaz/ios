@@ -3,6 +3,10 @@
 # Metinler, vakit ikonları ve il/ilçe verisi Shared/mobile/ içindeki RN kaynak
 # kopyasından okunur. Kaynaklar güncellendiğinde bu kopyayı da yenile.
 name: Salah
+# Vakit kilidi (FamilyControls): Apple dağıtım onayı gelene kadar yalnız SALAH_PRAYER_LOCK=YES xcodegen generate ile girer.
+include:
+  - path: PrayerLock.yml
+    enable: ${SALAH_PRAYER_LOCK}
 options:
   bundleIdPrefix: com.onur6541
   deploymentTarget:
@@ -36,6 +40,8 @@ targets:
         buildPhase: resources
       # Uygulama ve widget aynı Keychain öğesini okur; dosya ortak.
       - path: Shared/mobile/widget-src/SalahKeychain.swift
+      - path: Shared/mobile/widget-src/CustomPalette.swift
+      - path: Shared/mobile/widget-src/DhikrShared.swift
       # AlarmKit alarmlarına eşlik eden veri; widget uzantısıyla aynı tip olmalı.
       - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
       # Live Activity içerik tipi; widget uzantısı aynı dosyayı derler.
@@ -210,6 +216,8 @@ targets:
         excludes: [Info.plist, "*.entitlements"]
       - path: Shared/mobile/widget-src/SitePongActivityAttributes.swift
       - path: Shared/mobile/widget-src/SalahKeychain.swift
+      - path: Shared/mobile/widget-src/CustomPalette.swift
+      - path: Shared/mobile/widget-src/DhikrShared.swift
       - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
       - path: Shared/mobile/assets/fonts/UthmanicHafs.ttf
         buildPhase: resources

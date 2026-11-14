@@ -37,7 +37,9 @@ final class QuranAudioPlayer {
     }
   }
   func play(index: Int) {
-    guard verses.indices.contains(index), let url = QuranAudioSequence.url(globalVerseID: verses[index].id, reciter: reciter) else { stop(); return }
+    guard verses.indices.contains(index), let remote = QuranAudioSequence.url(globalVerseID: verses[index].id, reciter: reciter) else { stop(); return }
+    // İndirilmişse çevrimdışı çalar.
+    let url = QuranDownloads.localFile(surah: verses[index].surah_id, globalVerseID: verses[index].id, reciter: reciter) ?? remote
     stop()
     guard !DebugLaunch.isIsolated else { return }
     // Ezan ve Kur'an aynı ses oturumunda üst üste çalmasın.

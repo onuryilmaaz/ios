@@ -41,6 +41,13 @@ enum WidgetBridge {
     WidgetCenter.shared.reloadAllTimelines()
   }
 
+  /// Özel uygulama rengi ("#RRGGBB"); `salah_app_color` "custom" iken widget ölçeği bundan üretir.
+  static func setCustomColor(_ hex: String) {
+    guard let ud = defaults, ud.string(forKey: "salah_app_color_custom") != hex else { return }
+    ud.set(hex, forKey: "salah_app_color_custom")
+    WidgetCenter.shared.reloadAllTimelines()
+  }
+
   /// Premium widget'ların erişim hakkı. Premium kapalıyken herkes erişir (kilit yok).
   static func setPremiumAccess(_ active: Bool) {
     guard let ud = defaults, ud.object(forKey: "salah_is_premium") as? Bool != active else { return }

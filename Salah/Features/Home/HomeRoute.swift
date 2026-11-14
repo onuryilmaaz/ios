@@ -28,6 +28,13 @@ enum HomeRoute: Hashable {
   case zakat
   case hatimGroups
   case hatimGroup(String)
+  case kaza
+  case dhikr
+  case circles
+  case circle(String)
+  #if PRAYER_LOCK
+  case prayerLock
+  #endif
 
   /// Panelden kapatılabilen ekranın modülü.
   private var module: String? {
@@ -42,13 +49,17 @@ enum HomeRoute: Hashable {
     case .zakat: "zakat"
     case .hatimPlan: "hatim_plan"
     case .hatimGroups, .hatimGroup: "hatim_groups"
+    case .kaza: "kaza"
+    case .dhikr: "dhikr"
+    case .circles, .circle: "streak_circles"
     default: nil
     }
   }
 
   @ViewBuilder
   var destination: some View {
-    if let module, !AppControlStore.shared.isOn(module) {
+    if let module, !AppControlStore.shared.isOn(module) || (self == .kaza && !AppControlStore.shared.supports("kaza"))
+      || (module == "streak_circles" && !AppControlStore.shared.supports("streakCircles")) {
       ModuleClosedView()
     } else {
       screen
@@ -84,6 +95,13 @@ enum HomeRoute: Hashable {
     case .zakat: ZakatView()
     case .hatimGroups: HatimGroupsView()
     case .hatimGroup(let id): HatimGroupView(id: id)
+    case .kaza: KazaView()
+    case .dhikr: DhikrView()
+    case .circles: StreakCirclesView()
+    case .circle(let id): StreakCircleView(id: id)
+    #if PRAYER_LOCK
+    case .prayerLock: PrayerLockView()
+    #endif
     }
   }
 }

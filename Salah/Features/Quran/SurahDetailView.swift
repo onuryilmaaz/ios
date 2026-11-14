@@ -17,6 +17,7 @@ final class SurahDetailModel {
     self.verses = verses
     loading = false
     QuranAudioPlayer.shared.configure(verses)
+    UsageStore.shared.record("quran.surah")
   }
   func loadTajweed(_ id: Int) async {
     guard tajweed.isEmpty else { return }
@@ -58,7 +59,7 @@ struct SurahDetailView: View {
         ScrollViewReader { proxy in
           ScrollView {
             LazyVStack(spacing: 0) {
-              QuranAudioControls().padding(.horizontal, 14).padding(.bottom, 14)
+              QuranAudioControls(surahName: name).padding(.horizontal, 14).padding(.bottom, 14)
               options(settings).padding(.horizontal, 14).padding(.bottom, 14)
               if searching && !search.isEmpty {
                 Text(t("surah.searchResults", ["count": displayed.count])).font(.system(size: 12, weight: .medium))
@@ -208,6 +209,8 @@ struct SurahDetailView: View {
 struct QuranAudioControls: View {
   @Environment(\.tokens) private var tokens
   @Bindable private var audio = QuranAudioPlayer.shared
+  /// İndirme onayında gösterilen sure adı.
+  var surahName = ""
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       HStack(spacing: 14) {
@@ -219,12 +222,16 @@ struct QuranAudioControls: View {
         }.buttonStyle(PressableStyle()).accessibilityLabel(t(audio.state == .playing ? "surah.pause" : "surah.play"))
         VStack(alignment: .leading, spacing: 7) {
           HStack(spacing: 5.25) {
-            ForEach([("ar.alafasy", "Alafasy"), ("ar.abdullahbasfar", "Basfar")], id: \.0) { reciter in
-              Button { Haptics.impact(.light); audio.chooseReciter(reciter.0) } label: {
-                Text(reciter.1).font(.system(size: 12, weight: .bold)).foregroundStyle(audio.reciter == reciter.0 ? tokens.accent : tokens.textSecondary)
-                  .padding(.horizontal, 8.75).padding(.vertical, 3.5).background(audio.reciter == reciter.0 ? tokens.accentSoft : tokens.fill, in: .rect(cornerRadius: 7))
-                  .overlay(RoundedRectangle(cornerRadius: 7).stroke(audio.reciter == reciter.0 ? tokens.accent : tokens.line, lineWidth: 1))
+            ForEach(QuranReciters.all, id: \.id) { reciter in
+              Button { Haptics.impact(.light); audio.chooseReciter(reciter.id) } label: {
+                Text(reciter.name).font(.system(size: 12, weight: .bold)).foregroundStyle(audio.reciter == reciter.id ? tokens.accent : tokens.textSecondary)
+                  .padding(.horizontal, 8.75).padding(.vertical, 3.5).background(audio.reciter == reciter.id ? tokens.accentSoft : tokens.fill, in: .rect(cornerRadius: 7))
+                  .overlay(RoundedRectangle(cornerRadius: 7).stroke(audio.reciter == reciter.id ? tokens.accent : tokens.line, lineWidth: 1))
               }.buttonStyle(PressableStyle())
+            }
+            Spacer(minLength: 0)
+            if let surah = audio.verses.first?.surah_id {
+              QuranDownloadButton(surah: surah, surahName: surahName, reciter: audio.reciter)
             }
           }
           GeometryReader { geometry in

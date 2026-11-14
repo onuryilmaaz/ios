@@ -177,26 +177,11 @@ struct PrayerTrackerCard: View {
 
   private func slotState(_ prayer: Prayer, now: Date) -> SlotState {
     guard let times else { return .loading }
-    let cal = Calendar.current
-    let nowMin = cal.component(.hour, from: now) * 60 + cal.component(.minute, from: now)
-    func minutes(_ hhmm: String) -> Int {
-      let p = hhmm.split(separator: ":").compactMap { Int($0) }
-      return (p.first ?? 0) * 60 + (p.count > 1 ? p[1] : 0)
+    switch PrayerSlotState.of(prayer.id, times: times, now: now) {
+    case .upcoming: return .upcoming
+    case .current: return .current
+    case .expired: return .expired
     }
-    // Gece yarısı ile imsak arası hâlâ önceki namaz günü.
-    let inIslamicBridge = nowMin < minutes(times.imsak)
-    // 04:00'ten sonra sunucu yeni güne geçmiş olur (islamicDateString): imsaka kadar yapılan işaret
-    // bugünün henüz girmemiş vaktine yazılırdı. Bu arada hiçbir vakit işaretlenemez.
-    if inIslamicBridge && nowMin >= 4 * 60 { return .upcoming }
-    let start = minutes(times[prayer.timeKey] ?? "00:00")
-
-    if prayer.id == "isha" {
-      return nowMin >= start || inIslamicBridge ? .current : .upcoming
-    }
-    if inIslamicBridge { return .expired }
-    let end = prayer.nextTimeKey.flatMap { times[$0] }.map(minutes) ?? start + 240
-    if nowMin < start { return .upcoming }
-    return nowMin < end ? .current : .expired
   }
 
   private func track(_ prayer: Prayer, state: SlotState, isAuthenticated: Bool) async {

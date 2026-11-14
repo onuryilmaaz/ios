@@ -1,6 +1,9 @@
 import SwiftUI
 
-enum QuranRoute: Hashable { case surah(Int, Int?) }
+enum QuranRoute: Hashable {
+  case surah(Int, Int?)
+  case hifz
+}
 @Observable
 final class QuranNavigation {
   static let shared = QuranNavigation()
@@ -16,12 +19,19 @@ struct SurahBrowserView: View {
   @State private var loading = true
   @State private var query = ""
   @State private var debugOpened = false
+  @State private var downloadsOpen = false
 
   var body: some View {
     NavigationStack(path: $nav.path) {
       VStack(spacing: 0) {
         StandardHeader(title: t("quran.title"), showBackButton: false) {
-          ProfileButton()
+          HStack(spacing: 7) {
+            Button { Haptics.impact(.light); downloadsOpen = true } label: {
+              Ionicon("cloud-download-outline", size: 18, color: tokens.inkMuted).frame(width: 35, height: 35)
+                .background(tokens.surface, in: .circle).overlay(Circle().stroke(tokens.line, lineWidth: 1))
+            }.buttonStyle(PressableStyle()).accessibilityLabel(t("quranOffline.open"))
+            ProfileButton()
+          }
         }
         QuranSearchField(text: $query, placeholder: t("quran.search"), clearLabel: t("quran.clearSearch"))
           .tourAnchor("quran.search")
@@ -55,6 +65,10 @@ struct SurahBrowserView: View {
                       Text(surahName(surah)).font(.system(size: 14, weight: .medium)).foregroundStyle(tokens.textPrimary)
                       Text(t("quran.verseCount", ["count": surah.verse_count])).font(.system(size: 13)).foregroundStyle(tokens.textSecondary)
                     }.frame(maxWidth: .infinity, alignment: .leading)
+                    if QuranDownloads.shared.hasAudio(surah: surah.id) {
+                      Ionicon("cloud-done-outline", size: 15, color: tokens.accent).padding(.trailing, 7)
+                        .accessibilityLabel(t("quranOffline.downloaded"))
+                    }
                     Text(surah.name_arabic ?? "").font(.system(size: 17.5)).foregroundStyle(tokens.isDark ? Forest.s300 : Forest.s700).padding(.trailing, 10.5)
                     Ionicon(dirIcon("chevron-forward"), size: 16, color: tokens.inkSubtle)
                   }.padding(.vertical, 12.25).contentShape(.rect)
@@ -70,9 +84,15 @@ struct SurahBrowserView: View {
       }
       .background(tokens.canvas).toolbar(.hidden, for: .navigationBar)
       .navigationDestination(for: QuranRoute.self) { route in
-        switch route { case .surah(let id, let focus): SurahDetailView(surahID: id, focusVerse: focus) }
+        switch route {
+        case .surah(let id, let focus): SurahDetailView(surahID: id, focusVerse: focus)
+        case .hifz: HifzView()
+        }
       }
       .task { await load(); openDebug() }
+      .sheet(isPresented: $downloadsOpen) {
+        QuranDownloadsView().environment(\.tokens, tokens).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
+      }
       // Sekmeye girişliyken ilk girişte bir kez.
       .task(id: TourStore.shared.replayNonce) {
         guard AuthStore.shared.isAuthenticated else { return }
@@ -107,6 +127,9 @@ struct SurahBrowserView: View {
         }.padding(17.5).background(tokens.surface, in: .rect(cornerRadius: 21))
           .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
       }.buttonStyle(PressableStyle()).tourAnchor("quran.mushaf")
+      if AppControlStore.shared.isOn("hifz") {
+        HifzEntryCard { nav.path.append(.hifz) }
+      }
       if let last = store.lastRead {
         Button { open(last.surahId, verse: last.verseNumber) } label: {
           HStack(spacing: 10.5) {
@@ -135,6 +158,7 @@ struct SurahBrowserView: View {
     debugOpened = true
     if ["detail", "flow", "verse", "share"].contains(mode) { nav.path = [.surah(1, nil)] }
     if mode == "mushaf" { nav.mushaf = .init(id: DebugLaunch.mushafPage ?? 1) }
+    if mode == "hifz" { nav.path = [.hifz] }
   }
 }
 

@@ -107,3 +107,13 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - Uygulama ikonu: Lacivert, Mor, Bordo simgelerini seç; ana ekranda simge değişmeli.
 - Ramazan önizlemesinde (yönetici hesabı) renk saate göre değişmeli; `-SalahDebugTint night|dawn|dusk` ile dene.
 
+
+## 2026-11-12 eklemeleri (cihazda kontrol)
+- Geçmiş namazlar: bugünün girmemiş vakti kilitli, vakit girince kilit kalkar.
+- Siri: "Salah sıradaki vakit", vakit içindeyken "Salah kıldım" (TR/EN/AR); Kısayollar uygulamasında iki eylem.
+- Çevrimdışı Kur'an: sure sesi indir, uçak modunda çal, sil; İndirilenler panelinde metinlerin tamamı.
+- Backend 017/018 migration'ları ve yeni uçlar mobil yayından sonra deploy edilecek.
+
+## Vakit kilidi (2026-11-14)
+- Apple Family Controls dağıtım onayı gelmeden App Store arşivi DÜZ `xcodegen generate` ile alınır (vakit kilidi girmez).
+- Cihazda denemek: `SALAH_PRAYER_LOCK=YES xcodegen generate`, Debug, gerçek iPhone. Onay gelince App ID'lerde Distribution işaretlenir ve bayrak varsayılan yapılır.

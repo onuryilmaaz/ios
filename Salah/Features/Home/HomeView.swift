@@ -47,6 +47,9 @@ struct HomeView: View {
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(for: HomeRoute.self) { $0.destination }
     }
+    .onChange(of: nav.path.count) { old, new in
+      if new > old, let route = nav.path.last { UsageStore.shared.record("screen.\(route.usageName)") }
+    }
     .fullScreenCover(item: Binding(get: { celebrationStreak.map(Celebration.init) }, set: { celebrationStreak = $0?.streak })) { c in
       StreakCelebration(streak: c.streak) { celebrationStreak = nil }
         .presentationBackground(.clear)
@@ -164,7 +167,7 @@ struct HomeView: View {
         onCelebrate: { celebrationStreak = $0 }
       )
     case .streak:
-      if isAuthenticated { StreakCard().tourAnchor("home.streak") }
+      if isAuthenticated { StreakCard(onCircles: StreakCircleAPI.available ? { push(.circles) } : nil).tourAnchor("home.streak") }
     case .quickActions:
       if isAuthenticated { QuickActionsCard { push($0) }.tourAnchor("home.quickActions") }
     case .dailyInspiration:
@@ -173,6 +176,10 @@ struct HomeView: View {
       if let times = model.today?.times { DayRingCard(times: times) }
     case .alarms:
       if AppControlStore.shared.isOn("alarms") { AlarmsCard { push(.alarms) } }
+    case .kaza:
+      if KazaStore.shared.available { KazaCard { push(.kaza) } }
+    case .dhikr:
+      if AppControlStore.shared.isOn("dhikr") { DhikrCard { push(.dhikr) } }
     }
   }
 

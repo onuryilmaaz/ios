@@ -4,6 +4,8 @@ import SwiftUI
 struct StreakCard: View {
   @Environment(\.tokens) private var tokens
   @State private var sharing = false
+  /// Birlikte seri ekranı (sunucu destekliyorsa).
+  var onCircles: (() -> Void)?
 
   var body: some View {
     let store = GamificationStore.shared
@@ -69,6 +71,23 @@ struct StreakCard: View {
         }
       }
       .padding(.top, 17.5)
+
+      if let onCircles {
+        Button {
+          Haptics.impact(.light)
+          onCircles()
+        } label: {
+          HStack(spacing: 7) {
+            Ionicon("people-outline", size: 16, color: tokens.isDark ? Gold.s300 : Gold.s700)
+            Text(t("circles.streakCardLink")).font(.system(size: 14, weight: .semibold)).foregroundStyle(tokens.isDark ? Gold.s300 : Gold.s700)
+            Spacer()
+            Ionicon(dirIcon("chevron-forward"), size: 14, color: tokens.isDark ? Gold.s300 : Gold.s700)
+          }
+          .padding(.top, 14)
+          .contentShape(.rect)
+        }
+        .buttonStyle(PressableStyle())
+      }
     }
     .padding(17.5)
     .background(tokens.isDark ? Color(hex: 0x28230f) : Gold.s50, in: .rect(cornerRadius: 21))

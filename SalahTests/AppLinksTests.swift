@@ -17,6 +17,14 @@ struct AppLinksTests {
     #expect(target("com.onur6541.salah://tracker/sadaka") == .tracker(.sadaka, insights: false))
   }
 
+  @Test func newFeatureLinks() {
+    #expect(target("salah://kaza") == .home(.kaza))
+    #expect(target("salah://zikir") == .home(.dhikr))
+    #expect(target("salah://seri/k7m2qpxa") == .home(.circles))
+    #expect(StreakCircleAPI.pendingCode == "K7M2QPXA")
+    StreakCircleAPI.pendingCode = nil
+  }
+
   @Test func unknownIgnored() {
     #expect(target("salah://tracker/unknown") == .tracker(nil, insights: false))
     #expect(target("salah://paywall") == nil)

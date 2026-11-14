@@ -72,6 +72,7 @@ struct AssistantView: View {
     let dark = tokens.isDark
     VStack(spacing: 0) {
       StandardHeader(title: t("assistant.title"), showBackButton: false) {
+        HStack(spacing: 7) {
         if !model.messages.isEmpty {
           Button {
             Haptics.impact(.medium)
@@ -86,6 +87,8 @@ struct AssistantView: View {
           }
           .buttonStyle(PressableStyle())
           .accessibilityLabel(t("assistant.clear"))
+        }
+        ProfileButton()
         }
       }
 
@@ -109,6 +112,7 @@ struct AssistantView: View {
         }
         .scrollIndicators(.hidden)
         .scrollDismissesKeyboard(.interactively)
+        .simultaneousGesture(TapGesture().onEnded { if focused { focused = false } })
         .onChange(of: model.messages.count) { withAnimation { proxy.scrollTo("bottom", anchor: .bottom) } }
         .tourScroll(proxy, top: nil)
         .onChange(of: model.loading) { withAnimation { proxy.scrollTo("bottom", anchor: .bottom) } }
@@ -256,6 +260,19 @@ struct AssistantView: View {
         .disabled(model.loading)
         .padding(.horizontal, 14)
         .padding(.vertical, 10.5)
+      if focused {
+        Button {
+          Haptics.impact(.light)
+          focused = false
+        } label: {
+          Ionicon("chevron-down", size: 20, color: dark ? Forest.s300 : Forest.s500)
+            .frame(width: 38.5, height: 38.5)
+            .background(dark ? Forest.s700 : Forest.s100, in: .circle)
+        }
+        .buttonStyle(PressableStyle())
+        .accessibilityLabel(t("assistant.hideKeyboard"))
+        .transition(.opacity)
+      }
       Button {
         let text = input
         input = ""

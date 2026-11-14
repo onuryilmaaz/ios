@@ -22,6 +22,9 @@ struct SitePongLiveActivityWidgetBundle: WidgetBundle {
     // Gün çemberi
     DayRingWidget()
 
+    // Zikirmatik (dokunarak sayar, iOS 17+)
+    DhikrWidget()
+
     // Standby (iOS 17+)
     StandbyPrayerWidget()
 

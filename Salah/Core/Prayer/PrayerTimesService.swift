@@ -2,10 +2,13 @@ import Foundation
 
 /// Vakitleri offline-first getirir. RN'deki services/prayer.service.ts ile aynı
 /// kurallar ve aynı cache anahtarı (`@salah_prayer_times_cache_<ilçe>`):
-/// 1. Cache taze (6 saat) ve en az 3 günü kapsıyorsa ağa çıkmaz.
-/// 2. Değilse aylık (gerekirse haftalık) veriyi çekip cache ile birleştirir: önce kendi
-///    sunucumuz (/prayer/times), olmazsa ezanvakti.imsakiyem.com.
+/// 1. Cache taze (6 saat) ve en az 3 günü kapsıyorsa ağa çıkmaz; 30+ gün ilerisi elindeyse 7 gün boyunca çıkmaz.
+/// 2. Değilse önce yıllık (uygulama uzun süre açılmasa ya da çevrimdışı kalsa da çalışsın diye),
+///    olmazsa aylık/haftalık veriyi çekip cache ile birleştirir: önce kendi sunucumuz
+///    (/prayer/times), olmazsa ezanvakti.imsakiyem.com.
 /// 3. Ağ yoksa elde ne varsa (bayat cache dahil) onu döndürür.
+/// Yıllık veri sunucudaki veri setine bağlı (yıl sonunda bir sonraki yıl eklenene kadar 31 Aralık'ta biter);
+/// bu yüzden haftada bir (önbellek azaldıysa günde bir) yeniden denenir. Android PrayerTimesService ile aynı.
 enum PrayerTimesService {
   static let defaultDistrictId = "9654"
 
@@ -13,6 +16,13 @@ enum PrayerTimesService {
   private static let cachePrefix = "@salah_prayer_times_cache_"
   private static let freshInterval: TimeInterval = 6 * 3600
   private static let minCoverDays = 3
+  private static let longCoverDays = 30
+  private static let longFreshInterval: TimeInterval = 7 * 24 * 3600
+  private static let yearTargetDays = 300
+  private static let yearlyAtPrefix = "@salah_prayer_times_yearly_at_"
+  /// Testlerde sahte kaynak ve saat.
+  static var fetcher: (String, String) async -> [PrayerDay]? = { await fetch(districtId: $0, range: $1) }
+  static var now: () -> Date = { Date() }
 
   private struct Cache: Codable {
     /// ms (RN biçimi)
@@ -29,17 +39,19 @@ enum PrayerTimesService {
   static func upcomingDays(districtId: String) async -> [PrayerDay] {
     let cache = readCache(districtId)
     let cached = cache.map { fromToday($0.days) } ?? []
-    if let cache, Date().timeIntervalSince1970 * 1000 - cache.fetchedAt < freshInterval * 1000,
-      cached.count >= minCoverDays
-    {
-      return cached
+    if let cache {
+      let age = now().timeIntervalSince1970 - cache.fetchedAt / 1000
+      if age < freshInterval, cached.count >= minCoverDays { return cached }
+      if age < longFreshInterval, cached.count >= longCoverDays, covers(cached) { return cached }
     }
 
-    // Aylık uç sunucunun (UTC) takvim ayını döndürür: ay başı/sonunda bugünü
+    // Yıllık önce; aylık uç sunucunun (UTC) takvim ayını döndürür: ay başı/sonunda bugünü
     // kapsamayabilir, o zaman haftalıkla tamamlanır.
+    let ranges = yearlyDue(districtId, coverDays: cached.count) ? ["yearly", "monthly", "weekly"] : ["monthly", "weekly"]
     var fetched = false
-    for range in ["monthly", "weekly"] {
-      guard let days = await fetch(districtId: districtId, range: range) else { continue }
+    for range in ranges {
+      if range == "yearly" { LocalStore.set(String(now().timeIntervalSince1970), for: yearlyAtPrefix + districtId) }
+      guard let days = await fetcher(districtId, range) else { continue }
       mergeAndSave(districtId, days)
       fetched = true
       let merged = fromToday(readCache(districtId)?.days ?? days)
@@ -87,7 +99,7 @@ enum PrayerTimesService {
 
   static func today(districtId: String) async -> PrayerDay? {
     let days = await upcomingDays(districtId: districtId)
-    let today = Calendar.current.startOfDay(for: Date())
+    let today = Calendar.current.startOfDay(for: now())
     return days.first { $0.localDay == today } ?? days.first
   }
 
@@ -104,17 +116,25 @@ enum PrayerTimesService {
       if let d = day.localDay { byDay[d] = day }
     }
     let cal = Calendar.current
-    let yesterday = cal.date(byAdding: .day, value: -1, to: cal.startOfDay(for: Date()))!
+    let yesterday = cal.date(byAdding: .day, value: -1, to: cal.startOfDay(for: now()))!
     let days = byDay.filter { $0.key >= yesterday }.sorted { $0.key < $1.key }.map(\.value)
-    LocalStore.encode(Cache(fetchedAt: Date().timeIntervalSince1970 * 1000, days: days), for: cachePrefix + districtId)
+    LocalStore.encode(Cache(fetchedAt: now().timeIntervalSince1970 * 1000, days: days), for: cachePrefix + districtId)
   }
 
   private static func fromToday(_ days: [PrayerDay]) -> [PrayerDay] {
-    let today = Calendar.current.startOfDay(for: Date())
+    let today = Calendar.current.startOfDay(for: now())
     return days.filter { ($0.localDay ?? .distantPast) >= today }
   }
 
+  /// Yıllık veri gerekli mi: elde yaklaşık bir yıl yoksa haftada bir; 30 günden az kaldıysa günde bir.
+  private static func yearlyDue(_ districtId: String, coverDays: Int) -> Bool {
+    guard coverDays < yearTargetDays else { return false }
+    let last = LocalStore.string(yearlyAtPrefix + districtId).flatMap(Double.init) ?? 0
+    let wait: TimeInterval = coverDays < longCoverDays ? 24 * 3600 : longFreshInterval
+    return now().timeIntervalSince1970 - last >= wait
+  }
+
   private static func covers(_ days: [PrayerDay]) -> Bool {
-    days.count >= minCoverDays && days.first?.localDay == Calendar.current.startOfDay(for: Date())
+    days.count >= minCoverDays && days.first?.localDay == Calendar.current.startOfDay(for: now())
   }
 }

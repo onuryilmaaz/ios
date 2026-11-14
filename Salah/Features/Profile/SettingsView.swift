@@ -47,6 +47,15 @@ struct SettingsView: View {
             }
           }
 
+          #if PRAYER_LOCK
+          SectionLabel(t("prayerLock.section")).padding(.leading, 10.5)
+          group {
+            row("lock-closed-outline", t("prayerLock.title"), sub: t(PrayerLockStore.shared.settings.enabled ? "prayerLock.on" : "prayerLock.off"), chevron: true, last: true) {
+              HomeNavigation.shared.path.append(.prayerLock)
+            }
+          }
+          #endif
+
           notificationSections
 
           SectionLabel(t("settings.data.section")).padding(.leading, 10.5)

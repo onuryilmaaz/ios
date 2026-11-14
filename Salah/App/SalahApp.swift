@@ -36,7 +36,15 @@ struct SalahApp: App {
           if scenePhase == .active { await AppControlStore.shared.run() }
         }
         .onChange(of: scenePhase) { _, phase in
-          if phase == .active { AppColorStore.shared.refresh() }
+          if phase == .active {
+            AppColorStore.shared.refresh()
+            UsageStore.shared.record("app.open")
+            DhikrStore.shared.reload()
+            #if PRAYER_LOCK
+            PrayerLockStore.shared.foreground()
+            #endif
+            Task { await UsageStore.shared.flush() }
+          }
           if phase == .active, !DebugLaunch.isIsolated {
             Task { await PushStore.shared.sync() }
             Task { await OfflineQueue.shared.flush() }
@@ -49,7 +57,10 @@ struct SalahApp: App {
             }
           } else if phase != .active {
             AdhanPlayer.shared.deactivate()
-            if phase == .background { BackgroundRefresh.schedule() }
+            if phase == .background {
+              BackgroundRefresh.schedule()
+              DhikrStore.shared.syncWidget()
+            }
           }
         }
         .onChange(of: AuthStore.shared.isAuthenticated) { _, authenticated in

@@ -19,6 +19,14 @@ extension Color {
 /// Android `AppColor` (core/theme/Palette.kt) ve widget `WidgetAppColor` (SharedColors.swift) ile aynı değerler.
 enum AppColor: String, CaseIterable, Sendable {
   case forest, navy, purple, burgundy
+  /// Paletten seçilen renk (`AppColorStore.customSeed`); ölçek `CustomPalette` ile üretilir.
+  case custom
+
+  /// Hazır renkler (seçicide yan yana; özel renk ayrı satırda).
+  static let presets: [AppColor] = [.forest, .navy, .purple, .burgundy]
+
+  /// Özel rengin kaynağı; AppColorStore açılışta ve seçimde günceller.
+  nonisolated(unsafe) static var customSeed: UInt32 = CustomPalette.defaultSeed
 
   /// 50...950 (11 adım).
   nonisolated var scales: (accent: [UInt32], neutral: [UInt32]) {
@@ -29,6 +37,7 @@ enum AppColor: String, CaseIterable, Sendable {
                neutral: [0xf6f6f8, 0xeff0f2, 0xe2e4e7, 0xcbced3, 0x9ca0a8, 0x6f737c, 0x53575e, 0x4b5059, 0x32363f, 0x272b33, 0x161920])
     case .purple: (accent: [0xf5f4f8, 0xe7e5ef, 0xd0cade, 0xb4adc7, 0x988faf, 0x8174a4, 0x6d5d97, 0x57497d, 0x473a6a, 0x2a1e4a, 0x251a41],
                neutral: [0xf7f6f8, 0xf0eff3, 0xe4e3e8, 0xcfcdd5, 0xa29faa, 0x75717e, 0x585561, 0x524e5c, 0x383442, 0x2c2936, 0x1a1822])
+    case .custom: CustomPalette.scales(seed: AppColor.customSeed)
     case .burgundy: (accent: [0xf8f3f4, 0xf0e3e7, 0xdfc7ce, 0xc9a9b2, 0xb18a94, 0xa66a7b, 0x955164, 0x7a3f50, 0x67303f, 0x3f1420, 0x37121c],
                neutral: [0xf8f6f7, 0xf3eff0, 0xe8e2e4, 0xd4ccce, 0xa99da0, 0x7d7074, 0x5f5357, 0x5b4c50, 0x403337, 0x34272b, 0x201719])
     }

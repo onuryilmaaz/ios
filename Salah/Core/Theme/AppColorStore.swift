@@ -10,6 +10,7 @@ import SwiftUI
 final class AppColorStore {
   static let shared = AppColorStore()
   private static let key = "@salah_app_color_v1"
+  private static let customKey = "@salah_app_color_custom_v1"
 
   /// Ayarlar'daki seçim.
   private(set) var choice: AppColor
@@ -19,7 +20,13 @@ final class AppColorStore {
 
   @ObservationIgnored private var timer: Timer?
 
+  /// Özel renk ("#RRGGBB").
+  private(set) var customHex: String
+
   private init() {
+    let hex = LocalStore.string(Self.customKey).flatMap(CustomPalette.parse) ?? CustomPalette.defaultSeed
+    AppColor.customSeed = hex
+    customHex = CustomPalette.format(hex)
     let saved = LocalStore.string(Self.key).flatMap(AppColor.init) ?? .forest
     choice = saved
     current = saved
@@ -36,8 +43,23 @@ final class AppColorStore {
     refresh()
   }
 
+  /// Paletten seçilen rengi kaydeder ve özel rengi etkinleştirir.
+  func setCustom(_ rgb: UInt32) {
+    AppColor.customSeed = rgb & 0xFFFFFF
+    customHex = CustomPalette.format(rgb)
+    LocalStore.set(customHex, for: Self.customKey)
+    WidgetBridge.setCustomColor(customHex)
+    choice = .custom
+    LocalStore.set(AppColor.custom.rawValue, for: Self.key)
+    WidgetBridge.setAppColor(AppColor.custom.rawValue)
+    // Seçim zaten özelse `current` değişmez: palet elle yenilenir.
+    if current == .custom { palette = AppPalette(.custom) }
+    refresh()
+  }
+
   /// Açılışta bir kez: dakikada bir Ramazan tonunu yeniden hesaplar.
   func start() {
+    WidgetBridge.setCustomColor(customHex)
     WidgetBridge.setAppColor(choice.rawValue)
     refresh()
     guard timer == nil else { return }

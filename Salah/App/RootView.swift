@@ -110,6 +110,7 @@ struct RootView: View {
       return
     }
     tab = next
+    UsageStore.shared.record("tab.\(next)")
   }
 
   private func open(_ url: URL) {
@@ -311,6 +312,9 @@ enum DebugLaunch {
       case "esma": return .esma
       case "hutbe": return .hutbe
       case "history": return .history
+      case "kaza": return .kaza
+      case "dhikr": return .dhikr
+      case "circles": return .circles
       case "admin": return .admin
       case "adminUsers": return .adminUsers
       case "adminDetail": return .adminUser("preview-user")

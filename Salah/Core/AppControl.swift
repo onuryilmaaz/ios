@@ -155,13 +155,24 @@ final class AppControlStore {
   /// Bildirim merkezi gibi kısa geçişler aynı ayarı tekrar tekrar istemesin.
   private static let foregroundInterval: TimeInterval = 15
 
+  struct HomeLayout: Codable, Equatable, Sendable {
+    var order: [String]
+    var hidden: [String]
+  }
+
   struct Snapshot: Codable, Equatable {
     var modules: [String: AppControlLogic.ModuleState]?
     var announcements: [AppControlLogic.Announcement]?
     var content: AppControlLogic.Content?
+    /// Sunucunun desteklediği özellikler (`kaza`, `homeLayout`, `usage`). Eski sunucu göndermez: özellik kapalı kalır.
+    var features: [String]?
+    /// Panelin ana sayfa varsayılanı.
+    var homeLayout: HomeLayout?
   }
 
   private struct Config: Decodable {
+    var features: [String]?
+    var homeLayout: HomeLayout?
     var modules: [String: AppControlLogic.ModuleState]?
     var announcements: [AppControlLogic.Announcement]?
     var ios: UpdatePolicy.Server?
@@ -185,7 +196,7 @@ final class AppControlStore {
   private init() {
     #if DEBUG
     if let raw = UserDefaults.standard.string(forKey: "SalahDebugControl"), let data = Data(base64Encoded: raw), let value = try? JSONDecoder().decode(Config.self, from: data) {
-      snapshot = Snapshot(modules: value.modules, announcements: value.announcements, content: value.content)
+      snapshot = Snapshot(modules: value.modules, announcements: value.announcements, content: value.content, features: value.features, homeLayout: value.homeLayout)
       maintenance = value.maintenance
       return
     }
@@ -196,6 +207,15 @@ final class AppControlStore {
   func isOn(_ module: String) -> Bool {
     AppControlLogic.visible(snapshot.modules?[module], now: now, platform: "ios", version: UpdateGate.currentVersion,
       admin: AuthStore.shared.user?.roles?.contains("admin") == true)
+  }
+
+  /// Sunucu bu özelliği destekliyor mu. Yeni uç kullanan özellik yalnız bu doğruysa açılır (mobil sürüm, uçları
+  /// henüz yayında olmayan sunucuya denk gelirse özellik gizli kalır). Debug: `-SalahDebugFeatures kaza,homeLayout`.
+  func supports(_ feature: String) -> Bool {
+    #if DEBUG
+    if let raw = UserDefaults.standard.string(forKey: "SalahDebugFeatures") { return raw.split(separator: ",").contains { $0 == feature } }
+    #endif
+    return snapshot.features?.contains(feature) == true
   }
 
   /// Bakım ekranı şimdi görünür mü (zamanlama dakikada bir yeniden hesaplanır).
@@ -291,7 +311,7 @@ final class AppControlStore {
     maintenance = fresh.maintenance
     // Sunucu ayarları okuyamadıysa alanlar gelmez: elde olan korunur.
     guard fresh.modules != nil || fresh.announcements != nil else { return }
-    let next = Snapshot(modules: fresh.modules, announcements: fresh.announcements, content: fresh.content)
+    let next = Snapshot(modules: fresh.modules, announcements: fresh.announcements, content: fresh.content, features: fresh.features, homeLayout: fresh.homeLayout)
     snapshot = next
     LocalStore.encode(next, for: Self.key)
   }

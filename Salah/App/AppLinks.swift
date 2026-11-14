@@ -30,6 +30,11 @@ final class AppLinks {
     case "imsakiye": return .home(.imsakiye)
     case "oruc": return .home(.fastJournal)
     case "zekat": return .home(.zakat)
+    case "kaza": return .home(.kaza)
+    case "zikir": return .home(.dhikr)
+    case "seri":
+      if let code = parts.dropFirst().first { MainActor.assumeIsolated { StreakCircleAPI.pendingCode = code.uppercased() } }
+      return .home(.circles)
     case "grup":
       if let code = parts.dropFirst().first { MainActor.assumeIsolated { HatimGroupAPI.pendingCode = code } }
       return .home(.hatimGroups)
