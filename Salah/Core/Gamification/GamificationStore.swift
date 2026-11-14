@@ -167,6 +167,7 @@ final class GamificationStore {
     s.today_prayers.append(prayerId)
     if isKaza { s.kaza_prayers.append(prayerId) }
     setStats(s, date: islamicDateString())
+    MissedPrayers.cancel(prayerId)
     #if PRAYER_LOCK
     PrayerLockStore.shared.prayerMarked(prayerId)
     #endif

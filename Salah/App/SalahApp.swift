@@ -40,6 +40,7 @@ struct SalahApp: App {
             AppColorStore.shared.refresh()
             UsageStore.shared.record("app.open")
             DhikrStore.shared.reload()
+            GoalsWidgetSync.publish()
             #if PRAYER_LOCK
             PrayerLockStore.shared.foreground()
             #endif

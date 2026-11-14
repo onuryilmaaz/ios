@@ -125,6 +125,9 @@ struct RootView: View {
         AppLinks.shared.pendingInsights = insights
       }
       if tab != .tracker { select(.tracker) }
+    case .hifz:
+      if tab != .quran { select(.quran) }
+      if AuthStore.shared.isAuthenticated { QuranNavigation.shared.path = [.hifz] }
     }
   }
 
@@ -305,6 +308,7 @@ enum DebugLaunch {
       case "location": return .location
       case "password": return .changePassword
       case "qibla": return .qibla
+      case "yil": return .yearSummary
       case "layout": return .layout
       case "calendar": return .calendar
       case "ozelGun": return .ozelGun

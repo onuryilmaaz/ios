@@ -1,16 +1,20 @@
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Sendable {
-  case tr, en, ar
+  case tr, en, ar, de
 
   var isRTL: Bool { self == .ar }
 
-  /// Telefon dili: Türkçe ve Arapça doğrudan, diğer her dil için İngilizce.
+  /// Eksik metinde düşülecek dil: Almanca İngilizceye, diğerleri Türkçeye.
+  var fallback: AppLanguage { self == .de ? .en : .tr }
+
+  /// Telefon dili: Türkçe, Arapça ve Almanca doğrudan, diğer her dil için İngilizce.
   static var device: AppLanguage {
     let code = Locale.preferredLanguages.first.map { Locale(identifier: $0).language.languageCode?.identifier ?? "" }
     switch code {
     case "tr": return .tr
     case "ar": return .ar
+    case "de": return .de
     default: return .en
     }
   }
@@ -91,6 +95,12 @@ final class Localizer {
   }
 
   var layoutDirection: LayoutDirection { language.isRTL ? .rightToLeft : .leftToRight }
+
+  /// Sunucuya giden dil (asistan, dua önerisi, rapor, bildirim kaydı). Almancayı tanımayan eski sunucu isteği reddetmesin
+  /// diye `/app/config` `languageDe` bildirmedikçe Almanca yerine İngilizce gider.
+  @MainActor var serverLanguage: String {
+    language == .de && !AppControlStore.shared.supports("languageDe") ? "en" : language.rawValue
+  }
   var locale: Locale { Locale(identifier: language.rawValue) }
 
   /// Çeviri; anahtar yoksa Türkçe'ye, o da yoksa anahtarın kendisine düşer.
@@ -103,14 +113,14 @@ final class Localizer {
   }
 
   func list(_ key: String) -> [String] {
-    for lang in [language, .tr] {
+    for lang in [language, language.fallback, .tr] {
       if case .list(let items)? = tables[lang]?[key] { return items }
     }
     return []
   }
 
   private func lookup(_ key: String) -> String? {
-    for lang in [language, .tr] {
+    for lang in [language, language.fallback, .tr] {
       if case .text(let s)? = tables[lang]?[key] { return s }
     }
     return nil

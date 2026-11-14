@@ -13,6 +13,8 @@ final class QuranAudioPlayer {
   private(set) var reciter = "ar.alafasy"
   private(set) var verses: [Verse] = []
   var repeatMode = QuranRepeatMode.off
+  /// Dizi kendiliğinden bitince (durdurulunca değil) çağrılır; mushaf sonraki sayfaya geçer.
+  @ObservationIgnored var onFinish: (() -> Void)?
   @ObservationIgnored private var player: AVPlayer?
   @ObservationIgnored private var statusObservation: NSKeyValueObservation?
   @ObservationIgnored private var endObserver: NSObjectProtocol?
@@ -22,6 +24,7 @@ final class QuranAudioPlayer {
   func configure(_ verses: [Verse]) {
     if self.verses.map(\.id) != verses.map(\.id) { stop() }
     self.verses = verses
+    onFinish = nil
   }
   func chooseReciter(_ id: String) {
     guard ["ar.alafasy", "ar.abdullahbasfar"].contains(id), reciter != id else { return }
@@ -81,7 +84,10 @@ final class QuranAudioPlayer {
       Task { @MainActor in
         guard let self, self.generation == version else { return }
         if let next = QuranAudioSequence.next(index: self.activeIndex, count: self.verses.count, repeatMode: self.repeatMode) { self.play(index: next) }
-        else { self.stop() }
+        else {
+          self.stop()
+          self.onFinish?()
+        }
       }
     }
   }

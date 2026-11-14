@@ -1,5 +1,6 @@
 import AppIntents
 import WidgetKit
+import UserNotifications
 
 @available(iOS 17.0, *)
 struct MarkPrayerIntent: AppIntent {
@@ -31,6 +32,10 @@ struct MarkPrayerIntent: AppIntent {
     // Optimistic local update so widget refreshes instantly
     applyLocalUpdate(ud: ud, backendId: backendId, isKaza: isKaza)
     ud.synchronize()
+    // Uygulamanın kurduğu "vakit çıkmak üzere" hatırlatması (MissedPrayers.id ile aynı kimlik) silinir.
+    let day = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+    let ymd = String(format: "%04d-%02d-%02d", day.year ?? 0, day.month ?? 0, day.day ?? 0)
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["missed.\(ymd).\(backendId)"])
 
     WidgetCenter.shared.reloadAllTimelines()
 

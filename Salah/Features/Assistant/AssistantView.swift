@@ -43,7 +43,7 @@ final class AssistantModel {
     do {
       let res = try await APIClient.shared.post(
         "/assistant/chat",
-        body: ["messages": .array(history), "language": .string(Localizer.shared.language.rawValue)],
+        body: ["messages": .array(history), "language": .string(Localizer.shared.serverLanguage)],
         as: Response.self)
       messages.append(Message(role: .model, text: res.data?.reply ?? t("assistant.fallbackReply")))
     } catch {

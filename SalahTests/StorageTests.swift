@@ -72,7 +72,7 @@ struct LocalizerTests {
       })
     }
     let tr = try load("tr")
-    for code in ["en", "ar"] {
+    for code in ["en", "ar", "de"] {
       let other = try load(code)
       #expect(Set(tr.keys) == Set(other.keys), "\(code) anahtarları farklı")
       for (key, value) in tr { #expect(vars(value) == vars(other[key] ?? ""), "\(code) \(key) değişkenleri") }

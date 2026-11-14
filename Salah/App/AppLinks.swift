@@ -16,6 +16,8 @@ final class AppLinks {
   enum Target: Equatable {
     case home(HomeRoute?)
     case tracker(ActivityType?, insights: Bool)
+    /// Kur'an sekmesinde ezber.
+    case hifz
   }
 
   static func target(for url: URL) -> Target? {
@@ -32,6 +34,8 @@ final class AppLinks {
     case "zekat": return .home(.zakat)
     case "kaza": return .home(.kaza)
     case "zikir": return .home(.dhikr)
+    case "yil": return .home(.yearSummary)
+    case "ezber": return .hifz
     case "seri":
       if let code = parts.dropFirst().first { MainActor.assumeIsolated { StreakCircleAPI.pendingCode = code.uppercased() } }
       return .home(.circles)

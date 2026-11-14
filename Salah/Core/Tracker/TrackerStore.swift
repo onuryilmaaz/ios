@@ -24,7 +24,7 @@ final class TrackerStore {
 
   private(set) var todayLogs: [TrackerLog] = []
   private(set) var isLoading = false
-  @ObservationIgnored private var logsDate: String?
+  @ObservationIgnored private(set) var logsDate: String?
 
   private init() {
     if let env = LocalStore.decode(Envelope.self, Self.cacheKey) {
@@ -114,6 +114,7 @@ final class TrackerStore {
     todayLogs = logs
     logsDate = date
     LocalStore.encode(Envelope(state: Persisted(todayLogs: logs, logsDate: date)), for: Self.cacheKey)
+    GoalsWidgetSync.publish()
     // İbadet (Amel) widget'ı günün kayıtlarını gösterir.
     if AuthStore.shared.isAuthenticated {
       var seen = Set<String>()

@@ -45,7 +45,7 @@ final class PushStore {
   }
 
   private func upload(_ token: String) async {
-    let language = Localizer.shared.language.rawValue
+    let language = Localizer.shared.serverLanguage
     let signature = [token, language, UpdateGate.currentVersion, AuthStore.shared.user?.id ?? ""].joined(separator: "|")
     guard LocalStore.string(Self.signatureKey) != signature else { return }
     let body: JSONValue = [

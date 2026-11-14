@@ -13,6 +13,8 @@ struct NotificationPreferences: Equatable, Sendable {
   var inspiration = true
   var religiousDays = true
   var friday = true
+  /// Kılınmamış vakit hatırlatması: en az kılınan iki vakit, vakit çıkmadan önce.
+  var missed = true
   var muteUntil: Date?
 
   static func read(now: Date = Date(), get: (String) -> String? = { LocalStore.string($0) }) -> Self {
@@ -24,6 +26,7 @@ struct NotificationPreferences: Equatable, Sendable {
     value.inspiration = get("REMINDER_ENABLED").map { $0 == "true" } ?? true
     value.religiousDays = get("RELIGIOUS_DAY_NOTIFICATIONS_ENABLED").map { $0 == "true" } ?? true
     value.friday = get("CUMA_REMINDER_ENABLED").map { $0 == "true" } ?? true
+    value.missed = get("MISSED_PRAYER_REMINDER_ENABLED").map { $0 == "true" } ?? true
     if let raw = get("NOTIFICATION_MUTE_UNTIL"), let ms = Double(raw), ms.isFinite {
       let date = Date(timeIntervalSince1970: ms / 1000)
       if date > now { value.muteUntil = date }

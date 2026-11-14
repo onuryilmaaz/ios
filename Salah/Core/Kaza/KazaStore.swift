@@ -167,5 +167,6 @@ final class KazaStore {
   private func persist() {
     guard let owner else { return }
     LocalStore.encode(Cache(owner: owner, debt: debt), for: Self.cacheKey)
+    GoalsWidgetSync.publish()
   }
 }

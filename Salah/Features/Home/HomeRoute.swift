@@ -32,6 +32,7 @@ enum HomeRoute: Hashable {
   case dhikr
   case circles
   case circle(String)
+  case yearSummary
   #if PRAYER_LOCK
   case prayerLock
   #endif
@@ -59,7 +60,8 @@ enum HomeRoute: Hashable {
   @ViewBuilder
   var destination: some View {
     if let module, !AppControlStore.shared.isOn(module) || (self == .kaza && !AppControlStore.shared.supports("kaza"))
-      || (module == "streak_circles" && !AppControlStore.shared.supports("streakCircles")) {
+      || (module == "streak_circles" && !AppControlStore.shared.supports("streakCircles"))
+      || (self == .yearSummary && !YearSummaryStore.available) {
       ModuleClosedView()
     } else {
       screen
@@ -99,6 +101,7 @@ enum HomeRoute: Hashable {
     case .dhikr: DhikrView()
     case .circles: StreakCirclesView()
     case .circle(let id): StreakCircleView(id: id)
+    case .yearSummary: YearSummaryView()
     #if PRAYER_LOCK
     case .prayerLock: PrayerLockView()
     #endif

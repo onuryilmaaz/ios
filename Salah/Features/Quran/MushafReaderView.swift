@@ -16,6 +16,7 @@ enum ReadingOrientation {
 struct MushafReaderView: View {
   @Environment(\.tokens) private var tokens
   @Environment(\.dismiss) private var dismiss
+  @Environment(\.scenePhase) private var scenePhase
   let initialPage: Int
   @State private var page = 1
   @State private var chrome = true
@@ -43,7 +44,7 @@ struct MushafReaderView: View {
         TabView(selection: $page) {
           ForEach(1...604, id: \.self) { number in
             MushafPageView(page: number, isCurrent: number == page, size: fullSize(geometry), insets: geometry.safeAreaInsets, surahs: surahs,
-              palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" },
+              palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" } ?? MushafListening.shared.currentVerse,
               onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) },
               onWord: { selected in Haptics.impact(.light); word = selected })
               .environment(\.layoutDirection, Localizer.shared.layoutDirection).tag(number)
@@ -64,13 +65,21 @@ struct MushafReaderView: View {
                 Haptics.impact(.light); page = mark.page
               }
             }
+            if !MushafListening.shared.active {
+              CircleIconButton(icon: "headset-outline", size: 35, iconSize: 18, accessibilityLabel: t("mushaf.listen")) {
+                Haptics.impact(.medium)
+                Task { await MushafListening.shared.start(page: page, surahs: surahs) }
+              }
+            }
             CircleIconButton(icon: "contrast-outline", size: 35, iconSize: 18, accessibilityLabel: t("mushaf.theme")) { Haptics.impact(.light); themes = true }
             CircleIconButton(icon: "list", size: 35, iconSize: 19, accessibilityLabel: t("mushaf.chooseSurah")) { Haptics.impact(.light); picker = true }
               .tourAnchor("mushaf.surahs")
           }.padding(.horizontal, 14).padding(.top, geometry.safeAreaInsets.top + 6).padding(.bottom, 10.5)
             .background(tokens.canvas).overlay(alignment: .bottom) { RowDivider(leading: 0) }.ignoresSafeArea(edges: .top)
         }
-        if chrome {
+        if MushafListening.shared.active {
+          listeningBar.frame(maxHeight: .infinity, alignment: .bottom).padding(.bottom, max(geometry.safeAreaInsets.bottom, 14) + 8)
+        } else if chrome {
           HStack(spacing: 5.25) {
             Ionicon("information-circle-outline", size: 13, color: .white)
             Text(t(QuranReadingStore.shared.mushafWords && MushafService.showsMeanings ? "mushaf.hintWords" : "mushaf.hint")).font(.system(size: 12, weight: .medium)).foregroundStyle(.white)
@@ -88,9 +97,23 @@ struct MushafReaderView: View {
       initialized = true
       page = min(604, max(1, initialPage))
       QuranReadingStore.shared.setPage(page)
+      MushafReadLog.shared.view(page)
+      MushafListening.shared.onPage = { next in withAnimation { page = next } }
       ReadingOrientation.set(.allButUpsideDown)
     }
-    .onDisappear { ReadingOrientation.set(.portrait); StatusBarStyle.apply() }
+    .onDisappear {
+      ReadingOrientation.set(.portrait)
+      StatusBarStyle.apply()
+      MushafListening.shared.stop()
+      MushafListening.shared.onPage = nil
+      Task {
+        let pages = await MushafReadLog.shared.flush()
+        if pages > 0 { Toast.success(t("mushaf.readLogged", ["count": pages])) }
+      }
+    }
+    .onChange(of: scenePhase) { _, phase in
+      if phase == .active { MushafReadLog.shared.view(page) } else { MushafReadLog.shared.pause() }
+    }
     .task {
       surahs = await QuranService.surahs()
       MushafService.dropLegacyCache()
@@ -110,8 +133,16 @@ struct MushafReaderView: View {
     .onChange(of: TourStore.shared.tour == nil) { _, ended in
       if ended, chrome { withAnimation { chrome = false } }
     }
-    .onChange(of: page) { _, value in Haptics.impact(.light); QuranReadingStore.shared.setPage(value); MushafService.prefetch(value) }
-    .sheet(isPresented: $themes) { themePicker.presentationDetents([.height(400)]).presentationDragIndicator(.visible) }
+    .onChange(of: page) { _, value in
+      Haptics.impact(.light)
+      QuranReadingStore.shared.setPage(value)
+      MushafService.prefetch(value)
+      MushafReadLog.shared.view(value)
+      // Dinlerken elle sayfa değişirse okuma o sayfadan sürer.
+      let listening = MushafListening.shared
+      if listening.active, listening.page != value { Task { await listening.start(page: value, surahs: surahs) } }
+    }
+    .sheet(isPresented: $themes) { themePicker.presentationDetents([.height(470)]).presentationDragIndicator(.visible) }
     .sheet(item: $word) { selected in
       MushafWordCard(selection: selected, script: QuranReadingStore.shared.mushafScript) {
         word = nil
@@ -170,8 +201,39 @@ struct MushafReaderView: View {
           }
         }.tint(tokens.accent)
       }
+      if AuthStore.shared.isAuthenticated {
+        Toggle(isOn: Binding(get: { QuranReadingStore.shared.mushafAutoLog }, set: { Haptics.impact(.medium); QuranReadingStore.shared.setMushafAutoLog($0) })) {
+          VStack(alignment: .leading, spacing: 2) {
+            Text(t("mushaf.autoLog")).font(.system(size: 15)).foregroundStyle(tokens.textPrimary)
+            Text(t("mushaf.autoLogHint")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary)
+          }
+        }.tint(tokens.accent)
+      }
       Spacer(minLength: 0)
     }.padding(17.5).background(tokens.surface)
+  }
+
+  /// Dinleme çubuğu: duraklat/sürdür, okunan ayet, kapat.
+  private var listeningBar: some View {
+    let listening = MushafListening.shared
+    let verse = listening.currentVerse?.split(separator: ":").map(String.init)
+    return HStack(spacing: 10.5) {
+      Button { listening.toggle() } label: {
+        Ionicon(listening.isPlaying ? "pause" : "play", size: 18, color: .white).frame(width: 38.5, height: 38.5).background(.white.opacity(0.15), in: .circle)
+      }.buttonStyle(PressableStyle()).accessibilityLabel(t(listening.isPlaying ? "mushaf.pause" : "mushaf.resume"))
+      VStack(alignment: .leading, spacing: 1.75) {
+        Text(t("mushaf.listening")).font(.system(size: 12)).foregroundStyle(.white.opacity(0.75))
+        Text(verse.map { t("mushaf.wordVerse", ["surah": $0.first ?? "", "verse": $0.last ?? ""]) } ?? " ")
+          .font(.system(size: 15, weight: .semibold)).foregroundStyle(.white).monospacedDigit()
+      }
+      Spacer(minLength: 0)
+      Button { Haptics.impact(.light); listening.stop() } label: {
+        Ionicon("close", size: 18, color: .white).frame(width: 38.5, height: 38.5).background(.white.opacity(0.15), in: .circle)
+      }.buttonStyle(PressableStyle()).accessibilityLabel(t("mushaf.stopListening"))
+    }
+    .padding(.horizontal, 10.5).padding(.vertical, 8.75)
+    .background(Forest.s900.opacity(0.92), in: .capsule)
+    .padding(.horizontal, 16)
   }
 
   private var surahPicker: some View {
@@ -308,7 +370,10 @@ private struct MushafPageView: View {
           HStack(spacing: pageData.centered ? font * (pageFont != nil ? 0.15 : 0.3) : 0) {
             ForEach(Array((line.words ?? []).enumerated()), id: \.offset) { index, word in
               wordText(word, font: font, pageData: pageData)
-                .fixedSize().onTapGesture {
+                .fixedSize()
+                // Okunan/seçili ayet zeminle de işaretlenir (tecvidli yazıda harf rengi değişmez).
+                .background(word.verse == selectedVerse ? palette.accent.opacity(0.2) : .clear, in: .rect(cornerRadius: 5))
+                .onTapGesture {
                   if word.isEnd {
                     onVerse(word.verse, verseText(word.verse, pageData: pageData))
                   } else if QuranReadingStore.shared.mushafWords, MushafService.showsMeanings, word.meaning != nil {

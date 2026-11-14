@@ -81,6 +81,9 @@ extension SettingsView {
     group {
       row("moon-outline", t("settings.holidays.title"), sub: t("settings.holidays.sub"), toggle: preferenceBinding(\.religiousDays))
       row("book-outline", t("settings.holidays.friday"), sub: t("settings.holidays.fridaySub"), toggle: preferenceBinding(\.friday))
+      if AuthStore.shared.isAuthenticated {
+        row("alarm-outline", t("settings.notifications.missed"), sub: t("settings.notifications.missedSub"), toggle: preferenceBinding(\.missed))
+      }
       row("megaphone-outline", t("settings.notifications.announcements"), sub: t("settings.notifications.announcementsSub"), last: true,
           toggle: Binding(get: { PushStore.shared.enabled }, set: { value in
             Haptics.impact(.medium)

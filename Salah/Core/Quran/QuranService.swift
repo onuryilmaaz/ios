@@ -43,6 +43,7 @@ enum QuranService {
   static let foreignMeaningSource: [AppLanguage: String] = [
     .en: "Saheeh International",
     .ar: "التفسير الميسر",
+    .de: "Bubenheim & Elyas",
   ]
 
   static func surahs() async -> [Surah] {
@@ -117,12 +118,13 @@ enum QuranService {
     }
 
     var map: [Int: String] = [:]
-    if lang == .en {
+    if lang == .en || lang == .de {
       struct Response: Decodable {
         struct Item: Decodable { let text: String? }
         let translations: [Item]?
       }
-      let url = URL(string: "https://api.quran.com/api/v4/quran/translations/20?chapter_number=\(surahId)")!
+      // İngilizce: Saheeh International (20), Almanca: Bubenheim & Elyas (27).
+      let url = URL(string: "https://api.quran.com/api/v4/quran/translations/\(lang == .de ? 27 : 20)?chapter_number=\(surahId)")!
       if let (data, _) = try? await URLSession.shared.data(from: url),
         let res = try? JSONDecoder().decode(Response.self, from: data)
       {
@@ -171,7 +173,8 @@ enum QuranService {
 func surahName(_ surah: Surah, withSuffix: Bool = false) -> String {
   let lang = Localizer.shared.language
   if lang == .ar { return surah.name_arabic ?? surah.name }
-  let name = lang == .en ? (SurahNamesEn.map[String(surah.id)] ?? surah.name) : surah.name
+  // Almanca arayüzde de Latin harfli uluslararası okunuş (Al-Fatihah).
+  let name = lang == .en || lang == .de ? (SurahNamesEn.map[String(surah.id)] ?? surah.name) : surah.name
   return withSuffix ? t("quran.surahWithName", ["name": name]) : name
 }
 

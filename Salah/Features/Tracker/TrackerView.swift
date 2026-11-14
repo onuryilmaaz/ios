@@ -5,6 +5,7 @@ struct TrackerView: View {
   @Environment(\.tokens) private var tokens
   @Environment(\.scenePhase) private var scenePhase
   @State private var formType: ActivityType? = DebugLaunch.form
+  @State private var yearSummary = false
 
   var body: some View {
     let store = TrackerStore.shared
@@ -39,6 +40,7 @@ struct TrackerView: View {
           if AuthStore.shared.isAuthenticated && !insights.unavailable {
             SectionLabel(t("insights.section")).padding(.top, 21).id("insights")
             VStack(spacing: 14) {
+              if YearSummaryStore.available { YearSummaryEntryCard { yearSummary = true } }
               RecapCard().tourAnchor("tracker.insights")
               HeatmapCard()
               HatimCard()
@@ -62,6 +64,7 @@ struct TrackerView: View {
       }
     }
     .background(tokens.canvas)
+    .fullScreenCover(isPresented: $yearSummary) { YearSummaryView().environment(\.tokens, tokens) }
     .task { await load() }
     // Sekmeye girişliyken ilk girişte bir kez (istatistikler gelsin diye kısa bekler).
     .task(id: TourStore.shared.replayNonce) {

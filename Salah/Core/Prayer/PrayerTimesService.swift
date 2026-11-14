@@ -35,9 +35,37 @@ enum PrayerTimesService {
     var data: [PrayerDay]?
   }
 
-  /// Bugün ve sonraki günler (en az bugün; yoksa elde ne varsa).
+  /// Bugün ve sonraki günler. Elde bugünün Diyanet verisi yoksa (uzun çevrimdışı, sunucuda yeni yıl yok) ilçenin
+  /// koordinatıyla cihazda hesaplanan 30 gün döner (`PrayerCalc`).
   static func upcomingDays(districtId: String) async -> [PrayerDay] {
+    withFallback(await loadDays(districtId: districtId), districtId: districtId)
+  }
+
+  private static let coordsPrefix = "@salah_district_coords_v1_"
+  private static let fallbackDays = 30
+
+  /// İlçenin koordinatı (Diyanet vakitlerinden bulunmuş); yoksa nil.
+  static func coordinates(_ districtId: String) -> PrayerCalc.Coordinates? {
+    LocalStore.decode(PrayerCalc.Coordinates.self, coordsPrefix + districtId)
+  }
+
+  /// Önbellekte yeterli Diyanet günü varsa koordinat bir kez bulunup saklanır.
+  private static func learnCoordinates(_ districtId: String, days: [PrayerDay]) {
+    guard coordinates(districtId) == nil, days.count >= 20, let c = PrayerCalc.fit(days) else { return }
+    LocalStore.encode(c, for: coordsPrefix + districtId)
+  }
+
+  static func withFallback(_ days: [PrayerDay], districtId: String) -> [PrayerDay] {
+    let today = Calendar.current.startOfDay(for: now())
+    guard days.first?.localDay != today, let c = coordinates(districtId) else { return days }
+    return (0..<fallbackDays).compactMap { offset in
+      Calendar.current.date(byAdding: .day, value: offset, to: today).flatMap { PrayerCalc.day($0, at: c) }
+    }
+  }
+
+  private static func loadDays(districtId: String) async -> [PrayerDay] {
     let cache = readCache(districtId)
+    if let cache { learnCoordinates(districtId, days: cache.days) }
     let cached = cache.map { fromToday($0.days) } ?? []
     if let cache {
       let age = now().timeIntervalSince1970 - cache.fetchedAt / 1000
@@ -94,7 +122,7 @@ enum PrayerTimesService {
 
   /// Önbellekteki bugün ve sonraki günler (ağa çıkmaz; widget'lar için).
   static func cachedDays(districtId: String) -> [PrayerDay] {
-    fromToday(readCache(districtId)?.days ?? [])
+    withFallback(fromToday(readCache(districtId)?.days ?? []), districtId: districtId)
   }
 
   static func today(districtId: String) async -> PrayerDay? {
@@ -119,6 +147,7 @@ enum PrayerTimesService {
     let yesterday = cal.date(byAdding: .day, value: -1, to: cal.startOfDay(for: now()))!
     let days = byDay.filter { $0.key >= yesterday }.sorted { $0.key < $1.key }.map(\.value)
     LocalStore.encode(Cache(fetchedAt: now().timeIntervalSince1970 * 1000, days: days), for: cachePrefix + districtId)
+    learnCoordinates(districtId, days: days)
   }
 
   private static func fromToday(_ days: [PrayerDay]) -> [PrayerDay] {

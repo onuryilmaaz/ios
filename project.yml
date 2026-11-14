@@ -42,6 +42,7 @@ targets:
       - path: Shared/mobile/widget-src/SalahKeychain.swift
       - path: Shared/mobile/widget-src/CustomPalette.swift
       - path: Shared/mobile/widget-src/DhikrShared.swift
+      - path: Shared/mobile/widget-src/GoalsShared.swift
       # AlarmKit alarmlarına eşlik eden veri; widget uzantısıyla aynı tip olmalı.
       - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
       # Live Activity içerik tipi; widget uzantısı aynı dosyayı derler.
@@ -218,6 +219,7 @@ targets:
       - path: Shared/mobile/widget-src/SalahKeychain.swift
       - path: Shared/mobile/widget-src/CustomPalette.swift
       - path: Shared/mobile/widget-src/DhikrShared.swift
+      - path: Shared/mobile/widget-src/GoalsShared.swift
       - path: Shared/mobile/widget-src/SalahAlarmMetadata.swift
       - path: Shared/mobile/assets/fonts/UthmanicHafs.ttf
         buildPhase: resources

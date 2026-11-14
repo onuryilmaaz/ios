@@ -7,7 +7,8 @@ import PDFKit
 enum HutbeService {
   enum Lang: String, Sendable { case tr, en, ar }
 
-  static var lang: Lang { Lang(rawValue: Localizer.shared.language.rawValue) ?? .tr }
+  /// Diyanet'te Almanca hutbe yok: Almanca arayüzde İngilizcesi.
+  static var lang: Lang { Localizer.shared.language == .de ? .en : Lang(rawValue: Localizer.shared.language.rawValue) ?? .tr }
 
   /// Diyanet Din Hizmetleri hutbe sayfaları (dil başına).
   static func pageURL(_ lang: Lang) -> String {

@@ -163,6 +163,10 @@ private struct HifzReviewView: View {
                   .font(.custom(QuranFont.name, size: 26)).lineSpacing(14)
                   .foregroundStyle(tokens.textPrimary).multilineTextAlignment(.center)
                   .environment(\.layoutDirection, .rightToLeft)
+                // Latin harfli okunuş (Arapça arayüzde gerekmez).
+                if Localizer.shared.language != .ar, let reading = verse.transcription, !reading.isEmpty {
+                  Text(reading).font(.system(size: 15).italic()).foregroundStyle(tokens.accent).multilineTextAlignment(.center)
+                }
                 Text(verse.translation.text).font(.system(size: 13)).foregroundStyle(tokens.textSecondary).multilineTextAlignment(.center)
               } else {
                 Ionicon("eye-off-outline", size: 28, color: tokens.inkSubtle)

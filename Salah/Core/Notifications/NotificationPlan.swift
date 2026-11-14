@@ -1,7 +1,8 @@
 import Foundation
+import UserNotifications
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night", missed = "missed_prayer" }
   var id: String
   var date: Date
   var kind: Kind
@@ -23,6 +24,13 @@ struct PlannedNotification: Equatable, Sendable {
 struct RamadanNightsReminder: Equatable, Sendable {
   var nights: [Date]
   var kadir: Date
+}
+
+/// Kılınmamış vakit hatırlatması: hangi vakitler (bildirim anahtarı: imsak, ogle, ikindi, aksam, yatsi) ve bugün
+/// işaretlenmiş olanlar ("yyyy-MM-dd.fajr" gibi). Namaz işaretlenince bildirim `MissedPrayers.id` ile silinir.
+struct MissedReminder: Equatable, Sendable {
+  var prayers: [String]
+  var done: Set<String>
 }
 
 /// Hatim planı hatırlatması (plan sürüyorsa).
@@ -61,7 +69,8 @@ enum NotificationPlan {
   static func build(
     days: [PrayerDay], preferences p: NotificationPreferences, now: Date,
     calendar: Calendar = .current, verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = [],
-    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil, nights: RamadanNightsReminder? = nil
+    religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil, nights: RamadanNightsReminder? = nil,
+    missed: MissedReminder? = nil
   ) -> [PlannedNotification] {
     guard p.enabled else { return [] }
     // Sessiz aralık sonrasını ŞİMDİ kur: uygulama kapalıyken de süre bitince
@@ -80,6 +89,22 @@ enum NotificationPlan {
           plan.append(.init(id: "prayer.\(Int(exact.timeIntervalSince1970)).\(key).\(offset)", date: date,
                             kind: offset == 0 ? .prayerTime : .prayerReminder, prayerKey: key, offset: offset,
                             adhan: offset == 0 && key != "gunes" && p.adhanEnabled[key] == true))
+        }
+      }
+    }
+
+    // Kılınmamış vakit: vakit çıkmadan 30 dk önce (yatsıda en geç 23.00), bugün ve yarın, günde en fazla iki vakit.
+    if p.missed, let missed {
+      for day in days.prefix(2) {
+        guard let base = parseDay(day.date, calendar: calendar) else { continue }
+        let ymd = MissedPrayers.ymd(base, calendar: calendar)
+        for key in missed.prayers.prefix(2) {
+          guard let backend = MissedPrayers.backendID[key], !missed.done.contains("\(ymd).\(backend)"),
+            let date = MissedPrayers.reminderDate(key, day: day, base: base, calendar: calendar), date > cutoff
+          else { continue }
+          plan.append(.init(id: MissedPrayers.id(ymd: ymd, prayer: backend), date: date, kind: .missed, prayerKey: key,
+                            title: t("notif.missedTitle", ["prayer": prayerLabel(key == "imsak" ? "sabah" : key)]),
+                            body: t("notif.missedBody", ["prayer": prayerLabel(key == "imsak" ? "sabah" : key)])))
         }
       }
     }
@@ -203,5 +228,56 @@ enum NotificationPlan {
   private static func unique(_ items: [NotificationInspiration]) -> [NotificationInspiration] {
     var seen = Set<String>()
     return items.filter { seen.insert($0.id).inserted }
+  }
+}
+
+/// Kılınmamış vakit hatırlatmasının kuralları.
+enum MissedPrayers {
+  /// Bildirim anahtarı → sunucu vakit kimliği.
+  nonisolated static let backendID = ["imsak": "fajr", "ogle": "dhuhr", "ikindi": "asr", "aksam": "maghrib", "yatsi": "isha"]
+  /// Vaktin bittiği vakit (yatsı ayrı: gece yarısından önce).
+  nonisolated static let endKey = ["imsak": "gunes", "ogle": "ikindi", "ikindi": "aksam", "aksam": "yatsi"]
+  nonisolated static let lead: TimeInterval = 30 * 60
+
+  nonisolated static func id(ymd: String, prayer: String) -> String { "missed.\(ymd).\(prayer)" }
+
+  nonisolated static func ymd(_ date: Date, calendar: Calendar) -> String {
+    let c = calendar.dateComponents([.year, .month, .day], from: date)
+    return String(format: "%04d-%02d-%02d", c.year ?? 0, c.month ?? 0, c.day ?? 0)
+  }
+
+  /// Vakit bitmeden 30 dk önce; yatsıda vaktin girişinden 90 dk sonra, en geç 23.00. Vakit girişinden önceye düşmez.
+  static func reminderDate(_ key: String, day: PrayerDay, base: Date, calendar: Calendar) -> Date? {
+    guard let raw = day.times[key], let start = NotificationPlan.clock(raw, on: base, calendar: calendar) else { return nil }
+    let date: Date
+    if key == "yatsi" {
+      guard let late = calendar.date(bySettingHour: 23, minute: 0, second: 0, of: base) else { return nil }
+      date = min(start.addingTimeInterval(90 * 60), late)
+    } else {
+      guard let endRaw = endKey[key].flatMap({ day.times[$0] }), let end = NotificationPlan.clock(endRaw, on: base, calendar: calendar) else { return nil }
+      date = end.addingTimeInterval(-lead)
+    }
+    return date > start.addingTimeInterval(15 * 60) ? date : nil
+  }
+
+  /// Son 30 günde en az kılınan iki vakit; veri yoksa sabah ve yatsı. Yalnız girişli kullanıcıda (takip girişle).
+  @MainActor
+  static func choose(_ byPrayerTime: [String: Int]?) -> [String] {
+    let order = ["imsak", "yatsi", "ikindi", "ogle", "aksam"]
+    guard let byPrayerTime, !byPrayerTime.isEmpty else { return ["imsak", "yatsi"] }
+    return order.sorted { (byPrayerTime[backendID[$0] ?? ""] ?? 0) < (byPrayerTime[backendID[$1] ?? ""] ?? 0) }.prefix(2).map { $0 }
+  }
+
+  @MainActor
+  static func current(now: Date = Date()) -> MissedReminder? {
+    guard AuthStore.shared.isAuthenticated, !OzelGunStore.shared.isActive else { return nil }
+    let today = ymd(now, calendar: .current)
+    let done = Set((GamificationStore.shared.stats?.today_prayers ?? []).map { "\(today).\($0)" })
+    return .init(prayers: choose(InsightsStore.shared.recap(.month)?.byPrayerTime), done: done)
+  }
+
+  /// Namaz işaretlenince bugünkü hatırlatma silinir (uygulama, widget ve Siri).
+  nonisolated static func cancel(_ backendPrayer: String, now: Date = Date()) {
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id(ymd: ymd(now, calendar: .current), prayer: backendPrayer)])
   }
 }

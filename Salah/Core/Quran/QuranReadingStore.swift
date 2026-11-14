@@ -52,6 +52,8 @@ final class QuranReadingStore {
   private(set) var mushafScript: MushafScript = .text
   /// Mushafta kelimeye dokununca anlam kartı.
   private(set) var mushafWords = true
+  /// Mushafta okunan sayfalar Kur'an kaydına (hatim ilerlemesine) kendiliğinden eklensin.
+  private(set) var mushafAutoLog = true
   private(set) var settings: QuranReadingSettings = .init()
   @ObservationIgnored private let write: (String, String?) -> Void
 
@@ -71,6 +73,7 @@ final class QuranReadingStore {
     mushafTheme = get("QURAN_MUSHAF_THEME").flatMap(MushafTheme.init(rawValue:)) ?? .auto
     mushafScript = get("QURAN_MUSHAF_SCRIPT").flatMap(MushafScript.init(rawValue:)) ?? .text
     mushafWords = get("QURAN_MUSHAF_WORDS") != "0"
+    mushafAutoLog = get("QURAN_MUSHAF_AUTOLOG") != "0"
     settings = decode(QuranReadingSettings.self, "QURAN_SETTINGS_V2") ?? .init()
   }
 
@@ -93,6 +96,7 @@ final class QuranReadingStore {
   func setTheme(_ theme: MushafTheme) { mushafTheme = theme; write("QURAN_MUSHAF_THEME", theme.rawValue) }
   func setScript(_ script: MushafScript) { mushafScript = script; write("QURAN_MUSHAF_SCRIPT", script.rawValue) }
   func setMushafWords(_ on: Bool) { mushafWords = on; write("QURAN_MUSHAF_WORDS", on ? "1" : "0") }
+  func setMushafAutoLog(_ on: Bool) { mushafAutoLog = on; write("QURAN_MUSHAF_AUTOLOG", on ? "1" : "0") }
   func updateSettings(_ change: (inout QuranReadingSettings) -> Void) {
     change(&settings)
     save(settings, key: "QURAN_SETTINGS_V2")

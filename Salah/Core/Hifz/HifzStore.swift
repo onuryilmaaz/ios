@@ -88,5 +88,6 @@ final class HifzStore {
   private func save(_ list: [HifzPlan.Card]) {
     cards = list
     LocalStore.encode(list, for: Self.key)
+    GoalsWidgetSync.publish()
   }
 }

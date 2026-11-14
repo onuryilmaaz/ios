@@ -51,7 +51,11 @@ struct HomeView: View {
       if new > old, let route = nav.path.last { UsageStore.shared.record("screen.\(route.usageName)") }
     }
     .fullScreenCover(item: Binding(get: { celebrationStreak.map(Celebration.init) }, set: { celebrationStreak = $0?.streak })) { c in
-      StreakCelebration(streak: c.streak) { celebrationStreak = nil }
+      StreakCelebration(streak: c.streak) {
+        celebrationStreak = nil
+        // Kutlama kapanınca (olumlu an) değerlendirme penceresi; kendi sınırları var.
+        Task { await StoreReview.maybeRequest(streak: c.streak) }
+      }
         .presentationBackground(.clear)
     }
     .transaction { if celebrationStreak != nil { $0.disablesAnimations = true } }

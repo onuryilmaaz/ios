@@ -122,3 +122,8 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - Mushaf ayarlarında Yazı: Bilgisayar / Mushaf hattı / Tecvidli; kelimeye dokununca anlam kartı. Cihazda kontrol: sayfa çevirirken hat yüklenme hızı, gece temasında tecvidli, kelime sesi, İndirilenler'den mushafın tamamı.
 - Sure ekranında "Kelime meali". Ayrıntı `android/HANDOFF.md`.
 - Namaz vakitleri yıllık indirilir; 2027 veri seti sunucuya eklenmeli.
+
+## Yol haritası 2 ve Almanca (2026-11-14)
+- Yıl özeti, mushaf dinleme ve sayfa kaydı, değerlendirme isteği, kılınmamış vakit hatırlatması, Hedeflerim widget'ı, cihazda vakit hesabı, Almanca. Ayrıntı `android/HANDOFF.md`.
+- Sunucuda migration 020 ve `yearSummary`/`languageDe` özellikleri yayına alınmadan bu özelliklerin sunucu tarafı gizli kalır.
+- Almanca dua/Esma anlamları kontrol ettirilmeli; App Store'a Almanca açıklama ve görseller eklenmeli.

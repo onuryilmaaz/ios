@@ -1,0 +1,3 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "Dein Standort wird verwendet, um Gebetszeiten und die Qibla-Richtung anzuzeigen.";
+"NSAlarmKitUsageDescription" = "Mit dem Weckerzugriff klingeln deine Gebets-, Tahadschud- und Sahur-Wecker auch im Lautlosmodus.";

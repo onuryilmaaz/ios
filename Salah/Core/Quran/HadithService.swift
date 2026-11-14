@@ -58,7 +58,8 @@ enum HadithService {
   private static func translatedText(book: String, number: Int) async -> String? {
     let prefix: String
     switch Localizer.shared.language {
-    case .en: prefix = "eng"
+    // Hadis kaynağında Almanca baskı yok: Almanca arayüzde İngilizcesi.
+    case .en, .de: prefix = "eng"
     case .ar: prefix = "ara"
     case .tr: return nil
     }
@@ -86,6 +87,7 @@ enum HadithService {
       .tr: ["bukhari": "Sahih-i Buhârî", "muslim": "Sahih-i Müslim", "abudawud": "Sünen-i Ebû Dâvûd", "tirmidhi": "Sünen-i Tirmizî"],
       .en: ["bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Jami' at-Tirmidhi"],
       .ar: ["bukhari": "صحيح البخاري", "muslim": "صحيح مسلم", "abudawud": "سنن أبي داود", "tirmidhi": "جامع الترمذي"],
+      .de: ["bukhari": "Sahih al-Buchari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Dschami' at-Tirmidhi"],
     ]
     return names[Localizer.shared.language]?[book] ?? book
   }

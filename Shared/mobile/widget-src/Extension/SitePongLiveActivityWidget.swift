@@ -25,6 +25,9 @@ struct SitePongLiveActivityWidgetBundle: WidgetBundle {
     // Zikirmatik (dokunarak sayar, iOS 17+)
     DhikrWidget()
 
+    // Hedeflerim: kaza, ezber tekrarı, teheccüd
+    GoalsWidget()
+
     // Standby (iOS 17+)
     StandbyPrayerWidget()
 

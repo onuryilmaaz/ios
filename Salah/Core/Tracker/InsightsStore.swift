@@ -94,6 +94,8 @@ final class InsightsStore {
     ]
     for task in tasks { await task.value }
     LocalStore.encode(Envelope(state: Persisted(history: history, recaps: recaps, quran: quran)), for: Self.cacheKey)
+    // Hatim tamamlandıysa olumlu an: değerlendirme penceresi (kendi sınırları var).
+    if let quran, AuthStore.shared.isAuthenticated { StoreReview.hatimsChanged(quran.completedHatims) }
   }
 
   private struct Response<D: Decodable>: Decodable {

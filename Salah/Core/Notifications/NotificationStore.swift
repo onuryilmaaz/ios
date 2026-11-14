@@ -126,8 +126,8 @@ final class NotificationStore {
       let alarmCovered = AlarmStore.shared.coveredPrayerKeys
       // 1. aşama: vakit bildirimleri içerik indirmeyi beklemeden hemen kurulur; ezan
       // sesi gibi ayar değişiklikleri saniyeler içinde eski bildirimlerin yerini alır.
-      let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered)
-        .filter(\.isPrayer)
+      let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered, missed: persists ? MissedPrayers.current() : nil)
+        .filter { $0.isPrayer || $0.kind == .missed }
       delivery.removePending()
       lastError = nil
       var succeeded = await add(prayers, version: version)
@@ -141,7 +141,7 @@ final class NotificationStore {
                                         hadiths: pools.hadiths, religiousDays: calendar.religiousDays(now: now()),
                                         alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil,
                                         nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil)
-        .filter { !$0.isPrayer }
+        .filter { !$0.isPrayer && $0.kind != .missed }
       succeeded = await add(rest, version: version) && succeeded
       guard version == revision else { continue }
       forceNext = false
@@ -205,6 +205,7 @@ final class NotificationStore {
     LocalStore.set(String(p.inspiration), for: "REMINDER_ENABLED")
     LocalStore.set(String(p.religiousDays), for: "RELIGIOUS_DAY_NOTIFICATIONS_ENABLED")
     LocalStore.set(String(p.friday), for: "CUMA_REMINDER_ENABLED")
+    LocalStore.set(String(p.missed), for: "MISSED_PRAYER_REMINDER_ENABLED")
     LocalStore.set(p.muteUntil.map { String($0.timeIntervalSince1970 * 1000) }, for: "NOTIFICATION_MUTE_UNTIL")
   }
 

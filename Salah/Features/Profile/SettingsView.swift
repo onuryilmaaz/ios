@@ -10,7 +10,7 @@ struct SettingsView: View {
   @State private var shareURL: URL?
 
   /// Dil adları her dilde kendi yazımıyla gösterilir.
-  private static let languageNames: [AppLanguage: String] = [.tr: "Türkçe", .en: "English", .ar: "العربية"]
+  private static let languageNames: [AppLanguage: String] = [.tr: "Türkçe", .en: "English", .ar: "العربية", .de: "Deutsch"]
 
   var body: some View {
     let l10n = Localizer.shared
@@ -202,6 +202,7 @@ struct SettingsView: View {
       .init(text: Self.languageNames[.tr]!) { pick(.fixed(.tr)) },
       .init(text: Self.languageNames[.en]!) { pick(.fixed(.en)) },
       .init(text: Self.languageNames[.ar]!) { pick(.fixed(.ar)) },
+      .init(text: Self.languageNames[.de]!) { pick(.fixed(.de)) },
       .init(text: t("common.cancel"), style: .cancel),
     ])
   }
@@ -258,7 +259,9 @@ struct LegalSheet: View {
 
   init(initial: Doc) {
     _doc = State(initialValue: initial)
-    _lang = State(initialValue: Localizer.shared.language.rawValue)
+    // Yasal metinler Türkçe, İngilizce ve Arapça; Almanca arayüzde İngilizcesi açılır.
+    let current = Localizer.shared.language.rawValue
+    _lang = State(initialValue: ["tr", "en", "ar"].contains(current) ? current : "en")
   }
 
   private struct Content: Decodable {

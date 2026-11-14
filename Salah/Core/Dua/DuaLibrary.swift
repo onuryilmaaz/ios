@@ -78,7 +78,7 @@ enum DuaLibrary {
     guard
       let res = try? await APIClient.shared.post(
         "/assistant/dua-suggest",
-        body: ["feeling": .string(feeling), "duas": .array(catalog), "language": .string(Localizer.shared.language.rawValue)],
+        body: ["feeling": .string(feeling), "duas": .array(catalog), "language": .string(Localizer.shared.serverLanguage)],
         as: Response.self),
       let payload = res.data
     else { return nil }
