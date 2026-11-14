@@ -1,4 +1,5 @@
 import AVFoundation
+import AudioToolbox
 import UIKit
 
 enum AdhanTiming {
@@ -20,16 +21,18 @@ enum AdhanTiming {
   }
 }
 
-/// Ezan sesi foreground'da da kısa çalar (en çok `maxDuration`, sonda kısılarak).
-/// Kapalı uygulamada aynı uzunluktaki UN sesi (notif_ezan.caf) kullanılır.
+/// Ezan sesi: uygulama açıkken de kapalıyken de bildirimin kısa ezanı (notif_ezan.caf). Açıkken sistem sesi olarak
+/// çalınır; böylece bildirimle aynı zil/uyarı ses düzeyini kullanır ve sessiz anahtarına uyar. Yönetici testi
+/// vaktin tam ezan dosyasını medya sesiyle (en çok `maxDuration`) dener.
 @Observable
 final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   static let shared = AdhanPlayer()
   /// Bildirim sesiyle aynı üst sınır; tam ezan okunmaz.
-  static let maxDuration: TimeInterval = 5
+  static let maxDuration: TimeInterval = 10
   static let fadeDuration: TimeInterval = 1
   private(set) var activePrayer: String?
   @ObservationIgnored private var player: AVAudioPlayer?
+  @ObservationIgnored private var systemSound: SystemSoundID?
   @ObservationIgnored private var timer: Task<Void, Never>?
   @ObservationIgnored private var cutoff: Task<Void, Never>?
   @ObservationIgnored private var lastKey: String?
@@ -69,12 +72,12 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   func play(_ key: String, test: Bool = false) -> Bool {
     let now = Date()
     // Timer ve bildirim aynı anda geldiyse ikinci çağrı da 'ses çalıyor' görsün.
-    if activePrayer == key, player?.isPlaying == true { return true }
+    if activePrayer == key, player?.isPlaying == true || systemSound != nil { return true }
     guard test || (isActive && AdhanTiming.allowed(key: key, preferences: NotificationStore.shared.preferences,
       now: now, lastKey: lastKey, lastDate: lastDate)) else { return false }
-    guard key != "gunes", NotificationPreferences.prayers.contains(key),
-      let url = Bundle.main.url(forResource: key, withExtension: "mp3", subdirectory: "audio")
-    else { return false }
+    guard key != "gunes", NotificationPreferences.prayers.contains(key) else { return false }
+    if !test { return playShort(key, now: now) }
+    guard let url = Bundle.main.url(forResource: key, withExtension: "mp3", subdirectory: "audio") else { return false }
     stop()
     QuranAudioPlayer.shared.stop()
     do {
@@ -83,7 +86,9 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
       try session.setActive(true)
       let audio = try AVAudioPlayer(contentsOf: url)
       audio.delegate = self
-      guard audio.play() else { stop(); return false }
+      // Ses oturumu yeni açıldığında ilk hece kaybolmasın: hazırlanıp kısa bir gecikmeyle başlar.
+      audio.prepareToPlay()
+      guard audio.play(atTime: audio.deviceCurrentTime + 0.3) else { stop(); return false }
       player = audio
       activePrayer = key
       lastKey = key
@@ -97,7 +102,32 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
     }
   }
 
+  /// Bildirimin kısa ezanı, sistem sesi olarak (zil/uyarı ses düzeyi, sessiz anahtarına uyar).
+  private func playShort(_ key: String, now: Date) -> Bool {
+    guard let url = Bundle.main.url(forResource: "notif_ezan", withExtension: "caf") else { return false }
+    stop()
+    QuranAudioPlayer.shared.stop()
+    var id: SystemSoundID = 0
+    guard AudioServicesCreateSystemSoundID(url as CFURL, &id) == kAudioServicesNoError else { return false }
+    systemSound = id
+    activePrayer = key
+    lastKey = key
+    lastDate = now
+    window.show()
+    AudioServicesPlaySystemSoundWithCompletion(id) { [weak self] in
+      Task { @MainActor in
+        guard let self, self.systemSound == id else { return }
+        self.stop()
+      }
+    }
+    return true
+  }
+
   func stop() {
+    if let id = systemSound {
+      systemSound = nil
+      AudioServicesDisposeSystemSoundID(id)
+    }
     cutoff?.cancel()
     cutoff = nil
     let hadPlayer = player != nil

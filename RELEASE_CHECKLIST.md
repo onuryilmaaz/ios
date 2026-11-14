@@ -127,3 +127,4 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - Yıl özeti, mushaf dinleme ve sayfa kaydı, değerlendirme isteği, kılınmamış vakit hatırlatması, Hedeflerim widget'ı, cihazda vakit hesabı, Almanca. Ayrıntı `android/HANDOFF.md`.
 - Sunucuda migration 020 ve `yearSummary`/`languageDe` özellikleri yayına alınmadan bu özelliklerin sunucu tarafı gizli kalır.
 - Almanca dua/Esma anlamları kontrol ettirilmeli; App Store'a Almanca açıklama ve görseller eklenmeli.
+- Ezan sesi (2026-11-14): vakit ezanı 10 saniye (`notif_ezan.caf`, Android ile aynı kesit). Uygulama açıkken de sistem sesi olarak çalar: zil/uyarı ses düzeyi ve sessiz anahtarı her durumda aynı. Yönetici testi tam ezan dosyasını medya sesiyle dener.

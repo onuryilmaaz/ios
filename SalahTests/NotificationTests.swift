@@ -398,10 +398,13 @@ struct NotificationStoreTests {
     #expect(!d.notices.isEmpty && !d.notices.contains { $0.adhan })
   }
 
-  @Test func notificationAdhanSoundIsAtMostFiveSeconds() throws {
+  /// Vakit ezanı 10 saniye; iOS 30 saniyeyi aşan bildirim sesini çalmaz.
+  @Test func notificationAdhanSoundIsTenSeconds() throws {
     let url = try #require(Bundle.main.url(forResource: "notif_ezan", withExtension: "caf"))
     let file = try AVAudioFile(forReading: url)
-    #expect(Double(file.length) / file.fileFormat.sampleRate <= AdhanPlayer.maxDuration + 0.05)
+    let seconds = Double(file.length) / file.fileFormat.sampleRate
+    #expect(abs(seconds - AdhanPlayer.maxDuration) <= 0.1)
+    #expect(seconds < 30)
   }
 
   @Test func testNotificationIsAddedAfterReschedule() async {
