@@ -1297,15 +1297,55 @@
         "title": "Hazır sorular"
       }
     },
+    "dhikr": {
+      "controls": {
+        "body": "Yanlış saydıysan geri al, baştan başlamak için sıfırla.",
+        "title": "Geri al ve sıfırla"
+      },
+      "counter": {
+        "body": "Daireye her dokunuşta bir sayılır; hedefe gelince titreşimle haber verir.",
+        "title": "Saymak için dokun"
+      },
+      "mode": {
+        "body": "Namaz sonrası tesbihatı sırayla çek ya da kendi zikrini ve hedefini seç.",
+        "title": "Tesbihat ya da serbest"
+      }
+    },
     "done": "Bitir",
+    "hifz": {
+      "add": {
+        "body": "Ezberlediğin sure ve ayet aralığını ekle.",
+        "title": "Ayet ekle"
+      },
+      "hero": {
+        "body": "Bugün tekrar zamanı gelen ayetler burada; başla ve hatırladığını işaretle.",
+        "title": "Bugünkü tekrar"
+      }
+    },
     "home": {
       "alarms": {
         "body": "Namaz vakitlerine göre kendiliğinden kurulan alarmları buradan yönet.",
         "title": "Alarm"
       },
+      "circles": {
+        "body": "Arkadaşların ya da ailenle bir grup kur, serinizi birlikte sürdürün.",
+        "title": "Birlikte seri"
+      },
+      "dhikr": {
+        "body": "Namaz sonrası tesbihatı ya da istediğin zikri buradan say.",
+        "title": "Zikirmatik"
+      },
       "hero": {
         "body": "Bir sonraki namaza kalan süre ve günün tüm vakitleri burada.",
         "title": "Sıradaki vakit"
+      },
+      "kaza": {
+        "body": "Kılmadığın namazları hesapla, kıldıkça sayacın düşsün.",
+        "title": "Kaza borcu"
+      },
+      "layout": {
+        "body": "Kartları gizle ya da sırasını değiştir; ana sayfa senin düzeninle açılsın.",
+        "title": "Ana sayfanı düzenle"
       },
       "location": {
         "body": "Namaz vakitleri bu ilçeye göre hesaplanır. Değiştirmek için dokun.",
@@ -1340,7 +1380,21 @@
         "title": "Bugünkü namazlar"
       }
     },
+    "kaza": {
+      "calculate": {
+        "body": "Kaza edilecek dönemi seç (genelde buluğ çağından namaza düzenli başladığın güne kadar), sayaçlar kendiliğinden dolsun.",
+        "title": "Hesapla"
+      },
+      "counters": {
+        "body": "Her vaktin kaza sayısı burada; kıldıkça eksi ile düşür.",
+        "title": "Vakit vakit borcun"
+      }
+    },
     "mushaf": {
+      "listen": {
+        "body": "Hafızdan dinle; okunan ayet işaretlenir, sayfa kendiliğinden döner.",
+        "title": "Dinleyerek oku"
+      },
       "page": {
         "body": "Sayfayı yana kaydırarak çevir. Ayet numarasına dokununca meali açılır, satıra basılı tutunca kaldığın yer işaretlenir.",
         "title": "Sayfa ve ayetler"
@@ -1348,6 +1402,14 @@
       "surahs": {
         "body": "İstediğin sureye buradan atla.",
         "title": "Sure seç"
+      },
+      "theme": {
+        "body": "Sayfa rengini, Medine hattını ya da renkli tecvidi ve kelime mealini buradan seç.",
+        "title": "Görünüm ve hat"
+      },
+      "word": {
+        "body": "Bir kelimeye dokununca anlamı ve okunuşu açılır, istersen dinlersin.",
+        "title": "Kelime anlamı"
       }
     },
     "next": "İleri",
@@ -1356,6 +1418,14 @@
       "continue": {
         "body": "Son okuduğun ayete buradan tek dokunuşla dön.",
         "title": "Kaldığın yer"
+      },
+      "downloads": {
+        "body": "Sure seslerini ve metni indir, internet olmadan da oku ve dinle.",
+        "title": "İnternetsiz Kur'an"
+      },
+      "hifz": {
+        "body": "Ezberlediğin ayetleri ekle; unutmaman için zamanı gelince tekrar ettirir.",
+        "title": "Ezber"
       },
       "list": {
         "body": "Bir sureye dokunarak mealiyle ve tilavetiyle birlikte oku.",
@@ -1385,6 +1455,10 @@
       "insights": {
         "body": "Dönem özetin, ibadet haritan ve hatim ilerlemen burada.",
         "title": "İstatistikler"
+      },
+      "year": {
+        "body": "Geçen yıl kaç vakit kıldığını, en uzun serini ve okuduğun sayfaları gör. Her Ocak ayında açılır.",
+        "title": "Yıl özeti"
       }
     }
   },
@@ -1922,6 +1996,21 @@
     "failed": "Yıl özeti yüklenemedi. Bağlantını kontrol edip tekrar dene.",
     "share": "Paylaş",
     "shareLabel": "{{year}} yılım",
-    "shareText": "{{year}} yılında {{count}} vakit namaz kıldım. Salah ile takip ediyorum."
+    "shareText": "{{year}} yılında {{count}} vakit namaz kıldım. Salah ile takip ediyorum.",
+    "story": {
+      "introLine1": "Bir yıl daha geride kaldı.",
+      "introLine2": "Namazların ve ibadetlerinle nasıl bir yıl geçirdin, birlikte bakalım.",
+      "inYear": "{{year}} yılında",
+      "streakTitle": "En uzun serin",
+      "streakUnit": "gün art arda beş vakit",
+      "topPrayer": "En çok {{prayer}} vaktini kıldın",
+      "prayersUnit": "vakit",
+      "pagesUnit": "sayfa okudun",
+      "moreTitle": "Diğer ibadetlerin",
+      "closing": "Allah kabul etsin.",
+      "replay": "Baştan izle",
+      "next": "Sonraki",
+      "previous": "Önceki"
+    }
   }
 }

@@ -29,7 +29,8 @@ struct Tour: Sendable {
   /// Tam ekran bir pencerenin (Mushaf) içinde gösterilir: katmanı o ekran kendisi çizer.
   var inline = false
 
-  /// Ana sayfa; girişliyse seri ve kısayol adımları da eklenir.
+  /// Ana sayfa; girişliyse seri ve kısayol adımları da eklenir. Yeni kartlar (zikirmatik, kaza, düzen) da içindedir;
+  /// eski turu görmüş kullanıcıya bunlar `homeNew` olarak ayrıca gösterilir.
   static func home(signedIn: Bool) -> Tour {
     let base: [Step] = [
       .init(anchor: "home.location", icon: "location"),
@@ -37,35 +38,60 @@ struct Tour: Sendable {
       .init(anchor: "home.times", icon: "timer-outline"),
       .init(anchor: "home.tracker", icon: "checkmark-done-outline"),
       .init(anchor: "home.alarms", icon: "alarm-outline"),
+      dhikrStep, kazaStep,
     ]
     let tail: [Step] = [
+      layoutStep,
       .init(anchor: "home.qibla", icon: "compass-outline"),
       .init(anchor: "home.profile", icon: "person-circle-outline"),
       .init(anchor: tabBarAnchor, icon: "apps-outline", key: "home.tabs"),
     ]
     return signedIn
-      ? Tour(id: "home", steps: base + homeAccount.steps + tail, covers: [homeAccount.id])
-      : Tour(id: "home", steps: base + tail)
+      ? Tour(id: "home", steps: base + homeAccount.steps + tail, covers: [homeAccount.id, homeNew.id])
+      : Tour(id: "home", steps: base + tail, covers: [homeNew.id])
   }
+
+  private static let dhikrStep = Step(anchor: "home.dhikr", icon: "finger-print-outline", scroll: true)
+  private static let kazaStep = Step(anchor: "home.kaza", icon: "hourglass-outline", scroll: true)
+  private static let circlesStep = Step(anchor: "home.circles", icon: "people-outline", scroll: true)
+  private static let layoutStep = Step(anchor: "home.layout", icon: "options-outline", scroll: true)
 
   /// Misafirken ana sayfa turunu görüp sonradan giriş yapana: yalnız girişle gelen kartlar.
   static let homeAccount = Tour(id: "homeAccount", steps: [
     .init(anchor: "home.streak", icon: "flame-outline", scroll: true),
+    circlesStep,
     .init(anchor: "home.quickActions", icon: "grid-outline", scroll: true),
   ])
+
+  /// Ana sayfa turunu önceki sürümde görmüş kullanıcıya yeni kartlar.
+  static let homeNew = Tour(id: "homeNew", steps: [dhikrStep, kazaStep, circlesStep, layoutStep])
 
   static let quran = Tour(id: "quran", steps: [
     .init(anchor: "quran.search", icon: "search-outline"),
     .init(anchor: "quran.mushaf", icon: "book-outline"),
+    hifzStep,
     .init(anchor: "quran.continue", icon: "bookmark-outline"),
+    downloadsStep,
     .init(anchor: "quran.list", icon: "list-outline"),
-  ])
+  ], covers: ["quranNew"])
+
+  private static let hifzStep = Step(anchor: "quran.hifz", icon: "school-outline")
+  private static let downloadsStep = Step(anchor: "quran.downloads", icon: "cloud-download-outline")
+
+  /// Kur'an turunu önceki sürümde görmüş kullanıcıya: ezber ve indirme.
+  static let quranNew = Tour(id: "quranNew", steps: [hifzStep, downloadsStep])
 
   static let tracker = Tour(id: "tracker", steps: [
     .init(anchor: "tracker.hero", icon: "today-outline"),
     .init(anchor: "tracker.activities", icon: "add-circle-outline"),
+    yearStep,
     .init(anchor: "tracker.insights", icon: "stats-chart-outline", scroll: true),
-  ])
+  ], covers: ["trackerNew"])
+
+  private static let yearStep = Step(anchor: "tracker.year", icon: "calendar-outline", scroll: true)
+
+  /// İbadet turunu önceki sürümde görmüş kullanıcıya: yıl özeti.
+  static let trackerNew = Tour(id: "trackerNew", steps: [yearStep])
 
   static let assistant = Tour(id: "assistant", steps: [
     .init(anchor: "assistant.intro", icon: "sparkles-outline"),
@@ -73,11 +99,38 @@ struct Tour: Sendable {
     .init(anchor: "assistant.composer", icon: "create-outline"),
   ])
 
-  /// Mushaf ilk açıldığında: sayfa hareketleri ve sure seçimi.
+  /// Mushaf ilk açıldığında: sayfa hareketleri, kelime anlamı, dinleme, görünüm ve sure seçimi.
   static let mushaf = Tour(id: "mushaf", steps: [
     .init(anchor: "mushaf.page", icon: "swap-horizontal-outline"),
+    mushafWordStep, mushafListenStep, mushafThemeStep,
     .init(anchor: "mushaf.surahs", icon: "list-outline"),
-  ], inline: true)
+  ], covers: ["mushafNew"], inline: true)
+
+  private static let mushafWordStep = Step(anchor: "mushaf.page", icon: "text-outline", key: "mushaf.word")
+  private static let mushafListenStep = Step(anchor: "mushaf.listen", icon: "headset-outline")
+  private static let mushafThemeStep = Step(anchor: "mushaf.theme", icon: "contrast-outline")
+
+  /// Mushaf turunu önceki sürümde görmüş kullanıcıya: kelime anlamı, dinleme, görünüm.
+  static let mushafNew = Tour(id: "mushafNew", steps: [mushafWordStep, mushafListenStep, mushafThemeStep], inline: true)
+
+  /// Zikirmatik ilk açıldığında.
+  static let dhikr = Tour(id: "dhikr", steps: [
+    .init(anchor: "dhikr.mode", icon: "repeat-outline"),
+    .init(anchor: "dhikr.counter", icon: "finger-print-outline"),
+    .init(anchor: "dhikr.controls", icon: "refresh-outline"),
+  ])
+
+  /// Kaza borcu ilk açıldığında.
+  static let kaza = Tour(id: "kaza", steps: [
+    .init(anchor: "kaza.counters", icon: "hourglass-outline"),
+    .init(anchor: "kaza.calculate", icon: "calculator-outline"),
+  ])
+
+  /// Ezber ilk açıldığında.
+  static let hifz = Tour(id: "hifz", steps: [
+    .init(anchor: "hifz.hero", icon: "school-outline"),
+    .init(anchor: "hifz.add", icon: "add-circle-outline"),
+  ])
 
   /// Sor'da ilk cevap gelince: basılı tutup kopyalama.
   static let assistantChat = Tour(id: "assistantChat", steps: [
@@ -89,7 +142,8 @@ struct Tour: Sendable {
     .init(anchor: "alarms.custom", icon: "alarm-outline", scroll: true),
   ])
 
-  static let allIds = ["home", "homeAccount", "quran", "tracker", "assistant", "mushaf", "assistantChat", "alarms"]
+  static let allIds = ["home", "homeAccount", "homeNew", "quran", "quranNew", "tracker", "trackerNew", "assistant", "mushaf", "mushafNew",
+    "assistantChat", "alarms", "dhikr", "kaza", "hifz"]
   static let tabBarAnchor = "tabBar"
 }
 

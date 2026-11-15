@@ -70,8 +70,10 @@ struct MushafReaderView: View {
                 Haptics.impact(.medium)
                 Task { await MushafListening.shared.start(page: page, surahs: surahs) }
               }
+              .tourAnchor("mushaf.listen")
             }
             CircleIconButton(icon: "contrast-outline", size: 35, iconSize: 18, accessibilityLabel: t("mushaf.theme")) { Haptics.impact(.light); themes = true }
+              .tourAnchor("mushaf.theme")
             CircleIconButton(icon: "list", size: 35, iconSize: 19, accessibilityLabel: t("mushaf.chooseSurah")) { Haptics.impact(.light); picker = true }
               .tourAnchor("mushaf.surahs")
           }.padding(.horizontal, 14).padding(.top, geometry.safeAreaInsets.top + 6).padding(.bottom, 10.5)
@@ -126,7 +128,8 @@ struct MushafReaderView: View {
     }
     // İlk açılışta bir kez: sayfa hareketleri ve sure seçimi.
     .task(id: TourStore.shared.replayNonce) {
-      await TourStore.shared.startIfNeeded(.mushaf) {
+      let tour: Tour = TourStore.shared.isDone("mushaf") ? .mushafNew : .mushaf
+      await TourStore.shared.startIfNeeded(tour) {
         chrome && detail == nil && word == nil && !picker && !themes && TourStore.shared.anchors["mushaf.page"] != nil
       }
     }

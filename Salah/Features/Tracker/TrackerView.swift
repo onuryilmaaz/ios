@@ -40,7 +40,7 @@ struct TrackerView: View {
           if AuthStore.shared.isAuthenticated && !insights.unavailable {
             SectionLabel(t("insights.section")).padding(.top, 21).id("insights")
             VStack(spacing: 14) {
-              if YearSummaryStore.available { YearSummaryEntryCard { yearSummary = true } }
+              if YearSummaryStore.available { YearSummaryEntryCard { yearSummary = true }.tourAnchor("tracker.year") }
               RecapCard().tourAnchor("tracker.insights")
               HeatmapCard()
               HatimCard()
@@ -69,7 +69,8 @@ struct TrackerView: View {
     // Sekmeye girişliyken ilk girişte bir kez (istatistikler gelsin diye kısa bekler).
     .task(id: TourStore.shared.replayNonce) {
       guard AuthStore.shared.isAuthenticated else { return }
-      await TourStore.shared.startIfNeeded(.tracker) {
+      let tour: Tour = TourStore.shared.isDone("tracker") ? .trackerNew : .tracker
+      await TourStore.shared.startIfNeeded(tour) {
         formType == nil && TourStore.shared.anchors["tracker.activities"] != nil
           && (insights.unavailable || TourStore.shared.anchors["tracker.insights"] != nil)
       }

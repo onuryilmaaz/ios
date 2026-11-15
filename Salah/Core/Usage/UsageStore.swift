@@ -8,6 +8,7 @@ final class UsageStore {
   static let shared = UsageStore()
   private static let key = "@salah_usage_v1"
   private static let maxEventsPerDay = 60
+  private static let onceKey = "@salah_usage_once_v1"
 
   /// gün ("yyyy-MM-dd") → olay → sayı
   private var days: [String: [String: Int]]
@@ -30,6 +31,15 @@ final class UsageStore {
     counts[event, default: 0] += 1
     days[day] = counts
     persist()
+  }
+
+  /// Cihazda yalnız bir kez sayılan olay (ör. ilk "Kıldım"): huni ölçümü için.
+  func recordOnce(_ event: String, now: Date = Date()) {
+    guard !DebugLaunch.isIsolated else { return }
+    var seen = Set(LocalStore.decode([String].self, Self.onceKey) ?? [])
+    guard seen.insert(event).inserted else { return }
+    LocalStore.encode(Array(seen).sorted(), for: Self.onceKey)
+    record(event, now: now)
   }
 
   /// Bekleyen günleri gönderir; başarıda o gün silinir, ağ hatasında kalır.

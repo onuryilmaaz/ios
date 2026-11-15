@@ -87,6 +87,7 @@ struct StreakCard: View {
           .contentShape(.rect)
         }
         .buttonStyle(PressableStyle())
+        .tourAnchor("home.circles")
       }
     }
     .padding(17.5)

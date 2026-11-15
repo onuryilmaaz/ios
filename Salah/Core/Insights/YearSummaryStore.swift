@@ -42,12 +42,51 @@ final class YearSummaryStore {
   private(set) var loading = false
   private(set) var failed = false
 
-  static var available: Bool { AppControlStore.shared.supports("yearSummary") && AuthStore.shared.isAuthenticated }
+  static var available: Bool {
+    AppControlStore.shared.supports("yearSummary") && AuthStore.shared.isAuthenticated && !years().isEmpty
+  }
 
-  /// Bu yıl ve geçen yıl (kayıt varsa seçilebilir).
+  /// Açıklanma saati: 1 Ocak, yerel saatle 10.00.
+  static let revealHour = 10
+
+  /// Yıl özeti yılbaşından sonra açıklanır: 1 Ocak 10.00'dan Ocak sonuna kadar, biten yıl için. Diğer zamanlarda nil.
+  static func revealedYear(now: Date = Date(), calendar: Calendar = .current) -> Int? {
+    let parts = calendar.dateComponents([.year, .month, .day, .hour], from: now)
+    guard parts.month == 1, let year = parts.year, let day = parts.day, let hour = parts.hour else { return nil }
+    guard day > 1 || hour >= revealHour else { return nil }
+    return year - 1
+  }
+
+  private func storyKey(_ year: Int) -> String { "@salah_year_story_shown_v1_\(AuthStore.shared.user?.id ?? "-")_\(year)" }
+
+  /// Açıklanan yılın hikâyesi bu hesaba henüz kendiliğinden gösterilmediyse o yıl (özet yüklenir; boşsa gösterilmez).
+  /// Debug: `-SalahDebugYearStory YES` tarih ve "gösterildi" bilgisinden bağımsız açar.
+  func pendingStory(now: Date = Date()) async -> Int? {
+    guard AppControlStore.shared.supports("yearSummary"), AuthStore.shared.isAuthenticated else { return nil }
+    var forced = false
+    #if DEBUG
+    forced = UserDefaults.standard.bool(forKey: "SalahDebugYearStory")
+    #endif
+    guard let year = Self.revealedYear(now: now) ?? (forced ? Self.years(now: now).first ?? Calendar.current.component(.year, from: now) - 1 : nil)
+    else { return nil }
+    if !forced, LocalStore.string(storyKey(year)) == "true" { return nil }
+    await load(year)
+    guard let summary = cached(year) else { return nil }
+    if summary.isEmpty {
+      markStoryShown(year)
+      return nil
+    }
+    return year
+  }
+
+  func markStoryShown(_ year: Int) { LocalStore.set("true", for: storyKey(year)) }
+
+  /// Gösterilen yıl (açıklanma dışında boş). Debug izole önizlemede her zaman geçen yıl.
   static func years(now: Date = Date()) -> [Int] {
-    let year = Calendar.current.component(.year, from: now)
-    return [year, year - 1]
+    #if DEBUG
+    if DebugLaunch.isIsolated { return [Calendar.current.component(.year, from: now) - 1] }
+    #endif
+    return revealedYear(now: now).map { [$0] } ?? []
   }
 
   @ObservationIgnored private var owner: String?

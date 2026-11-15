@@ -102,7 +102,7 @@ struct OnboardingView: View {
         if !isLast && !isPermission {
           Button {
             Haptics.impact(.light)
-            finish()
+            skipIntro()
           } label: {
             Text(t("onboarding.skip"))
               .font(.system(size: 13, weight: .bold))
@@ -122,6 +122,7 @@ struct OnboardingView: View {
       .animation(.easeOut(duration: 0.35), value: current)
     }
     .statusBar(.auto)
+    .onAppear { UsageStore.shared.record("onboarding.start") }
   }
 
   private func pager(width: CGFloat) -> some View {
@@ -233,6 +234,7 @@ struct OnboardingView: View {
       if isPermission && !alreadyGranted {
         Button {
           Haptics.impact(.light)
+          UsageStore.shared.record("onboarding.\(slide.kind == .location ? "location" : "notifications").later")
           goNext()
         } label: {
           Text(t("onboarding.skipForNow"))
@@ -273,7 +275,18 @@ struct OnboardingView: View {
     }
   }
 
+  /// "Atla": tanıtım geçilir ama izin sayfaları atlanmaz (konum ve bildirim sorulmadan ana sayfaya düşülmesin).
+  private func skipIntro() {
+    UsageStore.shared.record("onboarding.skip")
+    if let first = Self.slides.firstIndex(where: { $0.kind != .info }), first > current {
+      withAnimation { index = first }
+    } else {
+      finish()
+    }
+  }
+
   private func finish() {
+    UsageStore.shared.record("onboarding.done")
     withAnimation(.easeOut(duration: 0.3)) { OnboardingStore.shared.complete() }
   }
 
@@ -289,12 +302,15 @@ struct OnboardingView: View {
       Locations.select(stateId: found.state._id, districtId: found.district._id, source: "auto")
       Haptics.notify(.success)
       granted.insert(.location)
+      UsageStore.shared.record("onboarding.location.granted")
     } catch LocationService.Failure.denied {
       Haptics.notify(.warning)
+      UsageStore.shared.record("onboarding.location.denied")
     } catch {
       // İzin verildi ama il bulunamadı: RN'deki gibi izin verilmiş sayılır.
       Haptics.notify(.success)
       granted.insert(.location)
+      UsageStore.shared.record("onboarding.location.granted")
     }
   }
 
@@ -307,8 +323,10 @@ struct OnboardingView: View {
     if await NotificationStore.shared.setEnabled(true) {
       Haptics.notify(.success)
       granted.insert(.notifications)
+      UsageStore.shared.record("onboarding.notifications.granted")
     } else {
       Haptics.notify(.warning)
+      UsageStore.shared.record("onboarding.notifications.denied")
     }
   }
 }

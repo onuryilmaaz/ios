@@ -68,6 +68,8 @@ final class AuthStore {
   /// Profil alınamazsa (ör. offline) giriş yanıtındaki kullanıcı saklanır.
   func login(_ response: AuthAPI.LoginResponse) async {
     TokenStore.adopt(access: response.accessToken, refresh: response.refreshToken)
+    UsageStore.shared.record("auth.login")
+    UsageStore.shared.recordOnce("first.login")
     do {
       try await fetchProfile()
     } catch {

@@ -13,6 +13,9 @@ struct RootView: View {
 
   @State private var tab: Tab = DebugLaunch.tab ?? .home
   @State private var debugShare = DebugLaunch.share
+  @Environment(\.scenePhase) private var scenePhase
+  /// Yılbaşından sonra (1 Ocak 10.00) girişli kullanıcıya bir kez kendiliğinden açılan yıl özeti.
+  @State private var yearStory: Int?
 
   var body: some View {
     TabView(selection: Binding(get: { tab }, set: { select($0) })) {
@@ -46,6 +49,24 @@ struct RootView: View {
         .environment(\.locale, Localizer.shared.locale)
     }
     .transaction(value: TourStore.shared.tour.map { !$0.inline } ?? false) { $0.disablesAnimations = true }
+    .fullScreenCover(isPresented: Binding(get: { yearStory != nil }, set: { if !$0 { yearStory = nil } })) {
+      YearSummaryView(year: yearStory)
+        .environment(\.tokens, tokens)
+        .environment(\.layoutDirection, Localizer.shared.layoutDirection)
+        .environment(\.locale, Localizer.shared.locale)
+    }
+    .task(id: YearStoryTrigger(active: scenePhase == .active, signedIn: AuthStore.shared.isAuthenticated)) {
+      guard scenePhase == .active, yearStory == nil, let year = await YearSummaryStore.shared.pendingStory() else { return }
+      // Başka bir pencere (tur, giriş, uyarı, ezber oturumu gibi tam ekranlar) kapanınca açılır; en fazla ~20 sn beklenir.
+      for _ in 0..<40 {
+        if Task.isCancelled { return }
+        if TourStore.shared.tour == nil, !AuthFlow.shared.isPresented, AlertCenter.shared.current == nil { break }
+        try? await Task.sleep(for: .milliseconds(500))
+      }
+      guard !Task.isCancelled, TourStore.shared.tour == nil, !AuthFlow.shared.isPresented, AlertCenter.shared.current == nil else { return }
+      YearSummaryStore.shared.markStoryShown(year)
+      yearStory = year
+    }
     .fullScreenCover(isPresented: Bindable(AuthFlow.shared).isPresented) {
       AuthFlowView()
         .environment(\.tokens, tokens)
@@ -106,6 +127,7 @@ struct RootView: View {
     guard next != tab else { return }
     Haptics.impact(.light)
     if next.requiresAuthentication, !AuthStore.shared.isAuthenticated {
+      UsageStore.shared.record("auth.wall.\(next)")
       AuthFlow.shared.present()
       return
     }
@@ -387,3 +409,8 @@ enum DebugLaunch {
     }
   }
 #endif
+
+private struct YearStoryTrigger: Equatable {
+  let active: Bool
+  let signedIn: Bool
+}

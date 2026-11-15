@@ -29,7 +29,7 @@ struct SurahBrowserView: View {
             Button { Haptics.impact(.light); downloadsOpen = true } label: {
               Ionicon("cloud-download-outline", size: 18, color: tokens.inkMuted).frame(width: 35, height: 35)
                 .background(tokens.surface, in: .circle).overlay(Circle().stroke(tokens.line, lineWidth: 1))
-            }.buttonStyle(PressableStyle()).accessibilityLabel(t("quranOffline.open"))
+            }.buttonStyle(PressableStyle()).accessibilityLabel(t("quranOffline.open")).tourAnchor("quran.downloads")
             ProfileButton()
           }
         }
@@ -96,7 +96,8 @@ struct SurahBrowserView: View {
       // Sekmeye girişliyken ilk girişte bir kez.
       .task(id: TourStore.shared.replayNonce) {
         guard AuthStore.shared.isAuthenticated else { return }
-        await TourStore.shared.startIfNeeded(.quran) {
+        let tour: Tour = TourStore.shared.isDone("quran") ? .quranNew : .quran
+        await TourStore.shared.startIfNeeded(tour) {
           !loading && nav.path.isEmpty && nav.mushaf == nil && TourStore.shared.anchors["quran.list"] != nil
         }
       }
@@ -128,7 +129,7 @@ struct SurahBrowserView: View {
           .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
       }.buttonStyle(PressableStyle()).tourAnchor("quran.mushaf")
       if AppControlStore.shared.isOn("hifz") {
-        HifzEntryCard { nav.path.append(.hifz) }
+        HifzEntryCard { nav.path.append(.hifz) }.tourAnchor("quran.hifz")
       }
       if let last = store.lastRead {
         Button { open(last.surahId, verse: last.verseNumber) } label: {

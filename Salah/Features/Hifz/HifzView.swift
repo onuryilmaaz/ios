@@ -24,6 +24,9 @@ struct HifzView: View {
     .background(tokens.canvas)
     .toolbar(.hidden, for: .navigationBar)
     .task { surahs = await QuranService.surahs() }
+    .task(id: TourStore.shared.replayNonce) {
+      await TourStore.shared.startIfNeeded(.hifz) { session == nil && !adding && TourStore.shared.anchors["hifz.add"] != nil }
+    }
     .onDisappear { QuranAudioPlayer.shared.stop() }
     .sheet(isPresented: $adding) {
       HifzAddSheet(initial: surahs).environment(\.tokens, tokens).presentationDetents([.large]).presentationDragIndicator(.visible)
@@ -56,6 +59,7 @@ struct HifzView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(17.5)
         .background(Accent.s800, in: .rect(cornerRadius: 24))
+        .tourAnchor("hifz.hero")
 
         if store.cards.isEmpty {
           Text(t("hifz.empty")).font(.system(size: 14)).foregroundStyle(tokens.textSecondary)
@@ -73,6 +77,7 @@ struct HifzView: View {
           Haptics.impact(.light)
           adding = true
         }
+        .tourAnchor("hifz.add")
       }
       .padding(16).padding(.bottom, 84)
     }

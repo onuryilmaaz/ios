@@ -1297,15 +1297,55 @@
         "title": "Suggested questions"
       }
     },
+    "dhikr": {
+      "controls": {
+        "body": "Undo a miscount, or reset to start over.",
+        "title": "Undo and reset"
+      },
+      "counter": {
+        "body": "Each tap on the circle counts one; a vibration tells you when you reach the target.",
+        "title": "Tap to count"
+      },
+      "mode": {
+        "body": "Follow the post prayer tasbih in order, or pick your own dhikr and target.",
+        "title": "Tasbih or free"
+      }
+    },
     "done": "Done",
+    "hifz": {
+      "add": {
+        "body": "Add the surah and verse range you have memorized.",
+        "title": "Add verses"
+      },
+      "hero": {
+        "body": "Verses due for review today are here; start and mark what you remember.",
+        "title": "Today's review"
+      }
+    },
     "home": {
       "alarms": {
         "body": "Manage alarms that are set automatically from prayer times.",
         "title": "Alarm"
       },
+      "circles": {
+        "body": "Start a circle with friends or family and keep your streak together.",
+        "title": "Streak circles"
+      },
+      "dhikr": {
+        "body": "Count the post prayer tasbih or any dhikr you choose.",
+        "title": "Dhikr counter"
+      },
       "hero": {
         "body": "Time left until the next prayer and all of today's prayer times are here.",
         "title": "Next prayer"
+      },
+      "kaza": {
+        "body": "Work out the prayers you missed and watch the count go down as you make them up.",
+        "title": "Qada prayers"
+      },
+      "layout": {
+        "body": "Hide cards or change their order so your home opens the way you like.",
+        "title": "Arrange your home"
       },
       "location": {
         "body": "Prayer times are calculated for this district. Tap to change it.",
@@ -1340,7 +1380,21 @@
         "title": "Today's prayers"
       }
     },
+    "kaza": {
+      "calculate": {
+        "body": "Pick the period to make up (usually from puberty until you began praying regularly) and the counters are filled in for you.",
+        "title": "Calculate"
+      },
+      "counters": {
+        "body": "Each prayer's qada count is here; lower it with minus as you make them up.",
+        "title": "Owed by prayer"
+      }
+    },
     "mushaf": {
+      "listen": {
+        "body": "Listen to a reciter; the current verse is highlighted and pages turn by themselves.",
+        "title": "Read along"
+      },
       "page": {
         "body": "Swipe sideways to turn pages. Tap a verse number to see its translation, and press and hold a line to mark where you stopped.",
         "title": "Pages and verses"
@@ -1348,6 +1402,14 @@
       "surahs": {
         "body": "Jump to any surah from here.",
         "title": "Choose a surah"
+      },
+      "theme": {
+        "body": "Choose the page color, the Madani script or color coded tajweed, and word meanings here.",
+        "title": "Look and script"
+      },
+      "word": {
+        "body": "Tap a word to see its meaning and pronunciation, and listen to it.",
+        "title": "Word meaning"
       }
     },
     "next": "Next",
@@ -1356,6 +1418,14 @@
       "continue": {
         "body": "Jump back to the last verse you read with one tap.",
         "title": "Where you left off"
+      },
+      "downloads": {
+        "body": "Download surah audio and text to read and listen without internet.",
+        "title": "Quran offline"
+      },
+      "hifz": {
+        "body": "Add the verses you memorize and review each one right before you would forget it.",
+        "title": "Memorization"
       },
       "list": {
         "body": "Tap a surah to read it with its translation and recitation.",
@@ -1385,6 +1455,10 @@
       "insights": {
         "body": "Your period recap, worship map and khatm progress are here.",
         "title": "Statistics"
+      },
+      "year": {
+        "body": "See how many prayers you prayed last year, your longest streak and the pages you read. Available every January.",
+        "title": "Year in review"
       }
     }
   },
@@ -1922,6 +1996,21 @@
     "failed": "Couldn't load your year in review. Check your connection and try again.",
     "share": "Share",
     "shareLabel": "My {{year}}",
-    "shareText": "I offered {{count}} prayers in {{year}}. Tracking with Salah."
+    "shareText": "I offered {{count}} prayers in {{year}}. Tracking with Salah.",
+    "story": {
+      "introLine1": "Another year is behind you.",
+      "introLine2": "Let's look back at your year of prayer and worship together.",
+      "inYear": "In {{year}}",
+      "streakTitle": "Your longest streak",
+      "streakUnit": "days in a row, all five prayers",
+      "topPrayer": "You prayed {{prayer}} the most",
+      "prayersUnit": "prayers",
+      "pagesUnit": "pages read",
+      "moreTitle": "Your other worship",
+      "closing": "May Allah accept it.",
+      "replay": "Watch again",
+      "next": "Next",
+      "previous": "Previous"
+    }
   }
 }

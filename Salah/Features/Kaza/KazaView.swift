@@ -12,12 +12,13 @@ struct KazaView: View {
       ScrollView {
         VStack(alignment: .leading, spacing: 16) {
           summary(store)
-          counters(store)
+          counters(store).tourAnchor("kaza.counters")
           witrRow(store)
           AppButton(title: t("kaza.calculate"), variant: .secondary) {
             Haptics.impact(.light)
             calculator = true
           }
+          .tourAnchor("kaza.calculate")
           info
         }
         .padding(16).padding(.bottom, 84)
@@ -28,6 +29,9 @@ struct KazaView: View {
     .background(tokens.canvas)
     .toolbar(.hidden, for: .navigationBar)
     .task { await store.fetch() }
+    .task(id: TourStore.shared.replayNonce) {
+      await TourStore.shared.startIfNeeded(.kaza) { !calculator && TourStore.shared.anchors["kaza.counters"] != nil }
+    }
     .sheet(isPresented: $calculator) {
       KazaCalculatorView().environment(\.tokens, tokens).presentationDetents([.large]).presentationDragIndicator(.visible)
     }

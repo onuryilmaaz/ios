@@ -11,16 +11,16 @@ struct DhikrView: View {
       StandardHeader(title: t("dhikr.title"))
       ScrollView {
         VStack(spacing: 16) {
-          modePicker(store)
+          modePicker(store).tourAnchor("dhikr.mode")
           if store.mode == .free { freeOptions(store) }
           textCard(store.current.item)
           if store.mode == .tesbihat { steps(store) }
           if store.mode == .tesbihat && store.tesbihat.done {
             finished(store)
           } else {
-            DhikrCounter(count: store.current.count, target: store.current.target)
+            DhikrCounter(count: store.current.count, target: store.current.target).tourAnchor("dhikr.counter")
           }
-          controls(store)
+          controls(store).tourAnchor("dhikr.controls")
         }
         .padding(16).padding(.bottom, 84)
       }
@@ -34,6 +34,9 @@ struct DhikrView: View {
       DhikrStore.shared.syncWidget()
     }
     .onAppear { DhikrStore.shared.reload() }
+    .task(id: TourStore.shared.replayNonce) {
+      await TourStore.shared.startIfNeeded(.dhikr) { TourStore.shared.anchors["dhikr.mode"] != nil }
+    }
   }
 
   private func modePicker(_ store: DhikrStore) -> some View {

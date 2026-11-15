@@ -1312,15 +1312,55 @@
         "title": "Vorgeschlagene Fragen"
       }
     },
+    "dhikr": {
+      "controls": {
+        "body": "Mach einen Zählfehler rückgängig oder setze zurück, um neu zu beginnen.",
+        "title": "Rückgängig und zurücksetzen"
+      },
+      "counter": {
+        "body": "Jedes Tippen auf den Kreis zählt eins; eine Vibration meldet, wenn das Ziel erreicht ist.",
+        "title": "Zum Zählen tippen"
+      },
+      "mode": {
+        "body": "Folge dem Tasbih nach dem Gebet der Reihe nach oder wähle eigenen Dhikr und ein Ziel.",
+        "title": "Tasbih oder frei"
+      }
+    },
     "done": "Fertig",
+    "hifz": {
+      "add": {
+        "body": "Füge die Sure und den Versbereich hinzu, den du auswendig kannst.",
+        "title": "Verse hinzufügen"
+      },
+      "hero": {
+        "body": "Hier sind die heute fälligen Verse; starte und markiere, woran du dich erinnerst.",
+        "title": "Heutige Wiederholung"
+      }
+    },
     "home": {
       "alarms": {
         "body": "Verwalte Wecker, die automatisch nach den Gebetszeiten gestellt werden.",
         "title": "Wecker"
       },
+      "circles": {
+        "body": "Gründe eine Gruppe mit Freunden oder Familie und haltet eure Serie gemeinsam.",
+        "title": "Gemeinsame Serie"
+      },
+      "dhikr": {
+        "body": "Zähle hier das Tasbih nach dem Gebet oder einen Dhikr deiner Wahl.",
+        "title": "Dhikr-Zähler"
+      },
       "hero": {
         "body": "Die Zeit bis zum nächsten Gebet und alle heutigen Gebetszeiten findest du hier.",
         "title": "Nächstes Gebet"
+      },
+      "kaza": {
+        "body": "Berechne deine versäumten Gebete; der Zähler sinkt, während du sie nachholst.",
+        "title": "Nachzuholende Gebete"
+      },
+      "layout": {
+        "body": "Blende Karten aus oder ändere ihre Reihenfolge, damit die Startseite so aussieht, wie du willst.",
+        "title": "Startseite anpassen"
       },
       "location": {
         "body": "Die Gebetszeiten werden für diesen Bezirk berechnet. Zum Ändern tippen.",
@@ -1355,7 +1395,21 @@
         "title": "Heutige Gebete"
       }
     },
+    "kaza": {
+      "calculate": {
+        "body": "Wähle den nachzuholenden Zeitraum (meist ab der Pubertät bis zum regelmäßigen Beten), und die Zähler werden ausgefüllt.",
+        "title": "Berechnen"
+      },
+      "counters": {
+        "body": "Hier steht die offene Anzahl pro Gebet; senke sie mit Minus, wenn du nachholst.",
+        "title": "Pro Gebet offen"
+      }
+    },
     "mushaf": {
+      "listen": {
+        "body": "Höre einem Rezitator zu; der aktuelle Vers wird markiert und die Seiten blättern von selbst.",
+        "title": "Mitlesen"
+      },
       "page": {
         "body": "Wische seitlich, um zu blättern. Tippe auf eine Versnummer, um die Übersetzung zu sehen, und halte eine Zeile gedrückt, um deine Stelle zu markieren.",
         "title": "Seiten und Verse"
@@ -1363,6 +1417,14 @@
       "surahs": {
         "body": "Spring von hier zu jeder Sure.",
         "title": "Sure wählen"
+      },
+      "theme": {
+        "body": "Wähle hier Seitenfarbe, Medina-Schrift oder farbiges Tajwid und die Wortbedeutungen.",
+        "title": "Ansicht und Schrift"
+      },
+      "word": {
+        "body": "Tippe auf ein Wort, um Bedeutung und Aussprache zu sehen und es anzuhören.",
+        "title": "Wortbedeutung"
       }
     },
     "next": "Weiter",
@@ -1371,6 +1433,14 @@
       "continue": {
         "body": "Spring mit einem Tippen zum zuletzt gelesenen Vers zurück.",
         "title": "Wo du aufgehört hast"
+      },
+      "downloads": {
+        "body": "Lade Suren-Audio und Text herunter, um ohne Internet zu lesen und zu hören.",
+        "title": "Koran offline"
+      },
+      "hifz": {
+        "body": "Füge auswendig gelernte Verse hinzu; die App fragt sie ab, bevor du sie vergisst.",
+        "title": "Auswendiglernen"
       },
       "list": {
         "body": "Tippe auf eine Sure, um sie mit Übersetzung und Rezitation zu lesen.",
@@ -1400,6 +1470,10 @@
       "insights": {
         "body": "Deine Zusammenfassung, Ibadat-Karte und dein Khatm-Fortschritt sind hier.",
         "title": "Statistiken"
+      },
+      "year": {
+        "body": "Sieh, wie viele Gebete du letztes Jahr verrichtet hast, deine längste Serie und deine gelesenen Seiten. Jeden Januar verfügbar.",
+        "title": "Jahresrückblick"
       }
     }
   },
@@ -2086,6 +2160,21 @@
     "failed": "Dein Jahresrückblick konnte nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.",
     "share": "Teilen",
     "shareLabel": "Mein {{year}}",
-    "shareText": "Ich habe {{year}} {{count}} Gebete verrichtet. Ich halte sie mit Salah fest."
+    "shareText": "Ich habe {{year}} {{count}} Gebete verrichtet. Ich halte sie mit Salah fest.",
+    "story": {
+      "introLine1": "Wieder ist ein Jahr vergangen.",
+      "introLine2": "Lass uns gemeinsam auf dein Jahr mit Gebet und Gottesdienst zurückblicken.",
+      "inYear": "Im Jahr {{year}}",
+      "streakTitle": "Deine längste Serie",
+      "streakUnit": "Tage in Folge, alle fünf Gebete",
+      "topPrayer": "Am häufigsten hast du {{prayer}} gebetet",
+      "prayersUnit": "Gebete",
+      "pagesUnit": "Seiten gelesen",
+      "moreTitle": "Deine weiteren Ibadat",
+      "closing": "Möge Allah es annehmen.",
+      "replay": "Nochmal ansehen",
+      "next": "Weiter",
+      "previous": "Zurück"
+    }
   }
 }

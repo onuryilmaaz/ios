@@ -117,6 +117,7 @@ struct HomeView: View {
             .padding(.vertical, 8.75)
           }
           .buttonStyle(PressableStyle(pressedOpacity: 0.6))
+          .tourAnchor("home.layout")
           .padding(.top, 3.5)
         }
         .padding(.bottom, 24)
@@ -144,13 +145,19 @@ struct HomeView: View {
     .task(id: HomeTourTrigger(nonce: TourStore.shared.replayNonce, signedIn: auth.isAuthenticated, idle: TourStore.shared.tour == nil)) {
       let store = TourStore.shared
       let signedIn = auth.isAuthenticated
-      let tour: Tour? = !store.isDone("home") ? .home(signedIn: signedIn) : signedIn && !store.isDone(Tour.homeAccount.id) ? .homeAccount : nil
+      let tour: Tour? =
+        !store.isDone("home") ? .home(signedIn: signedIn)
+        : signedIn && !store.isDone(Tour.homeAccount.id) ? .homeAccount
+        : !store.isDone(Tour.homeNew.id) ? .homeNew : nil
       guard let tour else { return }
       await store.startIfNeeded(tour) {
         let anchors = TourStore.shared.anchors
-        let screenReady = tour.id == "home"
-          ? anchors["home.hero"] != nil && anchors["home.location"] != nil
-          : anchors["home.streak"] != nil || anchors["home.quickActions"] != nil
+        let screenReady =
+          switch tour.id {
+          case "home": anchors["home.hero"] != nil && anchors["home.location"] != nil
+          case "homeAccount": anchors["home.streak"] != nil || anchors["home.quickActions"] != nil
+          default: anchors["home.layout"] != nil
+          }
         return screenReady && nav.path.isEmpty && !AuthFlow.shared.isPresented && celebrationStreak == nil
       }
     }
@@ -181,9 +188,9 @@ struct HomeView: View {
     case .alarms:
       if AppControlStore.shared.isOn("alarms") { AlarmsCard { push(.alarms) } }
     case .kaza:
-      if KazaStore.shared.available { KazaCard { push(.kaza) } }
+      if KazaStore.shared.available { KazaCard { push(.kaza) }.tourAnchor("home.kaza") }
     case .dhikr:
-      if AppControlStore.shared.isOn("dhikr") { DhikrCard { push(.dhikr) } }
+      if AppControlStore.shared.isOn("dhikr") { DhikrCard { push(.dhikr) }.tourAnchor("home.dhikr") }
     }
   }
 
