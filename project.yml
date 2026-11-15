@@ -20,7 +20,7 @@ settings:
     SWIFT_VERSION: "6.0"
     SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
     SWIFT_APPROACHABLE_CONCURRENCY: YES
-    MARKETING_VERSION: "1.1.2"
+    MARKETING_VERSION: "1.2.0"
     CURRENT_PROJECT_VERSION: "1"
     SALAH_API_URL: https://api.onur-yilmaz.com/salah
     # Google Cloud (proje SALAH) > Google Auth Platform > Clients, tür iOS. Bir iOS istemcisi
