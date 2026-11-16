@@ -152,7 +152,8 @@ targets:
         UIStatusBarStyle: UIStatusBarStyleLightContent
         NSAlarmKitUsageDescription: Namaz, teheccüd ve sahur alarmlarınızı sessiz modda da çalabilmek için alarm izni gerekir.
         NSLocationWhenInUseUsageDescription: Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.
-        UIBackgroundModes: [audio, fetch]
+        # remote-notification: sunucunun gece gönderdiği sessiz "planı yenile" bildirimi.
+        UIBackgroundModes: [audio, fetch, remote-notification]
         # Arka plan yenilemesi (Salah/App/BackgroundRefresh.swift).
         BGTaskSchedulerPermittedIdentifiers: [com.onur6541.salah.refresh]
         NSSupportsLiveActivities: true

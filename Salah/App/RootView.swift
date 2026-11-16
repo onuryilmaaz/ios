@@ -347,6 +347,7 @@ enum DebugLaunch {
       case "adminDetail": return .adminUser("preview-user")
       case "adminRoles": return .adminRoles
       case "adminGroupReports": return .adminGroupReports
+      case "adminNotifications": return .adminNotifications
       case "adminSelf": return .adminUser(AuthStore.shared.user?.id ?? "")
       case "alarms": return .alarms
       default: return nil

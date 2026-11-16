@@ -117,6 +117,40 @@ struct NotificationPlanTests {
     #expect(SystemNotificationDelivery.content(prayer.first { !$0.adhan }!).sound == .default)
   }
 
+  /// Ezanı açık vakit: "15 dk önce" seçili ya da vakit bildirimi kapalı olsa da vakit girince ezanlı bildirim.
+  @Test func adhanPrayerAlwaysGetsExactTimeNotification() {
+    var p = F.enabled
+    p.offsets = [15]
+    p.prayerEnabled["yatsi"] = false
+    p.adhanEnabled["yatsi"] = true
+    p.adhanEnabled["ogle"] = true
+    p.adhanEnabled["gunes"] = true
+    let day = build(p).filter { F.calendar.component(.day, from: $0.date) == 19 }
+    let yatsi = day.filter { $0.prayerKey == "yatsi" }
+    #expect(yatsi.count == 1 && yatsi[0].adhan && yatsi[0].date == F.date(19, 20, 10))
+    let ogle = day.filter { $0.prayerKey == "ogle" }.sorted { $0.date < $1.date }
+    #expect(ogle.map(\.date) == [F.date(19, 12, 40), F.date(19, 12, 55)])
+    #expect(ogle.map(\.adhan) == [false, true])
+    #expect(!day.contains { $0.prayerKey == "gunes" })
+    #expect(!day.contains { $0.prayerKey == "ikindi" && $0.kind == .prayerTime })
+  }
+
+  /// Her şey açıkken (iki bildirim anı, ezan, kılınmamış vakit, hatim, Ramazan geceleri) plan 64 sınırına dayanmaz.
+  @Test func planNeverReachesSystemLimit() {
+    var p = F.enabled
+    p.offsets = [0, 15]
+    p.prayerEnabled["gunes"] = true
+    for key in NotificationPreferences.prayers { p.adhanEnabled[key] = true }
+    let nights = RamadanNightsReminder(nights: (19...22).map { F.calendar.startOfDay(for: F.date($0)) }, kadir: F.calendar.startOfDay(for: F.date(21)))
+    let missed = MissedReminder(prayers: ["ogle", "ikindi"], done: [])
+    let plan = NotificationPlan.build(days: F.days, preferences: p, now: F.date(), calendar: F.calendar, verses: F.verses, hadiths: F.hadiths,
+                                      religiousDays: [], hatim: HatimReminder(hour: 21, minute: 0, dailyPages: 20, targetDate: "2026-12-31"),
+                                      nights: nights, missed: missed)
+    #expect(plan.count <= NotificationPlan.maxPending)
+    #expect(plan.contains { $0.kind == .comeback })
+    #expect(plan.filter(\.isPrayer).count == NotificationPlan.prayerLimit)
+  }
+
   @Test func masterOffCancelsEveryKind() {
     #expect(build(NotificationPreferences()).isEmpty)
   }
@@ -298,6 +332,23 @@ struct NotificationStoreTests {
   func store(_ delivery: FakeNotificationDelivery, days: @escaping () async -> [PrayerDay] = { F.days }) -> NotificationStore {
     NotificationStore(preferences: F.enabled, delivery: delivery, now: { F.date() }, loadDays: days,
       loadPools: { ([], []) }, loadCalendar: { ReligiousCalendar() }, persists: false)
+  }
+
+  /// Throttle içinde aynı girdilerle yeniden kurulmaz; gün değişince (girdi değişti) beklemeden kurulur.
+  @Test func changedInputsRebuildInsideThrottle() async {
+    let d = FakeNotificationDelivery()
+    var clock = F.date(19, 1)
+    var loads = 0
+    let s = NotificationStore(preferences: F.enabled, delivery: d, now: { clock }, loadDays: { loads += 1; return F.days },
+      loadPools: { ([], []) }, loadCalendar: { ReligiousCalendar() }, persists: false)
+    await s.reschedule()
+    #expect(loads == 1)
+    clock = F.date(19, 9)
+    await s.reschedule()
+    #expect(loads == 1)
+    clock = F.date(20, 9)
+    await s.reschedule()
+    #expect(loads == 2)
   }
 
   @Test func permissionDeniedDoesNotLoadOrSchedule() async {

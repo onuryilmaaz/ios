@@ -281,6 +281,7 @@
 		FBCCDD7BBB9D278EEFFD3590 /* StreakCircleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF1A6346BA10C9023F20A3A /* StreakCircleAPI.swift */; };
 		FC70BB6C6CC6E100499C4E1A /* PrayerTrackerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6C5CBA42808F9C679DEEDE /* PrayerTrackerCard.swift */; };
 		FC836E6AA555D0247BD90A62 /* PrayerTimesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3316ABA0BECCEA21A396D4 /* PrayerTimesService.swift */; };
+		FCF223733701AA857C7BBF94 /* AdminNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE83292F31DDD0D408C6118 /* AdminNotificationsView.swift */; };
 		FD26077A8A421453A4B5BECE /* DhikrWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13999726778E8400A00206B6 /* DhikrWidget.swift */; };
 		FD5225FDE6F6C710D8AC0D40 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4055A5CA4DDC236E86213 /* NotificationStore.swift */; };
 		FD94FB1157C97C7E291F8060 /* AdhanPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF95561E3E109F6BD2059C /* AdhanPlayer.swift */; };
@@ -450,6 +451,7 @@
 		6900BBAB93F57F44818D67C1 /* QuranAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranAudioPlayer.swift; sourceTree = "<group>"; };
 		69114D82EBC55C58DE1C8BA6 /* DayRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRingWidget.swift; sourceTree = "<group>"; };
 		6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingArt.swift; sourceTree = "<group>"; };
+		6AE83292F31DDD0D408C6118 /* AdminNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNotificationsView.swift; sourceTree = "<group>"; };
 		6CE62BBDA0174884EAFBA22A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		6D808BC502F0F1358B83456B /* DayPrayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPrayerList.swift; sourceTree = "<group>"; };
 		6E4E406896E81CE212421A89 /* StoreReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewTests.swift; sourceTree = "<group>"; };
@@ -1084,6 +1086,7 @@
 		7BD437168780BC5DB8BCCAD3 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				6AE83292F31DDD0D408C6118 /* AdminNotificationsView.swift */,
 				994A2A9589D57C2CB33116B0 /* AdminViews.swift */,
 			);
 			path = Admin;
@@ -1763,6 +1766,7 @@
 				40AF1D84A401D10543E4CD26 /* AccountFormViews.swift in Sources */,
 				4F5030B0733BC27B1A4DBFC8 /* AccountViews.swift in Sources */,
 				FD94FB1157C97C7E291F8060 /* AdhanPlayer.swift in Sources */,
+				FCF223733701AA857C7BBF94 /* AdminNotificationsView.swift in Sources */,
 				597C727FE1C811A59C45FC97 /* AdminPreview.swift in Sources */,
 				B7FA7EA9236D1B910ED4435B /* AdminUsersStore.swift in Sources */,
 				50BD843B6C5012B5D6E3C4B9 /* AdminViews.swift in Sources */,

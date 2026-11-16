@@ -13,6 +13,13 @@ final class SalahApplicationDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     MainActor.assumeIsolated { PushStore.shared.didRegister(deviceToken: deviceToken) }
   }
+  /// Sunucunun gece gönderdiği sessiz bildirim: uygulama günlerce açılmasa da vakitler, alarmlar ve bildirim planı
+  /// ileri kaydırılır (iOS en fazla 64 bildirim tutar; plan birkaç gün ileriyi kapsar).
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async -> UIBackgroundFetchResult {
+    guard userInfo["type"] as? String == "plan_refresh" else { return .noData }
+    await BackgroundRefresh.run()
+    return .newData
+  }
 }
 
 struct NotificationPayload: Sendable {

@@ -54,11 +54,22 @@ struct NotificationInspiration: Equatable, Sendable {
 /// RN: services/notification.service.ts. Tarihler mutlak, saatler yereldir.
 enum NotificationPlan {
   static let budget = 62
+  /// iOS en fazla 64 bekleyen bildirim tutar; fazlasında EN UZAK tarihlileri (son günlerin vakitleri) sessizce atar.
+  /// Plan bu sayıyı hiçbir ayar birleşiminde aşmaz (test ve sistem bildirimleri için pay kalır).
+  static let maxPending = 60
   static let hatimDays = 3
   static let prayerLimit = 44
   /// Uygulama açılmasa da bu kadar gün kurulur; prayerLimit (64 bekleyen bildirim sınırı) yakın günlerden başlayarak keser.
   static let daysAhead = 7
   static let throttle: TimeInterval = 48 * 3600
+
+  /// Vaktin bildirim anları. Ezanı açık vakit, vakit bildirimi kapalı ya da yalnız "dakika önce" seçili olsa da
+  /// vakit girince ezanlı bildirim alır (ezan bu bildirimle çalar).
+  static func prayerOffsets(_ key: String, _ p: NotificationPreferences) -> [Int] {
+    var offsets = p.prayerEnabled[key] == true ? p.offsets : []
+    if key != "gunes", p.adhanEnabled[key] == true, !offsets.contains(0) { offsets.insert(0, at: 0) }
+    return offsets
+  }
 
   static func shouldRefresh(last: Double?, now: Date, force: Bool, hasPending: Bool) -> Bool {
     guard !force, hasPending, let last, last.isFinite else { return true }
@@ -79,9 +90,9 @@ enum NotificationPlan {
     var plan: [PlannedNotification] = []
     for day in days.prefix(daysAhead) {
       guard let base = parseDay(day.date, calendar: calendar) else { continue }
-      for key in NotificationPreferences.prayers where p.prayerEnabled[key] == true {
+      for key in NotificationPreferences.prayers {
         guard let raw = day.times[key], let exact = clock(raw, on: base, calendar: calendar) else { continue }
-        for offset in p.offsets where plan.count < prayerLimit {
+        for offset in prayerOffsets(key, p) where plan.count < prayerLimit {
           guard offset >= 0 else { continue }
           if offset == 0 && alarmCovered.contains(key) { continue }
           let date = exact.addingTimeInterval(-Double(offset) * 60)
@@ -186,7 +197,16 @@ enum NotificationPlan {
       plan.append(.init(id: "comeback", date: date, kind: .comeback,
                         title: t("notif.comebackTitle"), body: t("notif.comebackBody")))
     }
-    return plan
+    return capped(plan)
+  }
+
+  /// Üst sınır: vakit, kılınmamış vakit ve "uygulamayı aç" hatırlatması korunur; diğerlerinden en uzak tarihliler düşer.
+  static func capped(_ plan: [PlannedNotification]) -> [PlannedNotification] {
+    guard plan.count > maxPending else { return plan }
+    let keep: (PlannedNotification) -> Bool = { $0.isPrayer || $0.kind == .missed || $0.kind == .comeback }
+    let essential = plan.filter(keep)
+    let rest = plan.filter { !keep($0) }.sorted { $0.date < $1.date }.prefix(max(0, maxPending - essential.count))
+    return essential + rest
   }
 
   static let comebackAfter: TimeInterval = 3 * 24 * 3600

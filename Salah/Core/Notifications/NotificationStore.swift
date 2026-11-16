@@ -6,6 +6,7 @@ final class NotificationStore {
   /// V3: ezan sesi varsayılanı kapandı; güncellemeden sonraki ilk açılış eski (ezan sesi
   /// gömülü) planı throttle'a takılmadan yeniden kursun. RN'in V2 damgası da devralınmaz.
   static let lastScheduleKey = "NOTIF_LAST_RESCHEDULE_AT_V3"
+  static let signatureKey = "NOTIF_PLAN_SIGNATURE_V1"
 
   private(set) var preferences: NotificationPreferences
   private(set) var permission = NotificationPermission.unknown
@@ -21,6 +22,8 @@ final class NotificationStore {
   @ObservationIgnored private var worker: Task<Void, Never>?
   @ObservationIgnored private var forceNext = false
   @ObservationIgnored private var lastScheduled: Double?
+  /// Son kurulan planın girdileri; biri değişince (ör. saat dilimi, gün, alarm) plan beklemeden yeniden kurulur.
+  @ObservationIgnored private var lastSignature: String?
 
   init(
     preferences: NotificationPreferences? = nil,
@@ -43,6 +46,7 @@ final class NotificationStore {
     self.persists = persists
     if persists {
       lastScheduled = LocalStore.string(Self.lastScheduleKey).flatMap(Double.init)
+      lastSignature = LocalStore.string(Self.signatureKey)
       if LocalStore.string("PRAYER_NOTIFICATION_OFFSETS") == nil, LocalStore.string("PRAYER_NOTIFICATION_OFFSET") != nil {
         LocalStore.encode(self.preferences.offsets, for: "PRAYER_NOTIFICATION_OFFSETS")
       }
@@ -117,7 +121,9 @@ final class NotificationStore {
       }
       let pending = await delivery.pending()
       guard version == revision else { continue }
-      guard NotificationPlan.shouldRefresh(last: lastScheduled, now: now(), force: force, hasPending: !pending.isEmpty) else { return }
+      let signature = planSignature(snapshot)
+      let changed = signature != lastSignature
+      guard NotificationPlan.shouldRefresh(last: lastScheduled, now: now(), force: force || changed, hasPending: !pending.isEmpty) else { return }
       let days = await loadDays()
       guard version == revision else { continue }
       // Ağ başarısızsa eldeki bildirimleri koru ve throttle damgası yazma.
@@ -126,7 +132,8 @@ final class NotificationStore {
       let alarmCovered = AlarmStore.shared.coveredPrayerKeys
       // 1. aşama: vakit bildirimleri içerik indirmeyi beklemeden hemen kurulur; ezan
       // sesi gibi ayar değişiklikleri saniyeler içinde eski bildirimlerin yerini alır.
-      let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered, missed: persists ? MissedPrayers.current() : nil)
+      let missed = persists ? MissedPrayers.current() : nil
+      let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered, missed: missed)
         .filter { $0.isPrayer || $0.kind == .missed }
       delivery.removePending()
       lastError = nil
@@ -140,17 +147,27 @@ final class NotificationStore {
       let rest = NotificationPlan.build(days: days, preferences: snapshot, now: now(), verses: pools.verses,
                                         hadiths: pools.hadiths, religiousDays: calendar.religiousDays(now: now()),
                                         alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil,
-                                        nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil)
+                                        nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil,
+                                        // 1. aşamadakilerle birlikte hesaplansın: toplam üst sınırı (maxPending) aşmasın.
+                                        missed: missed)
         .filter { !$0.isPrayer && $0.kind != .missed }
       succeeded = await add(rest, version: version) && succeeded
       guard version == revision else { continue }
       forceNext = false
       if succeeded {
         lastScheduled = now().timeIntervalSince1970 * 1000
-        if persists { LocalStore.set(String(lastScheduled!), for: Self.lastScheduleKey) }
+        lastSignature = signature
+        if persists {
+          LocalStore.set(String(lastScheduled!), for: Self.lastScheduleKey)
+          LocalStore.set(signature, for: Self.signatureKey)
+        }
       } else {
         lastScheduled = nil
-        if persists { LocalStore.set(nil, for: Self.lastScheduleKey) }
+        lastSignature = nil
+        if persists {
+          LocalStore.set(nil, for: Self.lastScheduleKey)
+          LocalStore.set(nil, for: Self.signatureKey)
+        }
       }
       return
     }
@@ -167,6 +184,22 @@ final class NotificationStore {
       catch { lastError = String(describing: error); succeeded = false }
     }
     return succeeded
+  }
+
+  /// Yönetici bildirim planı ekranı: son başarılı planlama anı ve imzası.
+  var debugLastScheduled: Date? { lastScheduled.map { Date(timeIntervalSince1970: $0 / 1000) } }
+  var debugSignature: String? { lastSignature }
+
+  /// Planı belirleyen girdiler: ayarlar, ilçe, dil, saat dilimi, alarmlı vakitler ve gün.
+  private func planSignature(_ p: NotificationPreferences) -> String {
+    [
+      String(describing: p),
+      LocalStore.string(Locations.districtIdKey) ?? "",
+      Localizer.shared.language.rawValue,
+      TimeZone.current.identifier,
+      AlarmStore.shared.coveredPrayerKeys.sorted().joined(separator: ","),
+      localDateString(now()),
+    ].joined(separator: "|")
   }
 
   /// Throttle damgasını siler: sonraki reschedule() (yeniden açılışta da) planı mutlaka yeniden kurar.

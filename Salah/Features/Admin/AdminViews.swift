@@ -85,7 +85,7 @@ enum AdminAPI {
 }
 
 /// RN Dashboard ve kart içi ekran ortak kabuğu.
-private struct AdminScreen<Content: View>: View {
+struct AdminScreen<Content: View>: View {
   @Environment(\.tokens) private var tokens
   let title: String
   @ViewBuilder var content: Content
@@ -138,6 +138,7 @@ struct AdminDashboardView: View {
                 menu("people-outline", "Kullanıcılar", "Kullanıcıları görüntüle ve yönet", Color(hex: 0x3b82f6), .adminUsers)
                 menu("key-outline", "Roller", "Sistem rollerini yönet", Color(hex: 0xf59e0b), .adminRoles)
                 menu("flag-outline", "Grup şikâyetleri", "Şikâyet edilen grup hatimlerini incele", tokens.accent, .adminGroupReports)
+                menu("notifications-outline", "Bildirim planı", "Bu cihazda kurulu bildirimler ve ezan ayarları", tokens.gold, .adminNotifications)
               }
             }
           }

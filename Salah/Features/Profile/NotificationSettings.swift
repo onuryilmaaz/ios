@@ -112,11 +112,21 @@ extension SettingsView {
   private func prayerChips(adhan: Bool) -> some View {
     let p = NotificationStore.shared.preferences
     return FlowLayout {
-      ForEach(NotificationPreferences.prayers, id: \.self) { key in
-        selectionChip(prayerLabel(key), selected: (adhan ? p.adhanEnabled[key] : p.prayerEnabled[key]) == true, gold: adhan) {
+      // Güneş vaktinde ezan okunmaz.
+      ForEach(NotificationPreferences.prayers.filter { !adhan || $0 != "gunes" }, id: \.self) { key in
+        let selected = (adhan ? p.adhanEnabled[key] : p.prayerEnabled[key]) == true
+        selectionChip(prayerLabel(key), selected: selected, gold: adhan) {
           NotificationStore.shared.update {
             if adhan { $0.adhanEnabled[key] = !($0.adhanEnabled[key] ?? false) }
             else { $0.prayerEnabled[key] = !($0.prayerEnabled[key] ?? false) }
+          }
+          // Ezan vakit bildirimiyle çalar: bildirimler kapalıysa ezanı açmak onları da açar (izin istenir).
+          if adhan && !selected && !NotificationStore.shared.preferences.enabled {
+            Task {
+              if await !NotificationStore.shared.setEnabled(true) {
+                AppAlert.warning(t("settings.location.permission"), t("settings.notifications.permissionMessage"))
+              }
+            }
           }
         }
       }
