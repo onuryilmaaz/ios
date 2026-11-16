@@ -41,7 +41,7 @@ struct SystemNotificationDelivery: NotificationDelivery {
 
   static func content(_ n: PlannedNotification) -> UNMutableNotificationContent {
     let content = UNMutableNotificationContent()
-    content.sound = n.adhan ? UNNotificationSound(named: .init("notif_ezan.caf")) : .default
+    content.sound = n.adhan ? UNNotificationSound(named: .init(AdhanSound.name(n.prayerKey) + ".caf")) : .default
     var info: [String: Any] = ["type": n.kind.rawValue]
     if n.kind == .prayerTime || n.kind == .prayerReminder {
       let prayer = prayerLabel(n.prayerKey)

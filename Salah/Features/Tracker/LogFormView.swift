@@ -4,6 +4,8 @@ import SwiftUI
 struct LogFormView: View {
   @Environment(\.tokens) private var tokens
   let type: ActivityType
+  /// Kayıt sunucuya ya da çevrimdışı kuyruğa yazılınca (gün sayfası listesini günceller).
+  var onSaved: ((TrackerLog) -> Void)?
   let onClose: () -> Void
 
   @State private var pages = ""
@@ -19,9 +21,16 @@ struct LogFormView: View {
   @State private var notes = ""
   @State private var saving = false
   /// Kaydın günü: varsayılan bugün; geçmişe sınırsız, ileri tarih yok.
-  @State private var day = Date()
+  @State private var day: Date
 
   private static let noteLimit = 500
+
+  init(type: ActivityType, day: Date = Date(), onSaved: ((TrackerLog) -> Void)? = nil, onClose: @escaping () -> Void) {
+    self.type = type
+    self.onSaved = onSaved
+    self.onClose = onClose
+    _day = State(initialValue: min(day, Date()))
+  }
 
   var body: some View {
     VStack(spacing: 0) {
@@ -207,7 +216,8 @@ struct LogFormView: View {
     defer { saving = false }
     do {
       let past = !Calendar.current.isDateInToday(day)
-      try await TrackerStore.shared.log(type, value: .object(value), notes: notes.isEmpty ? nil : notes, date: past ? localDateString(min(day, Date())) : nil)
+      let log = try await TrackerStore.shared.log(type, value: .object(value), notes: notes.isEmpty ? nil : notes, date: past ? localDateString(min(day, Date())) : nil)
+      if let log { onSaved?(log) }
       Haptics.notify(.success)
       if past { Toast.success(t("tracker.form.pastSaved", ["date": day.formatted(.dateTime.day().month(.wide).year().locale(Localizer.shared.locale))])) }
       onClose()

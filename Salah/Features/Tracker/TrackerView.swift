@@ -6,6 +6,8 @@ struct TrackerView: View {
   @Environment(\.scenePhase) private var scenePhase
   @State private var formType: ActivityType? = DebugLaunch.form
   @State private var yearSummary = false
+  /// Namaz geçmişinden seçilen gün.
+  @State private var selectedDay: DaySelection? = DebugLaunch.day.map(DaySelection.init)
 
   var body: some View {
     let store = TrackerStore.shared
@@ -42,7 +44,11 @@ struct TrackerView: View {
             VStack(spacing: 14) {
               if YearSummaryStore.available { YearSummaryEntryCard { yearSummary = true }.tourAnchor("tracker.year") }
               RecapCard().tourAnchor("tracker.insights")
-              HeatmapCard()
+              HeatmapCard { date in
+                guard let day = parseLocalDate(date) else { return }
+                Haptics.impact(.light)
+                selectedDay = DaySelection(day: day)
+              }
               HatimCard()
             }
           }
@@ -84,6 +90,14 @@ struct TrackerView: View {
     .onChange(of: store.todayLogs.count) { Task { await insights.fetchAll() } }
     .onChange(of: scenePhase) { _, phase in
       if phase == .active { Task { await load() } }
+    }
+    .sheet(item: $selectedDay) { sel in
+      DayDetailView(day: sel.day) { selectedDay = nil }
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
+        .presentationBackground(tokens.canvas)
+        .presentationCornerRadius(24)
+        .environment(\.tokens, tokens)
     }
     .sheet(item: $formType) { type in
       LogFormView(type: type) { formType = nil }
@@ -141,11 +155,17 @@ struct TrackerView: View {
   }
 }
 
+/// Isı haritasında dokunulan gün (sayfa kimliği).
+struct DaySelection: Identifiable {
+  let day: Date
+  var id: Date { day }
+}
+
 extension ActivityType: Identifiable {
   var id: String { rawValue }
 }
 
-private struct ActivityRow: View {
+struct ActivityRow: View {
   @Environment(\.tokens) private var tokens
   let type: ActivityType
   let logs: [TrackerLog]
@@ -186,9 +206,11 @@ private struct ActivityRow: View {
   }
 }
 
-private struct LogRow: View {
+struct LogRow: View {
   @Environment(\.tokens) private var tokens
   let log: TrackerLog
+  /// Varsayılan: bugünün listesinden silme.
+  var onDelete: (() async -> Void)?
 
   var body: some View {
     let label = log.type?.label ?? log.activity_type
@@ -216,7 +238,7 @@ private struct LogRow: View {
           confirmText: t("tracker.delete.confirm"), destructive: true
         ) {
           Haptics.impact(.medium)
-          try? await TrackerStore.shared.delete(log.id)
+          if let onDelete { await onDelete() } else { try? await TrackerStore.shared.delete(log.id) }
         }
       } label: {
         Ionicon("trash-outline", size: 17, color: tokens.inkSubtle)

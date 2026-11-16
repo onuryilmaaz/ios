@@ -84,6 +84,13 @@ func localDateString(_ d: Date = Date()) -> String {
   return String(format: "%04d-%02d-%02d", c.year ?? 0, c.month ?? 0, c.day ?? 0)
 }
 
+/// "YYYY-MM-DD" → yerel takvimde o günün başı.
+func parseLocalDate(_ s: String) -> Date? {
+  let parts = s.split(separator: "-").compactMap { Int($0) }
+  guard parts.count == 3 else { return nil }
+  return Calendar.current.date(from: DateComponents(year: parts[0], month: parts[1], day: parts[2]))
+}
+
 enum TrackerText {
   static let nafileTypes = [
     "sabah_sunnet", "ogle_sunnet", "ikindi_sunnet", "aksam_sunnet", "yatsi_sunnet",

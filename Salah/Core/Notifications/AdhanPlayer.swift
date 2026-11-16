@@ -28,7 +28,7 @@ enum AdhanTiming {
 final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   static let shared = AdhanPlayer()
   /// Bildirim sesiyle aynı üst sınır; tam ezan okunmaz.
-  static let maxDuration: TimeInterval = 10
+  static let maxDuration: TimeInterval = 6
   static let fadeDuration: TimeInterval = 1
   private(set) var activePrayer: String?
   @ObservationIgnored private var player: AVAudioPlayer?
@@ -104,7 +104,7 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
 
   /// Bildirimin kısa ezanı, sistem sesi olarak (zil/uyarı ses düzeyi, sessiz anahtarına uyar).
   private func playShort(_ key: String, now: Date) -> Bool {
-    guard let url = Bundle.main.url(forResource: "notif_ezan", withExtension: "caf") else { return false }
+    guard let url = Bundle.main.url(forResource: AdhanSound.name(key), withExtension: "caf") else { return false }
     stop()
     QuranAudioPlayer.shared.stop()
     var id: SystemSoundID = 0
@@ -175,4 +175,15 @@ final class AdhanPlayer: NSObject, AVAudioPlayerDelegate {
   #if DEBUG
   func preview() { activePrayer = "ogle"; window.show() }
   #endif
+}
+
+/// Vakit ezanı sesi: her vaktin kendi ezanından 6 saniyelik kesit (aynı ses düzeyine getirilmiş). Vakit dışı
+/// (test, alarm önizlemesi) genel `notif_ezan`.
+enum AdhanSound {
+  static let prayers = ["imsak", "ogle", "ikindi", "aksam", "yatsi"]
+
+  static func name(_ prayerKey: String?) -> String {
+    guard let key = prayerKey, prayers.contains(key) else { return "notif_ezan" }
+    return "notif_ezan_\(key)"
+  }
 }

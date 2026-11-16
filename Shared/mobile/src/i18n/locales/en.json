@@ -667,7 +667,8 @@
       "more": "More",
       "nafile": "Voluntary",
       "nafileSummary": "{{rakaat}} voluntary rakats",
-      "nafileA11y": "{{rakaat}} rakats of voluntary prayer"
+      "nafileA11y": "{{rakaat}} rakats of voluntary prayer",
+      "tapHint": "Tap a day to see it and add what is missing."
     },
     "hatim": {
       "planCreate": "Create a completion plan",
@@ -1538,6 +1539,10 @@
     },
     "title": "Worship log",
     "todayEntries": "Today's entries",
+    "day": {
+      "worship": "Worship",
+      "entries": "Entries"
+    },
     "value": {
       "memorization": "{{new}} new verses",
       "memorizationRevision": "{{new}} new · {{revision}} reviewed verses",

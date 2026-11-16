@@ -667,7 +667,8 @@
       "more": "أكثر",
       "nafile": "نافلة",
       "nafileSummary": "{{rakaat}} ركعة نافلة",
-      "nafileA11y": "صُلّيت {{rakaat}} ركعة نافلة"
+      "nafileA11y": "صُلّيت {{rakaat}} ركعة نافلة",
+      "tapHint": "اضغط على يوم لتراه وتضيف ما فاتك."
     },
     "hatim": {
       "planCreate": "أنشئ خطة ختم",
@@ -1538,6 +1539,10 @@
     },
     "title": "سجل العبادات",
     "todayEntries": "سجلات اليوم",
+    "day": {
+      "worship": "العبادات",
+      "entries": "السجلات"
+    },
     "value": {
       "memorization": "{{new}} آية جديدة",
       "memorizationRevision": "{{new}} جديدة · {{revision}} مراجعة",

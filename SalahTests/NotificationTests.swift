@@ -398,13 +398,23 @@ struct NotificationStoreTests {
     #expect(!d.notices.isEmpty && !d.notices.contains { $0.adhan })
   }
 
-  /// Vakit ezanı 10 saniye; iOS 30 saniyeyi aşan bildirim sesini çalmaz.
-  @Test func notificationAdhanSoundIsTenSeconds() throws {
-    let url = try #require(Bundle.main.url(forResource: "notif_ezan", withExtension: "caf"))
-    let file = try AVAudioFile(forReading: url)
-    let seconds = Double(file.length) / file.fileFormat.sampleRate
-    #expect(abs(seconds - AdhanPlayer.maxDuration) <= 0.1)
-    #expect(seconds < 30)
+  /// Vakit ezanı 6 saniye; iOS 30 saniyeyi aşan bildirim sesini çalmaz.
+  @Test func notificationAdhanSoundIsSixSeconds() throws {
+    for name in ["notif_ezan"] + AdhanSound.prayers.map({ AdhanSound.name($0) }) {
+      let url = try #require(Bundle.main.url(forResource: name, withExtension: "caf"), "\(name)")
+      let file = try AVAudioFile(forReading: url)
+      let seconds = Double(file.length) / file.fileFormat.sampleRate
+      #expect(abs(seconds - AdhanPlayer.maxDuration) <= 0.1, "\(name)")
+      #expect(seconds < 30)
+    }
+  }
+
+  /// Her vakit kendi ezanını çalar; güneş ve vakit dışı genel ses.
+  @Test func eachPrayerHasItsOwnAdhanSound() {
+    #expect(AdhanSound.name("ogle") == "notif_ezan_ogle")
+    #expect(AdhanSound.name("yatsi") == "notif_ezan_yatsi")
+    #expect(AdhanSound.name("gunes") == "notif_ezan")
+    #expect(AdhanSound.name(nil) == "notif_ezan")
   }
 
   @Test func testNotificationIsAddedAfterReschedule() async {

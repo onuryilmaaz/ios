@@ -675,7 +675,8 @@
       "more": "Mehr",
       "nafile": "Freiwillig",
       "nafileSummary": "{{rakaat}} freiwillige Rak'at",
-      "nafileA11y": "{{rakaat}} Rak'at freiwilliges Gebet"
+      "nafileA11y": "{{rakaat}} Rak'at freiwilliges Gebet",
+      "tapHint": "Tippe auf einen Tag, um ihn zu sehen und Fehlendes nachzutragen."
     },
     "hatim": {
       "planCreate": "Khatm-Plan erstellen",
@@ -1553,6 +1554,10 @@
     },
     "title": "Ibadat-Buch",
     "todayEntries": "Heutige Einträge",
+    "day": {
+      "worship": "Ibadat",
+      "entries": "Einträge"
+    },
     "value": {
       "memorization": "{{new}} neue Verse",
       "memorizationRevision": "{{new}} neu · {{revision}} wiederholte Verse",

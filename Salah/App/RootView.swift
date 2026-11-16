@@ -158,6 +158,7 @@ struct RootView: View {
 /// Yalnız Debug: ekran görüntüsü/doğrulama için açılış argümanları.
 ///   -SalahDebugTab tracker      → giriş duvarını atlayıp sekmeyi açar
 ///   -SalahDebugForm quran       → İbadet kayıt formunu açar
+///   -SalahDebugDay 2026-11-10   → İbadet Defteri'nde o günün sayfasını açar
 enum DebugLaunch {
   /// Görsel kontroller ve test host'u canlı backend'e istek göndermez.
   static var isIsolated: Bool {
@@ -376,6 +377,14 @@ enum DebugLaunch {
   static var form: ActivityType? {
     #if DEBUG
       return UserDefaults.standard.string(forKey: "SalahDebugForm").flatMap(ActivityType.init(rawValue:))
+    #else
+      return nil
+    #endif
+  }
+  ///   -SalahDebugDay 2026-11-10 → İbadet Defteri'nde o günün sayfasını açar
+  static var day: Date? {
+    #if DEBUG
+      return UserDefaults.standard.string(forKey: "SalahDebugDay").flatMap(parseLocalDate)
     #else
       return nil
     #endif

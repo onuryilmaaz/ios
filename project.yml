@@ -86,6 +86,16 @@ targets:
         buildPhase: resources
       - path: Shared/mobile/assets/sounds/notif_ezan.caf
         buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan_imsak.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan_ogle.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan_ikindi.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan_aksam.caf
+        buildPhase: resources
+      - path: Shared/mobile/assets/sounds/notif_ezan_yatsi.caf
+        buildPhase: resources
       # RN ile aynı gerçek Mushaf örnekleri; XCTest ve izole Debug önizlemesi.
       - path: Shared/mobile/src/services/__tests__/fixtures/mushaf-pages.json
         buildPhase: resources

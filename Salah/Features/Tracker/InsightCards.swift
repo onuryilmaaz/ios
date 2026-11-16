@@ -153,11 +153,14 @@ struct RecapCard: View {
 /// Son 12 ayın namaz ısı haritası. RN: components/insights/HeatmapCard.tsx
 struct HeatmapCard: View {
   @Environment(\.tokens) private var tokens
+  /// Geçmiş bir güne dokunulunca (YYYY-AA-GG).
+  var onSelect: ((String) -> Void)?
   @State private var visible = false
   @State private var scrolled = false
 
-  private let cell: CGFloat = 12
-  private let gap: CGFloat = 3
+  // Güne dokunulabilsin diye hücreler parmak boyutuna yakın.
+  private let cell: CGFloat = 20
+  private let gap: CGFloat = 4
 
   var body: some View {
     if let history = InsightsStore.shared.history {
@@ -174,13 +177,19 @@ struct HeatmapCard: View {
           .foregroundStyle(tokens.textSecondary)
           .tabularNumbers()
           .padding(.top, 1.75)
+        if onSelect != nil {
+          Text(t("insights.heatmap.tapHint"))
+            .font(.system(size: 13))
+            .foregroundStyle(tokens.textSecondary)
+            .padding(.top, 1.75)
+        }
 
         HStack(alignment: .top, spacing: 5.25) {
           // Gün etiketleri: yalnız Pzt, Çar, Cum, Paz görünür.
           VStack(alignment: .leading, spacing: gap) {
             ForEach(Array(weekdays.enumerated()), id: \.offset) { i, d in
               Text(d)
-                .font(.system(size: 10))
+                .font(.system(size: 11))
                 .foregroundStyle(tokens.isDark ? Forest.s500 : Forest.s400)
                 .frame(height: cell)
                 .opacity(i % 2 == 0 ? 1 : 0)
@@ -208,11 +217,16 @@ struct HeatmapCard: View {
                   ForEach(Array(columns.enumerated()), id: \.offset) { i, col in
                     VStack(spacing: gap) {
                       ForEach(col.cells, id: \.date) { c in
-                        RoundedRectangle(cornerRadius: 3).fill(color(c)).frame(width: cell, height: cell)
+                        RoundedRectangle(cornerRadius: 5).fill(color(c)).frame(width: cell, height: cell)
                           .overlay {
                             // İbadet Defteri'ne nafile namaz girilen gün: ortada altın nokta.
-                            if c.nafile > 0 && !c.future { Circle().fill(nafileColor).frame(width: 4, height: 4) }
+                            if c.nafile > 0 && !c.future { Circle().fill(nafileColor).frame(width: 6, height: 6) }
                           }
+                          // Dokunma alanı hücre aralığını da kapsar.
+                          .padding(gap / 2)
+                          .contentShape(.rect)
+                          .onTapGesture { if !c.future { onSelect?(c.date) } }
+                          .padding(-gap / 2)
                       }
                     }
                     // Ay etiketleri de aynı sıra numaralarını kullanıyor: kaydırma hedefi ayrı kimlikle.

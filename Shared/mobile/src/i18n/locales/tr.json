@@ -667,7 +667,8 @@
       "more": "Çok",
       "nafile": "Nafile",
       "nafileSummary": "{{rakaat}} rekat nafile",
-      "nafileA11y": "{{rakaat}} rekat nafile namaz kılındı"
+      "nafileA11y": "{{rakaat}} rekat nafile namaz kılındı",
+      "tapHint": "Bir güne dokun; o günü gör, eksikleri ekle."
     },
     "hatim": {
       "planCreate": "Hatim planı oluştur",
@@ -1538,6 +1539,10 @@
     },
     "title": "İbadet Defteri",
     "todayEntries": "Bugünkü kayıtlar",
+    "day": {
+      "worship": "İbadetler",
+      "entries": "Kayıtlar"
+    },
     "value": {
       "memorization": "{{new}} yeni ayet",
       "memorizationRevision": "{{new}} yeni · {{revision}} tekrar ayet",
