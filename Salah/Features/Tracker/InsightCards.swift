@@ -239,9 +239,10 @@ struct HeatmapCard: View {
             }
             .scrollIndicators(.hidden)
             // Ekran dışındaki kaydırma uygulanmıyor: kart görünür olunca, geçmişten bugünün ayına yumuşakça kayar.
-            .onGeometryChange(for: Bool.self) { geo in
+            .onGeometryChange(for: Bool.self) { [limit = UIScreen.main.bounds.height - 40] geo in
+              // Ekran yüksekliği kapanış dışında okunur: dönüşüm ana aktör dışında çalışır.
               let f = geo.frame(in: .global)
-              return f.maxY > 0 && f.minY < (UIScreen.main.bounds.height - 40)
+              return f.maxY > 0 && f.minY < limit
             } action: { visible = $0 }
             .task(id: visible ? history.to : "") {
               guard visible, !scrolled else { return }

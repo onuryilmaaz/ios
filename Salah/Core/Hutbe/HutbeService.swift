@@ -66,7 +66,7 @@ enum HutbeService {
 
   /// Panelde bu Cuma ve dil için düzeltilmiş metin yayınlandıysa o; sürümü (güncelleme zamanı) ile saklanır.
   private static func correctedText(_ lang: Lang, item: HutbeParser.Item) async throws -> HutbeParser.Parsed? {
-    guard let meta = await AppControlStore.shared.hutbeOverride(lang: lang.rawValue, date: localDateString(item.date)) else { return nil }
+    guard let meta = AppControlStore.shared.hutbeOverride(lang: lang.rawValue, date: localDateString(item.date)) else { return nil }
     let key = "HUTBE_OVERRIDE_V1_\(meta.id)_\(meta.updatedAt)"
     if let cached = LocalStore.decode(HutbeParser.Parsed.self, key) { return cached }
     struct Response: Decodable { let data: HutbeParser.Parsed }

@@ -337,19 +337,10 @@ extension View {
     }
   }
 
-  // iOS 16: wraps view in ZStack with AccessoryWidgetBackground
-  // iOS 17+: no-op (containerBackground handles it at the widget level)
-  @ViewBuilder
-  func withAccessoryBackground() -> some View {
-    if #available(iOS 17.0, *) {
-      self
-    } else {
-      ZStack {
-        AccessoryWidgetBackground()
-        self
-      }
-    }
-  }
+  // Uygulama iOS 17 ve üstünü destekler: arka planı widget düzeyinde containerBackground verir.
+  // (iOS 16'nın AccessoryWidgetBackground dalı ölü koddu; Xcode 27 onu iOS 26'ya özel yapıyla derleyip uyarıyordu.)
+  func withAccessoryBackground() -> some View { self }
+
 
   // Apply on the widget's entry view inside StaticConfiguration
   @ViewBuilder

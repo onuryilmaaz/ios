@@ -49,16 +49,9 @@ extension View {
     }
   }
 
-  @ViewBuilder
+  /// Uygulama iOS 17 ve üstünü destekler (iOS 16'nın AccessoryWidgetBackground dalı ölü koddu).
   func standbyAccessoryBackground() -> some View {
-    if #available(iOS 17.0, *) {
-      self.containerBackground(for: .widget) { Color.clear }
-    } else {
-      ZStack {
-        AccessoryWidgetBackground()
-        self
-      }
-    }
+    containerBackground(for: .widget) { Color.clear }
   }
 }
 

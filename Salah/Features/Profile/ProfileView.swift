@@ -13,6 +13,7 @@ struct ProfileView: View {
   @State private var saving = false
   @State private var uploading = false
   @State private var photoItem: PhotosPickerItem?
+  @State private var photoPickerShown = false
   @State private var localAvatar: UIImage?
 
   var body: some View {
@@ -71,12 +72,18 @@ struct ProfileView: View {
         .clipShape(.circle)
         .overlay(Circle().stroke(dark ? Forest.s800 : Forest.s100, lineWidth: 4))
 
-        PhotosPicker(selection: $photoItem, matching: .images) {
+        // PhotosPicker'ın etiket kapanışı ana aktör dışında çalışır (Xcode 27 uyarısı); düğme + düzenleyici aynı seçiciyi açar.
+        Button {
+          Haptics.impact(.light)
+          photoPickerShown = true
+        } label: {
           Ionicon("camera", size: 18, color: .white)
             .frame(width: 35, height: 35)
             .background(dark ? Accent.s500 : Accent.s600, in: .circle)
             .overlay(Circle().stroke(dark ? Forest.s800 : Forest.s100, lineWidth: 2))
         }
+        .buttonStyle(PressableStyle())
+        .photosPicker(isPresented: $photoPickerShown, selection: $photoItem, matching: .images)
         .disabled(uploading)
         .accessibilityLabel(t("profile.changePhoto"))
       }

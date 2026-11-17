@@ -2,7 +2,8 @@ import SwiftUI
 import UIKit
 
 /// Geniş ekran (iPhone Duo açıkken 669/951 pt) düzeni. Telefonlarda (≤ 440 pt) hiçbir şey değişmez.
-enum ReadableLayout {
+/// Saf ölçüler ana aktöre bağlı değildir (geometri dönüşümlerinde de kullanılır).
+nonisolated enum ReadableLayout {
   /// İçerik sütununun en fazla genişliği; yanlar zemin rengiyle dolar.
   static let columnWidth: CGFloat = 620
   /// Ana sayfa bu genişlikten itibaren yatayda ikiye bölünür (solda vakit paneli, sağda kartlar).
@@ -16,7 +17,7 @@ enum ReadableLayout {
   static func isSplit(_ size: CGSize) -> Bool { size.width >= splitMinWidth && size.height >= 500 && size.width > size.height }
 
   /// Uygulama temsilcisinin yön maskesi: Mushaf kendi maskesini koyar, yoksa iç ekranda yatay da serbest.
-  static func orientations(for window: UIWindow?) -> UIInterfaceOrientationMask {
+  @MainActor static func orientations(for window: UIWindow?) -> UIInterfaceOrientationMask {
     if ReadingOrientation.mask != .portrait { return ReadingOrientation.mask }
     guard let bounds = window?.windowScene?.screen.bounds else { return .portrait }
     return min(bounds.width, bounds.height) >= rotatableMinSide ? .allButUpsideDown : .portrait
