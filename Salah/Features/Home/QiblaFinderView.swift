@@ -65,6 +65,22 @@ struct QiblaFinderView: View {
     GeometryReader { geometry in
       let size = min(geometry.size.width * 0.86, 400)
       let alignment = store.alignment
+      // Geniş yatay ekran (Duo açık): kadran solda, açı ve seçiciler sağda.
+      if geometry.size.width >= ReadableLayout.splitMinWidth && geometry.size.width > geometry.size.height {
+        HStack(spacing: 28) {
+          QiblaDial(size: min(geometry.size.height * 0.86, 400), theme: theme, heading: store.heading, alignment: alignment)
+          VStack(spacing: 21) {
+            VStack(spacing: 2) {
+              Text(t("qibla.angle")).font(.system(size: 13, weight: .medium)).foregroundStyle(theme.muted)
+              Text("\(Int(store.bearing.rounded()))°").font(.system(size: 60, weight: .light)).monospacedDigit().foregroundStyle(theme.accent)
+            }
+            direction(alignment)
+            picker
+          }
+          .frame(maxWidth: 320)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+      } else {
       ScrollView {
         VStack(spacing: 0) {
           VStack(spacing: 2) {
@@ -78,6 +94,7 @@ struct QiblaFinderView: View {
           picker.padding(.top, 14).padding(.bottom, 16)
         }.frame(maxWidth: .infinity, minHeight: geometry.size.height)
       }.scrollIndicators(.hidden)
+      }
     }
   }
 

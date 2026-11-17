@@ -1,3 +1,4 @@
+import OSLog
 import SwiftUI
 import UIKit
 
@@ -8,7 +9,7 @@ enum ReadingOrientation {
     mask = value
     for scene in UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }) {
       scene.windows.first?.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations()
-      scene.requestGeometryUpdate(.iOS(interfaceOrientations: value))
+      scene.requestGeometryUpdate(.iOS(interfaceOrientations: ReadableLayout.orientations(for: scene.windows.first)))
     }
   }
 }
@@ -26,6 +27,12 @@ struct MushafReaderView: View {
   @State private var detail: Verse?
   @State private var word: MushafWordSelection?
   @State private var initialized = false
+  /// Duo açık ve yatayken iki sayfa yan yana (kitap düzeni): sağda tek, solda çift sayfa.
+  @State private var book = false
+  /// Son bilinen ekran: Duo'nun iç ekranı mı, kitap düzeni mi (katlanma/açılma bundan anlaşılır).
+  @State private var screen: MushafScreen?
+  /// Katlanma/açılma animasyonu sürerken sayfalayıcının yerine çizilir.
+  @State private var fold: BookFold.Fold? = DebugLaunch.quran == "fold" ? .init(opening: true, right: 1, frozenAngle: 40) : nil
 
   /// Sayfalar yatayda tam ekran genişliğine yerleşir (yan boşluk sayfada `side` ile verilir);
   /// GeometryReader'ın genişliği güvenli alan çıkarılmış hali olduğundan onu kullanınca
@@ -34,33 +41,49 @@ struct MushafReaderView: View {
     CGSize(width: g.size.width + g.safeAreaInsets.leading + g.safeAreaInsets.trailing, height: g.size.height)
   }
 
+  /// Üst çubuğun güvenli alan altındaki yüksekliği (6 + 35 düğme + 10,5 alt boşluk, sayfa kendi 8 pt'sini ekler).
+  private static let chromeHeight: CGFloat = 44
   private var currentSurah: Surah? { surahs.last { ($0.page_number ?? 1) <= page } }
+  /// Kitap düzeninde açık iki sayfa (sağdaki önce).
+  private var spread: [Int] { book ? [((page + 1) / 2) * 2 - 1, ((page + 1) / 2) * 2] : [page] }
+  private func logView() { MushafReadLog.shared.view(spread) }
+  /// Çevrilecek yaprakların hattı önden yüklenir; kağıt kalkarken arka yüz hazır olur.
+  private func preloadFonts(around value: Int) {
+    let script = QuranReadingStore.shared.mushafScript
+    guard script != .text, !DebugLaunch.isIsolated else { return }
+    let dark = palette.isDark
+    for n in [value - 2, value - 1, value + 1, value + 2, value + 3] where (1...604).contains(n) {
+      Task { _ = try? await MushafFonts.font(script, page: n, dark: dark) }
+    }
+  }
   private var palette: MushafPalette { .init(theme: QuranReadingStore.shared.mushafTheme, appIsDark: tokens.isDark) }
 
   var body: some View {
     GeometryReader { geometry in
       ZStack(alignment: .top) {
         palette.canvas.ignoresSafeArea()
-        TabView(selection: $page) {
-          ForEach(1...604, id: \.self) { number in
-            MushafPageView(page: number, isCurrent: number == page, size: fullSize(geometry), insets: geometry.safeAreaInsets, surahs: surahs,
-              palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" } ?? MushafListening.shared.currentVerse,
-              onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) },
-              onWord: { selected in Haptics.impact(.light); word = selected })
-              .environment(\.layoutDirection, Localizer.shared.layoutDirection).tag(number)
-          }
+        let side = book ? max(geometry.safeAreaInsets.leading, geometry.safeAreaInsets.trailing) : 0
+        MushafCurlPager(page: $page, book: book) { number in pageView(number, geometry: geometry) }
+          // Cilt yeri (tek sayfa / orta) değişince sayfalayıcı yeniden kurulur.
+          .id(book)
+          .padding(.horizontal, side)
+          .ignoresSafeArea()
+          .opacity(fold == nil ? 1 : 0)
+        if let fold {
+          BookFold(fold: fold, size: fullSize(geometry), page: { number, size in
+            mushafPage(number, size: size, insets: EdgeInsets(top: geometry.safeAreaInsets.top + Self.chromeHeight, leading: 0, bottom: geometry.safeAreaInsets.bottom, trailing: 0), spine: true)
+          }, done: { self.fold = nil })
+          .ignoresSafeArea()
         }
-        .tabViewStyle(.page(indexDisplayMode: .never)).environment(\.layoutDirection, .rightToLeft)
-        .ignoresSafeArea()
         if chrome {
           HStack(spacing: 7) {
             CircleIconButton(icon: "close", size: 35, iconSize: 20, accessibilityLabel: t("common.close")) { Haptics.impact(.light); dismiss() }
             VStack(spacing: 2) {
               Text(currentSurah.map { surahName($0, withSuffix: true) } ?? t("mushaf.title"))
                 .font(.system(size: 16, weight: .semibold)).foregroundStyle(tokens.textPrimary).lineLimit(1)
-              Text(t("mushaf.page", ["page": page, "total": 604])).font(.system(size: 12)).monospacedDigit().foregroundStyle(tokens.textSecondary)
+              Text(book ? t("mushaf.spread", ["first": spread[0], "second": spread[1], "total": 604]) : t("mushaf.page", ["page": page, "total": 604])).font(.system(size: 12)).monospacedDigit().foregroundStyle(tokens.textSecondary)
             }.frame(maxWidth: .infinity)
-            if let mark = QuranReadingStore.shared.mushafMark, mark.page != page {
+            if let mark = QuranReadingStore.shared.mushafMark, !spread.contains(mark.page) {
               CircleIconButton(icon: "bookmark", size: 35, iconSize: 17, color: tokens.gold, accessibilityLabel: t("mushaf.goToMark", ["page": mark.page])) {
                 Haptics.impact(.light); page = mark.page
               }
@@ -94,12 +117,34 @@ struct MushafReaderView: View {
       .statusBarHidden(!chrome)
       .statusBar(palette.isDark ? .light : .dark)
     }
+    .onGeometryChange(for: MushafScreen.self) { proxy in
+      let full = CGSize(width: proxy.size.width + proxy.safeAreaInsets.leading + proxy.safeAreaInsets.trailing, height: proxy.size.height)
+      return MushafScreen(book: ReadableLayout.isSplit(full), inner: min(full.width, full.height) >= ReadableLayout.rotatableMinSide)
+    } action: { value in
+      // Duo açıldı (kapak → iç ekran, yatay): kitap açılır. Katlandı (kitaptan kapak ekranına): kitap kapanır.
+      // Katlanınca sistem pencereyi yeni ekranda yeniden kurabilir; önceki ekran bu görünümün dışında tutulur.
+      let previous = screen ?? MushafFoldTracker.recent
+      #if DEBUG
+        MushafFoldTracker.log.notice("ekran: inner=\(value.inner) book=\(value.book) önceki: inner=\(previous?.inner.description ?? "-") book=\(previous?.book.description ?? "-") yeni görünüm=\(screen == nil)")
+      #endif
+      if let previous, previous.inner != value.inner {
+        let right = page % 2 == 1 ? page : page - 1
+        if value.inner, value.book { fold = .init(opening: true, right: right) }
+        else if !value.inner, previous.book { fold = .init(opening: false, right: right) }
+      }
+      screen = value
+      MushafFoldTracker.last = value
+      MushafFoldTracker.at = Date()
+      book = value.book
+      logView()
+    }
     .onAppear {
       guard !initialized else { return }
       initialized = true
       page = min(604, max(1, initialPage))
       QuranReadingStore.shared.setPage(page)
-      MushafReadLog.shared.view(page)
+      logView()
+      preloadFonts(around: page)
       MushafListening.shared.onPage = { next in withAnimation { page = next } }
       ReadingOrientation.set(.allButUpsideDown)
     }
@@ -114,7 +159,7 @@ struct MushafReaderView: View {
       }
     }
     .onChange(of: scenePhase) { _, phase in
-      if phase == .active { MushafReadLog.shared.view(page) } else { MushafReadLog.shared.pause() }
+      if phase == .active { logView() } else { MushafReadLog.shared.pause() }
     }
     .task {
       surahs = await QuranService.surahs()
@@ -136,11 +181,14 @@ struct MushafReaderView: View {
     .onChange(of: TourStore.shared.tour == nil) { _, ended in
       if ended, chrome { withAnimation { chrome = false } }
     }
-    .onChange(of: page) { _, value in
+    .onChange(of: page) { old, value in
       Haptics.impact(.light)
       QuranReadingStore.shared.setPage(value)
       MushafService.prefetch(value)
-      MushafReadLog.shared.view(value)
+      if book { MushafService.prefetch(value + 2) }
+      preloadFonts(around: value)
+      // Kitap düzeninde aynı açılımın içindeki geçiş (dinlerken sağdan sola) okuma süresini sıfırlamaz.
+      if !book || (old + 1) / 2 != (value + 1) / 2 { logView() }
       // Dinlerken elle sayfa değişirse okuma o sayfadan sürer.
       let listening = MushafListening.shared
       if listening.active, listening.page != value { Task { await listening.start(page: value, surahs: surahs) } }
@@ -159,6 +207,35 @@ struct MushafReaderView: View {
     .sheet(item: $detail) { verse in
       VerseDetailView(surahID: verse.surah_id, name: surahs.first(where: { $0.id == verse.surah_id }).map { surahName($0) } ?? "", verse: verse).environment(\.tokens, tokens)
     }
+  }
+
+  /// Sayfalayıcının yaprağı: kitap düzeninde yarım ekran, üst çubuk kadar aşağıdan başlar.
+  private func pageView(_ number: Int, geometry: GeometryProxy) -> AnyView {
+    let full = fullSize(geometry)
+    // Üst çubuk (açılışta birkaç saniye görünür) sayfanın üstünü örtmesin: sayfa çubuğun altından başlar.
+    var insets = geometry.safeAreaInsets
+    insets.top += Self.chromeHeight
+    guard book else { return mushafPage(number, size: full, insets: insets, spine: false) }
+    let side = max(geometry.safeAreaInsets.leading, geometry.safeAreaInsets.trailing)
+    insets.leading = 0
+    insets.trailing = 0
+    return mushafPage(number, size: CGSize(width: (full.width - 2 * side) / 2, height: full.height), insets: insets, spine: true)
+  }
+
+  /// UIKit içinde barınan sayfa: ortam değerleri elle verilir.
+  private func mushafPage(_ number: Int, size: CGSize, insets: EdgeInsets, spine: Bool) -> AnyView {
+    AnyView(
+      MushafPageView(page: number, isCurrent: number == page, size: size, insets: insets, surahs: surahs,
+        palette: palette, selectedVerse: detail.map { "\($0.surah_id):\($0.verse_number)" } ?? MushafListening.shared.currentVerse,
+        onTap: { withAnimation(.easeInOut(duration: 0.18)) { chrome.toggle() } }, onVerse: { key, text in openVerse(key, text: text) },
+        onWord: { selected in Haptics.impact(.light); word = selected })
+        .environment(\.layoutDirection, Localizer.shared.layoutDirection)
+        // Kitap düzeni: ciltte gölge, dış kenarda okunan/kalan sayfa destesi.
+        .overlay { if spine { BookPageEdges(page: number, palette: palette, insets: insets) } }
+        .environment(\.layoutDirection, .leftToRight)
+        .environment(\.tokens, tokens)
+        .environment(\.locale, Localizer.shared.locale)
+    )
   }
 
   private var themePicker: some View {
@@ -275,6 +352,32 @@ struct MushafReaderView: View {
   }
 }
 
+/// Mushaf'ın son bilinen ekranı: katlanınca pencere yeniden kurulsa da açılma/kapanma anlaşılır.
+private enum MushafFoldTracker {
+  static var last: MushafScreen?
+  static var at = Date.distantPast
+  /// Yeni açılan okuyucu için, ancak son birkaç saniyede görülmüşse (katlanma geçişi).
+  static var recent: MushafScreen? { Date().timeIntervalSince(at) < 4 ? last : nil }
+  #if DEBUG
+    static let log = Logger(subsystem: "com.onur6541.salah", category: "mushaf-fold")
+  #endif
+}
+
+/// Sayfaların ölçülmüş satır genişlikleri (yazı tipi ve sayfa başına bir kez).
+private enum MushafPageMetrics {
+  static var widest: [String: CGFloat] = [:]
+
+  static func measure(_ data: MushafPage, font: CGFont) -> CGFloat {
+    let ct = CTFontCreateWithGraphicsFont(font, 100, nil, nil)
+    return data.lines.compactMap { line in line.words.map { MushafFonts.width($0.map { $0.code ?? "" }.joined(), font: ct) } }.max() ?? 0
+  }
+}
+
+nonisolated private struct MushafScreen: Equatable {
+  let book: Bool
+  let inner: Bool
+}
+
 private struct MushafPageView: View {
   let page: Int
   /// Ekrandaki sayfa: tur yalnız onun bir satırını işaretler.
@@ -287,23 +390,41 @@ private struct MushafPageView: View {
   let onTap: () -> Void
   let onVerse: (String, String) -> Void
   let onWord: (MushafWordSelection) -> Void
-  @State private var data: MushafPage?
+  @State private var loadedData: MushafPage?
   /// Medine hattı seçiliyse sayfanın yazı tipi ve en geniş satırı sığdıran boyut (100 punto başına genişlik oranı).
-  @State private var pageFont: CGFont?
-  @State private var widest: CGFloat = 0
+  @State private var loadedFont: CGFont?
+  @State private var loadedWidest: CGFloat = 0
+  /// Önbellekte hazır sayfa ve hat önce kullanılır: kağıt çevrilirken yaprağın arkası boş/yükleniyor görünmez.
+  private var data: MushafPage? { loadedData ?? MushafService.cachedPage(page) }
+  private var pageFont: CGFont? { script == .text ? nil : loadedFont ?? MushafFonts.cached(script, page: page, dark: palette.isDark) }
+  private var metricsKey: String { "\(script.rawValue)/\(page)/\(palette.isDark)" }
+  /// En geniş satırın 100 punto başına genişliği; bir kez ölçülür.
+  private var widest: CGFloat {
+    if loadedWidest > 0 { return loadedWidest }
+    if let known = MushafPageMetrics.widest[metricsKey] { return known }
+    guard let pageFont, let data else { return 0 }
+    let value = MushafPageMetrics.measure(data, font: pageFont)
+    MushafPageMetrics.widest[metricsKey] = value
+    return value
+  }
   @State private var failed = false
   @State private var attempt = 0
   @Environment(\.tokens) private var tokens
   private var script: MushafScript { QuranReadingStore.shared.mushafScript }
 
+  /// Basılı sayfa düzeni: dış boşluk, kenar işareti sütunu, tezhip bandı ve banttan metne boşluk.
+  private static let margin: CGFloat = 12, band: CGFloat = 10, gap: CGFloat = 5
+  private var outer: CGFloat { 8 + max(insets.leading, insets.trailing) }
+  /// Metin bloğunun genişliği.
+  private var textWidth: CGFloat { size.width - 2 * (outer + Self.margin + Self.band + Self.gap) }
+
   var body: some View {
     let landscape = size.width > size.height
-    let side = max(insets.leading, insets.trailing)
-    let contentW = size.width - 2 * (18 + side)
-    let available = max(240, size.height - insets.top - insets.bottom - 72)
+    let contentW = textWidth
+    let available = max(240, size.height - insets.top - insets.bottom - 72 - 2 * (Self.band + Self.gap))
     let font = landscape ? contentW / 18.6 : min(contentW / 18.6, available / 30)
     let lineH = landscape ? font * 2 : available / 15
-    let bodyHeight = max(size.height, insets.top + insets.bottom + 72 + lineH * 15)
+    let bodyHeight = max(size.height, insets.top + insets.bottom + 72 + 2 * (Self.band + Self.gap) + lineH * 15)
     ZoomingQuranPage(width: size.width, height: bodyHeight, background: UIColor(palette.canvas)) {
       VStack(spacing: 0) {
         HStack {
@@ -311,27 +432,19 @@ private struct MushafPageView: View {
           Spacer()
           Text(data.flatMap { d in surahs.first { $0.id == d.surahId } }.map { surahName($0, withSuffix: true) } ?? " ")
         }.font(.system(size: 12)).foregroundStyle(palette.muted).frame(height: 28)
-        if let data {
-          VStack(spacing: 0) {
-            if data.centered { Spacer(minLength: 0) }
-            ForEach(Array(data.lines.enumerated()), id: \.offset) { index, line in
-              lineView(line, index: index, pageData: data, font: font).frame(height: lineH)
-            }
-            if data.centered { Spacer(minLength: 0) }
-          }.frame(height: lineH * 15)
-        } else if failed {
-          VStack(spacing: 14) {
-            Ionicon("cloud-offline-outline", size: 32, color: palette.muted)
-            Text(t("mushaf.loadFailed")).font(.system(size: 15)).foregroundStyle(palette.muted).multilineTextAlignment(.center)
-            AppButton(title: t("common.retry"), variant: .secondary) { attempt += 1 }.frame(width: 160)
-          }.frame(height: lineH * 15)
-        } else {
-          VStack { ForEach(0..<15) { _ in Capsule().fill(palette.muted.opacity(0.15)).frame(height: 12).frame(maxHeight: .infinity) } }.frame(height: lineH * 15)
+          .padding(.horizontal, Self.margin)
+        HStack(spacing: 0) {
+          marginColumn(lineH: lineH, side: .left)
+          textBlock(font: font, lineH: lineH)
+            .padding(Self.band + Self.gap)
+            .background(MushafFrame(palette: palette, band: Self.band))
+          marginColumn(lineH: lineH, side: .right)
         }
+        .environment(\.layoutDirection, .leftToRight)
         Text("\(page)").font(.system(size: 12)).monospacedDigit().foregroundStyle(palette.muted).frame(height: 28)
       }
-      .padding(.horizontal, 18 + side).padding(.top, insets.top + 8).padding(.bottom, insets.bottom + 8)
-      .frame(width: size.width, height: bodyHeight).background(palette.canvas)
+      .padding(.horizontal, outer).padding(.top, insets.top + 8).padding(.bottom, insets.bottom + 8)
+      .frame(width: size.width, height: bodyHeight).paperTexture(palette).background(palette.canvas)
       .contentShape(.rect).onTapGesture { onTap() }
       .environment(\.tokens, tokens)
     }
@@ -340,21 +453,64 @@ private struct MushafPageView: View {
       do {
         let result = try await MushafService.page(page)
         if Task.isCancelled { return }
-        data = result
+        loadedData = result
       } catch {
         if !Task.isCancelled { failed = true }
         return
       }
       // Hat yazı tipi gelmezse (çevrimdışı, indirilmemiş) sayfa bilgisayar yazısıyla kalır.
       guard script != .text, let font = try? await MushafFonts.font(script, page: page, dark: palette.isDark), !Task.isCancelled, let data else {
-        if !Task.isCancelled { pageFont = nil }
+        if !Task.isCancelled { loadedFont = nil }
         return
       }
-      let ct = CTFontCreateWithGraphicsFont(font, 100, nil, nil)
-      widest = data.lines.compactMap { line in line.words.map { MushafFonts.width($0.map { $0.code ?? "" }.joined(), font: ct) } }.max() ?? 0
-      pageFont = font
+      loadedWidest = MushafPageMetrics.measure(data, font: font)
+      MushafPageMetrics.widest[metricsKey] = loadedWidest
+      loadedFont = font
     }
     .accessibilityLabel(t("mushaf.pageA11y", ["page": page]))
+  }
+
+  /// Çerçevenin içindeki 15 satır (yüklenemedi / yükleniyor halleri dahil).
+  @ViewBuilder private func textBlock(font: Double, lineH: Double) -> some View {
+    Group {
+      if let data {
+        VStack(spacing: 0) {
+          if data.centered { Spacer(minLength: 0) }
+          ForEach(Array(data.lines.enumerated()), id: \.offset) { index, line in
+            lineView(line, index: index, pageData: data, font: font).frame(height: lineH)
+          }
+          if data.centered { Spacer(minLength: 0) }
+        }
+      } else if failed {
+        VStack(spacing: 14) {
+          Ionicon("cloud-offline-outline", size: 32, color: palette.muted)
+          Text(t("mushaf.loadFailed")).font(.system(size: 15)).foregroundStyle(palette.muted).multilineTextAlignment(.center)
+          AppButton(title: t("common.retry"), variant: .secondary) { attempt += 1 }.frame(width: 160)
+        }
+      } else {
+        VStack { ForEach(0..<15) { _ in Capsule().fill(palette.muted.opacity(0.15)).frame(height: 12).frame(maxHeight: .infinity) } }
+      }
+    }
+    .frame(width: textWidth, height: lineH * 15)
+    .environment(\.layoutDirection, Localizer.shared.layoutDirection)
+  }
+
+  private enum Side { case left, right }
+
+  /// Dış kenardaki işaret sütunu (tek sayfa sağda olduğundan dış kenarı sağ, çift sayfanın sol).
+  private func marginColumn(lineH: Double, side: Side) -> some View {
+    let outerSide: Side = page % 2 == 1 ? .right : .left
+    let marks = side == outerSide ? data.map(MushafMarks.marks(for:)) ?? [:] : [:]
+    return VStack(spacing: 0) {
+      ForEach(0..<15, id: \.self) { index in
+        Group {
+          if let kind = marks[index] { MushafMarginMark(kind: kind, palette: palette, rightSide: side == .right) } else { Color.clear }
+        }
+        .frame(height: lineH)
+      }
+    }
+    .frame(width: Self.margin)
+    .padding(.vertical, Self.band + Self.gap)
   }
 
   private func lineView(_ line: MushafLine, index: Int, pageData: MushafPage, font: Double) -> some View {
@@ -363,10 +519,7 @@ private struct MushafPageView: View {
     return ZStack(alignment: .trailing) {
       Group {
         if line.kind == "header" {
-          Text(surahs.first(where: { $0.id == line.surahId })?.name_arabic ?? " ")
-            .font(.custom(QuranFont.name, size: font * 0.95)).foregroundStyle(palette.ink)
-            .frame(minWidth: size.width * 0.55).padding(.horizontal, 21).padding(.vertical, 1.75)
-            .background(palette.header, in: .capsule).overlay(Capsule().stroke(palette.border, lineWidth: 1))
+          SurahCartouche(name: surahs.first(where: { $0.id == line.surahId })?.name_arabic ?? " ", font: font, palette: palette)
         } else if line.kind == "basmala" {
           Text(QuranFont.text(QuranScripture.basmala)).font(.custom(QuranFont.name, size: font)).foregroundStyle(palette.ink)
         } else {
@@ -407,7 +560,7 @@ private struct MushafPageView: View {
     let color = word.isEnd && pageFont == nil ? palette.gold : word.verse == selectedVerse ? palette.accent : palette.ink
     if let pageFont, let code = word.code, widest > 0 {
       // En geniş satır sayfa genişliğine sığar; satır yüksekliğini de aşmaz.
-      let fit = (size.width - 2 * (18 + max(insets.leading, insets.trailing))) * 0.98 / widest * 100
+      let fit = textWidth * 0.98 / widest * 100
       // Ortalanmış ilk iki sayfada kelimeler arasında boşluk var: hat biraz küçülür.
       let qcfSize = min(fit, font * 2.05) * (pageData.centered ? 0.86 : 1)
       Text(code).font(Font(CTFontCreateWithGraphicsFont(pageFont, qcfSize, nil, nil))).foregroundStyle(color)
@@ -433,7 +586,7 @@ private struct ZoomingQuranPage<Content: View>: UIViewRepresentable {
   @ViewBuilder var content: Content
   func makeCoordinator() -> QuranZoomCoordinator { QuranZoomCoordinator(content: AnyView(content)) }
   func makeUIView(context: Context) -> UIScrollView {
-    let scroll = UIScrollView()
+    let scroll = PageScrollView()
     scroll.delegate = context.coordinator
     scroll.minimumZoomScale = 1
     scroll.maximumZoomScale = 1.8
@@ -454,6 +607,15 @@ private struct ZoomingQuranPage<Content: View>: UIViewRepresentable {
     context.coordinator.host.view.backgroundColor = background
     scroll.contentSize = CGSize(width: width * scroll.zoomScale, height: height * scroll.zoomScale)
     scroll.backgroundColor = background
+  }
+}
+
+/// Sayfa kaydırıcısı yatay hareketi kağıt çevirmeye bırakır: yakınlaşmamışken yalnız dikey kaydırmada başlar.
+private final class PageScrollView: UIScrollView {
+  override func gestureRecognizerShouldBegin(_ gesture: UIGestureRecognizer) -> Bool {
+    guard gesture === panGestureRecognizer, zoomScale <= minimumZoomScale + 0.01 else { return super.gestureRecognizerShouldBegin(gesture) }
+    let velocity = panGestureRecognizer.velocity(in: self)
+    return abs(velocity.y) > abs(velocity.x) && super.gestureRecognizerShouldBegin(gesture)
   }
 }
 

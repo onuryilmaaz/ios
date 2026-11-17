@@ -119,7 +119,7 @@ struct SplashView: View {
 
 /// Sekiz köşeli yıldız (rub'ül-hizb): biri 45° döndürülmüş iki kare. Önce biri, sonra
 /// diğeri çizilir; `trim` ile çizgi çizilerek belirir.
-private struct EightPointStar: Shape {
+nonisolated private struct EightPointStar: Shape {
   func path(in rect: CGRect) -> Path {
     let c = CGPoint(x: rect.midX, y: rect.midY)
     let r = min(rect.width, rect.height) / 2

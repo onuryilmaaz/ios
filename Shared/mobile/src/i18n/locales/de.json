@@ -755,6 +755,13 @@
     "markedDetail": "Seite {{page}}, Zeile {{line}}",
     "openA11y": "Den Mushaf Seite für Seite lesen",
     "page": "Seite {{page}} von {{total}}",
+    "spread": "Seiten {{first}}-{{second}} von {{total}}",
+    "marks": {
+      "juz": "Beginn von Dschuz {{number}}",
+      "hizb": "Beginn von Hizb {{number}}",
+      "quarter": "Viertel {{part}} von Hizb {{number}}",
+      "sajdah": "Vers der Niederwerfung"
+    },
     "pageA11y": "Seite {{page}}",
     "pageShort": "S. {{page}}",
     "subtitle": "Seite für Seite lesen, auch im Querformat",

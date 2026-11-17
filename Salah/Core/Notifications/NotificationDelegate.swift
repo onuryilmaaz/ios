@@ -3,7 +3,9 @@ import UserNotifications
 
 /// Sistem bu delegeyi soğuk açılışta da çağırır; SwiftUI task'ından önce bağlanır.
 final class SalahApplicationDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask { ReadingOrientation.mask }
+  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    ReadableLayout.orientations(for: window)
+  }
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     let center = UNUserNotificationCenter.current()
     center.delegate = SalahNotificationDelegate.shared

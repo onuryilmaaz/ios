@@ -743,6 +743,13 @@
     "markedDetail": "الصفحة {{page}}، السطر {{line}}",
     "openA11y": "اقرأ المصحف صفحة صفحة",
     "page": "صفحة {{page}} من {{total}}",
+    "spread": "صفحة {{first}}-{{second}} من {{total}}",
+    "marks": {
+      "juz": "بداية الجزء {{number}}",
+      "hizb": "بداية الحزب {{number}}",
+      "quarter": "الربع {{part}} من الحزب {{number}}",
+      "sajdah": "آية سجدة"
+    },
     "pageA11y": "صفحة {{page}}",
     "pageShort": "ص {{page}}",
     "subtitle": "اقرأ صفحة صفحة، ويمكنك القراءة أفقيًا أيضًا",

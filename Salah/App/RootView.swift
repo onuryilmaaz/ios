@@ -22,13 +22,13 @@ struct RootView: View {
       HomeView()
         .tabItem { Label(t("tabs.home"), systemImage: "house.fill") }
         .tag(Tab.home)
-      ModuleGated("quran") { SurahBrowserView() }
+      ModuleGated("quran") { SurahBrowserView() }.readableScreen()
         .tabItem { Label(t("tabs.quran"), systemImage: "book.fill") }
         .tag(Tab.quran)
-      ModuleGated("tracker") { TrackerView() }
+      ModuleGated("tracker") { TrackerView() }.readableScreen()
         .tabItem { Label(t("tabs.tracker"), systemImage: "chart.bar.fill") }
         .tag(Tab.tracker)
-      ModuleGated("assistant") { AssistantView() }
+      ModuleGated("assistant") { AssistantView() }.readableScreen()
         .tabItem { Label(t("tabs.assistant"), systemImage: "sparkles") }
         .tag(Tab.assistant)
     }

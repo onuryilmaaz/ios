@@ -40,6 +40,7 @@ struct HomeView: View {
   @State private var celebrationStreak: Int?
   @State private var homeVisible = false
   @State private var tintClock = Date()
+  @State private var screenSize: CGSize = .zero
 
   var body: some View {
     NavigationStack(path: $nav.path) {
@@ -63,70 +64,11 @@ struct HomeView: View {
 
   private var content: some View {
     let auth = AuthStore.shared
-    let layout = HomeLayoutStore.shared
     let hero = ramadanHero
-    return VStack(spacing: 0) {
-      HomeHeader(
-        color: hero,
-        onQibla: { push(.qibla) },
-        onProfile: { auth.isAuthenticated ? push(.profile) : AuthFlow.shared.present() }
-      )
-      ScrollViewReader { proxy in
-      ScrollView {
-        VStack(spacing: 0) {
-          HomeHero(
-            today: model.today, isLoading: model.isLoading, locationName: model.locationName,
-            onLocation: { push(.location) },
-            onAlarms: { push(.alarms) },
-            onImsakiye: { push(.imsakiye) }
-          )
-          .background(alignment: .top) {
-            // Aşağı çekince (bounce) üstte açık zemin görünmesin.
-            hero.frame(height: 600).offset(y: -600)
-          }
-          .background(hero, in: UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32))
-          .animation(.easeInOut(duration: 0.3), value: hero)
-          .tourAnchor("home.hero")
-          .padding(.bottom, 17.5)
-
-          MuteBanner()
-          AnnouncementBanners()
-          ForbiddenTimeBanner(times: model.today?.times)
-          if AppControlStore.shared.isOn("hutbe") { CumaCard { push(.hutbe) } }
-          RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
-          HolidayGreetingCard()
-
-          if NotificationNavigation.shared.inspiration != nil, !layout.sections.contains(where: { $0.key == .dailyInspiration && $0.visible }) {
-            DailyInspirationCard()
-          }
-          ForEach(layout.sections.filter(\.visible), id: \.key) { section in
-            sectionView(section.key, isAuthenticated: auth.isAuthenticated)
-          }
-
-          Button {
-            Haptics.impact(.light)
-            push(.layout)
-          } label: {
-            HStack(spacing: 5.25) {
-              Ionicon("options-outline", size: 16, color: tokens.inkMuted)
-              Text(t("home.editLayout"))
-                .font(.system(size: 15, weight: .medium))
-                .foregroundStyle(tokens.textSecondary)
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 8.75)
-          }
-          .buttonStyle(PressableStyle(pressedOpacity: 0.6))
-          .tourAnchor("home.layout")
-          .padding(.top, 3.5)
-        }
-        .padding(.bottom, 24)
-      }
-      .scrollIndicators(.hidden)
-      .refreshable { await refresh() }
-      .tourScroll(proxy, top: "home.hero")
-      }
+    return Group {
+      if ReadableLayout.isSplit(screenSize) { splitLayout(hero) } else { stackedLayout(hero) }
     }
+    .onGeometryChange(for: CGSize.self) { $0.size } action: { screenSize = $0 }
     .background(tokens.canvas)
     .background {
       IftarMomentHost(
@@ -166,6 +108,122 @@ struct HomeView: View {
     }
     .onChange(of: LocationChanges.shared.nonce) { Task { await model.load() } }
     .onChange(of: AuthStore.shared.user) { Task { await OzelGunStore.shared.fetch() } }
+  }
+
+  private func header(_ hero: Color) -> some View {
+    HomeHeader(
+      color: hero,
+      onQibla: { push(.qibla) },
+      onProfile: { AuthStore.shared.isAuthenticated ? push(.profile) : AuthFlow.shared.present() }
+    )
+  }
+
+  private var heroCard: some View {
+    HomeHero(
+      today: model.today, isLoading: model.isLoading, locationName: model.locationName,
+      onLocation: { push(.location) },
+      onAlarms: { push(.alarms) },
+      onImsakiye: { push(.imsakiye) }
+    )
+  }
+
+  /// Telefon ve geniş dikey ekran: başlık, vakit kartı ve kartlar tek sütunda (genişte ortalı).
+  private func stackedLayout(_ hero: Color) -> some View {
+    VStack(spacing: 0) {
+      header(hero)
+      ScrollViewReader { proxy in
+        ScrollView {
+          VStack(spacing: 0) {
+            heroCard
+              .readableColumn()
+              .background(alignment: .top) {
+                // Aşağı çekince (bounce) üstte açık zemin görünmesin.
+                hero.frame(height: 600).offset(y: -600)
+              }
+              .background(hero, in: UnevenRoundedRectangle(bottomLeadingRadius: 32, bottomTrailingRadius: 32))
+              .animation(.easeInOut(duration: 0.3), value: hero)
+              .tourAnchor("home.hero")
+              .padding(.bottom, 17.5)
+            cards.readableColumn()
+          }
+          .padding(.bottom, 24)
+        }
+        .scrollIndicators(.hidden)
+        .refreshable { await refresh() }
+        .tourScroll(proxy, top: "home.hero")
+      }
+    }
+  }
+
+  /// Geniş yatay ekran (Duo açık): solda sabit vakit paneli, sağda kayan kartlar.
+  private func splitLayout(_ hero: Color) -> some View {
+    HStack(spacing: 0) {
+      VStack(spacing: 0) {
+        header(hero)
+        GeometryReader { panel in
+          ScrollView {
+            // Panelde dikey ortalanır; sığmazsa kayar.
+            heroCard.tourAnchor("home.hero")
+              .frame(minHeight: panel.size.height)
+          }
+          .scrollIndicators(.hidden)
+          .scrollBounceBehavior(.basedOnSize)
+        }
+      }
+      .frame(width: ReadableLayout.splitPanelWidth)
+      .background(hero.ignoresSafeArea())
+      .animation(.easeInOut(duration: 0.3), value: hero)
+
+      ScrollViewReader { proxy in
+        ScrollView {
+          cards
+            .readableColumn()
+            .padding(.top, 17.5)
+            .padding(.bottom, 24)
+        }
+        .scrollIndicators(.hidden)
+        .refreshable { await refresh() }
+        .tourScroll(proxy, top: nil)
+      }
+    }
+  }
+
+  /// Vakit kartının altındaki kartlar ve düzen düğmesi.
+  private var cards: some View {
+    let auth = AuthStore.shared
+    let layout = HomeLayoutStore.shared
+    return VStack(spacing: 0) {
+      MuteBanner()
+      AnnouncementBanners()
+      ForbiddenTimeBanner(times: model.today?.times)
+      if AppControlStore.shared.isOn("hutbe") { CumaCard { push(.hutbe) } }
+      RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
+      HolidayGreetingCard()
+
+      if NotificationNavigation.shared.inspiration != nil, !layout.sections.contains(where: { $0.key == .dailyInspiration && $0.visible }) {
+        DailyInspirationCard()
+      }
+      ForEach(layout.sections.filter(\.visible), id: \.key) { section in
+        sectionView(section.key, isAuthenticated: auth.isAuthenticated)
+      }
+
+      Button {
+        Haptics.impact(.light)
+        push(.layout)
+      } label: {
+        HStack(spacing: 5.25) {
+          Ionicon("options-outline", size: 16, color: tokens.inkMuted)
+          Text(t("home.editLayout"))
+            .font(.system(size: 15, weight: .medium))
+            .foregroundStyle(tokens.textSecondary)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8.75)
+      }
+      .buttonStyle(PressableStyle(pressedOpacity: 0.6))
+      .tourAnchor("home.layout")
+      .padding(.top, 3.5)
+    }
   }
 
   @ViewBuilder

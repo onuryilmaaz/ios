@@ -63,9 +63,19 @@ enum HomeRoute: Hashable {
     if let module, !AppControlStore.shared.isOn(module) || (self == .kaza && !AppControlStore.shared.supports("kaza"))
       || (module == "streak_circles" && !AppControlStore.shared.supports("streakCircles"))
       || (self == .yearSummary && !YearSummaryStore.available) {
-      ModuleClosedView()
-    } else {
+      ModuleClosedView().readableScreen()
+    } else if fullBleed {
       screen
+    } else {
+      screen.readableScreen()
+    }
+  }
+
+  /// Kenara kadar kendi renginde çizilen ekranlar geniş ekranda sütuna alınmaz.
+  private var fullBleed: Bool {
+    switch self {
+    case .qibla, .yearSummary, .fastJournal: true
+    default: false
     }
   }
 

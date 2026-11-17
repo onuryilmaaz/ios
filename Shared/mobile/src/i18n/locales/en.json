@@ -743,6 +743,13 @@
     "markedDetail": "Page {{page}}, line {{line}}",
     "openA11y": "Read the Mushaf page by page",
     "page": "Page {{page}} of {{total}}",
+    "spread": "Pages {{first}}-{{second}} of {{total}}",
+    "marks": {
+      "juz": "Start of juz {{number}}",
+      "hizb": "Start of hizb {{number}}",
+      "quarter": "Quarter {{part}} of hizb {{number}}",
+      "sajdah": "Verse of prostration"
+    },
     "pageA11y": "Page {{page}}",
     "pageShort": "p. {{page}}",
     "subtitle": "Read page by page, also in landscape",

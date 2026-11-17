@@ -92,15 +92,19 @@ final class MushafReadLog {
   private static let key = "@salah_mushaf_read_v1"
   private struct Saved: Codable { var date: String; var pages: [Int] }
 
-  private var current: (page: Int, since: Date)?
+  private var current: (pages: [Int], since: Date)?
   private var session: Set<Int> = []
   /// Bu oturumda okundu sayılan sayfalar (testler için).
   var pendingPages: Set<Int> { session }
 
   /// Sayfa ekrana geldi (ya da başka sayfaya geçildi).
-  func view(_ page: Int, now: Date = Date()) {
+  func view(_ page: Int, now: Date = Date()) { view([page], now: now) }
+
+  /// Kitap düzeninde (Duo açık) iki sayfa birlikte görünür; her sayfa için ayrı bekleme süresi dolmalı,
+  /// önce sağdaki (ilk) sayfa sayılır.
+  func view(_ pages: [Int], now: Date = Date()) {
     settle(now: now)
-    current = (page, now)
+    current = (pages, now)
   }
 
   /// Uygulama arka plana geçti ya da mushaf kapandı: açık sayfanın süresi hesaplanır.
@@ -110,8 +114,9 @@ final class MushafReadLog {
   }
 
   private func settle(now: Date) {
-    guard let current, now.timeIntervalSince(current.since) >= Self.dwell else { return }
-    session.insert(current.page)
+    guard let current else { return }
+    let read = min(current.pages.count, Int(now.timeIntervalSince(current.since) / Self.dwell))
+    session.formUnion(current.pages.prefix(read))
   }
 
   /// Bu oturumda okunup bugün henüz sayılmamış sayfalar kaydedilir; sayfa sayısı döner.

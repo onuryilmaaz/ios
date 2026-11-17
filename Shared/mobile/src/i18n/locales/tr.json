@@ -743,6 +743,13 @@
     "markedDetail": "{{page}}. sayfa, {{line}}. satır",
     "openA11y": "Mushafı sayfa sayfa oku",
     "page": "Sayfa {{page}} / {{total}}",
+    "spread": "Sayfa {{first}}-{{second}} / {{total}}",
+    "marks": {
+      "juz": "{{number}}. cüz başı",
+      "hizb": "{{number}}. hizb başı",
+      "quarter": "{{number}}. hizbin {{part}}. çeyreği",
+      "sajdah": "Secde ayeti"
+    },
     "pageA11y": "Sayfa {{page}}",
     "pageShort": "s. {{page}}",
     "subtitle": "Sayfa sayfa oku, yan çevirerek de okuyabilirsin",

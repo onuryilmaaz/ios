@@ -1,8 +1,8 @@
 import ActivityKit
 import Foundation
 
-public struct SitePongActivityAttributes: ActivityAttributes {
-  public struct ContentState: Codable, Hashable {
+nonisolated public struct SitePongActivityAttributes: ActivityAttributes {
+  nonisolated public struct ContentState: Codable, Hashable {
     public var prayerName: String
     public var nextPrayer: String
     public var endTimeMs: Double

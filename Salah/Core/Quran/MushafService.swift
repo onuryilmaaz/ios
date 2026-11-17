@@ -106,6 +106,17 @@ enum MushafService {
     root.appendingPathComponent("pages-v3/\(language)/\(number).json")
   }
 
+  /// Bellekte ya da diskte hazır sayfa; yoksa nil (beklemeden çizim için).
+  static func cachedPage(_ number: Int) -> MushafPage? {
+    guard (1...604).contains(number) else { return nil }
+    let lang = language
+    let key = "\(lang)/\(number)"
+    if let page = memory[key] { return page }
+    guard let cached = readFile(number, language: lang) else { return nil }
+    remember(key, cached)
+    return cached
+  }
+
   static func page(_ number: Int) async throws -> MushafPage {
     guard (1...604).contains(number) else { throw MushafLayout.Failure.invalidPage }
     let lang = language
@@ -171,7 +182,7 @@ enum MushafService {
 
   private static func remember(_ key: String, _ page: MushafPage) {
     // Kitabın tüm sayfalarını bellekte tutma; dosya önbelleği zaten kalıcı.
-    if memory.count >= 12 { memory.removeAll() }
+    if memory.count >= 24 { memory.removeAll() }
     memory[key] = page
   }
 

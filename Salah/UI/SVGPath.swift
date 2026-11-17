@@ -183,7 +183,7 @@ nonisolated enum SVGPath {
 }
 
 /// 48×48 görünüm kutusundaki SVG yolunu verilen boyuta ölçekleyen şekil.
-struct SVGShape: Shape {
+nonisolated struct SVGShape: Shape {
   let d: String
   var viewBox: CGFloat = 48
 

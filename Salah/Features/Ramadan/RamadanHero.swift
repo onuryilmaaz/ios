@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Ayın aydınlık kısmı (birim çizgi RamadanMoon.outline).
-struct RamadanMoonShape: Shape {
+nonisolated struct RamadanMoonShape: Shape {
   let day: Int
 
   func path(in rect: CGRect) -> Path {

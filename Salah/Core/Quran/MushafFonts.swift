@@ -48,7 +48,8 @@ enum MushafFonts {
     loaded[key] = font
     order.removeAll { $0 == key }
     order.append(key)
-    if order.count > 10 { loaded[order.removeFirst()] = nil }
+    // Kitap düzeninde ekranda 2, çevrilen yaprakta 2 ve iki yanda önden yüklenen sayfalar.
+    if order.count > 16 { loaded[order.removeFirst()] = nil }
     return font
   }
 
