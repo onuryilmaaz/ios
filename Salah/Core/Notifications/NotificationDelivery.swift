@@ -13,6 +13,10 @@ protocol NotificationDelivery {
   func requestPermission() async throws -> Bool
   func pending() async -> [PendingNotice]
   func removePending()
+  /// Verilen kimlikli bekleyen bildirimleri siler (kimlikler `pending()` ile gelenler).
+  func remove(_ identifiers: [String])
+  /// Planlanan bildirimin sistemdeki kimliği; aynı kimlikle eklenen bildirim eskisinin yerini alır.
+  func identifier(_ notice: PlannedNotification) -> String
   func add(_ notice: PlannedNotification) async throws
 }
 
@@ -31,12 +35,16 @@ struct SystemNotificationDelivery: NotificationDelivery {
     await center.pendingNotificationRequests().map { .init(id: $0.identifier, type: $0.content.userInfo["type"] as? String ?? "") }
   }
   func removePending() { center.removeAllPendingNotificationRequests() }
+  func remove(_ identifiers: [String]) {
+    if !identifiers.isEmpty { center.removePendingNotificationRequests(withIdentifiers: identifiers) }
+  }
+  func identifier(_ notice: PlannedNotification) -> String { "salah.native.\(notice.id)" }
 
   func add(_ notice: PlannedNotification) async throws {
     let content = Self.content(notice)
     let date = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: notice.date)
     let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
-    try await center.add(UNNotificationRequest(identifier: "salah.native.\(notice.id)", content: content, trigger: trigger))
+    try await center.add(UNNotificationRequest(identifier: identifier(notice), content: content, trigger: trigger))
   }
 
   static func content(_ n: PlannedNotification) -> UNMutableNotificationContent {

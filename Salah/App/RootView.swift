@@ -277,6 +277,14 @@ enum DebugLaunch {
     #endif
   }
 
+  /// Mushaf açıldıktan 3 sn sonra bir sayfa ileri çevirir (ekran kaydıyla yön denetimi): `-SalahDebugMushafAutoTurn YES`.
+  static var mushafAutoTurn: Bool {
+    #if DEBUG
+      UserDefaults.standard.bool(forKey: "SalahDebugMushafAutoTurn")
+    #else
+      false
+    #endif
+  }
   static var mushafPage: Int? {
     #if DEBUG
     return UserDefaults.standard.object(forKey: "SalahDebugMushafPage").map { _ in UserDefaults.standard.integer(forKey: "SalahDebugMushafPage") }

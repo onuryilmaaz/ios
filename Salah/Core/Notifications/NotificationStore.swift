@@ -7,6 +7,8 @@ final class NotificationStore {
   /// gömülü) planı throttle'a takılmadan yeniden kursun. RN'in V2 damgası da devralınmaz.
   static let lastScheduleKey = "NOTIF_LAST_RESCHEDULE_AT_V3"
   static let signatureKey = "NOTIF_PLAN_SIGNATURE_V1"
+  /// 1. aşamada kurulan türler (vakit, vakit hatırlatması, kılınmadı).
+  static let phaseOneTypes: Set<String> = [PlannedNotification.Kind.prayerTime.rawValue, PlannedNotification.Kind.prayerReminder.rawValue, PlannedNotification.Kind.missed.rawValue]
 
   private(set) var preferences: NotificationPreferences
   private(set) var permission = NotificationPermission.unknown
@@ -135,7 +137,11 @@ final class NotificationStore {
       let missed = persists ? MissedPrayers.current() : nil
       let prayers = NotificationPlan.build(days: days, preferences: snapshot, now: now(), alarmCovered: alarmCovered, missed: missed)
         .filter { $0.isPrayer || $0.kind == .missed }
-      delivery.removePending()
+      // Plan önce silinip sonra kurulmaz: iş yarıda kalırsa (gece sessiz bildiriminde süre dolar, uygulama askıya alınır)
+      // telefonda bildirim kalmıyordu. Aynı kimlikli bildirimler yerinde güncellenir, yalnız yeni planda olmayanlar silinir;
+      // en yakın tarihliler önce kurulur. Silme eklemeden önce: iOS 64'ü aşan en uzak bildirimleri sessizce atar.
+      let prayerIDs = Set(prayers.map(delivery.identifier))
+      delivery.remove(pending.filter { Self.phaseOneTypes.contains($0.type) && !prayerIDs.contains($0.id) }.map(\.id))
       lastError = nil
       var succeeded = await add(prayers, version: version)
       guard version == revision else { continue }
@@ -151,6 +157,10 @@ final class NotificationStore {
                                         // 1. aşamadakilerle birlikte hesaplansın: toplam üst sınırı (maxPending) aşmasın.
                                         missed: missed)
         .filter { !$0.isPrayer && $0.kind != .missed }
+      // Planda olmayan her şey (eski içerik bildirimleri, önceki sürümlerden kalanlar) silinir.
+      let planned = prayerIDs.union(rest.map(delivery.identifier))
+      delivery.remove(await delivery.pending().map(\.id).filter { !planned.contains($0) })
+      guard version == revision else { continue }
       succeeded = await add(rest, version: version) && succeeded
       guard version == revision else { continue }
       forceNext = false
@@ -176,7 +186,7 @@ final class NotificationStore {
   /// Planı sırayla kurar; ayar değişirse (revision) yarıda bırakır. Hepsi eklendiyse true.
   private func add(_ notices: [PlannedNotification], version: Int) async -> Bool {
     var succeeded = true
-    for notice in notices {
+    for notice in notices.sorted(by: { $0.date < $1.date }) {
       guard version == revision else { break }
       // İçerik indirilirken vakit geçmiş olabilir.
       guard notice.date > now() else { continue }

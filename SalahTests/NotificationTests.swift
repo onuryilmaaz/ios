@@ -318,9 +318,13 @@ final class FakeNotificationDelivery: NotificationDelivery {
   func requestPermission() async throws -> Bool { grants }
   func pending() async -> [PendingNotice] { notices.map { .init(id: $0.id, type: $0.kind.rawValue) } }
   func removePending() { notices.removeAll() }
+  func remove(_ identifiers: [String]) { notices.removeAll { identifiers.contains($0.id) } }
+  func identifier(_ notice: PlannedNotification) -> String { notice.id }
   func add(_ notice: PlannedNotification) async throws {
     attempts += 1
     if failAdd || (failAlternating && attempts % 2 == 0) { throw URLError(.unknown) }
+    // Sistem gibi: aynı kimlikle eklenen eskisinin yerini alır.
+    notices.removeAll { $0.id == notice.id }
     notices.append(notice)
     afterAdd?()
   }
@@ -332,6 +336,29 @@ struct NotificationStoreTests {
   func store(_ delivery: FakeNotificationDelivery, days: @escaping () async -> [PrayerDay] = { F.days }) -> NotificationStore {
     NotificationStore(preferences: F.enabled, delivery: delivery, now: { F.date() }, loadDays: days,
       loadPools: { ([], []) }, loadCalendar: { ReligiousCalendar() }, persists: false)
+  }
+
+  /// Yeniden kurma yarıda kalsa (ekleme hatası, süre dolması) telefonda eski plan durur; önce hepsi silinmez.
+  @Test func failedRebuildKeepsExistingPlan() async {
+    let delivery = FakeNotificationDelivery()
+    let store = store(delivery)
+    await store.reschedule(force: true)
+    let before = delivery.notices.map(\.id).sorted()
+    #expect(!before.isEmpty)
+    delivery.failAdd = true
+    await store.reschedule(force: true)
+    #expect(delivery.notices.map(\.id).sorted() == before)
+  }
+
+  /// Yeni planda olmayan eski bildirimler silinir, aynı kimlikliler çoğalmaz.
+  @Test func rebuildRemovesStaleAndDoesNotDuplicate() async {
+    let delivery = FakeNotificationDelivery()
+    let store = store(delivery)
+    delivery.notices = [PlannedNotification(id: "prayer.1.eski.0", date: F.date(19, 23), kind: .prayerTime, title: "x", body: "x")]
+    await store.reschedule(force: true)
+    let ids = delivery.notices.map(\.id)
+    #expect(!ids.contains("prayer.1.eski.0"))
+    #expect(Set(ids).count == ids.count)
   }
 
   /// Throttle içinde aynı girdilerle yeniden kurulmaz; gün değişince (girdi değişti) beklemeden kurulur.

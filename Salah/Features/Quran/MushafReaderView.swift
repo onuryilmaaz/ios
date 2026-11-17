@@ -19,7 +19,13 @@ struct MushafReaderView: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(\.scenePhase) private var scenePhase
   let initialPage: Int
-  @State private var page = 1
+  /// Baştan açılış sayfası: sonradan atanırsa sayfalayıcı bunu 1'den o sayfaya çevirme sanıyordu.
+  @State private var page: Int
+
+  init(initialPage: Int) {
+    self.initialPage = initialPage
+    _page = State(initialValue: min(604, max(1, initialPage)))
+  }
   @State private var chrome = true
   @State private var picker = false
   @State private var themes = false
@@ -63,8 +69,10 @@ struct MushafReaderView: View {
       ZStack(alignment: .top) {
         palette.canvas.ignoresSafeArea()
         let side = book ? max(geometry.safeAreaInsets.leading, geometry.safeAreaInsets.trailing) : 0
-        MushafCurlPager(page: $page, book: book) { number in pageView(number, geometry: geometry) }
-          // Cilt yeri (tek sayfa / orta) değişince sayfalayıcı yeniden kurulur.
+        Group {
+          // Kağıt kıvrılması; cilt yeri (tek sayfa: sağ kenar, kitap: orta) değişince yeniden kurulur.
+          MushafCurlPager(page: $page, book: book) { number in pageView(number, geometry: geometry) }
+        }
           .id(book)
           .padding(.horizontal, side)
           .ignoresSafeArea()
@@ -141,8 +149,8 @@ struct MushafReaderView: View {
     .onAppear {
       guard !initialized else { return }
       initialized = true
-      page = min(604, max(1, initialPage))
       QuranReadingStore.shared.setPage(page)
+      MushafService.prefetch(page)
       logView()
       preloadFonts(around: page)
       MushafListening.shared.onPage = { next in withAnimation { page = next } }
