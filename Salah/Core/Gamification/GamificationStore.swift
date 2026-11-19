@@ -244,6 +244,10 @@ final class GamificationStore {
     s.today_prayers.removeAll { $0 == prayerId }
     s.kaza_prayers.removeAll { $0 == prayerId }
     setStats(s, date: persisted.statsDate)
+    // Geri alma ya da başarısız işaret: işaretlerken silinen kılınmamış vakit hatırlatması yeniden kurulur.
+    if NotificationStore.shared.preferences.missed {
+      Task { await NotificationStore.shared.reschedule(force: true) }
+    }
   }
 
   private func beginMutation() {
