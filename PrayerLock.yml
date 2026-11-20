@@ -1,5 +1,5 @@
-# Vakit kilidi (FamilyControls / Ekran Süresi). Apple dağıtım onayı (talep 9XF88FCKUJ) gelene kadar varsayılan
-# projeye girmez; geliştirme için:  SALAH_PRAYER_LOCK=YES xcodegen generate
+# Vakit kilidi (FamilyControls / Ekran Süresi). Apple dağıtım onayı (talep 9XF88FCKUJ) 2026-11-19'da geldi;
+# project.yml bu dosyayı her zaman ekler.
 # Gerekli App ID'ler (Family Controls + App Groups): com.onur6541.salah(.dev).PrayerLockMonitor, ...PrayerLockShield.
 targets:
   Salah:

@@ -115,8 +115,7 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - Backend 017/018 migration'ları ve yeni uçlar mobil yayından sonra deploy edilecek.
 
 ## Vakit kilidi (2026-11-14)
-- Apple Family Controls dağıtım onayı gelmeden App Store arşivi DÜZ `xcodegen generate` ile alınır (vakit kilidi girmez).
-- Cihazda denemek: `SALAH_PRAYER_LOCK=YES xcodegen generate`, Debug, gerçek iPhone. Onay gelince App ID'lerde Distribution işaretlenir ve bayrak varsayılan yapılır.
+- Dağıtım onayı 2026-11-19'da geldi; 1.2.2'den beri `xcodegen generate` vakit kilidini her zaman ekler (eski `SALAH_PRAYER_LOCK` bayrağı kalktı).
 
 ## Mushaf hattı ve kelime meali (2026-11-14)
 - Mushaf ayarlarında Yazı: Bilgisayar / Mushaf hattı / Tecvidli; kelimeye dokununca anlam kartı. Cihazda kontrol: sayfa çevirirken hat yüklenme hızı, gece temasında tecvidli, kelime sesi, İndirilenler'den mushafın tamamı.
@@ -141,3 +140,4 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
 - 64 bildirim sınırı (2026-11-16): sunucu her gece (İstanbul 03.00 sonrası) iOS cihazlarına sessiz `plan_refresh` gönderir (`startPlanRefreshWorker`, `apns-push-type: background`); uygulama `UIBackgroundModes: remote-notification` ile uyanıp `BackgroundRefresh.run()` çalıştırır. Plan toplamı `NotificationPlan.maxPending` (60) ile sınırlı; aşılırsa vakit/kılınmadı/geri dönüş korunur. 2. aşama planı `missed` ile hesaplanır (önceden 62-64'e çıkabiliyordu). Sessiz bildirim yalnız duyuruları açık (cihaz kaydı olan) cihazlara gider; kaydırılarak kapatılmış uygulamaya iOS teslim etmez. Mevcut "Bildirimlerin aksamasın" hatırlatması (3 gün) son çare olarak duruyor.
 - Plan yerinde güncellenir (2026-11-17): bildirim planı artık önce tümüyle silinip yeniden kurulmuyor; aynı kimlikliler yerinde güncellenir, yalnız yeni planda olmayanlar silinir, en yakın tarihliler önce kurulur. Gece `plan_refresh`/BGAppRefresh yarıda kalınca (süre dolması, askıya alınma) telefonda bildirim kalmıyordu ve son planlama damgası eski görünüyordu. `BackgroundRefresh.run` önce planı kurar (ayet indirme sonra) ve ek arka plan süresi ister.
 - Yayın 1.2.1 (2026-11-17): `project.yml` MARKETING_VERSION 1.2.1, build 1. Sürüm notları (App Store TR/EN/AR) `play-store/surum-notlari-1.2.1.txt`.
+- Yayın 1.2.2 (2026-11-19): `project.yml` MARKETING_VERSION 1.2.2, build 1. Vakit kilidi artık her derlemede (`PrayerLock.yml` koşulsuz include; Family Controls Distribution ana uygulama ve iki uzantıda açık). Arşivden önce `xcodegen generate`; imzalamada üç App ID'nin profilleri yenilenir. Sürüm notları ve App Review notu `play-store/surum-notlari-1.2.2.txt`. Android aynı gün `salah-1.2.2-vc11.aab`, sonraki yükleme versionCode 12+.
