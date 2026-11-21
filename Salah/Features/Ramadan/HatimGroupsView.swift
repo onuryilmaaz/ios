@@ -25,6 +25,8 @@ struct HatimGroupsView: View {
       } else {
         ScrollView {
           VStack(alignment: .leading, spacing: 14) {
+            // Grup yokken boş durum kartı kendi sahnesini gösterir.
+            if let groups, !groups.isEmpty { ScreenScene(scene: "quran") }
             content
           }
           .padding(14)

@@ -11,6 +11,8 @@ struct SceneAnimation: View {
   let scene: String
   /// Sayfa görünürken oynar; kaydırılan sayfalar durur.
   var active = true
+  /// Yalnız bir kez (giriş + bir tur) oynar ve son karede durur: ekran başlığındaki sahne (`ScreenScene`).
+  var once = false
   @State private var introDone = false
 
   /// Giriş bitişi ve son kare (betikteki INTRO ve OP).
@@ -19,6 +21,7 @@ struct SceneAnimation: View {
 
   private var mode: LottiePlaybackMode {
     if reduceMotion || !active { return .paused(at: .progress(Self.restFrame[scene] ?? 0.5)) }
+    if once { return .playing(.fromFrame(0, toFrame: Self.end, loopMode: .playOnce)) }
     return introDone
       ? .playing(.fromFrame(Self.introEnd, toFrame: Self.end, loopMode: .loop))
       : .playing(.fromFrame(0, toFrame: Self.end, loopMode: .playOnce))
@@ -51,5 +54,17 @@ struct SceneAnimation: View {
     var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
     UIColor(c).getRed(&r, green: &g, blue: &b, alpha: &a)
     return ColorValueProvider(LottieColor(r: Double(r), g: Double(g), b: Double(b), a: Double(a)))
+  }
+}
+
+/// Modül ekranının açılışında üstte oynayan sahne: giriş ve bir tur, sonra durur; içerikle birlikte kayar.
+struct ScreenScene: View {
+  let scene: String
+  var size: CGFloat = 120
+
+  var body: some View {
+    SceneAnimation(scene: scene, once: true)
+      .frame(width: size, height: size)
+      .frame(maxWidth: .infinity)
   }
 }

@@ -79,6 +79,8 @@ struct AlarmsView: View {
     return ScrollViewReader { proxy in
     ScrollView {
       VStack(alignment: .leading, spacing: 24) {
+        // İzin kartı kendi sahnesini gösterir; izin verilmişse ekran başında.
+        if store.auth == .authorized { ScreenScene(scene: "notifications").padding(.bottom, -10) }
         if store.auth == .authorized {
           HStack(spacing: 14) {
             Ionicon("alarm", size: 22, color: Gold.s300)

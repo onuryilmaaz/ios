@@ -38,6 +38,8 @@ struct HifzView: View {
     let due = store.due()
     return ScrollView {
       VStack(alignment: .leading, spacing: 16) {
+        // Liste boşken boş durum sahnesi gösterilir; ikisi birden olmasın.
+        if !store.cards.isEmpty { ScreenScene(scene: "quran").padding(.bottom, -4) }
         VStack(alignment: .leading, spacing: 3.5) {
           Text(t("hifz.heroDue")).font(.system(size: 13, weight: .medium)).foregroundStyle(Gold.s300)
           Text(t("hifz.heroCount", ["count": due.count])).font(.system(size: 28, weight: .bold)).foregroundStyle(.white).tabularNumbers()

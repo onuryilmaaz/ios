@@ -11,6 +11,7 @@ struct KazaView: View {
       StandardHeader(title: t("kaza.title"))
       ScrollView {
         VStack(alignment: .leading, spacing: 16) {
+          ScreenScene(scene: "tools").padding(.bottom, -4)
           summary(store)
           counters(store).tourAnchor("kaza.counters")
           witrRow(store)

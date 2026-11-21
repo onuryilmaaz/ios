@@ -31,6 +31,7 @@ struct HatimPlanView: View {
       if AuthStore.shared.isAuthenticated {
         ScrollView {
           VStack(alignment: .leading, spacing: 14) {
+            ScreenScene(scene: "quran")
             if store.plan != nil { current }
             setup
           }
@@ -53,7 +54,7 @@ struct HatimPlanView: View {
   private var signIn: some View {
     VStack(spacing: 0) {
       Spacer()
-      Ionicon("book-outline", size: 44, color: tokens.inkSubtle)
+      SceneAnimation(scene: "quran").frame(width: 150, height: 150)
       Text(t("hatim.plan.signIn")).font(.system(size: 15)).foregroundStyle(tokens.textSecondary)
         .multilineTextAlignment(.center).padding(.top, 16).padding(.horizontal, 32)
       AppButton(title: t("hatim.plan.signInButton")) {
