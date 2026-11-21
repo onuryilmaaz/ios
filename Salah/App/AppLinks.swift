@@ -2,7 +2,7 @@ import Foundation
 
 /// `salah://` derin bağlantıları (widget'lar ve bildirimler). RN: App.tsx `handleUrl`.
 ///   home | prayer → Ana sayfa, qibla, alarms, hutbe → ana sayfa yığını,
-///   istatistik → İbadet sekmesinde istatistikler, tracker/<tür> → ilgili kayıt formu.
+///   istatistik → İbadet sekmesinde istatistikler, tracker/<tür> → ilgili kayıt formu, sure/<n> → Kur'an'da sure.
 ///   paywall: premium kapalıyken erişim zaten açık, yok sayılır.
 @Observable
 final class AppLinks {
@@ -12,12 +12,16 @@ final class AppLinks {
   var pendingForm: ActivityType?
   /// İstatistikler bölümüne kaydırma isteği (bir kez tüketilir).
   var pendingInsights = false
+  /// Uygulama içinden açılan bağlantı (ör. Cuma kartından Kehf): RootView işler ve sıfırlar.
+  var request: URL?
 
   enum Target: Equatable {
     case home(HomeRoute?)
     case tracker(ActivityType?, insights: Bool)
     /// Kur'an sekmesinde ezber.
     case hifz
+    /// Kur'an sekmesinde sure (`sure/18`).
+    case surah(Int)
   }
 
   static func target(for url: URL) -> Target? {
@@ -34,8 +38,12 @@ final class AppLinks {
     case "zekat": return .home(.zakat)
     case "kaza": return .home(.kaza)
     case "zikir": return .home(.dhikr)
+    case "defter": return .home(.duaJournal)
     case "yil": return .home(.yearSummary)
     case "ezber": return .hifz
+    case "sure":
+      guard let id = parts.dropFirst().first.flatMap(Int.init), (1...114).contains(id) else { return nil }
+      return .surah(id)
     case "seri":
       if let code = parts.dropFirst().first { MainActor.assumeIsolated { StreakCircleAPI.pendingCode = code.uppercased() } }
       return .home(.circles)

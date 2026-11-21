@@ -151,6 +151,21 @@ struct NotificationPlanTests {
     #expect(plan.filter(\.isPrayer).count == NotificationPlan.prayerLimit)
   }
 
+  /// Dua defteri: yalnız seçili günlerde, saatinde; geçmiş saat kurulmaz; çok hatırlatma vakitleri dışarıda bırakmaz.
+  @Test func journalRemindersOnChosenDaysAndUnderLimit() {
+    let monday = F.calendar.component(.weekday, from: F.date(19)) - 1
+    let one = JournalReminder(id: "a", title: "Annem için", hour: 21, minute: 30, days: [monday])
+    let plan = NotificationPlan.build(days: F.days, preferences: F.enabled, now: F.date(19, 8), calendar: F.calendar, journal: [one])
+    let journal = plan.filter { $0.kind == .journal }
+    #expect(!journal.isEmpty)
+    #expect(journal.allSatisfy { F.calendar.component(.weekday, from: $0.date) - 1 == monday && $0.body == "Annem için" })
+    #expect(journal.allSatisfy { $0.date > F.date(19, 8) })
+    let many = (0..<20).map { JournalReminder(id: "\($0)", title: "d\($0)", hour: 9, minute: 0, days: Set(0...6)) }
+    let full = NotificationPlan.build(days: F.days, preferences: F.enabled, now: F.date(), calendar: F.calendar, journal: many)
+    #expect(full.count <= NotificationPlan.maxPending)
+    #expect(full.filter(\.isPrayer).count == build().filter(\.isPrayer).count)
+  }
+
   @Test func masterOffCancelsEveryKind() {
     #expect(build(NotificationPreferences()).isEmpty)
   }

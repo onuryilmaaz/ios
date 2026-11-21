@@ -443,6 +443,16 @@
     "tomorrow": {
       "label": "Tomorrow is Friday",
       "subtitle": "You can read this week's sermon now"
+    },
+    "flow": {
+      "kehf": "Surah Al-Kahf",
+      "kehfSub": "Recommended on Fridays",
+      "salavat": "Salawat",
+      "salavatSub": "Tap to count",
+      "hutbe": "Friday sermon",
+      "hutbeSub": "This week's sermon",
+      "count": "{{count}} / {{target}}",
+      "done": "Done"
     }
   },
   "dayRing": {
@@ -1031,7 +1041,13 @@
     "locating": "Getting your location...",
     "kaaba": "Kaaba",
     "turnRight": "Turn {{deg}}° right",
-    "turnLeft": "Turn {{deg}}° left"
+    "turnLeft": "Turn {{deg}}° left",
+    "camera": "Camera view",
+    "compass": "Compass view",
+    "holdUpright": "Hold your phone upright and look around with the camera",
+    "cameraDenied": "Camera access is off. Allow it in Settings to see the Qibla direction through the camera.",
+    "cameraUnavailable": "Camera isn't available.",
+    "openSettings": "Open Settings"
   },
   "quran": {
     "clearSearch": "Clear search",
@@ -2083,5 +2099,25 @@
     "untilEnd": "From the start of the time until it ends",
     "end": "{{count}} min before the time ends",
     "setup": "Set up prayer lock"
+  },
+  "duaJournal": {
+    "title": "My dua journal",
+    "entry": "Write your own duas and intentions",
+    "empty": "No duas yet",
+    "emptyBody": "Write your own duas, intentions and the people you want to pray for; add a reminder if you like.",
+    "add": "New dua",
+    "edit": "Edit dua",
+    "titleLabel": "Title",
+    "titlePlaceholder": "For example: For my mother",
+    "textLabel": "Dua or intention",
+    "textPlaceholder": "Write your dua here",
+    "reminder": "Remind me",
+    "reminderHint": "You'll get a notification on the days you choose",
+    "days": "Days",
+    "reminderSummary": "{{days}}, {{time}}",
+    "deleteConfirm": "Delete this dua?",
+    "deleteMessage": "This can't be undone.",
+    "private": "Your dua journal stays on this device and is never sent to the server.",
+    "notifTitle": "Time for dua"
   }
 }

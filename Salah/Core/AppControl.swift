@@ -130,9 +130,9 @@ enum AppControlLogic {
     list.filter { $0.display == "banner" && !dismissed.contains($0.id) && eligible($0, platform: platform, now: now, viewer: viewer) }
   }
 
-  /// Seçili dilde metin yoksa (Almancada önce İngilizcesi) Türkçesi. Panelde Almanca alan yok.
+  /// Seçili dilde metin yoksa (Türkçe ve Arapça dışındaki dillerde önce İngilizcesi) Türkçesi. Panelde yalnız tr/en/ar alanı var.
   static func text(_ value: [String: String], language: String) -> String {
-    for code in [language, language == "de" ? "en" : "tr", "tr"] {
+    for code in [language, ["tr", "ar"].contains(language) ? "tr" : "en", "tr"] {
       if let own = value[code]?.trimmingCharacters(in: .whitespacesAndNewlines), !own.isEmpty { return own }
     }
     return ""

@@ -1,0 +1,7 @@
+/* Siri ve Kısayollar başlıkları (Salah/App/SiriShortcuts.swift). Sistem bunları uygulamayı açmadan okur. */
+"intent.nextPrayer.title" = "اگلی نماز";
+"intent.nextPrayer.description" = "اگلی نماز اور باقی وقت بتاتا ہے۔";
+"intent.markPrayer.title" = "میں نے نماز پڑھ لی";
+"intent.markPrayer.description" = "موجودہ نماز کو ادا شدہ درج کرتا ہے۔";
+"shortcut.nextPrayer" = "اگلی نماز";
+"shortcut.markPrayer" = "میں نے نماز پڑھ لی";

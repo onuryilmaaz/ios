@@ -1,22 +1,32 @@
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Sendable {
-  case tr, en, ar, de
+  case tr, en, ar, de, fr, id, ur, bs, ru
 
-  var isRTL: Bool { self == .ar }
+  var isRTL: Bool { self == .ar || self == .ur }
 
-  /// Eksik metinde düşülecek dil: Almanca İngilizceye, diğerleri Türkçeye.
-  var fallback: AppLanguage { self == .de ? .en : .tr }
+  /// Eksik metinde düşülecek dil: Türkçe, İngilizce ve Arapça Türkçeye; sonradan eklenen diller İngilizceye.
+  var fallback: AppLanguage { [.tr, .en, .ar].contains(self) ? .tr : .en }
 
-  /// Telefon dili: Türkçe, Arapça ve Almanca doğrudan, diğer her dil için İngilizce.
-  static var device: AppLanguage {
-    let code = Locale.preferredLanguages.first.map { Locale(identifier: $0).language.languageCode?.identifier ?? "" }
-    switch code {
-    case "tr": return .tr
-    case "ar": return .ar
-    case "de": return .de
-    default: return .en
+  /// Dil seçicide her dil kendi yazımıyla.
+  var nativeName: String {
+    switch self {
+    case .tr: "Türkçe"
+    case .en: "English"
+    case .ar: "العربية"
+    case .de: "Deutsch"
+    case .fr: "Français"
+    case .id: "Bahasa Indonesia"
+    case .ur: "اردو"
+    case .bs: "Bosanski"
+    case .ru: "Русский"
     }
+  }
+
+  /// Telefon dili desteklenen dillerden biriyse o, değilse İngilizce.
+  static var device: AppLanguage {
+    let code = Locale.preferredLanguages.first.map { Locale(identifier: $0).language.languageCode?.identifier ?? "" } ?? ""
+    return AppLanguage(rawValue: code) ?? .en
   }
 }
 
@@ -98,8 +108,13 @@ final class Localizer {
 
   /// Sunucuya giden dil (asistan, dua önerisi, rapor, bildirim kaydı). Almancayı tanımayan eski sunucu isteği reddetmesin
   /// diye `/app/config` `languageDe` bildirmedikçe Almanca yerine İngilizce gider.
+  /// Fransızca, Endonezce, Urduca, Boşnakça ve Rusçayı sunucu tanımaz: onlarda İngilizce gider.
   @MainActor var serverLanguage: String {
-    language == .de && !AppControlStore.shared.supports("languageDe") ? "en" : language.rawValue
+    switch language {
+    case .tr, .en, .ar: language.rawValue
+    case .de: AppControlStore.shared.supports("languageDe") ? "de" : "en"
+    default: "en"
+    }
   }
   var locale: Locale { Locale(identifier: language.rawValue) }
 

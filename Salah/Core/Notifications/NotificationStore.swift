@@ -155,7 +155,7 @@ final class NotificationStore {
                                         alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil,
                                         nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil,
                                         // 1. aşamadakilerle birlikte hesaplansın: toplam üst sınırı (maxPending) aşmasın.
-                                        missed: missed)
+                                        missed: missed, journal: persists ? DuaJournalStore.shared.reminders : [])
         .filter { !$0.isPrayer && $0.kind != .missed }
       // Planda olmayan her şey (eski içerik bildirimleri, önceki sürümlerden kalanlar) silinir.
       let planned = prayerIDs.union(rest.map(delivery.identifier))
@@ -209,6 +209,7 @@ final class NotificationStore {
       TimeZone.current.identifier,
       AlarmStore.shared.coveredPrayerKeys.sorted().joined(separator: ","),
       localDateString(now()),
+      persists ? DuaJournalStore.shared.signature : "",
     ].joined(separator: "|")
   }
 

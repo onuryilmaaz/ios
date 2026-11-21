@@ -1,0 +1,7 @@
+/* Siri ve Kısayollar başlıkları (Salah/App/SiriShortcuts.swift). Sistem bunları uygulamayı açmadan okur. */
+"intent.nextPrayer.title" = "Sljedeći namaz";
+"intent.nextPrayer.description" = "Kaže sljedeći namaz i koliko je vremena preostalo.";
+"intent.markPrayer.title" = "Klanjao sam";
+"intent.markPrayer.description" = "Označava trenutni namaz kao klanjan.";
+"shortcut.nextPrayer" = "Sljedeći namaz";
+"shortcut.markPrayer" = "Klanjao sam";

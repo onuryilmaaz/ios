@@ -443,6 +443,16 @@
     "tomorrow": {
       "label": "Yarın Cuma",
       "subtitle": "Bu haftanın hutbesini şimdiden okuyabilirsin"
+    },
+    "flow": {
+      "kehf": "Kehf Suresi",
+      "kehfSub": "Cuma günü okunması tavsiye edilir",
+      "salavat": "Salavat",
+      "salavatSub": "Dokundukça say",
+      "hutbe": "Cuma hutbesi",
+      "hutbeSub": "Bu haftanın hutbesi",
+      "count": "{{count}} / {{target}}",
+      "done": "Tamamlandı"
     }
   },
   "dayRing": {
@@ -1031,7 +1041,13 @@
     "locating": "Konum alınıyor...",
     "kaaba": "Kâbe",
     "turnRight": "{{deg}}° sağa çevir",
-    "turnLeft": "{{deg}}° sola çevir"
+    "turnLeft": "{{deg}}° sola çevir",
+    "camera": "Kamera görünümü",
+    "compass": "Pusula görünümü",
+    "holdUpright": "Telefonu dik tutup kamerayı çevrende gezdir",
+    "cameraDenied": "Kamera izni verilmedi. Kâbe yönünü kamerada görmek için Ayarlar'dan izin verebilirsin.",
+    "cameraUnavailable": "Kamera kullanılamıyor.",
+    "openSettings": "Ayarları aç"
   },
   "quran": {
     "clearSearch": "Aramayı temizle",
@@ -2083,5 +2099,25 @@
     "untilEnd": "Vakit girince, vakit çıkana kadar",
     "end": "Vaktin çıkmasına {{count}} dk kala",
     "setup": "Vakit kilidini kur"
+  },
+  "duaJournal": {
+    "title": "Dua defterim",
+    "entry": "Kendi dualarını ve niyetlerini yaz",
+    "empty": "Henüz bir dua yazmadın",
+    "emptyBody": "Kendi dualarını, niyetlerini ve dua edeceğin kişileri buraya yaz; istersen hatırlatma kur.",
+    "add": "Yeni dua",
+    "edit": "Duayı düzenle",
+    "titleLabel": "Başlık",
+    "titlePlaceholder": "Örneğin: Annem için",
+    "textLabel": "Dua ya da niyet",
+    "textPlaceholder": "Duanı buraya yaz",
+    "reminder": "Hatırlat",
+    "reminderHint": "Seçtiğin günlerde bildirim gelir",
+    "days": "Günler",
+    "reminderSummary": "{{days}}, {{time}}",
+    "deleteConfirm": "Bu dua silinsin mi?",
+    "deleteMessage": "Bu işlem geri alınamaz.",
+    "private": "Dua defterin yalnız bu cihazda tutulur, sunucuya gönderilmez.",
+    "notifTitle": "Dua vakti"
   }
 }

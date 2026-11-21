@@ -27,6 +27,12 @@
 		<string>tr</string>
 		<string>en</string>
 		<string>ar</string>
+		<string>de</string>
+		<string>fr</string>
+		<string>id</string>
+		<string>ur</string>
+		<string>bs</string>
+		<string>ru</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
@@ -61,6 +67,8 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Kıble yönünü kamera görüntüsü üzerinde gösterebilmek için kamera kullanılır.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.</string>
 	<key>NSSupportsLiveActivities</key>

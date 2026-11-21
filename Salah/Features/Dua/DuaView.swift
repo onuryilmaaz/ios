@@ -36,6 +36,23 @@ struct DuaView: View {
             .simultaneousGesture(TapGesture().onEnded { Haptics.impact(.light) })
             .padding(.top, 14)
           }
+          NavigationLink(value: HomeRoute.duaJournal) {
+            HStack(spacing: 10.5) {
+              Ionicon("create-outline", size: 18, color: tokens.accent)
+                .frame(width: 35, height: 35).background(tokens.accentSoft, in: .circle)
+              VStack(alignment: .leading, spacing: 1.75) {
+                Text(t("duaJournal.title")).font(.system(size: 15, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+                Text(t("duaJournal.entry")).font(.system(size: 12)).foregroundStyle(tokens.textSecondary)
+              }.frame(maxWidth: .infinity, alignment: .leading)
+              Ionicon(dirIcon("chevron-forward"), size: 16, color: tokens.inkSubtle)
+            }
+            .padding(14)
+            .background(tokens.surface, in: .rect(cornerRadius: 21))
+            .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+          }
+          .buttonStyle(PressableStyle())
+          .simultaneousGesture(TapGesture().onEnded { Haptics.impact(.light) })
+          .padding(.top, 10.5)
           DuaMoodFinder { selected = $0 }
             .padding(.top, 14)
             .padding(.bottom, 17.5)

@@ -131,7 +131,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleDevelopmentRegion: tr
-        CFBundleLocalizations: [tr, en, ar]
+        CFBundleLocalizations: [tr, en, ar, de, fr, id, ur, bs, ru]
         CFBundleAllowMixedLocalizations: true
         LSRequiresIPhoneOS: true
         UIRequiredDeviceCapabilities: [arm64]
@@ -160,6 +160,7 @@ targets:
         UIStatusBarStyle: UIStatusBarStyleLightContent
         NSAlarmKitUsageDescription: Namaz, teheccüd ve sahur alarmlarınızı sessiz modda da çalabilmek için alarm izni gerekir.
         NSLocationWhenInUseUsageDescription: Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.
+        NSCameraUsageDescription: Kıble yönünü kamera görüntüsü üzerinde gösterebilmek için kamera kullanılır.
         # remote-notification: sunucunun gece gönderdiği sessiz "planı yenile" bildirimi.
         UIBackgroundModes: [audio, fetch, remote-notification]
         # Arka plan yenilemesi (Salah/App/BackgroundRefresh.swift).

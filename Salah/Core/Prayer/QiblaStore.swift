@@ -89,6 +89,8 @@ final class QiblaStore {
   @ObservationIgnored private var hasHeading = false
   @ObservationIgnored private var feedback = QiblaMath.Feedback()
   @ObservationIgnored private var timeout: Task<Void, Never>?
+  /// Kamera görünümünde yön, telefonun dik tutulduğu arka kameradan gelir (QiblaCameraHeading).
+  @ObservationIgnored private var external = false
 
   var alignment: QiblaMath.Alignment { .init(delta: QiblaMath.delta(bearing: bearing, heading: heading)) }
 
@@ -130,7 +132,16 @@ final class QiblaStore {
     authorize(sensor.authorization)
   }
 
+  /// nil pusulaya döner.
+  func setCameraHeading(_ value: Double?) {
+    guard active, let value else { external = false; return }
+    heading = external ? QiblaMath.smooth(previous: heading, next: value) : value
+    external = true
+    update()
+  }
+
   func stop() {
+    external = false
     active = false
     started = false
     timeout?.cancel()
@@ -160,7 +171,7 @@ final class QiblaStore {
         }
         return
       }
-      heading = hasHeading ? QiblaMath.smooth(previous: heading, next: value) : value
+      if !external { heading = hasHeading ? QiblaMath.smooth(previous: heading, next: value) : value }
       hasHeading = true
       update()
     }

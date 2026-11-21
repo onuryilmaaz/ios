@@ -197,7 +197,7 @@ struct HomeView: View {
       MuteBanner()
       AnnouncementBanners()
       ForbiddenTimeBanner(times: model.today?.times)
-      if AppControlStore.shared.isOn("hutbe") { CumaCard { push(.hutbe) } }
+      CumaCard(onOpen: AppControlStore.shared.isOn("hutbe") ? { push(.hutbe) } : nil)
       RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
       HolidayGreetingCard()
 

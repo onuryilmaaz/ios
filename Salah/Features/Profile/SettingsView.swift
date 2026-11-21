@@ -8,9 +8,7 @@ struct SettingsView: View {
   @State private var exporting = false
   @State private var legal: LegalSheet.Doc?
   @State private var shareURL: URL?
-
-  /// Dil adları her dilde kendi yazımıyla gösterilir.
-  private static let languageNames: [AppLanguage: String] = [.tr: "Türkçe", .en: "English", .ar: "العربية", .de: "Deutsch"]
+  @State private var choosingLanguage = false
 
   var body: some View {
     let l10n = Localizer.shared
@@ -64,7 +62,7 @@ struct SettingsView: View {
 
           SectionLabel(t("settings.app.section")).padding(.leading, 10.5)
           group {
-            let current = Self.languageNames[l10n.language] ?? ""
+            let current = l10n.language.nativeName
             row(
               "language-outline", t("settings.language.title"),
               sub: l10n.preference == .system ? "\(t("settings.language.system")) (\(current))" : current,
@@ -100,6 +98,9 @@ struct SettingsView: View {
     .task(id: AuthStore.shared.user) { if DebugLaunch.ozelGun == nil { await OzelGunStore.shared.fetch() } }
     .sheet(item: $legal) { doc in
       LegalSheet(initial: doc).environment(\.tokens, tokens)
+    }
+    .sheet(isPresented: $choosingLanguage) {
+      LanguagePickerSheet().presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
     }
     .sheet(item: $shareURL) { url in
       ShareSheet(items: [url]).presentationDetents([.medium, .large])
@@ -185,19 +186,7 @@ struct SettingsView: View {
     }
   }
 
-  private func chooseLanguage() {
-    func pick(_ p: LanguagePreference) {
-      Localizer.shared.setPreference(p)
-    }
-    AppAlert.show(.confirm, t("settings.language.title"), nil, buttons: [
-      .init(text: t("settings.language.system")) { pick(.system) },
-      .init(text: Self.languageNames[.tr]!) { pick(.fixed(.tr)) },
-      .init(text: Self.languageNames[.en]!) { pick(.fixed(.en)) },
-      .init(text: Self.languageNames[.ar]!) { pick(.fixed(.ar)) },
-      .init(text: Self.languageNames[.de]!) { pick(.fixed(.de)) },
-      .init(text: t("common.cancel"), style: .cancel),
-    ])
-  }
+  private func chooseLanguage() { choosingLanguage = true }
 
   private func chooseWidgetTheme() {
     let options = WidgetTheme.allCases.map { theme in
@@ -368,5 +357,53 @@ struct LegalSheet: View {
       .scrollIndicators(.hidden)
     }
     .background(tokens.canvas)
+  }
+}
+
+/// Dil seçimi: dokuz dil alert'e sığmadığı için kaydırılabilir liste. Her dil kendi yazımıyla.
+private struct LanguagePickerSheet: View {
+  @Environment(\.tokens) private var tokens
+  @Environment(\.dismiss) private var dismiss
+
+  var body: some View {
+    let l10n = Localizer.shared
+    VStack(spacing: 0) {
+      Text(t("settings.language.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
+        .padding(.top, 21).padding(.bottom, 14)
+      ScrollView {
+        VStack(spacing: 0) {
+          option(t("settings.language.system"), sub: AppLanguage.device.nativeName, selected: l10n.preference == .system) { l10n.setPreference(.system) }
+          ForEach(AppLanguage.allCases, id: \.self) { lang in
+            option(lang.nativeName, sub: nil, selected: l10n.preference == .fixed(lang)) { l10n.setPreference(.fixed(lang)) }
+              .environment(\.layoutDirection, lang.isRTL ? .rightToLeft : .leftToRight)
+          }
+        }
+        .background(tokens.surface, in: .rect(cornerRadius: 21))
+        .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+        .padding(.horizontal, 16).padding(.bottom, 24)
+      }
+      .scrollIndicators(.hidden)
+    }
+    .background(tokens.canvas)
+  }
+
+  private func option(_ title: String, sub: String?, selected: Bool, action: @escaping () -> Void) -> some View {
+    Button {
+      Haptics.selection()
+      action()
+      dismiss()
+    } label: {
+      HStack(spacing: 12) {
+        VStack(alignment: .leading, spacing: 2) {
+          Text(title).font(.system(size: 16, weight: selected ? .semibold : .regular)).foregroundStyle(tokens.textPrimary)
+          if let sub { Text(sub).font(.system(size: 13)).foregroundStyle(tokens.textSecondary) }
+        }
+        Spacer(minLength: 0)
+        if selected { Ionicon("checkmark", size: 20, color: tokens.accent) }
+      }
+      .padding(.horizontal, 17.5).frame(minHeight: 52).contentShape(.rect)
+    }
+    .buttonStyle(PressableStyle())
+    .accessibilityAddTraits(selected ? .isSelected : [])
   }
 }

@@ -42,7 +42,10 @@ enum DuaLibrary {
     return (try? JSONDecoder().decode([String: Language].self, from: data)) ?? [:]
   }()
 
-  private static var current: Language? { all[Localizer.shared.language.rawValue] ?? all["tr"] }
+  private static var current: Language? {
+    let lang = Localizer.shared.language
+    return all[lang.rawValue] ?? all[lang.fallback.rawValue] ?? all["tr"]
+  }
 
   static var categories: [DuaCategory] { current?.categories ?? [] }
   static var situations: [DuaSituation] { current?.situations ?? [] }

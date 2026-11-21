@@ -1,3 +1,4 @@
 /* أوصاف الأذونات (مطابقة لـ RN mobile/ios/Salah/Supporting). */
 "NSLocationWhenInUseUsageDescription" = "يُستخدم موقعك لعرض مواقيت الصلاة واتجاه القبلة.";
 "NSAlarmKitUsageDescription" = "يلزم إذن المنبّهات لكي تعمل منبّهات الصلاة والتهجد والسحور حتى في الوضع الصامت.";
+"NSCameraUsageDescription" = "تُستخدم الكاميرا لعرض اتجاه القبلة فوق صورة الكاميرا.";

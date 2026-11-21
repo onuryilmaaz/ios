@@ -6,6 +6,7 @@ enum HomeRoute: Hashable {
   case qibla
   case location
   case dua
+  case duaJournal
   case calendar
   case history
   case esma
@@ -42,7 +43,7 @@ enum HomeRoute: Hashable {
   private var module: String? {
     switch self {
     case .qibla: "qibla"
-    case .dua: "dua"
+    case .dua, .duaJournal: "dua"
     case .esma: "esma"
     case .calendar: "calendar"
     case .hutbe: "hutbe"
@@ -87,6 +88,7 @@ enum HomeRoute: Hashable {
     switch self {
     case .layout: HomeLayoutView()
     case .dua: DuaView()
+    case .duaJournal: DuaJournalView()
     case .esma: EsmaulHusnaView()
     case .hutbe: HutbeView()
     case .alarms: AlarmsView()

@@ -1,0 +1,4 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "نماز کے اوقات اور قبلہ کی سمت دکھانے کے لیے آپ کا مقام استعمال کیا جاتا ہے۔";
+"NSAlarmKitUsageDescription" = "الارم کی اجازت سے نماز، تہجد اور سحری کے الارم خاموش موڈ میں بھی بجتے ہیں۔";
+"NSCameraUsageDescription" = "کیمرے کی تصویر پر قبلہ کی سمت دکھانے کے لیے کیمرا استعمال کیا جاتا ہے۔";

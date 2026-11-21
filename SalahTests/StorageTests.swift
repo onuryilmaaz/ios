@@ -72,7 +72,7 @@ struct LocalizerTests {
       })
     }
     let tr = try load("tr")
-    for code in ["en", "ar", "de"] {
+    for code in AppLanguage.allCases.map(\.rawValue) where code != "tr" {
       let other = try load(code)
       #expect(Set(tr.keys) == Set(other.keys), "\(code) anahtarları farklı")
       for (key, value) in tr { #expect(vars(value) == vars(other[key] ?? ""), "\(code) \(key) değişkenleri") }

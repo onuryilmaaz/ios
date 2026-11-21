@@ -58,11 +58,21 @@ enum HadithService {
   private static func translatedText(book: String, number: Int) async -> String? {
     let prefix: String
     switch Localizer.shared.language {
-    // Hadis kaynağında Almanca baskı yok: Almanca arayüzde İngilizcesi.
-    case .en, .de: prefix = "eng"
-    case .ar: prefix = "ara"
     case .tr: return nil
+    case .ar: prefix = "ara"
+    case .fr: prefix = "fra"
+    case .id: prefix = "ind"
+    case .ur: prefix = "urd"
+    case .ru: prefix = "rus"
+    // Hadis kaynağında Almanca ve Boşnakça baskı yok: İngilizcesi.
+    case .en, .de, .bs: prefix = "eng"
     }
+    if let text = await editionText(prefix: prefix, book: book, number: number) { return text }
+    // Bazı kitapların o dilde baskısı yok (ör. Fransızca/Rusça Tirmizî): İngilizcesi.
+    return prefix == "eng" ? nil : await editionText(prefix: "eng", book: book, number: number)
+  }
+
+  private static func editionText(prefix: String, book: String, number: Int) async -> String? {
     let url = URL(string: "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/\(prefix)-\(book)/\(number).json")!
     var request = URLRequest(url: url)
     request.timeoutInterval = 6
@@ -88,8 +98,11 @@ enum HadithService {
       .en: ["bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Jami' at-Tirmidhi"],
       .ar: ["bukhari": "صحيح البخاري", "muslim": "صحيح مسلم", "abudawud": "سنن أبي داود", "tirmidhi": "جامع الترمذي"],
       .de: ["bukhari": "Sahih al-Buchari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Dschami' at-Tirmidhi"],
+      .fr: ["bukhari": "Sahih al-Boukhari", "muslim": "Sahih Mouslim", "abudawud": "Sunan Abi Dawoud", "tirmidhi": "Jami' at-Tirmidhi"],
+      .ur: ["bukhari": "صحیح بخاری", "muslim": "صحیح مسلم", "abudawud": "سنن ابو داؤد", "tirmidhi": "جامع ترمذی"],
+      .ru: ["bukhari": "Сахих аль-Бухари", "muslim": "Сахих Муслим", "abudawud": "Сунан Абу Дауда", "tirmidhi": "Джами ат-Тирмизи"],
     ]
-    return names[Localizer.shared.language]?[book] ?? book
+    return names[Localizer.shared.language]?[book] ?? names[.en]?[book] ?? book
   }
 }
 

@@ -1,0 +1,4 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "Ваше местоположение используется для показа времени намаза и направления киблы.";
+"NSAlarmKitUsageDescription" = "Доступ к будильникам позволяет будильникам намаза, тахаджуда и сухура звонить даже в беззвучном режиме.";
+"NSCameraUsageDescription" = "Камера используется, чтобы показывать направление киблы поверх изображения с камеры.";

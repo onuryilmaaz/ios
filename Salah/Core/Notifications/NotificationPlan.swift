@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night", missed = "missed_prayer" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night", missed = "missed_prayer", journal = "dua_reminder" }
   var id: String
   var date: Date
   var kind: Kind
@@ -31,6 +31,15 @@ struct RamadanNightsReminder: Equatable, Sendable {
 struct MissedReminder: Equatable, Sendable {
   var prayers: [String]
   var done: Set<String>
+}
+
+/// Dua defteri hatırlatması: seçili günlerde (JS gün numarası, 0 Pazar) seçili saatte.
+struct JournalReminder: Equatable, Sendable {
+  var id: String
+  var title: String
+  var hour: Int
+  var minute: Int
+  var days: Set<Int>
 }
 
 /// Hatim planı hatırlatması (plan sürüyorsa).
@@ -81,7 +90,7 @@ enum NotificationPlan {
     days: [PrayerDay], preferences p: NotificationPreferences, now: Date,
     calendar: Calendar = .current, verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = [],
     religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil, nights: RamadanNightsReminder? = nil,
-    missed: MissedReminder? = nil
+    missed: MissedReminder? = nil, journal: [JournalReminder] = []
   ) -> [PlannedNotification] {
     guard p.enabled else { return [] }
     // Sessiz aralık sonrasını ŞİMDİ kur: uygulama kapalıyken de süre bitince
@@ -130,6 +139,19 @@ enum NotificationPlan {
         else { continue }
         plan.append(.init(id: "hatim.\(Int(date.timeIntervalSince1970))", date: date, kind: .hatim,
                           title: t("notif.hatimTitle"), body: t("notif.hatimBody", ["pages": hatim.dailyPages])))
+      }
+    }
+
+    // Dua defteri: önümüzdeki günlerde seçili günler. Sınır aşılırsa (capped) en uzak tarihliler düşer.
+    let journalStart = calendar.startOfDay(for: now)
+    for reminder in journal {
+      for delta in 0..<daysAhead {
+        guard let day = calendar.date(byAdding: .day, value: delta, to: journalStart),
+          reminder.days.contains(calendar.component(.weekday, from: day) - 1),
+          let date = calendar.date(bySettingHour: reminder.hour, minute: reminder.minute, second: 0, of: day), date > cutoff
+        else { continue }
+        plan.append(.init(id: "dua.\(reminder.id).\(Int(date.timeIntervalSince1970))", date: date, kind: .journal,
+                          title: t("duaJournal.notifTitle"), body: reminder.title))
       }
     }
 

@@ -19,7 +19,10 @@ enum EsmaLibrary {
     return (try? JSONDecoder().decode([String: [EsmaName]].self, from: data)) ?? [:]
   }()
 
-  static var names: [EsmaName] { all[Localizer.shared.language.rawValue] ?? all["tr"] ?? [] }
+  static var names: [EsmaName] {
+    let lang = Localizer.shared.language
+    return all[lang.rawValue] ?? all[lang.fallback.rawValue] ?? all["tr"] ?? []
+  }
 
   /// Ad, anlam, Arapça ya da sıra numarasıyla arama (Türkçe karakter ve şapka duyarsız).
   static func filter(_ names: [EsmaName], query: String) -> [EsmaName] {
@@ -58,7 +61,8 @@ struct EsmaulHusnaView: View {
 
   var body: some View {
     let dark = tokens.isDark
-    let isArabic = Localizer.shared.language == .ar
+    // Arapça ve Urduca: Arap harfli ad zaten gösterildiği için Latin okunuş gizlenir.
+    let isArabic = Localizer.shared.language.isRTL
     let filtered = EsmaLibrary.filter(EsmaLibrary.names, query: query)
 
     VStack(spacing: 0) {

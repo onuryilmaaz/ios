@@ -451,6 +451,16 @@
     "tomorrow": {
       "label": "Morgen ist Freitag",
       "subtitle": "Du kannst die Predigt dieser Woche schon lesen"
+    },
+    "flow": {
+      "kehf": "Sure Al-Kahf",
+      "kehfSub": "Am Freitag empfohlen",
+      "salavat": "Salawat",
+      "salavatSub": "Zum Zählen tippen",
+      "hutbe": "Freitagspredigt",
+      "hutbeSub": "Die Predigt dieser Woche",
+      "count": "{{count}} / {{target}}",
+      "done": "Erledigt"
     }
   },
   "dayRing": {
@@ -1046,7 +1056,13 @@
     "locating": "Standort wird ermittelt...",
     "kaaba": "Kaaba",
     "turnRight": "{{deg}}° nach rechts drehen",
-    "turnLeft": "{{deg}}° nach links drehen"
+    "turnLeft": "{{deg}}° nach links drehen",
+    "camera": "Kameraansicht",
+    "compass": "Kompassansicht",
+    "holdUpright": "Halte das Handy aufrecht und schwenke die Kamera umher",
+    "cameraDenied": "Kein Kamerazugriff. Erlaube ihn in den Einstellungen, um die Qibla-Richtung in der Kamera zu sehen.",
+    "cameraUnavailable": "Kamera nicht verfügbar.",
+    "openSettings": "Einstellungen öffnen"
   },
   "quran": {
     "clearSearch": "Suche löschen",
@@ -2247,5 +2263,25 @@
     "untilEnd": "Vom Beginn der Zeit bis zu ihrem Ende",
     "end": "{{count}} Min. vor Ende der Zeit",
     "setup": "Gebetssperre einrichten"
+  },
+  "duaJournal": {
+    "title": "Mein Dua-Tagebuch",
+    "entry": "Schreibe deine eigenen Duas und Absichten",
+    "empty": "Noch keine Duas",
+    "emptyBody": "Schreibe deine eigenen Duas, Absichten und die Menschen, für die du beten möchtest; auf Wunsch mit Erinnerung.",
+    "add": "Neue Dua",
+    "edit": "Dua bearbeiten",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Zum Beispiel: Für meine Mutter",
+    "textLabel": "Dua oder Absicht",
+    "textPlaceholder": "Schreibe deine Dua hier",
+    "reminder": "Erinnern",
+    "reminderHint": "An den gewählten Tagen kommt eine Benachrichtigung",
+    "days": "Tage",
+    "reminderSummary": "{{days}}, {{time}}",
+    "deleteConfirm": "Diese Dua löschen?",
+    "deleteMessage": "Das kann nicht rückgängig gemacht werden.",
+    "private": "Dein Dua-Tagebuch bleibt auf diesem Gerät und wird nie an den Server gesendet.",
+    "notifTitle": "Zeit für Dua"
   }
 }

@@ -44,7 +44,15 @@ enum QuranService {
     .en: "Saheeh International",
     .ar: "التفسير الميسر",
     .de: "Bubenheim & Elyas",
+    .fr: "Muhammad Hamidullah",
+    .id: "Kementerian Agama RI",
+    .ur: "فتح محمد جالندھری",
+    .bs: "Besim Korkut",
+    .ru: "Эльмир Кулиев",
   ]
+
+  /// quran.com meal kimlikleri (Türkçe kendi sunucumuzdan, Arapça tefsirden).
+  static let translationId: [AppLanguage: Int] = [.en: 20, .de: 27, .fr: 31, .id: 33, .ur: 234, .bs: 126, .ru: 45]
 
   static func surahs() async -> [Surah] {
     #if DEBUG
@@ -118,13 +126,12 @@ enum QuranService {
     }
 
     var map: [Int: String] = [:]
-    if lang == .en || lang == .de {
+    if let translation = translationId[lang] {
       struct Response: Decodable {
         struct Item: Decodable { let text: String? }
         let translations: [Item]?
       }
-      // İngilizce: Saheeh International (20), Almanca: Bubenheim & Elyas (27).
-      let url = URL(string: "https://api.quran.com/api/v4/quran/translations/\(lang == .de ? 27 : 20)?chapter_number=\(surahId)")!
+      let url = URL(string: "https://api.quran.com/api/v4/quran/translations/\(translation)?chapter_number=\(surahId)")!
       if let (data, _) = try? await URLSession.shared.data(from: url),
         let res = try? JSONDecoder().decode(Response.self, from: data)
       {
@@ -172,9 +179,10 @@ enum QuranService {
 /// `withSuffix`: "Fâtiha Suresi" / "Surah Al-Fatihah". RN: src/i18n/surahs.ts
 func surahName(_ surah: Surah, withSuffix: Bool = false) -> String {
   let lang = Localizer.shared.language
-  if lang == .ar { return surah.name_arabic ?? surah.name }
-  // Almanca arayüzde de Latin harfli uluslararası okunuş (Al-Fatihah).
-  let name = lang == .en || lang == .de ? (SurahNamesEn.map[String(surah.id)] ?? surah.name) : surah.name
+  // Urduca da Arap harfli adı kullanır.
+  if lang == .ar || lang == .ur { return surah.name_arabic ?? surah.name }
+  // Türkçe dışındaki dillerde Latin harfli uluslararası okunuş (Al-Fatihah).
+  let name = lang == .tr ? surah.name : (SurahNamesEn.map[String(surah.id)] ?? surah.name)
   return withSuffix ? t("quran.surahWithName", ["name": name]) : name
 }
 

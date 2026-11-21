@@ -27,7 +27,7 @@ struct MarkPrayerIntent: AppIntent {
     }
 
     // Detect kaza: check if prayer window has expired
-    let isKaza = prayerIsExpired(prayerId: prayerId, widget: widget)
+    let isKaza = prayerWindowExpired(prayerId: prayerId, widget: widget)
 
     // Optimistic local update so widget refreshes instantly
     applyLocalUpdate(ud: ud, backendId: backendId, isKaza: isKaza)
@@ -143,42 +143,42 @@ struct MarkPrayerIntent: AppIntent {
     }
   }
 
-  // MARK: - Kaza Detection
+}
 
-  private func timeToMinutes(_ timeStr: String) -> Int {
-    let parts = timeStr.split(separator: ":").compactMap { Int($0) }
-    guard parts.count >= 2 else { return 0 }
-    return parts[0] * 60 + parts[1]
-  }
+private func timeToMinutes(_ timeStr: String) -> Int {
+  let parts = timeStr.split(separator: ":").compactMap { Int($0) }
+  guard parts.count >= 2 else { return 0 }
+  return parts[0] * 60 + parts[1]
+}
 
-  private func prayerIsExpired(prayerId: String, widget: WidgetData) -> Bool {
-    let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
-    let nowMin = (now.hour ?? 0) * 60 + (now.minute ?? 0)
+/// Vaktin çıkışı geçti mi (işaretlenirse kaza). Kontrol Merkezi düğmesi de kullanır.
+func prayerWindowExpired(prayerId: String, widget: WidgetData, at date: Date = Date()) -> Bool {
+  let now = Calendar.current.dateComponents([.hour, .minute], from: date)
+  let nowMin = (now.hour ?? 0) * 60 + (now.minute ?? 0)
 
-    let imsakMin = timeToMinutes(widget.imsak)
-    let inBridge = imsakMin > 0 && nowMin < imsakMin
+  let imsakMin = timeToMinutes(widget.imsak)
+  let inBridge = imsakMin > 0 && nowMin < imsakMin
 
-    switch prayerId {
-    case "sabah":
-      if inBridge { return true }
-      let end = timeToMinutes(widget.gunes)
-      return end > 0 && nowMin >= end
-    case "ogle":
-      if inBridge { return true }
-      let end = timeToMinutes(widget.ikindi)
-      return end > 0 && nowMin >= end
-    case "ikindi":
-      if inBridge { return true }
-      let end = timeToMinutes(widget.aksam)
-      return end > 0 && nowMin >= end
-    case "aksam":
-      if inBridge { return true }
-      let end = timeToMinutes(widget.yatsi)
-      return end > 0 && nowMin >= end
-    case "yatsi":
-      return false
-    default:
-      return false
-    }
+  switch prayerId {
+  case "sabah":
+    if inBridge { return true }
+    let end = timeToMinutes(widget.gunes)
+    return end > 0 && nowMin >= end
+  case "ogle":
+    if inBridge { return true }
+    let end = timeToMinutes(widget.ikindi)
+    return end > 0 && nowMin >= end
+  case "ikindi":
+    if inBridge { return true }
+    let end = timeToMinutes(widget.aksam)
+    return end > 0 && nowMin >= end
+  case "aksam":
+    if inBridge { return true }
+    let end = timeToMinutes(widget.yatsi)
+    return end > 0 && nowMin >= end
+  case "yatsi":
+    return false
+  default:
+    return false
   }
 }

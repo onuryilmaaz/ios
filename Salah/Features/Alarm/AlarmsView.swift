@@ -604,7 +604,7 @@ private struct CustomAlarmForm: View {
   }
 }
 
-private struct TimeStepper: View {
+struct TimeStepper: View {
   @Environment(\.tokens) private var tokens
   @Binding var value: Int
   let max: Int

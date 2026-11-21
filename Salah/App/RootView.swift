@@ -104,6 +104,11 @@ struct RootView: View {
       if NotificationNavigation.shared.inspiration != nil { tab = .home }
     }
     .onOpenURL { open($0) }
+    .onChange(of: AppLinks.shared.request) { _, url in
+      guard let url else { return }
+      AppLinks.shared.request = nil
+      open(url)
+    }
     // Ana sayfaya dönüş: ayarlardan ilçe değiştiyse gerçek konumla karşılaştırılır (30 dk sınırı seçimle sıfırlanır).
     .onChange(of: HomeNavigation.shared.path.isEmpty) { _, atRoot in
       if atRoot, tab == .home { Task { await LocationWatch.check() } }
@@ -150,6 +155,9 @@ struct RootView: View {
     case .hifz:
       if tab != .quran { select(.quran) }
       if AuthStore.shared.isAuthenticated { QuranNavigation.shared.path = [.hifz] }
+    case .surah(let id):
+      if tab != .quran { select(.quran) }
+      QuranNavigation.shared.path = [.surah(id, nil)]
     }
   }
 
@@ -245,6 +253,13 @@ enum DebugLaunch {
     return UserDefaults.standard.string(forKey: "SalahDebugQuran")
     #else
     return nil
+    #endif
+  }
+  static var qiblaCamera: Bool {
+    #if DEBUG
+    return UserDefaults.standard.bool(forKey: "SalahDebugQiblaCamera")
+    #else
+    return false
     #endif
   }
   static var qibla: String? {
@@ -344,6 +359,7 @@ enum DebugLaunch {
       case "calendar": return .calendar
       case "ozelGun": return .ozelGun
       case "dua": return .dua
+      case "defter": return .duaJournal
       case "esma": return .esma
       case "hutbe": return .hutbe
       case "history": return .history

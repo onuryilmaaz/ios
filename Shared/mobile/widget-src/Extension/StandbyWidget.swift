@@ -57,12 +57,33 @@ extension View {
 
 struct StandbySystemSmallView: View {
   let entry: StandbyEntry
+  /// StandBy'da (şarjda, yatay) sistem arka planı kaldırır: bu durumda vakit saati ekranı doldurur.
+  @Environment(\.showsWidgetContainerBackground) private var hasBackground
 
   private var state: PrayerWindowState? { entry.window }
 
   var body: some View {
     Group {
-      if let s = state {
+      if let s = state, !hasBackground {
+        // StandBy: uzaktan okunur büyük saat. Gece modunda sistem kırmızıya boyar.
+        VStack(alignment: .leading, spacing: 2) {
+          Text(WL.prayer(s.prayerName))
+            .font(.system(size: 22, weight: .semibold))
+            .foregroundColor(Color.gold(.hero))
+            .lineLimit(1)
+          Text(s.endDate, style: .timer)
+            .font(.system(size: 96, weight: .light).monospacedDigit())
+            .foregroundColor(.white)
+            .minimumScaleFactor(0.3)
+            .lineLimit(1)
+          Text(s.footnote)
+            .font(.system(size: 18, weight: .medium).monospacedDigit())
+            .foregroundColor(.white.opacity(0.7))
+            .lineLimit(1)
+            .minimumScaleFactor(0.7)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+      } else if let s = state {
         VStack(alignment: .leading, spacing: 0) {
           HStack(spacing: 5) {
             Image(systemName: prayerIcon(s.key))
@@ -173,7 +194,7 @@ struct StandbyPrayerWidget: Widget {
         .premiumGated(isWidgetPremiumActive())
         .widgetURL(URL(string: isWidgetPremiumActive() ? "salah://home" : "salah://paywall"))
     }
-    .configurationDisplayName("Salah · Standby")
+    .configurationDisplayName(WL.t("standby.name"))
     .description(WL.t("standby.desc"))
     .supportedFamilies([.systemSmall, .accessoryRectangular])
   }

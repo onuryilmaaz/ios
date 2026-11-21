@@ -1,0 +1,5 @@
+/* Siri cümleleri (Salah/App/SiriShortcuts.swift). Her cümlede uygulama adı olmalı. */
+"Next prayer in ${applicationName}" = "Prochaine prière dans ${applicationName}";
+"When is the next prayer in ${applicationName}" = "Quand est la prochaine prière dans ${applicationName}";
+"Mark my prayer in ${applicationName}" = "Marquer ma prière dans ${applicationName}";
+"I prayed in ${applicationName}" = "J'ai prié dans ${applicationName}";

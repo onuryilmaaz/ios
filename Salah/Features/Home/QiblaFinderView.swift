@@ -7,11 +7,32 @@ struct QiblaFinderView: View {
   @Environment(\.scenePhase) private var scenePhase
   @State private var visible = false
   @State private var theme = QiblaTheme.saved
+  @State private var camera = DebugLaunch.qiblaCamera
   private var store: QiblaStore { .shared }
 
   var body: some View {
-    VStack(spacing: 0) {
-      header
+    ZStack {
+      if showsCamera { QiblaCameraView(theme: theme) }
+      VStack(spacing: 0) {
+        header
+        if showsCamera {
+          Spacer()
+          if store.state == .ready { direction(store.alignment).padding(.horizontal, 21).padding(.bottom, 24) }
+        } else {
+          content
+        }
+      }
+    }
+    .background(theme.background).toolbar(.hidden, for: .navigationBar)
+    .statusBar(showsCamera || !theme.isLight ? .light : .dark)
+    .onAppear { visible = true; if scenePhase == .active { store.start() } }
+    .onDisappear { visible = false; store.stop() }
+    .onChange(of: scenePhase) { _, phase in
+      if phase == .active && visible { store.start() } else { store.stop() }
+    }
+  }
+
+  @ViewBuilder private var content: some View {
       switch store.state {
       case .locating:
         VStack(spacing: 14) {
@@ -30,15 +51,15 @@ struct QiblaFinderView: View {
         }.padding(21).frame(maxWidth: .infinity, maxHeight: .infinity)
       case .ready: compass
       }
-    }
-    .background(theme.background).toolbar(.hidden, for: .navigationBar)
-    .statusBar(theme.isLight ? .dark : .light)
-    .onAppear { visible = true; if scenePhase == .active { store.start() } }
-    .onDisappear { visible = false; store.stop() }
-    .onChange(of: scenePhase) { _, phase in
-      if phase == .active && visible { store.start() } else { store.stop() }
-    }
   }
+
+  /// Konum veya pusula hatasında kamera yerine hata ve tekrar dene gösterilir.
+  private var showsCamera: Bool {
+    if case .failure = store.state { return false }
+    return camera
+  }
+  private var headerInk: Color { showsCamera ? .white : theme.ink }
+  private var headerFill: Color { showsCamera ? Forest.s950.opacity(0.55) : theme.isLight ? theme.surface : Color.white.opacity(0.1) }
 
   private var header: some View {
     HStack {
@@ -46,16 +67,28 @@ struct QiblaFinderView: View {
         Haptics.impact(.light)
         dismiss()
       } label: {
-        Ionicon(dirIcon("chevron-back"), size: 20, color: theme.ink)
+        Ionicon(dirIcon("chevron-back"), size: 20, color: headerInk)
           .frame(width: 44, height: 44)
-          .background(theme.isLight ? theme.surface : Color.white.opacity(0.1), in: .circle)
+          .background(headerFill, in: .circle)
       }
       .buttonStyle(PressableStyle())
       .accessibilityLabel(t("common.back"))
       Spacer()
-      Text(t("qibla.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(theme.ink)
+      Text(t("qibla.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(headerInk)
+        .padding(.horizontal, showsCamera ? 14 : 0).frame(minHeight: 36)
+        .background(showsCamera ? headerFill : .clear, in: .capsule)
       Spacer()
-      Color.clear.frame(width: 44, height: 44)
+      Button {
+        Haptics.impact(.light)
+        if camera { camera = false; return }
+        Task { if await QiblaCameraAccess.request() { camera = true } }
+      } label: {
+        Ionicon(camera ? "compass-outline" : "camera-outline", size: 20, color: headerInk)
+          .frame(width: 44, height: 44)
+          .background(headerFill, in: .circle)
+      }
+      .buttonStyle(PressableStyle())
+      .accessibilityLabel(t(camera ? "qibla.compass" : "qibla.camera"))
     }
     .padding(.horizontal, 14)
     .padding(.top, 4)

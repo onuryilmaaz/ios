@@ -34,6 +34,12 @@ struct SitePongLiveActivityWidgetBundle: WidgetBundle {
     // Live Activity
     SitePongLiveActivityWidgetLiveActivity()
 
+    // Kontrol Merkezi ve Eylem düğmesi (iOS 18+): Kıldım, Zikirmatik
+    if #available(iOS 18.0, *) {
+      MarkPrayerControl()
+      DhikrControl()
+    }
+
     // Alarm ertele geri sayımı (AlarmKit, iOS 26+)
     if #available(iOS 26.0, *) {
       SalahAlarmLiveActivity()
