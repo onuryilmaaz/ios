@@ -15,12 +15,15 @@ struct PrayerLockView: View {
     let store = PrayerLockStore.shared
     VStack(spacing: 0) {
       StandardHeader(title: t("prayerLock.title"))
+      ScrollViewReader { proxy in
       ScrollView {
         VStack(alignment: .leading, spacing: 16) {
           Text(t("prayerLock.intro")).font(.system(size: 15)).lineSpacing(3).foregroundStyle(tokens.textSecondary)
-          toggleRow(store)
+            .tourAnchor("prayerLock.intro")
+          toggleRow(store).tourAnchor("prayerLock.enable")
           if store.settings.enabled {
-            appsRow(store)
+            appsRow(store).tourAnchor("prayerLock.apps")
+            VStack(alignment: .leading, spacing: 16) {
             SectionLabel(t("prayerLock.when"))
             FlowLayout(spacing: 7) {
               chip(t("prayerLock.modeStart"), selected: store.settings.mode == .start) { store.setMode(.start); customOpen = false }
@@ -28,13 +31,18 @@ struct PrayerLockView: View {
             }
             Text(t(store.settings.mode == .start ? "prayerLock.modeStartHint" : "prayerLock.modeEndHint"))
               .font(.system(size: 13)).foregroundStyle(tokens.textSecondary).fixedSize(horizontal: false, vertical: true)
-            durationSection(store)
+            }
+            .tourAnchor("prayerLock.mode")
+            VStack(alignment: .leading, spacing: 16) { durationSection(store) }.tourAnchor("prayerLock.duration")
+            VStack(alignment: .leading, spacing: 16) {
             SectionLabel(t("prayerLock.prayers"))
             FlowLayout(spacing: 7) {
               ForEach(PrayerLockStore.prayerIds, id: \.self) { id in
                 chip(prayerLabel(id), selected: store.settings.prayers.contains(id)) { store.toggle(prayer: id) }
               }
             }
+            }
+            .tourAnchor("prayerLock.prayers")
           }
           HStack(alignment: .top, spacing: 7) {
             Ionicon("information-circle", size: 16, color: Amber.s500).padding(.top, 2)
@@ -43,10 +51,13 @@ struct PrayerLockView: View {
           }
           .padding(14)
           .background(tokens.isDark ? Amber.s500.opacity(0.1) : Amber.s50, in: .rect(cornerRadius: 14))
+          .tourAnchor("prayerLock.info")
         }
         .padding(16).padding(.bottom, 84)
       }
       .scrollIndicators(.hidden)
+      .tourScroll(proxy, top: "prayerLock.intro")
+      }
     }
     .background(tokens.canvas)
     .toolbar(.hidden, for: .navigationBar)
@@ -55,6 +66,12 @@ struct PrayerLockView: View {
       if !open { store.setSelection(draft) }
     }
     .onAppear { store.foreground() }
+    // İlk girişte: ne yapar ve nasıl açılır. Açılınca (ilk kez): uygulama seçimi, kip, süre, vakitler.
+    .task { await TourStore.shared.startIfNeeded(.prayerLock) { TourStore.shared.anchors["prayerLock.enable"] != nil } }
+    .task(id: store.settings.enabled && TourStore.shared.tour == nil) {
+      guard store.settings.enabled, TourStore.shared.isDone(Tour.prayerLock.id) else { return }
+      await TourStore.shared.startIfNeeded(.prayerLockSetup) { TourStore.shared.anchors["prayerLock.apps"] != nil && !picking }
+    }
     .onChange(of: store.settings.mode) { _, _ in customText = String(currentMinutes(store)) }
   }
 

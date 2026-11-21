@@ -54,6 +54,9 @@ enum HomeRoute: Hashable {
     case .kaza: "kaza"
     case .dhikr: "dhikr"
     case .circles, .circle: "streak_circles"
+    #if PRAYER_LOCK
+    case .prayerLock: "prayer_lock"
+    #endif
     default: nil
     }
   }

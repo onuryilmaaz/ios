@@ -17,6 +17,8 @@ final class PrayerLockStore {
   private(set) var settings = PrayerLockShared.settings()
   private(set) var selection = PrayerLockShared.selection()
   private(set) var authorized = AuthorizationCenter.shared.authorizationStatus == .approved
+  /// Şu an kilitli vakit (ana sayfa kartı). Uzantı arka planda değiştirir; öne gelişte ve her planlamada okunur.
+  private(set) var current = PrayerLockShared.currentPrayer
 
   var hasSelection: Bool { PrayerLockShared.hasSelection(selection) }
 
@@ -38,6 +40,9 @@ final class PrayerLockStore {
     if !on { PrayerLockShared.unlock() }
     reschedule()
   }
+
+  /// Ayar ekranının sıralı anlatımı: izin verildi, uygulama seçildi.
+  var isReady: Bool { settings.enabled && authorized && hasSelection }
 
   func setMode(_ mode: PrayerLockShared.Settings.Mode) {
     update { $0.mode = mode }
@@ -93,6 +98,7 @@ final class PrayerLockStore {
   /// Namaz işaretlenince: o vaktin kilidi kalkar.
   func prayerMarked(_ prayerId: String) {
     if PrayerLockShared.currentPrayer == prayerId { PrayerLockShared.unlock() }
+    current = PrayerLockShared.currentPrayer
   }
 
   /// Öne gelişte: kılınmış vaktin kilidi kalkar (widget ya da başka cihazdan işaretlenmiş olabilir), plan yenilenir.
@@ -105,6 +111,7 @@ final class PrayerLockStore {
   /// Plan: her gün seçili vakitlerde ayara göre kilit aralığı (bkz. `PrayerLockShared.window`).
   /// Şu an bir aralığın içindeysek ve vakit kılınmadıysa hemen kilitlenir.
   func reschedule(now: Date = Date()) {
+    defer { current = PrayerLockShared.currentPrayer }
     let center = DeviceActivityCenter()
     center.stopMonitoring(center.activities.filter { $0.rawValue.hasPrefix(PrayerLockShared.activityPrefix) })
     guard settings.enabled, authorized, hasSelection else { return }

@@ -13,7 +13,7 @@ final class HomeLayoutStore {
   static let shared = HomeLayoutStore()
 
   enum Key: String, Codable, CaseIterable, Sendable {
-    case prayerTracker, streak, quickActions, dailyInspiration, dayRing, alarms, kaza, dhikr
+    case prayerTracker, streak, quickActions, dailyInspiration, dayRing, alarms, kaza, dhikr, prayerLock
 
     var labelKey: String { "homeSections.\(rawValue).label" }
     var descriptionKey: String { "homeSections.\(rawValue).description" }
@@ -27,6 +27,7 @@ final class HomeLayoutStore {
       case .dayRing: "sync-circle-outline"
       case .kaza: "hourglass-outline"
       case .dhikr: "finger-print-outline"
+      case .prayerLock: "lock-closed-outline"
       }
     }
   }
@@ -40,6 +41,7 @@ final class HomeLayoutStore {
   static let defaults: [Section] = [
     .init(key: .prayerTracker, visible: true),
     .init(key: .alarms, visible: true),
+    .init(key: .prayerLock, visible: true),
     .init(key: .streak, visible: true),
     .init(key: .quickActions, visible: true),
     .init(key: .dhikr, visible: true),
@@ -79,6 +81,13 @@ final class HomeLayoutStore {
     case .alarms: return AppControlStore.shared.isOn("alarms")
     case .dhikr: return AppControlStore.shared.isOn("dhikr")
     case .kaza: return KazaStore.shared.available
+    case .prayerLock:
+      // Yalnız iOS (Ekran Süresi); Android'de bu kart yok.
+      #if PRAYER_LOCK
+      return AppControlStore.shared.isOn("prayer_lock")
+      #else
+      return false
+      #endif
     default: return true
     }
   }

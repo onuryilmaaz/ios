@@ -637,6 +637,10 @@
     "alarms": {
       "label": "Wecker",
       "description": "Nächster Wecker und ein Fadschr-Wecker mit einem Tippen"
+    },
+    "prayerLock": {
+      "label": "Gebetssperre",
+      "description": "Sperrt deine ausgewählten Apps während der Gebetszeit"
     }
   },
   "hutbe": {
@@ -1401,6 +1405,10 @@
       "tracker": {
         "body": "Tippe auf ein Gebet, um es zu markieren, sobald du es verrichtet hast. Deine Serie und Statistiken entstehen hier.",
         "title": "Heutige Gebete"
+      },
+      "prayerLock": {
+        "title": "Gebetssperre",
+        "body": "Sperre deine ausgewählten Apps während der Gebetszeit; sie werden entsperrt, sobald du das Gebet markierst."
       }
     },
     "kaza": {
@@ -1482,6 +1490,36 @@
       "year": {
         "body": "Sieh, wie viele Gebete du letztes Jahr verrichtet hast, deine längste Serie und deine gelesenen Seiten. Jeden Januar verfügbar.",
         "title": "Jahresrückblick"
+      }
+    },
+    "prayerLock": {
+      "intro": {
+        "title": "Was ist die Gebetssperre",
+        "body": "Während der Gebetszeit öffnen sich die ausgewählten Apps (soziale Medien, Spiele) nicht. Bete, markiere es in Salah, und die Sperre wird sofort aufgehoben."
+      },
+      "enable": {
+        "title": "Zuerst einschalten",
+        "body": "Beim Einschalten wird die Bildschirmzeit-Berechtigung des iPhones angefragt. Sie wird nur für diese Sperre verwendet."
+      },
+      "info": {
+        "title": "Alles bleibt auf deinem Gerät",
+        "body": "Deine ausgewählten Apps werden nie an den Server gesendet. Die Berechtigung kannst du jederzeit unter Einstellungen > Bildschirmzeit entfernen."
+      },
+      "apps": {
+        "title": "Apps auswählen",
+        "body": "Wähle die Apps oder Kategorien, die gesperrt werden sollen. Wähle Salah nicht aus: Die App muss offen bleiben, damit du das Gebet markieren kannst."
+      },
+      "mode": {
+        "title": "Wann soll gesperrt werden",
+        "body": "Wenn die Zeit beginnt: Sperre mit dem Adhan. Bevor die Zeit endet: damit du das Gebet nicht bis zuletzt aufschiebst, wird die eingestellte Zeit vor dem Ende gesperrt."
+      },
+      "duration": {
+        "title": "Wie lange",
+        "body": "Wähle eine Vorgabe oder gib unter Eigene selbst Minuten ein. Die Sperre reicht nie in die nächste Gebetszeit."
+      },
+      "prayers": {
+        "title": "Welche Gebete",
+        "body": "Wähle die Gebete, die gesperrt werden sollen. Markierst du ein Gebet, wird seine Sperre aufgehoben."
       }
     }
   },
@@ -2199,5 +2237,15 @@
       "next": "Weiter",
       "previous": "Zurück"
     }
+  },
+  "prayerLockCard": {
+    "empty": "Sperre deine ausgewählten Apps während der Gebetszeit",
+    "noApps": "Wähle die zu sperrenden Apps",
+    "lockedNow": "Jetzt gesperrt: {{prayer}}",
+    "lockedHint": "Wird aufgehoben, sobald du das Gebet markierst",
+    "start": "{{count}} Min. ab Beginn der Zeit",
+    "untilEnd": "Vom Beginn der Zeit bis zu ihrem Ende",
+    "end": "{{count}} Min. vor Ende der Zeit",
+    "setup": "Gebetssperre einrichten"
   }
 }

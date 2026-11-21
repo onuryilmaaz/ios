@@ -629,6 +629,10 @@
     "alarms": {
       "label": "Alarmlar",
       "description": "Sıradaki alarm ve tek dokunuşla sabah alarmı"
+    },
+    "prayerLock": {
+      "label": "Vakit kilidi",
+      "description": "Namaz vaktinde seçtiğin uygulamaları kilitler"
     }
   },
   "hutbe": {
@@ -1386,6 +1390,10 @@
       "tracker": {
         "body": "Vakti giren namazı kıldığında dokunarak işaretle. Serin ve istatistiklerin buradan oluşur.",
         "title": "Bugünkü namazlar"
+      },
+      "prayerLock": {
+        "title": "Vakit kilidi",
+        "body": "Namaz vaktinde seçtiğin uygulamaları kilitle; namazı işaretleyince açılsın."
       }
     },
     "kaza": {
@@ -1467,6 +1475,36 @@
       "year": {
         "body": "Geçen yıl kaç vakit kıldığını, en uzun serini ve okuduğun sayfaları gör. Her Ocak ayında açılır.",
         "title": "Yıl özeti"
+      }
+    },
+    "prayerLock": {
+      "intro": {
+        "title": "Vakit kilidi nedir",
+        "body": "Namaz vaktinde seçtiğin uygulamalar (sosyal medya, oyun) açılmaz. Namazını kılıp Salah'ta işaretleyince kilit hemen kalkar."
+      },
+      "enable": {
+        "title": "Önce aç",
+        "body": "Açınca iPhone Ekran Süresi izni ister. İzin yalnız bu kilit için kullanılır."
+      },
+      "info": {
+        "title": "Her şey cihazında",
+        "body": "Seçtiğin uygulamalar sunucuya gönderilmez. İzni Ayarlar > Ekran Süresi'nden istediğin zaman kaldırabilirsin."
+      },
+      "apps": {
+        "title": "Uygulamaları seç",
+        "body": "Kilitlenecek uygulamaları ya da kategorileri seç. Salah'ı seçme: namazı işaretlemek için açık kalmalı."
+      },
+      "mode": {
+        "title": "Ne zaman kilitlensin",
+        "body": "Vakit girince: ezanla birlikte kilitlenir. Vakit çıkmadan önce: namazı son ana bırakma diye, vaktin çıkmasına seçtiğin süre kala kilitlenir."
+      },
+      "duration": {
+        "title": "Ne kadar sürsün",
+        "body": "Hazır sürelerden birini seç ya da Özel ile dakikayı kendin yaz. Kilit hiçbir zaman bir sonraki vakte taşmaz."
+      },
+      "prayers": {
+        "title": "Hangi vakitler",
+        "body": "Kilitlenmesini istediğin vakitleri seç. Namazı işaretleyince o vaktin kilidi kalkar."
       }
     }
   },
@@ -2035,5 +2073,15 @@
       "next": "Sonraki",
       "previous": "Önceki"
     }
+  },
+  "prayerLockCard": {
+    "empty": "Namaz vaktinde seçtiğin uygulamaları kilitle",
+    "noApps": "Kilitlenecek uygulamaları seç",
+    "lockedNow": "Şu an kilitli: {{prayer}}",
+    "lockedHint": "Namazı işaretleyince açılır",
+    "start": "Vakit girince {{count}} dk",
+    "untilEnd": "Vakit girince, vakit çıkana kadar",
+    "end": "Vaktin çıkmasına {{count}} dk kala",
+    "setup": "Vakit kilidini kur"
   }
 }

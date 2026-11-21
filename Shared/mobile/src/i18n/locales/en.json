@@ -629,6 +629,10 @@
     "alarms": {
       "label": "Alarms",
       "description": "Next alarm and a one-tap Fajr alarm"
+    },
+    "prayerLock": {
+      "label": "Prayer lock",
+      "description": "Locks the apps you choose during prayer time"
     }
   },
   "hutbe": {
@@ -1386,6 +1390,10 @@
       "tracker": {
         "body": "Tap a prayer to mark it once you have prayed it. Your streak and statistics are built from here.",
         "title": "Today's prayers"
+      },
+      "prayerLock": {
+        "title": "Prayer lock",
+        "body": "Lock the apps you choose during prayer time; they unlock when you mark the prayer."
       }
     },
     "kaza": {
@@ -1467,6 +1475,36 @@
       "year": {
         "body": "See how many prayers you prayed last year, your longest streak and the pages you read. Available every January.",
         "title": "Year in review"
+      }
+    },
+    "prayerLock": {
+      "intro": {
+        "title": "What is prayer lock",
+        "body": "During prayer time the apps you choose (social media, games) won't open. Pray, mark it in Salah, and the lock lifts right away."
+      },
+      "enable": {
+        "title": "Turn it on first",
+        "body": "Turning it on asks for iPhone Screen Time permission. It is only used for this lock."
+      },
+      "info": {
+        "title": "Everything stays on your device",
+        "body": "Your chosen apps are never sent to the server. You can remove the permission any time in Settings > Screen Time."
+      },
+      "apps": {
+        "title": "Choose the apps",
+        "body": "Pick the apps or categories to lock. Don't pick Salah: it must stay open so you can mark the prayer."
+      },
+      "mode": {
+        "title": "When should it lock",
+        "body": "When the time begins: locks with the adhan. Before the time ends: so you don't leave the prayer to the last minute, it locks the time you set before the prayer time ends."
+      },
+      "duration": {
+        "title": "How long",
+        "body": "Pick a preset or write your own minutes with Custom. The lock never runs into the next prayer time."
+      },
+      "prayers": {
+        "title": "Which prayers",
+        "body": "Choose the prayers to lock. Marking a prayer lifts its lock."
       }
     }
   },
@@ -2035,5 +2073,15 @@
       "next": "Next",
       "previous": "Previous"
     }
+  },
+  "prayerLockCard": {
+    "empty": "Lock the apps you choose during prayer time",
+    "noApps": "Choose the apps to lock",
+    "lockedNow": "Locked now: {{prayer}}",
+    "lockedHint": "Unlocks when you mark the prayer",
+    "start": "{{count}} min when the time begins",
+    "untilEnd": "From the start of the time until it ends",
+    "end": "{{count}} min before the time ends",
+    "setup": "Set up prayer lock"
   }
 }

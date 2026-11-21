@@ -90,7 +90,8 @@ struct HomeView: View {
       let tour: Tour? =
         !store.isDone("home") ? .home(signedIn: signedIn)
         : signedIn && !store.isDone(Tour.homeAccount.id) ? .homeAccount
-        : !store.isDone(Tour.homeNew.id) ? .homeNew : nil
+        : !store.isDone(Tour.homeNew.id) ? .homeNew
+        : HomeLayoutStore.shared.isVisible(.prayerLock) && !store.isDone(Tour.homePrayerLock.id) ? .homePrayerLock : nil
       guard let tour else { return }
       await store.startIfNeeded(tour) {
         let anchors = TourStore.shared.anchors
@@ -249,6 +250,12 @@ struct HomeView: View {
       if KazaStore.shared.available { KazaCard { push(.kaza) }.tourAnchor("home.kaza") }
     case .dhikr:
       if AppControlStore.shared.isOn("dhikr") { DhikrCard { push(.dhikr) }.tourAnchor("home.dhikr") }
+    case .prayerLock:
+      #if PRAYER_LOCK
+      PrayerLockCard { push(.prayerLock) }.tourAnchor("home.prayerLock")
+      #else
+      EmptyView()
+      #endif
     }
   }
 

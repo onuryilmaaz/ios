@@ -38,7 +38,7 @@ struct Tour: Sendable {
       .init(anchor: "home.times", icon: "timer-outline"),
       .init(anchor: "home.tracker", icon: "checkmark-done-outline"),
       .init(anchor: "home.alarms", icon: "alarm-outline"),
-      dhikrStep, kazaStep,
+      prayerLockStep, dhikrStep, kazaStep,
     ]
     let tail: [Step] = [
       layoutStep,
@@ -47,11 +47,12 @@ struct Tour: Sendable {
       .init(anchor: tabBarAnchor, icon: "apps-outline", key: "home.tabs"),
     ]
     return signedIn
-      ? Tour(id: "home", steps: base + homeAccount.steps + tail, covers: [homeAccount.id, homeNew.id])
-      : Tour(id: "home", steps: base + tail, covers: [homeNew.id])
+      ? Tour(id: "home", steps: base + homeAccount.steps + tail, covers: [homeAccount.id, homeNew.id, homePrayerLock.id])
+      : Tour(id: "home", steps: base + tail, covers: [homeNew.id, homePrayerLock.id])
   }
 
   private static let dhikrStep = Step(anchor: "home.dhikr", icon: "finger-print-outline", scroll: true)
+  private static let prayerLockStep = Step(anchor: "home.prayerLock", icon: "lock-closed-outline", scroll: true)
   private static let kazaStep = Step(anchor: "home.kaza", icon: "hourglass-outline", scroll: true)
   private static let circlesStep = Step(anchor: "home.circles", icon: "people-outline", scroll: true)
   private static let layoutStep = Step(anchor: "home.layout", icon: "options-outline", scroll: true)
@@ -65,6 +66,24 @@ struct Tour: Sendable {
 
   /// Ana sayfa turunu önceki sürümde görmüş kullanıcıya yeni kartlar.
   static let homeNew = Tour(id: "homeNew", steps: [dhikrStep, kazaStep, circlesStep, layoutStep])
+
+  /// Önceki ana sayfa turlarını görmüş kullanıcıya: vakit kilidi kartı (yalnız iOS).
+  static let homePrayerLock = Tour(id: "homePrayerLock", steps: [prayerLockStep])
+
+  /// Vakit kilidi ilk açıldığında: ne yapar, nasıl açılır, gizlilik.
+  static let prayerLock = Tour(id: "prayerLock", steps: [
+    .init(anchor: "prayerLock.intro", icon: "lock-closed-outline"),
+    .init(anchor: "prayerLock.enable", icon: "toggle-outline"),
+    .init(anchor: "prayerLock.info", icon: "shield-checkmark-outline", scroll: true),
+  ])
+
+  /// Vakit kilidi açılınca: uygulama seçimi, kip, süre, vakitler.
+  static let prayerLockSetup = Tour(id: "prayerLockSetup", steps: [
+    .init(anchor: "prayerLock.apps", icon: "apps-outline"),
+    .init(anchor: "prayerLock.mode", icon: "time-outline", scroll: true),
+    .init(anchor: "prayerLock.duration", icon: "hourglass-outline", scroll: true),
+    .init(anchor: "prayerLock.prayers", icon: "checkmark-done-outline", scroll: true),
+  ])
 
   static let quran = Tour(id: "quran", steps: [
     .init(anchor: "quran.search", icon: "search-outline"),
@@ -143,7 +162,7 @@ struct Tour: Sendable {
   ])
 
   static let allIds = ["home", "homeAccount", "homeNew", "quran", "quranNew", "tracker", "trackerNew", "assistant", "mushaf", "mushafNew",
-    "assistantChat", "alarms", "dhikr", "kaza", "hifz"]
+    "assistantChat", "alarms", "dhikr", "kaza", "hifz", "homePrayerLock", "prayerLock", "prayerLockSetup"]
   static let tabBarAnchor = "tabBar"
 }
 
