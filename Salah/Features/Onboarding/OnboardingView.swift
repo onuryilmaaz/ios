@@ -34,27 +34,30 @@ struct OnboardingView: View {
     let id: String
     let title: String
     let description: String
-    let accent: Color
-    let accent2: Color
+    /// Lottie sahnesi: `Shared/mobile/assets/lottie/onboarding_<scene>.json`.
+    let scene: String
     var kind = Kind.info
   }
 
-  private static let green = Color(hex: 0x1f7356)
-  private static let gold = Color(hex: 0xc48f2b)
-  private static let slides: [Slide] = [
-    .init(id: "1", title: "onboarding.s1.title", description: "onboarding.s1.desc", accent: green, accent2: green),
-    .init(id: "2", title: "onboarding.s2.title", description: "onboarding.s2.desc", accent: gold, accent2: Color(hex: 0xd97706)),
-    .init(id: "3", title: "onboarding.s3.title", description: "onboarding.s3.desc", accent: green, accent2: Color(hex: 0x4f46e5)),
-    .init(id: "4", title: "onboarding.s4.title", description: "onboarding.s4.desc", accent: gold, accent2: Color(hex: 0x059669)),
-    .init(id: "5", title: "onboarding.s5.title", description: "onboarding.s5.desc", accent: green, accent2: Color(hex: 0x0284c7)),
-    .init(id: "8", title: "onboarding.s6.title", description: "onboarding.s6.desc", accent: gold, accent2: Color(hex: 0xdb2777)),
-    .init(
-      id: "9", title: "onboarding.location.title", description: "onboarding.location.desc", accent: green, accent2: Color(hex: 0x0284c7),
-      kind: .location),
-    .init(
-      id: "10", title: "onboarding.notifications.title", description: "onboarding.notifications.desc", accent: gold,
-      accent2: Color(hex: 0x9333ea), kind: .notifications),
-  ]
+  private static let slides: [Slide] = {
+    var list: [Slide] = [
+      .init(id: "welcome", title: "onboarding.s1.title", description: "onboarding.s1.desc", scene: "welcome"),
+      .init(id: "times", title: "onboarding.times.title", description: "onboarding.times.desc", scene: "times"),
+      .init(id: "quran", title: "onboarding.quran.title", description: "onboarding.quran.desc", scene: "quran"),
+      .init(id: "tracker", title: "onboarding.tracker.title", description: "onboarding.tracker.desc", scene: "tracker"),
+      .init(id: "tools", title: "onboarding.tools.title", description: "onboarding.tools.desc", scene: "tools"),
+    ]
+    #if PRAYER_LOCK
+    // Yalnız iOS; panelden kapatıldıysa (önbellekteki ayar) gösterilmez.
+    if AppControlStore.shared.isOn("prayer_lock") {
+      list.append(.init(id: "prayerLock", title: "onboarding.prayerLock.title", description: "onboarding.prayerLock.desc", scene: "prayerLock"))
+    }
+    #endif
+    list.append(.init(id: "location", title: "onboarding.location.title", description: "onboarding.location.desc", scene: "location", kind: .location))
+    list.append(
+      .init(id: "notifications", title: "onboarding.notifications.title", description: "onboarding.notifications.desc", scene: "notifications", kind: .notifications))
+    return list
+  }()
 
   @State private var index: Int? = {
     #if DEBUG
@@ -73,29 +76,13 @@ struct OnboardingView: View {
   private var alreadyGranted: Bool { isPermission && granted.contains(slide.kind) }
 
   var body: some View {
-    let dark = tokens.isDark
     GeometryReader { geo in
       let width = geo.size.width
-      let progress = CGFloat(current) / CGFloat(Self.slides.count - 1)
       ZStack {
-        (dark ? Color(hex: 0x131b17) : Color(hex: 0xf5f7f5)).ignoresSafeArea()
-
-        // Paralaks küreler
-        Circle()
-          .fill(Color(red: 20 / 255, green: 184 / 255, blue: 166 / 255).opacity(0.07))
-          .frame(width: width * 0.95, height: width * 0.95)
-          .position(x: width * 1.3 - width * 0.475, y: -geo.size.height * 0.16 + width * 0.475)
-          .offset(x: -160 * progress)
-          .ignoresSafeArea()
-        Circle()
-          .fill(Color(red: 99 / 255, green: 102 / 255, blue: 241 / 255).opacity(dark ? 0.08 : 0.06))
-          .frame(width: width * 0.8, height: width * 0.8)
-          .position(x: -width * 0.35 + width * 0.4, y: geo.size.height * 1.1 - width * 0.4)
-          .offset(x: 140 * progress)
-          .ignoresSafeArea()
+        tokens.canvas.ignoresSafeArea()
 
         VStack(spacing: 0) {
-          pager(width: width)
+          pager(width: width, height: geo.size.height)
           controls
         }
 
@@ -105,12 +92,12 @@ struct OnboardingView: View {
             skipIntro()
           } label: {
             Text(t("onboarding.skip"))
-              .font(.system(size: 13, weight: .bold))
-              .foregroundStyle(dark ? Forest.s300 : Forest.s500)
-              .padding(.horizontal, 16)
-              .padding(.vertical, 6)
-              .background(dark ? Color.white.opacity(0.1) : Color.black.opacity(0.05), in: .capsule)
-              .overlay(Capsule().stroke(dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1), lineWidth: 1))
+              .font(.system(size: 13, weight: .semibold))
+              .foregroundStyle(tokens.textSecondary)
+              .padding(.horizontal, 14)
+              .padding(.vertical, 7)
+              .background(tokens.surface, in: .capsule)
+              .overlay(Capsule().stroke(tokens.line, lineWidth: 1))
           }
           .buttonStyle(PressableStyle())
           .accessibilityLabel(t("onboarding.skipIntro"))
@@ -125,12 +112,12 @@ struct OnboardingView: View {
     .onAppear { UsageStore.shared.record("onboarding.start") }
   }
 
-  private func pager(width: CGFloat) -> some View {
+  private func pager(width: CGFloat, height: CGFloat) -> some View {
     ScrollViewReader { proxy in
     ScrollView(.horizontal) {
       LazyHStack(spacing: 0) {
         ForEach(Array(Self.slides.enumerated()), id: \.offset) { i, s in
-          page(s)
+          page(s, active: i == current, art: min(width - 64, height * 0.36, 300))
             .frame(width: width)
             .id(i)
         }
@@ -147,34 +134,33 @@ struct OnboardingView: View {
     }
   }
 
-  private func page(_ s: Slide) -> some View {
-    let dark = tokens.isDark
-    return VStack(spacing: 0) {
-      OnboardingArt(scene: s.id, accent: s.accent, accent2: s.accent2, isDark: dark)
+  private func page(_ s: Slide, active: Bool, art: CGFloat) -> some View {
+    VStack(spacing: 0) {
+      OnboardingAnimation(scene: s.scene, active: active)
+        .frame(width: art, height: art)
         .scrollTransition(axis: .horizontal) { content, phase in
           content
             .opacity(1 - abs(phase.value))
-            .scaleEffect(1 - 0.4 * abs(phase.value))
-            .offset(x: phase.value * 70)
+            .scaleEffect(1 - 0.25 * abs(phase.value))
+            .offset(x: phase.value * 60)
         }
-        .padding(.bottom, 44)
+        .padding(.bottom, 36)
       Text(t(s.title))
-        .font(.system(size: 30, weight: .black))
-        .tracking(-0.5)
-        .foregroundStyle(dark ? Color(hex: 0xf5f7f5) : Color(hex: 0x222d28))
+        .font(.system(size: 28, weight: .bold))
+        .foregroundStyle(tokens.textPrimary)
         .multilineTextAlignment(.center)
-        .padding(.bottom, 16)
+        .padding(.bottom, 12)
         .scrollTransition(axis: .horizontal) { content, phase in
-          content.opacity(1 - abs(phase.value)).offset(y: 40 * abs(phase.value))
+          content.opacity(1 - abs(phase.value)).offset(y: 30 * abs(phase.value))
         }
       Text(t(s.description))
-        .font(.system(size: 15.5))
-        .lineSpacing(25 - 15.5 * 1.2)
-        .foregroundStyle(dark ? Color(red: 241 / 255, green: 245 / 255, blue: 249 / 255).opacity(0.58) : Color(hex: 0x6a766f))
+        .font(.system(size: 15))
+        .lineSpacing(5)
+        .foregroundStyle(tokens.textSecondary)
         .multilineTextAlignment(.center)
-        .frame(maxWidth: 320)
+        .frame(maxWidth: 340)
         .scrollTransition(axis: .horizontal) { content, phase in
-          content.opacity(1 - abs(phase.value)).offset(y: 64 * abs(phase.value))
+          content.opacity(1 - abs(phase.value)).offset(y: 48 * abs(phase.value))
         }
     }
     .padding(.horizontal, 32)
@@ -196,10 +182,9 @@ struct OnboardingView: View {
           Button {
             withAnimation { index = i }
           } label: {
-            RoundedRectangle(cornerRadius: 4)
-              .fill(slide.accent)
-              .frame(width: i == current ? 28 : 7, height: 7)
-              .opacity(i == current ? 1 : 0.28)
+            Capsule()
+              .fill(i == current ? tokens.accent : tokens.line)
+              .frame(width: i == current ? 24 : 7, height: 7)
               .padding(.vertical, 14)
               .contentShape(.rect)
           }
@@ -213,18 +198,13 @@ struct OnboardingView: View {
       Button(action: next) {
         HStack(spacing: 8) {
           Text(ctaLabel)
-            .font(.system(size: 16.5, weight: .black))
-            .tracking(0.3)
-          Ionicon(ctaIcon, size: 20, color: .white)
+            .font(.system(size: 16, weight: .semibold))
+          Ionicon(ctaIcon, size: 19, color: tokens.onAccent)
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(tokens.onAccent)
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 17)
-        .background(
-          LinearGradient(colors: [slide.accent, slide.accent2], startPoint: .topLeading, endPoint: .bottomTrailing),
-          in: .rect(cornerRadius: 22)
-        )
-        .shadow(color: slide.accent.opacity(0.45), radius: 9, y: 10)
+        .padding(.vertical, 16)
+        .background(tokens.accent, in: .capsule)
         .opacity(busy ? 0.7 : 1)
       }
       .buttonStyle(PressableStyle(pressedOpacity: 0.9))
@@ -238,8 +218,8 @@ struct OnboardingView: View {
           goNext()
         } label: {
           Text(t("onboarding.skipForNow"))
-            .font(.system(size: 13, weight: .bold))
-            .foregroundStyle(tokens.isDark ? Forest.s500 : Forest.s400)
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(tokens.textSecondary)
             .padding(.horizontal, 16)
             .padding(.vertical, 6)
         }

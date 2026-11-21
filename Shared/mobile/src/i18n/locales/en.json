@@ -844,31 +844,31 @@
       "desc": "Designed to make your daily worship easier and enrich your spiritual life.",
       "title": "Welcome to Salah"
     },
-    "s2": {
-      "desc": "Accurate prayer times for your location. Never miss a prayer with adhan notifications.",
-      "title": "Prayer Times"
-    },
-    "s3": {
-      "desc": "Find the qibla direction to the Kaaba from anywhere with a precise compass.",
-      "title": "Qibla Finder"
-    },
-    "s4": {
-      "desc": "All surahs with translations and audio recitation. Save your place and continue anytime.",
-      "title": "The Holy Qur'an"
-    },
-    "s5": {
-      "desc": "Log prayers, Qur'an, voluntary prayers, fasting, charity, dua and memorization day by day.",
-      "title": "Worship Tracker"
-    },
-    "s6": {
-      "desc": "Grow your streak by praying regularly. Earn badges and see your spiritual progress.",
-      "title": "Streaks & Badges"
-    },
     "skip": "Skip",
     "skipForNow": "Skip for now",
     "skipIntro": "Skip intro",
     "slideA11y": "Page {{n}} of {{total}}",
-    "start": "Get Started"
+    "start": "Get Started",
+    "times": {
+      "title": "Prayer Times and Widgets",
+      "desc": "Accurate prayer times for your location and adhan notifications. See them without opening the app with widgets and the Dynamic Island."
+    },
+    "quran": {
+      "title": "Quran and Memorization",
+      "desc": "The Mushaf, translations and recitation. Your memorization plan brings verses back when it's time to review."
+    },
+    "tracker": {
+      "title": "Worship and Streaks",
+      "desc": "Log your prayers, Quran, fasting, charity and more. Pray regularly to grow your streak and earn badges."
+    },
+    "tools": {
+      "title": "Qibla, Dhikr and Qada",
+      "desc": "Find the qibla with the compass, count your dhikr with the counter and track your qada prayers one by one."
+    },
+    "prayerLock": {
+      "title": "Prayer Lock",
+      "desc": "The apps you choose are locked during prayer time. Pray, mark it, and the lock lifts."
+    }
   },
   "ozelGun": {
     "end": "End",

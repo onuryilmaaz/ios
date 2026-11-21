@@ -844,31 +844,31 @@
       "desc": "Günlük ibadetlerinizi kolaylaştırmak, manevi hayatınızı zenginleştirmek için tasarlandı.",
       "title": "Salah'a Hoş Geldiniz"
     },
-    "s2": {
-      "desc": "Bulunduğunuz konuma göre hassas namaz vakitleri. Ezan bildirimleri ile hiçbir vakti kaçırmayın.",
-      "title": "Namaz Vakitleri"
-    },
-    "s3": {
-      "desc": "Dünyanın her yerinden Kabe'ye doğru kıble yönünü hassas pusula ile anında bulun.",
-      "title": "Kıble Bulucu"
-    },
-    "s4": {
-      "desc": "Tüm sureler, Türkçe mealler ve sesli okuma. Kaldığınız sayfayı kaydedin, her an devam edin.",
-      "title": "Kur'an-ı Kerim"
-    },
-    "s5": {
-      "desc": "Namaz, Kur'an, nafile, oruç, sadaka, dua ve ezber ibadetlerinizi kaydedin ve gün gün takip edin.",
-      "title": "İbadet Takibi"
-    },
-    "s6": {
-      "desc": "Namazlarınızı düzenli kılarak serinizi büyütün. Rozetler kazanarak manevi ilerlemenizi görün.",
-      "title": "Seri & Rozetler"
-    },
     "skip": "Geç",
     "skipForNow": "Şimdilik atla",
     "skipIntro": "Tanıtımı geç",
     "slideA11y": "Sayfa {{n}} / {{total}}",
-    "start": "Başla"
+    "start": "Başla",
+    "times": {
+      "title": "Vakitler ve Widget'lar",
+      "desc": "Konumunuza göre namaz vakitleri ve ezan bildirimleri. Widget'lar ve Dinamik Ada ile uygulamayı açmadan görün."
+    },
+    "quran": {
+      "title": "Kur'an ve Ezber",
+      "desc": "Mushaf, meal ve sesli okuma. Ezber planınızla ayetleri tekrar zamanı gelince yeniden çalışın."
+    },
+    "tracker": {
+      "title": "İbadet ve Seri",
+      "desc": "Namaz, Kur'an, oruç, sadaka ve diğer ibadetlerinizi kaydedin. Düzenli kıldıkça seriniz büyür, rozet kazanırsınız."
+    },
+    "tools": {
+      "title": "Kıble, Zikirmatik, Kaza",
+      "desc": "Kıbleyi pusulayla bulun, tesbihatı zikirmatikle çekin, kaza namazlarınızı vakit vakit takip edin."
+    },
+    "prayerLock": {
+      "title": "Vakit Kilidi",
+      "desc": "Namaz vaktinde seçtiğiniz uygulamalar kilitlenir. Namazınızı kılıp işaretleyince kilit açılır."
+    }
   },
   "ozelGun": {
     "end": "Bitir",

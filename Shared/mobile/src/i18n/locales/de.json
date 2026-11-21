@@ -856,31 +856,31 @@
       "desc": "Gemacht, um deinen täglichen Gottesdienst zu erleichtern und dein spirituelles Leben zu bereichern.",
       "title": "Willkommen bei Salah"
     },
-    "s2": {
-      "desc": "Genaue Gebetszeiten für deinen Standort. Verpasse kein Gebet dank Adhan-Benachrichtigungen.",
-      "title": "Gebetszeiten"
-    },
-    "s3": {
-      "desc": "Finde von überall die Qibla-Richtung zur Kaaba mit einem präzisen Kompass.",
-      "title": "Qibla-Finder"
-    },
-    "s4": {
-      "desc": "Alle Suren mit Übersetzungen und Rezitation. Speichere deine Stelle und lies jederzeit weiter.",
-      "title": "Der edle Koran"
-    },
-    "s5": {
-      "desc": "Halte Gebete, Koran, freiwillige Gebete, Fasten, Spenden, Dua und Auswendiglernen Tag für Tag fest.",
-      "title": "Ibadat-Tracker"
-    },
-    "s6": {
-      "desc": "Baue deine Serie mit regelmäßigem Gebet aus. Verdiene Abzeichen und sieh deinen spirituellen Fortschritt.",
-      "title": "Serien und Abzeichen"
-    },
     "skip": "Überspringen",
     "skipForNow": "Vorerst überspringen",
     "skipIntro": "Einführung überspringen",
     "slideA11y": "Seite {{n}} von {{total}}",
-    "start": "Los geht's"
+    "start": "Los geht's",
+    "times": {
+      "title": "Gebetszeiten und Widgets",
+      "desc": "Genaue Gebetszeiten für deinen Standort und Adhan-Benachrichtigungen. Mit Widgets und der Dynamic Island siehst du sie, ohne die App zu öffnen."
+    },
+    "quran": {
+      "title": "Koran und Auswendiglernen",
+      "desc": "Mushaf, Übersetzung und Rezitation. Dein Lernplan bringt Verse zurück, wenn es Zeit zum Wiederholen ist."
+    },
+    "tracker": {
+      "title": "Ibadah und Serie",
+      "desc": "Erfasse Gebete, Koran, Fasten, Spenden und mehr. Betest du regelmäßig, wächst deine Serie und du verdienst Abzeichen."
+    },
+    "tools": {
+      "title": "Qibla, Dhikr und Qada",
+      "desc": "Finde die Qibla mit dem Kompass, zähle Dhikr mit dem Zähler und verfolge deine Qada-Gebete einzeln."
+    },
+    "prayerLock": {
+      "title": "Gebetssperre",
+      "desc": "Während der Gebetszeit werden die ausgewählten Apps gesperrt. Bete, markiere es, und die Sperre wird aufgehoben."
+    }
   },
   "ozelGun": {
     "end": "Beenden",

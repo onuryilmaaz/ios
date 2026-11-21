@@ -41,6 +41,7 @@
 		2040FC146A70A17D95E8B0FB /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FFF7008061E85B82CE67EA /* EmptyState.swift */; };
 		20F22BCECA7F31AA3B24C2D7 /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058B5FBC0985AAE76DE7B97B /* SharedData.swift */; };
 		20F2F60512244D4D48E2A593 /* notif_ezan_yatsi.caf in Resources */ = {isa = PBXBuildFile; fileRef = A90613AF3F4DE03DF00606DF /* notif_ezan_yatsi.caf */; };
+		21AF8FD84864AE70F8CCC908 /* lottie in Resources */ = {isa = PBXBuildFile; fileRef = B918C10AE31E080E9F809BAB /* lottie */; };
 		21CD53D54F1797434C0E01D7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0F6B8C584228EF943412E1D8 /* PrivacyInfo.xcprivacy */; };
 		23C318E4789F9713E5F0F28B /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341AB5C0399FA0E9318246BB /* StatusBar.swift */; };
 		246049C8EABF8ABE07B8C00B /* YearSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAB7059ED05D044162B1E4E /* YearSummaryView.swift */; };
@@ -73,6 +74,7 @@
 		38117289E68B64BD6646D893 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF764652662DDC95ABC0B78 /* NotificationSettings.swift */; };
 		382A4628A56013B55911C231 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A565E1D24819DD81C2748 /* Haptics.swift */; };
 		3891AAB8D3DDBE27A9DAA8C1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C70ECCA6B653D08FC629B9 /* TokenStore.swift */; };
+		38CA7DA28A617BF5F976A8EC /* OnboardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */; };
 		3936FDC06A59E1061997584C /* NotificationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDDE5FF7F67D3A12F3214A /* NotificationViews.swift */; };
 		394D5DE07AB8487817FD720C /* BackgroundRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */; };
 		39B15143E39D6BE5B73EF8FE /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406F2D9E60D30E62307EA7C /* SVGPath.swift */; };
@@ -228,7 +230,6 @@
 		BC03D825BC9B580878798195 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D26D845F6DFA0938D28DBB /* AuthStore.swift */; };
 		BC065C41FBDCD883D48886A6 /* TrackerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70468BEA1F7AC82EBB41FA7F /* TrackerModels.swift */; };
 		BC48C533917CDC97CA6865EF /* AppColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */; };
-		BC84B399E3ECA2EBEEEFE2A0 /* OnboardingArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */; };
 		BCACC2D05ACC6A73A37EBD68 /* InspirationWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA3A50A100C125289E3F965 /* InspirationWidget.swift */; };
 		BD55F1163A67A1337ECFEF92 /* RamadanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CD747D6ADF333ACEB515B8 /* RamadanStore.swift */; };
 		BECA1FD7D05B227AB3548839 /* tone_beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1E6277DB6750B44092F98739 /* tone_beep.caf */; };
@@ -259,6 +260,7 @@
 		D50B93C00B965C62938460CB /* HijriCalendarPreview.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A6E8052CFB84E297FAB7A42 /* HijriCalendarPreview.json */; };
 		D577AD5CCC3BC9EEE70C3706 /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167886099A6023671A224C9 /* WidgetBridge.swift */; };
 		D7B7D09A0560882F85F49E59 /* MarkdownText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9AAEC5C55C5FB03473E6A6 /* MarkdownText.swift */; };
+		D7C8FF27CD78F79E98F0DFD2 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 169909B0F3D7F6A7FE707D2A /* Lottie */; };
 		DA56611C85C75EF6FFE74C5C /* HutbeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F38CCDBD74B3D7EB657A67 /* HutbeParser.swift */; };
 		DBBA4336E96227BAE6200818 /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC94B518A1156C80D459CB /* AlarmTests.swift */; };
 		DD11A9AE0D334B622B9F8C07 /* DayRingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69114D82EBC55C58DE1C8BA6 /* DayRingWidget.swift */; };
@@ -480,6 +482,7 @@
 		6371FBCE01469BC6D5D22E02 /* QiblaFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaFinderView.swift; sourceTree = "<group>"; };
 		63D7790DD56F776C5E34182F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63DFA81F4FA810C2A328C7EB /* StreakCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCirclesView.swift; sourceTree = "<group>"; };
+		648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAnimation.swift; sourceTree = "<group>"; };
 		65E87C28910AB9BC3FEB8065 /* SharedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedColors.swift; sourceTree = "<group>"; };
 		6629D85A546A293A0EECD0B2 /* notif_ezan_imsak.caf */ = {isa = PBXFileReference; path = notif_ezan_imsak.caf; sourceTree = "<group>"; };
 		66DE74B91097BE414B8C4A38 /* OfflineQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueue.swift; sourceTree = "<group>"; };
@@ -487,7 +490,6 @@
 		689267F984E887C48891363B /* MushafService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafService.swift; sourceTree = "<group>"; };
 		6900BBAB93F57F44818D67C1 /* QuranAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranAudioPlayer.swift; sourceTree = "<group>"; };
 		69114D82EBC55C58DE1C8BA6 /* DayRingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayRingWidget.swift; sourceTree = "<group>"; };
-		6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingArt.swift; sourceTree = "<group>"; };
 		6AE83292F31DDD0D408C6118 /* AdminNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminNotificationsView.swift; sourceTree = "<group>"; };
 		6CE62BBDA0174884EAFBA22A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		6D808BC502F0F1358B83456B /* DayPrayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPrayerList.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 		B6ABDDDCB2025479C3C1B3FD /* MushafListeningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafListeningTests.swift; sourceTree = "<group>"; };
 		B7617583F14F1A118C0A7046 /* PrayerLockShield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLockShield.entitlements; sourceTree = "<group>"; };
 		B78A32397D98B478DBDE0CB4 /* HatimGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatimGroupsView.swift; sourceTree = "<group>"; };
+		B918C10AE31E080E9F809BAB /* lottie */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lottie; path = Shared/mobile/assets/lottie; sourceTree = SOURCE_ROOT; };
 		B927037E5D0775A9B66D8D66 /* PrayerCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCalc.swift; sourceTree = "<group>"; };
 		B9FF184D3180FD3AA11F9124 /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
 		BA49DC603E070229EF988A21 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
@@ -668,6 +671,17 @@
 		F9C2C1CE18F599E28173337A /* alarm_yatsi.caf */ = {isa = PBXFileReference; path = alarm_yatsi.caf; sourceTree = "<group>"; };
 		FE23B203682DEE0C823BCC1F /* StoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		641C186F81CB4575734E182D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C8FF27CD78F79E98F0DFD2 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0CA52DE2984EF1D0E3318BC8 /* Alarm */ = {
@@ -1213,7 +1227,7 @@
 		8930E2731855A665D56DC5AF /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				6AA0CAC4C54639AF373935BA /* OnboardingArt.swift */,
+				648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */,
 				355B4807BB3B87ED162CEB73 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -1444,6 +1458,7 @@
 			isa = PBXGroup;
 			children = (
 				446432CED1190A1EADF07150 /* audio */,
+				B918C10AE31E080E9F809BAB /* lottie */,
 				93B145CC6D07AFE7CD3BAD4D /* data */,
 				B66FC7FC250C564CA575D635 /* fonts */,
 				78C3C40E04B92616DC1144E3 /* sounds */,
@@ -1694,6 +1709,7 @@
 			buildPhases = (
 				4948570B1F6C22504611F6F9 /* Sources */,
 				BA9B253CA3126ECB7B8C440C /* Resources */,
+				641C186F81CB4575734E182D /* Frameworks */,
 				963721C7E2112C69C1136952 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -1706,6 +1722,7 @@
 			);
 			name = Salah;
 			packageProductDependencies = (
+				169909B0F3D7F6A7FE707D2A /* Lottie */,
 			);
 			productName = Salah;
 			productReference = 1A090191B2CF26A55B3E6D08 /* Salah.app */;
@@ -1752,6 +1769,9 @@
 			);
 			mainGroup = 3156B5A1C25ADFF79E3DCE77;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D3C03AA774B38B0AE9A32D6A /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CC006CE3826E35F4BBF02B9D /* Products */;
 			projectDirPath = "";
@@ -1821,6 +1841,7 @@
 				50C2D5A2CB6ED6CF904E1023 /* hadiths_v2.db in Resources */,
 				3A3478D73FCEEAF9E32CA8C5 /* legal.generated.json in Resources */,
 				A9A028424385120842ACD089 /* locales in Resources */,
+				21AF8FD84864AE70F8CCC908 /* lottie in Resources */,
 				056DF63188BE0C04B0FA3C11 /* mushaf-marks.generated.json in Resources */,
 				9895FD3B372CF0F4D156086B /* mushaf-pages.json in Resources */,
 				6EBCB5FA08793DD5C95AFE9C /* notif_ezan.caf in Resources */,
@@ -2019,7 +2040,7 @@
 				FD5225FDE6F6C710D8AC0D40 /* NotificationStore.swift in Sources */,
 				3936FDC06A59E1061997584C /* NotificationViews.swift in Sources */,
 				EFDC4CA7651CB250B4BBAFE1 /* OfflineQueue.swift in Sources */,
-				BC84B399E3ECA2EBEEEFE2A0 /* OnboardingArt.swift in Sources */,
+				38CA7DA28A617BF5F976A8EC /* OnboardingAnimation.swift in Sources */,
 				A440DC2D18F410DF1A21C999 /* OnboardingView.swift in Sources */,
 				10B4DD105C1A6D30C0823B0A /* Ornaments.swift in Sources */,
 				4D3D98418E7C691B8E2D41AF /* OverlayModal.swift in Sources */,
@@ -2659,6 +2680,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3C03AA774B38B0AE9A32D6A /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm";
+			requirement = {
+				kind = exactVersion;
+				version = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		169909B0F3D7F6A7FE707D2A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C03AA774B38B0AE9A32D6A /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A95D210DB698E4F7E3E7212 /* Project object */;
 }

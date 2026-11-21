@@ -6,6 +6,11 @@ name: Salah
 # Vakit kilidi (FamilyControls): Apple dağıtım onayı 2026-11-19'da geldi, 1.2.2'den beri her derlemede.
 include:
   - path: PrayerLock.yml
+packages:
+  # Onboarding animasyonları (scripts/gen-onboarding-lottie.py).
+  Lottie:
+    url: https://github.com/airbnb/lottie-spm
+    exactVersion: 4.5.2
 options:
   bundleIdPrefix: com.onur6541
   deploymentTarget:
@@ -67,6 +72,9 @@ targets:
       - path: Shared/mobile/assets/audio
         type: folder
         buildPhase: resources
+      - path: Shared/mobile/assets/lottie
+        type: folder
+        buildPhase: resources
       - path: Shared/mobile/assets/sounds/alarm_imsak.caf
         buildPhase: resources
       - path: Shared/mobile/assets/sounds/alarm_ogle.caf
@@ -99,6 +107,7 @@ targets:
       - path: Shared/mobile/src/services/__tests__/fixtures/mushaf-pages.json
         buildPhase: resources
     dependencies:
+      - package: Lottie
       - target: SalahNotificationContent
         embed: true
       - target: SalahWidgets
