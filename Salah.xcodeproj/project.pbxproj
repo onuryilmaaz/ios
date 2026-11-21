@@ -74,7 +74,6 @@
 		38117289E68B64BD6646D893 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF764652662DDC95ABC0B78 /* NotificationSettings.swift */; };
 		382A4628A56013B55911C231 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A565E1D24819DD81C2748 /* Haptics.swift */; };
 		3891AAB8D3DDBE27A9DAA8C1 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C70ECCA6B653D08FC629B9 /* TokenStore.swift */; };
-		38CA7DA28A617BF5F976A8EC /* OnboardingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */; };
 		3936FDC06A59E1061997584C /* NotificationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FDDE5FF7F67D3A12F3214A /* NotificationViews.swift */; };
 		394D5DE07AB8487817FD720C /* BackgroundRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C22F2A77B82904378A951 /* BackgroundRefresh.swift */; };
 		39B15143E39D6BE5B73EF8FE /* SVGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406F2D9E60D30E62307EA7C /* SVGPath.swift */; };
@@ -203,6 +202,7 @@
 		9F5751913E2DA8C255D03909 /* MushafWordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B045BE47D1A9236C7B982F /* MushafWordCard.swift */; };
 		9F578BA23F520D26D4553ACF /* CustomPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84563EC40DA058D8DEF072D /* CustomPalette.swift */; };
 		9FAB6761DB299AB07874A079 /* SalahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDC01270443ADA8787FCBF /* SalahApp.swift */; };
+		A2CB14AE7E355D52347B74F2 /* SceneAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2028B67341DBA3E7426C304 /* SceneAnimation.swift */; };
 		A2DFFB554A2041DC1C450A1B /* LocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C34D1C386A70AE5BB19958A /* LocalStore.swift */; };
 		A38F36C7A1C74025EFDF228A /* QuranDownloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = E475DBB0F960F5F51B7D0C43 /* QuranDownloads.swift */; };
 		A440DC2D18F410DF1A21C999 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355B4807BB3B87ED162CEB73 /* OnboardingView.swift */; };
@@ -482,7 +482,6 @@
 		6371FBCE01469BC6D5D22E02 /* QiblaFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaFinderView.swift; sourceTree = "<group>"; };
 		63D7790DD56F776C5E34182F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63DFA81F4FA810C2A328C7EB /* StreakCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCirclesView.swift; sourceTree = "<group>"; };
-		648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAnimation.swift; sourceTree = "<group>"; };
 		65E87C28910AB9BC3FEB8065 /* SharedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedColors.swift; sourceTree = "<group>"; };
 		6629D85A546A293A0EECD0B2 /* notif_ezan_imsak.caf */ = {isa = PBXFileReference; path = notif_ezan_imsak.caf; sourceTree = "<group>"; };
 		66DE74B91097BE414B8C4A38 /* OfflineQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueue.swift; sourceTree = "<group>"; };
@@ -646,6 +645,7 @@
 		E09E24BDC1E27314CE7F4D57 /* PrayerLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockView.swift; sourceTree = "<group>"; };
 		E0D5B0B88F90F655E9AEF871 /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		E1FA6D9A84871248597B484E /* AccountViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViews.swift; sourceTree = "<group>"; };
+		E2028B67341DBA3E7426C304 /* SceneAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneAnimation.swift; sourceTree = "<group>"; };
 		E2E34AC73DEA9E769C17A9A5 /* DuaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuaView.swift; sourceTree = "<group>"; };
 		E349A9338C465189ADAF2735 /* PrayerLockMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockMonitor.swift; sourceTree = "<group>"; };
 		E3E987422567A969490CA49A /* OzelGunStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunStore.swift; sourceTree = "<group>"; };
@@ -1009,6 +1009,7 @@
 				AFA479C240B4FFFFA2A07545 /* OverlayWindow.swift */,
 				773C7A646D310C89F0304373 /* ReadableLayout.swift */,
 				802FAF502E1C7872AC82354B /* RemoteImage.swift */,
+				E2028B67341DBA3E7426C304 /* SceneAnimation.swift */,
 				7DC1E0ED6B1B54C94FEB09A8 /* ShareCard.swift */,
 				5FF855CCC494A2D4271A4DE0 /* StandardHeader.swift */,
 				341AB5C0399FA0E9318246BB /* StatusBar.swift */,
@@ -1227,7 +1228,6 @@
 		8930E2731855A665D56DC5AF /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				648BBC9A5B41907A2B2C7002 /* OnboardingAnimation.swift */,
 				355B4807BB3B87ED162CEB73 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -2040,7 +2040,6 @@
 				FD5225FDE6F6C710D8AC0D40 /* NotificationStore.swift in Sources */,
 				3936FDC06A59E1061997584C /* NotificationViews.swift in Sources */,
 				EFDC4CA7651CB250B4BBAFE1 /* OfflineQueue.swift in Sources */,
-				38CA7DA28A617BF5F976A8EC /* OnboardingAnimation.swift in Sources */,
 				A440DC2D18F410DF1A21C999 /* OnboardingView.swift in Sources */,
 				10B4DD105C1A6D30C0823B0A /* Ornaments.swift in Sources */,
 				4D3D98418E7C691B8E2D41AF /* OverlayModal.swift in Sources */,
@@ -2088,6 +2087,7 @@
 				2554AF0DF5674DA30BB7FCD3 /* SalahAlarmMetadata.swift in Sources */,
 				9FAB6761DB299AB07874A079 /* SalahApp.swift in Sources */,
 				84B6455CB035F96FE3393101 /* SalahKeychain.swift in Sources */,
+				A2CB14AE7E355D52347B74F2 /* SceneAnimation.swift in Sources */,
 				6FDF22D2F0CAF6A505E8666B /* SettingsView.swift in Sources */,
 				9232EC550C3F627E18A06CCF /* ShareCard.swift in Sources */,
 				BF2E587F26BF46E726ADB309 /* ShareCards.swift in Sources */,

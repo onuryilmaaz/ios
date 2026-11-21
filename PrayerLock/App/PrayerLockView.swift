@@ -18,8 +18,13 @@ struct PrayerLockView: View {
       ScrollViewReader { proxy in
       ScrollView {
         VStack(alignment: .leading, spacing: 16) {
-          Text(t("prayerLock.intro")).font(.system(size: 15)).lineSpacing(3).foregroundStyle(tokens.textSecondary)
-            .tourAnchor("prayerLock.intro")
+          VStack(spacing: 8) {
+            SceneAnimation(scene: "prayerLock").frame(width: 170, height: 170)
+            Text(t("prayerLock.intro")).font(.system(size: 15)).lineSpacing(3).foregroundStyle(tokens.textSecondary)
+              .multilineTextAlignment(.center)
+          }
+          .frame(maxWidth: .infinity)
+          .tourAnchor("prayerLock.intro")
           toggleRow(store).tourAnchor("prayerLock.enable")
           if store.settings.enabled {
             appsRow(store).tourAnchor("prayerLock.apps")

@@ -62,7 +62,11 @@ struct HifzView: View {
         .tourAnchor("hifz.hero")
 
         if store.cards.isEmpty {
-          Text(t("hifz.empty")).font(.system(size: 14)).foregroundStyle(tokens.textSecondary)
+          VStack(spacing: 6) {
+            SceneAnimation(scene: "quran").frame(width: 150, height: 150)
+            Text(t("hifz.empty")).font(.system(size: 14)).foregroundStyle(tokens.textSecondary).multilineTextAlignment(.center)
+          }
+          .frame(maxWidth: .infinity)
         }
         let groups = Dictionary(grouping: store.cards, by: \.surah).sorted { $0.key < $1.key }
         if !groups.isEmpty {

@@ -136,7 +136,7 @@ struct OnboardingView: View {
 
   private func page(_ s: Slide, active: Bool, art: CGFloat) -> some View {
     VStack(spacing: 0) {
-      OnboardingAnimation(scene: s.scene, active: active)
+      SceneAnimation(scene: s.scene, active: active)
         .frame(width: art, height: art)
         .scrollTransition(axis: .horizontal) { content, phase in
           content

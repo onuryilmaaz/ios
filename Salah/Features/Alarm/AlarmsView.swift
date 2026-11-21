@@ -97,12 +97,8 @@ struct AlarmsView: View {
           .background(dark ? Accent.s900 : Accent.s800, in: .rect(cornerRadius: 21))
         } else {
           Card {
-            HStack(spacing: 10.5) {
-              Ionicon("alarm-outline", size: 20, color: tokens.accent)
-                .frame(width: 35, height: 35)
-                .background(dark ? Accent.s900 : Accent.s50, in: .circle)
-              Text(t("alarm.permission.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
-            }
+            SceneAnimation(scene: "notifications").frame(width: 140, height: 140).frame(maxWidth: .infinity)
+            Text(t("alarm.permission.title")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
             Text(t(store.auth == .denied ? "alarm.permission.denied" : "alarm.permission.message"))
               .font(.system(size: 15)).foregroundStyle(tokens.textSecondary).padding(.vertical, 12)
             AppButton(title: t(store.auth == .denied ? "alarm.permission.openSettings" : "alarm.permission.allow")) {
@@ -171,7 +167,7 @@ struct AlarmsView: View {
           SectionLabel(t("alarm.section.custom"))
           if s.custom.isEmpty {
             GroupedCard {
-              EmptyState(icon: "alarm-outline", title: t("alarm.custom.emptyTitle"), message: t("alarm.custom.emptyMessage")) {
+              EmptyState(icon: "alarm-outline", scene: "notifications", title: t("alarm.custom.emptyTitle"), message: t("alarm.custom.emptyMessage")) {
                 AppButton(title: t("alarm.custom.add")) { Task { await openDraft(nil) } }.fixedSize()
               }
             }

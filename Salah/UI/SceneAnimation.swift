@@ -1,11 +1,11 @@
 import Lottie
 import SwiftUI
 
-/// Onboarding sahnesi: kendi çizimimiz Lottie animasyonu (`scripts/gen-onboarding-lottie.py`). Sayfa açılınca giriş
+/// Sahne animasyonu (onboarding, boş durumlar, izin kartları): kendi çizimimiz Lottie animasyonu (`scripts/gen-onboarding-lottie.py`). Sayfa açılınca giriş
 /// (0-30. kare, öğeler sırayla belirir) bir kez oynar, sonra 30-150 döngüde; sayfadan çıkılıp dönülünce giriş yeniden oynar.
 /// Dolgu ve çizgiler rol adlarıyla (accent, deep, mid, soft, gold, paper) temadan boyanır; uygulama rengi
 /// ve koyu tema değişince animasyon da değişir. "Hareketi azalt" açıksa durağan kare gösterilir.
-struct OnboardingAnimation: View {
+struct SceneAnimation: View {
   @Environment(\.tokens) private var tokens
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
   let scene: String

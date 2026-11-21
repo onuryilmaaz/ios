@@ -4,16 +4,22 @@ import SwiftUI
 struct EmptyState<Action: View>: View {
   @Environment(\.tokens) private var tokens
   var icon = "document-outline"
+  /// Verilirse simge yerine sahne animasyonu (`SceneAnimation`).
+  var scene: String?
   let title: String
   var message: String?
   @ViewBuilder var action: Action
 
   var body: some View {
     VStack(spacing: 0) {
-      Ionicon(icon, size: 26, color: tokens.inkMuted)
-        .frame(width: 49, height: 49)
-        .background(tokens.fill, in: .circle)
-        .padding(.bottom, 14)
+      if let scene {
+        SceneAnimation(scene: scene).frame(width: 140, height: 140).padding(.bottom, 6)
+      } else {
+        Ionicon(icon, size: 26, color: tokens.inkMuted)
+          .frame(width: 49, height: 49)
+          .background(tokens.fill, in: .circle)
+          .padding(.bottom, 14)
+      }
       Text(title)
         .font(.system(size: 17, weight: .semibold))
         .foregroundStyle(tokens.textPrimary)
@@ -36,7 +42,7 @@ struct EmptyState<Action: View>: View {
 }
 
 extension EmptyState where Action == EmptyView {
-  init(icon: String = "document-outline", title: String, message: String? = nil) {
-    self.init(icon: icon, title: title, message: message) { EmptyView() }
+  init(icon: String = "document-outline", scene: String? = nil, title: String, message: String? = nil) {
+    self.init(icon: icon, scene: scene, title: title, message: message) { EmptyView() }
   }
 }

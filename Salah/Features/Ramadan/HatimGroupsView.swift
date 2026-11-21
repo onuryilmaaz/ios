@@ -61,6 +61,7 @@ struct HatimGroupsView: View {
       if groups.isEmpty {
         Card {
           VStack(alignment: .leading, spacing: 14) {
+            SceneAnimation(scene: "quran").frame(width: 140, height: 140).frame(maxWidth: .infinity)
             Text(t("hatimGroups.emptyTitle")).font(.system(size: 17, weight: .semibold)).foregroundStyle(tokens.textPrimary)
             ForEach(Array(["hatimGroups.how1", "hatimGroups.how2", "hatimGroups.how3"].enumerated()), id: \.offset) { index, key in
               HStack(alignment: .top, spacing: 12) {

@@ -175,8 +175,8 @@ struct LocationSelectionView: View {
 
   private func empty(_ text: String) -> some View {
     let dark = tokens.isDark
-    return VStack(spacing: 14) {
-      Ionicon("alert-circle-outline", size: 48, color: dark ? Color(hex: 0x4b5563) : Forest.s400)
+    return VStack(spacing: 6) {
+      SceneAnimation(scene: "location").frame(width: 140, height: 140)
       Text(text).foregroundStyle(dark ? Forest.s300 : Forest.s500).multilineTextAlignment(.center)
     }
     .frame(maxWidth: .infinity)
