@@ -358,6 +358,9 @@ enum DebugLaunch {
       case "adminNotifications": return .adminNotifications
       case "adminSelf": return .adminUser(AuthStore.shared.user?.id ?? "")
       case "alarms": return .alarms
+      #if PRAYER_LOCK
+      case "prayerLock": return .prayerLock
+      #endif
       default: return nil
       }
     #else

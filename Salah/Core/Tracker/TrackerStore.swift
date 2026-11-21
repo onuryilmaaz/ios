@@ -31,7 +31,15 @@ final class TrackerStore {
       todayLogs = env.state.todayLogs
       logsDate = env.state.logsDate
     }
-    ensureFreshToday()
+    // Dünden kalan kayıtlar burada yan etkisiz temizlenir: set() GoalsWidgetSync üzerinden
+    // TrackerStore.shared'i okur; `shared` henüz kurulurken bu kendi kendini bekleyip çöker
+    // (gün değişince ilk açılış). Widget'lar öne gelişte zaten yenilenir.
+    let today = localDateString()
+    if logsDate != today {
+      todayLogs = []
+      logsDate = today
+      persist()
+    }
   }
 
   /// Diskten gelen kayıtlar dünden kaldıysa temizler.
@@ -110,10 +118,14 @@ final class TrackerStore {
 
   private func isOffline(_ id: String) -> Bool { id.hasPrefix(Self.offlinePrefix) }
 
+  private func persist() {
+    LocalStore.encode(Envelope(state: Persisted(todayLogs: todayLogs, logsDate: logsDate)), for: Self.cacheKey)
+  }
+
   private func set(_ logs: [TrackerLog], date: String?) {
     todayLogs = logs
     logsDate = date
-    LocalStore.encode(Envelope(state: Persisted(todayLogs: logs, logsDate: date)), for: Self.cacheKey)
+    persist()
     GoalsWidgetSync.publish()
     // İbadet (Amel) widget'ı günün kayıtlarını gösterir.
     if AuthStore.shared.isAuthenticated {

@@ -151,6 +151,7 @@
 		7B3BFFFA41A3035865313CCF /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25474C18EC276429C04AFBEB /* JSONValue.swift */; };
 		7BC01AFE1816328B64BB0CD1 /* UthmanicHafs.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3764F4AE470045987AE09 /* UthmanicHafs.ttf */; };
 		7C32E89B2FCD884BA39BE33B /* MushafReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BA5547C03FB1B64B2FF2E0 /* MushafReaderView.swift */; };
+		7EA39D10DDA5C7F886238269 /* PrayerLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BAC1C525BA0B2B7C7665DB /* PrayerLockTests.swift */; };
 		7F12502CAC2F3C0614A36D2A /* PrayerLockMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E349A9338C465189ADAF2735 /* PrayerLockMonitor.swift */; };
 		7F3A351131E9B6619FB6A61D /* LocationWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */; };
 		7F5F0719C942EE27D482135E /* StorePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E10BC1F8302CD8A869F15D /* StorePreview.swift */; };
@@ -365,6 +366,7 @@
 		0153E5F6E154AC6C16849FAA /* PushStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushStore.swift; sourceTree = "<group>"; };
 		058B5FBC0985AAE76DE7B97B /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
 		0593F84D20019BD1E8326353 /* DhikrStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrStore.swift; sourceTree = "<group>"; };
+		05BAC1C525BA0B2B7C7665DB /* PrayerLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockTests.swift; sourceTree = "<group>"; };
 		06E598ACB7A64E51F4B44C2B /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorTests.swift; sourceTree = "<group>"; };
 		0D8CF70659F3FB12E63DBDAA /* HadithService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadithService.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				2ABBC1D6D420BE94A0C2B09A /* OzelGunTests.swift */,
 				87A6E849A47EAC16EB85CD19 /* PrayerCacheTests.swift */,
 				195F1DB5E602F9BC042A61C1 /* PrayerCalcTests.swift */,
+				05BAC1C525BA0B2B7C7665DB /* PrayerLockTests.swift */,
 				541A53265D84F76A3641D33F /* PrayerWindowTests.swift */,
 				C25B02E513E43C07608ED977 /* QiblaTests.swift */,
 				A25535720DD1766151E191D8 /* QuranDownloadsTests.swift */,
@@ -1892,6 +1895,7 @@
 				865D0F93CF02BAFA331056E4 /* OzelGunTests.swift in Sources */,
 				7203E0F0A35A4DAC33829C17 /* PrayerCacheTests.swift in Sources */,
 				4381F1CE51ABB5A0C8E5C771 /* PrayerCalcTests.swift in Sources */,
+				7EA39D10DDA5C7F886238269 /* PrayerLockTests.swift in Sources */,
 				E4A721D461B62AB90C68FCB9 /* PrayerWindowTests.swift in Sources */,
 				9DFB764C059E14D7021108C7 /* QiblaTests.swift in Sources */,
 				E1B8B39A46312503370EB200 /* QuranDownloadsTests.swift in Sources */,
@@ -2376,7 +2380,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = T9F78GA3Y9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2555,7 +2559,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = T9F78GA3Y9;
 				ENABLE_NS_ASSERTIONS = NO;

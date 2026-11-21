@@ -3,9 +3,8 @@ import Foundation
 import ManagedSettings
 
 /// Vakit kilidi: uygulama, izleme uzantısı (DeviceActivityMonitor) ve kilit ekranı uzantısı (ShieldConfiguration)
-/// aynı dosyayı derler. Durum App Group'ta. Kilit, vakit girince seçilen uygulamalara konur; namaz uygulamada
-/// "kıldım" olarak işaretlenince ya da süre dolunca kalkar.
-/// Yalnız `SALAH_PRAYER_LOCK=YES xcodegen generate` ile projeye girer (Apple dağıtım onayı bekleniyor).
+/// aynı dosyayı derler. Durum App Group'ta. Kilit vakit girince (ya da vaktin çıkmasına seçilen süre kala) seçilen
+/// uygulamalara konur; namaz uygulamada "kıldım" olarak işaretlenince ya da kilit aralığı bitince kalkar.
 nonisolated enum PrayerLockShared {
   static let suite = "group.com.onur6541.salah.shared"
   private static let selectionKey = "salah_prayer_lock_selection"
@@ -16,11 +15,53 @@ nonisolated enum PrayerLockShared {
   static let activityPrefix = "prayer."
 
   struct Settings: Codable, Equatable, Sendable {
+    enum Mode: String, Codable, Sendable {
+      /// Vakit girince başlar: `minutes` ya da (untilEnd) vakit çıkana kadar.
+      case start
+      /// Vaktin çıkmasına `beforeMinutes` kala başlar, vakit çıkınca biter.
+      case end
+    }
+
     var enabled = false
-    /// Kilit en fazla bu kadar sürer (vakit girdikten sonra).
+    var mode = Mode.start
+    /// `start`: kilit en fazla bu kadar sürer (vakit girdikten sonra).
     var minutes = 30
+    /// `start`: kilit vakit çıkana kadar sürer (`minutes` yok sayılır).
+    var untilEnd = false
+    /// `end`: vaktin çıkmasına bu kadar kala kilitlenir.
+    var beforeMinutes = 30
     /// Kilitlenecek vakitler.
     var prayers = ["fajr", "dhuhr", "asr", "maghrib", "isha"]
+
+    init() {}
+
+    /// Eski kayıtlarda yeni alanlar yok; eksik alan varsayılanını alır.
+    init(from decoder: Decoder) throws {
+      let c = try decoder.container(keyedBy: CodingKeys.self)
+      let d = Settings()
+      enabled = try c.decodeIfPresent(Bool.self, forKey: .enabled) ?? d.enabled
+      mode = (try? c.decodeIfPresent(Mode.self, forKey: .mode)) ?? d.mode
+      minutes = try c.decodeIfPresent(Int.self, forKey: .minutes) ?? d.minutes
+      untilEnd = try c.decodeIfPresent(Bool.self, forKey: .untilEnd) ?? d.untilEnd
+      beforeMinutes = try c.decodeIfPresent(Int.self, forKey: .beforeMinutes) ?? d.beforeMinutes
+      prayers = try c.decodeIfPresent([String].self, forKey: .prayers) ?? d.prayers
+    }
+  }
+
+  /// Elle girilen dakika sınırı.
+  static let minuteRange = 1...300
+
+  /// Bir vaktin kilit aralığı. `start`/`end`: vaktin girişi ve çıkışı (sonraki vakit). Aralık vaktin dışına taşmaz.
+  static func window(_ s: Settings, start: Date, end: Date) -> (from: Date, to: Date)? {
+    guard end > start else { return nil }
+    switch s.mode {
+    case .start:
+      let to = s.untilEnd ? end : min(end, start.addingTimeInterval(TimeInterval(s.minutes * 60)))
+      return to > start ? (start, to) : nil
+    case .end:
+      let from = max(start, end.addingTimeInterval(-TimeInterval(s.beforeMinutes * 60)))
+      return from < end ? (from, end) : nil
+    }
   }
 
   private static var defaults: UserDefaults? { UserDefaults(suiteName: suite) }

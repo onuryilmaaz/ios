@@ -1,11 +1,15 @@
 import FamilyControls
 import SwiftUI
 
-/// Ayarlar > Vakit kilidi: açma (Ekran Süresi izni), uygulama seçimi, süre ve vakitler.
+/// Ayarlar > Vakit kilidi: açma (Ekran Süresi izni), uygulama seçimi, kip (vakit girince / çıkmadan önce), süre ve vakitler.
 struct PrayerLockView: View {
   @Environment(\.tokens) private var tokens
   @State private var picking = false
   @State private var draft = FamilyActivitySelection()
+  /// "Özel" seçildi: dakika alanı açık (hazır seçeneklerden biri seçili olsa da).
+  @State private var customOpen = false
+  @State private var customText = ""
+  @FocusState private var customFocused: Bool
 
   var body: some View {
     let store = PrayerLockStore.shared
@@ -17,12 +21,14 @@ struct PrayerLockView: View {
           toggleRow(store)
           if store.settings.enabled {
             appsRow(store)
-            SectionLabel(t("prayerLock.duration"))
-            HStack(spacing: 7) {
-              ForEach(PrayerLockStore.minuteOptions, id: \.self) { m in
-                chip(t("prayerLock.minutes", ["count": m]), selected: store.settings.minutes == m) { store.setMinutes(m) }
-              }
+            SectionLabel(t("prayerLock.when"))
+            FlowLayout(spacing: 7) {
+              chip(t("prayerLock.modeStart"), selected: store.settings.mode == .start) { store.setMode(.start); customOpen = false }
+              chip(t("prayerLock.modeEnd"), selected: store.settings.mode == .end) { store.setMode(.end); customOpen = false }
             }
+            Text(t(store.settings.mode == .start ? "prayerLock.modeStartHint" : "prayerLock.modeEndHint"))
+              .font(.system(size: 13)).foregroundStyle(tokens.textSecondary).fixedSize(horizontal: false, vertical: true)
+            durationSection(store)
             SectionLabel(t("prayerLock.prayers"))
             FlowLayout(spacing: 7) {
               ForEach(PrayerLockStore.prayerIds, id: \.self) { id in
@@ -49,6 +55,7 @@ struct PrayerLockView: View {
       if !open { store.setSelection(draft) }
     }
     .onAppear { store.foreground() }
+    .onChange(of: store.settings.mode) { _, _ in customText = String(currentMinutes(store)) }
   }
 
   private func toggleRow(_ store: PrayerLockStore) -> some View {
@@ -70,6 +77,82 @@ struct PrayerLockView: View {
     .padding(14)
     .background(tokens.surface, in: .rect(cornerRadius: 21))
     .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+  }
+
+  /// Kipin dakikası: `start` kilit süresi, `end` vaktin çıkmasına kalan.
+  private func currentMinutes(_ store: PrayerLockStore) -> Int {
+    store.settings.mode == .start ? store.settings.minutes : store.settings.beforeMinutes
+  }
+
+  private func setCurrentMinutes(_ store: PrayerLockStore, _ value: Int) {
+    if store.settings.mode == .start { store.setMinutes(value) } else { store.setBeforeMinutes(value) }
+  }
+
+  @ViewBuilder
+  private func durationSection(_ store: PrayerLockStore) -> some View {
+    let start = store.settings.mode == .start
+    let untilEnd = start && store.settings.untilEnd
+    let value = currentMinutes(store)
+    let isCustom = !untilEnd && (customOpen || !PrayerLockStore.minuteOptions.contains(value))
+    SectionLabel(t(start ? "prayerLock.duration" : "prayerLock.before"))
+    FlowLayout(spacing: 7) {
+      ForEach(PrayerLockStore.minuteOptions, id: \.self) { m in
+        chip(t("prayerLock.minutes", ["count": m]), selected: !untilEnd && !isCustom && value == m) {
+          customOpen = false
+          customFocused = false
+          setCurrentMinutes(store, m)
+        }
+      }
+      if start {
+        chip(t("prayerLock.untilEnd"), selected: untilEnd) {
+          customOpen = false
+          customFocused = false
+          store.setUntilEnd()
+        }
+      }
+      chip(isCustom ? t("prayerLock.minutes", ["count": value]) : t("prayerLock.custom"), selected: isCustom) {
+        customOpen = true
+        customText = String(value)
+        if untilEnd { setCurrentMinutes(store, value) }
+        customFocused = true
+      }
+    }
+    if isCustom { customRow(store) }
+  }
+
+  private func customRow(_ store: PrayerLockStore) -> some View {
+    let range = PrayerLockShared.minuteRange
+    return VStack(alignment: .leading, spacing: 7) {
+      HStack(spacing: 10.5) {
+        Text(t("prayerLock.customLabel")).font(.system(size: 15, weight: .medium)).foregroundStyle(tokens.textPrimary)
+          .frame(maxWidth: .infinity, alignment: .leading)
+        TextField("", text: $customText)
+          .keyboardType(.numberPad)
+          .focused($customFocused)
+          .multilineTextAlignment(.trailing)
+          .font(.system(size: 17, weight: .semibold).monospacedDigit())
+          .foregroundStyle(tokens.textPrimary)
+          .frame(width: 64)
+          .onChange(of: customText) { _, text in
+            let digits = String(text.filter(\.isNumber).prefix(3))
+            if digits != text { customText = digits; return }
+            if let v = Int(digits), range.contains(v), v != currentMinutes(store) { setCurrentMinutes(store, v) }
+          }
+        Text(t("prayerLock.minuteUnit")).font(.system(size: 15)).foregroundStyle(tokens.textSecondary)
+      }
+      .padding(.horizontal, 14).padding(.vertical, 10.5)
+      .background(tokens.surface, in: .rect(cornerRadius: 21))
+      .overlay(RoundedRectangle(cornerRadius: 21).stroke(tokens.line, lineWidth: 1))
+      Text(t("prayerLock.customRange", ["min": range.lowerBound, "max": range.upperBound]))
+        .font(.system(size: 13)).foregroundStyle(invalidCustom ? tokens.danger : tokens.textSecondary)
+        .padding(.leading, 10.5)
+    }
+    .onAppear { if customText.isEmpty { customText = String(currentMinutes(store)) } }
+  }
+
+  private var invalidCustom: Bool {
+    guard let v = Int(customText) else { return true }
+    return !PrayerLockShared.minuteRange.contains(v)
   }
 
   private func appsRow(_ store: PrayerLockStore) -> some View {
