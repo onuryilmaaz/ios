@@ -1,4 +1,0 @@
-/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
-"NSLocationWhenInUseUsageDescription" = "Vaša lokacija se koristi za prikaz vaktova namaza i smjera kible.";
-"NSAlarmKitUsageDescription" = "Pristup alarmima omogućava da alarmi za namaz, tehadžud i sehur zvone i u nečujnom načinu.";
-"NSCameraUsageDescription" = "Kamera se koristi za prikaz smjera kible na slici kamere.";

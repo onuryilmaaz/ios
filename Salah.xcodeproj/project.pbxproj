@@ -375,7 +375,6 @@
 		0593F84D20019BD1E8326353 /* DhikrStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrStore.swift; sourceTree = "<group>"; };
 		05BAC1C525BA0B2B7C7665DB /* PrayerLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockTests.swift; sourceTree = "<group>"; };
 		06E598ACB7A64E51F4B44C2B /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		0832494299E26B20E74151B4 /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorTests.swift; sourceTree = "<group>"; };
 		0D8CF70659F3FB12E63DBDAA /* HadithService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadithService.swift; sourceTree = "<group>"; };
 		0E31E6F68655210276170666 /* PrayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerWindow.swift; sourceTree = "<group>"; };
@@ -423,7 +422,6 @@
 		321727F6662E6F3112FA9B47 /* HijriCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HijriCalendarView.swift; sourceTree = "<group>"; };
 		32AA8A562E388B3E9E51D654 /* all-districts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "all-districts.json"; sourceTree = "<group>"; };
 		3326328436A300CFB9838E4C /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
-		338E1ECF32A44B6FC94A51C2 /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33B7008C7CDCD952F4A215D1 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		33FF95561E3E109F6BD2059C /* AdhanPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdhanPlayer.swift; sourceTree = "<group>"; };
 		341AB5C0399FA0E9318246BB /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 		789B8278D9EF23079EECB926 /* LegacyTokenMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyTokenMigration.swift; sourceTree = "<group>"; };
 		7A293950A09220EAC5C93E99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7A46711268EE853863C7E38B /* HijriCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HijriCalendarTests.swift; sourceTree = "<group>"; };
-		7A8D92FF06D97A7508CDCB30 /* bs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bs; path = bs.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		7BAB7059ED05D044162B1E4E /* YearSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSummaryView.swift; sourceTree = "<group>"; };
 		7DC1E0ED6B1B54C94FEB09A8 /* ShareCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCard.swift; sourceTree = "<group>"; };
 		7DE69FE39EE1A9141D673491 /* UsageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageStore.swift; sourceTree = "<group>"; };
@@ -1790,7 +1787,6 @@
 			knownRegions = (
 				Base,
 				ar,
-				bs,
 				de,
 				en,
 				fr,
@@ -2226,7 +2222,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				63D7790DD56F776C5E34182F /* ar */,
-				0832494299E26B20E74151B4 /* bs */,
 				AC073D35B42558EA9071DC81 /* de */,
 				BCDA627D53D5F4F206583F96 /* en */,
 				B0429E87471781081250BD99 /* fr */,
@@ -2242,7 +2237,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				D1160E629C616C3C2336BCCB /* ar */,
-				338E1ECF32A44B6FC94A51C2 /* bs */,
 				A056C70A3A8C99BA35E5B2EE /* de */,
 				E842B0A60C5AC448DE86FA91 /* en */,
 				649BCB1A806FA11A449B41E1 /* fr */,
@@ -2258,7 +2252,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				DBBC69C33AB789FC5E3CC9E9 /* ar */,
-				7A8D92FF06D97A7508CDCB30 /* bs */,
 				24C43CBEBD8EEE67DCEDE358 /* de */,
 				6CE62BBDA0174884EAFBA22A /* en */,
 				A307BA43005682B18DA7ECED /* fr */,

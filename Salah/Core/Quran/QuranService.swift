@@ -47,12 +47,11 @@ enum QuranService {
     .fr: "Muhammad Hamidullah",
     .id: "Kementerian Agama RI",
     .ur: "فتح محمد جالندھری",
-    .bs: "Besim Korkut",
     .ru: "Эльмир Кулиев",
   ]
 
   /// quran.com meal kimlikleri (Türkçe kendi sunucumuzdan, Arapça tefsirden).
-  static let translationId: [AppLanguage: Int] = [.en: 20, .de: 27, .fr: 31, .id: 33, .ur: 234, .bs: 126, .ru: 45]
+  static let translationId: [AppLanguage: Int] = [.en: 20, .de: 27, .fr: 31, .id: 33, .ur: 234, .ru: 45]
 
   static func surahs() async -> [Surah] {
     #if DEBUG

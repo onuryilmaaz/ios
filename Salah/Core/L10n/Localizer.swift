@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Sendable {
-  case tr, en, ar, de, fr, id, ur, bs, ru
+  case tr, en, ar, de, fr, id, ur, ru
 
   var isRTL: Bool { self == .ar || self == .ur }
 
@@ -18,7 +18,6 @@ enum AppLanguage: String, CaseIterable, Sendable {
     case .fr: "Français"
     case .id: "Bahasa Indonesia"
     case .ur: "اردو"
-    case .bs: "Bosanski"
     case .ru: "Русский"
     }
   }
@@ -33,7 +32,6 @@ enum AppLanguage: String, CaseIterable, Sendable {
     case .fr: "🇫🇷"
     case .id: "🇮🇩"
     case .ur: "🇵🇰"
-    case .bs: "🇧🇦"
     case .ru: "🇷🇺"
     }
   }
@@ -123,7 +121,7 @@ final class Localizer {
 
   /// Sunucuya giden dil (asistan, dua önerisi, rapor, bildirim kaydı). Almancayı tanımayan eski sunucu isteği reddetmesin
   /// diye `/app/config` `languageDe` bildirmedikçe Almanca yerine İngilizce gider.
-  /// Fransızca, Endonezce, Urduca, Boşnakça ve Rusçayı sunucu tanımaz: onlarda İngilizce gider.
+  /// Fransızca, Endonezce, Urduca ve Rusçayı sunucu tanımaz: onlarda İngilizce gider.
   @MainActor var serverLanguage: String {
     switch language {
     case .tr, .en, .ar: language.rawValue

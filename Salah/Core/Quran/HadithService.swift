@@ -64,8 +64,8 @@ enum HadithService {
     case .id: prefix = "ind"
     case .ur: prefix = "urd"
     case .ru: prefix = "rus"
-    // Hadis kaynağında Almanca ve Boşnakça baskı yok: İngilizcesi.
-    case .en, .de, .bs: prefix = "eng"
+    // Hadis kaynağında Almanca baskı yok: İngilizcesi.
+    case .en, .de: prefix = "eng"
     }
     if let text = await editionText(prefix: prefix, book: book, number: number) { return text }
     // Bazı kitapların o dilde baskısı yok (ör. Fransızca/Rusça Tirmizî): İngilizcesi.

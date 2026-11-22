@@ -131,7 +131,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleDevelopmentRegion: tr
-        CFBundleLocalizations: [tr, en, ar, de, fr, id, ur, bs, ru]
+        CFBundleLocalizations: [tr, en, ar, de, fr, id, ur, ru]
         CFBundleAllowMixedLocalizations: true
         LSRequiresIPhoneOS: true
         UIRequiredDeviceCapabilities: [arm64]
