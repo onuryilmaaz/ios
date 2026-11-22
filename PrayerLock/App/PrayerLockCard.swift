@@ -56,6 +56,9 @@ struct PrayerLockCard: View {
         AppButton(title: t("prayerLockCard.setup"), variant: .secondary, action: onOpen).padding(.top, 14)
       }
     }
+    // Ana sayfa kartları boşluğu kendisi verir (AlarmsCard ile aynı).
+    .padding(.horizontal, 14)
+    .padding(.bottom, 10.5)
   }
 
   private func subtitle(_ store: PrayerLockStore, active: Bool) -> String {
