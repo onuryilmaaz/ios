@@ -372,9 +372,9 @@ private struct LanguagePickerSheet: View {
         .padding(.top, 21).padding(.bottom, 14)
       ScrollView {
         VStack(spacing: 0) {
-          option(t("settings.language.system"), sub: AppLanguage.device.nativeName, selected: l10n.preference == .system) { l10n.setPreference(.system) }
+          option(nil, t("settings.language.system"), sub: AppLanguage.device.nativeName, selected: l10n.preference == .system) { l10n.setPreference(.system) }
           ForEach(AppLanguage.allCases, id: \.self) { lang in
-            option(lang.nativeName, sub: nil, selected: l10n.preference == .fixed(lang)) { l10n.setPreference(.fixed(lang)) }
+            option(lang.flag, lang.nativeName, sub: nil, selected: l10n.preference == .fixed(lang)) { l10n.setPreference(.fixed(lang)) }
               .environment(\.layoutDirection, lang.isRTL ? .rightToLeft : .leftToRight)
           }
         }
@@ -387,13 +387,17 @@ private struct LanguagePickerSheet: View {
     .background(tokens.canvas)
   }
 
-  private func option(_ title: String, sub: String?, selected: Bool, action: @escaping () -> Void) -> some View {
+  private func option(_ flag: String?, _ title: String, sub: String?, selected: Bool, action: @escaping () -> Void) -> some View {
     Button {
       Haptics.selection()
       action()
       dismiss()
     } label: {
       HStack(spacing: 12) {
+        Group {
+          if let flag { Text(flag).font(.system(size: 24)) } else { Ionicon("phone-portrait-outline", size: 20, color: tokens.textSecondary) }
+        }
+        .frame(width: 30).accessibilityHidden(true)
         VStack(alignment: .leading, spacing: 2) {
           Text(title).font(.system(size: 16, weight: selected ? .semibold : .regular)).foregroundStyle(tokens.textPrimary)
           if let sub { Text(sub).font(.system(size: 13)).foregroundStyle(tokens.textSecondary) }

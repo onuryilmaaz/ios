@@ -23,6 +23,21 @@ enum AppLanguage: String, CaseIterable, Sendable {
     }
   }
 
+  /// Dil seçicideki bayrak (emoji kuralına bilinçli istisna, kullanıcı kararı 2026-11-22).
+  var flag: String {
+    switch self {
+    case .tr: "🇹🇷"
+    case .en: "🇬🇧"
+    case .ar: "🇸🇦"
+    case .de: "🇩🇪"
+    case .fr: "🇫🇷"
+    case .id: "🇮🇩"
+    case .ur: "🇵🇰"
+    case .bs: "🇧🇦"
+    case .ru: "🇷🇺"
+    }
+  }
+
   /// Telefon dili desteklenen dillerden biriyse o, değilse İngilizce.
   static var device: AppLanguage {
     let code = Locale.preferredLanguages.first.map { Locale(identifier: $0).language.languageCode?.identifier ?? "" } ?? ""
