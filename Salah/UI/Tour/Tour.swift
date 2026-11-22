@@ -308,7 +308,14 @@ extension View {
 
   /// Kaydırılan adımda içeriği öğeye kaydırır; tur bitince `top` kimliğine döner (`nil`: yerinde kalır).
   func tourScroll(_ proxy: ScrollViewProxy, top: String?) -> some View {
-    onChange(of: TourStore.shared.current?.anchor) { _, anchor in
+    task {
+      #if DEBUG
+      guard let id = DebugLaunch.scroll else { return }
+      try? await Task.sleep(for: .milliseconds(900))
+      proxy.scrollTo(id, anchor: .top)
+      #endif
+    }
+    .onChange(of: TourStore.shared.current?.anchor) { _, anchor in
       if anchor == nil {
         guard let top else { return }
         withAnimation(.easeInOut(duration: 0.35)) { proxy.scrollTo(top, anchor: .top) }

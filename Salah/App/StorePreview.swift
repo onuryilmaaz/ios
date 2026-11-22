@@ -28,8 +28,31 @@ enum StorePreview {
     switch Localizer.shared.language {
     case .en: note = "Al-Baqarah 15-18"
     case .ar: note = "البقرة ١٥-١٨"
-    default: note = "Bakara 15-18"
+    case .de, .fr: note = "Al-Baqara 15-18"
+    case .id: note = "Al-Baqarah 15-18"
+    case .ur: note = "البقرہ 15-18"
+    case .ru: note = "аль-Бакара 15-18"
+    case .tr: note = "Bakara 15-18"
     }
+    let journal: [AppLanguage: [(String, String)]] = [
+      .tr: [("Annemin sağlığı için", "Allah'ım, anneme sağlık ve afiyet ver, ömrünü hayırla uzun eyle."), ("Sınavdan önce", "Allah'ım, işimi kolaylaştır, zorlaştırma. Gönlümü aç ve bana başarı nasip et."), ("Şükür", "Ailem, sağlığım ve sayamadığım her nimet için Elhamdülillah.")],
+      .en: [("For my mother's health", "O Allah, grant my mother health and wellbeing, and give her a long life full of goodness."), ("Before exams", "O Allah, make it easy for me and do not make it hard. Open my heart and grant me success."), ("Gratitude", "Alhamdulillah for my family, my health and every blessing I cannot count.")],
+      .ar: [("لصحة أمي", "اللهم ارزق أمي الصحة والعافية، وأطل عمرها في الخير."), ("قبل الامتحان", "اللهم يسّر ولا تعسّر، واشرح صدري، وارزقني التوفيق."), ("شكر", "الحمد لله على أسرتي وصحتي وكل نعمة لا أحصيها.")],
+      .de: [("Für die Gesundheit meiner Mutter", "O Allah, schenke meiner Mutter Gesundheit und Wohlergehen und ein langes Leben voller Gutem."), ("Vor der Prüfung", "O Allah, mach es mir leicht und nicht schwer. Öffne mein Herz und schenke mir Erfolg."), ("Dankbarkeit", "Alhamdulillah für meine Familie, meine Gesundheit und jede Gabe, die ich nicht zählen kann.")],
+      .fr: [("Pour la santé de ma mère", "Ô Allah, accorde à ma mère la santé et le bien-être, et une longue vie pleine de bien."), ("Avant l'examen", "Ô Allah, facilite-moi les choses et ne les rends pas difficiles. Ouvre mon cœur et accorde-moi la réussite."), ("Gratitude", "Alhamdulillah pour ma famille, ma santé et chaque bienfait que je ne peux compter.")],
+      .id: [("Untuk kesehatan ibu", "Ya Allah, berilah ibuku kesehatan dan keselamatan, serta panjangkan umurnya dalam kebaikan."), ("Sebelum ujian", "Ya Allah, mudahkanlah dan jangan Engkau persulit. Lapangkan dadaku dan berilah aku keberhasilan."), ("Syukur", "Alhamdulillah atas keluargaku, kesehatanku, dan setiap nikmat yang tak terhitung.")],
+      .ur: [("والدہ کی صحت کے لیے", "اے اللہ، میری والدہ کو صحت و عافیت عطا فرما اور ان کی عمر میں خیر کے ساتھ برکت دے۔"), ("امتحان سے پہلے", "اے اللہ، آسانی فرما اور مشکل نہ کر۔ میرا سینہ کھول دے اور مجھے کامیابی عطا فرما۔"), ("شکر", "اپنے گھر والوں، اپنی صحت اور ہر ان گنت نعمت پر الحمد للہ۔")],
+      .ru: [("За здоровье мамы", "О Аллах, даруй моей маме здоровье и благополучие и продли её жизнь во благе."), ("Перед экзаменом", "О Аллах, облегчи и не усложняй. Раскрой мою грудь и даруй мне успех."), ("Благодарность", "Альхамдулиллях за мою семью, моё здоровье и каждую бесчисленную милость.")],
+    ]
+    let samples = journal[Localizer.shared.language] ?? journal[.en] ?? []
+    DuaJournalStore.shared.preview(samples.enumerated().map { i, item in
+      DuaJournalEntry(id: "j\(i)", title: item.0, text: item.1,
+        reminder: i == 0 ? .init(hour: 21, minute: 0, days: [5]) : i == 1 ? .init(hour: 7, minute: 30, days: [1, 2, 3, 4, 5]) : nil)
+    })
+    #if PRAYER_LOCK
+    PrayerLockStore.shared.preview()
+    #endif
+
     let todayKey = day(0)
     TrackerStore.shared.preview([
       TrackerLog(id: "p1", date: todayKey, activity_type: "quran", value: .object(["pages": .number(4), "minutes": .number(20)]), notes: note, created_at: nil),

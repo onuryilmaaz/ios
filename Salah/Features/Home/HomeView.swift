@@ -243,7 +243,7 @@ struct HomeView: View {
     case .dailyInspiration:
       DailyInspirationCard()
     case .dayRing:
-      if let times = model.today?.times { DayRingCard(times: times) }
+      if let times = model.today?.times { DayRingCard(times: times).tourAnchor("home.dayRing") }
     case .alarms:
       if AppControlStore.shared.isOn("alarms") { AlarmsCard { push(.alarms) } }
     case .kaza:

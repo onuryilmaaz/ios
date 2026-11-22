@@ -57,6 +57,12 @@ final class HomeLayoutStore {
 
   private init() {
     stored = Self.load()
+    #if DEBUG
+    if let keys = DebugLaunch.homeLayout {
+      let order = keys.compactMap(Key.init(rawValue:))
+      stored = order.map { Section(key: $0, visible: true) } + Key.allCases.filter { !order.contains($0) }.map { Section(key: $0, visible: false) }
+    }
+    #endif
   }
 
   /// Panelden gelen varsayılan (yoksa yerleşik).

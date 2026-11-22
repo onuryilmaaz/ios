@@ -179,7 +179,7 @@ struct PrayerLockView: View {
 
   private func appsRow(_ store: PrayerLockStore) -> some View {
     let s = store.selection
-    let count = s.applicationTokens.count + s.categoryTokens.count + s.webDomainTokens.count
+    let count = store.previewAppCount ?? (s.applicationTokens.count + s.categoryTokens.count + s.webDomainTokens.count)
     return Button {
       Haptics.impact(.light)
       draft = store.selection

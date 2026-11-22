@@ -255,6 +255,22 @@ enum DebugLaunch {
     return nil
     #endif
   }
+  /// Mağaza çekimi: açılışta bu tur çapasına kaydırır (`-SalahDebugScroll tracker.insights`).
+  static var scroll: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugScroll")
+    #else
+    return nil
+    #endif
+  }
+  /// Mağaza çekimi: ana sayfa kart sırası, virgülle (`-SalahDebugHomeLayout dayRing,prayerTracker`); kalanlar gizlenir.
+  static var homeLayout: [String]? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugHomeLayout")?.split(separator: ",").map(String.init)
+    #else
+    return nil
+    #endif
+  }
   static var qiblaCamera: Bool {
     #if DEBUG
     return UserDefaults.standard.bool(forKey: "SalahDebugQiblaCamera")

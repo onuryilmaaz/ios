@@ -32,6 +32,11 @@ final class DuaJournalStore {
     entries = LocalStore.decode([DuaJournalEntry].self, Self.key) ?? []
   }
 
+  #if DEBUG
+  /// Mağaza çekimi (`StorePreview`): yalnız bellek, kayıt ve bildirim planı değişmez.
+  func preview(_ list: [DuaJournalEntry]) { entries = list }
+  #endif
+
   func save(_ entry: DuaJournalEntry) {
     var value = entry
     value.title = String(value.title.trimmingCharacters(in: .whitespacesAndNewlines).prefix(Self.titleLimit))

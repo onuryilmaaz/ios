@@ -20,7 +20,18 @@ final class PrayerLockStore {
   /// Şu an kilitli vakit (ana sayfa kartı). Uzantı arka planda değiştirir; öne gelişte ve her planlamada okunur.
   private(set) var current = PrayerLockShared.currentPrayer
 
-  var hasSelection: Bool { PrayerLockShared.hasSelection(selection) }
+  var hasSelection: Bool { previewAppCount != nil || PrayerLockShared.hasSelection(selection) }
+
+  /// Mağaza çekimi: izin ve uygulama seçimi varmış gibi (yalnız bellek; sistem kilidi kurulmaz).
+  private(set) var previewAppCount: Int?
+
+  #if DEBUG
+  func preview() {
+    settings.enabled = true
+    authorized = true
+    previewAppCount = 4
+  }
+  #endif
 
   func requestAuthorization() async -> Bool {
     do {

@@ -49,7 +49,7 @@ enum WL {
   private static let table: [String: [String]] = [
     "prayer.imsak": ["İmsak", "Imsak", "الإمساك", "Imsak", "Imsak", "Imsak", "امساک", "Имсак"],
     "prayer.sabah": ["Sabah", "Fajr", "الفجر", "Fadschr", "Fajr", "Subuh", "فجر", "Фаджр"],
-    "prayer.gunes": ["Güneş", "Sunrise", "الشروق", "Schuruq", "Lever du soleil", "Terbit", "طلوع آفتاب", "Восход"],
+    "prayer.gunes": ["Güneş", "Sunrise", "الشروق", "Schuruq", "Chourouq", "Terbit", "طلوع", "Восход"],
     "prayer.ogle": ["Öğle", "Dhuhr", "الظهر", "Dhuhr", "Dhuhr", "Zuhur", "ظہر", "Зухр"],
     "prayer.ikindi": ["İkindi", "Asr", "العصر", "Asr", "Asr", "Asar", "عصر", "Аср"],
     "prayer.aksam": ["Akşam", "Maghrib", "المغرب", "Maghrib", "Maghrib", "Magrib", "مغرب", "Магриб"],
