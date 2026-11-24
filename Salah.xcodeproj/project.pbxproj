@@ -378,11 +378,11 @@
 		0D0CFBA6575003A4807D4B5A /* AppColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorTests.swift; sourceTree = "<group>"; };
 		0D8CF70659F3FB12E63DBDAA /* HadithService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HadithService.swift; sourceTree = "<group>"; };
 		0E31E6F68655210276170666 /* PrayerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerWindow.swift; sourceTree = "<group>"; };
-		0F6B8C584228EF943412E1D8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0F6B8C584228EF943412E1D8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1076DA819BC3496E0F85C8C4 /* locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locales; path = Shared/mobile/src/i18n/locales; sourceTree = SOURCE_ROOT; };
 		1078A5D6F6355A9F2E21B708 /* PrayerHeroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHeroCard.swift; sourceTree = "<group>"; };
 		11D3987D4DF54340DA9F0B8D /* duas.generated.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = duas.generated.json; sourceTree = "<group>"; };
-		122B0BA8FD05E5425CD3B734 /* alarm_aksam.caf */ = {isa = PBXFileReference; path = alarm_aksam.caf; sourceTree = "<group>"; };
+		122B0BA8FD05E5425CD3B734 /* alarm_aksam.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_aksam.caf; sourceTree = "<group>"; };
 		12B7C4C2472AC37333DE2E9B /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		13999726778E8400A00206B6 /* DhikrWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrWidget.swift; sourceTree = "<group>"; };
 		13C3F3C5D8ABEC6AB43E4F71 /* SalahControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahControls.swift; sourceTree = "<group>"; };
@@ -395,22 +395,22 @@
 		195F1DB5E602F9BC042A61C1 /* PrayerCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCalcTests.swift; sourceTree = "<group>"; };
 		19B8472098AA5F9E098CF953 /* StandbyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandbyWidget.swift; sourceTree = "<group>"; };
 		19FB487434B1DFE7D7B7FF52 /* MushafCurlPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafCurlPager.swift; sourceTree = "<group>"; };
-		1A090191B2CF26A55B3E6D08 /* Salah.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Salah.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A090191B2CF26A55B3E6D08 /* Salah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A10DADA2CD1A6810F90ACDB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1D29E10A4F2F0F79664E67EB /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
-		1E4764465130CB92CB13A034 /* notif_ezan_aksam.caf */ = {isa = PBXFileReference; path = notif_ezan_aksam.caf; sourceTree = "<group>"; };
-		1E6277DB6750B44092F98739 /* tone_beep.caf */ = {isa = PBXFileReference; path = tone_beep.caf; sourceTree = "<group>"; };
+		1E4764465130CB92CB13A034 /* notif_ezan_aksam.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan_aksam.caf; sourceTree = "<group>"; };
+		1E6277DB6750B44092F98739 /* tone_beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tone_beep.caf; sourceTree = "<group>"; };
 		1EA9B8FC3180390B92528257 /* AdminUsersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersStore.swift; sourceTree = "<group>"; };
 		1F3EB290B651C9A27CC4B61E /* fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fixtures; path = Shared/mobile/src/modules/hutbe/__tests__/fixtures; sourceTree = SOURCE_ROOT; };
-		20837FCE0C663F7883782C28 /* notif_ezan.caf */ = {isa = PBXFileReference; path = notif_ezan.caf; sourceTree = "<group>"; };
+		20837FCE0C663F7883782C28 /* notif_ezan.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan.caf; sourceTree = "<group>"; };
 		22BD4C32889BB6AB1B8576BD /* MushafFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafFonts.swift; sourceTree = "<group>"; };
 		24C43CBEBD8EEE67DCEDE358 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		252C0C929561DBB748E7E134 /* KazaStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazaStore.swift; sourceTree = "<group>"; };
 		25351DF45178A351522A83E3 /* MissedPrayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedPrayerTests.swift; sourceTree = "<group>"; };
 		25474C18EC276429C04AFBEB /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
-		257E7D92BF0D847DD089D557 /* notif_ezan_ikindi.caf */ = {isa = PBXFileReference; path = notif_ezan_ikindi.caf; sourceTree = "<group>"; };
+		257E7D92BF0D847DD089D557 /* notif_ezan_ikindi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan_ikindi.caf; sourceTree = "<group>"; };
 		26E68430EE8E20A0AEE6AC14 /* Ionicons.glyphmap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Ionicons.glyphmap.json; sourceTree = "<group>"; };
-		2743EF87A3C0A3EDB6136EAF /* hadiths_v2.db */ = {isa = PBXFileReference; path = hadiths_v2.db; sourceTree = "<group>"; };
+		2743EF87A3C0A3EDB6136EAF /* hadiths_v2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = hadiths_v2.db; sourceTree = "<group>"; };
 		2ABBC1D6D420BE94A0C2B09A /* OzelGunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunTests.swift; sourceTree = "<group>"; };
 		2AEAD843C9B58C537901CA59 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		2C61881BE84EDF9AE4892BE0 /* WidgetL10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetL10n.swift; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 		36264E6E136C8B18AA92A6A8 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		36B3849493B4B1665D90CF03 /* DuaLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuaLibrary.swift; sourceTree = "<group>"; };
 		3A25BFC52D98196B018B71EB /* PrayerLockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockStore.swift; sourceTree = "<group>"; };
-		3B9EC4EEB18C95297002D195 /* SalahWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SalahWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9EC4EEB18C95297002D195 /* SalahWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SalahWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C34D1C386A70AE5BB19958A /* LocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStore.swift; sourceTree = "<group>"; };
 		3C43AC78DB17B8F86BAE6320 /* OfflineQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueueTests.swift; sourceTree = "<group>"; };
 		3D3A7BC79FD2962AE3508EBC /* HatimGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatimGroups.swift; sourceTree = "<group>"; };
@@ -467,7 +467,7 @@
 		52B82E2074070C0A8B0F0E20 /* AppControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControl.swift; sourceTree = "<group>"; };
 		531374705ABB082E8BFBFE9D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		532296BF5E2FE847657C75F1 /* PrayerLockShield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockShield.swift; sourceTree = "<group>"; };
-		53DDC09421DDA9332FF1DB37 /* alarm_ikindi.caf */ = {isa = PBXFileReference; path = alarm_ikindi.caf; sourceTree = "<group>"; };
+		53DDC09421DDA9332FF1DB37 /* alarm_ikindi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_ikindi.caf; sourceTree = "<group>"; };
 		541A53265D84F76A3641D33F /* PrayerWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerWindowTests.swift; sourceTree = "<group>"; };
 		547C50097DE9A2FE40A0B83A /* prayerIcons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prayerIcons.json; sourceTree = "<group>"; };
 		55CE7AD059D293AACDFC27E2 /* HifzStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HifzStore.swift; sourceTree = "<group>"; };
@@ -477,12 +477,12 @@
 		58B724A9FBF0A9BCCA25AF08 /* PrayerTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTrackerWidget.swift; sourceTree = "<group>"; };
 		59205C56E1790329802AAF3A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		596DBB86F7A06F42E1220229 /* WeekDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDays.swift; sourceTree = "<group>"; };
-		5BD24F7B6106D2978BEACA57 /* tone_chime.caf */ = {isa = PBXFileReference; path = tone_chime.caf; sourceTree = "<group>"; };
+		5BD24F7B6106D2978BEACA57 /* tone_chime.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tone_chime.caf; sourceTree = "<group>"; };
 		5C82705437F6C410251410BD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CCDC01270443ADA8787FCBF /* SalahApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahApp.swift; sourceTree = "<group>"; };
 		5D21B9D2CD2FCF2314C55344 /* NotificationPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPreferences.swift; sourceTree = "<group>"; };
 		5D8B15C3C905DA455775D5BB /* SurahBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurahBrowserView.swift; sourceTree = "<group>"; };
-		5DC04AD29F9B9E7C929C7154 /* SalahTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SalahTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC04AD29F9B9E7C929C7154 /* SalahTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalahTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF1A6346BA10C9023F20A3A /* StreakCircleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCircleAPI.swift; sourceTree = "<group>"; };
 		5EF3764F4AE470045987AE09 /* UthmanicHafs.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UthmanicHafs.ttf; sourceTree = "<group>"; };
 		5FF855CCC494A2D4271A4DE0 /* StandardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardHeader.swift; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 		63DFA81F4FA810C2A328C7EB /* StreakCirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakCirclesView.swift; sourceTree = "<group>"; };
 		649BCB1A806FA11A449B41E1 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		65E87C28910AB9BC3FEB8065 /* SharedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedColors.swift; sourceTree = "<group>"; };
-		6629D85A546A293A0EECD0B2 /* notif_ezan_imsak.caf */ = {isa = PBXFileReference; path = notif_ezan_imsak.caf; sourceTree = "<group>"; };
+		6629D85A546A293A0EECD0B2 /* notif_ezan_imsak.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan_imsak.caf; sourceTree = "<group>"; };
 		66DE74B91097BE414B8C4A38 /* OfflineQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineQueue.swift; sourceTree = "<group>"; };
 		675E12A5542DB2974F16B36F /* OzelGunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzelGunView.swift; sourceTree = "<group>"; };
 		689267F984E887C48891363B /* MushafService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafService.swift; sourceTree = "<group>"; };
@@ -508,16 +508,16 @@
 		6E803C43D072C766BF7F8F5A /* HutbePdfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutbePdfView.swift; sourceTree = "<group>"; };
 		6E8CAB68C3781F61282003FC /* WidgetTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTheme.swift; sourceTree = "<group>"; };
 		6F4450938BD795790F5AA217 /* ImsakiyeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImsakiyeView.swift; sourceTree = "<group>"; };
-		6F68478ED759A1423A774ED2 /* PrayerLockShield.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PrayerLockShield.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F68478ED759A1423A774ED2 /* PrayerLockShield.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerLockShield.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F88D79BA20084E5B661BA01 /* WidgetSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSync.swift; sourceTree = "<group>"; };
 		70468BEA1F7AC82EBB41FA7F /* TrackerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerModels.swift; sourceTree = "<group>"; };
 		709583DB08096CA148D1DEF2 /* HutbeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HutbeTests.swift; sourceTree = "<group>"; };
 		70B5E90E570E1E240F1C9133 /* InsightCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCards.swift; sourceTree = "<group>"; };
-		72095D2F1B70A77F210DE404 /* PrayerLockMonitor.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PrayerLockMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		72095D2F1B70A77F210DE404 /* PrayerLockMonitor.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerLockMonitor.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		723673953F59D7D0C03779D8 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
 		72B2B4F437243809E1B0912F /* DebugSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSession.swift; sourceTree = "<group>"; };
 		74488A7CF7BBF4E5496A00E4 /* LocationWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWatchTests.swift; sourceTree = "<group>"; };
-		744BFB28CD9C4D1740B92B13 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		744BFB28CD9C4D1740B92B13 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		74E3D2B51E52D26FFB727BA8 /* OverlayModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayModal.swift; sourceTree = "<group>"; };
 		752217A304D6CF66CFE98220 /* QuranDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranDetailsService.swift; sourceTree = "<group>"; };
 		758B8C3DB714977DC17EED13 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
@@ -550,7 +550,7 @@
 		8CA7A2C206DA8BB73CEE6FA5 /* RamadanWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamadanWidgets.swift; sourceTree = "<group>"; };
 		8CFD6C7662F80AEA92F24822 /* Bungee-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bungee-Regular.ttf"; sourceTree = "<group>"; };
 		8DDB258845F8F2192E6E89DA /* ur */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ur; path = ur.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8EB233DFAB6DFA9B9B7C9134 /* tone_soft.caf */ = {isa = PBXFileReference; path = tone_soft.caf; sourceTree = "<group>"; };
+		8EB233DFAB6DFA9B9B7C9134 /* tone_soft.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tone_soft.caf; sourceTree = "<group>"; };
 		8EBFCEC669D095B620D55326 /* NotificationDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelivery.swift; sourceTree = "<group>"; };
 		8F218F05E9539B9D50327DA5 /* MushafListening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafListening.swift; sourceTree = "<group>"; };
 		90709E6B3AF9F65EFD8826E7 /* YearSummaryRevealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearSummaryRevealTests.swift; sourceTree = "<group>"; };
@@ -567,7 +567,7 @@
 		994A2A9589D57C2CB33116B0 /* AdminViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViews.swift; sourceTree = "<group>"; };
 		9988F17DC12786F66390A0FF /* SiriShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcuts.swift; sourceTree = "<group>"; };
 		9A02269AEAEB6C3E65768730 /* TrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTests.swift; sourceTree = "<group>"; };
-		9A9E5671FF32E9DAB1BD5822 /* alarm_imsak.caf */ = {isa = PBXFileReference; path = alarm_imsak.caf; sourceTree = "<group>"; };
+		9A9E5671FF32E9DAB1BD5822 /* alarm_imsak.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_imsak.caf; sourceTree = "<group>"; };
 		9C5D0B6EEC66C6448D65AF5A /* SalahKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalahKeychain.swift; sourceTree = "<group>"; };
 		9CA3A50A100C125289E3F965 /* InspirationWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationWidget.swift; sourceTree = "<group>"; };
 		9D17D73FE771FE2E5772A090 /* GoalsWidgetSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsWidgetSync.swift; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 		A413C4138BC3133C7A4F1091 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A52506BF84FD50D8D65FF64C /* LogFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormView.swift; sourceTree = "<group>"; };
 		A84563EC40DA058D8DEF072D /* CustomPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPalette.swift; sourceTree = "<group>"; };
-		A90613AF3F4DE03DF00606DF /* notif_ezan_yatsi.caf */ = {isa = PBXFileReference; path = notif_ezan_yatsi.caf; sourceTree = "<group>"; };
+		A90613AF3F4DE03DF00606DF /* notif_ezan_yatsi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan_yatsi.caf; sourceTree = "<group>"; };
 		AC073D35B42558EA9071DC81 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC61AC8241F24C33EAEC6C10 /* HatimPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatimPlanView.swift; sourceTree = "<group>"; };
 		ACCF6AC284553E691F84F7DD /* PrayerLockShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockShared.swift; sourceTree = "<group>"; };
@@ -601,7 +601,7 @@
 		B2CC6B58AD65D6A1AF54DDE2 /* DuaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuaTests.swift; sourceTree = "<group>"; };
 		B4DF420CB07144FD8978A52E /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B5A83B00A78EA5DF93E7B0AC /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		B5F108C6D8108B1E4B4E707C /* alarm_ogle.caf */ = {isa = PBXFileReference; path = alarm_ogle.caf; sourceTree = "<group>"; };
+		B5F108C6D8108B1E4B4E707C /* alarm_ogle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_ogle.caf; sourceTree = "<group>"; };
 		B672E081F69A7A63578C29AB /* InsightsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsStore.swift; sourceTree = "<group>"; };
 		B6ABDDDCB2025479C3C1B3FD /* MushafListeningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushafListeningTests.swift; sourceTree = "<group>"; };
 		B7617583F14F1A118C0A7046 /* PrayerLockShield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLockShield.entitlements; sourceTree = "<group>"; };
@@ -628,7 +628,7 @@
 		C6511045410DE307F8F267B9 /* PrayerLockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLockCard.swift; sourceTree = "<group>"; };
 		C7D26D845F6DFA0938D28DBB /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		C8C7BF4DBA0B8CB868E0B872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		C8CA2E65405E5DEB34F6ABED /* SalahNotificationContent.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SalahNotificationContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8CA2E65405E5DEB34F6ABED /* SalahNotificationContent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SalahNotificationContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C1BDBCB829B0D8D8CE1813 /* AppIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPicker.swift; sourceTree = "<group>"; };
 		C9E173586CFB9360C9533984 /* QiblaMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaMath.swift; sourceTree = "<group>"; };
 		CB71852EC1426737A47DCF65 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -647,7 +647,7 @@
 		D29B6124081F8EF1BA996273 /* FastJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastJournalView.swift; sourceTree = "<group>"; };
 		D29C854F8ABCB30BB611F921 /* RamadanCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamadanCards.swift; sourceTree = "<group>"; };
 		D2ACD3A5177559FE66B1C3E1 /* NotificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
-		D2E5782D12F0EFCBBBA3937B /* notif_ezan_ogle.caf */ = {isa = PBXFileReference; path = notif_ezan_ogle.caf; sourceTree = "<group>"; };
+		D2E5782D12F0EFCBBBA3937B /* notif_ezan_ogle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notif_ezan_ogle.caf; sourceTree = "<group>"; };
 		D2F7D78E50F510F4EEFD4966 /* PrayerLockMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLockMonitor.entitlements; sourceTree = "<group>"; };
 		D406F2D9E60D30E62307EA7C /* SVGPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGPath.swift; sourceTree = "<group>"; };
 		D496B3539DC7A0C8FDD1696A /* HomeLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLayoutView.swift; sourceTree = "<group>"; };
@@ -688,7 +688,7 @@
 		F82A86969D99B5BF1C4C9515 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F8B2F39640F00C371833D9D8 /* BrandMarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandMarks.swift; sourceTree = "<group>"; };
 		F8CB8313061692ADE4AAC76B /* AdminTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTests.swift; sourceTree = "<group>"; };
-		F9C2C1CE18F599E28173337A /* alarm_yatsi.caf */ = {isa = PBXFileReference; path = alarm_yatsi.caf; sourceTree = "<group>"; };
+		F9C2C1CE18F599E28173337A /* alarm_yatsi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_yatsi.caf; sourceTree = "<group>"; };
 		FE23B203682DEE0C823BCC1F /* StoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1759,7 +1759,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2720;
 				TargetAttributes = {
 					5AEAD799470E9DA59E1A0ECB = {
 						DevelopmentTeam = T9F78GA3Y9;
@@ -2419,6 +2419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2454,6 +2455,7 @@
 				DEVELOPMENT_TEAM = T9F78GA3Y9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2477,6 +2479,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SALAH_API_URL = "https://api.onur-yilmaz.com/salah";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -2598,6 +2601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2633,6 +2637,7 @@
 				DEVELOPMENT_TEAM = T9F78GA3Y9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2649,6 +2654,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SALAH_API_URL = "https://api.onur-yilmaz.com/salah";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
