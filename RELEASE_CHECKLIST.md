@@ -159,3 +159,4 @@ Admin görsel önizlemesi (API kapalı, tüm yazmalar reddedilir): `-SalahDebugO
   - YAYIN ÖNCESİ BİR BİLENE KONTROL ETTİR: kıssa özetleri (14 dil), yeni 6 dilde dua/Esma anlamları, tebrik mesajları (`shareCards.greeting.<kind>2/3`). Mağaza metinleri ve görselleri yeni 6 dil için yok.
 
 - Panel modülleri (2026-11-28): Keşfet grubu `daily_reading`, `topics`, `stories`, `wallpapers`, `greetings` (backend `MODULES` + iki uygulamada kutucuk, ekran ve kart bağlantıları). Eski sunucuda modül kaydı yoksa açık kalır.
+- Mağaza seti es/it/ms/bn/hi/th (2026-11-28): iphone/duo slaytları, header/search videoları, metinler `store/ios/metinler/app-store-metinleri-es-it-ms-bn-hi-th.txt`. Duo Mushaf slaytı Duo iç ekran çekimiyle (Xcode 27'de Simulator yerine DeviceHub: Duo sekmesinde açık duruş seçilir, sonra `screenshot --display=LCD-1`).
