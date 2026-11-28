@@ -41,6 +41,13 @@ enum WidgetBridge {
     WidgetCenter.shared.reloadAllTimelines()
   }
 
+  /// Seçili uygulama simgesi (alternatif ikon adı, varsayılanda nil); vakit kilidi ekranı aynı simgeyi gösterir.
+  static func setAppIcon(_ alternateName: String?) {
+    let id = alternateName.map { $0.replacingOccurrences(of: "AppIcon", with: "").lowercased() } ?? "default"
+    guard let ud = defaults, ud.string(forKey: "salah_app_icon") != id else { return }
+    ud.set(id, forKey: "salah_app_icon")
+  }
+
   /// Özel uygulama rengi ("#RRGGBB"); `salah_app_color` "custom" iken widget ölçeği bundan üretir.
   static func setCustomColor(_ hex: String) {
     guard let ud = defaults, ud.string(forKey: "salah_app_color_custom") != hex else { return }
@@ -115,6 +122,17 @@ enum WidgetBridge {
 
   static func updateInspiration(text: String, source: String, type: String, arabic: String, date: String) {
     write(["text": text, "source": source, "type": type, "arabic": arabic, "date": date], key: "salah_inspiration_data", reload: "SalahInspirationWidget")
+  }
+
+  /// Günün içeriği (en çok 6 öğe, widget 4 saatlik dilimlerde gezer). Boş liste anahtarı siler.
+  static func updateInspirationDay(_ items: [[String: String]], date: String) {
+    if items.isEmpty {
+      guard let ud = defaults, ud.data(forKey: "salah_inspiration_day") != nil else { return }
+      ud.removeObject(forKey: "salah_inspiration_day")
+      WidgetCenter.shared.reloadTimelines(ofKind: "SalahInspirationWidget")
+      return
+    }
+    write(["date": date, "items": Array(items.prefix(TopicDay.maxItems))], key: "salah_inspiration_day", reload: "SalahInspirationWidget")
   }
 
   /// Kilit ekranı için önümüzdeki günlerin ayetleri; widget gece yarısı kendisi geçer.

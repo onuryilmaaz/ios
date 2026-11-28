@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "Votre position est utilisée pour afficher les horaires de prière et la direction de la Qibla.";
 "NSAlarmKitUsageDescription" = "L'accès aux alarmes permet à vos alarmes de prière, de tahajjud et de suhur de sonner même en mode silencieux.";
 "NSCameraUsageDescription" = "La caméra est utilisée pour afficher la direction de la Qibla sur l'image de la caméra.";
+"NSPhotoLibraryAddUsageDescription" = "L'ajout à la photothèque est nécessaire pour enregistrer les fonds d'écran et les cartes dans Photos.";

@@ -35,7 +35,7 @@ final class NotificationStore {
       guard let district = LocalStore.string(Locations.districtIdKey) else { return [] }
       return await PrayerTimesService.upcomingDays(districtId: district)
     },
-    loadPools: @escaping () async -> (verses: [NotificationInspiration], hadiths: [NotificationInspiration]) = { await NotificationContentPool.load() },
+    loadPools: @escaping () async -> (verses: [NotificationInspiration], hadiths: [NotificationInspiration]) = { await NotificationContentPool.load(topics: NotificationPreferences.read().inspirationTopics) },
     loadCalendar: @escaping () async -> ReligiousCalendar = { await ReligiousCalendarService.load() },
     persists: Bool = true
   ) {
@@ -247,6 +247,8 @@ final class NotificationStore {
     LocalStore.encode(p.prayerEnabled, for: "PRAYER_NOTIFICATION_EACH")
     LocalStore.encode(p.adhanEnabled, for: "ADHAN_PRAYERS_V2")
     LocalStore.set(String(p.inspiration), for: "REMINDER_ENABLED")
+    LocalStore.encode(p.inspirationTopics, for: "INSPIRATION_TOPICS")
+    LocalStore.set(p.inspirationFrequency.rawValue, for: "INSPIRATION_FREQUENCY")
     LocalStore.set(String(p.religiousDays), for: "RELIGIOUS_DAY_NOTIFICATIONS_ENABLED")
     LocalStore.set(String(p.friday), for: "CUMA_REMINDER_ENABLED")
     LocalStore.set(String(p.missed), for: "MISSED_PRAYER_REMINDER_ENABLED")
@@ -263,8 +265,10 @@ final class NotificationStore {
 
 enum NotificationContentPool {
   /// RN: en fazla 5 × 5 ayet denemesi, hadislerde 2 × hedef; benzersiz havuz.
-  static func load() async -> (verses: [NotificationInspiration], hadiths: [NotificationInspiration]) {
+  static func load(topics: [String] = []) async -> (verses: [NotificationInspiration], hadiths: [NotificationInspiration]) {
     guard !DebugLaunch.isIsolated else { return ([], []) }
+    // Konu seçiliyse yalnız o konuların ayetleri; hadis karışmaz.
+    if !topics.isEmpty { return (await topicVerses(topics), []) }
     var verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = []
     var seen = Set<String>()
     for _ in 0..<5 where verses.count < 12 {
@@ -281,5 +285,15 @@ enum NotificationContentPool {
       hadiths.append(.init(id: h.text, contentType: "hadis", subtitle: h.bookName, body: h.text))
     }
     return (verses.shuffled(), hadiths.shuffled())
+  }
+
+  /// Seçili konulardan en çok 12 ayet (sure ve ayet numarasıyla mevcut servisten).
+  static func topicVerses(_ topics: [String]) async -> [NotificationInspiration] {
+    var out: [NotificationInspiration] = []
+    for ref in TopicPicker.shuffled(TopicCatalog.refs(for: topics), seed: localDateString()).prefix(16) where out.count < 12 {
+      guard let v = await TopicVerses.load(ref), !v.text.isEmpty else { continue }
+      out.append(.init(id: ref.id, contentType: "ayet", subtitle: v.source, body: v.text, arabic: v.arabic))
+    }
+    return out
   }
 }

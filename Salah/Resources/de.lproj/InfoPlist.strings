@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "Dein Standort wird verwendet, um Gebetszeiten und die Qibla-Richtung anzuzeigen.";
 "NSAlarmKitUsageDescription" = "Mit dem Weckerzugriff klingeln deine Gebets-, Tahadschud- und Sahur-Wecker auch im Lautlosmodus.";
 "NSCameraUsageDescription" = "Die Kamera wird verwendet, um die Qibla-Richtung im Kamerabild anzuzeigen.";
+"NSPhotoLibraryAddUsageDescription" = "Der Zugriff zum Hinzufügen zur Fotomediathek wird benötigt, um Hintergründe und Karten in Fotos zu sichern.";

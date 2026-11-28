@@ -1,6 +1,20 @@
 import Foundation
 
 /// RN AsyncStorage anahtarları ve JSON biçimleri değişmez.
+/// İlham (ayet/hadis) bildirimlerinin sıklığı.
+enum InspirationFrequency: String, CaseIterable, Sendable {
+  case every2h, every4h, twiceDaily, daily
+
+  var labelKey: String {
+    switch self {
+    case .every2h: "settings.inspiration.freqH2"
+    case .every4h: "settings.inspiration.freqH4"
+    case .twiceDaily: "settings.inspiration.freqTwice"
+    case .daily: "settings.inspiration.freqOnce"
+    }
+  }
+}
+
 struct NotificationPreferences: Equatable, Sendable {
   static let prayers = ["imsak", "gunes", "ogle", "ikindi", "aksam", "yatsi"]
   static let defaultPrayers = Dictionary(uniqueKeysWithValues: prayers.map { ($0, $0 != "gunes") })
@@ -11,6 +25,9 @@ struct NotificationPreferences: Equatable, Sendable {
   var prayerEnabled = defaultPrayers
   var adhanEnabled = defaultAdhan
   var inspiration = true
+  /// Seçili ilham konuları (`topics.json` kimlikleri). Boşsa bugünkü davranış: karışık ayet ve hadis.
+  var inspirationTopics: [String] = []
+  var inspirationFrequency = InspirationFrequency.every2h
   var religiousDays = true
   var friday = true
   /// Kılınmamış vakit hatırlatması: en az kılınan iki vakit, vakit çıkmadan önce.
@@ -24,6 +41,8 @@ struct NotificationPreferences: Equatable, Sendable {
     value.prayerEnabled.merge(decode([String: Bool].self, get("PRAYER_NOTIFICATION_EACH")) ?? [:]) { _, new in new }
     value.adhanEnabled.merge(decode([String: Bool].self, get("ADHAN_PRAYERS_V2")) ?? [:]) { _, new in new }
     value.inspiration = get("REMINDER_ENABLED").map { $0 == "true" } ?? true
+    value.inspirationTopics = decode([String].self, get("INSPIRATION_TOPICS")).map(TopicCatalog.valid) ?? []
+    value.inspirationFrequency = get("INSPIRATION_FREQUENCY").flatMap(InspirationFrequency.init(rawValue:)) ?? .every2h
     value.religiousDays = get("RELIGIOUS_DAY_NOTIFICATIONS_ENABLED").map { $0 == "true" } ?? true
     value.friday = get("CUMA_REMINDER_ENABLED").map { $0 == "true" } ?? true
     value.missed = get("MISSED_PRAYER_REMINDER_ENABLED").map { $0 == "true" } ?? true

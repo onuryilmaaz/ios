@@ -1,0 +1,5 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "ใช้ตำแหน่งของคุณเพื่อแสดงเวลาละหมาดและทิศกิบลัต";
+"NSAlarmKitUsageDescription" = "การเข้าถึงนาฬิกาปลุกช่วยให้การปลุกละหมาด ตะฮัจญุด และซุฮูรดังได้แม้ในโหมดเงียบ";
+"NSCameraUsageDescription" = "ใช้กล้องเพื่อแสดงทิศกิบลัตบนภาพจากกล้อง";
+"NSPhotoLibraryAddUsageDescription" = "ต้องได้รับอนุญาตให้เพิ่มลงคลังภาพ เพื่อบันทึกวอลเปเปอร์และการ์ดลงในรูปภาพ";

@@ -121,6 +121,39 @@ struct InspirationData: Codable {
   }
 }
 
+/// Uygulamanın o gün için yazdığı en çok 6 içerik (konu seçiliyse). Widget günü 4 saatlik dilimlere bölüp sıradakini gösterir.
+/// Anahtar yoksa ya da tarih bugün değilse eski tek öğe biçimi (`InspirationData`) kullanılır.
+struct InspirationDay: Codable {
+  struct Item: Codable {
+    var text: String
+    var source: String
+    var type: String
+    var arabic: String
+  }
+  var date: String
+  var items: [Item]
+
+  static let sliceHours = 4
+
+  static func load(for day: String) -> InspirationDay? {
+    guard
+      let ud = UserDefaults(suiteName: appGroupID),
+      let data = ud.data(forKey: "salah_inspiration_day"),
+      let obj = try? JSONDecoder().decode(InspirationDay.self, from: data),
+      obj.date == day, !obj.items.isEmpty
+    else { return nil }
+    return obj
+  }
+
+  /// Günün 4 saatlik diliminin içeriği (00-04, 04-08, ...); öğe sayısı dilimden azsa başa sarar.
+  func item(at date: Date, calendar: Calendar = .current) -> InspirationData? {
+    guard !items.isEmpty else { return nil }
+    let slice = calendar.component(.hour, from: date) / Self.sliceHours
+    let item = items[slice % items.count]
+    return InspirationData(text: item.text, source: item.source, type: item.type, arabic: item.arabic, date: self.date)
+  }
+}
+
 /// Uygulamanın önceden yazdığı günlük ayetler (widgetVerses.ts).
 struct InspirationVerse: Codable {
   var date: String

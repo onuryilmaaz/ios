@@ -1144,9 +1144,16 @@
       "title": "Notifications des nuits saintes et des Aïds"
     },
     "inspiration": {
-      "info": "Un verset ou un hadith est envoyé environ toutes les 2 heures pendant la journée. Vous ne serez pas dérangé entre 23 h et 7 h.",
+      "info": "Un verset ou un hadith est envoyé dans la journée à la fréquence que tu choisis. Tu ne seras pas dérangé entre 23:00 et 07:00.",
       "section": "Notifications de versets et hadiths",
-      "sub": "Recevez des rappels spirituels tout au long de la journée"
+      "sub": "Recevez des rappels spirituels tout au long de la journée",
+      "topics": "Thèmes",
+      "topicsSub": "Si vous choisissez des thèmes, seuls des versets de ces thèmes sont envoyés. Sans choix, versets et hadiths sont mélangés.",
+      "frequency": "Fréquence",
+      "freqH2": "Toutes les 2 heures",
+      "freqH4": "Toutes les 4 heures",
+      "freqTwice": "Deux fois par jour (10:00, 20:00)",
+      "freqOnce": "Une fois par jour (10:00)"
     },
     "language": {
       "restartMessage": "Fermez puis rouvrez l'application pour que la mise en page passe à la nouvelle langue.",
@@ -1266,6 +1273,24 @@
       "hicriYil": "Bonne année hégirienne",
       "asure": "Béni soit le jour d'Achoura",
       "cuma": "Joumou'a Moubarak",
+      "kandil2": "Que vos prières soient exaucées en cette nuit sainte",
+      "kandil3": "Qu'Allah fasse de cette nuit bénie une source de bien",
+      "kadir2": "Que vos prières soient exaucées en Laylat al-Qadr",
+      "kadir3": "Que cette nuit, meilleure que mille mois, apporte la miséricorde",
+      "bayram2": "Que votre fête apporte paix et joie",
+      "bayram3": "Une fête bénie auprès de vos proches",
+      "arife2": "Que ce jour béni vous apporte le bien",
+      "arife3": "Que vos prières soient exaucées en ce jour béni",
+      "ramazan2": "Que le Ramadan vous apporte miséricorde et bénédictions",
+      "ramazan3": "Qu'Allah accepte votre jeûne et vos prières",
+      "ucAylar2": "Que les trois mois sacrés apportent miséricorde et pardon",
+      "ucAylar3": "Qu'Allah nous fasse vivre ces mois bénis dans le bien",
+      "hicriYil2": "Que la nouvelle année apporte bien, paix et bénédictions",
+      "hicriYil3": "Une bénie nouvelle année de l'Hégire",
+      "asure2": "Que le jour d'Achoura vous apporte le bien",
+      "asure3": "Un jour d'Achoura plein de bénédictions et de partage",
+      "cuma2": "Un vendredi béni",
+      "cuma3": "Que vos prières soient exaucées ce vendredi",
       "prayer": "Qu'Allah accepte vos prières.",
       "cta": "Partager une carte de vœux",
       "cumaA11y": "Partager une carte du Joumou'a"
@@ -2283,5 +2308,122 @@
     "deleteMessage": "C'est irréversible.",
     "private": "Votre carnet d'invocations reste sur cet appareil et n'est jamais envoyé au serveur.",
     "notifTitle": "L'heure de l'invocation"
+  },
+  "wallpaper": {
+    "title": "Fond d'écran",
+    "save": "Enregistrer",
+    "saved": "Enregistré dans Photos",
+    "failed": "Impossible de créer le fond d'écran",
+    "denied": "Pas d'accès à Photos",
+    "deniedHint": "Autorise l'ajout à Photos dans les Réglages pour enregistrer.",
+    "empty": "Rien à afficher",
+    "source": {
+      "verse": "Verset",
+      "dua": "Invocation",
+      "esma": "Noms"
+    },
+    "design": {
+      "title": "Style",
+      "orman": "Forêt",
+      "gece": "Nuit",
+      "kagit": "Papier",
+      "sade": "Sobre"
+    }
+  },
+  "greetings": {
+    "title": "Cartes de vœux",
+    "today": "Aujourd'hui",
+    "all": "Tout",
+    "cuma": "Vendredi",
+    "message": "Message",
+    "classic": "Classique"
+  },
+  "discover": {
+    "title": "Découvrir",
+    "topics": "Thèmes",
+    "wallpapers": "Fonds d'écran",
+    "greetings": "Cartes de vœux",
+    "stories": "Récits",
+    "daily": "Lecture du jour"
+  },
+  "topics": {
+    "title": "Thèmes",
+    "count": "{{count}} versets",
+    "saved": "Enregistrés",
+    "savedEmpty": "Aucun verset enregistré pour l'instant",
+    "savedEmptyHint": "Touchez le signet d'une carte de verset pour l'enregistrer.",
+    "save": "Enregistrer",
+    "unsave": "Retirer des enregistrés",
+    "openSurah": "Ouvrir la sourate",
+    "goToSurah": "Aller à la sourate",
+    "more": "Plus",
+    "wallpaper": "Créer un fond d'écran",
+    "openMushaf": "Ouvrir dans le Mushaf",
+    "loadFailed": "Impossible de charger le verset",
+    "emptyTopic": "Aucun verset dans ce thème",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Patience",
+      "sub": "Persévérer dans l'épreuve"
+    },
+    "sukur": {
+      "title": "Gratitude",
+      "sub": "Remercier pour les bienfaits"
+    },
+    "tevekkul": {
+      "title": "Confiance en Dieu",
+      "sub": "S'en remettre à Allah"
+    },
+    "umut": {
+      "title": "Espoir",
+      "sub": "Ne jamais désespérer de la miséricorde"
+    },
+    "tovbe": {
+      "title": "Repentir",
+      "sub": "Demander pardon et revenir à Allah"
+    },
+    "iman": {
+      "title": "Foi",
+      "sub": "Croyance et certitude du cœur"
+    },
+    "dua": {
+      "title": "Invocation",
+      "sub": "Se tourner vers Allah et l'implorer"
+    },
+    "huzur": {
+      "title": "Sérénité",
+      "sub": "Apaisement du cœur"
+    },
+    "siginma": {
+      "title": "Refuge",
+      "sub": "Chercher refuge et protection auprès d'Allah"
+    },
+    "ahlak": {
+      "title": "Caractère",
+      "sub": "Bonnes manières et conduite"
+    },
+    "aile": {
+      "title": "Famille",
+      "sub": "Époux, parents et enfants"
+    },
+    "rizik": {
+      "title": "Subsistance",
+      "sub": "Gain licite et bénédiction"
+    }
+  },
+  "stories": {
+    "title": "Récits",
+    "sections": "{{count}} sections",
+    "done": "Lu",
+    "continue": "Continuer",
+    "next": "Section suivante",
+    "finish": "Terminer",
+    "step": "Section {{current}}/{{total}}",
+    "note": "Le résumé s'appuie sur les versets du Coran."
+  },
+  "daily": {
+    "title": "Lecture du jour",
+    "dua": "Invocation du jour",
+    "esma": "Nom du jour"
   }
 }

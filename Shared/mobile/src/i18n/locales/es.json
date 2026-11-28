@@ -1,0 +1,2429 @@
+{
+  "account": {
+    "finalConfirm": "Confirmación final",
+    "deletedTitle": "Cuenta eliminada",
+    "continue": "Continuar",
+    "dangerSub": "Desactivar tu cuenta se puede revertir, pero ten cuidado",
+    "dangerZone": "Zona de riesgo",
+    "deactivate": "Desactivar",
+    "deactivateFailed": "No se pudo desactivar la cuenta",
+    "deactivateMessage": "¿Seguro que quieres desactivar tu cuenta? Esto se puede revertir, pero el acceso a tu cuenta quedará restringido.",
+    "deactivateTitle": "Desactivar cuenta",
+    "deactivated": "Cuenta desactivada",
+    "deleteConfirm": "Eliminar permanentemente",
+    "deleteFailed": "No se pudo eliminar la cuenta. Inténtalo de nuevo.",
+    "deleteFinal": "Tu cuenta y todos tus datos se eliminarán de forma permanente. Esta acción no tiene marcha atrás.",
+    "deleteMessage": "Esto NO se puede deshacer. Tu cuenta y todos tus datos (registros de oraciones y adoración) se eliminarán permanentemente. ¿Quieres continuar?",
+    "deleteSection": "Eliminar cuenta permanentemente",
+    "deleteSectionSub": "Tu cuenta y todos tus datos se eliminarán para siempre. Esta acción no se puede deshacer.",
+    "deleteTitle": "Eliminar mi cuenta permanentemente",
+    "deleted": "Tu cuenta ha sido eliminada permanentemente.",
+    "signOut": "Cerrar sesión",
+    "signOutMessage": "¿Seguro que quieres cerrar sesión?",
+    "signOutOthersFailed": "No se pudo cerrar sesión en otros dispositivos",
+    "signOutOthersMessage": "Se cerrará tu sesión en todos los dispositivos excepto en este. ¿Estás seguro?",
+    "signOutOthersTitle": "Cerrar sesión en otros dispositivos",
+    "signOutSub": "Cierra sesión de tu cuenta de forma segura",
+    "signedOutOthers": "Sesión cerrada en otros dispositivos"
+  },
+  "activities": {
+    "book": {
+      "description": "Registra el libro religioso o de estudio y las páginas que leíste",
+      "label": "Lectura de libros",
+      "unit": "páginas"
+    },
+    "dua": {
+      "description": "Registra el tiempo que dedicaste a hacer dua",
+      "label": "Tiempo de dua",
+      "unit": "min"
+    },
+    "fasting": {
+      "description": "Registra el ayuno de hoy",
+      "label": "Ayuno",
+      "unit": ""
+    },
+    "memorization": {
+      "description": "Registra las aleyas que memorizaste y repasaste",
+      "label": "Memorización",
+      "unit": "aleyas"
+    },
+    "nafile": {
+      "description": "Registra la oración voluntaria que realizaste",
+      "label": "Oración voluntaria",
+      "unit": "rakats"
+    },
+    "quran": {
+      "description": "Indica cuántas páginas leíste hoy",
+      "label": "Lectura del Corán",
+      "unit": "páginas"
+    },
+    "sadaka": {
+      "description": "Registra la caridad que diste",
+      "label": "Caridad",
+      "unit": ""
+    }
+  },
+  "adhan": {
+    "dismiss": "Detener Adhan",
+    "takbir": "Allahu Akbar",
+    "time": "Hora del Adhan",
+    "title": "Adhan de {{prayer}}"
+  },
+  "alarm": {
+    "button": {
+      "mark": "Rezado",
+      "snooze": "Posponer",
+      "stop": "Detener"
+    },
+    "channel": "Alarmas",
+    "custom": {
+      "add": "Añadir alarma",
+      "emptyTitle": "Sin alarmas personalizadas",
+      "emptyMessage": "Las alarmas con tu propia hora y días aparecerán aquí.",
+      "once": "Una vez",
+      "everyDay": "Todos los días",
+      "weekdays": "Entre semana",
+      "weekend": "Fines de semana",
+      "label": "Etiqueta",
+      "labelPlaceholder": "Por ejemplo, oración de Duha",
+      "repeat": "Repetir",
+      "newTitle": "Nueva alarma",
+      "editTitle": "Editar alarma",
+      "deleteTitle": "¿Eliminar esta alarma?",
+      "deleteMessage": "Esta alarma se eliminará.",
+      "hourUp": "Subir hora",
+      "hourDown": "Bajar hora",
+      "minuteUp": "Subir minuto",
+      "minuteDown": "Bajar minuto"
+    },
+    "footer": "Las alarmas se programan para los horarios de oración de los próximos 14 días y se actualizan cada vez que abres la app.",
+    "limit": "Algunos días posteriores no se pudieron programar por un límite del sistema. Se añadirán al abrir la app.",
+    "offset": {
+      "atTime": "A la hora",
+      "before": "{{min}} min antes",
+      "after": "{{min}} min después"
+    },
+    "options": {
+      "sound": "Sonido de alarma",
+      "adhan": "Adhan",
+      "system": "Sonido del sistema",
+      "secondary": "Segundo botón de la alarma",
+      "markInfo": "El botón Rezado aparece en las alarmas que suenan tras iniciar el horario de oración y marca la oración. Otras alarmas muestran Posponer.",
+      "snoozeMinutes": "Duración al posponer",
+      "minutes": "{{min}} min",
+      "tone": {
+        "chime": "Campanilla",
+        "soft": "Suave",
+        "beep": "Clásico"
+      },
+      "soundInfo": "El adhan suena solo en las alarmas de oración; las de Tahajjud, Suhur y personalizadas usan el sonido del sistema. Los demás sonidos aplican a todas las alarmas."
+    },
+    "permission": {
+      "allow": "Permitir",
+      "denied": "El acceso a alarmas está desactivado. Puedes permitirlas para Salah en Ajustes.",
+      "message": "Permite las alarmas para que puedan sonar en modo silencio y durante Enfoque.",
+      "message_android": "Permite las notificaciones y \"Alarmas y recordatorios\" para que suenen a tiempo, incluso en silencio.",
+      "openSettings": "Abrir Ajustes",
+      "title": "Se necesita permiso de alarmas"
+    },
+    "quick": {
+      "title": "Alarma de {{prayer}}",
+      "message": "Programa una alarma para esta oración que suene como una alarma del reloj.",
+      "activeMessage": "Alarma activada: {{when}}.",
+      "turnOn": "Activar alarma ({{when}})",
+      "turnOff": "Desactivar alarma",
+      "more": "Ajustes de alarmas",
+      "pill": "Alarma"
+    },
+    "sahur": {
+      "label": "Suhur",
+      "sub": "{{min}} min antes de Fajr",
+      "onlyRamadan": "Solo en Ramadán",
+      "onlyRamadanSub": "Si está desactivado, suena todos los días"
+    },
+    "screen": {
+      "title": "Alarmas",
+      "next": "Próxima alarma",
+      "noNext": "Sin alarmas programadas",
+      "today": "Hoy {{time}}",
+      "tomorrow": "Mañana {{time}}"
+    },
+    "section": {
+      "prayers": "Alarmas de oración",
+      "night": "Noche y Suhur",
+      "custom": "Alarmas personalizadas",
+      "options": "Opciones de alarma"
+    },
+    "snoozed": "Pospuesta",
+    "tahajjud": {
+      "label": "Tahajjud",
+      "sub": "Último tercio de la noche",
+      "start": "Al inicio"
+    },
+    "title": {
+      "atTime": "Es hora de {{prayer}}",
+      "before": "Faltan {{min}} min para {{prayer}}",
+      "after": "{{prayer}}, hace {{min}} min",
+      "tahajjud": "Hora de Tahajjud",
+      "sahur": "Hora del Suhur",
+      "custom": "Alarma"
+    },
+    "unsupported": {
+      "title": "No disponible en este dispositivo",
+      "message": "Las alarmas requieren iOS 26 o posterior."
+    },
+    "customOffset": {
+      "chip": "Personalizado",
+      "before": "Antes",
+      "after": "Después",
+      "minutes": "Minutos",
+      "apply": "Aplicar",
+      "invalid": "Introduce un número de minutos entre 0 y {{max}}."
+    }
+  },
+  "alarmCard": {
+    "empty": "Alarmas que siguen los horarios de oración automáticamente",
+    "setFajr": "Poner alarma de Fajr",
+    "setDone": "Alarma programada",
+    "setDoneMessage": "Respecto a Fajr: {{when}}. Puedes cambiarlo en Alarmas.",
+    "manage": "Gestionar alarmas",
+    "custom": "{{count}} alarmas personalizadas"
+  },
+  "appIcon": {
+    "classic": "Clásico",
+    "default": "Bosque",
+    "failed": "No se pudo cambiar el icono.",
+    "gold": "Dorado",
+    "night": "Noche",
+    "title": "Icono de la app",
+    "navy": "Azul marino",
+    "purple": "Morado",
+    "burgundy": "Burdeos"
+  },
+  "assistant": {
+    "clear": "Vaciar chat",
+    "clearConfirm": "¿Eliminar todos los mensajes?",
+    "clearConfirmButton": "Vaciar",
+    "clearTitle": "Vaciar chat",
+    "copied": "Copiado",
+    "copiedMessage": "Mensaje copiado al portapapeles.",
+    "delete": "Eliminar",
+    "error": "Algo salió mal, inténtalo de nuevo.",
+    "fallbackReply": "Lo siento, no puedo responder ahora mismo. ¿Puedes intentarlo de nuevo?",
+    "introText": "Todo lo que quieras saber sobre el islam, la oración, el wudu y la adoración.",
+    "introTitle": "Pregunta lo que tengas en mente",
+    "placeholder": "Escribe una pregunta…",
+    "hideKeyboard": "Ocultar teclado",
+    "send": "Enviar",
+    "suggest": {
+      "prayerDuas": "¿Qué duas se recitan en la oración?",
+      "qada": "¿Cómo recupero las oraciones perdidas?",
+      "travel": "¿Qué es la oración del viajero?",
+      "wudu": "¿Cómo se hace el wudu?"
+    },
+    "title": "Preguntar",
+    "unavailable": "El asistente de IA no está disponible en este momento."
+  },
+  "auth": {
+    "or": "o",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "emailRequired": "El correo electrónico es obligatorio",
+    "forgot": {
+      "send": "Enviar código",
+      "sending": "Enviando...",
+      "subtitle": "Te enviaremos un código de restablecimiento a tu correo",
+      "title": "Recuperar contraseña"
+    },
+    "login": {
+      "failed": "Error al iniciar sesión. Revisa tus datos.",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "inactive": "Tu cuenta está inactiva. Contacta con soporte.",
+      "invalid": "Correo electrónico o contraseña incorrectos.",
+      "locked": "Tu cuenta está bloqueada. Inténtalo más tarde.",
+      "noAccount": "¿No tienes cuenta? ",
+      "required": "El correo y la contraseña son obligatorios",
+      "submit": "Iniciar sesión",
+      "subtitle": "Inicia sesión y continúa tu camino espiritual donde lo dejaste.",
+      "welcome": "Bienvenido de nuevo"
+    },
+    "otp": {
+      "enterCode": "Introduce el código de 6 dígitos",
+      "failed": "Error en la verificación",
+      "invalid": "El código no es válido o ha caducado",
+      "resend": "¿No recibiste el código? Reenviar",
+      "sendFailed": "No se pudo enviar el código",
+      "sent": "Código enviado",
+      "subtitle": "Introduce el código de 6 dígitos enviado a {{email}}",
+      "title": "Código de verificación",
+      "verify": "Verificar"
+    },
+    "password": "Contraseña",
+    "register": {
+      "haveAccount": "¿Ya tienes cuenta? ",
+      "failed": "Error al registrarse",
+      "firstName": "Nombre",
+      "firstNamePh": "Tu nombre",
+      "lastName": "Apellido",
+      "lastNamePh": "Tu apellido",
+      "passwordPh": "Elige una contraseña segura",
+      "required": "Completa todos los campos",
+      "submit": "Registrarse",
+      "submitting": "Registrando...",
+      "subtitle": "Únete ahora y empieza a registrar tu adoración",
+      "title": "Crear cuenta"
+    },
+    "requestFailed": "Error en la solicitud",
+    "reset": {
+      "changeCode": "Cambiar código",
+      "confirm": "Confirmar contraseña",
+      "confirmPh": "Vuelve a escribir la contraseña",
+      "continue": "Continuar",
+      "failed": "No se pudo restablecer la contraseña. Revisa el código.",
+      "mismatch": "Las contraseñas no coinciden",
+      "newPassword": "Nueva contraseña",
+      "newPasswordPh": "Al menos 6 caracteres",
+      "subtitleNew": "Establece una nueva contraseña para tu cuenta",
+      "titleNew": "Nueva contraseña",
+      "titleOtp": "Introducir código",
+      "tooShort": "La contraseña debe tener al menos 6 caracteres",
+      "update": "Actualizar contraseña",
+      "updating": "Actualizando..."
+    },
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "social": {
+      "failed": "Algo salió mal al iniciar sesión. Inténtalo de nuevo.",
+      "incomplete": "No se pudo completar el inicio de sesión. Inténtalo de nuevo."
+    },
+    "welcome": {
+      "accent": "camino",
+      "and": "y",
+      "apple": "Continuar con Apple",
+      "email": "Continuar con correo",
+      "google": "Continuar con Google",
+      "line1": "Continúa",
+      "line2": "tu espiritual",
+      "privacy": "Política de privacidad",
+      "subtitle": "Inicia sesión con un toque y empieza a registrar tu adoración.",
+      "terms": "Términos de uso",
+      "termsPrefix": "Al continuar aceptas los",
+      "termsSuffix": "."
+    }
+  },
+  "authWall": {
+    "later": "Más tarde",
+    "assistant": {
+      "description": "Inicia sesión para hacer tus preguntas religiosas.",
+      "title": "Inicia sesión en el asistente de IA"
+    },
+    "defaultDescription": "Inicia sesión o crea una cuenta para usar esta función y guardar tu progreso.",
+    "defaultTitle": "Inicio de sesión requerido",
+    "prayer": {
+      "description": "Inicia sesión para registrar tus oraciones.",
+      "title": "Inicia sesión para registrar oraciones"
+    },
+    "quran": {
+      "description": "Inicia sesión para leer suras, explorar traducciones y guardar por dónde ibas.",
+      "title": "Inicia sesión para leer el Corán"
+    },
+    "tracker": {
+      "description": "Inicia sesión para ver tus registros de adoración.",
+      "title": "Inicia sesión en tu registro de adoración"
+    }
+  },
+  "badges": {
+    "empty": "Aún no tienes insignias. Empieza registrando tu primera oración.",
+    "names": {
+      "erken_kuş": "Madrugador",
+      "ilk_adim": "Primer paso",
+      "ilk_hatim": "Primer Khatm",
+      "mukemmel_ay": "Mes perfecto",
+      "mukemmel_hafta": "Semana perfecta",
+      "sabah_ustasi": "Maestro del Fajr",
+      "seri_100_gun": "Leyenda de 100 días",
+      "seri_14_gun": "Racha de dos semanas",
+      "seri_30_gun": "Campeón mensual",
+      "seri_3_gun": "Racha de 3 días",
+      "seri_7_gun": "Racha semanal",
+      "tum_vakit_ustasi": "Maestro de todas las oraciones"
+    },
+    "next": "Próxima insignia",
+    "title": "Mis insignias"
+  },
+  "calendar": {
+    "backToToday": "Volver a hoy",
+    "daysLeft": "Faltan {{count}} días",
+    "daysLeftShort": "días restantes",
+    "friday": "Viernes",
+    "legendSpecial": "Día especial",
+    "legendToday": "Hoy",
+    "nextMonth": "Mes siguiente",
+    "prevMonth": "Mes anterior",
+    "thisMonth": "Días especiales este mes",
+    "title": "Calendario",
+    "today": "Hoy",
+    "todayLine": "Hoy · {{date}}",
+    "upcoming": "Próximos días especiales"
+  },
+  "celebration": {
+    "a11y": "Todas las oraciones completadas. Racha de {{count}} días. Toca para cerrar",
+    "message": "Tu racha continúa. Que Allah lo acepte.",
+    "streakLabel": "días de racha",
+    "title": "Oraciones de hoy completadas"
+  },
+  "changeEmail": {
+    "code": "Código de verificación",
+    "codeRequired": "El código y el nuevo correo son obligatorios",
+    "codeSent": "Código de verificación enviado",
+    "confirmFailed": "No se pudo confirmar el correo",
+    "intro": "Introduce tu nueva dirección para cambiar tu correo. Te enviaremos un código de verificación.",
+    "newEmail": "Nuevo correo electrónico",
+    "newRequired": "El nuevo correo es obligatorio",
+    "placeholder": "nuevo@correo.com",
+    "resend": "Reenviar código",
+    "sendCode": "Enviar código de verificación",
+    "startFailed": "No se pudo iniciar el cambio de correo",
+    "title": "Cambiar correo",
+    "update": "Actualizar correo",
+    "updated": "Correo actualizado"
+  },
+  "changePassword": {
+    "current": "Contraseña actual",
+    "currentPlaceholder": "Introduce tu contraseña actual",
+    "failed": "No se pudo actualizar la contraseña",
+    "intro": "Por tu seguridad, introduce tu contraseña actual y establece una nueva.",
+    "new": "Nueva contraseña",
+    "newPlaceholder": "Introduce tu nueva contraseña",
+    "required": "Los campos de contraseña son obligatorios",
+    "title": "Cambiar contraseña",
+    "update": "Actualizar contraseña",
+    "updated": "Contraseña actualizada"
+  },
+  "common": {
+    "back": "Atrás",
+    "cancel": "Cancelar",
+    "cancelAlt": "Cancelar",
+    "close": "Cerrar",
+    "decrease": "Disminuir",
+    "delete": "Eliminar",
+    "error": "Error",
+    "increase": "Aumentar",
+    "loading": "Cargando...",
+    "ok": "Aceptar",
+    "profile": "Perfil",
+    "qibla": "Qibla",
+    "retry": "Reintentar",
+    "save": "Guardar",
+    "share": "Compartir",
+    "success": "Listo",
+    "weekdaysShort": [
+      "Lun",
+      "Mar",
+      "Mié",
+      "Jue",
+      "Vie",
+      "Sáb",
+      "Dom"
+    ],
+    "yes": "Sí"
+  },
+  "countdown": {
+    "channel": "Cuenta atrás en pantalla de bloqueo",
+    "endsAt": "Termina a las {{time}}",
+    "startsAt": "Empieza a las {{time}}"
+  },
+  "cuma": {
+    "a11y": "{{label}}. Abrir el sermón del viernes de Diyanet",
+    "default": {
+      "label": "Sermón del viernes",
+      "subtitle": "Consulta los sermones de Diyanet cuando quieras"
+    },
+    "done": {
+      "label": "Yumu'ah Mubarak",
+      "subtitle": "Échale un vistazo si aún no has leído el sermón"
+    },
+    "openFailed": "No se pudo abrir la página del sermón.",
+    "today": {
+      "label": "Hoy es viernes",
+      "subtitle": "Ver el sermón del viernes de Diyanet de esta semana"
+    },
+    "tomorrow": {
+      "label": "Mañana es viernes",
+      "subtitle": "Ya puedes leer el sermón de esta semana"
+    },
+    "flow": {
+      "kehf": "Sura Al-Kahf",
+      "kehfSub": "Recomendada los viernes",
+      "salavat": "Salawat",
+      "salavatSub": "Toca para contar",
+      "hutbe": "Sermón del viernes",
+      "hutbeSub": "Sermón de esta semana",
+      "count": "{{count}} / {{target}}",
+      "done": "Hecho"
+    }
+  },
+  "dayRing": {
+    "title": "Círculo del día",
+    "subtitle": "Horarios de oración, momentos makruh y ahora",
+    "hours": "horas:minutos",
+    "minutes": "minutos",
+    "forbidden": "Tiempo makruh"
+  },
+  "dua": {
+    "count": "{{count}} duas",
+    "favAdd": "Añadir a favoritos",
+    "favRemove": "Quitar de favoritos",
+    "favorites": "Favoritos",
+    "meaning": "Significado",
+    "mood": {
+      "fallback": "No hay coincidencia exacta, aquí tienes una dua sincera:",
+      "matched": "Duas para \"{{label}}\":",
+      "placeholder": "¿Qué tienes en mente? (ej. Tengo ansiedad)",
+      "subtitle": "¿Cómo te sientes? Elige una situación o escríbela.",
+      "suggest": "Sugerir",
+      "title": "Una dua para ti"
+    },
+    "share": "Compartir dua",
+    "source": "Fuente: {{source}}",
+    "title": "Colección de Duas",
+    "transliteration": "Transliteración",
+    "categories": "Categorías"
+  },
+  "errors": {
+    "boundaryMessage": "Ha ocurrido un error inesperado. Inténtalo de nuevo.",
+    "boundaryTitle": "Algo salió mal",
+    "genericMessage": "Inténtalo de nuevo más tarde.",
+    "genericTitle": "Algo salió mal"
+  },
+  "esma": {
+    "clearSearch": "Limpiar búsqueda",
+    "empty": "No se encontró ningún nombre",
+    "meaning": "Significado",
+    "nth": "NOMBRE {{n}}",
+    "search": "Buscar nombre o significado",
+    "title": "Asma ul-Husna",
+    "count": "{{count}} nombres"
+  },
+  "forbidden": {
+    "a11y": "Tiempo desaconsejado para orar, {{label}}. Hasta las {{time}}, quedan {{remaining}}",
+    "min": "{{m}} min {{s}} s",
+    "sec": "{{s}} s",
+    "sunrise": {
+      "description": "No se realizan oraciones voluntarias desde el inicio del amanecer hasta que el sol haya salido por completo.",
+      "label": "Salida del sol"
+    },
+    "sunset": {
+      "description": "No se realizan oraciones voluntarias desde el inicio del atardecer hasta que comienza Maghrib.",
+      "label": "Antes del atardecer"
+    },
+    "until": "hasta las {{time}}",
+    "zawal": {
+      "description": "Breve lapso cuando el sol está en su cenit; no se realizan oraciones voluntarias hasta que comienza Dhuhr.",
+      "label": "Zawal (mediodía solar)"
+    }
+  },
+  "hijri": {
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi al-Awwal",
+      "Rabi al-Thani",
+      "Yumada al-Ula",
+      "Yumada al-Ajira",
+      "Rayab",
+      "Sha'ban",
+      "Ramadán",
+      "Shawwal",
+      "Dhu al-Qa'dah",
+      "Dhu al-Hiyyah"
+    ]
+  },
+  "history": {
+    "count": "{{count}}/5 oraciones",
+    "actionFailed": "Error en la acción.",
+    "fivePrayers": "Las cinco oraciones diarias",
+    "info": "Tu racha se actualiza automáticamente al editar días pasados. Las oraciones que añadas se registran como rezadas en esa fecha, no como qada.",
+    "loadFailed": "No se pudieron cargar los datos.",
+    "pastDay": "Día pasado",
+    "notYet": "Aún no es hora",
+    "prayed": "✓ Rezado",
+    "title": "Editar historial",
+    "today": "Hoy"
+  },
+  "home": {
+    "editLayout": "Editar pantalla de inicio",
+    "hero": {
+      "entry": "Empieza {{time}}",
+      "fallback": "Horario de oración",
+      "now": "ahora",
+      "untilEnd": "Hasta que termine {{prayer}}",
+      "untilStart": "Hasta {{prayer}}"
+    },
+    "inspiration": {
+      "hadith": "Hadiz del día",
+      "readMore": "Leer más",
+      "refresh": "Actualizar",
+      "showLess": "Mostrar menos",
+      "verse": "Aleya del día"
+    },
+    "quick": {
+      "calendar": "Calendario",
+      "dua": "Duas",
+      "esma": "Nombres de Allah",
+      "history": "Oraciones pasadas",
+      "short": {
+        "dua": "Duas",
+        "calendar": "Calendario",
+        "esma": "Asma ul-Husna",
+        "history": "Historial"
+      }
+    },
+    "streak": {
+      "a11y": "Racha de oraciones de {{streak}} días, récord de {{longest}} días",
+      "dayA11y": "{{day}}: {{count}} de 5 oraciones",
+      "days": "días",
+      "label": "racha de oraciones",
+      "longest": "Récord"
+    },
+    "tracker": {
+      "completed": "Completado",
+      "kaza": "Qada",
+      "ozelGunActive": "Modo exención activado, tu racha está protegida",
+      "ozelGunEnd": "Finalizar",
+      "ozelGunEndA11y": "Finalizar modo exención",
+      "ozelGunMine": "Mis días de exención",
+      "progress": "{{done}} de {{total}} rezadas",
+      "status": {
+        "done": "rezada",
+        "expired": "tiempo pasado, se puede marcar como qada",
+        "kaza": "recuperada (qada)",
+        "notDone": "no rezada",
+        "upcoming": "aún no es hora"
+      },
+      "title": "Oraciones de hoy"
+    }
+  },
+  "homeLayout": {
+    "info": "Reordena las tarjetas con las flechas y muéstralas u ocúltalas con el interruptor. La tarjeta de horarios siempre queda arriba.",
+    "moveDown": "Mover tarjeta {{label}} abajo",
+    "moveUp": "Mover tarjeta {{label}} arriba",
+    "reset": "Restablecer",
+    "resetA11y": "Restaurar diseño predeterminado",
+    "resetMessage": "El diseño de la pantalla de inicio volverá a su estado predeterminado. ¿Continuar?",
+    "resetTitle": "Restablecer diseño",
+    "title": "Diseño de inicio",
+    "toggleA11y": "Mostrar tarjeta {{label}}"
+  },
+  "homeSections": {
+    "dhikr": {
+      "label": "Contador de dhikr",
+      "description": "Dhikr de hoy y acceso directo al tasbih"
+    },
+    "kaza": {
+      "label": "Oraciones qada",
+      "description": "Tu total de oraciones qada y acceso a los contadores"
+    },
+    "dailyInspiration": {
+      "description": "Aleya o hadiz del día",
+      "label": "Inspiración diaria"
+    },
+    "prayerTracker": {
+      "description": "Marca tus oraciones diarias de hoy",
+      "label": "Registro de oraciones"
+    },
+    "quickActions": {
+      "description": "Duas, calendario y otros accesos rápidos",
+      "label": "Acceso rápido"
+    },
+    "streak": {
+      "description": "Tu racha ininterrumpida de oraciones",
+      "label": "Tarjeta de racha"
+    },
+    "dayRing": {
+      "label": "Círculo del día",
+      "description": "Horarios de oración y tiempos makruh de hoy en un círculo"
+    },
+    "alarms": {
+      "label": "Alarmas",
+      "description": "Próxima alarma y alarma de Fajr en un toque"
+    },
+    "prayerLock": {
+      "label": "Bloqueo de oración",
+      "description": "Bloquea las apps que elijas durante el horario de oración"
+    }
+  },
+  "hutbe": {
+    "title": "Sermón del viernes",
+    "thisWeek": "Sermón de esta semana",
+    "listen": "Sermón en audio",
+    "play": "Reproducir sermón en audio",
+    "pause": "Pausar",
+    "back15": "Retroceder 15 segundos",
+    "forward15": "Avanzar 15 segundos",
+    "previous": "Sermones anteriores",
+    "footnotes": "Referencias",
+    "source": "Fuente: Presidencia de Asuntos Religiosos (Diyanet)",
+    "textLoading": "Preparando el texto del sermón...",
+    "openPdf": "Abrir como PDF",
+    "pdfFailed": "No se pudo cargar el PDF. Inténtalo de nuevo o ábrelo en el navegador.",
+    "openBrowser": "Abrir en el navegador",
+    "pdfOnly": "El texto del sermón en este idioma se abre como PDF.",
+    "textFailed": "No se pudo cargar el texto del sermón. Puedes abrirlo como PDF.",
+    "loadFailed": "No se pudieron cargar los sermones",
+    "loadFailedMessage": "Comprueba tu conexión a internet e inténtalo de nuevo.",
+    "openWeb": "Abrir página de Diyanet"
+  },
+  "input": {
+    "hidePassword": "Ocultar contraseña",
+    "showPassword": "Mostrar contraseña"
+  },
+  "insights": {
+    "section": "Estadísticas",
+    "heatmap": {
+      "title": "Historial de oraciones",
+      "summary": "Últimos 12 meses · {{prayers}} oraciones · {{perfect}} días completos",
+      "a11y": "{{prayers}} oraciones en los últimos 12 meses, {{perfect}} días con las cinco oraciones",
+      "ozelGun": "Días especiales",
+      "less": "Menos",
+      "more": "Más",
+      "nafile": "Voluntarias",
+      "nafileSummary": "{{rakaat}} rakats voluntarios",
+      "nafileA11y": "{{rakaat}} rakats de oración voluntaria",
+      "tapHint": "Toca un día para verlo y añadir lo que falte."
+    },
+    "hatim": {
+      "planCreate": "Crear un plan de Khatm",
+      "planOpen": "Mi plan de Khatm",
+      "title": "Khatm {{n}}",
+      "progress": "{{pages}} / {{total}} páginas",
+      "a11y": "{{pct}} por ciento del Khatm leído, {{done}} completados",
+      "completed": "{{count}} Khatm completados · {{pages}} páginas en total",
+      "hint": "Los Juz se llenan conforme registras tu lectura del Corán"
+    },
+    "recap": {
+      "week": "Esta semana",
+      "month": "Este mes",
+      "share": "Compartir resumen",
+      "prayers": "{{done}} / {{total}} oraciones",
+      "ofPrayers": "/ {{total}} oraciones",
+      "perfectDays": "Días completos",
+      "kaza": "Qada",
+      "quranPages": "Páginas del Corán",
+      "streak": "Días de racha"
+    }
+  },
+  "location": {
+    "changedBody": "Los horarios de oración se muestran para {{current}}. ¿Actualizar a {{next}}?",
+    "changedTitle": "Parece que tu ubicación cambió",
+    "chooseState": "Elige una provincia",
+    "currentFallback": "tu ubicación actual",
+    "keep": "Mantener",
+    "loadingDistricts": "Cargando distritos...",
+    "noDistricts": "No se encontraron distritos para esta provincia",
+    "title": "Elegir ubicación",
+    "update": "Actualizar",
+    "updated": "Actualizado",
+    "updatedBody": "Horarios de oración configurados para {{name}}",
+    "updatedTitle": "Ubicación actualizada",
+    "chooseCountry": "Elegir país",
+    "chooseRegion": "Elegir región",
+    "searchCountry": "Buscar país",
+    "noResults": "Sin resultados",
+    "changeCountry": "Cambiar país"
+  },
+  "mushaf": {
+    "chooseSurah": "Elegir sura",
+    "continuePage": "Continuar desde la página {{page}}",
+    "goToMark": "Ir al marcador, página {{page}}",
+    "hint": "Número de aleya: traducción · Mantener una línea: marcador",
+    "listen": "Escuchar",
+    "listening": "Recitando",
+    "pause": "Pausar",
+    "resume": "Reanudar",
+    "stopListening": "Dejar de escuchar",
+    "autoLog": "Registrar páginas leídas",
+    "autoLogHint": "Una página abierta 20 segundos se añade a tu registro del Corán y plan de Khatm",
+    "readLogged": "{{count}} páginas añadidas a tu registro del Corán.",
+    "hintWords": "Palabra: significado · Número de aleya: traducción · Mantener una línea: marcador",
+    "scriptTitle": "Escritura",
+    "script": {
+      "text": "Digital",
+      "madani": "Escritura Mushaf",
+      "tajweed": "Tajwid"
+    },
+    "scriptNote": "La escritura se descarga al abrir páginas (unos 300 KB cada una). Puedes descargarla entera desde Descargas.",
+    "wordsToggle": "Palabra por palabra",
+    "wordsHint": "Toca una palabra para ver su significado",
+    "wordTitle": "Palabra por palabra",
+    "wordVerse": "Aleya {{surah}}:{{verse}}",
+    "wordListen": "Escuchar",
+    "juz": "Juz {{juz}}",
+    "lineA11y": "Línea {{line}}",
+    "lineMarkedA11y": "Línea {{line}}, donde lo dejaste",
+    "loadFailed": "No se pudo cargar la página. Comprueba tu conexión a internet.",
+    "markHint": "Mantén pulsado para marcar donde lo dejaste",
+    "markRemoved": "Marcador eliminado",
+    "marked": "Guardado donde lo dejaste",
+    "markedAt": "Donde lo dejaste: página {{page}}, línea {{line}}",
+    "markedDetail": "Página {{page}}, línea {{line}}",
+    "openA11y": "Leer el Mushaf página por página",
+    "page": "Página {{page}} de {{total}}",
+    "spread": "Páginas {{first}}-{{second}} de {{total}}",
+    "marks": {
+      "juz": "Inicio del Juz {{number}}",
+      "hizb": "Inicio del Hizb {{number}}",
+      "quarter": "Cuarto {{part}} del Hizb {{number}}",
+      "sajdah": "Aleya de postración"
+    },
+    "pageA11y": "Página {{page}}",
+    "pageShort": "pág. {{page}}",
+    "subtitle": "Lee página por página, también en horizontal",
+    "surahPickA11y": "{{name}}, página {{page}}",
+    "theme": "Tema de lectura",
+    "themes": {
+      "auto": "Automático",
+      "light": "Claro",
+      "night": "Noche",
+      "sepia": "Sepia"
+    },
+    "title": "Mushaf",
+    "verseA11y": "Traducción de la aleya {{verse}}"
+  },
+  "mute": {
+    "enabled": "Activado",
+    "enabledMessage": "Las notificaciones están activadas de nuevo.",
+    "ended": "finalizado",
+    "hours": "{{count}} h",
+    "hoursMinutes": "{{h}} h {{m}} min",
+    "minutes": "{{count}} min",
+    "on": "Activar sonido",
+    "remaining": "Quedan {{time}}",
+    "title": "Notificaciones silenciadas",
+    "turnOff": "Desactivar modo silencio"
+  },
+  "notif": {
+    "nightTitle": "Últimas diez noches",
+    "nightBody": "Recuerda pasar esta noche en adoración y dua.",
+    "kadirTitle": "Esta noche es Laylat al-Qadr",
+    "kadirBody": "Pasa Laylat al-Qadr en adoración y dua.",
+    "hatimTitle": "Plan del Corán",
+    "missedTitle": "El tiempo de {{prayer}} termina pronto",
+    "missedBody": "Aún no has marcado {{prayer}}. No olvides rezar antes de que termine el horario.",
+    "hatimBody": "El objetivo de hoy son {{pages}} páginas.",
+    "blessedDay": "Día bendito",
+    "channelAdhan": "Horarios de oración con Adhan",
+    "channelPrayer": "Horarios de oración",
+    "channelReminders": "Aleyas, hadices y recordatorios",
+    "cumaBody": "Hoy es viernes. Prepárate para la oración del Yumu'ah.",
+    "cumaEveBody": "Mañana es viernes. No olvides la oración del Yumu'ah y leer la Sura Al-Kahf. Yumu'ah Mubarak.",
+    "cumaEveSubtitle": "Preparándose para el Yumu'ah",
+    "cumaEveTitle": "Mañana es viernes",
+    "cumaSubtitle": "Yumu'ah Mubarak",
+    "cumaTitle": "Hoy es viernes",
+    "dayBeforeBody": "Mañana es {{name}} ({{date}}). Te deseamos un día bendito.",
+    "dayBeforeBodyNoDate": "Mañana es {{name}}. Te deseamos un día bendito.",
+    "dayBeforeTitle": "Se acerca {{name}}",
+    "dayOfBody": "Hoy es {{name}} ({{date}}). Que sea bendito.",
+    "dayOfBodyNoDate": "Hoy es {{name}}. Que sea bendito.",
+    "dayOfTitle": "Hoy es {{name}}",
+    "hadithTitle": "Gotas de luz",
+    "prayerBody": "Ha comenzado el horario de {{prayer}}. Que tus oraciones sean aceptadas.",
+    "prayerSubtitle": "Horario de oración",
+    "prayerTitle": "Es hora de {{prayer}}",
+    "reminderBody": "Hora de prepararse para la oración de {{prayer}}.",
+    "reminderSubtitle": "La oración está cerca",
+    "reminderTitle": "Faltan {{minutes}} minutos para {{prayer}}",
+    "tapForMore": "toca para leer más",
+    "testBody": "Las notificaciones funcionan. Recibirás avisos de horarios de oración y aleyas o hadices.",
+    "testSubtitle": "Inspiración diaria",
+    "testTitle": "Notificación de prueba",
+    "verseRef": "{{surah}}, aleya {{verse}}",
+    "verseTitle": "Palabra divina",
+    "comebackTitle": "Mantén activos tus recordatorios",
+    "comebackBody": "Llevas unos días sin abrir la app. Ábrela una vez para seguir recibiendo avisos de oración y aleyas o hadices."
+  },
+  "offline": {
+    "backOnline": "De nuevo en línea",
+    "pending": " • {{count}} registros se sincronizarán",
+    "synced": "{{count}} registros pendientes sincronizados",
+    "title": "Modo sin conexión"
+  },
+  "onboarding": {
+    "allowLocation": "Permitir ubicación",
+    "allowNotifications": "Activar notificaciones",
+    "continue": "Continuar",
+    "location": {
+      "desc": "Necesitamos tu ubicación para horarios de oración precisos. Permítela y detectaremos tu ciudad automáticamente, o elígela manualmente después.",
+      "title": "Configura tu ubicación"
+    },
+    "next": "Siguiente",
+    "notifications": {
+      "desc": "Recibe un aviso suave en cada horario de oración. El sonido del adhan y las notificaciones de aleyas o hadices son opcionales y puedes desactivarlos en cualquier momento.",
+      "title": "Activa las notificaciones"
+    },
+    "s1": {
+      "desc": "Diseñada para facilitar tu adoración diaria y enriquecer tu vida espiritual.",
+      "title": "Bienvenido a Salah"
+    },
+    "skip": "Omitir",
+    "skipForNow": "Omitir por ahora",
+    "skipIntro": "Saltar introducción",
+    "slideA11y": "Página {{n}} de {{total}}",
+    "start": "Empezar",
+    "times": {
+      "title": "Horarios de oración y widgets",
+      "desc": "Horarios exactos para tu ubicación y notificaciones de adhan. Consúltalos sin abrir la app con los widgets y la Dynamic Island."
+    },
+    "quran": {
+      "title": "Corán y memorización",
+      "desc": "Mushaf, traducciones y recitación. Tu plan de memorización te recuerda las aleyas justo cuando toca repasarlas."
+    },
+    "tracker": {
+      "title": "Adoración y rachas",
+      "desc": "Registra tus oraciones, lectura del Corán, ayunos, caridad y más. Reza con constancia para aumentar tu racha y ganar insignias."
+    },
+    "tools": {
+      "title": "Qibla, Dhikr y Qada",
+      "desc": "Encuentra la Qibla con la brújula, cuenta tu dhikr con el contador y lleva el control de tus oraciones qada una a una."
+    },
+    "prayerLock": {
+      "title": "Bloqueo de oración",
+      "desc": "Las apps que elijas se bloquean en el horario de oración. Reza, márcalo y el bloqueo se levanta."
+    }
+  },
+  "ozelGun": {
+    "end": "Finalizar",
+    "endMessage": "¿Seguro que quieres desactivar el modo exención?",
+    "endTitle": "Finalizar días de exención",
+    "screen": {
+      "active": "Periodo activo",
+      "loadFailed": "No se pudo cargar la información del periodo. Inténtalo de nuevo.",
+      "startFailed": "No se pudo iniciar el periodo. Inténtalo de nuevo.",
+      "endFailed": "No se pudo finalizar el periodo. Inténtalo de nuevo.",
+      "day": "Día {{day}}",
+      "endMessage": "¿Quieres finalizar el periodo activo hoy?",
+      "endTitle": "Finalizar periodo",
+      "endToday": "Finalizar periodo hoy",
+      "ended": "Finalizado",
+      "endedMessage": "Periodo finalizado.",
+      "inactive": "Sin periodo activo",
+      "prayerTime": "Horario de oración ahora",
+      "private": "Esta información es privada y nunca se comparte con nadie.",
+      "protection": "Protección de racha",
+      "protectionText": "Durante un periodo activo, las oraciones no realizadas no romperán tu racha ni se sumarán a tu lista de qada. Esos días se marcan como \"exentos\".",
+      "startDate": "Inicio:",
+      "startMessage": "¿Quieres registrar hoy el inicio de tu periodo de exención? Tu racha de oraciones estará protegida durante este tiempo.",
+      "startNew": "Iniciar nuevo periodo",
+      "startTitle": "Iniciar periodo",
+      "started": "Iniciado",
+      "startedMessage": "Periodo registrado.",
+      "title": "Seguimiento de exención",
+      "womenOnly": "Esta función es para mujeres",
+      "womenOnlyHint": "Actualiza tu género en los ajustes del perfil para usar esta página."
+    },
+    "start": "Iniciar",
+    "startMessage": "Durante tus días de exención tu racha queda congelada y las oraciones en pausa.",
+    "startTitle": "Iniciar modo exención"
+  },
+  "paywall": {
+    "active": "Premium está activo. Que Allah lo acepte.",
+    "bestValue": "Mejor valor",
+    "features": {
+      "ai": "Asistente de IA \"Preguntar\"",
+      "widgets": "Widgets de Registro de Oraciones, Adoración y StandBy",
+      "widgets_android": "Widgets de Registro de Oraciones y Adoración",
+      "stats": "Resumen mensual, mapa de oraciones de 12 meses y progreso de Khatm",
+      "icons": "Iconos exclusivos de la app"
+    },
+    "includes": "Qué incluye",
+    "legal": "Tu suscripción se renueva automáticamente al mismo precio a menos que la canceles al menos 24 horas antes del fin del periodo. Puedes gestionarla o cancelarla en los ajustes de tu Apple ID.",
+    "legal_android": "Tu suscripción se renueva automáticamente al mismo precio a menos que la canceles antes del fin del periodo. Puedes gestionarla o cancelarla en Google Play en Pagos y suscripciones.",
+    "manage": "Gestionar suscripción",
+    "monthly": "Mensual",
+    "monthlyEquivalent": "Solo {{price}} al mes",
+    "notFound": "No encontrado",
+    "notReady": "Los planes de suscripción aún no están listos.",
+    "nothingToRestore": "No hay ninguna suscripción activa para restaurar.",
+    "perMonth": "/mes",
+    "perYear": "/año",
+    "preparing": "Preparando",
+    "privacy": "Política de privacidad",
+    "purchaseFailed": "No se pudo completar la compra.",
+    "restore": "Restaurar compras",
+    "restoreFailed": "Error al restaurar.",
+    "restored": "Restaurado",
+    "restoredMessage": "Tu suscripción Premium está activa.",
+    "savings": "Ahorra {{pct}}%",
+    "secure": "Pago seguro con Apple, cancela cuando quieras",
+    "secure_android": "Pago seguro con Google Play, cancela cuando quieras",
+    "startMonthly": "Empezar mensual",
+    "startYearly": "Empezar anual",
+    "subtitle": "Profundiza en tu camino espiritual.",
+    "terms": "Términos de uso",
+    "title": "Salah Premium",
+    "welcome": "Bienvenido",
+    "yearly": "Anual"
+  },
+  "prayers": {
+    "aksam": "Maghrib",
+    "gunes": "Shuruq",
+    "ikindi": "Asr",
+    "imsak": "Imsak",
+    "ogle": "Dhuhr",
+    "sabah": "Fajr",
+    "yatsi": "Isha"
+  },
+  "premiumTeaser": {
+    "unlock": "Desbloquear con Premium",
+    "locked": "Premium"
+  },
+  "profile": {
+    "ozelGunHint": "Se activará la congelación de racha para días especiales (menstruación).",
+    "account": "Cuenta",
+    "adminPanel": "Panel de administración",
+    "adminSub": "Gestión de usuarios y roles",
+    "avatarUploadFailed": "No se pudo subir la foto",
+    "avatarUploaded": "Foto subida",
+    "changeEmail": "Cambiar correo",
+    "changePassword": "Cambiar contraseña",
+    "changePhoto": "Cambiar foto de perfil",
+    "editInfo": "Editar información personal",
+    "email": "Correo electrónico",
+    "female": "Femenino",
+    "firstName": "Nombre",
+    "firstNamePlaceholder": "Tu nombre",
+    "fullName": "Nombre completo",
+    "galleryPermission": "Permite el acceso a tu biblioteca de fotos.",
+    "gender": "Género",
+    "imagePickFailed": "No se pudo seleccionar la imagen",
+    "lastName": "Apellido",
+    "lastNamePlaceholder": "Tu apellido",
+    "loadFailed": "No se pudo cargar el perfil",
+    "male": "Masculino",
+    "menu": {
+      "account": "Cuenta",
+      "accountSub": "Cerrar sesión, sesiones y ajustes de cuenta",
+      "appSettings": "Ajustes de la app",
+      "appSettingsSub": "Notificaciones, tema y más",
+      "changeEmail": "Cambiar correo",
+      "changeEmailSub": "Actualiza tu dirección de correo",
+      "changePassword": "Cambiar contraseña",
+      "changePasswordSub": "Actualiza la contraseña de tu cuenta"
+    },
+    "open": "Abrir",
+    "permission": "Permiso necesario",
+    "personalInfo": "Información personal",
+    "phone": "Teléfono",
+    "settings": "Ajustes",
+    "theme": "Tema",
+    "themeDark": "Tema oscuro activado",
+    "themeLight": "Tema claro activado",
+    "title": "Perfil",
+    "updateFailed": "No se pudo actualizar el perfil",
+    "updated": "Tu perfil ha sido actualizado",
+    "uploading": "Subiendo foto",
+    "username": "Nombre de usuario",
+    "usernamePlaceholder": "usuario"
+  },
+  "maintenance": {
+    "continueAdmin": "Continuar como administrador",
+    "retry": "Reintentar",
+    "until": "Fin previsto: {{time}}"
+  },
+  "module": {
+    "closedTitle": "Esta sección está cerrada por ahora",
+    "closedBody": "Esta sección no está disponible temporalmente. Puedes seguir usando el resto de la app."
+  },
+  "qibla": {
+    "themeLabel": "Tema de brújula: {{name}}",
+    "themeForest": "Bosque profundo",
+    "themeNight": "Azul noche",
+    "themeDawn": "Púrpura del alba",
+    "themeDusk": "Burdeos Mihrab",
+    "themeSand": "Arena y cornalina",
+    "aligned": "Estás orientado hacia la Qibla",
+    "angle": "Ángulo de la Qibla",
+    "e": "E",
+    "hint": "Sostén el teléfono en plano y gira sobre ti mismo",
+    "n": "N",
+    "permissionDenied": "Permiso de ubicación denegado. Lo necesitamos para encontrar la Qibla.",
+    "locationUnavailable": "No se pudo obtener tu ubicación. Revisa los Servicios de ubicación e inténtalo de nuevo.",
+    "headingUnavailable": "Datos de brújula no disponibles. Asegúrate de que tu dispositivo tenga brújula e inténtalo lejos de objetos magnéticos.",
+    "s": "S",
+    "title": "Buscador de Qibla",
+    "w": "O",
+    "locating": "Obteniendo tu ubicación...",
+    "kaaba": "Kaaba",
+    "turnRight": "Gira {{deg}}° a la derecha",
+    "turnLeft": "Gira {{deg}}° a la izquierda",
+    "camera": "Vista de cámara",
+    "compass": "Vista de brújula",
+    "holdUpright": "Sostén el teléfono en vertical y mira alrededor con la cámara",
+    "cameraDenied": "El acceso a la cámara está desactivado. Permítelo en Ajustes para ver la dirección de la Qibla con la cámara.",
+    "cameraUnavailable": "La cámara no está disponible.",
+    "openSettings": "Abrir Ajustes"
+  },
+  "quran": {
+    "clearSearch": "Limpiar búsqueda",
+    "continue": "Seguir leyendo",
+    "continueA11y": "Seguir leyendo: {{name}}, aleya {{verse}}",
+    "continueVerse": "{{name}}, aleya {{verse}}",
+    "detail": "Sura",
+    "notFound": "No se encontró ninguna sura",
+    "notFoundHint": "Prueba escribiendo el nombre o número de la sura.",
+    "search": "Buscar suras",
+    "surahA11y": "{{id}}. {{name}}, {{count}} aleyas",
+    "surahWithName": "Sura {{name}}",
+    "title": "Suras",
+    "verseCount": "{{count}} aleyas"
+  },
+  "quranSettings": {
+    "fontLg": "Grande",
+    "fontMd": "Mediana",
+    "fontSm": "Pequeña",
+    "fontXl": "Muy grande"
+  },
+  "religiousDays": {
+    "asure": "Día de Ashura",
+    "berat": "Laylat al-Bara'ah",
+    "hicri_yilbasi": "Año Nuevo Islámico",
+    "kadir": "Laylat al-Qadr",
+    "kurban_bayram_1": "Eid al-Adha, día 1",
+    "kurban_bayram_2": "Eid al-Adha, día 2",
+    "kurban_bayram_3": "Eid al-Adha, día 3",
+    "kurban_bayram_4": "Eid al-Adha, día 4",
+    "kurban_bayram_arife": "Día de Arafah",
+    "mevlid": "Mawlid al-Nabi",
+    "mirac": "Laylat al-Mi'raj",
+    "ramazan_arife": "Víspera de Ramadán",
+    "ramazan_bayram_1": "Eid al-Fitr, día 1",
+    "ramazan_bayram_2": "Eid al-Fitr, día 2",
+    "ramazan_bayram_3": "Eid al-Fitr, día 3",
+    "ramazan_bayram_arife": "Víspera de Eid al-Fitr",
+    "ramazan_start": "Inicio de Ramadán",
+    "regaib": "Laylat al-Raghaib",
+    "uc_aylar": "Inicio de los tres meses sagrados"
+  },
+  "settings": {
+    "adhan": {
+      "foregroundHint": "Desactivado por defecto. En las oraciones elegidas, la notificación reproduce unos segundos del adhan.",
+      "section": "Sonido del adhan",
+      "stop": "Detener",
+      "test": "Probar sonido del adhan",
+      "testQuestion": "¿El adhan de qué oración quieres probar?",
+      "testSub": "Admin: cada oración reproduce un adhan diferente",
+      "testTitle": "Prueba de adhan",
+      "title": "Adhan a la hora de oración",
+      "which": "¿Qué oraciones deben reproducir el adhan?"
+    },
+    "app": {
+      "developer": "Desarrollador",
+      "developerSub": "Hecho para buenas obras",
+      "privacy": "Política de privacidad",
+      "privacySub": "Lee cómo protegemos tus datos",
+      "section": "Aplicación",
+      "terms": "Términos de uso",
+      "termsSub": "Ver los términos del servicio",
+      "version": "Versión"
+    },
+    "data": {
+      "backupMessage": "Todos tus datos de la app Salah ({{stamp}})",
+      "backupTitle": "Copia de seguridad de Salah ({{stamp}})",
+      "export": "Hacer copia de mis datos",
+      "exportSub": "Exporta todos tus registros de oraciones y adoración en JSON",
+      "failed": "No se pudo crear la copia de seguridad.",
+      "preparing": "Preparando copia de seguridad…",
+      "section": "Mis datos"
+    },
+    "holidays": {
+      "friday": "Recordatorio del viernes",
+      "fridaySub": "Recordatorio de oración del Yumu'ah y sermón el jueves por la noche y viernes por la mañana",
+      "section": "Noches sagradas y días benditos",
+      "sub": "Recordatorios el día anterior y la mañana de noches sagradas y Eids",
+      "title": "Notificaciones de noches sagradas y Eid"
+    },
+    "inspiration": {
+      "info": "Se envía una aleya o hadiz durante el día con la frecuencia que elijas. No se te molestará entre las 23:00 y las 07:00.",
+      "section": "Notificaciones de aleyas y hadices",
+      "sub": "Recibe recordatorios espirituales durante el día",
+      "topics": "Temas",
+      "topicsSub": "Si eliges temas, solo se envían aleyas de esos temas. Sin ninguno elegido, se mezclan aleyas y hadices.",
+      "frequency": "Frecuencia",
+      "freqH2": "Cada 2 horas",
+      "freqH4": "Cada 4 horas",
+      "freqTwice": "Dos veces al día (10:00, 20:00)",
+      "freqOnce": "Una vez al día (10:00)"
+    },
+    "language": {
+      "restartMessage": "Cierra y vuelve a abrir la app para aplicar el nuevo idioma.",
+      "restartTitle": "Reinicio necesario",
+      "system": "Idioma del teléfono",
+      "title": "Idioma"
+    },
+    "location": {
+      "auto": "Detectar automáticamente",
+      "autoSub": "Encuentra tu ciudad automáticamente con GPS",
+      "denied": "No se concedió el permiso de ubicación.",
+      "detecting": "Obteniendo ubicación…",
+      "failed": "No se pudo obtener tu ubicación.",
+      "notFound": "No encontrado",
+      "notRecognized": "No pudimos reconocer tu ubicación, elígela manualmente.",
+      "notSelected": "Sin ubicación seleccionada",
+      "permission": "Permiso necesario",
+      "prayerLocation": "Ubicación de horarios de oración",
+      "section": "Ubicación"
+    },
+    "mute": {
+      "15m": "15 minutos",
+      "1h": "1 hora",
+      "3h": "3 horas",
+      "activeLabel": "Silenciado: {{time}}",
+      "endOfDay": "Hasta el final del día",
+      "mute": "Silenciar",
+      "muteSub": "Silencia temporalmente las notificaciones para reuniones, descanso o viajes",
+      "muted": "Silenciado",
+      "mutedMessage": "Notificaciones silenciadas durante {{time}}.",
+      "question": "¿Cuánto tiempo quieres silenciar las notificaciones?",
+      "resumesAt": "Se reanuda {{date}}",
+      "title": "Modo silencio",
+      "turnOff": "Desactivar modo silencio",
+      "turnOffSub": "Volver a activar las notificaciones ahora",
+      "unmutedMessage": "Las notificaciones están activas de nuevo. Se programarán en la próxima actualización."
+    },
+    "notifications": {
+      "announcements": "Anuncios",
+      "announcementsSub": "Novedades importantes sobre la app",
+      "missed": "Recordatorio de oración no rezada",
+      "missedSub": "Antes de que terminen tus dos oraciones menos frecuentes, si no están marcadas",
+      "atTime": "A la hora",
+      "battery": "Optimización de batería",
+      "batteryOff": "Tu teléfono restringe a Salah y las notificaciones pueden retrasarse. Pon Salah en \"No optimizar\" en la lista.",
+      "batteryOn": "Salah no tiene restricciones, las notificaciones llegan a tiempo.",
+      "countdown": "Cuenta atrás en pantalla de bloqueo",
+      "countdownSub": "El tiempo hasta la próxima oración permanece en tus notificaciones",
+      "exactAlarm": "Notificaciones puntuales",
+      "exactAlarmOff": "Desactivado. Las notificaciones pueden retrasarse unos minutos. Toca para activar.",
+      "exactAlarmOn": "Activado. Las notificaciones llegan puntualmente.",
+      "exactPromptMessage": "Para recibir el adhan y las notificaciones de oración puntualmente, permite \"Alarmas y recordatorios\" para Salah.",
+      "exactPromptTitle": "¿Recibir notificaciones a tiempo?",
+      "minutesBefore": "{{min}} min antes",
+      "notNow": "Ahora no",
+      "openSettings": "Abrir ajustes",
+      "permissionMessage": "Permite las notificaciones en Ajustes > Notificaciones.",
+      "prayer": "Notificaciones de oración",
+      "prayerSub": "Recibe recordatorios en los horarios de oración",
+      "scheduled": "Notificaciones programadas",
+      "scheduledDetail": "Notificaciones programadas: {{total}}\n• Horarios de oración: {{prayer}}\n• Aleyas/Hadices, etc.: {{other}}",
+      "section": "Notificaciones",
+      "test": "Enviar notificación de prueba",
+      "testSent": "Prueba enviada",
+      "testSentMessage": "La notificación de prueba llegará en unos segundos.\n\n{{detail}}",
+      "testSub": "Comprueba que las notificaciones funcionen",
+      "turnOn": "Activar",
+      "when": "¿Cuándo quieres que te avisemos?",
+      "whichPrayers": "¿Para qué oraciones?"
+    },
+    "personal": {
+      "ozelGun": "Seguimiento de exención",
+      "ozelGunActive": "Periodo activo, racha protegida",
+      "ozelGunSub": "Iniciar o finalizar periodo, protección de racha",
+      "section": "Personal"
+    },
+    "premium": {
+      "monthly": "Suscriptor mensual",
+      "pitch": "Asistente de IA, widgets premium y más",
+      "title": "Salah Premium",
+      "until": "hasta el {{date}}",
+      "yearly": "Suscriptor anual"
+    },
+    "title": "Ajustes",
+    "alarms": {
+      "label": "Alarmas",
+      "sub": "Alarmas de oración, Tahajjud y Suhur"
+    },
+    "widgetTheme": {
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Tema del teléfono",
+      "title": "Tema del widget"
+    }
+  },
+  "share": {
+    "dialogTitle": "Compartir con Salah",
+    "shareImage": "Compartir imagen"
+  },
+  "shareCards": {
+    "streak": {
+      "label": "Racha",
+      "headline": "Día {{count}} de las cinco oraciones diarias",
+      "longest": "Racha más larga: {{count}}",
+      "shareA11y": "Compartir racha"
+    },
+    "dua": {
+      "label": "Dua"
+    },
+    "greeting": {
+      "kandil": "Noche sagrada bendita",
+      "kadir": "Bendita Laylat al-Qadr",
+      "bayram": "Eid Mubarak",
+      "arife": "Bendito Día de Arafah",
+      "ramazan": "Ramadán Mubarak",
+      "ucAylar": "Benditos tres meses sagrados",
+      "hicriYil": "Feliz Año Nuevo Islámico",
+      "asure": "Bendito Día de Ashura",
+      "cuma": "Yumu'ah Mubarak",
+      "kandil2": "Que tus oraciones sean aceptadas en esta noche sagrada",
+      "kandil3": "Que Allah haga de esta noche bendita una fuente de bien",
+      "kadir2": "Que tus oraciones sean aceptadas en Laylat al-Qadr",
+      "kadir3": "Que esta noche, mejor que mil meses, traiga misericordia",
+      "bayram2": "Que tu Eid traiga paz y alegría",
+      "bayram3": "Te deseo un bendito Eid junto a tus seres queridos",
+      "arife2": "Que este día bendito te traiga bienestar",
+      "arife3": "Que tus oraciones sean aceptadas en este día bendito",
+      "ramazan2": "Que Ramadán te traiga misericordia y bendiciones",
+      "ramazan3": "Que tu ayuno y tus oraciones sean aceptados",
+      "ucAylar2": "Que los tres meses sagrados traigan misericordia y perdón",
+      "ucAylar3": "Que Allah nos permita vivir estos meses benditos en el bien",
+      "hicriYil2": "Que el nuevo año traiga bien, paz y bendiciones",
+      "hicriYil3": "Te deseo un bendito Año Nuevo Islámico",
+      "asure2": "Que tu día de Ashura te traiga bien",
+      "asure3": "Que tu Ashura esté lleno de bendiciones y generosidad",
+      "cuma2": "Que tengas un viernes bendito",
+      "cuma3": "Que tus oraciones sean aceptadas este viernes",
+      "prayer": "Que tus oraciones sean aceptadas.",
+      "cta": "Compartir tarjeta de felicitación",
+      "cumaA11y": "Compartir tarjeta de Yumu'ah"
+    }
+  },
+  "surah": {
+    "audioFailed": "No se pudo cargar el audio. Intenta reproducirlo de nuevo.",
+    "loadFailed": "No se pudieron cargar las aleyas. Comprueba tu conexión a internet.",
+    "searchResults": "{{count}} resultados",
+    "closeSearch": "Cerrar búsqueda",
+    "fontSize": "Tamaño de fuente",
+    "layoutMode": "Modo de vista",
+    "listenVerse": "Escuchar aleya {{n}}",
+    "loading": "Cargando aleyas...",
+    "modeMushaf": "Mushaf",
+    "modeVerse": "Aleyas",
+    "noMatch": "Sin aleyas coincidentes",
+    "nthVerse": "Aleya {{n}}",
+    "pause": "Pausar",
+    "play": "Reproducir",
+    "readingTheme": "Tema de lectura",
+    "searchPlaceholder": "Texto, número de aleya o palabra",
+    "searchVerse": "Buscar aleyas",
+    "shareTitle": "Sura {{name}} · Aleya {{verse}}",
+    "shareVerse": "Compartir aleya",
+    "tafsir": "Significado y tafsir",
+    "tajweed": "Tajwid",
+    "wordByWord": "Palabra por palabra",
+    "wordByWordToggle": "Traducción palabra por palabra",
+    "tajweedToggle": "Colores de Tajwid"
+  },
+  "tabs": {
+    "assistant": "Preguntar",
+    "home": "Inicio",
+    "quran": "Corán",
+    "tracker": "Adoración"
+  },
+  "tajweed": {
+    "ghunnah": "Ghunnah",
+    "idgham": "Idgham",
+    "ikhfa": "Ikhfa",
+    "iqlab": "Iqlab",
+    "legendA11y": "Leyenda de colores de Tajwid",
+    "legendTitle": "Colores de Tajwid",
+    "madd": "Madd (prolongación)",
+    "qalqalah": "Qalqalah",
+    "silent": "Muda"
+  },
+  "tour": {
+    "a11y": "Recorrido por la app",
+    "alarms": {
+      "custom": {
+        "body": "Toca para editar, mantén pulsado para eliminar.",
+        "title": "Alarma personalizada"
+      }
+    },
+    "assistant": {
+      "composer": {
+        "body": "Escribe tu pregunta aquí y envíala.",
+        "title": "Haz tu pregunta"
+      },
+      "copy": {
+        "body": "Mantén pulsado un mensaje para copiar su texto.",
+        "title": "Copiar una respuesta"
+      },
+      "intro": {
+        "body": "Haz tus preguntas religiosas y la IA responderá. Las respuestas no son una fatwa.",
+        "title": "Preguntar"
+      },
+      "suggestions": {
+        "body": "¿No sabes qué preguntar? Empieza con una de estas sugerencias.",
+        "title": "Preguntas sugeridas"
+      }
+    },
+    "dhikr": {
+      "controls": {
+        "body": "Deshaz un toque erróneo o reinicia para empezar de cero.",
+        "title": "Deshacer y reiniciar"
+      },
+      "counter": {
+        "body": "Cada toque en el círculo suma uno; una vibración te avisa al llegar al objetivo.",
+        "title": "Toca para contar"
+      },
+      "mode": {
+        "body": "Sigue el tasbih tras la oración en orden, o elige tu propio dhikr y objetivo.",
+        "title": "Tasbih o libre"
+      }
+    },
+    "done": "Listo",
+    "hifz": {
+      "add": {
+        "body": "Añade la sura y el rango de aleyas que has memorizado.",
+        "title": "Añadir aleyas"
+      },
+      "hero": {
+        "body": "Las aleyas que toca repasar hoy están aquí; empieza y marca las que recuerdes.",
+        "title": "Repaso de hoy"
+      }
+    },
+    "home": {
+      "alarms": {
+        "body": "Gestiona las alarmas programadas automáticamente según los horarios de oración.",
+        "title": "Alarma"
+      },
+      "circles": {
+        "body": "Crea un círculo con amigos o familia y mantened vuestra racha juntos.",
+        "title": "Círculos de racha"
+      },
+      "dhikr": {
+        "body": "Cuenta el tasbih tras la oración o cualquier dhikr que elijas.",
+        "title": "Contador de dhikr"
+      },
+      "hero": {
+        "body": "Aquí verás el tiempo restante hasta la próxima oración y todos los horarios de hoy.",
+        "title": "Próxima oración"
+      },
+      "kaza": {
+        "body": "Calcula las oraciones que te faltan y ve cómo baja el contador al recuperarlas.",
+        "title": "Oraciones qada"
+      },
+      "layout": {
+        "body": "Oculta tarjetas o cambia su orden para que tu inicio se abra como prefieras.",
+        "title": "Ordena tu inicio"
+      },
+      "location": {
+        "body": "Los horarios de oración se calculan para esta zona. Toca para cambiarla.",
+        "title": "Tu ubicación"
+      },
+      "profile": {
+        "body": "Tu cuenta, notificaciones, idioma y ajustes de tema están aquí.",
+        "title": "Perfil y ajustes"
+      },
+      "qibla": {
+        "body": "Usa la brújula para encontrar la dirección de la Qibla desde donde estés.",
+        "title": "Qibla"
+      },
+      "quickActions": {
+        "body": "Accede desde aquí a duas, el calendario islámico, los 99 Nombres y tu historial.",
+        "title": "Acceso rápido"
+      },
+      "streak": {
+        "body": "Tu racha crece cada día que rezas las cinco oraciones. Sigue tu semana aquí.",
+        "title": "Tu racha de oraciones"
+      },
+      "tabs": {
+        "body": "Usa las pestañas inferiores para leer el Corán, registrar tu adoración y hacer preguntas.",
+        "title": "Más secciones"
+      },
+      "times": {
+        "body": "Toca un horario de oración para programar rápidamente una alarma.",
+        "title": "Alarma para una oración"
+      },
+      "tracker": {
+        "body": "Toca una oración para marcarla cuando la hayas rezado. Tu racha y estadísticas se construyen desde aquí.",
+        "title": "Oraciones de hoy"
+      },
+      "prayerLock": {
+        "title": "Bloqueo de oración",
+        "body": "Bloquea las apps que elijas durante el horario de oración; se desbloquean al marcar la oración."
+      }
+    },
+    "kaza": {
+      "calculate": {
+        "body": "Elige el periodo a recuperar (normalmente desde la pubertad hasta que empezaste a rezar con constancia) y los contadores se rellenarán por ti.",
+        "title": "Calcular"
+      },
+      "counters": {
+        "body": "Aquí está el total qada de cada oración; bájalo con el botón menos al recuperarlas.",
+        "title": "Pendientes por oración"
+      }
+    },
+    "mushaf": {
+      "listen": {
+        "body": "Escucha a un recitador; la aleya actual se resalta y las páginas pasan solas.",
+        "title": "Leer escuchando"
+      },
+      "page": {
+        "body": "Desliza a los lados para pasar página. Toca un número de aleya para ver su traducción y mantén pulsada una línea para guardar marcador.",
+        "title": "Páginas y aleyas"
+      },
+      "surahs": {
+        "body": "Salta a cualquier sura desde aquí.",
+        "title": "Elegir una sura"
+      },
+      "theme": {
+        "body": "Elige el color de página, la escritura Madani o el Tajwid por colores y el significado palabra por palabra aquí.",
+        "title": "Aspecto y escritura"
+      },
+      "word": {
+        "body": "Toca una palabra para ver su significado y pronunciación, y escucharla.",
+        "title": "Significado de la palabra"
+      }
+    },
+    "next": "Siguiente",
+    "progress": "{{current}} / {{total}}",
+    "quran": {
+      "continue": {
+        "body": "Vuelve con un toque a la última aleya que leíste.",
+        "title": "Donde lo dejaste"
+      },
+      "downloads": {
+        "body": "Descarga el audio y texto de las suras para leer y escuchar sin internet.",
+        "title": "Corán sin conexión"
+      },
+      "hifz": {
+        "body": "Añade las aleyas que memorizas y repasa cada una justo antes de olvidarla.",
+        "title": "Memorización"
+      },
+      "list": {
+        "body": "Toca una sura para leerla con su traducción y recitación.",
+        "title": "Suras"
+      },
+      "mushaf": {
+        "body": "Lee el Corán página por página y marca donde te detuviste.",
+        "title": "Mushaf"
+      },
+      "search": {
+        "body": "Escribe el nombre o número de una sura para encontrarla rápido.",
+        "title": "Buscar suras"
+      }
+    },
+    "replay": "Repetir recorridos de la app",
+    "replaySub": "Muestra de nuevo las introducciones de pantalla",
+    "skip": "Saltar recorrido",
+    "tracker": {
+      "activities": {
+        "body": "Registra aquí lectura del Corán y libros, oraciones voluntarias, ayunos, caridad, dua y memorización.",
+        "title": "Añadir adoración"
+      },
+      "hero": {
+        "body": "Aquí se muestran los registros de hoy y cuántos tipos de adoración realizaste.",
+        "title": "Resumen de hoy"
+      },
+      "insights": {
+        "body": "Aquí están tu resumen del periodo, el mapa de adoración y el progreso del Khatm.",
+        "title": "Estadísticas"
+      },
+      "year": {
+        "body": "Ve cuántas oraciones rezaste el año pasado, tu racha más larga y las páginas leídas. Disponible cada enero.",
+        "title": "Resumen del año"
+      }
+    },
+    "prayerLock": {
+      "intro": {
+        "title": "Qué es el bloqueo de oración",
+        "body": "Durante el horario de oración las apps que elijas (redes sociales, juegos) no se abrirán. Reza, márcalo en Salah y el bloqueo se levantará al instante."
+      },
+      "enable": {
+        "title": "Actívalo primero",
+        "body": "Al activarlo se solicita el permiso de Tiempo de uso del iPhone. Solo se utiliza para este bloqueo."
+      },
+      "info": {
+        "title": "Todo queda en tu dispositivo",
+        "body": "Las apps que elijas nunca se envían al servidor. Puedes quitar el permiso cuando quieras en Ajustes > Tiempo de uso."
+      },
+      "apps": {
+        "title": "Elige las apps",
+        "body": "Selecciona las apps o categorías a bloquear. No elijas Salah: debe quedar abierta para que puedas marcar la oración."
+      },
+      "mode": {
+        "title": "Cuándo bloquear",
+        "body": "Al empezar el horario: se bloquea con el adhan. Antes de que termine: para no dejar la oración para el último minuto, bloquea con la antelación que elijas antes de finalizar el horario."
+      },
+      "duration": {
+        "title": "Cuánto tiempo",
+        "body": "Elige un ajuste rápido o escribe tus propios minutos en Personalizado. El bloqueo nunca invade el siguiente horario de oración."
+      },
+      "prayers": {
+        "title": "Qué oraciones",
+        "body": "Elige las oraciones a bloquear. Al marcar una oración se levanta su bloqueo."
+      }
+    }
+  },
+  "tracker": {
+    "addA11y": "{{label}}: {{summary}}. Añadir registro",
+    "delete": {
+      "a11y": "Eliminar registro de {{label}}",
+      "confirm": "Eliminar",
+      "message": "¿Seguro que quieres eliminar este registro?",
+      "title": "Eliminar registro"
+    },
+    "errors": {
+      "amount": "Introduce una cantidad",
+      "memorization": "Completa al menos un campo",
+      "minutes": "Introduce los minutos",
+      "pages": "Introduce el número de páginas",
+      "rakaat": "Introduce el número de rakats",
+      "saveFailed": "Algo salió mal al guardar."
+    },
+    "fasting": {
+      "ramazan": "Ayuno de Ramadán",
+      "kaza": "Ayuno qada",
+      "nafile": "Ayuno voluntario",
+      "pazartesi_persembe": "Lunes y jueves",
+      "pazartesi_persembeShort": "Ayuno lun-jue"
+    },
+    "form": {
+      "amount": "Cantidad *",
+      "amountPlaceholder": "ej. 100",
+      "bookName": "Título del libro (opcional)",
+      "bookPlaceholder": "ej. Riyad as-Salihin",
+      "description": "Descripción (opcional)",
+      "descriptionPlaceholder": "ej. donación de alimentos",
+      "fastingType": "Tipo de ayuno",
+      "minutesOptional": "¿Cuántos minutos? (opcional)",
+      "minutesPlaceholder": "ej. 20",
+      "minutesRequired": "¿Cuántos minutos? *",
+      "newVerses": "Aleyas nuevas memorizadas",
+      "note": "Nota (opcional)",
+      "date": "Fecha",
+      "today": "Hoy",
+      "pastHint": "Esto se guardará en un día pasado.",
+      "pastSaved": "Guardado en {{date}}.",
+      "notePlaceholder": {
+        "default": "Añadir una nota…",
+        "dua": "ej. Por amigos enfermos",
+        "fasting": "ej. Ayuno voluntario de lunes",
+        "memorization": "ej. Ya-Sin aleyas 1-5",
+        "quran": "ej. Al-Baqarah páginas 15-18"
+      },
+      "pages": "Número de páginas *",
+      "prayerType": "Tipo de oración",
+      "rakaat": "Número de rakats *",
+      "revisedVerses": "Aleyas repasadas"
+    },
+    "hero": {
+      "entries": "registros",
+      "types": "tipos de adoración"
+    },
+    "nafile": {
+      "aksam_sunnet": "Sunnah de Maghrib",
+      "diger": "Otra",
+      "duha": "Duha",
+      "evvabin": "Awwabin",
+      "ikindi_sunnet": "Sunnah de Asr",
+      "ogle_sunnet": "Sunnah de Dhuhr",
+      "sabah_sunnet": "Sunnah de Fajr",
+      "teheccud": "Tahajjud",
+      "teravih": "Tarawih",
+      "vitir": "Witr",
+      "yatsi_sunnet": "Sunnah de Isha"
+    },
+    "summary": {
+      "entries": "{{count}} registros",
+      "moreEntries": ", {{count}} registros",
+      "none": "Aún sin registros"
+    },
+    "title": "Registro de adoración",
+    "todayEntries": "Registros de hoy",
+    "day": {
+      "worship": "Adoración",
+      "entries": "Registros"
+    },
+    "value": {
+      "memorization": "{{new}} aleyas nuevas",
+      "memorizationRevision": "{{new}} nuevas · {{revision}} aleyas repasadas",
+      "minutes": "{{count}} minutos",
+      "minutesShort": "{{count}} min",
+      "pages": "{{count}} páginas",
+      "rakaat": "{{count}} rakats"
+    }
+  },
+  "update": {
+    "later": "Más tarde",
+    "openStore": "Abrir App Store",
+    "openStore_android": "Abrir Google Play",
+    "optionalMessage": "Salah {{version}} está en la App Store. Actualiza para obtener nuevas funciones y mejoras.",
+    "optionalMessage_android": "Salah {{version}} está en Google Play. Actualiza para obtener nuevas funciones y mejoras.",
+    "optionalTitle": "Nueva versión disponible",
+    "requiredMessage": "Para seguir usando Salah, actualiza a la última versión desde la App Store.",
+    "requiredMessage_android": "Para seguir usando Salah, actualiza a la última versión desde Google Play.",
+    "requiredTitle": "Actualización obligatoria",
+    "update": "Actualizar"
+  },
+  "upload": {
+    "loading": "Subiendo...",
+    "wait": "Espera un momento..."
+  },
+  "verse": {
+    "loadFailed": "No se pudo cargar la traducción.",
+    "footnotes": "Notas",
+    "noWords": "No se encontraron datos de palabras.",
+    "tabMeaning": "Significado",
+    "tabWords": "Palabra por palabra",
+    "wordsNote": "Toca una palabra para ver su transliteración y significado."
+  },
+  "widget": {
+    "amel": {
+      "quran": "Corán",
+      "nafile": "Nafl",
+      "fasting": "Ayuno",
+      "sadaka": "Caridad",
+      "dua": "Dua",
+      "memorization": "Memorizar",
+      "book": "Libro"
+    },
+    "amelCount": "{{count}} tipos registrados",
+    "amelNone": "Nada registrado hoy",
+    "amelTitle": "Adoración de hoy",
+    "hadith": "Hadiz del día",
+    "inspirationEmpty": "Abre la app para ver la aleya de hoy",
+    "inspirationFallback": "Inspiración diaria",
+    "openApp": "Abre la app para los horarios de oración",
+    "premiumCta": "Hazte Premium",
+    "premiumLocked": "Este widget forma parte de Premium",
+    "ringTitle": "Círculo del día",
+    "trackerAllDone": "Todo listo por hoy",
+    "trackerLeft": "Quedan {{count}} oraciones",
+    "trackerSignIn": "Inicia sesión para marcar oraciones",
+    "trackerTitle": "Registro de oraciones",
+    "until": "Hasta {{prayer}}",
+    "untilEnd": "Hasta que termine {{prayer}}",
+    "verse": "Aleya del día"
+  },
+  "ramadan": {
+    "teravih": {
+      "mark": "Recé Tarawih",
+      "done": "Tarawih rezado",
+      "count": "{{count}} / {{total}} Tarawih"
+    },
+    "tab": {
+      "fast": "Ayuno",
+      "teravih": "Tarawih"
+    },
+    "kaza": {
+      "title": "{{count}} días sin marcar",
+      "ozel": "{{count}} días coinciden con tus días especiales.",
+      "body": "Puedes añadir los días que no pudiste ayunar a tu contador de ayunos qada.",
+      "add": "Añadir {{count}} días a qada",
+      "added": "Añadido al contador de qada"
+    },
+    "nights": {
+      "title": "Últimas diez noches",
+      "count": "{{done}} / 10 noches",
+      "hint": "Marca las noches que pasaste en adoración.",
+      "kadir": "Qadr"
+    },
+    "verse": {
+      "title": "Aleya del día {{day}} de Ramadán"
+    },
+    "more": {
+      "groups": "Khatm en grupo"
+    },
+    "tile": {
+      "zakat": "Zakat",
+      "zakatHint": "Fitr y fidya",
+      "groups": "Khatm en grupo",
+      "groupsHint": "Leer juntos",
+      "hatim": "Plan de Khatm",
+      "hatimHint": "Crear un plan"
+    },
+    "nextPrayer": "Próxima {{prayer}} {{time}}",
+    "journey": {
+      "title": "Camino de Ramadán"
+    },
+    "journal": {
+      "title": "Diario de ayuno",
+      "ofTotal": "/ {{total}} días ayunados",
+      "fasted": "Ayunado",
+      "today": "Hoy",
+      "upcoming": "Próximo",
+      "missed": "No ayunado",
+      "kaza": "Ayunos qada",
+      "kazaCount": "{{count}} días",
+      "kazaAdd": "Añadir un ayuno qada",
+      "kazaRemove": "Quitar un ayuno qada"
+    },
+    "day": "Día {{day}} de Ramadán",
+    "untilIftar": "Hasta el iftar",
+    "untilSahur": "Hasta el suhur",
+    "sahur": "Suhur",
+    "iftar": "Iftar",
+    "fastToday": "Ayuno hoy",
+    "fasted": "Ayunando",
+    "fastCount": "{{count}} / {{total}} días ayunados",
+    "hatimCta": "Crea un plan para completar el Corán en Ramadán",
+    "upcoming": {
+      "title": "Faltan {{days}} días para Ramadán",
+      "tomorrow": "Ramadán empieza mañana",
+      "subtitle": "{{date}} · Horario y plan del Corán"
+    }
+  },
+  "zakat": {
+    "title": "Zakat y fitr",
+    "gold": "Oro",
+    "goldPrice": "Precio del oro por gramo",
+    "cash": "Efectivo y divisas",
+    "trade": "Mercancía comercial",
+    "receivable": "Cuentas por cobrar",
+    "debt": "Deudas a pagar en un año",
+    "nisab": "Nisab: {{amount}} TRY (80,18 g de oro)",
+    "due": "Tu zakat: {{amount}} TRY",
+    "below": "Por debajo del nisab, no corresponde zakat.",
+    "conditions": "El zakat corresponde cuando el patrimonio libre de necesidades básicas y deudas alcanza el nisab y pasa un año. La tasa es una cuadragésima parte.",
+    "fitreSection": "Fitr",
+    "people": "Número de personas",
+    "fitreNote": "El fitr de Diyanet para {{period}} es de {{amount}} TRY por persona.",
+    "fitrePaid": "Ya di mi fitr",
+    "fitreDone": "Fitr entregado",
+    "fidyeSection": "Fidya",
+    "fidyeNote": "Para quienes no pueden ayunar por edad avanzada o enfermedad sin cura esperada y no pueden recuperar los ayunos. Quienes tienen una excusa temporal recuperan sus ayunos.",
+    "days": "Número de días",
+    "source": "Abrir fuente de Diyanet",
+    "disclaimer": "Para casos particulares, consulta a un muftí.",
+    "tabZakat": "Zakat",
+    "tabFitre": "Fitr",
+    "tabFidye": "Fidya",
+    "goldPriceHint": "El nisab se calcula a partir de este precio. Puedes obtener el precio actual en una joyería o en tu banco.",
+    "assets": "Tu patrimonio",
+    "deduct": "A deducir",
+    "unitGram": "gramos",
+    "unitTl": "TRY",
+    "money": "{{amount}} TRY",
+    "resultDue": "Tu zakat",
+    "resultNone": "No corresponde zakat",
+    "resultNeedPrice": "Introduce primero el precio del oro",
+    "resultNeedPriceBody": "El nisab se calcula con este precio.",
+    "netVsNisab": "Patrimonio neto {{net}} TRY  ·  Nisab {{nisab}} TRY",
+    "whoTitle": "¿Quién debe pagar zakat?",
+    "fitreResult": "Total de fitr",
+    "fitreCalc": "{{count}} personas x {{amount}} TRY",
+    "fidyeResult": "Total de fidya",
+    "fidyeCalc": "{{count}} días x {{amount}} TRY",
+    "whoFidye": "¿Para quién es la fidya?",
+    "keyboardDone": "Listo",
+    "decrease": "Disminuir",
+    "increase": "Aumentar",
+    "goldPriceAuto": "Precio de mercado, {{time}}. Puedes modificarlo."
+  },
+  "hatimGroups": {
+    "title": "Khatm en grupo",
+    "emptyTitle": "Aún no tienes grupos",
+    "emptyBody": "Crea un grupo, comparte el código de invitación y leed juntos los 30 Juz.",
+    "create": "Crear grupo",
+    "join": "Unirse con código",
+    "name": "Nombre del grupo",
+    "code": "Código de invitación",
+    "members": "{{count}} miembros",
+    "progress": "{{done}} / 30 Juz",
+    "completed": "Khatms completados: {{count}}",
+    "invite": "Invitar",
+    "inviteCode": "Código de invitación: {{code}}",
+    "inviteText": "Únete al khatm en grupo {{name}}. En la app Salah, introduce este código en Khatm en grupo: {{code}}",
+    "juzTitle": "Juz {{juz}}",
+    "take": "Tomar este Juz",
+    "done": "Ya lo leí",
+    "undone": "No leído",
+    "release": "Liberar Juz",
+    "takenBy": "{{name}} lo está leyendo",
+    "doneBy": "{{name}} lo leyó",
+    "mine": "Tuyo",
+    "free": "Libre",
+    "read": "Leído",
+    "others": "Tomado",
+    "membersTitle": "Miembros",
+    "owner": "Creador",
+    "leave": "Salir del grupo",
+    "leaveConfirm": "¿Salir de este grupo? Los Juz que no hayas terminado quedarán libres.",
+    "delete": "Eliminar grupo",
+    "deleteConfirm": "El grupo se eliminará para todos. ¿Estás seguro?",
+    "remove": "Expulsar miembro",
+    "removeConfirm": "¿Expulsar a {{name}} del grupo?",
+    "invalidCode": "Este código de invitación no es válido.",
+    "full": "Este grupo está lleno.",
+    "tooMany": "Puedes unirte a un máximo de 20 grupos.",
+    "taken": "Alguien acaba de tomar este Juz.",
+    "failed": "No se pudo completar. Revisa tu conexión e inténtalo de nuevo.",
+    "signIn": "Inicia sesión para usar el khatm en grupo.",
+    "empty": "Grupo no encontrado.",
+    "createTitle": "Nuevo grupo",
+    "createHint": "Ponle nombre para tu familia, amigos o comunidad. Después podrás compartir el código de invitación.",
+    "namePlaceholder": "Por ejemplo, Familia",
+    "joinTitle": "Unirse a un grupo",
+    "joinHint": "Introduce el código de invitación que recibiste.",
+    "how1": "Crea un grupo o únete con un código",
+    "how2": "Comparte el código de invitación",
+    "how3": "Cada uno toma un Juz y lo marca al leerlo",
+    "heroRead": "{{done}} / 30 Juz leídos",
+    "heroState": "{{reading}} en lectura  ·  {{free}} libres",
+    "myTitle": "Tus Juz",
+    "pages": "Páginas {{from}}-{{to}}",
+    "readNow": "Leer",
+    "takeNext": "Tomar el siguiente Juz (Juz {{juz}})",
+    "noneMine": "No estás leyendo ningún Juz ahora.",
+    "allTaken": "Todos los Juz han sido tomados.",
+    "gridTitle": "Todos los Juz",
+    "freeStatus": "Este Juz está libre.",
+    "mineStatus": "Este Juz es tuyo.",
+    "mineDoneStatus": "Has leído este Juz.",
+    "inviteTitle": "Código de invitación",
+    "inviteAlone": "Por ahora solo estás tú. Comparte el código y leed juntos.",
+    "copy": "Copiar",
+    "copied": "Código copiado",
+    "memberStats": "{{read}} leídos  ·  {{reading}} leyendo",
+    "memberIdle": "Sin Juz tomados aún",
+    "report": "Reportar grupo",
+    "reportTitle": "¿Por qué reportas este grupo?",
+    "reportName": "Nombre de grupo inapropiado",
+    "reportMember": "Miembro molesto",
+    "reportOther": "Otro problema",
+    "reportSent": "Reporte recibido. Lo revisaremos."
+  },
+  "iftarMoment": {
+    "title": "Bendito iftar",
+    "accept": "Que Allah lo acepte.",
+    "adhan": "Adhan de Maghrib {{time}}",
+    "mark": "Marcar el ayuno de hoy",
+    "duas": "Más duas",
+    "tomorrowSahur": "Suhur mañana",
+    "progress": "Ramadán",
+    "duaTitle": "Dua de iftar",
+    "duaArabic": "اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
+    "duaReading": "Allahumma laka sumtu wa ala rizqika aftartu.",
+    "duaMeaning": "Oh Allah, por Ti he ayunado y con Tu provisión rompo mi ayuno.",
+    "duaSource": "Abu Dawud, Siyam, 22"
+  },
+  "imsakiye": {
+    "todayLine": "Hoy, {{date}}, {{place}}",
+    "kadir": "Faltan {{days}} días para Laylat al-Qadr",
+    "kadirTonight": "Laylat al-Qadr es esta noche",
+    "shareTitle": "Horario de Ramadán de {{place}}",
+    "title": "Horario de Ramadán",
+    "short": "Horario",
+    "dayColumn": "Día",
+    "dateColumn": "Fecha",
+    "loadFailed": "No se pudo cargar el horario. Comprueba tu conexión e inténtalo de nuevo.",
+    "notReady": "El horario de este Ramadán aún no está listo. Estará disponible en enero."
+  },
+  "hatim": {
+    "card": {
+      "title": "Plan de lectura del Corán",
+      "today": "Hoy {{read}} / {{target}} páginas · quedan {{days}} días",
+      "log": "Registrar mi lectura",
+      "logMore": "Registrar más",
+      "finished": "Corán completado. Que Allah lo acepte.",
+      "overdue": "La fecha objetivo ha pasado. Puedes actualizar el plan."
+    },
+    "plan": {
+      "title": "Plan de lectura del Corán",
+      "subtitle": "¿Cuándo quieres terminar? Calcularemos tus páginas diarias.",
+      "ramadanEnd": "Para el fin de Ramadán",
+      "days": "{{count}} días",
+      "custom": "Elegir una fecha",
+      "daily": "{{pages}} páginas al día",
+      "remaining": "Quedan {{pages}} páginas · {{days}} días",
+      "start": "Iniciar plan",
+      "update": "Actualizar plan",
+      "saved": "Tu plan ha sido guardado",
+      "delete": "Eliminar plan",
+      "deleteTitle": "¿Eliminar este plan?",
+      "deleteBody": "Las páginas que ya leíste no se eliminarán.",
+      "reminder": "Recordatorio diario",
+      "reminderNeeds": "Activa primero las notificaciones en Ajustes",
+      "status": "Quedan {{pages}} páginas en {{days}} días. Objetivo diario: {{daily}} páginas.",
+      "signIn": "El plan usa tus registros de lectura del Corán. Inicia sesión para continuar.",
+      "signInButton": "Iniciar sesión"
+    }
+  },
+  "appColor": {
+    "sampleButton": "Botón de muestra",
+    "custom": "Personalizado",
+    "customTitle": "Color personalizado",
+    "customHint": "Elige un color en la rueda o escribe su código. La luminosidad se ajusta automáticamente para mantener el texto legible.",
+    "wheel": "Rueda de colores",
+    "hexLabel": "Código de color",
+    "hexInvalid": "El código de color debe tener el formato #RRGGBB.",
+    "apply": "Aplicar",
+    "preview": "Vista previa",
+    "title": "Color de la app",
+    "forest": "Bosque",
+    "navy": "Azul marino",
+    "purple": "Morado",
+    "burgundy": "Burdeos",
+    "ramadanHint": "Durante Ramadán el color cambia automáticamente según la hora del día."
+  },
+  "siri": {
+    "noTimes": "Los horarios de oración aún no se han cargado. Abre la app una vez e inténtalo de nuevo.",
+    "signIn": "Inicia sesión primero en la app para marcar tus oraciones.",
+    "ozelGun": "El modo días especiales está activo, así que no se marcan oraciones.",
+    "next": {
+      "current": "Ahora es tiempo de {{prayer}}, termina a las {{time}}. Quedan {{remaining}}.",
+      "upcoming": "La próxima oración es {{prayer}} a las {{time}}. Quedan {{remaining}}."
+    },
+    "mark": {
+      "done": "{{prayer}} marcada como rezada. {{count}}/5 hoy.",
+      "already": "{{prayer}} ya está marcada.",
+      "none": "No hay ninguna oración por marcar ahora. La próxima es {{prayer}} a las {{time}}.",
+      "offline": "{{prayer}} marcada. Se sincronizará cuando vuelvas a tener conexión.",
+      "failed": "No se pudo marcar. Inténtalo desde la app."
+    }
+  },
+  "quranOffline": {
+    "title": "Descargas",
+    "open": "Abrir descargas",
+    "download": "Descargar",
+    "downloadA11y": "Descargar el audio de esta sura",
+    "downloaded": "Descargado",
+    "downloading": "{{percent}}%",
+    "cancel": "Detener descarga",
+    "deleteTitle": "Eliminar descarga",
+    "deleteMessage": "¿Eliminar el audio de {{reciter}} de {{surah}} de este dispositivo?",
+    "delete": "Eliminar",
+    "deleteAll": "Eliminar todo",
+    "deleteAllMessage": "¿Eliminar todos los audios del Corán descargados de este dispositivo?",
+    "failedTitle": "Error en la descarga",
+    "failed": "Comprueba tu conexión e inténtalo de nuevo.",
+    "textTitle": "Textos de suras",
+    "textHint": "El texto en árabe y la traducción en tu idioma se guardan para leer sin internet.",
+    "textCount": "{{count}}/114 suras listas",
+    "textDownload": "Descargar todo",
+    "textDone": "Todos los textos de suras están descargados.",
+    "mushafTitle": "Mushaf",
+    "mushafHintText": "604 páginas con significado palabra por palabra. El Mushaf se abre sin conexión.",
+    "mushafHintScript": "604 páginas, significado por palabra y la escritura seleccionada ({{script}}). Unos 180 MB.",
+    "mushafCount": "{{count}} / 604 páginas listas",
+    "mushafDownload": "Descargar Mushaf",
+    "mushafDone": "Mushaf descargado.",
+    "mushafDeleteMessage": "Se eliminarán las páginas y fuentes del Mushaf descargadas. Las páginas que abras se volverán a descargar.",
+    "audioTitle": "Audio",
+    "audioHint": "Descarga el audio con el botón Descargar de una sura. Cada sura ocupa entre 1 y 60 MB aprox.",
+    "audioEmpty": "Aún no hay audios descargados.",
+    "size": "{{size}} en total"
+  },
+  "kaza": {
+    "title": "Oraciones qada",
+    "total": "Total qada",
+    "finish": "Rezando {{perDay}} qada de cada oración al día, terminarías alrededor del {{date}}",
+    "perDayLess": "Menos qada por día",
+    "perDayMore": "Más qada por día",
+    "empty": "Sin oraciones qada registradas. Empieza con la calculadora o ajusta los contadores manualmente.",
+    "calculate": "Calcular oraciones qada",
+    "witr": "Witr",
+    "witrToggle": "Contar oración de Witr",
+    "witrHint": "En la escuela hanafí, Witr también se recupera.",
+    "info": "Las oraciones marcadas como qada en el registro diario no alteran estos contadores. Baja el contador de una oración cada vez que recuperes una.",
+    "decrease": "Reducir qada de {{prayer}}",
+    "increase": "Aumentar qada de {{prayer}}",
+    "countA11y": "{{prayer}}: {{count}} qada",
+    "saveFailed": "No se pudo guardar el contador de qada.",
+    "historyLink": "Mis oraciones qada",
+    "calcTitle": "Calcular qada",
+    "calcHint": "Elige el periodo cuyas oraciones debes recuperar. Normalmente desde la pubertad hasta que empezaste a rezar con regularidad.",
+    "calcStart": "Inicio",
+    "calcEnd": "Fin",
+    "calcDeduct": "Excluir días de menstruación",
+    "calcMonthly": "{{days}} días al mes",
+    "calcResult": "{{days}} días",
+    "calcEach": "{{days}} qada de cada oración",
+    "calcApply": "Aplicar contadores",
+    "calcReplaceTitle": "¿Reemplazar contadores?",
+    "calcReplaceMessage": "Los números calculados reemplazarán tus contadores actuales.",
+    "cardTotal": "{{count}} oraciones qada",
+    "cardEmpty": "Calcula tus oraciones qada"
+  },
+  "dhikr": {
+    "title": "Contador de dhikr",
+    "mode": {
+      "tesbihat": "Tasbih",
+      "free": "Dhikr"
+    },
+    "target": "Objetivo",
+    "noTarget": "Sin límite",
+    "tapToCount": "Toca para contar",
+    "undo": "Deshacer",
+    "reset": "Reiniciar",
+    "resetTitle": "¿Reiniciar el contador?",
+    "resetMessage": "Este contador empieza de cero. El total de hoy se conserva.",
+    "today": "Hoy",
+    "finished": "Tasbih completado",
+    "finishedHint": "Que Allah lo acepte.",
+    "again": "Empezar de nuevo",
+    "stepA11y": "Paso {{step}} de {{total}}",
+    "counterA11y": "{{count}} de {{target}}",
+    "cardToday": "{{count}} dhikr hoy",
+    "cardStart": "Empieza tu tasbih",
+    "duaHint": "Contador de tasbih y dhikr",
+    "items": {
+      "subhanallah": {
+        "name": "Subhanallah",
+        "short": "Subhanallah",
+        "reading": "Subhanallah",
+        "meaning": "Gloria a Allah."
+      },
+      "elhamdulillah": {
+        "name": "Alhamdulillah",
+        "short": "Alhamdulillah",
+        "reading": "Alhamdulillah",
+        "meaning": "Toda alabanza pertenece a Allah."
+      },
+      "allahuekber": {
+        "name": "Allahu akbar",
+        "short": "Allahu akbar",
+        "reading": "Allahu akbar",
+        "meaning": "Allah es el más Grande."
+      },
+      "tehlil": {
+        "name": "La ilaha illallah",
+        "short": "Tahlil",
+        "reading": "La ilaha illallah",
+        "meaning": "No hay más divinidad que Allah."
+      },
+      "istigfar": {
+        "name": "Astaghfirullah",
+        "short": "Istighfar",
+        "reading": "Astaghfirullah",
+        "meaning": "Pido perdón a Allah."
+      },
+      "salavat": {
+        "name": "Salawat",
+        "short": "Salawat",
+        "reading": "Allahumma salli ala Muhammad",
+        "meaning": "Oh Allah, bendice a Muhammad."
+      },
+      "tesbihatClosing": {
+        "name": "Tahlil",
+        "short": "Tahlil",
+        "reading": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir.",
+        "meaning": "No hay más divinidad que Allah, Único, sin copartícipe. Suyo es el dominio y Suya es la alabanza, y Él tiene poder sobre todas las cosas."
+      }
+    }
+  },
+  "hifz": {
+    "title": "Memorización",
+    "heroDue": "Para repasar hoy",
+    "heroCount": "{{count}} aleyas",
+    "stats": "{{total}} aleyas en tu lista, {{strong}} bien memorizadas.",
+    "start": "Empezar repaso",
+    "allDone": "Repaso de hoy terminado",
+    "empty": "Tu lista de memorización está vacía. Añade las aleyas que quieras memorizar; la app programa los repasos: el intervalo crece cuando recuerdas y se acorta cuando olvidas.",
+    "add": "Añadir aleyas",
+    "addTitle": "Añadir aleyas para memorizar",
+    "pickSurah": "Elige una sura",
+    "surahsFailed": "No se pudieron cargar las suras. Comprueba tu conexión e inténtalo de nuevo.",
+    "change": "Cambiar",
+    "from": "Primera aleya",
+    "to": "Última aleya",
+    "addButton": "Añadir {{count}} aleyas",
+    "added": "{{count}} aleyas añadidas",
+    "surahRow": "Aleyas {{from}}-{{to}}, {{count}} aleyas, {{due}} para hoy",
+    "remove": "Quitar de la lista",
+    "removeTitle": "¿Quitar esta sura?",
+    "removeMessage": "Se eliminarán tus registros de memorización de {{surah}}.",
+    "progress": "{{index}} / {{total}}",
+    "reveal": "Recita primero de memoria y luego toca para ver la aleya",
+    "listen": "Escuchar",
+    "remembered": "Recordada",
+    "hard": "Difícil",
+    "forgot": "Olvidada",
+    "sessionDone": "Repaso completado",
+    "sessionDoneHint": "Repasaste {{count}} aleyas hoy.",
+    "close": "Cerrar",
+    "verseLabel": "{{surah}}, aleya {{verse}}",
+    "loadFailed": "No se pudieron cargar las aleyas. Comprueba tu conexión.",
+    "entryDue": "{{count}} aleyas para hoy",
+    "entryEmpty": "Memoriza aleyas y deja que la app programe tus repasos",
+    "less": "Reducir {{label}}",
+    "more": "Aumentar {{label}}"
+  },
+  "circles": {
+    "title": "Racha en grupo",
+    "intro": "Mantén una racha de oraciones compartida con familia o amigos. La racha crece cada día que todos rezan las cinco oraciones.",
+    "how1": "Crea un grupo o únete con un código de invitación.",
+    "how2": "Cada miembro marca sus propias oraciones en la app.",
+    "how3": "Cuando todos rezan las cinco, la racha compartida suma un día.",
+    "create": "Crear grupo",
+    "join": "Unirse con código",
+    "createTitle": "Nuevo grupo",
+    "createHint": "Elige el tipo de grupo. Luego comparte el código de invitación.",
+    "joinTitle": "Unirse a un grupo",
+    "joinHint": "Introduce el código de 8 caracteres que te enviaron.",
+    "code": "Código de invitación",
+    "kind": {
+      "family": "Mi familia",
+      "friends": "Mis amigos",
+      "mosque": "Mi mezquita",
+      "colleagues": "Mis compañeros",
+      "other": "Mi grupo"
+    },
+    "members": "{{count}} personas",
+    "membersTitle": "Miembros",
+    "shared": "Racha compartida",
+    "days": "días",
+    "sharedDays": "{{count}} días",
+    "todayDone": "{{done}}/{{total}} completaron hoy",
+    "todayAll": "Todos completaron hoy",
+    "memberToday": "{{count}}/5 oraciones hoy",
+    "memberStreak": "racha de {{count}} días",
+    "you": "Tú",
+    "owner": "Fundador",
+    "inviteTitle": "Código de invitación",
+    "inviteAlone": "Por ahora solo estás tú. Comparte el código y empezad juntos.",
+    "invite": "Invitar",
+    "inviteText": "Únete a nuestra racha compartida de oraciones en Salah. En la app, abre Racha en grupo e introduce este código: {{code}}",
+    "copied": "Código copiado",
+    "copy": "Copiar código",
+    "leave": "Salir del grupo",
+    "leaveConfirm": "¿Quieres salir de este grupo?",
+    "delete": "Eliminar grupo",
+    "deleteConfirm": "El grupo se eliminará para todos. ¿Estás seguro?",
+    "remove": "Expulsar miembro",
+    "removeConfirm": "¿Expulsar a {{name}} del grupo?",
+    "invalidCode": "Este código de invitación no es válido.",
+    "full": "Este grupo está lleno (máximo 12 personas).",
+    "tooMany": "Puedes unirte a un máximo de 5 grupos.",
+    "failed": "Algo salió mal. Comprueba tu conexión e inténtalo de nuevo.",
+    "signIn": "Inicia sesión para usar Racha en grupo.",
+    "privacy": "El grupo solo ve tu nombre, cuántas oraciones rezaste hoy y tu racha.",
+    "streakCardLink": "Racha en grupo"
+  },
+  "prayerLock": {
+    "section": "Bloqueo de oración",
+    "title": "Bloqueo de oración",
+    "on": "Activado",
+    "off": "Desactivado",
+    "intro": "Las apps que elijas se bloquean durante el horario de oración. El bloqueo se levanta cuando marcas la oración como rezada en Salah.",
+    "enable": "Activar bloqueo de oración",
+    "enableHint": "Tus apps elegidas se bloquean en el horario de oración.",
+    "permissionHint": "Se pedirá permiso de Tiempo de uso al activarlo.",
+    "permissionDenied": "No se concedió el permiso de Tiempo de uso. Permítelo e inténtalo de nuevo.",
+    "apps": "Apps a bloquear",
+    "appsNone": "Aún no hay apps elegidas",
+    "appsCount": "{{count}} apps o categorías elegidas",
+    "duration": "Bloquear como máximo",
+    "minutes": "{{count}} min",
+    "prayers": "Oraciones",
+    "info": "El bloqueo solo funciona en este dispositivo y únicamente porque lo elegiste. Tus apps elegidas nunca se envían al servidor. Puedes quitar el permiso cuando quieras en Ajustes > Tiempo de uso.",
+    "when": "Cuándo iniciar el bloqueo",
+    "modeStart": "Al comenzar el horario",
+    "modeEnd": "Antes de que termine el horario",
+    "modeStartHint": "Se bloquea al iniciar la oración. Se desbloquea al marcar la oración o al cumplirse el tiempo fijado.",
+    "modeEndHint": "Se bloquea con la antelación que elijas antes de que termine la oración. Se desbloquea al marcarla o al terminar el horario.",
+    "before": "Antes de que termine el horario",
+    "untilEnd": "Hasta que termine el horario",
+    "custom": "Personalizado",
+    "customLabel": "Minutos",
+    "customRange": "Entre {{min}} y {{max}} minutos",
+    "minuteUnit": "min"
+  },
+  "yearSummary": {
+    "title": "Resumen del año",
+    "entryTitle": "Tu {{year}}",
+    "entrySub": "Tu año de oración y adoración",
+    "prayed": "oraciones realizadas",
+    "percent": "{{percent}}% de oraciones en {{days}} días",
+    "perfectDays": "{{count}} días con las cinco oraciones",
+    "streak": "Racha más larga",
+    "bestMonth": "Mejor mes",
+    "quran": "Corán",
+    "teheccud": "Tahajjud",
+    "nafile": "Oración voluntaria",
+    "fasting": "Ayuno",
+    "kaza": "Qada",
+    "sadaka": "Caridad",
+    "dua": "Dua",
+    "memorization": "Memorización",
+    "fullDays": "Días completos",
+    "days": "{{count}} días",
+    "pages": "{{count}} páginas",
+    "hatims": "{{count}} khatm",
+    "nights": "{{count}} noches",
+    "rakaat": "{{count}} rakats",
+    "prayersCount": "{{count}} oraciones",
+    "times": "{{count}} veces",
+    "minutes": "{{count}} minutos",
+    "ayets": "{{count}} aleyas",
+    "byPrayer": "Por oración",
+    "emptyTitle": "Aún sin registros",
+    "empty": "Tu resumen del año se completa a medida que marcas tus oraciones y tu adoración.",
+    "failed": "No se pudo cargar tu resumen del año. Comprueba tu conexión e inténtalo de nuevo.",
+    "share": "Compartir",
+    "shareLabel": "Mi {{year}}",
+    "shareText": "Realicé {{count}} oraciones en {{year}}. Registrado con Salah.",
+    "story": {
+      "introLine1": "Otro año queda atrás.",
+      "introLine2": "Repasemos juntos tu año de oración y adoración.",
+      "inYear": "En {{year}}",
+      "streakTitle": "Tu racha más larga",
+      "streakUnit": "días seguidos con las cinco oraciones",
+      "topPrayer": "La oración que más rezaste fue {{prayer}}",
+      "prayersUnit": "oraciones",
+      "pagesUnit": "páginas leídas",
+      "moreTitle": "Tus otras adoraciones",
+      "closing": "Que Allah lo acepte.",
+      "replay": "Ver de nuevo",
+      "next": "Siguiente",
+      "previous": "Anterior"
+    }
+  },
+  "prayerLockCard": {
+    "empty": "Bloquea las apps que elijas durante el horario de oración",
+    "noApps": "Elige las apps a bloquear",
+    "lockedNow": "Bloqueado ahora: {{prayer}}",
+    "lockedHint": "Se desbloquea al marcar la oración",
+    "start": "{{count}} min al empezar el horario",
+    "untilEnd": "Desde el inicio hasta el fin del horario",
+    "end": "{{count}} min antes de que termine el horario",
+    "setup": "Configurar bloqueo de oración"
+  },
+  "duaJournal": {
+    "title": "Mi diario de duas",
+    "entry": "Escribe tus propias duas e intenciones",
+    "empty": "Aún sin duas",
+    "emptyBody": "Escribe tus propias duas, intenciones y las personas por las que quieres pedir; añade un recordatorio si lo deseas.",
+    "add": "Nueva dua",
+    "edit": "Editar dua",
+    "titleLabel": "Título",
+    "titlePlaceholder": "Por ejemplo: Por mi madre",
+    "textLabel": "Dua o intención",
+    "textPlaceholder": "Escribe tu dua aquí",
+    "reminder": "Recordármelo",
+    "reminderHint": "Recibirás una notificación los días que elijas",
+    "days": "Días",
+    "reminderSummary": "{{days}}, {{time}}",
+    "deleteConfirm": "¿Eliminar esta dua?",
+    "deleteMessage": "Esto no se puede deshacer.",
+    "private": "Tu diario de duas permanece en este dispositivo y nunca se envía al servidor.",
+    "notifTitle": "Hora de dua"
+  },
+  "wallpaper": {
+    "title": "Fondo de pantalla",
+    "save": "Guardar",
+    "saved": "Guardado en Fotos",
+    "failed": "No se pudo crear el fondo de pantalla",
+    "denied": "Sin acceso a Fotos",
+    "deniedHint": "Permite añadir a Fotos en Ajustes para guardar.",
+    "empty": "Nada que mostrar",
+    "source": {
+      "verse": "Aleya",
+      "dua": "Dua",
+      "esma": "Nombres"
+    },
+    "design": {
+      "title": "Diseño",
+      "orman": "Bosque",
+      "gece": "Noche",
+      "kagit": "Papel",
+      "sade": "Sencillo"
+    }
+  },
+  "greetings": {
+    "title": "Tarjetas de felicitación",
+    "today": "Hoy",
+    "all": "Todas",
+    "cuma": "Viernes",
+    "message": "Mensaje",
+    "classic": "Clásico"
+  },
+  "discover": {
+    "title": "Descubrir",
+    "topics": "Temas",
+    "wallpapers": "Fondos de pantalla",
+    "greetings": "Tarjetas de felicitación",
+    "stories": "Historias",
+    "daily": "Lectura diaria"
+  },
+  "topics": {
+    "title": "Temas",
+    "count": "{{count}} aleyas",
+    "saved": "Guardadas",
+    "savedEmpty": "Aún sin aleyas guardadas",
+    "savedEmptyHint": "Toca el icono de marcador en una tarjeta de aleya para guardarla.",
+    "save": "Guardar",
+    "unsave": "Quitar de guardadas",
+    "openSurah": "Abrir sura",
+    "goToSurah": "Ir a la sura",
+    "more": "Más",
+    "wallpaper": "Crear fondo",
+    "openMushaf": "Abrir en Mushaf",
+    "loadFailed": "No se pudo cargar la aleya",
+    "emptyTopic": "No hay aleyas en este tema",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Paciencia",
+      "sub": "Firmeza en la dificultad"
+    },
+    "sukur": {
+      "title": "Gratitud",
+      "sub": "Agradecimiento por las bendiciones"
+    },
+    "tevekkul": {
+      "title": "Confianza en Allah",
+      "sub": "Encomendarse a Allah"
+    },
+    "umut": {
+      "title": "Esperanza",
+      "sub": "No desesperar jamás de la misericordia"
+    },
+    "tovbe": {
+      "title": "Arrepentimiento",
+      "sub": "Pedir perdón y volver a Allah"
+    },
+    "iman": {
+      "title": "Fe",
+      "sub": "Creencia y certeza del corazón"
+    },
+    "dua": {
+      "title": "Súplica",
+      "sub": "Acudir a Allah e invocarlo"
+    },
+    "huzur": {
+      "title": "Paz",
+      "sub": "Calma y sosiego del corazón"
+    },
+    "siginma": {
+      "title": "Buscar refugio",
+      "sub": "Refugiarse y protegerse en Allah"
+    },
+    "ahlak": {
+      "title": "Buen carácter",
+      "sub": "Buenos modales y conducta"
+    },
+    "aile": {
+      "title": "Familia",
+      "sub": "Cónyuge, padres e hijos"
+    },
+    "rizik": {
+      "title": "Provisión",
+      "sub": "Sustento lícito y bendición"
+    }
+  },
+  "stories": {
+    "title": "Historias",
+    "sections": "{{count}} secciones",
+    "done": "Leída",
+    "continue": "Continuar",
+    "next": "Siguiente sección",
+    "finish": "Finalizar",
+    "step": "Sección {{current}}/{{total}}",
+    "note": "El resumen se basa en las aleyas del Corán."
+  },
+  "daily": {
+    "title": "Lectura diaria",
+    "dua": "Dua del día",
+    "esma": "Nombre del día"
+  }
+}

@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "Your location is used to show prayer times and the qibla direction.";
 "NSAlarmKitUsageDescription" = "Alarm access lets your prayer, tahajjud and suhoor alarms ring even in silent mode.";
 "NSCameraUsageDescription" = "The camera is used to show the Qibla direction over the camera view.";
+"NSPhotoLibraryAddUsageDescription" = "Adding to your photo library is needed to save wallpapers and cards to Photos.";

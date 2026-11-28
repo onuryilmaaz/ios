@@ -9,10 +9,14 @@ struct InspirationEntry: TimelineEntry {
   let verse: InspirationData?
   let theme: SalahTheme
 
-  static func make(at date: Date, app: InspirationData?, verses: [InspirationVerse], theme: SalahTheme)
+  static func make(at date: Date, app: InspirationData?, verses: [InspirationVerse], theme: SalahTheme, dayItems: InspirationDay? = nil)
     -> InspirationEntry
   {
     let day = dayKey(date)
+    // Uygulama o gün için içerik yazdıysa 4 saatlik dilimin öğesi gösterilir (ana ve kilit ekranı aynı).
+    if dayItems?.date == day, let slice = dayItems?.item(at: date) {
+      return InspirationEntry(date: date, data: slice, verse: slice, theme: theme)
+    }
     let verse = InspirationVerse.pick(for: day, in: verses)?.asInspiration
       ?? (app?.type == "ayet" ? app : nil)
     let todays = app?.date == day ? app : nil
@@ -36,7 +40,8 @@ struct InspirationProvider: TimelineProvider {
   func getSnapshot(in context: Context, completion: @escaping (InspirationEntry) -> Void) {
     // Galeri önizlemesi süre sınırına takılırsa sistem boş iskelet gösterir: kısa metin, Arapça font yok.
     if context.isPreview { return completion(.gallerySample(theme: theme)) }
-    completion(.make(at: Date(), app: InspirationData.loadRaw(), verses: InspirationVerse.loadAll(), theme: theme))
+    completion(.make(at: Date(), app: InspirationData.loadRaw(), verses: InspirationVerse.loadAll(), theme: theme,
+                     dayItems: InspirationDay.load(for: dayKey(Date()))))
   }
   func getTimeline(in _: Context, completion: @escaping (Timeline<InspirationEntry>) -> Void) {
     let app = InspirationData.loadRaw()
@@ -44,12 +49,21 @@ struct InspirationProvider: TimelineProvider {
     let cal = Calendar.current
     let now = Date()
     // Şimdi + önümüzdeki 7 gece yarısı: gün dönümünde uygulama açılmadan yeni ayete geçer.
-    var entries = [InspirationEntry.make(at: now, app: app, verses: verses, theme: theme)]
+    let dayItems = InspirationDay.load(for: dayKey(now))
+    var entries = [InspirationEntry.make(at: now, app: app, verses: verses, theme: theme, dayItems: dayItems)]
+    // Bugünün kalan 4 saatlik dilim başları: sıradaki içeriğe uygulama açılmadan geçer.
+    if dayItems != nil {
+      let start = cal.startOfDay(for: now)
+      for hour in stride(from: InspirationDay.sliceHours, to: 24, by: InspirationDay.sliceHours) {
+        guard let boundary = cal.date(byAdding: .hour, value: hour, to: start), boundary > now else { continue }
+        entries.append(.make(at: boundary, app: app, verses: verses, theme: theme, dayItems: dayItems))
+      }
+    }
     var midnight = cal.startOfDay(for: now)
     for _ in 0..<7 {
       guard let next = cal.date(byAdding: .day, value: 1, to: midnight) else { break }
       midnight = next
-      entries.append(.make(at: midnight, app: app, verses: verses, theme: theme))
+      entries.append(.make(at: midnight, app: app, verses: verses, theme: theme, dayItems: dayItems))
     }
     completion(Timeline(entries: entries, policy: .atEnd))
   }

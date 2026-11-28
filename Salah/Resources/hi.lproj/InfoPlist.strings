@@ -1,0 +1,5 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "नमाज़ के समय और क़िबले की दिशा दिखाने के लिए आपकी लोकेशन का उपयोग होता है।";
+"NSAlarmKitUsageDescription" = "अलार्म की अनुमति से नमाज़, तहज्जुद और सहरी के अलार्म साइलेंट मोड में भी बजते हैं।";
+"NSCameraUsageDescription" = "कैमरा दृश्य पर क़िबले की दिशा दिखाने के लिए कैमरा उपयोग होता है।";
+"NSPhotoLibraryAddUsageDescription" = "वॉलपेपर और कार्ड को फ़ोटो में सहेजने के लिए फ़ोटो लाइब्रेरी में जोड़ने की अनुमति चाहिए।";

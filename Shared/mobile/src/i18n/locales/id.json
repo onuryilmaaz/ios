@@ -1144,9 +1144,16 @@
       "title": "Notifikasi malam suci & hari raya"
     },
     "inspiration": {
-      "info": "Sebuah ayat atau hadis dikirim kira-kira setiap 2 jam di siang hari. Anda tidak akan diganggu antara pukul 23.00 dan 07.00.",
+      "info": "Ayat atau hadis dikirim pada siang hari sesuai frekuensi yang kamu pilih. Kamu tidak akan diganggu antara pukul 23:00 dan 07:00.",
       "section": "Notifikasi ayat & hadis",
-      "sub": "Dapatkan pengingat spiritual sepanjang hari"
+      "sub": "Dapatkan pengingat spiritual sepanjang hari",
+      "topics": "Topik",
+      "topicsSub": "Jika memilih topik, hanya ayat dari topik itu yang dikirim. Jika tidak ada yang dipilih, ayat dan hadis dicampur.",
+      "frequency": "Frekuensi",
+      "freqH2": "Setiap 2 jam",
+      "freqH4": "Setiap 4 jam",
+      "freqTwice": "Dua kali sehari (10:00, 20:00)",
+      "freqOnce": "Sekali sehari (10:00)"
     },
     "language": {
       "restartMessage": "Tutup lalu buka kembali aplikasi agar tata letak beralih ke bahasa baru.",
@@ -1266,6 +1273,24 @@
       "hicriYil": "Selamat Tahun Baru Hijriah",
       "asure": "Hari Asyura yang Penuh Berkah",
       "cuma": "Jumat Mubarak",
+      "kandil2": "Semoga doa Anda dikabulkan di malam suci ini",
+      "kandil3": "Semoga Allah menjadikan malam penuh berkah ini sumber kebaikan",
+      "kadir2": "Semoga doa Anda dikabulkan di Lailatulqadar",
+      "kadir3": "Semoga malam yang lebih baik dari seribu bulan ini membawa rahmat",
+      "bayram2": "Semoga hari raya membawa damai dan sukacita",
+      "bayram3": "Selamat Hari Raya bersama orang-orang tercinta",
+      "arife2": "Semoga hari penuh berkah ini membawa kebaikan",
+      "arife3": "Semoga doa Anda dikabulkan di hari yang mulia ini",
+      "ramazan2": "Semoga Ramadan membawa rahmat dan berkah",
+      "ramazan3": "Semoga Allah menerima puasa dan doa Anda",
+      "ucAylar2": "Semoga tiga bulan mulia membawa rahmat dan ampunan",
+      "ucAylar3": "Semoga Allah mengizinkan kita menjalani bulan-bulan berkah ini dalam kebaikan",
+      "hicriYil2": "Semoga tahun baru membawa kebaikan, damai, dan berkah",
+      "hicriYil3": "Selamat Tahun Baru Hijriah yang penuh berkah",
+      "asure2": "Semoga hari Asyura membawa kebaikan",
+      "asure3": "Hari Asyura yang penuh berkah dan berbagi",
+      "cuma2": "Jumat yang penuh berkah",
+      "cuma3": "Semoga doa Anda dikabulkan di hari Jumat ini",
       "prayer": "Semoga salat Anda diterima.",
       "cta": "Bagikan kartu ucapan",
       "cumaA11y": "Bagikan kartu ucapan Jumat"
@@ -2283,5 +2308,122 @@
     "deleteMessage": "Ini tidak dapat dibatalkan.",
     "private": "Buku doa Anda hanya tersimpan di perangkat ini dan tidak pernah dikirim ke server.",
     "notifTitle": "Waktunya berdoa"
+  },
+  "wallpaper": {
+    "title": "Wallpaper",
+    "save": "Simpan",
+    "saved": "Tersimpan di Foto",
+    "failed": "Gagal membuat wallpaper",
+    "denied": "Tidak ada akses ke Foto",
+    "deniedHint": "Izinkan penambahan ke Foto di Pengaturan untuk menyimpan.",
+    "empty": "Tidak ada konten",
+    "source": {
+      "verse": "Ayat",
+      "dua": "Doa",
+      "esma": "Asma"
+    },
+    "design": {
+      "title": "Desain",
+      "orman": "Hutan",
+      "gece": "Malam",
+      "kagit": "Kertas",
+      "sade": "Polos"
+    }
+  },
+  "greetings": {
+    "title": "Kartu ucapan",
+    "today": "Hari ini",
+    "all": "Semua",
+    "cuma": "Jumat",
+    "message": "Pesan",
+    "classic": "Klasik"
+  },
+  "discover": {
+    "title": "Jelajahi",
+    "topics": "Topik",
+    "wallpapers": "Wallpaper",
+    "greetings": "Kartu ucapan",
+    "stories": "Kisah",
+    "daily": "Bacaan hari ini"
+  },
+  "topics": {
+    "title": "Topik",
+    "count": "{{count}} ayat",
+    "saved": "Tersimpan",
+    "savedEmpty": "Belum ada ayat tersimpan",
+    "savedEmptyHint": "Ketuk ikon penanda pada kartu ayat untuk menyimpannya.",
+    "save": "Simpan",
+    "unsave": "Hapus dari tersimpan",
+    "openSurah": "Buka surah",
+    "goToSurah": "Ke surah",
+    "more": "Lainnya",
+    "wallpaper": "Jadikan wallpaper",
+    "openMushaf": "Buka di Mushaf",
+    "loadFailed": "Ayat tidak dapat dimuat",
+    "emptyTopic": "Tidak ada ayat pada topik ini",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Sabar",
+      "sub": "Teguh dalam kesulitan"
+    },
+    "sukur": {
+      "title": "Syukur",
+      "sub": "Berterima kasih atas nikmat"
+    },
+    "tevekkul": {
+      "title": "Tawakal",
+      "sub": "Bersandar dan berserah kepada Allah"
+    },
+    "umut": {
+      "title": "Harapan",
+      "sub": "Tidak putus asa dari rahmat"
+    },
+    "tovbe": {
+      "title": "Tobat",
+      "sub": "Memohon ampun dan kembali kepada Allah"
+    },
+    "iman": {
+      "title": "Iman",
+      "sub": "Keyakinan dan keteguhan hati"
+    },
+    "dua": {
+      "title": "Doa",
+      "sub": "Menghadap dan memohon kepada Allah"
+    },
+    "huzur": {
+      "title": "Ketenangan",
+      "sub": "Hati yang tenteram"
+    },
+    "siginma": {
+      "title": "Perlindungan",
+      "sub": "Berlindung kepada Allah"
+    },
+    "ahlak": {
+      "title": "Akhlak",
+      "sub": "Budi pekerti dan perilaku yang baik"
+    },
+    "aile": {
+      "title": "Keluarga",
+      "sub": "Pasangan, orang tua dan anak"
+    },
+    "rizik": {
+      "title": "Rezeki",
+      "sub": "Penghasilan halal dan berkah"
+    }
+  },
+  "stories": {
+    "title": "Kisah",
+    "sections": "{{count}} bagian",
+    "done": "Sudah dibaca",
+    "continue": "Lanjutkan",
+    "next": "Bagian berikutnya",
+    "finish": "Selesai",
+    "step": "Bagian {{current}}/{{total}}",
+    "note": "Ringkasan ini berdasarkan ayat-ayat Al-Qur'an."
+  },
+  "daily": {
+    "title": "Bacaan hari ini",
+    "dua": "Doa hari ini",
+    "esma": "Nama hari ini"
   }
 }

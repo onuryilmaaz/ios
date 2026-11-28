@@ -32,6 +32,10 @@ enum StorePreview {
     case .id: note = "Al-Baqarah 15-18"
     case .ur: note = "البقرہ 15-18"
     case .ru: note = "аль-Бакара 15-18"
+    case .es, .it, .ms: note = "Al-Baqarah 15-18"
+    case .bn: note = "আল-বাকারা ১৫-১৮"
+    case .hi: note = "अल-बक़रा 15-18"
+    case .th: note = "อัล-บะเกาะเราะฮฺ 15-18"
     case .tr: note = "Bakara 15-18"
     }
     let journal: [AppLanguage: [(String, String)]] = [

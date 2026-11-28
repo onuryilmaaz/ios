@@ -248,6 +248,84 @@ enum DebugLaunch {
     #endif
   }
 
+  /// -SalahDebugTopics grid|detail|saved [-SalahDebugTopic sabir]: Konular ekranı (canlı ayet servisi, izole değil).
+  static var topics: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugTopics")
+    #else
+    return nil
+    #endif
+  }
+  /// -SalahDebugWallpaper verse|dua|esma [-SalahDebugDesign orman|gece|kagit|sade]: Duvar kağıdı ekranı (Kur'an sekmesi).
+  static var wallpaper: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugWallpaper")
+    #else
+    return nil
+    #endif
+  }
+  /// -SalahDebugGreetings list|edit [-SalahDebugGreetingKind kandil] [-SalahDebugDesign ...]: Tebrik kartları (Kur'an sekmesi).
+  static var greetings: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugGreetings")
+    #else
+    return nil
+    #endif
+  }
+  static var greetingKind: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugGreetingKind")
+    #else
+    return nil
+    #endif
+  }
+  static var design: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugDesign")
+    #else
+    return nil
+    #endif
+  }
+  /// Ağsız izole oturumda ekran görüntüsü için açık quran.com yedeğinin kullanılacağı debug açılışları.
+  static var openQuranFallback: Bool { topics != nil || wallpaper != nil || stories != nil || daily }
+  /// -SalahDebugStories list|detail [-SalahDebugStory yusuf] [-SalahDebugStorySection 2]: Kıssalar (Kur'an sekmesi).
+  static var stories: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugStories")
+    #else
+    return nil
+    #endif
+  }
+  static var storyID: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugStory")
+    #else
+    return nil
+    #endif
+  }
+  static var storySection: Int? {
+    #if DEBUG
+    return UserDefaults.standard.object(forKey: "SalahDebugStorySection").map { _ in UserDefaults.standard.integer(forKey: "SalahDebugStorySection") }
+    #else
+    return nil
+    #endif
+  }
+  /// -SalahDebugDaily YES: Günün okuması (Kur'an sekmesi).
+  static var daily: Bool {
+    #if DEBUG
+    return UserDefaults.standard.bool(forKey: "SalahDebugDaily")
+    #else
+    return false
+    #endif
+  }
+  static var topicID: String? {
+    #if DEBUG
+    return UserDefaults.standard.string(forKey: "SalahDebugTopic")
+    #else
+    return nil
+    #endif
+  }
+
   static var quran: String? {
     #if DEBUG
     return UserDefaults.standard.string(forKey: "SalahDebugQuran")
@@ -375,8 +453,10 @@ enum DebugLaunch {
       case "calendar": return .calendar
       case "ozelGun": return .ozelGun
       case "dua": return .dua
+      case "greetings": return .greetings
       case "defter": return .duaJournal
       case "esma": return .esma
+      case "daily": return .dailyReading
       case "hutbe": return .hutbe
       case "history": return .history
       case "kaza": return .kaza

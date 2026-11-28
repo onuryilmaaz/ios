@@ -1,0 +1,2429 @@
+{
+  "account": {
+    "finalConfirm": "Conferma finale",
+    "deletedTitle": "Account eliminato",
+    "continue": "Continua",
+    "dangerSub": "La disattivazione dell'account può essere annullata, ma fai attenzione",
+    "dangerZone": "Zona pericolosa",
+    "deactivate": "Disattiva",
+    "deactivateFailed": "Impossibile disattivare l'account",
+    "deactivateMessage": "Vuoi davvero disattivare il tuo account? L'operazione è reversibile, ma l'accesso al tuo account sarà limitato.",
+    "deactivateTitle": "Disattiva account",
+    "deactivated": "Account disattivato",
+    "deleteConfirm": "Elimina definitivamente",
+    "deleteFailed": "Impossibile eliminare l'account. Riprova.",
+    "deleteFinal": "Il tuo account e tutti i tuoi dati verranno eliminati definitivamente. Non sarà possibile tornare indietro.",
+    "deleteMessage": "Questa operazione NON può essere annullata. Il tuo account e tutti i tuoi dati (registri di preghiera e adorazione) verranno eliminati definitivamente. Vuoi continuare?",
+    "deleteSection": "Elimina definitivamente l'account",
+    "deleteSectionSub": "Il tuo account e tutti i tuoi dati vengono eliminati definitivamente. L'operazione non può essere annullata.",
+    "deleteTitle": "Elimina definitivamente il mio account",
+    "deleted": "Il tuo account è stato eliminato definitivamente.",
+    "signOut": "Esci",
+    "signOutMessage": "Vuoi davvero uscire?",
+    "signOutOthersFailed": "Impossibile disconnettersi dagli altri dispositivi",
+    "signOutOthersMessage": "Verrai disconnesso da tutti i dispositivi tranne questo. Vuoi continuare?",
+    "signOutOthersTitle": "Esci dagli altri dispositivi",
+    "signOutSub": "Esci dal tuo account in sicurezza",
+    "signedOutOthers": "Disconnesso dagli altri dispositivi"
+  },
+  "activities": {
+    "book": {
+      "description": "Registra il libro religioso o di studio e le pagine che hai letto",
+      "label": "Lettura libri",
+      "unit": "pagine"
+    },
+    "dua": {
+      "description": "Registra il tempo dedicato alle dua",
+      "label": "Tempo di dua",
+      "unit": "min"
+    },
+    "fasting": {
+      "description": "Registra il digiuno di oggi",
+      "label": "Digiuno",
+      "unit": ""
+    },
+    "memorization": {
+      "description": "Registra i versetti memorizzati e ripassati",
+      "label": "Memorizzazione",
+      "unit": "versetti"
+    },
+    "nafile": {
+      "description": "Registra la preghiera volontaria eseguita",
+      "label": "Preghiera volontaria",
+      "unit": "rak'at"
+    },
+    "quran": {
+      "description": "Inserisci quante pagine hai letto oggi",
+      "label": "Lettura del Corano",
+      "unit": "pagine"
+    },
+    "sadaka": {
+      "description": "Registra la carità donata",
+      "label": "Carità",
+      "unit": ""
+    }
+  },
+  "adhan": {
+    "dismiss": "Ferma Adhan",
+    "takbir": "Allahu Akbar",
+    "time": "Orario dell'Adhan",
+    "title": "Adhan di {{prayer}}"
+  },
+  "alarm": {
+    "button": {
+      "mark": "Pregata",
+      "snooze": "Posticipa",
+      "stop": "Ferma"
+    },
+    "channel": "Sveglie",
+    "custom": {
+      "add": "Aggiungi sveglia",
+      "emptyTitle": "Nessuna sveglia personalizzata",
+      "emptyMessage": "Le sveglie con orario e giorni scelti da te appariranno qui.",
+      "once": "Una volta",
+      "everyDay": "Ogni giorno",
+      "weekdays": "Giorni feriali",
+      "weekend": "Fine settimana",
+      "label": "Etichetta",
+      "labelPlaceholder": "Ad esempio preghiera di Duha",
+      "repeat": "Ripeti",
+      "newTitle": "Nuova sveglia",
+      "editTitle": "Modifica sveglia",
+      "deleteTitle": "Eliminare questa sveglia?",
+      "deleteMessage": "Questa sveglia verrà rimossa.",
+      "hourUp": "Aumenta ora",
+      "hourDown": "Diminuisci ora",
+      "minuteUp": "Aumenta minuto",
+      "minuteDown": "Diminuisci minuto"
+    },
+    "footer": "Le sveglie vengono impostate per gli orari di preghiera dei prossimi 14 giorni e si aggiornano ogni volta che apri l'app.",
+    "limit": "Alcuni giorni successivi non sono stati impostati a causa di un limite di sistema. Verranno aggiunti quando aprirai l'app.",
+    "offset": {
+      "atTime": "All'orario",
+      "before": "{{min}} min prima",
+      "after": "{{min}} min dopo"
+    },
+    "options": {
+      "sound": "Suono sveglia",
+      "adhan": "Adhan",
+      "system": "Suono di sistema",
+      "secondary": "Secondo pulsante sulla sveglia",
+      "markInfo": "Il pulsante Pregata appare sulle sveglie che suonano dopo l'inizio della preghiera e la segna come fatta. Le altre sveglie mostrano Posticipa.",
+      "snoozeMinutes": "Durata posticipo",
+      "minutes": "{{min}} min",
+      "tone": {
+        "chime": "Campanello",
+        "soft": "Delicato",
+        "beep": "Classico"
+      },
+      "soundInfo": "L'adhan suona solo per le sveglie delle preghiere; tahajjud, suhur e sveglie personalizzate usano il suono di sistema. Gli altri suoni valgono per tutte le sveglie."
+    },
+    "permission": {
+      "allow": "Consenti",
+      "denied": "L'accesso alle sveglie è disattivato. Puoi consentire le sveglie per Salah in Impostazioni.",
+      "message": "Consenti le sveglie affinché suonino anche in modalità silenziosa e durante Full immersion.",
+      "message_android": "Consenti le notifiche e \"Sveglie e promemoria\" affinché le sveglie suonino in orario, anche in modalità silenziosa.",
+      "openSettings": "Apri Impostazioni",
+      "title": "Autorizzazione sveglie necessaria"
+    },
+    "quick": {
+      "title": "Sveglia di {{prayer}}",
+      "message": "Imposta una sveglia per questa preghiera che suoni come una sveglia dell'Orologio.",
+      "activeMessage": "Sveglia attiva: {{when}}.",
+      "turnOn": "Imposta sveglia ({{when}})",
+      "turnOff": "Disattiva sveglia",
+      "more": "Impostazioni sveglie",
+      "pill": "Sveglia"
+    },
+    "sahur": {
+      "label": "Suhur",
+      "sub": "{{min}} min prima di Fajr",
+      "onlyRamadan": "Solo durante il Ramadan",
+      "onlyRamadanSub": "Se disattivato, suona ogni giorno"
+    },
+    "screen": {
+      "title": "Sveglie",
+      "next": "Prossima sveglia",
+      "noNext": "Nessuna sveglia impostata",
+      "today": "Oggi {{time}}",
+      "tomorrow": "Domani {{time}}"
+    },
+    "section": {
+      "prayers": "Sveglie delle preghiere",
+      "night": "Notte e suhur",
+      "custom": "Sveglie personalizzate",
+      "options": "Opzioni sveglia"
+    },
+    "snoozed": "Posticipata",
+    "tahajjud": {
+      "label": "Tahajjud",
+      "sub": "Ultimo terzo della notte",
+      "start": "All'inizio"
+    },
+    "title": {
+      "atTime": "È l'ora di {{prayer}}",
+      "before": "{{min}} min a {{prayer}}",
+      "after": "{{prayer}}, da {{min}} min",
+      "tahajjud": "È l'ora del tahajjud",
+      "sahur": "È l'ora del suhur",
+      "custom": "Sveglia"
+    },
+    "unsupported": {
+      "title": "Non disponibile su questo dispositivo",
+      "message": "Le sveglie richiedono iOS 26 o versioni successive."
+    },
+    "customOffset": {
+      "chip": "Personalizzato",
+      "before": "Prima",
+      "after": "Dopo",
+      "minutes": "Minuti",
+      "apply": "Applica",
+      "invalid": "Inserisci un numero di minuti tra 0 e {{max}}."
+    }
+  },
+  "alarmCard": {
+    "empty": "Sveglie che seguono automaticamente gli orari di preghiera",
+    "setFajr": "Imposta sveglia per Fajr",
+    "setDone": "Sveglia impostata",
+    "setDoneMessage": "Rispetto a Fajr: {{when}}. Puoi modificarla in Sveglie.",
+    "manage": "Gestisci sveglie",
+    "custom": "{{count}} sveglie personalizzate"
+  },
+  "appIcon": {
+    "classic": "Classica",
+    "default": "Foresta",
+    "failed": "Impossibile cambiare l'icona.",
+    "gold": "Oro",
+    "night": "Notte",
+    "title": "Icona dell'app",
+    "navy": "Blu marino",
+    "purple": "Viola",
+    "burgundy": "Bordeaux"
+  },
+  "assistant": {
+    "clear": "Cancella chat",
+    "clearConfirm": "Eliminare tutti i messaggi?",
+    "clearConfirmButton": "Cancella",
+    "clearTitle": "Cancella chat",
+    "copied": "Copiato",
+    "copiedMessage": "Messaggio copiato negli appunti.",
+    "delete": "Elimina",
+    "error": "Qualcosa è andato storto, riprova.",
+    "fallbackReply": "Mi dispiace, al momento non posso rispondere. Potresti riprovare?",
+    "introText": "Tutto ciò che vuoi sapere su Islam, preghiera, wudu e adorazione.",
+    "introTitle": "Chiedi quello che hai in mente",
+    "placeholder": "Scrivi una domanda…",
+    "hideKeyboard": "Nascondi tastiera",
+    "send": "Invia",
+    "suggest": {
+      "prayerDuas": "Quali dua si recitano nella preghiera?",
+      "qada": "Come recupero le preghiere perse?",
+      "travel": "Cos'è la preghiera del viaggiatore?",
+      "wudu": "Come si esegue il wudu?"
+    },
+    "title": "Chiedi",
+    "unavailable": "L'assistente IA non è disponibile al momento."
+  },
+  "auth": {
+    "or": "oppure",
+    "email": "Email",
+    "emailPlaceholder": "tu@esempio.com",
+    "emailRequired": "L'email è obbligatoria",
+    "forgot": {
+      "send": "Invia codice",
+      "sending": "Invio in corso...",
+      "subtitle": "Invieremo un codice di ripristino alla tua email",
+      "title": "Password dimenticata"
+    },
+    "login": {
+      "failed": "Accesso non riuscito. Controlla i tuoi dati.",
+      "forgot": "Password dimenticata?",
+      "inactive": "Il tuo account è inattivo. Contatta l'assistenza.",
+      "invalid": "Email o password non corretti.",
+      "locked": "Il tuo account è bloccato. Riprova più tardi.",
+      "noAccount": "Non hai un account? ",
+      "required": "Email e password sono obbligatorie",
+      "submit": "Accedi",
+      "subtitle": "Accedi e continua il tuo percorso spirituale da dove avevi lasciato.",
+      "welcome": "Bentornato"
+    },
+    "otp": {
+      "enterCode": "Inserisci il codice a 6 cifre",
+      "failed": "Verifica non riuscita",
+      "invalid": "Il codice non è valido o è scaduto",
+      "resend": "Non hai ricevuto il codice? Invia di nuovo",
+      "sendFailed": "Impossibile inviare il codice",
+      "sent": "Codice inviato",
+      "subtitle": "Inserisci il codice a 6 cifre inviato a {{email}}",
+      "title": "Codice di verifica",
+      "verify": "Verifica"
+    },
+    "password": "Password",
+    "register": {
+      "haveAccount": "Hai già un account? ",
+      "failed": "Registrazione non riuscita",
+      "firstName": "Nome",
+      "firstNamePh": "Il tuo nome",
+      "lastName": "Cognome",
+      "lastNamePh": "Il tuo cognome",
+      "passwordPh": "Scegli una password sicura",
+      "required": "Compila tutti i campi",
+      "submit": "Registrati",
+      "submitting": "Registrazione in corso...",
+      "subtitle": "Unisciti ora e inizia a monitorare i tuoi atti di adorazione",
+      "title": "Crea account"
+    },
+    "requestFailed": "Richiesta non riuscita",
+    "reset": {
+      "changeCode": "Cambia codice",
+      "confirm": "Conferma password",
+      "confirmPh": "Inserisci di nuovo la password",
+      "continue": "Continua",
+      "failed": "Ripristino password non riuscito. Controlla il codice.",
+      "mismatch": "Le password non corrispondono",
+      "newPassword": "Nuova password",
+      "newPasswordPh": "Almeno 6 caratteri",
+      "subtitleNew": "Imposta una nuova password per il tuo account",
+      "titleNew": "Nuova password",
+      "titleOtp": "Inserisci codice",
+      "tooShort": "La password deve contenere almeno 6 caratteri",
+      "update": "Aggiorna password",
+      "updating": "Aggiornamento in corso..."
+    },
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "social": {
+      "failed": "Qualcosa è andato storto durante l'accesso. Riprova.",
+      "incomplete": "Impossibile completare l'accesso. Riprova."
+    },
+    "welcome": {
+      "accent": "spirituale",
+      "and": "e",
+      "apple": "Continua con Apple",
+      "email": "Continua con email",
+      "google": "Continua con Google",
+      "line1": "Continua",
+      "line2": "il tuo percorso",
+      "privacy": "Informativa sulla privacy",
+      "subtitle": "Accedi con un tocco e inizia a monitorare la tua adorazione.",
+      "terms": "Termini di utilizzo",
+      "termsPrefix": "Continuando accetti i",
+      "termsSuffix": "."
+    }
+  },
+  "authWall": {
+    "later": "Più tardi",
+    "assistant": {
+      "description": "Accedi per fare le tue domande religiose.",
+      "title": "Accedi all'assistente IA"
+    },
+    "defaultDescription": "Accedi o crea un account per usare questa funzione e salvare i tuoi progressi.",
+    "defaultTitle": "Accesso richiesto",
+    "prayer": {
+      "description": "Accedi per tenere traccia delle tue preghiere.",
+      "title": "Accedi per tracciare le preghiere"
+    },
+    "quran": {
+      "description": "Accedi per leggere le sure, esplorare le traduzioni e salvare dove eri arrivato.",
+      "title": "Accedi per leggere il Corano"
+    },
+    "tracker": {
+      "description": "Accedi per vedere il registro delle tue adorazioni.",
+      "title": "Accedi al registro adorazioni"
+    }
+  },
+  "badges": {
+    "empty": "Nessun badge ancora. Inizia registrando la tua prima preghiera!",
+    "names": {
+      "erken_kuş": "Mattiniero",
+      "ilk_adim": "Primo passo",
+      "ilk_hatim": "Primo Khatm",
+      "mukemmel_ay": "Mese perfetto",
+      "mukemmel_hafta": "Settimana perfetta",
+      "sabah_ustasi": "Maestro di Fajr",
+      "seri_100_gun": "Leggenda dei 100 giorni",
+      "seri_14_gun": "Serie di due settimane",
+      "seri_30_gun": "Campione del mese",
+      "seri_3_gun": "Serie di 3 giorni",
+      "seri_7_gun": "Serie settimanale",
+      "tum_vakit_ustasi": "Maestro delle 5 preghiere"
+    },
+    "next": "Prossimo badge",
+    "title": "I miei badge"
+  },
+  "calendar": {
+    "backToToday": "Torna a oggi",
+    "daysLeft": "Mancano {{count}} giorni",
+    "daysLeftShort": "giorni mancanti",
+    "friday": "Venerdì",
+    "legendSpecial": "Giorno speciale",
+    "legendToday": "Oggi",
+    "nextMonth": "Mese successivo",
+    "prevMonth": "Mese precedente",
+    "thisMonth": "Giorni speciali questo mese",
+    "title": "Calendario",
+    "today": "Oggi",
+    "todayLine": "Oggi · {{date}}",
+    "upcoming": "Prossimi giorni speciali"
+  },
+  "celebration": {
+    "a11y": "Tutte le preghiere completate. Serie di {{count}} giorni. Tocca per chiudere",
+    "message": "La tua serie continua. Che Allah la accetti.",
+    "streakLabel": "giorni di serie",
+    "title": "Preghiere di oggi completate"
+  },
+  "changeEmail": {
+    "code": "Codice di verifica",
+    "codeRequired": "Codice e nuova email sono obbligatori",
+    "codeSent": "Codice di verifica inviato",
+    "confirmFailed": "Impossibile confermare l'email",
+    "intro": "Inserisci il nuovo indirizzo per cambiare la tua email. Ti invieremo un codice di verifica.",
+    "newEmail": "Nuova email",
+    "newRequired": "La nuova email è obbligatoria",
+    "placeholder": "nuova@email.com",
+    "resend": "Invia di nuovo il codice",
+    "sendCode": "Invia codice di verifica",
+    "startFailed": "Impossibile avviare il cambio email",
+    "title": "Cambia email",
+    "update": "Aggiorna email",
+    "updated": "Email aggiornata"
+  },
+  "changePassword": {
+    "current": "Password attuale",
+    "currentPlaceholder": "Inserisci la tua password attuale",
+    "failed": "Impossibile aggiornare la password",
+    "intro": "Per la tua sicurezza, inserisci la password attuale e impostane una nuova.",
+    "new": "Nuova password",
+    "newPlaceholder": "Inserisci la nuova password",
+    "required": "I campi password sono obbligatori",
+    "title": "Cambia password",
+    "update": "Aggiorna password",
+    "updated": "Password aggiornata"
+  },
+  "common": {
+    "back": "Indietro",
+    "cancel": "Annulla",
+    "cancelAlt": "Annulla",
+    "close": "Chiudi",
+    "decrease": "Diminuisci",
+    "delete": "Elimina",
+    "error": "Errore",
+    "increase": "Aumenta",
+    "loading": "Caricamento...",
+    "ok": "OK",
+    "profile": "Profilo",
+    "qibla": "Qibla",
+    "retry": "Riprova",
+    "save": "Salva",
+    "share": "Condividi",
+    "success": "Operazione riuscita",
+    "weekdaysShort": [
+      "Lun",
+      "Mar",
+      "Mer",
+      "Gio",
+      "Ven",
+      "Sab",
+      "Dom"
+    ],
+    "yes": "Sì"
+  },
+  "countdown": {
+    "channel": "Conto alla rovescia su schermata di blocco",
+    "endsAt": "Termina alle {{time}}",
+    "startsAt": "Inizia alle {{time}}"
+  },
+  "cuma": {
+    "a11y": "{{label}}. Apri il sermone del venerdì della Diyanet",
+    "default": {
+      "label": "Sermone del venerdì",
+      "subtitle": "Consulta i sermoni della Diyanet quando vuoi"
+    },
+    "done": {
+      "label": "Jumu'ah Mubarak",
+      "subtitle": "Dai un'occhiata se non hai ancora letto il sermone"
+    },
+    "openFailed": "Impossibile aprire la pagina del sermone.",
+    "today": {
+      "label": "Oggi è venerdì",
+      "subtitle": "Leggi il sermone del venerdì della Diyanet di questa settimana"
+    },
+    "tomorrow": {
+      "label": "Domani è venerdì",
+      "subtitle": "Puoi già leggere il sermone di questa settimana"
+    },
+    "flow": {
+      "kehf": "Sura Al-Kahf",
+      "kehfSub": "Consigliata il venerdì",
+      "salavat": "Salawat",
+      "salavatSub": "Tocca per contare",
+      "hutbe": "Sermone del venerdì",
+      "hutbeSub": "Sermone di questa settimana",
+      "count": "{{count}} / {{target}}",
+      "done": "Fatto"
+    }
+  },
+  "dayRing": {
+    "title": "Cerchio del giorno",
+    "subtitle": "Orari di preghiera, tempi makruh e ora attuale",
+    "hours": "ore:minuti",
+    "minutes": "minuti",
+    "forbidden": "Tempo makruh"
+  },
+  "dua": {
+    "count": "{{count}} dua",
+    "favAdd": "Aggiungi ai preferiti",
+    "favRemove": "Rimuovi dai preferiti",
+    "favorites": "Preferiti",
+    "meaning": "Significato",
+    "mood": {
+      "fallback": "Nessuna corrispondenza esatta, ecco una dua sentita:",
+      "matched": "Dua per \"{{label}}\":",
+      "placeholder": "Cosa hai nel cuore? (es. Sono in ansia)",
+      "subtitle": "Come ti senti? Scegli una situazione o scrivila.",
+      "suggest": "Suggerisci",
+      "title": "Una Dua per te"
+    },
+    "share": "Condividi dua",
+    "source": "Fonte: {{source}}",
+    "title": "Raccolta di Dua",
+    "transliteration": "Traslitterazione",
+    "categories": "Categorie"
+  },
+  "errors": {
+    "boundaryMessage": "Si è verificato un errore imprevisto. Riprova.",
+    "boundaryTitle": "Qualcosa è andato storto",
+    "genericMessage": "Riprova più tardi.",
+    "genericTitle": "Qualcosa è andato storto"
+  },
+  "esma": {
+    "clearSearch": "Cancella ricerca",
+    "empty": "Nessun nome trovato",
+    "meaning": "Significato",
+    "nth": "NOME {{n}}",
+    "search": "Cerca nome o significato",
+    "title": "Asma ul-Husna",
+    "count": "{{count}} nomi"
+  },
+  "forbidden": {
+    "a11y": "Tempo sconsigliato per pregare, {{label}}. Fino alle {{time}}, mancano {{remaining}}",
+    "min": "{{m}} min {{s}} s",
+    "sec": "{{s}} s",
+    "sunrise": {
+      "description": "Le preghiere volontarie non si eseguono dall'inizio dell'alba finché il sole non è sorto completamente.",
+      "label": "Alba"
+    },
+    "sunset": {
+      "description": "Le preghiere volontarie non si eseguono dall'inizio del tramonto fino all'inizio del Maghrib.",
+      "label": "Prima del tramonto"
+    },
+    "until": "fino alle {{time}}",
+    "zawal": {
+      "description": "Il breve periodo in cui il sole è allo zenit; le preghiere volontarie non si eseguono fino all'inizio del Dhuhr.",
+      "label": "Zawal (mezzogiorno solare)"
+    }
+  },
+  "hijri": {
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi' al-Awwal",
+      "Rabi' al-Thani",
+      "Jumada al-Ula",
+      "Jumada al-Akhirah",
+      "Rajab",
+      "Sha'ban",
+      "Ramadan",
+      "Shawwal",
+      "Dhu al-Qi'dah",
+      "Dhu al-Hijjah"
+    ]
+  },
+  "history": {
+    "count": "{{count}}/5 preghiere",
+    "actionFailed": "Operazione non riuscita.",
+    "fivePrayers": "Cinque preghiere quotidiane",
+    "info": "La tua serie si aggiorna automaticamente quando modifichi giorni passati. Le preghiere aggiunte sono registrate come eseguite in quella data, non come qada.",
+    "loadFailed": "Impossibile caricare i dati.",
+    "pastDay": "Giorno passato",
+    "notYet": "Non è ancora l'ora",
+    "prayed": "✓ Pregata",
+    "title": "Modifica cronologia",
+    "today": "Oggi"
+  },
+  "home": {
+    "editLayout": "Modifica schermata iniziale",
+    "hero": {
+      "entry": "Inizia alle {{time}}",
+      "fallback": "Orario di preghiera",
+      "now": "ora",
+      "untilEnd": "Alla fine di {{prayer}}",
+      "untilStart": "A {{prayer}}"
+    },
+    "inspiration": {
+      "hadith": "Hadith del giorno",
+      "readMore": "Leggi di più",
+      "refresh": "Aggiorna",
+      "showLess": "Mostra meno",
+      "verse": "Versetto del giorno"
+    },
+    "quick": {
+      "calendar": "Calendario",
+      "dua": "Dua",
+      "esma": "Nomi di Allah",
+      "history": "Preghiere passate",
+      "short": {
+        "dua": "Dua",
+        "calendar": "Calendario",
+        "esma": "Asma ul-Husna",
+        "history": "Cronologia"
+      }
+    },
+    "streak": {
+      "a11y": "Serie di preghiera {{streak}} giorni, record {{longest}} giorni",
+      "dayA11y": "{{day}}: {{count}} di 5 preghiere",
+      "days": "giorni",
+      "label": "serie di preghiere",
+      "longest": "Più lunga"
+    },
+    "tracker": {
+      "completed": "Completate",
+      "kaza": "Qada",
+      "ozelGunActive": "Modalità esenzione attiva, la tua serie è protetta",
+      "ozelGunEnd": "Termina",
+      "ozelGunEndA11y": "Termina modalità esenzione",
+      "ozelGunMine": "I miei giorni di esenzione",
+      "progress": "{{done}} di {{total}} pregate",
+      "status": {
+        "done": "pregata",
+        "expired": "tempo scaduto, segnala come qada",
+        "kaza": "recuperata (qada)",
+        "notDone": "non pregata",
+        "upcoming": "non è ancora l'ora"
+      },
+      "title": "Preghiere di oggi"
+    }
+  },
+  "homeLayout": {
+    "info": "Riordina le schede con le frecce e mostrale o nascondile con l'interruttore. La scheda degli orari di preghiera rimane sempre in cima.",
+    "moveDown": "Sposta la scheda {{label}} in basso",
+    "moveUp": "Sposta la scheda {{label}} in alto",
+    "reset": "Ripristina",
+    "resetA11y": "Ripristina layout predefinito",
+    "resetMessage": "Il layout della schermata iniziale verrà ripristinato ai valori predefiniti. Continuare?",
+    "resetTitle": "Ripristina layout",
+    "title": "Layout iniziale",
+    "toggleA11y": "Mostra la scheda {{label}}"
+  },
+  "homeSections": {
+    "dhikr": {
+      "label": "Contatore dhikr",
+      "description": "Dhikr di oggi e scorciatoia al tasbih"
+    },
+    "kaza": {
+      "label": "Preghiere qada",
+      "description": "Il totale delle tue preghiere qada e scorciatoia ai contatori"
+    },
+    "dailyInspiration": {
+      "description": "Versetto o hadith del giorno",
+      "label": "Ispirazione quotidiana"
+    },
+    "prayerTracker": {
+      "description": "Segna le preghiere quotidiane di oggi",
+      "label": "Registro preghiere"
+    },
+    "quickActions": {
+      "description": "Dua, calendario e altre scorciatoie",
+      "label": "Accesso rapido"
+    },
+    "streak": {
+      "description": "La tua serie ininterrotta di preghiere",
+      "label": "Scheda serie"
+    },
+    "dayRing": {
+      "label": "Cerchio del giorno",
+      "description": "Orari di preghiera e tempi makruh di oggi in un cerchio"
+    },
+    "alarms": {
+      "label": "Sveglie",
+      "description": "Prossima sveglia e sveglia per Fajr con un tocco"
+    },
+    "prayerLock": {
+      "label": "Blocco preghiera",
+      "description": "Blocca le app scelte durante l'orario di preghiera"
+    }
+  },
+  "hutbe": {
+    "title": "Sermone del venerdì",
+    "thisWeek": "Sermone di questa settimana",
+    "listen": "Sermone audio",
+    "play": "Riproduci sermone audio",
+    "pause": "Pausa",
+    "back15": "Indietro di 15 secondi",
+    "forward15": "Avanti di 15 secondi",
+    "previous": "Sermoni precedenti",
+    "footnotes": "Riferimenti",
+    "source": "Fonte: Presidenza degli Affari Religiosi (Diyanet)",
+    "textLoading": "Preparazione del testo del sermone...",
+    "openPdf": "Apri come PDF",
+    "pdfFailed": "Impossibile caricare il PDF. Riprova o aprilo nel browser.",
+    "openBrowser": "Apri nel browser",
+    "pdfOnly": "Il testo del sermone in questa lingua si apre come PDF.",
+    "textFailed": "Impossibile caricare il testo del sermone. Puoi aprirlo come PDF.",
+    "loadFailed": "Impossibile caricare i sermoni",
+    "loadFailedMessage": "Controlla la tua connessione internet e riprova.",
+    "openWeb": "Apri pagina Diyanet"
+  },
+  "input": {
+    "hidePassword": "Nascondi password",
+    "showPassword": "Mostra password"
+  },
+  "insights": {
+    "section": "Statistiche",
+    "heatmap": {
+      "title": "Cronologia preghiere",
+      "summary": "Ultimi 12 mesi · {{prayers}} preghiere · {{perfect}} giorni completi",
+      "a11y": "{{prayers}} preghiere negli ultimi 12 mesi, {{perfect}} giorni con tutte e cinque le preghiere",
+      "ozelGun": "Giorni speciali",
+      "less": "Meno",
+      "more": "Più",
+      "nafile": "Volontarie",
+      "nafileSummary": "{{rakaat}} rak'at volontarie",
+      "nafileA11y": "{{rakaat}} rak'at di preghiera volontaria",
+      "tapHint": "Tocca un giorno per vederlo e aggiungere ciò che manca."
+    },
+    "hatim": {
+      "planCreate": "Crea un piano di completamento",
+      "planOpen": "Il mio piano di completamento",
+      "title": "Khatm {{n}}",
+      "progress": "{{pages}} / {{total}} pagine",
+      "a11y": "{{pct}} per cento del Khatm letto, {{done}} completati",
+      "completed": "{{count}} Khatm completati · {{pages}} pagine in totale",
+      "hint": "I juz si riempiono man mano che registri la lettura del Corano"
+    },
+    "recap": {
+      "week": "Questa settimana",
+      "month": "Questo mese",
+      "share": "Condividi riepilogo",
+      "prayers": "{{done}} / {{total}} preghiere",
+      "ofPrayers": "/ {{total}} preghiere",
+      "perfectDays": "Giorni completi",
+      "kaza": "Qada",
+      "quranPages": "Pagine del Corano",
+      "streak": "Giorni di serie"
+    }
+  },
+  "location": {
+    "changedBody": "Gli orari di preghiera sono attualmente mostrati per {{current}}. Aggiornare a {{next}}?",
+    "changedTitle": "La tua posizione sembra cambiata",
+    "chooseState": "Scegli una provincia",
+    "currentFallback": "la tua posizione attuale",
+    "keep": "Mantieni",
+    "loadingDistricts": "Caricamento distretti...",
+    "noDistricts": "Nessun distretto trovato per questa provincia",
+    "title": "Scegli posizione",
+    "update": "Aggiorna",
+    "updated": "Aggiornata",
+    "updatedBody": "Orari di preghiera impostati per {{name}}",
+    "updatedTitle": "Posizione aggiornata",
+    "chooseCountry": "Scegli paese",
+    "chooseRegion": "Scegli regione",
+    "searchCountry": "Cerca paese",
+    "noResults": "Nessun risultato",
+    "changeCountry": "Cambia paese"
+  },
+  "mushaf": {
+    "chooseSurah": "Scegli sura",
+    "continuePage": "Continua da pagina {{page}}",
+    "goToMark": "Vai al segnalibro, pagina {{page}}",
+    "hint": "Numero versetto: traduzione · Tieni premuta una riga: segnalibro",
+    "listen": "Ascolta",
+    "listening": "Recitazione",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "stopListening": "Ferma ascolto",
+    "autoLog": "Registra le pagine lette",
+    "autoLogHint": "Una pagina aperta per 20 secondi viene aggiunta al registro del Corano e al piano khatm",
+    "readLogged": "{{count}} pagine aggiunte al registro del Corano.",
+    "hintWords": "Parola: significato · Numero versetto: traduzione · Tieni premuta una riga: segnalibro",
+    "scriptTitle": "Scrittura",
+    "script": {
+      "text": "Digitale",
+      "madani": "Scrittura Mushaf",
+      "tajweed": "Tajwid"
+    },
+    "scriptNote": "La scrittura si scarica man mano che apri le pagine (circa 300 KB ciascuna). Puoi scaricarla tutta da Download.",
+    "wordsToggle": "Parola per parola",
+    "wordsHint": "Tocca una parola per vederne il significato",
+    "wordTitle": "Parola per parola",
+    "wordVerse": "Versetto {{surah}}:{{verse}}",
+    "wordListen": "Ascolta",
+    "juz": "Juz {{juz}}",
+    "lineA11y": "Riga {{line}}",
+    "lineMarkedA11y": "Riga {{line}}, dove avevi lasciato",
+    "loadFailed": "Impossibile caricare la pagina. Controlla la connessione internet.",
+    "markHint": "Tieni premuto per segnare dove hai lasciato",
+    "markRemoved": "Segnalibro rimosso",
+    "marked": "Salvato dove avevi lasciato",
+    "markedAt": "Dove avevi lasciato: pagina {{page}}, riga {{line}}",
+    "markedDetail": "Pagina {{page}}, riga {{line}}",
+    "openA11y": "Leggi il Mushaf pagina per pagina",
+    "page": "Pagina {{page}} di {{total}}",
+    "spread": "Pagine {{first}}-{{second}} di {{total}}",
+    "marks": {
+      "juz": "Inizio del juz {{number}}",
+      "hizb": "Inizio dell'hizb {{number}}",
+      "quarter": "Quarto {{part}} dell'hizb {{number}}",
+      "sajdah": "Versetto di prostrazione"
+    },
+    "pageA11y": "Pagina {{page}}",
+    "pageShort": "p. {{page}}",
+    "subtitle": "Leggi pagina per pagina, anche in orizzontale",
+    "surahPickA11y": "{{name}}, pagina {{page}}",
+    "theme": "Tema di lettura",
+    "themes": {
+      "auto": "Automatico",
+      "light": "Chiaro",
+      "night": "Notte",
+      "sepia": "Seppia"
+    },
+    "title": "Mushaf",
+    "verseA11y": "Traduzione del versetto {{verse}}"
+  },
+  "mute": {
+    "enabled": "Attivate",
+    "enabledMessage": "Le notifiche sono di nuovo attive.",
+    "ended": "terminato",
+    "hours": "{{count}} h",
+    "hoursMinutes": "{{h}} h {{m}} min",
+    "minutes": "{{count}} min",
+    "on": "Riattiva audio",
+    "remaining": "Manca {{time}}",
+    "title": "Notifiche silenziate",
+    "turnOff": "Disattiva modalità silenziosa"
+  },
+  "notif": {
+    "nightTitle": "Ultime dieci notti",
+    "nightBody": "Ricorda di trascorrere questa notte in adorazione e dua.",
+    "kadirTitle": "Stanotte è Laylat al-Qadr",
+    "kadirBody": "Trascorri Laylat al-Qadr in adorazione e dua.",
+    "hatimTitle": "Piano del Corano",
+    "missedTitle": "L'orario di {{prayer}} sta per terminare",
+    "missedBody": "Non hai ancora segnato {{prayer}}. Non dimenticare di pregare prima che l'orario finisca.",
+    "hatimBody": "L'obiettivo di oggi è di {{pages}} pagine.",
+    "blessedDay": "Giorno benedetto",
+    "channelAdhan": "Orari di preghiera con Adhan",
+    "channelPrayer": "Orari di preghiera",
+    "channelReminders": "Versetti, Hadith e Promemoria",
+    "cumaBody": "Oggi è venerdì. Preparati per la preghiera del Jumu'ah.",
+    "cumaEveBody": "Domani è venerdì. Non dimenticare la preghiera del Jumu'ah e la lettura della Sura Al-Kahf. Jumu'ah Mubarak.",
+    "cumaEveSubtitle": "Preparazione al Jumu'ah",
+    "cumaEveTitle": "Domani è venerdì",
+    "cumaSubtitle": "Jumu'ah Mubarak",
+    "cumaTitle": "Oggi è venerdì",
+    "dayBeforeBody": "Domani è {{name}} ({{date}}). Ti auguriamo un giorno benedetto.",
+    "dayBeforeBodyNoDate": "Domani è {{name}}. Ti auguriamo un giorno benedetto.",
+    "dayBeforeTitle": "{{name}} si avvicina",
+    "dayOfBody": "Oggi è {{name}} ({{date}}). Che sia un giorno benedetto.",
+    "dayOfBodyNoDate": "Oggi è {{name}}. Che sia un giorno benedetto.",
+    "dayOfTitle": "Oggi è {{name}}",
+    "hadithTitle": "Gocce di luce",
+    "prayerBody": "È iniziato l'orario della preghiera di {{prayer}}. Che le tue preghiere siano accettate.",
+    "prayerSubtitle": "Orario di preghiera",
+    "prayerTitle": "È l'ora di {{prayer}}",
+    "reminderBody": "È il momento di prepararsi per la preghiera di {{prayer}}.",
+    "reminderSubtitle": "L'orario di preghiera si avvicina",
+    "reminderTitle": "{{minutes}} minuti a {{prayer}}",
+    "tapForMore": "tocca per leggere di più",
+    "testBody": "Le notifiche funzionano! Riceverai le notifiche degli orari di preghiera e di versetti e hadith.",
+    "testSubtitle": "Ispirazione quotidiana",
+    "testTitle": "Notifica di prova",
+    "verseRef": "{{surah}}, versetto {{verse}}",
+    "verseTitle": "Parola divina",
+    "comebackTitle": "Mantieni attivi i promemoria",
+    "comebackBody": "Non apri l'app da qualche giorno. Aprila una volta per continuare a ricevere le notifiche degli orari di preghiera e dei versetti."
+  },
+  "offline": {
+    "backOnline": "Di nuovo online",
+    "pending": " • {{count}} voci verranno sincronizzate",
+    "synced": "{{count}} registrazioni in sospeso sincronizzate",
+    "title": "Modalità offline"
+  },
+  "onboarding": {
+    "allowLocation": "Consenti posizione",
+    "allowNotifications": "Attiva notifiche",
+    "continue": "Continua",
+    "location": {
+      "desc": "Ci serve la tua posizione per calcolare con precisione gli orari di preghiera. Consentila per trovare la tua città automaticamente, oppure sceglila manualmente in seguito.",
+      "title": "Imposta la tua posizione"
+    },
+    "next": "Avanti",
+    "notifications": {
+      "desc": "Ricevi un promemoria discreto a ogni orario di preghiera. Il suono dell'adhan e le notifiche di versetti e hadith sono facoltativi e disattivabili in qualsiasi momento nelle impostazioni.",
+      "title": "Attiva le notifiche"
+    },
+    "s1": {
+      "desc": "Progettata per facilitare la tua adorazione quotidiana e arricchire la tua vita spirituale.",
+      "title": "Benvenuto in Salah"
+    },
+    "skip": "Salta",
+    "skipForNow": "Salta per ora",
+    "skipIntro": "Salta introduzione",
+    "slideA11y": "Pagina {{n}} di {{total}}",
+    "start": "Inizia",
+    "times": {
+      "title": "Orari di preghiera e widget",
+      "desc": "Orari di preghiera precisi per la tua posizione e notifiche adhan. Controllali senza aprire l'app con i widget e la Dynamic Island."
+    },
+    "quran": {
+      "title": "Corano e memorizzazione",
+      "desc": "Mushaf, traduzioni e recitazione. Il tuo piano di memorizzazione ti ripropone i versetti al momento giusto per il ripasso."
+    },
+    "tracker": {
+      "title": "Adorazione e serie",
+      "desc": "Registra preghiere, Corano, digiuno, carità e altro. Prega con costanza per far crescere la tua serie e ottenere badge."
+    },
+    "tools": {
+      "title": "Qibla, Dhikr e Qada",
+      "desc": "Trova la qibla con la bussola, conta i tuoi dhikr con il contatore e tieni traccia una per una delle preghiere qada."
+    },
+    "prayerLock": {
+      "title": "Blocco preghiera",
+      "desc": "Le app scelte da te vengono bloccate durante l'orario di preghiera. Prega, segnala e il blocco si rimuove."
+    }
+  },
+  "ozelGun": {
+    "end": "Termina",
+    "endMessage": "Vuoi davvero disattivare la modalità esenzione?",
+    "endTitle": "Termina giorni di esenzione",
+    "screen": {
+      "active": "Periodo attivo",
+      "loadFailed": "Impossibile caricare le informazioni sul periodo. Riprova.",
+      "startFailed": "Impossibile avviare il periodo. Riprova.",
+      "endFailed": "Impossibile terminare il periodo. Riprova.",
+      "day": "Giorno {{day}}",
+      "endMessage": "Vuoi terminare il periodo attivo a partire da oggi?",
+      "endTitle": "Termina periodo",
+      "endToday": "Termina periodo oggi",
+      "ended": "Terminato",
+      "endedMessage": "Periodo terminato.",
+      "inactive": "Nessun periodo attivo",
+      "prayerTime": "Ora di preghiera adesso",
+      "private": "Queste informazioni sono private e non vengono mai condivise con nessuno.",
+      "protection": "Protezione della serie",
+      "protectionText": "Durante un periodo attivo, le preghiere non eseguite non interrompono la tua serie né vengono aggiunte alle qada. Questi giorni sono segnati come \"esenti\".",
+      "startDate": "Iniziato:",
+      "startMessage": "Vuoi registrare l'inizio del periodo di esenzione oggi? La tua serie di preghiere sarà protetta durante questo periodo.",
+      "startNew": "Inizia nuovo periodo",
+      "startTitle": "Inizia periodo",
+      "started": "Iniziato",
+      "startedMessage": "Periodo registrato.",
+      "title": "Monitoraggio esenzione",
+      "womenOnly": "Questa funzione è riservata alle donne",
+      "womenOnlyHint": "Aggiorna il genere nelle impostazioni del profilo per usare questa pagina."
+    },
+    "start": "Inizia",
+    "startMessage": "Durante i giorni di esenzione la tua serie viene congelata e le preghiere messe in pausa.",
+    "startTitle": "Avvia modalità esenzione"
+  },
+  "paywall": {
+    "active": "Premium è attivo. Che Allah lo accetti.",
+    "bestValue": "Più conveniente",
+    "features": {
+      "ai": "Assistente IA \"Chiedi\"",
+      "widgets": "Widget Registro preghiere, Registro adorazioni e StandBy",
+      "widgets_android": "Widget Registro preghiere e Registro adorazioni",
+      "stats": "Riepilogo mensile, mappa preghiere di 12 mesi e progressi Khatm",
+      "icons": "Icone esclusive dell'app"
+    },
+    "includes": "Cosa include",
+    "legal": "L'abbonamento si rinnova automaticamente allo stesso prezzo se non viene disdetto almeno 24 ore prima della fine del periodo. Puoi gestirlo o disdirlo nelle impostazioni del tuo Apple ID.",
+    "legal_android": "L'abbonamento si rinnova automaticamente allo stesso prezzo se non viene disdetto prima della fine del periodo. Puoi gestirlo o disdirlo su Google Play in Pagamenti e abbonamenti.",
+    "manage": "Gestisci abbonamento",
+    "monthly": "Mensile",
+    "monthlyEquivalent": "Solo {{price}} al mese",
+    "notFound": "Non trovato",
+    "notReady": "I piani di abbonamento non sono ancora pronti.",
+    "nothingToRestore": "Non c'è alcun abbonamento attivo da ripristinare.",
+    "perMonth": "/mese",
+    "perYear": "/anno",
+    "preparing": "Preparazione",
+    "privacy": "Informativa sulla privacy",
+    "purchaseFailed": "Impossibile completare l'acquisto.",
+    "restore": "Ripristina acquisti",
+    "restoreFailed": "Ripristino non riuscito.",
+    "restored": "Ripristinato",
+    "restoredMessage": "Il tuo abbonamento Premium è attivo.",
+    "savings": "Risparmia {{pct}}%",
+    "secure": "Pagamento sicuro con Apple, disdici quando vuoi",
+    "secure_android": "Pagamento sicuro con Google Play, disdici quando vuoi",
+    "startMonthly": "Inizia piano mensile",
+    "startYearly": "Inizia piano annuale",
+    "subtitle": "Approfondisci il tuo percorso spirituale.",
+    "terms": "Termini di utilizzo",
+    "title": "Salah Premium",
+    "welcome": "Benvenuto!",
+    "yearly": "Annuale"
+  },
+  "prayers": {
+    "aksam": "Maghrib",
+    "gunes": "Shuruq",
+    "ikindi": "Asr",
+    "imsak": "Imsak",
+    "ogle": "Dhuhr",
+    "sabah": "Fajr",
+    "yatsi": "Isha"
+  },
+  "premiumTeaser": {
+    "unlock": "Sblocca con Premium",
+    "locked": "Premium"
+  },
+  "profile": {
+    "ozelGunHint": "Verrà attivato il congelamento della serie per i giorni speciali (ciclo mestruale).",
+    "account": "Account",
+    "adminPanel": "Pannello admin",
+    "adminSub": "Gestione utenti e ruoli",
+    "avatarUploadFailed": "Impossibile caricare la foto",
+    "avatarUploaded": "Foto caricata",
+    "changeEmail": "Cambia email",
+    "changePassword": "Cambia password",
+    "changePhoto": "Cambia foto profilo",
+    "editInfo": "Modifica informazioni personali",
+    "email": "Email",
+    "female": "Donna",
+    "firstName": "Nome",
+    "firstNamePlaceholder": "Il tuo nome",
+    "fullName": "Nome completo",
+    "galleryPermission": "Consenti l'accesso alla libreria foto.",
+    "gender": "Genere",
+    "imagePickFailed": "Impossibile selezionare l'immagine",
+    "lastName": "Cognome",
+    "lastNamePlaceholder": "Il tuo cognome",
+    "loadFailed": "Impossibile caricare il profilo",
+    "male": "Uomo",
+    "menu": {
+      "account": "Account",
+      "accountSub": "Uscita, sessioni e impostazioni account",
+      "appSettings": "Impostazioni app",
+      "appSettingsSub": "Notifiche, tema e altro",
+      "changeEmail": "Cambia email",
+      "changeEmailSub": "Aggiorna il tuo indirizzo email",
+      "changePassword": "Cambia password",
+      "changePasswordSub": "Aggiorna la password del tuo account"
+    },
+    "open": "Apri",
+    "permission": "Autorizzazione richiesta",
+    "personalInfo": "Informazioni personali",
+    "phone": "Telefono",
+    "settings": "Impostazioni",
+    "theme": "Tema",
+    "themeDark": "Tema scuro attivo",
+    "themeLight": "Tema chiaro attivo",
+    "title": "Profilo",
+    "updateFailed": "Impossibile aggiornare il profilo",
+    "updated": "Il tuo profilo è stato aggiornato",
+    "uploading": "Caricamento foto",
+    "username": "Nome utente",
+    "usernamePlaceholder": "nomeutente"
+  },
+  "maintenance": {
+    "continueAdmin": "Continua come admin",
+    "retry": "Riprova",
+    "until": "Fine prevista: {{time}}"
+  },
+  "module": {
+    "closedTitle": "Questa sezione è chiusa al momento",
+    "closedBody": "Questa sezione è temporaneamente non disponibile. Puoi continuare a usare il resto dell'app."
+  },
+  "qibla": {
+    "themeLabel": "Tema bussola: {{name}}",
+    "themeForest": "Foresta profonda",
+    "themeNight": "Blu notte",
+    "themeDawn": "Viola alba",
+    "themeDusk": "Bordeaux mihrab",
+    "themeSand": "Sabbia e corniola",
+    "aligned": "Sei rivolto verso la Qibla",
+    "angle": "Angolo Qibla",
+    "e": "E",
+    "hint": "Tieni il telefono in piano e ruota su te stesso",
+    "n": "N",
+    "permissionDenied": "Autorizzazione alla posizione negata. Ci serve per trovare la Qibla.",
+    "locationUnavailable": "Impossibile ottenere la posizione. Controlla i Servizi di localizzazione e riprova.",
+    "headingUnavailable": "Dati della bussola non disponibili. Assicurati che il dispositivo abbia una bussola e riprova lontano da oggetti magnetici.",
+    "s": "S",
+    "title": "Trova Qibla",
+    "w": "O",
+    "locating": "Rilevamento posizione...",
+    "kaaba": "Kaaba",
+    "turnRight": "Ruota di {{deg}}° a destra",
+    "turnLeft": "Ruota di {{deg}}° a sinistra",
+    "camera": "Vista fotocamera",
+    "compass": "Vista bussola",
+    "holdUpright": "Tieni il telefono in verticale e guarda intorno con la fotocamera",
+    "cameraDenied": "L'accesso alla fotocamera è disattivato. Consentilo in Impostazioni per vedere la direzione della Qibla con la fotocamera.",
+    "cameraUnavailable": "Fotocamera non disponibile.",
+    "openSettings": "Apri Impostazioni"
+  },
+  "quran": {
+    "clearSearch": "Cancella ricerca",
+    "continue": "Continua lettura",
+    "continueA11y": "Continua lettura: {{name}}, versetto {{verse}}",
+    "continueVerse": "{{name}}, versetto {{verse}}",
+    "detail": "Sura",
+    "notFound": "Nessuna sura trovata",
+    "notFoundHint": "Prova a scrivere il nome o il numero della sura.",
+    "search": "Cerca sure",
+    "surahA11y": "{{id}}. {{name}}, {{count}} versetti",
+    "surahWithName": "Sura {{name}}",
+    "title": "Sure",
+    "verseCount": "{{count}} versetti"
+  },
+  "quranSettings": {
+    "fontLg": "Grande",
+    "fontMd": "Medio",
+    "fontSm": "Piccolo",
+    "fontXl": "Molto grande"
+  },
+  "religiousDays": {
+    "asure": "Giorno di Ashura",
+    "berat": "Laylat al-Bara'ah",
+    "hicri_yilbasi": "Capodanno islamico",
+    "kadir": "Laylat al-Qadr",
+    "kurban_bayram_1": "Eid al-Adha, giorno 1",
+    "kurban_bayram_2": "Eid al-Adha, giorno 2",
+    "kurban_bayram_3": "Eid al-Adha, giorno 3",
+    "kurban_bayram_4": "Eid al-Adha, giorno 4",
+    "kurban_bayram_arife": "Giorno di Arafah",
+    "mevlid": "Mawlid al-Nabi",
+    "mirac": "Laylat al-Mi'raj",
+    "ramazan_arife": "Vigilia del Ramadan",
+    "ramazan_bayram_1": "Eid al-Fitr, giorno 1",
+    "ramazan_bayram_2": "Eid al-Fitr, giorno 2",
+    "ramazan_bayram_3": "Eid al-Fitr, giorno 3",
+    "ramazan_bayram_arife": "Vigilia di Eid al-Fitr",
+    "ramazan_start": "Inizio del Ramadan",
+    "regaib": "Laylat al-Raghaib",
+    "uc_aylar": "Inizio dei tre mesi sacri"
+  },
+  "settings": {
+    "adhan": {
+      "foregroundHint": "Disattivato per impostazione predefinita. Per le preghiere selezionate, la notifica riproduce alcuni secondi di adhan.",
+      "section": "Suono dell'Adhan",
+      "stop": "Ferma",
+      "test": "Prova suono Adhan",
+      "testQuestion": "Di quale preghiera vuoi provare l'adhan?",
+      "testSub": "Admin: ogni preghiera riproduce un adhan diverso",
+      "testTitle": "Prova Adhan",
+      "title": "Adhan all'ora di preghiera",
+      "which": "Per quali preghiere riprodurre l'adhan?"
+    },
+    "app": {
+      "developer": "Sviluppatore",
+      "developerSub": "Creata per opere di bene",
+      "privacy": "Informativa sulla privacy",
+      "privacySub": "Scopri come proteggiamo i tuoi dati",
+      "section": "App",
+      "terms": "Termini di utilizzo",
+      "termsSub": "Consulta i termini del servizio",
+      "version": "Versione"
+    },
+    "data": {
+      "backupMessage": "Tutti i tuoi dati dall'app Salah ({{stamp}})",
+      "backupTitle": "Backup Salah ({{stamp}})",
+      "export": "Fai il backup dei miei dati",
+      "exportSub": "Esporta tutti i registri di preghiera e adorazione in JSON",
+      "failed": "Impossibile creare il backup.",
+      "preparing": "Preparazione backup…",
+      "section": "I miei dati"
+    },
+    "holidays": {
+      "friday": "Promemoria del venerdì",
+      "fridaySub": "Promemoria per il Jumu'ah e il sermone giovedì sera e venerdì mattina",
+      "section": "Notti sacre e giorni benedetti",
+      "sub": "Promemoria il giorno prima e la mattina delle notti sacre e degli Eid",
+      "title": "Notifiche notti sacre ed Eid"
+    },
+    "inspiration": {
+      "info": "Un versetto o un hadith viene inviato durante il giorno con la frequenza scelta. Non verrai disturbato tra le 23:00 e le 07:00.",
+      "section": "Notifiche versetti e hadith",
+      "sub": "Ricevi promemoria spirituali durante la giornata",
+      "topics": "Temi",
+      "topicsSub": "Se scegli dei temi, riceverai solo versetti su quei temi. Senza selezioni, versetti e hadith vengono alternati.",
+      "frequency": "Frequenza",
+      "freqH2": "Ogni 2 ore",
+      "freqH4": "Ogni 4 ore",
+      "freqTwice": "Due volte al giorno (10:00, 20:00)",
+      "freqOnce": "Una volta al giorno (10:00)"
+    },
+    "language": {
+      "restartMessage": "Chiudi e riapri l'app affinché il layout passi alla nuova lingua.",
+      "restartTitle": "Riavvio richiesto",
+      "system": "Lingua del telefono",
+      "title": "Lingua"
+    },
+    "location": {
+      "auto": "Rileva automaticamente",
+      "autoSub": "Trova automaticamente la tua città con il GPS",
+      "denied": "Autorizzazione alla posizione non concessa.",
+      "detecting": "Rilevamento posizione…",
+      "failed": "Impossibile ottenere la tua posizione.",
+      "notFound": "Non trovata",
+      "notRecognized": "Non siamo riusciti a riconoscere la tua posizione, sceglila manualmente.",
+      "notSelected": "Nessuna posizione selezionata",
+      "permission": "Autorizzazione richiesta",
+      "prayerLocation": "Posizione per gli orari di preghiera",
+      "section": "Posizione"
+    },
+    "mute": {
+      "15m": "15 minuti",
+      "1h": "1 ora",
+      "3h": "3 ore",
+      "activeLabel": "Silenziate: {{time}}",
+      "endOfDay": "Fino a fine giornata",
+      "mute": "Silenzia",
+      "muteSub": "Silenzia temporaneamente le notifiche per riunioni, sonno o viaggi",
+      "muted": "Silenziate",
+      "mutedMessage": "Notifiche silenziate per {{time}}.",
+      "question": "Per quanto tempo silenziare le notifiche?",
+      "resumesAt": "Riprende {{date}}",
+      "title": "Modalità silenziosa",
+      "turnOff": "Disattiva modalità silenziosa",
+      "turnOffSub": "Riattiva subito le notifiche",
+      "unmutedMessage": "Le notifiche sono di nuovo attive. Verranno programmate al prossimo aggiornamento."
+    },
+    "notifications": {
+      "announcements": "Annunci",
+      "announcementsSub": "Notizie importanti sull'app",
+      "missed": "Promemoria preghiera non segnata",
+      "missedSub": "Prima che finiscano le due preghiere che segni meno spesso, se non segnate",
+      "atTime": "All'orario",
+      "battery": "Ottimizzazione batteria",
+      "batteryOff": "Il telefono limita Salah, quindi le notifiche potrebbero arrivare in ritardo. Imposta Salah su \"Non ottimizzare\" nell'elenco.",
+      "batteryOn": "Salah non è limitata, quindi le notifiche arrivano in orario.",
+      "countdown": "Conto alla rovescia su schermata di blocco",
+      "countdownSub": "Il tempo alla prossima preghiera resta visibile nelle notifiche",
+      "exactAlarm": "Notifiche puntuali",
+      "exactAlarmOff": "Disattivate. Le notifiche potrebbero arrivare con qualche minuto di ritardo. Tocca per attivare.",
+      "exactAlarmOn": "Attive. Le notifiche arrivano esattamente in orario.",
+      "exactPromptMessage": "Per ricevere l'adhan e le notifiche di preghiera puntualmente, consenti \"Sveglie e promemoria\" per Salah.",
+      "exactPromptTitle": "Ricevere notifiche puntuali?",
+      "minutesBefore": "{{min}} min prima",
+      "notNow": "Non ora",
+      "openSettings": "Apri impostazioni",
+      "permissionMessage": "Consenti le notifiche in Impostazioni > Notifiche.",
+      "prayer": "Notifiche orari di preghiera",
+      "prayerSub": "Ricevi promemoria agli orari di preghiera",
+      "scheduled": "Notifiche programmate",
+      "scheduledDetail": "Notifiche programmate: {{total}}\n• Orari di preghiera: {{prayer}}\n• Versetti/Hadith ecc.: {{other}}",
+      "section": "Notifiche",
+      "test": "Invia notifica di prova",
+      "testSent": "Prova inviata",
+      "testSentMessage": "La notifica di prova arriverà tra pochi secondi.\n\n{{detail}}",
+      "testSub": "Verifica che le notifiche funzionino",
+      "turnOn": "Attiva",
+      "when": "Quando vuoi ricevere il promemoria?",
+      "whichPrayers": "Per quali preghiere?"
+    },
+    "personal": {
+      "ozelGun": "Monitoraggio esenzione",
+      "ozelGunActive": "Periodo attivo, serie protetta",
+      "ozelGunSub": "Avvia o termina un periodo, protezione della serie",
+      "section": "Personale"
+    },
+    "premium": {
+      "monthly": "Abbonato mensile",
+      "pitch": "Assistente IA, widget premium e altro",
+      "title": "Salah Premium",
+      "until": "fino al {{date}}",
+      "yearly": "Abbonato annuale"
+    },
+    "title": "Impostazioni",
+    "alarms": {
+      "label": "Sveglie",
+      "sub": "Sveglie di preghiera, tahajjud e suhur"
+    },
+    "widgetTheme": {
+      "dark": "Scuro",
+      "light": "Chiaro",
+      "system": "Tema del telefono",
+      "title": "Tema widget"
+    }
+  },
+  "share": {
+    "dialogTitle": "Condividi con Salah",
+    "shareImage": "Condividi immagine"
+  },
+  "shareCards": {
+    "streak": {
+      "label": "Serie",
+      "headline": "Giorno {{count}} delle cinque preghiere quotidiane",
+      "longest": "Serie più lunga: {{count}}",
+      "shareA11y": "Condividi serie"
+    },
+    "dua": {
+      "label": "Dua"
+    },
+    "greeting": {
+      "kandil": "Notte sacra benedetta",
+      "kadir": "Benedetta Laylat al-Qadr",
+      "bayram": "Eid Mubarak",
+      "arife": "Benedetto Giorno di Arafah",
+      "ramazan": "Ramadan Mubarak",
+      "ucAylar": "Benedetti tre mesi sacri",
+      "hicriYil": "Buon Capodanno islamico",
+      "asure": "Benedetto Giorno di Ashura",
+      "cuma": "Jumu'ah Mubarak",
+      "kandil2": "Che le tue preghiere siano accettate in questa notte sacra",
+      "kandil3": "Che Allah renda questa notte benedetta fonte di bene",
+      "kadir2": "Che le tue preghiere siano accettate in Laylat al-Qadr",
+      "kadir3": "Che questa notte, migliore di mille mesi, porti misericordia",
+      "bayram2": "Che il tuo Eid porti pace e gioia",
+      "bayram3": "Ti auguriamo un Eid benedetto con i tuoi cari",
+      "arife2": "Che questo giorno benedetto ti porti bene",
+      "arife3": "Che le tue preghiere siano accettate in questo giorno benedetto",
+      "ramazan2": "Che il Ramadan ti porti misericordia e benedizioni",
+      "ramazan3": "Che il tuo digiuno e le tue preghiere siano accettati",
+      "ucAylar2": "Che i tre mesi sacri portino misericordia e perdono",
+      "ucAylar3": "Che Allah ci conceda di vivere questi mesi benedetti nel bene",
+      "hicriYil2": "Che il nuovo anno porti bene, pace e benedizioni",
+      "hicriYil3": "Ti auguriamo un Capodanno islamico benedetto",
+      "asure2": "Che il tuo giorno di Ashura porti bene",
+      "asure3": "Che la tua Ashura sia piena di benedizioni e condivisione",
+      "cuma2": "Buon venerdì benedetto",
+      "cuma3": "Che le tue preghiere siano accettate questo venerdì",
+      "prayer": "Che le tue preghiere siano accettate.",
+      "cta": "Condividi un biglietto di auguri",
+      "cumaA11y": "Condividi un biglietto di auguri per il Jumu'ah"
+    }
+  },
+  "surah": {
+    "audioFailed": "Impossibile caricare l'audio. Riprova a riprodurre.",
+    "loadFailed": "Impossibile caricare i versetti. Controlla la connessione internet.",
+    "searchResults": "{{count}} risultati",
+    "closeSearch": "Chiudi ricerca",
+    "fontSize": "Dimensione testo",
+    "layoutMode": "Modalità di vista",
+    "listenVerse": "Ascolta il versetto {{n}}",
+    "loading": "Caricamento versetti...",
+    "modeMushaf": "Mushaf",
+    "modeVerse": "Versetti",
+    "noMatch": "Nessun versetto trovato",
+    "nthVerse": "Versetto {{n}}",
+    "pause": "Pausa",
+    "play": "Riproduci",
+    "readingTheme": "Tema di lettura",
+    "searchPlaceholder": "Testo del versetto, numero o parola",
+    "searchVerse": "Cerca versetti",
+    "shareTitle": "Sura {{name}} · Versetto {{verse}}",
+    "shareVerse": "Condividi versetto",
+    "tafsir": "Significato e tafsir",
+    "tajweed": "Tajwid",
+    "wordByWord": "Parola per parola",
+    "wordByWordToggle": "Traduzione parola per parola",
+    "tajweedToggle": "Colori del tajwid"
+  },
+  "tabs": {
+    "assistant": "Chiedi",
+    "home": "Home",
+    "quran": "Corano",
+    "tracker": "Adorazione"
+  },
+  "tajweed": {
+    "ghunnah": "Ghunnah",
+    "idgham": "Idgham",
+    "ikhfa": "Ikhfa",
+    "iqlab": "Iqlab",
+    "legendA11y": "Legenda colori del tajwid",
+    "legendTitle": "Colori del Tajwid",
+    "madd": "Madd (allungamento)",
+    "qalqalah": "Qalqalah",
+    "silent": "Silenziosa"
+  },
+  "tour": {
+    "a11y": "Guida dell'app",
+    "alarms": {
+      "custom": {
+        "body": "Tocca per modificare, tieni premuto per eliminare.",
+        "title": "Sveglia personalizzata"
+      }
+    },
+    "assistant": {
+      "composer": {
+        "body": "Scrivi qui la tua domanda e inviala.",
+        "title": "Fai la tua domanda"
+      },
+      "copy": {
+        "body": "Tieni premuto un messaggio per copiarne il testo.",
+        "title": "Copia una risposta"
+      },
+      "intro": {
+        "body": "Fai le tue domande religiose e l'IA risponderà. Le risposte non costituiscono una fatwa.",
+        "title": "Chiedi"
+      },
+      "suggestions": {
+        "body": "Non sai cosa chiedere? Inizia da uno di questi suggerimenti.",
+        "title": "Domande suggerite"
+      }
+    },
+    "dhikr": {
+      "controls": {
+        "body": "Annulla un conteggio errato o azzera per ricominciare.",
+        "title": "Annulla e azzera"
+      },
+      "counter": {
+        "body": "Ogni tocco sul cerchio conta uno; una vibrazione ti avvisa quando raggiungi l'obiettivo.",
+        "title": "Tocca per contare"
+      },
+      "mode": {
+        "body": "Segui in ordine il tasbih dopo la preghiera, oppure scegli il tuo dhikr e l'obiettivo.",
+        "title": "Tasbih o libero"
+      }
+    },
+    "done": "Fine",
+    "hifz": {
+      "add": {
+        "body": "Aggiungi la sura e l'intervallo di versetti che hai memorizzato.",
+        "title": "Aggiungi versetti"
+      },
+      "hero": {
+        "body": "Qui trovi i versetti da ripassare oggi; inizia e segna quelli che ricordi.",
+        "title": "Ripasso di oggi"
+      }
+    },
+    "home": {
+      "alarms": {
+        "body": "Gestisci le sveglie impostate automaticamente sugli orari di preghiera.",
+        "title": "Sveglia"
+      },
+      "circles": {
+        "body": "Crea un cerchio con amici o familiari e mantenete la serie insieme.",
+        "title": "Cerchi di serie"
+      },
+      "dhikr": {
+        "body": "Conta il tasbih dopo la preghiera o qualsiasi dhikr desideri.",
+        "title": "Contatore dhikr"
+      },
+      "hero": {
+        "body": "Qui trovi il tempo mancante alla prossima preghiera e tutti gli orari di oggi.",
+        "title": "Prossima preghiera"
+      },
+      "kaza": {
+        "body": "Calcola le preghiere perse e vedi il conteggio scendere man mano che le recuperi.",
+        "title": "Preghiere qada"
+      },
+      "layout": {
+        "body": "Nascondi le schede o cambiane l'ordine per personalizzare la schermata iniziale.",
+        "title": "Organizza la home"
+      },
+      "location": {
+        "body": "Gli orari di preghiera sono calcolati per questa zona. Tocca per cambiarla.",
+        "title": "La tua posizione"
+      },
+      "profile": {
+        "body": "Qui trovi account, notifiche, lingua e impostazioni del tema.",
+        "title": "Profilo e impostazioni"
+      },
+      "qibla": {
+        "body": "Usa la bussola per trovare la direzione della qibla da dove ti trovi.",
+        "title": "Qibla"
+      },
+      "quickActions": {
+        "body": "Accedi da qui a dua, calendario islamico, 99 Nomi e cronologia delle preghiere.",
+        "title": "Accesso rapido"
+      },
+      "streak": {
+        "body": "La tua serie cresce ogni giorno in cui completi tutte e cinque le preghiere. Segui qui la tua settimana.",
+        "title": "La tua serie di preghiere"
+      },
+      "tabs": {
+        "body": "Usa le schede in basso per leggere il Corano, tracciare le adorazioni e fare domande.",
+        "title": "Altre sezioni"
+      },
+      "times": {
+        "body": "Tocca un orario di preghiera per impostare rapidamente una sveglia.",
+        "title": "Sveglia per una preghiera"
+      },
+      "tracker": {
+        "body": "Tocca una preghiera per segnarla una volta eseguita. Serie e statistiche si basano su questo.",
+        "title": "Preghiere di oggi"
+      },
+      "prayerLock": {
+        "title": "Blocco preghiera",
+        "body": "Blocca le app scelte durante l'orario di preghiera; si sbloccano quando segni la preghiera."
+      }
+    },
+    "kaza": {
+      "calculate": {
+        "body": "Scegli il periodo da recuperare (di solito dalla pubertà fino a quando hai iniziato a pregare regolarmente) e i contatori si compilano automaticamente.",
+        "title": "Calcola"
+      },
+      "counters": {
+        "body": "Qui trovi il conteggio qada per ogni preghiera; diminuiscilo con il meno man mano che recuperi.",
+        "title": "Qada per preghiera"
+      }
+    },
+    "mushaf": {
+      "listen": {
+        "body": "Ascolta un recitatore; il versetto corrente viene evidenziato e le pagine girano da sole.",
+        "title": "Segui la lettura"
+      },
+      "page": {
+        "body": "Scorri lateralmente per voltare pagina. Tocca il numero di un versetto per vederne la traduzione e tieni premuta una riga per segnare dove ti sei fermato.",
+        "title": "Pagine e versetti"
+      },
+      "surahs": {
+        "body": "Passa a qualsiasi sura da qui.",
+        "title": "Scegli una sura"
+      },
+      "theme": {
+        "body": "Scegli qui il colore della pagina, la scrittura Madani o il tajwid colorato e i significati delle parole.",
+        "title": "Aspetto e scrittura"
+      },
+      "word": {
+        "body": "Tocca una parola per vederne significato e pronuncia e ascoltarla.",
+        "title": "Significato parola"
+      }
+    },
+    "next": "Avanti",
+    "progress": "{{current}} / {{total}}",
+    "quran": {
+      "continue": {
+        "body": "Torna con un tocco all'ultimo versetto che hai letto.",
+        "title": "Dove avevi lasciato"
+      },
+      "downloads": {
+        "body": "Scarica audio e testi delle sure per leggere e ascoltare senza internet.",
+        "title": "Corano offline"
+      },
+      "hifz": {
+        "body": "Aggiungi i versetti che memorizzi e ripassali appena prima di rischiare di dimenticarli.",
+        "title": "Memorizzazione"
+      },
+      "list": {
+        "body": "Tocca una sura per leggerla con traduzione e recitazione.",
+        "title": "Sure"
+      },
+      "mushaf": {
+        "body": "Leggi il Corano pagina per pagina e segna dove ti sei fermato.",
+        "title": "Mushaf"
+      },
+      "search": {
+        "body": "Scrivi il nome o il numero di una sura per trovarla subito.",
+        "title": "Cerca sure"
+      }
+    },
+    "replay": "Rivedi le guide dell'app",
+    "replaySub": "Mostra di nuovo le introduzioni delle schermate",
+    "skip": "Salta guida",
+    "tracker": {
+      "activities": {
+        "body": "Registra qui lettura del Corano e di libri, preghiere volontarie, digiuno, carità, dua e memorizzazione.",
+        "title": "Aggiungi adorazione"
+      },
+      "hero": {
+        "body": "Qui sono mostrate le registrazioni di oggi e quanti tipi di adorazione hai compiuto.",
+        "title": "Riepilogo di oggi"
+      },
+      "insights": {
+        "body": "Qui trovi il riepilogo del periodo, la mappa delle adorazioni e i progressi del khatm.",
+        "title": "Statistiche"
+      },
+      "year": {
+        "body": "Scopri quante preghiere hai fatto l'anno scorso, la tua serie più lunga e le pagine lette. Disponibile ogni gennaio.",
+        "title": "Riepilogo dell'anno"
+      }
+    },
+    "prayerLock": {
+      "intro": {
+        "title": "Cos'è il blocco preghiera",
+        "body": "Durante l'orario di preghiera le app che scegli (social media, giochi) non si aprono. Prega, segnala in Salah e il blocco si rimuove subito."
+      },
+      "enable": {
+        "title": "Attivalo prima",
+        "body": "L'attivazione richiede l'autorizzazione Tempo di utilizzo di iPhone. Viene usata solo per questo blocco."
+      },
+      "info": {
+        "title": "Tutto resta sul dispositivo",
+        "body": "Le app scelte non vengono mai inviate al server. Puoi revocare l'autorizzazione in qualsiasi momento in Impostazioni > Tempo di utilizzo."
+      },
+      "apps": {
+        "title": "Scegli le app",
+        "body": "Seleziona le app o categorie da bloccare. Non scegliere Salah: deve restare aperta per poter segnare la preghiera."
+      },
+      "mode": {
+        "title": "Quando bloccare",
+        "body": "All'inizio dell'orario: blocca con l'adhan. Prima della fine dell'orario: per non rimandare all'ultimo minuto, blocca per il tempo impostato prima che l'orario finisca."
+      },
+      "duration": {
+        "title": "Per quanto tempo",
+        "body": "Scegli una durata predefinita o inserisci i minuti con Personalizzato. Il blocco non supera mai l'orario della preghiera successiva."
+      },
+      "prayers": {
+        "title": "Quali preghiere",
+        "body": "Scegli le preghiere da bloccare. Segnare una preghiera ne rimuove il blocco."
+      }
+    }
+  },
+  "tracker": {
+    "addA11y": "{{label}}: {{summary}}. Aggiungi voce",
+    "delete": {
+      "a11y": "Elimina voce {{label}}",
+      "confirm": "Elimina",
+      "message": "Vuoi davvero eliminare questa voce?",
+      "title": "Elimina voce"
+    },
+    "errors": {
+      "amount": "Inserisci un importo",
+      "memorization": "Compila almeno un campo",
+      "minutes": "Inserisci i minuti",
+      "pages": "Inserisci il numero di pagine",
+      "rakaat": "Inserisci il numero di rak'at",
+      "saveFailed": "Qualcosa è andato storto durante il salvataggio."
+    },
+    "fasting": {
+      "ramazan": "Digiuno del Ramadan",
+      "kaza": "Digiuno di recupero",
+      "nafile": "Digiuno volontario",
+      "pazartesi_persembe": "Lunedì-Giovedì",
+      "pazartesi_persembeShort": "Digiuno Lun-Gio"
+    },
+    "form": {
+      "amount": "Importo *",
+      "amountPlaceholder": "es. 100",
+      "bookName": "Titolo libro (opzionale)",
+      "bookPlaceholder": "es. Riyad as-Salihin",
+      "description": "Descrizione (opzionale)",
+      "descriptionPlaceholder": "es. donazione alimentare",
+      "fastingType": "Tipo di digiuno",
+      "minutesOptional": "Quanti minuti? (opzionale)",
+      "minutesPlaceholder": "es. 20",
+      "minutesRequired": "Quanti minuti? *",
+      "newVerses": "Nuovi versetti memorizzati",
+      "note": "Nota (opzionale)",
+      "date": "Data",
+      "today": "Oggi",
+      "pastHint": "Verrà salvato in un giorno passato.",
+      "pastSaved": "Salvato al {{date}}.",
+      "notePlaceholder": {
+        "default": "Aggiungi una nota…",
+        "dua": "es. Per gli amici malati",
+        "fasting": "es. Digiuno volontario del lunedì",
+        "memorization": "es. Ya-Sin versetti 1-5",
+        "quran": "es. Al-Baqarah pagine 15-18"
+      },
+      "pages": "Numero di pagine *",
+      "prayerType": "Tipo di preghiera",
+      "rakaat": "Numero di rak'at *",
+      "revisedVerses": "Versetti ripassati"
+    },
+    "hero": {
+      "entries": "voci",
+      "types": "tipi di adorazione"
+    },
+    "nafile": {
+      "aksam_sunnet": "Sunnah di Maghrib",
+      "diger": "Altra",
+      "duha": "Duha",
+      "evvabin": "Awwabin",
+      "ikindi_sunnet": "Sunnah di Asr",
+      "ogle_sunnet": "Sunnah di Dhuhr",
+      "sabah_sunnet": "Sunnah di Fajr",
+      "teheccud": "Tahajjud",
+      "teravih": "Tarawih",
+      "vitir": "Witr",
+      "yatsi_sunnet": "Sunnah di Isha"
+    },
+    "summary": {
+      "entries": "{{count}} voci",
+      "moreEntries": ", {{count}} voci",
+      "none": "Nessuna voce ancora"
+    },
+    "title": "Registro adorazioni",
+    "todayEntries": "Voci di oggi",
+    "day": {
+      "worship": "Adorazione",
+      "entries": "Voci"
+    },
+    "value": {
+      "memorization": "{{new}} nuovi versetti",
+      "memorizationRevision": "{{new}} nuovi · {{revision}} versetti ripassati",
+      "minutes": "{{count}} minuti",
+      "minutesShort": "{{count}} min",
+      "pages": "{{count}} pagine",
+      "rakaat": "{{count}} rak'at"
+    }
+  },
+  "update": {
+    "later": "Più tardi",
+    "openStore": "Apri App Store",
+    "openStore_android": "Apri Google Play",
+    "optionalMessage": "Salah {{version}} è disponibile su App Store. Aggiorna per nuove funzioni e correzioni.",
+    "optionalMessage_android": "Salah {{version}} è disponibile su Google Play. Aggiorna per nuove funzioni e correzioni.",
+    "optionalTitle": "Nuova versione disponibile",
+    "requiredMessage": "Per continuare a usare Salah, aggiorna all'ultima versione da App Store.",
+    "requiredMessage_android": "Per continuare a usare Salah, aggiorna all'ultima versione da Google Play.",
+    "requiredTitle": "Aggiornamento richiesto",
+    "update": "Aggiorna"
+  },
+  "upload": {
+    "loading": "Caricamento...",
+    "wait": "Attendere..."
+  },
+  "verse": {
+    "loadFailed": "Impossibile caricare la traduzione.",
+    "footnotes": "Note",
+    "noWords": "Nessun dato sulle parole trovato.",
+    "tabMeaning": "Significato",
+    "tabWords": "Parola per parola",
+    "wordsNote": "Tocca una parola per vederne traslitterazione e significato."
+  },
+  "widget": {
+    "amel": {
+      "quran": "Corano",
+      "nafile": "Nafl",
+      "fasting": "Digiuno",
+      "sadaka": "Carità",
+      "dua": "Dua",
+      "memorization": "Memorizza",
+      "book": "Libro"
+    },
+    "amelCount": "{{count}} tipi registrati",
+    "amelNone": "Nulla registrato oggi",
+    "amelTitle": "Adorazione di oggi",
+    "hadith": "Hadith del giorno",
+    "inspirationEmpty": "Apri l'app per vedere il versetto di oggi",
+    "inspirationFallback": "Ispirazione quotidiana",
+    "openApp": "Apri l'app per gli orari di preghiera",
+    "premiumCta": "Passa a Premium",
+    "premiumLocked": "Questo widget fa parte di Premium",
+    "ringTitle": "Cerchio del giorno",
+    "trackerAllDone": "Completate per oggi",
+    "trackerLeft": "{{count}} preghiere rimanenti",
+    "trackerSignIn": "Accedi per segnare le preghiere",
+    "trackerTitle": "Registro preghiere",
+    "until": "A {{prayer}}",
+    "untilEnd": "Alla fine di {{prayer}}",
+    "verse": "Versetto del giorno"
+  },
+  "ramadan": {
+    "teravih": {
+      "mark": "Ho pregato il Tarawih",
+      "done": "Tarawih pregato",
+      "count": "{{count}} / {{total}} Tarawih"
+    },
+    "tab": {
+      "fast": "Digiuno",
+      "teravih": "Tarawih"
+    },
+    "kaza": {
+      "title": "{{count}} giorni non segnati",
+      "ozel": "{{count}} giorni rientrano nei tuoi giorni speciali.",
+      "body": "Puoi aggiungere i giorni in cui non hai potuto digiunare al conteggio dei digiuni da recuperare.",
+      "add": "Aggiungi {{count}} giorni da recuperare",
+      "added": "Aggiunto ai digiuni da recuperare"
+    },
+    "nights": {
+      "title": "Ultime dieci notti",
+      "count": "{{done}} / 10 notti",
+      "hint": "Segna le notti trascorse in adorazione.",
+      "kadir": "Qadr"
+    },
+    "verse": {
+      "title": "Versetto del giorno {{day}} di Ramadan"
+    },
+    "more": {
+      "groups": "Khatm di gruppo"
+    },
+    "tile": {
+      "zakat": "Zakat",
+      "zakatHint": "Fitr e fidya",
+      "groups": "Khatm di gruppo",
+      "groupsHint": "Leggi insieme",
+      "hatim": "Piano khatm",
+      "hatimHint": "Crea un piano"
+    },
+    "nextPrayer": "Prossima {{prayer}} {{time}}",
+    "journey": {
+      "title": "Percorso del Ramadan"
+    },
+    "journal": {
+      "title": "Diario del digiuno",
+      "ofTotal": "/ {{total}} giorni di digiuno",
+      "fasted": "Digiunato",
+      "today": "Oggi",
+      "upcoming": "In arrivo",
+      "missed": "Non digiunato",
+      "kaza": "Digiuni da recuperare",
+      "kazaCount": "{{count}} giorni",
+      "kazaAdd": "Aggiungi un digiuno da recuperare",
+      "kazaRemove": "Rimuovi un digiuno da recuperare"
+    },
+    "day": "Giorno {{day}} di Ramadan",
+    "untilIftar": "All'iftar",
+    "untilSahur": "Al suhur",
+    "sahur": "Suhur",
+    "iftar": "Iftar",
+    "fastToday": "Oggi digiuno",
+    "fasted": "In digiuno",
+    "fastCount": "{{count}} / {{total}} giorni di digiuno",
+    "hatimCta": "Crea un piano di completamento del Corano per il Ramadan",
+    "upcoming": {
+      "title": "{{days}} giorni al Ramadan",
+      "tomorrow": "Il Ramadan inizia domani",
+      "subtitle": "{{date}} · Calendario e piano del Corano"
+    }
+  },
+  "zakat": {
+    "title": "Zakat e fitr",
+    "gold": "Oro",
+    "goldPrice": "Prezzo dell'oro al grammo",
+    "cash": "Contanti e valuta",
+    "trade": "Merci commerciali",
+    "receivable": "Crediti esigibili",
+    "debt": "Debiti in scadenza entro un anno",
+    "nisab": "Nisab: {{amount}} TRY (80,18 g d'oro)",
+    "due": "La tua zakat: {{amount}} TRY",
+    "below": "Sotto il nisab, non è dovuta alcuna zakat.",
+    "conditions": "La zakat è dovuta quando il patrimonio oltre i bisogni essenziali e i debiti raggiunge il nisab ed è trascorso un anno. L'aliquota è un quarantesimo.",
+    "fitreSection": "Fitr",
+    "people": "Numero di persone",
+    "fitreNote": "L'importo della fitr della Diyanet per {{period}} è di {{amount}} TRY a persona.",
+    "fitrePaid": "Ho dato la mia fitr",
+    "fitreDone": "Fitr donata",
+    "fidyeSection": "Fidya",
+    "fidyeNote": "Per chi non può digiunare per vecchiaia o malattia senza speranza di guarigione e non può recuperare i digiuni. Chi ha un impedimento temporaneo deve recuperare i digiuni.",
+    "days": "Numero di giorni",
+    "source": "Apri fonte Diyanet",
+    "disclaimer": "Per casi particolari, consulta un mufti.",
+    "tabZakat": "Zakat",
+    "tabFitre": "Fitr",
+    "tabFidye": "Fidya",
+    "goldPriceHint": "Il nisab è calcolato da questo prezzo. Puoi ottenere il prezzo attuale da una gioielleria o dalla tua banca.",
+    "assets": "Il tuo patrimonio",
+    "deduct": "Da detrarre",
+    "unitGram": "grammi",
+    "unitTl": "TRY",
+    "money": "{{amount}} TRY",
+    "resultDue": "La tua zakat",
+    "resultNone": "Nessuna zakat dovuta",
+    "resultNeedPrice": "Inserisci prima il prezzo dell'oro",
+    "resultNeedPriceBody": "Il nisab è calcolato da questo prezzo.",
+    "netVsNisab": "Patrimonio netto {{net}} TRY  ·  Nisab {{nisab}} TRY",
+    "whoTitle": "Chi deve pagare la zakat?",
+    "fitreResult": "Fitr totale",
+    "fitreCalc": "{{count}} persone x {{amount}} TRY",
+    "fidyeResult": "Fidya totale",
+    "fidyeCalc": "{{count}} giorni x {{amount}} TRY",
+    "whoFidye": "Per chi è la fidya?",
+    "keyboardDone": "Fine",
+    "decrease": "Diminuisci",
+    "increase": "Aumenta",
+    "goldPriceAuto": "Prezzo di mercato, {{time}}. Puoi modificarlo."
+  },
+  "hatimGroups": {
+    "title": "Khatm di gruppo",
+    "emptyTitle": "Non hai ancora nessun gruppo",
+    "emptyBody": "Crea un gruppo, condividi il codice di invito e leggete insieme i 30 juz.",
+    "create": "Crea gruppo",
+    "join": "Unisciti con codice",
+    "name": "Nome del gruppo",
+    "code": "Codice di invito",
+    "members": "{{count}} membri",
+    "progress": "{{done}} / 30 juz",
+    "completed": "Khatm completati: {{count}}",
+    "invite": "Invita",
+    "inviteCode": "Codice di invito: {{code}}",
+    "inviteText": "Unisciti al khatm di gruppo {{name}}. Nell'app Salah, inserisci questo codice in Khatm di gruppo: {{code}}",
+    "juzTitle": "Juz {{juz}}",
+    "take": "Prendi questo juz",
+    "done": "L'ho letto",
+    "undone": "Non letto",
+    "release": "Lascia juz",
+    "takenBy": "{{name}} sta leggendo",
+    "doneBy": "{{name}} l'ha letto",
+    "mine": "Tuo",
+    "free": "Libero",
+    "read": "Letto",
+    "others": "Preso",
+    "membersTitle": "Membri",
+    "owner": "Proprietario",
+    "leave": "Lascia gruppo",
+    "leaveConfirm": "Lasciare questo gruppo? I juz non completati torneranno liberi.",
+    "delete": "Elimina gruppo",
+    "deleteConfirm": "Il gruppo verrà eliminato per tutti. Vuoi continuare?",
+    "remove": "Rimuovi membro",
+    "removeConfirm": "Rimuovere {{name}} dal gruppo?",
+    "invalidCode": "Questo codice di invito non è valido.",
+    "full": "Questo gruppo è pieno.",
+    "tooMany": "Puoi unirti al massimo a 20 gruppi.",
+    "taken": "Qualcun altro ha appena preso questo juz.",
+    "failed": "Operazione non riuscita. Controlla la connessione e riprova.",
+    "signIn": "Accedi per usare il khatm di gruppo.",
+    "empty": "Gruppo non trovato.",
+    "createTitle": "Nuovo gruppo",
+    "createHint": "Dai un nome per famiglia, amici o comunità. Potrai condividere subito il codice di invito.",
+    "namePlaceholder": "Ad esempio, Famiglia",
+    "joinTitle": "Unisciti a un gruppo",
+    "joinHint": "Inserisci il codice di invito che hai ricevuto.",
+    "how1": "Crea un gruppo o unisciti con un codice",
+    "how2": "Condividi il codice di invito",
+    "how3": "Ognuno prende un juz e lo segna quando lo legge",
+    "heroRead": "{{done}} / 30 juz letti",
+    "heroState": "{{reading}} in lettura  ·  {{free}} liberi",
+    "myTitle": "I tuoi juz",
+    "pages": "Pagine {{from}}-{{to}}",
+    "readNow": "Leggi",
+    "takeNext": "Prendi il prossimo juz (Juz {{juz}})",
+    "noneMine": "Non stai leggendo alcun juz al momento.",
+    "allTaken": "Tutti i juz sono stati presi.",
+    "gridTitle": "Tutti i juz",
+    "freeStatus": "Questo juz è libero.",
+    "mineStatus": "Questo juz è tuo.",
+    "mineDoneStatus": "Hai letto questo juz.",
+    "inviteTitle": "Codice di invito",
+    "inviteAlone": "Per ora ci sei solo tu. Condividi il codice per leggere insieme.",
+    "copy": "Copia",
+    "copied": "Codice copiato",
+    "memberStats": "{{read}} letti  ·  {{reading}} in lettura",
+    "memberIdle": "Nessun juz preso ancora",
+    "report": "Segnala gruppo",
+    "reportTitle": "Perché segnali questo gruppo?",
+    "reportName": "Nome del gruppo inappropriato",
+    "reportMember": "Membro molesto",
+    "reportOther": "Altro problema",
+    "reportSent": "Segnalazione ricevuta. La esamineremo."
+  },
+  "iftarMoment": {
+    "title": "Iftar benedetto",
+    "accept": "Che Allah lo accetti.",
+    "adhan": "Adhan di Maghrib {{time}}",
+    "mark": "Segna il digiuno di oggi",
+    "duas": "Altre dua",
+    "tomorrowSahur": "Suhur domani",
+    "progress": "Ramadan",
+    "duaTitle": "Dua dell'iftar",
+    "duaArabic": "اللَّهُمَّ لَكَ صُمْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
+    "duaReading": "Allahumma laka sumtu wa ala rizqika aftartu.",
+    "duaMeaning": "O Allah, per Te ho digiunato e con la Tua provvidenza rompo il digiuno.",
+    "duaSource": "Abu Dawud, Siyam, 22"
+  },
+  "imsakiye": {
+    "todayLine": "Oggi, {{date}}, {{place}}",
+    "kadir": "{{days}} giorni a Laylat al-Qadr",
+    "kadirTonight": "Stanotte è Laylat al-Qadr",
+    "shareTitle": "Calendario del Ramadan di {{place}}",
+    "title": "Calendario del Ramadan",
+    "short": "Orari",
+    "dayColumn": "Giorno",
+    "dateColumn": "Data",
+    "loadFailed": "Impossibile caricare il calendario. Controlla la connessione e riprova.",
+    "notReady": "Il calendario di questo Ramadan non è ancora pronto. Sarà disponibile a gennaio."
+  },
+  "hatim": {
+    "card": {
+      "title": "Piano di completamento del Corano",
+      "today": "Oggi {{read}} / {{target}} pagine · {{days}} giorni rimasti",
+      "log": "Registra la mia lettura",
+      "logMore": "Registra altro",
+      "finished": "Corano completato. Che Allah lo accetti.",
+      "overdue": "La data obiettivo è passata. Puoi aggiornare il piano."
+    },
+    "plan": {
+      "title": "Piano di completamento del Corano",
+      "subtitle": "Quando vuoi terminare? Calcoleremo le tue pagine giornaliere.",
+      "ramadanEnd": "Entro la fine del Ramadan",
+      "days": "{{count}} giorni",
+      "custom": "Scegli una data",
+      "daily": "{{pages}} pagine al giorno",
+      "remaining": "{{pages}} pagine rimaste · {{days}} giorni",
+      "start": "Avvia piano",
+      "update": "Aggiorna piano",
+      "saved": "Il tuo piano è stato salvato",
+      "delete": "Elimina piano",
+      "deleteTitle": "Eliminare questo piano?",
+      "deleteBody": "Le pagine già lette non verranno eliminate.",
+      "reminder": "Promemoria giornaliero",
+      "reminderNeeds": "Attiva prima le notifiche nelle Impostazioni",
+      "status": "{{pages}} pagine rimaste in {{days}} giorni. Obiettivo giornaliero: {{daily}} pagine.",
+      "signIn": "Il piano usa il registro di lettura del Corano. Accedi per continuare.",
+      "signInButton": "Accedi"
+    }
+  },
+  "appColor": {
+    "sampleButton": "Pulsante di esempio",
+    "custom": "Personalizzato",
+    "customTitle": "Colore personalizzato",
+    "customHint": "Scegli un colore sulla ruota o inserisci il codice. La luminosità si adatta automaticamente per mantenere il testo leggibile.",
+    "wheel": "Ruota dei colori",
+    "hexLabel": "Codice colore",
+    "hexInvalid": "Il codice colore deve avere il formato #RRGGBB.",
+    "apply": "Applica",
+    "preview": "Anteprima",
+    "title": "Colore app",
+    "forest": "Foresta",
+    "navy": "Blu marino",
+    "purple": "Viola",
+    "burgundy": "Bordeaux",
+    "ramadanHint": "Durante il Ramadan il colore cambia automaticamente in base al momento della giornata."
+  },
+  "siri": {
+    "noTimes": "Gli orari di preghiera non sono ancora stati caricati. Apri l'app una volta e riprova.",
+    "signIn": "Accedi prima all'app per segnare le tue preghiere.",
+    "ozelGun": "La modalità giorni speciali è attiva, quindi le preghiere non vengono segnate.",
+    "next": {
+      "current": "Ora è l'orario di {{prayer}}, termina alle {{time}}. Mancano {{remaining}}.",
+      "upcoming": "La prossima preghiera è {{prayer}} alle {{time}}. Mancano {{remaining}}."
+    },
+    "mark": {
+      "done": "{{prayer}} segnata come pregata. {{count}}/5 oggi.",
+      "already": "{{prayer}} è già segnata.",
+      "none": "Non c'è nessuna preghiera da segnare ora. La prossima è {{prayer}} alle {{time}}.",
+      "offline": "{{prayer}} segnata. Si sincronizzerà quando tornerai online.",
+      "failed": "Impossibile segnarla. Riprova dall'app."
+    }
+  },
+  "quranOffline": {
+    "title": "Download",
+    "open": "Apri download",
+    "download": "Scarica",
+    "downloadA11y": "Scarica l'audio di questa sura",
+    "downloaded": "Scaricato",
+    "downloading": "{{percent}}%",
+    "cancel": "Interrompi download",
+    "deleteTitle": "Elimina download",
+    "deleteMessage": "Eliminare l'audio di {{reciter}} per {{surah}} da questo dispositivo?",
+    "delete": "Elimina",
+    "deleteAll": "Elimina tutto",
+    "deleteAllMessage": "Eliminare tutti gli audio del Corano scaricati da questo dispositivo?",
+    "failedTitle": "Download non riuscito",
+    "failed": "Controlla la connessione e riprova.",
+    "textTitle": "Testi delle sure",
+    "textHint": "Il testo arabo e la traduzione nella tua lingua vengono salvati per leggere senza internet.",
+    "textCount": "{{count}}/114 sure pronte",
+    "textDownload": "Scarica tutto",
+    "textDone": "Tutti i testi delle sure sono stati scaricati.",
+    "mushafTitle": "Mushaf",
+    "mushafHintText": "604 pagine con significati delle parole. Il Mushaf si apre offline.",
+    "mushafHintScript": "604 pagine, significati delle parole e scrittura selezionata ({{script}}). Circa 180 MB.",
+    "mushafCount": "{{count}} / 604 pagine pronte",
+    "mushafDownload": "Scarica Mushaf",
+    "mushafDone": "Mushaf scaricato.",
+    "mushafDeleteMessage": "Le pagine e i font scaricati del Mushaf verranno rimossi. Le pagine che aprirai si scaricheranno di nuovo.",
+    "audioTitle": "Audio",
+    "audioHint": "Scarica l'audio con il pulsante Scarica su una sura. Una sura occupa da circa 1 a 60 MB.",
+    "audioEmpty": "Nessun audio scaricato ancora.",
+    "size": "{{size}} in totale"
+  },
+  "kaza": {
+    "title": "Preghiere qada",
+    "total": "Totale qada",
+    "finish": "Pregando {{perDay}} qada di ogni preghiera al giorno, finirai intorno al {{date}}",
+    "perDayLess": "Meno qada al giorno",
+    "perDayMore": "Più qada al giorno",
+    "empty": "Nessuna preghiera qada registrata. Inizia con il calcolatore o imposta i contatori manualmente.",
+    "calculate": "Calcola preghiere qada",
+    "witr": "Witr",
+    "witrToggle": "Conta la preghiera di witr",
+    "witrHint": "Nella scuola hanafita si recupera anche il witr.",
+    "info": "Le preghiere segnate come qada nel registro non modificano questi contatori. Diminuisci il contatore di una preghiera ogni volta che ne recuperi una.",
+    "decrease": "Diminuisci qada di {{prayer}}",
+    "increase": "Aumenta qada di {{prayer}}",
+    "countA11y": "{{prayer}}: {{count}} qada",
+    "saveFailed": "Impossibile salvare il contatore qada.",
+    "historyLink": "Le mie preghiere qada",
+    "calcTitle": "Calcola qada",
+    "calcHint": "Scegli il periodo le cui preghiere vanno recuperate. Di solito dalla pubertà fino a quando hai iniziato a pregare con regolarità.",
+    "calcStart": "Inizio",
+    "calcEnd": "Fine",
+    "calcDeduct": "Escludi i giorni del ciclo mestruale",
+    "calcMonthly": "{{days}} giorni al mese",
+    "calcResult": "{{days}} giorni",
+    "calcEach": "{{days}} qada per ogni preghiera",
+    "calcApply": "Imposta contatori",
+    "calcReplaceTitle": "Sostituire i contatori?",
+    "calcReplaceMessage": "I numeri calcolati sostituiranno i tuoi contatori attuali.",
+    "cardTotal": "{{count}} preghiere qada",
+    "cardEmpty": "Calcola le tue preghiere qada"
+  },
+  "dhikr": {
+    "title": "Contatore dhikr",
+    "mode": {
+      "tesbihat": "Tasbih",
+      "free": "Dhikr"
+    },
+    "target": "Obiettivo",
+    "noTarget": "Nessun limite",
+    "tapToCount": "Tocca per contare",
+    "undo": "Annulla",
+    "reset": "Azzera",
+    "resetTitle": "Azzerare il contatore?",
+    "resetMessage": "Questo contatore riparte da zero. Il totale di oggi viene mantenuto.",
+    "today": "Oggi",
+    "finished": "Tasbih completato",
+    "finishedHint": "Che Allah lo accetti.",
+    "again": "Ricomincia",
+    "stepA11y": "Passaggio {{step}} di {{total}}",
+    "counterA11y": "{{count}} di {{target}}",
+    "cardToday": "{{count}} dhikr oggi",
+    "cardStart": "Inizia il tuo tasbih",
+    "duaHint": "Contatore di tasbih e dhikr",
+    "items": {
+      "subhanallah": {
+        "name": "Subhanallah",
+        "short": "Subhanallah",
+        "reading": "Subhanallah",
+        "meaning": "Gloria ad Allah."
+      },
+      "elhamdulillah": {
+        "name": "Alhamdulillah",
+        "short": "Alhamdulillah",
+        "reading": "Alhamdulillah",
+        "meaning": "Ogni lode appartiene ad Allah."
+      },
+      "allahuekber": {
+        "name": "Allahu akbar",
+        "short": "Allahu akbar",
+        "reading": "Allahu akbar",
+        "meaning": "Allah è il più Grande."
+      },
+      "tehlil": {
+        "name": "La ilaha illallah",
+        "short": "Tahlil",
+        "reading": "La ilaha illallah",
+        "meaning": "Non c'è divinità all'infuori di Allah."
+      },
+      "istigfar": {
+        "name": "Astaghfirullah",
+        "short": "Istighfar",
+        "reading": "Astaghfirullah",
+        "meaning": "Chiedo perdono ad Allah."
+      },
+      "salavat": {
+        "name": "Salawat",
+        "short": "Salawat",
+        "reading": "Allahumma salli ala Muhammad",
+        "meaning": "O Allah, invia le Tue benedizioni su Muhammad."
+      },
+      "tesbihatClosing": {
+        "name": "Tahlil",
+        "short": "Tahlil",
+        "reading": "La ilaha illallahu wahdahu la sharika lah, lahul-mulku wa lahul-hamdu wa huwa ala kulli shay'in qadir.",
+        "meaning": "Non c'è divinità all'infuori di Allah, Unico, senza associati. A Lui appartiene la sovranità e a Lui spetta la lode, ed Egli è onnipotente su ogni cosa."
+      }
+    }
+  },
+  "hifz": {
+    "title": "Memorizzazione",
+    "heroDue": "Da ripassare oggi",
+    "heroCount": "{{count}} versetti",
+    "stats": "{{total}} versetti nella tua lista, {{strong}} ben memorizzati.",
+    "start": "Inizia ripasso",
+    "allDone": "Ripasso di oggi completato",
+    "empty": "La tua lista di memorizzazione è vuota. Aggiungi i versetti che vuoi memorizzare; l'app programma i ripassi: l'intervallo cresce quando ricordi e si riduce quando dimentichi.",
+    "add": "Aggiungi versetti",
+    "addTitle": "Aggiungi versetti da memorizzare",
+    "pickSurah": "Scegli una sura",
+    "surahsFailed": "Impossibile caricare le sure. Controlla la connessione e riprova.",
+    "change": "Cambia",
+    "from": "Primo versetto",
+    "to": "Ultimo versetto",
+    "addButton": "Aggiungi {{count}} versetti",
+    "added": "{{count}} versetti aggiunti",
+    "surahRow": "Versetti {{from}}-{{to}}, {{count}} versetti, {{due}} da ripassare oggi",
+    "remove": "Rimuovi dalla lista",
+    "removeTitle": "Rimuovere questa sura?",
+    "removeMessage": "I tuoi progressi di memorizzazione per {{surah}} verranno eliminati.",
+    "progress": "{{index}} / {{total}}",
+    "reveal": "Recita prima a memoria, poi tocca per vedere il versetto",
+    "listen": "Ascolta",
+    "remembered": "Ricordato",
+    "hard": "Difficile",
+    "forgot": "Dimenticato",
+    "sessionDone": "Ripasso completato",
+    "sessionDoneHint": "Oggi hai ripassato {{count}} versetti.",
+    "close": "Chiudi",
+    "verseLabel": "{{surah}}, versetto {{verse}}",
+    "loadFailed": "Impossibile caricare i versetti. Controlla la connessione.",
+    "entryDue": "{{count}} versetti da ripassare oggi",
+    "entryEmpty": "Memorizza versetti e lascia che l'app programmi i tuoi ripassi",
+    "less": "Diminuisci {{label}}",
+    "more": "Aumenta {{label}}"
+  },
+  "circles": {
+    "title": "Serie insieme",
+    "intro": "Mantieni una serie di preghiere condivisa con famiglia o amici. La serie cresce ogni giorno in cui tutti nel gruppo completano tutte e cinque le preghiere.",
+    "how1": "Crea un gruppo o unisciti con un codice di invito.",
+    "how2": "Ognuno segna le proprie preghiere nell'app.",
+    "how3": "Quando tutti pregano tutte e cinque, la serie condivisa aumenta di uno.",
+    "create": "Crea gruppo",
+    "join": "Unisciti con codice",
+    "createTitle": "Nuovo gruppo",
+    "createHint": "Scegli il tipo di gruppo. Poi condividi il codice di invito.",
+    "joinTitle": "Unisciti a un gruppo",
+    "joinHint": "Inserisci il codice di 8 caratteri che hai ricevuto.",
+    "code": "Codice di invito",
+    "kind": {
+      "family": "La mia famiglia",
+      "friends": "I miei amici",
+      "mosque": "La mia moschea",
+      "colleagues": "I miei colleghi",
+      "other": "Il mio gruppo"
+    },
+    "members": "{{count}} persone",
+    "membersTitle": "Membri",
+    "shared": "Serie condivisa",
+    "days": "giorni",
+    "sharedDays": "{{count}} giorni",
+    "todayDone": "{{done}}/{{total}} completati oggi",
+    "todayAll": "Tutti hanno completato oggi",
+    "memberToday": "{{count}}/5 preghiere oggi",
+    "memberStreak": "Serie di {{count}} giorni",
+    "you": "Tu",
+    "owner": "Fondatore",
+    "inviteTitle": "Codice di invito",
+    "inviteAlone": "Per ora ci sei solo tu. Condividi il codice per iniziare insieme.",
+    "invite": "Invita",
+    "inviteText": "Unisciti alla nostra serie di preghiere condivisa su Salah. Nell'app, apri Serie insieme e inserisci questo codice: {{code}}",
+    "copied": "Codice copiato",
+    "copy": "Copia codice",
+    "leave": "Lascia gruppo",
+    "leaveConfirm": "Vuoi lasciare questo gruppo?",
+    "delete": "Elimina gruppo",
+    "deleteConfirm": "Il gruppo verrà eliminato per tutti. Vuoi continuare?",
+    "remove": "Rimuovi membro",
+    "removeConfirm": "Rimuovere {{name}} dal gruppo?",
+    "invalidCode": "Questo codice di invito non è valido.",
+    "full": "Questo gruppo è pieno (massimo 12 persone).",
+    "tooMany": "Puoi unirti al massimo a 5 gruppi.",
+    "failed": "Qualcosa è andato storto. Controlla la connessione e riprova.",
+    "signIn": "Accedi per usare Serie insieme.",
+    "privacy": "Il gruppo vede solo il tuo nome, quante preghiere hai fatto oggi e la tua serie.",
+    "streakCardLink": "Serie insieme"
+  },
+  "prayerLock": {
+    "section": "Blocco preghiera",
+    "title": "Blocco preghiera",
+    "on": "Attivo",
+    "off": "Disattivo",
+    "intro": "Le app che scegli vengono bloccate durante l'orario di preghiera. Il blocco si rimuove quando segni la preghiera come fatta in Salah.",
+    "enable": "Attiva blocco preghiera",
+    "enableHint": "Le app scelte si bloccano durante l'orario di preghiera.",
+    "permissionHint": "L'autorizzazione Tempo di utilizzo viene richiesta all'attivazione.",
+    "permissionDenied": "Autorizzazione Tempo di utilizzo non concessa. Consentila e riprova.",
+    "apps": "App da bloccare",
+    "appsNone": "Nessuna app selezionata",
+    "appsCount": "{{count}} app o categorie selezionate",
+    "duration": "Blocca al massimo per",
+    "minutes": "{{count}} min",
+    "prayers": "Preghiere",
+    "info": "Il blocco funziona solo su questo dispositivo e solo per tua scelta. Le app selezionate non vengono mai inviate al server. Puoi revocare l'autorizzazione in qualsiasi momento in Impostazioni > Tempo di utilizzo.",
+    "when": "Quando avviare il blocco",
+    "modeStart": "All'inizio dell'orario",
+    "modeEnd": "Prima della fine dell'orario",
+    "modeStartHint": "Blocca quando inizia l'orario di preghiera. Si sblocca quando segni la preghiera o allo scadere del tempo impostato.",
+    "modeEndHint": "Blocca per il tempo impostato prima che finisca l'orario di preghiera. Si sblocca quando segni la preghiera o alla fine dell'orario.",
+    "before": "Prima della fine dell'orario",
+    "untilEnd": "Fino alla fine dell'orario",
+    "custom": "Personalizzato",
+    "customLabel": "Minuti",
+    "customRange": "Tra {{min}} e {{max}} minuti",
+    "minuteUnit": "min"
+  },
+  "yearSummary": {
+    "title": "Riepilogo dell'anno",
+    "entryTitle": "Il tuo {{year}}",
+    "entrySub": "Il tuo anno di preghiera e adorazione",
+    "prayed": "preghiere eseguite",
+    "percent": "{{percent}}% delle preghiere in {{days}} giorni",
+    "perfectDays": "{{count}} giorni con tutte e cinque le preghiere",
+    "streak": "Serie più lunga",
+    "bestMonth": "Mese migliore",
+    "quran": "Corano",
+    "teheccud": "Tahajjud",
+    "nafile": "Preghiera volontaria",
+    "fasting": "Digiuno",
+    "kaza": "Recupero",
+    "sadaka": "Carità",
+    "dua": "Dua",
+    "memorization": "Memorizzazione",
+    "fullDays": "Giorni completi",
+    "days": "{{count}} giorni",
+    "pages": "{{count}} pagine",
+    "hatims": "{{count}} khatm",
+    "nights": "{{count}} notti",
+    "rakaat": "{{count}} rak'at",
+    "prayersCount": "{{count}} preghiere",
+    "times": "{{count}} volte",
+    "minutes": "{{count}} minuti",
+    "ayets": "{{count}} versetti",
+    "byPrayer": "Per preghiera",
+    "emptyTitle": "Nessuna voce ancora",
+    "empty": "Il riepilogo dell'anno si riempie man mano che segni le tue preghiere e adorazioni.",
+    "failed": "Impossibile caricare il riepilogo dell'anno. Controlla la connessione e riprova.",
+    "share": "Condividi",
+    "shareLabel": "Il mio {{year}}",
+    "shareText": "Ho eseguito {{count}} preghiere nel {{year}}. Tracciate con Salah.",
+    "story": {
+      "introLine1": "Un altro anno è alle spalle.",
+      "introLine2": "Rivediamo insieme il tuo anno di preghiera e adorazione.",
+      "inYear": "Nel {{year}}",
+      "streakTitle": "La tua serie più lunga",
+      "streakUnit": "giorni di fila, tutte e cinque le preghiere",
+      "topPrayer": "Hai pregato {{prayer}} più spesso",
+      "prayersUnit": "preghiere",
+      "pagesUnit": "pagine lette",
+      "moreTitle": "Le tue altre adorazioni",
+      "closing": "Che Allah le accetti.",
+      "replay": "Guarda di nuovo",
+      "next": "Avanti",
+      "previous": "Precedente"
+    }
+  },
+  "prayerLockCard": {
+    "empty": "Blocca le app scelte durante l'orario di preghiera",
+    "noApps": "Scegli le app da bloccare",
+    "lockedNow": "Bloccato ora: {{prayer}}",
+    "lockedHint": "Si sblocca quando segni la preghiera",
+    "start": "{{count}} min all'inizio dell'orario",
+    "untilEnd": "Dall'inizio alla fine dell'orario",
+    "end": "{{count}} min prima della fine dell'orario",
+    "setup": "Configura blocco preghiera"
+  },
+  "duaJournal": {
+    "title": "Il mio diario delle dua",
+    "entry": "Scrivi le tue dua e intenzioni",
+    "empty": "Nessuna dua ancora",
+    "emptyBody": "Scrivi le tue dua, intenzioni e le persone per cui vuoi pregare; aggiungi un promemoria se desideri.",
+    "add": "Nuova dua",
+    "edit": "Modifica dua",
+    "titleLabel": "Titolo",
+    "titlePlaceholder": "Ad esempio: Per mia madre",
+    "textLabel": "Dua o intenzione",
+    "textPlaceholder": "Scrivi qui la tua dua",
+    "reminder": "Ricordamelo",
+    "reminderHint": "Riceverai una notifica nei giorni scelti",
+    "days": "Giorni",
+    "reminderSummary": "{{days}}, {{time}}",
+    "deleteConfirm": "Eliminare questa dua?",
+    "deleteMessage": "Questa operazione non può essere annullata.",
+    "private": "Il diario delle dua resta su questo dispositivo e non viene mai inviato al server.",
+    "notifTitle": "Momento di dua"
+  },
+  "wallpaper": {
+    "title": "Sfondo",
+    "save": "Salva",
+    "saved": "Salvato in Foto",
+    "failed": "Impossibile creare lo sfondo",
+    "denied": "Nessun accesso a Foto",
+    "deniedHint": "Consenti l'aggiunta a Foto nelle Impostazioni per salvare.",
+    "empty": "Nulla da mostrare",
+    "source": {
+      "verse": "Versetto",
+      "dua": "Dua",
+      "esma": "Nomi"
+    },
+    "design": {
+      "title": "Design",
+      "orman": "Foresta",
+      "gece": "Notte",
+      "kagit": "Carta",
+      "sade": "Semplice"
+    }
+  },
+  "greetings": {
+    "title": "Biglietti di auguri",
+    "today": "Oggi",
+    "all": "Tutti",
+    "cuma": "Venerdì",
+    "message": "Messaggio",
+    "classic": "Classico"
+  },
+  "discover": {
+    "title": "Scopri",
+    "topics": "Temi",
+    "wallpapers": "Sfondi",
+    "greetings": "Biglietti di auguri",
+    "stories": "Storie",
+    "daily": "Lettura quotidiana"
+  },
+  "topics": {
+    "title": "Temi",
+    "count": "{{count}} versetti",
+    "saved": "Salvati",
+    "savedEmpty": "Nessun versetto salvato",
+    "savedEmptyHint": "Tocca l'icona del segnalibro su una scheda versetto per salvarlo.",
+    "save": "Salva",
+    "unsave": "Rimuovi dai salvati",
+    "openSurah": "Apri sura",
+    "goToSurah": "Vai alla sura",
+    "more": "Altro",
+    "wallpaper": "Crea sfondo",
+    "openMushaf": "Apri nel Mushaf",
+    "loadFailed": "Impossibile caricare il versetto",
+    "emptyTopic": "Nessun versetto in questo tema",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Pazienza",
+      "sub": "Fermezza nelle difficoltà"
+    },
+    "sukur": {
+      "title": "Gratitudine",
+      "sub": "Riconoscenza per le benedizioni"
+    },
+    "tevekkul": {
+      "title": "Fiducia in Dio",
+      "sub": "Affidarsi ad Allah"
+    },
+    "umut": {
+      "title": "Speranza",
+      "sub": "Non disperare mai della misericordia"
+    },
+    "tovbe": {
+      "title": "Pentimento",
+      "sub": "Chiedere perdono e tornare ad Allah"
+    },
+    "iman": {
+      "title": "Fede",
+      "sub": "Credenza e certezza del cuore"
+    },
+    "dua": {
+      "title": "Supplica",
+      "sub": "Rivolgersi ad Allah e invocarLo"
+    },
+    "huzur": {
+      "title": "Pace",
+      "sub": "Calma e serenità del cuore"
+    },
+    "siginma": {
+      "title": "Cercare rifugio",
+      "sub": "Trovare rifugio e protezione in Allah"
+    },
+    "ahlak": {
+      "title": "Carattere",
+      "sub": "Buone maniere e condotta"
+    },
+    "aile": {
+      "title": "Famiglia",
+      "sub": "Coniuge, genitori e figli"
+    },
+    "rizik": {
+      "title": "Provvidenza",
+      "sub": "Guadagno lecito e benedizione"
+    }
+  },
+  "stories": {
+    "title": "Storie",
+    "sections": "{{count}} sezioni",
+    "done": "Letta",
+    "continue": "Continua",
+    "next": "Sezione successiva",
+    "finish": "Termina",
+    "step": "Sezione {{current}}/{{total}}",
+    "note": "Il riepilogo si basa sui versetti del Corano."
+  },
+  "daily": {
+    "title": "Lettura quotidiana",
+    "dua": "Dua del giorno",
+    "esma": "Nome del giorno"
+  }
+}

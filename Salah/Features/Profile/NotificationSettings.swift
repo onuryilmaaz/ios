@@ -71,6 +71,26 @@ extension SettingsView {
       row("book-outline", t("settings.inspiration.section"), sub: t("settings.inspiration.sub"), last: !prefs.inspiration,
           toggle: preferenceBinding(\.inspiration))
       if prefs.inspiration {
+        VStack(alignment: .leading, spacing: 7) {
+          optionLabel("settings.inspiration.topics")
+          FlowLayout {
+            ForEach(TopicCatalog.all) { topic in
+              let selected = prefs.inspirationTopics.contains(topic.id)
+              selectionChip(topic.title, selected: selected) { toggleInspirationTopic(topic.id) }
+            }
+          }
+          Text(t("settings.inspiration.topicsSub")).font(.system(size: 12)).foregroundStyle(tokens.inkSubtle).lineSpacing(5)
+        }.padding(.horizontal, 14).padding(.vertical, 10.5).frame(maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading, spacing: 7) {
+          optionLabel("settings.inspiration.frequency")
+          FlowLayout {
+            ForEach(InspirationFrequency.allCases, id: \.self) { frequency in
+              selectionChip(t(frequency.labelKey), selected: prefs.inspirationFrequency == frequency, radio: true) {
+                store.update { $0.inspirationFrequency = frequency }
+              }
+            }
+          }
+        }.padding(.horizontal, 14).padding(.vertical, 10.5).frame(maxWidth: .infinity, alignment: .leading)
         HStack(alignment: .top, spacing: 7) {
           Ionicon("information-circle-outline", size: 16, color: tokens.inkSubtle)
           Text(t("settings.inspiration.info")).font(.system(size: 12)).foregroundStyle(tokens.inkSubtle).lineSpacing(5)
@@ -149,6 +169,17 @@ extension SettingsView {
     }
     .buttonStyle(PressableStyle())
     .accessibilityAddTraits(selected ? .isSelected : [])
+  }
+
+  private func toggleInspirationTopic(_ id: String) {
+    NotificationStore.shared.update {
+      if let index = $0.inspirationTopics.firstIndex(of: id) { $0.inspirationTopics.remove(at: index) } else { $0.inspirationTopics.append(id) }
+    }
+    // Widget'ın günlük içeriği yeni seçime göre yenilenir.
+    Task {
+      await WidgetSync.syncInspirationDay()
+      await WidgetSync.syncVerses(force: true)
+    }
   }
 
   private func preferenceBinding(_ keyPath: WritableKeyPath<NotificationPreferences, Bool>) -> Binding<Bool> {

@@ -1129,9 +1129,16 @@
       "title": "Holy night & Eid notifications"
     },
     "inspiration": {
-      "info": "A verse or hadith is sent about every 2 hours during the day. You won't be disturbed between 23:00 and 07:00.",
+      "info": "A verse or hadith is sent during the day at the frequency you choose. You won't be disturbed between 23:00 and 07:00.",
       "section": "Verse & hadith notifications",
-      "sub": "Get spiritual reminders throughout the day"
+      "sub": "Get spiritual reminders throughout the day",
+      "topics": "Topics",
+      "topicsSub": "If you choose topics, only verses from them are sent. With none selected, verses and hadiths are mixed.",
+      "frequency": "Frequency",
+      "freqH2": "Every 2 hours",
+      "freqH4": "Every 4 hours",
+      "freqTwice": "Twice a day (10:00, 20:00)",
+      "freqOnce": "Once a day (10:00)"
     },
     "language": {
       "restartMessage": "Close and reopen the app so the layout can switch to the new language.",
@@ -1251,6 +1258,24 @@
       "hicriYil": "Happy Hijri New Year",
       "asure": "Blessed Day of Ashura",
       "cuma": "Jumu'ah Mubarak",
+      "kandil2": "May your prayers be accepted on this holy night",
+      "kandil3": "May Allah make this blessed night a source of good",
+      "kadir2": "May your prayers be accepted on Laylat al-Qadr",
+      "kadir3": "May this night, better than a thousand months, bring mercy",
+      "bayram2": "May your Eid bring peace and joy",
+      "bayram3": "Wishing you a blessed Eid with your loved ones",
+      "arife2": "May this blessed day bring you goodness",
+      "arife3": "May your prayers be accepted on this blessed day",
+      "ramazan2": "May Ramadan bring you mercy and blessings",
+      "ramazan3": "May your fasting and prayers be accepted",
+      "ucAylar2": "May the three holy months bring mercy and forgiveness",
+      "ucAylar3": "May Allah let us spend these blessed months in goodness",
+      "hicriYil2": "May the new year bring goodness, peace and blessings",
+      "hicriYil3": "Wishing you a blessed Hijri New Year",
+      "asure2": "May your day of Ashura bring goodness",
+      "asure3": "May your Ashura be full of blessings and sharing",
+      "cuma2": "Blessed Friday to you",
+      "cuma3": "May your prayers be accepted this Friday",
       "prayer": "May your prayers be accepted.",
       "cta": "Share a greeting card",
       "cumaA11y": "Share a Jumu'ah greeting card"
@@ -2119,5 +2144,122 @@
     "deleteMessage": "This can't be undone.",
     "private": "Your dua journal stays on this device and is never sent to the server.",
     "notifTitle": "Time for dua"
+  },
+  "wallpaper": {
+    "title": "Wallpaper",
+    "save": "Save",
+    "saved": "Saved to Photos",
+    "failed": "Couldn't create the wallpaper",
+    "denied": "No access to Photos",
+    "deniedHint": "Allow adding to Photos in Settings to save.",
+    "empty": "Nothing to show",
+    "source": {
+      "verse": "Verse",
+      "dua": "Dua",
+      "esma": "Names"
+    },
+    "design": {
+      "title": "Design",
+      "orman": "Forest",
+      "gece": "Night",
+      "kagit": "Paper",
+      "sade": "Plain"
+    }
+  },
+  "greetings": {
+    "title": "Greeting cards",
+    "today": "Today",
+    "all": "All",
+    "cuma": "Friday",
+    "message": "Message",
+    "classic": "Classic"
+  },
+  "discover": {
+    "title": "Discover",
+    "topics": "Topics",
+    "wallpapers": "Wallpapers",
+    "greetings": "Greeting cards",
+    "stories": "Stories",
+    "daily": "Daily reading"
+  },
+  "topics": {
+    "title": "Topics",
+    "count": "{{count}} verses",
+    "saved": "Saved",
+    "savedEmpty": "No saved verses yet",
+    "savedEmptyHint": "Tap the bookmark icon on a verse card to save it.",
+    "save": "Save",
+    "unsave": "Remove from saved",
+    "openSurah": "Open surah",
+    "goToSurah": "Go to surah",
+    "more": "More",
+    "wallpaper": "Make wallpaper",
+    "openMushaf": "Open in Mushaf",
+    "loadFailed": "Could not load the verse",
+    "emptyTopic": "No verses in this topic",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Patience",
+      "sub": "Steadfastness in hardship"
+    },
+    "sukur": {
+      "title": "Gratitude",
+      "sub": "Thankfulness for blessings"
+    },
+    "tevekkul": {
+      "title": "Trust in God",
+      "sub": "Relying on Allah"
+    },
+    "umut": {
+      "title": "Hope",
+      "sub": "Never despairing of mercy"
+    },
+    "tovbe": {
+      "title": "Repentance",
+      "sub": "Seeking forgiveness and returning to Allah"
+    },
+    "iman": {
+      "title": "Faith",
+      "sub": "Belief and certainty of the heart"
+    },
+    "dua": {
+      "title": "Supplication",
+      "sub": "Turning to Allah and calling on Him"
+    },
+    "huzur": {
+      "title": "Peace",
+      "sub": "Calm and tranquility of the heart"
+    },
+    "siginma": {
+      "title": "Seeking refuge",
+      "sub": "Taking refuge and protection in Allah"
+    },
+    "ahlak": {
+      "title": "Character",
+      "sub": "Good manners and conduct"
+    },
+    "aile": {
+      "title": "Family",
+      "sub": "Spouse, parents and children"
+    },
+    "rizik": {
+      "title": "Provision",
+      "sub": "Lawful earnings and blessing"
+    }
+  },
+  "stories": {
+    "title": "Stories",
+    "sections": "{{count}} sections",
+    "done": "Read",
+    "continue": "Continue",
+    "next": "Next section",
+    "finish": "Finish",
+    "step": "Section {{current}}/{{total}}",
+    "note": "The summary is based on the verses of the Qur'an."
+  },
+  "daily": {
+    "title": "Daily reading",
+    "dua": "Dua of the day",
+    "esma": "Name of the day"
   }
 }

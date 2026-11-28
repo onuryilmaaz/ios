@@ -1,0 +1,5 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "Lokasi anda digunakan untuk memaparkan waktu solat dan arah kiblat.";
+"NSAlarmKitUsageDescription" = "Akses penggera membolehkan penggera solat, tahajud dan sahur berbunyi walaupun dalam mod senyap.";
+"NSCameraUsageDescription" = "Kamera digunakan untuk memaparkan arah kiblat pada paparan kamera.";
+"NSPhotoLibraryAddUsageDescription" = "Kebenaran menambah ke pustaka foto diperlukan untuk menyimpan kertas dinding dan kad ke Foto.";

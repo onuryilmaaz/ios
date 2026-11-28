@@ -32,6 +32,12 @@
 		<string>id</string>
 		<string>ur</string>
 		<string>ru</string>
+		<string>es</string>
+		<string>it</string>
+		<string>ms</string>
+		<string>bn</string>
+		<string>hi</string>
+		<string>th</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
@@ -70,6 +76,8 @@
 	<string>Kıble yönünü kamera görüntüsü üzerinde gösterebilmek için kamera kullanılır.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Duvar kağıdı ve kartları fotoğraflarınıza kaydedebilmek için fotoğraf arşivine ekleme izni gerekir.</string>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>NSSupportsLiveActivitiesFrequentUpdates</key>

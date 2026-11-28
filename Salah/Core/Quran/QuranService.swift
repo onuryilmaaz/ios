@@ -48,14 +48,31 @@ enum QuranService {
     .id: "Kementerian Agama RI",
     .ur: "فتح محمد جالندھری",
     .ru: "Эльмир Кулиев",
+    .es: "Sheikh Isa Garcia",
+    .it: "Hamza Roberto Piccardo",
+    .ms: "Abdullah Muhammad Basmeih",
+    .bn: "Taisirul Quran",
+    .hi: "Maulana Azizul Haque al-Umari",
+    .th: "Society of Institutes and Universities",
   ]
 
   /// quran.com meal kimlikleri (Türkçe kendi sunucumuzdan, Arapça tefsirden).
-  static let translationId: [AppLanguage: Int] = [.en: 20, .de: 27, .fr: 31, .id: 33, .ur: 234, .ru: 45]
+  static let translationId: [AppLanguage: Int] = [.en: 20, .de: 27, .fr: 31, .id: 33, .ur: 234, .ru: 45,
+    .es: 83, .it: 153, .ms: 39, .bn: 161, .hi: 122, .th: 230]
 
   static func surahs() async -> [Surah] {
     #if DEBUG
     if DebugLaunch.quran != nil { return QuranPreview.surahs }
+    if DebugLaunch.openQuranFallback, DebugLaunch.isIsolated, memoSurahs == nil {
+      struct R: Decodable {
+        struct C: Decodable { let id: Int; let name_simple: String; let verses_count: Int; let name_arabic: String }
+        let chapters: [C]
+      }
+      if let url = URL(string: "https://api.quran.com/api/v4/chapters?language=tr"),
+        let (data, _) = try? await URLSession.shared.data(from: url), let r = try? JSONDecoder().decode(R.self, from: data) {
+        memoSurahs = r.chapters.map { Surah(id: $0.id, name: $0.name_simple, verse_count: $0.verses_count, page_number: nil, revelation_order: nil, revelation_place: nil, name_arabic: $0.name_arabic) }
+      }
+    }
     #endif
     if let memoSurahs { return memoSurahs }
     if let cached = LocalStore.decode([Surah].self, surahsCacheKey), !cached.isEmpty {
@@ -74,6 +91,8 @@ enum QuranService {
   static func verse(surahId: Int, verseNumber: Int) async -> Verse? {
     #if DEBUG
     if DebugLaunch.quran != nil { return QuranPreview.verses(surahID: surahId).first { $0.verse_number == verseNumber } }
+    // Yalnız Debug ekran görüntüsü (-SalahDebugTopics): izole oturumda açık quran.com verisi (gerçek metin, uydurma yok).
+    if DebugLaunch.openQuranFallback, DebugLaunch.isIsolated { return await debugOpenVerse(surahId, verseNumber) }
     #endif
     struct Response: Decodable { let data: Verse? }
     guard let res = try? await APIClient.shared.get("/quran/verse/\(surahId)/\(verseNumber)", as: Response.self),
@@ -81,6 +100,27 @@ enum QuranService {
     else { return nil }
     return await localize(surahId: surahId, [verse]).first ?? verse
   }
+
+  #if DEBUG
+  private static func debugOpenVerse(_ surah: Int, _ number: Int) async -> Verse? {
+    struct R: Decodable {
+      struct V: Decodable {
+        struct T: Decodable { let text: String }
+        let text_imlaei: String
+        let page_number: Int?
+        let translations: [T]?
+      }
+      let verse: V
+    }
+    guard let url = URL(string: "https://api.quran.com/api/v4/verses/by_key/\(surah):\(number)?fields=text_imlaei&translations=77"),
+      let (data, _) = try? await URLSession.shared.data(from: url), let r = try? JSONDecoder().decode(R.self, from: data)
+    else { return nil }
+    let text = (r.verse.translations?.first?.text ?? "").replacingOccurrences(of: #"<[^>]+>"#, with: "", options: .regularExpression)
+      .replacingOccurrences(of: "&quot;", with: "\"").replacingOccurrences(of: "&amp;", with: "&")
+    return Verse(id: surah * 1000 + number, surah_id: surah, verse_number: number, verse_simplified: r.verse.text_imlaei, page_number: r.verse.page_number,
+                 juz_number: nil, transcription: nil, translation: .init(id: nil, text: text, author: nil))
+  }
+  #endif
 
   static func randomVerse() async -> (verse: Verse, surah: Surah)? {
     let all = await surahs()

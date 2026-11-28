@@ -63,7 +63,7 @@ struct AppIconPicker: View {
     Haptics.impact(.light)
     UIApplication.shared.setAlternateIconName(icon.name) { error in
       Task { @MainActor in
-        if error == nil { current = icon.id } else { Toast.error(t("common.error"), t("appIcon.failed")) }
+        if error == nil { current = icon.id; WidgetBridge.setAppIcon(icon.name) } else { Toast.error(t("common.error"), t("appIcon.failed")) }
       }
     }
   }

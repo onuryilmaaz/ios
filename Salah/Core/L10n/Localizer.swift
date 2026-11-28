@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum AppLanguage: String, CaseIterable, Sendable {
-  case tr, en, ar, de, fr, id, ur, ru
+  case tr, en, ar, de, fr, id, ur, ru, es, it, ms, bn, hi, th
 
   var isRTL: Bool { self == .ar || self == .ur }
 
@@ -19,6 +19,12 @@ enum AppLanguage: String, CaseIterable, Sendable {
     case .id: "Bahasa Indonesia"
     case .ur: "اردو"
     case .ru: "Русский"
+    case .es: "Español"
+    case .it: "Italiano"
+    case .ms: "Bahasa Melayu"
+    case .bn: "বাংলা"
+    case .hi: "हिन्दी"
+    case .th: "ไทย"
     }
   }
 
@@ -33,6 +39,12 @@ enum AppLanguage: String, CaseIterable, Sendable {
     case .id: "🇮🇩"
     case .ur: "🇵🇰"
     case .ru: "🇷🇺"
+    case .es: "🇪🇸"
+    case .it: "🇮🇹"
+    case .ms: "🇲🇾"
+    case .bn: "🇧🇩"
+    case .hi: "🇮🇳"
+    case .th: "🇹🇭"
     }
   }
 
@@ -121,7 +133,7 @@ final class Localizer {
 
   /// Sunucuya giden dil (asistan, dua önerisi, rapor, bildirim kaydı). Almancayı tanımayan eski sunucu isteği reddetmesin
   /// diye `/app/config` `languageDe` bildirmedikçe Almanca yerine İngilizce gider.
-  /// Fransızca, Endonezce, Urduca ve Rusçayı sunucu tanımaz: onlarda İngilizce gider.
+  /// Fransızca, Endonezce, Urduca, Rusça, İspanyolca, İtalyanca, Malayca, Bengalce, Hintçe ve Tayca sunucu tanımaz: onlarda İngilizce gider.
   @MainActor var serverLanguage: String {
     switch language {
     case .tr, .en, .ar: language.rawValue
@@ -129,7 +141,8 @@ final class Localizer {
     default: "en"
     }
   }
-  var locale: Locale { Locale(identifier: language.rawValue) }
+  /// Tayca'da sistem Budist takvimi (2569) kullanır: Gregoryen takvime sabitlenir.
+  var locale: Locale { Locale(identifier: language == .th ? "th@calendar=gregorian" : language.rawValue) }
 
   /// Çeviri; anahtar yoksa Türkçe'ye, o da yoksa anahtarın kendisine düşer.
   func t(_ key: String, _ vars: [String: any CustomStringConvertible] = [:]) -> String {

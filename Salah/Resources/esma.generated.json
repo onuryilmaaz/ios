@@ -4766,5 +4766,3581 @@
       "arabic": "الصَّبُورُ",
       "meaning": "Терпеливейший."
     }
+  ],
+  "bn": [
+    {
+      "id": 1,
+      "name": "আর-রাহমান",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "পরম করুণাময়, যিনি দুনিয়াতে সকল সৃষ্টির প্রতি দয়ালু।"
+    },
+    {
+      "id": 2,
+      "name": "আর-রাহীম",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "অতি দয়ালু, যিনি আখিরাতে বিশেষভাবে মুমিনদের প্রতি দয়ালু।"
+    },
+    {
+      "id": 3,
+      "name": "আল-মালিক",
+      "arabic": "الْمَلِكُ",
+      "meaning": "সর্বময় অধিপতি, সমগ্র অস্তিত্বের প্রকৃত মালিক ও শাসক।"
+    },
+    {
+      "id": 4,
+      "name": "আল-কুদ্দুস",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "মহাপবিত্র, সকল ত্রুটি থেকে মুক্ত।"
+    },
+    {
+      "id": 5,
+      "name": "আস-সালাম",
+      "arabic": "السَّلَامُ",
+      "meaning": "শান্তিদাতা, যিনি নিরাপত্তা দান করেন।"
+    },
+    {
+      "id": 6,
+      "name": "আল-মুমিন",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "ঈমান ও নিরাপত্তাদানকারী।"
+    },
+    {
+      "id": 7,
+      "name": "আল-মুহাইমিন",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "মহারক্ষক, যিনি সবকিছুর তত্ত্বাবধান করেন।"
+    },
+    {
+      "id": 8,
+      "name": "আল-আযীয",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "মহাপরাক্রমশালী, অপরাজেয়।"
+    },
+    {
+      "id": 9,
+      "name": "আল-জাব্বার",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "মহাশক্তিধর, যিনি সংশোধন ও পূর্ণতা দান করেন।"
+    },
+    {
+      "id": 10,
+      "name": "আল-মুতাকাব্বির",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "মহাগৌরবান্বিত, শ্রেষ্ঠত্বের একমাত্র অধিকারী।"
+    },
+    {
+      "id": 11,
+      "name": "আল-খালিক",
+      "arabic": "الْخَالِقُ",
+      "meaning": "সৃষ্টিকর্তা, যিনি শূন্য থেকে অস্তিত্ব দান করেন।"
+    },
+    {
+      "id": 12,
+      "name": "আল-বারী",
+      "arabic": "الْبَارِئُ",
+      "meaning": "উদ্ভাবনকারী, যিনি নিখুঁত সামঞ্জস্যে সৃষ্টি করেন।"
+    },
+    {
+      "id": 13,
+      "name": "আল-মুসাওয়্যির",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "আকৃতিদানকারী, যিনি প্রতিটি বস্তুকে তার রূপ দান করেন।"
+    },
+    {
+      "id": 14,
+      "name": "আল-গাফফার",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "পরম ক্ষমাশীল।"
+    },
+    {
+      "id": 15,
+      "name": "আল-কাহহার",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "মহাপরাক্রমশালী, সর্বজয়ী।"
+    },
+    {
+      "id": 16,
+      "name": "আল-ওয়াহহাব",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "মহাদাতা, যিনি অকাতরে অফুরন্ত দান করেন।"
+    },
+    {
+      "id": 17,
+      "name": "আর-রাযযাক",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "সকল রিযিকদাতা।"
+    },
+    {
+      "id": 18,
+      "name": "আল-ফাত্তাহ",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "মহাউন্মোচনকারী, যিনি রহমতের দুয়ার খুলে দেন এবং বিচার করেন।"
+    },
+    {
+      "id": 19,
+      "name": "আল-আলীম",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "সর্বজ্ঞ।"
+    },
+    {
+      "id": 20,
+      "name": "আল-কাবিদ",
+      "arabic": "الْقَابِضُ",
+      "meaning": "সংকোচনকারী, যিনি ইচ্ছামতো সংকুচিত করেন।"
+    },
+    {
+      "id": 21,
+      "name": "আল-বাসিত",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "প্রশস্তকারী, যিনি ইচ্ছামতো প্রশস্ত করেন।"
+    },
+    {
+      "id": 22,
+      "name": "আল-খাফিদ",
+      "arabic": "الْخَافِضُ",
+      "meaning": "অবনমনকারী, যিনি যাকে ইচ্ছা নিচু করেন।"
+    },
+    {
+      "id": 23,
+      "name": "আর-রাফি",
+      "arabic": "الرَّافِعُ",
+      "meaning": "উন্নয়নকারী, যিনি যাকে ইচ্ছা মর্যাদায় উন্নীত করেন।"
+    },
+    {
+      "id": 24,
+      "name": "আল-মুইযযু",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "সম্মানদানকারী।"
+    },
+    {
+      "id": 25,
+      "name": "আল-মুযিল্লু",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "অপমানকারী।"
+    },
+    {
+      "id": 26,
+      "name": "আস-সামী",
+      "arabic": "السَّمِيعُ",
+      "meaning": "সর্বশ্রোতা।"
+    },
+    {
+      "id": 27,
+      "name": "আল-বাসীর",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "সর্বদ্রষ্টা।"
+    },
+    {
+      "id": 28,
+      "name": "আল-হাকাম",
+      "arabic": "الْحَكَمُ",
+      "meaning": "মহাবিচারক, যাঁর ফয়সালা চূড়ান্ত।"
+    },
+    {
+      "id": 29,
+      "name": "আল-আদল",
+      "arabic": "الْعَدْلُ",
+      "meaning": "পরম ন্যায়বিচারক।"
+    },
+    {
+      "id": 30,
+      "name": "আল-লাতীফ",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "সূক্ষ্মদর্শী, পরম স্নেহশীল।"
+    },
+    {
+      "id": 31,
+      "name": "আল-খাবীর",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "সকল গোপন বিষয়ে সম্যক অবগত।"
+    },
+    {
+      "id": 32,
+      "name": "আল-হালীম",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "পরম সহনশীল, যিনি শাস্তি প্রদানে তাড়াহুড়ো করেন না।"
+    },
+    {
+      "id": 33,
+      "name": "আল-আযীম",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "মহামহিম।"
+    },
+    {
+      "id": 34,
+      "name": "আল-গাফূর",
+      "arabic": "الْغَفُورُ",
+      "meaning": "অতি ক্ষমাশীল।"
+    },
+    {
+      "id": 35,
+      "name": "আশ-শাকূর",
+      "arabic": "الشَّكُورُ",
+      "meaning": "গুণগ্রাহী, যিনি সামান্য আমলের বিনিময়ে বিশাল প্রতিদান দেন।"
+    },
+    {
+      "id": 36,
+      "name": "আল-আলী",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "সর্বোচ্চ।"
+    },
+    {
+      "id": 37,
+      "name": "আল-কাবীর",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "সর্বমহান।"
+    },
+    {
+      "id": 38,
+      "name": "আল-হাফীয",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "মহাসংরক্ষক, যিনি সবকিছু রক্ষা করেন।"
+    },
+    {
+      "id": 39,
+      "name": "আল-মুকীত",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "আহারদাতা, যিনি প্রতিটি প্রাণীর ভরণপোষণ করেন।"
+    },
+    {
+      "id": 40,
+      "name": "আল-হাসীব",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "হিসাবগ্রহণকারী, যিনি সবকিছুর হিসাব নেন।"
+    },
+    {
+      "id": 41,
+      "name": "আল-জালীল",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "মহাগৌরবময়।"
+    },
+    {
+      "id": 42,
+      "name": "আল-কারীম",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "পরম দয়ালু ও মহানুভব।"
+    },
+    {
+      "id": 43,
+      "name": "আর-রাকীব",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "সর্বদা পর্যবেক্ষণকারী।"
+    },
+    {
+      "id": 44,
+      "name": "আল-মুজীব",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "দোয়া কবুলকারী।"
+    },
+    {
+      "id": 45,
+      "name": "আল-ওয়াসি",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "সর্বব্যাপী, অসীম প্রাচুর্যময়।"
+    },
+    {
+      "id": 46,
+      "name": "আল-হাকীম",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "মহাপ্রজ্ঞাময়।"
+    },
+    {
+      "id": 47,
+      "name": "আল-ওয়াদূদ",
+      "arabic": "الْوَدُودُ",
+      "meaning": "পরম ভালোবাসাময়।"
+    },
+    {
+      "id": 48,
+      "name": "আল-মাজীদ",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "মহামহিমান্বিত।"
+    },
+    {
+      "id": 49,
+      "name": "আল-বাইস",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "পুনরুত্থানকারী।"
+    },
+    {
+      "id": 50,
+      "name": "আশ-শাহীদ",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "সর্ববিষয়ে সাক্ষী।"
+    },
+    {
+      "id": 51,
+      "name": "আল-হাক্ক",
+      "arabic": "الْحَقُّ",
+      "meaning": "চিরসত্য।"
+    },
+    {
+      "id": 52,
+      "name": "আল-ওয়াকীল",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "পরম কর্মবিধায়ক, সর্বোত্তম তত্ত্বাবধায়ক।"
+    },
+    {
+      "id": 53,
+      "name": "আল-কাউইয়্যু",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "মহাশক্তিমান।"
+    },
+    {
+      "id": 54,
+      "name": "আল-মাতীন",
+      "arabic": "الْمَتِينُ",
+      "meaning": "সুদৃঢ়, অটল শক্তিধর।"
+    },
+    {
+      "id": 55,
+      "name": "আল-ওয়ালিইয়্যু",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "মুমিনদের অভিভাবক ও সাহায্যকারী বন্ধু।"
+    },
+    {
+      "id": 56,
+      "name": "আল-হামীদ",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "সকল প্রশংসার অধিকারী।"
+    },
+    {
+      "id": 57,
+      "name": "আল-মুহসী",
+      "arabic": "الْمُحْصِي",
+      "meaning": "সর্বসংরক্ষণকারী, যিনি সবকিছুর সংখ্যা জানেন।"
+    },
+    {
+      "id": 58,
+      "name": "আল-মুবদী",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "প্রথম সৃষ্টিকারী, যিনি সৃষ্টির সূচনা করেন।"
+    },
+    {
+      "id": 59,
+      "name": "আল-মুঈদ",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "পুনরায় সৃষ্টিকারী, যিনি পুনর্জীবন দান করেন।"
+    },
+    {
+      "id": 60,
+      "name": "আল-মুহয়ী",
+      "arabic": "الْمُحْيِي",
+      "meaning": "জীবনদানকারী।"
+    },
+    {
+      "id": 61,
+      "name": "আল-মুমীত",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "মৃত্যুদানকারী।"
+    },
+    {
+      "id": 62,
+      "name": "আল-হাইয়্যু",
+      "arabic": "الْحَيُّ",
+      "meaning": "চিরঞ্জীব।"
+    },
+    {
+      "id": 63,
+      "name": "আল-কাইয়্যূম",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "চিরস্থায়ী, সমগ্র সৃষ্টির ধারক ও পরিচালক।"
+    },
+    {
+      "id": 64,
+      "name": "আল-ওয়াজিদ",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "সর্বপ্রাপ্তিময়, যাঁর কোনো অভাব নেই।"
+    },
+    {
+      "id": 65,
+      "name": "আল-মাজিদ",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "মহামর্যাদাবান, মহিমান্বিত।"
+    },
+    {
+      "id": 66,
+      "name": "আল-ওয়াহিদ",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "একক।"
+    },
+    {
+      "id": 67,
+      "name": "আল-আহাদ",
+      "arabic": "الْأَحَدُ",
+      "meaning": "এক ও অদ্বিতীয়।"
+    },
+    {
+      "id": 68,
+      "name": "আস-সামাদ",
+      "arabic": "الصَّمَدُ",
+      "meaning": "অমুখাপেক্ষী, সকলের চিরন্তন আশ্রয়স্থল।"
+    },
+    {
+      "id": 69,
+      "name": "আল-কাদির",
+      "arabic": "الْقَادِرُ",
+      "meaning": "সর্বশক্তিমান।"
+    },
+    {
+      "id": 70,
+      "name": "আল-মুকতাদির",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "নিরঙ্কুশ ক্ষমতাবান, সর্বনিয়ন্তা।"
+    },
+    {
+      "id": 71,
+      "name": "আল-মুকাদ্দিম",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "অগ্রগামীকারী, যিনি এগিয়ে দেন।"
+    },
+    {
+      "id": 72,
+      "name": "আল-মুআখখির",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "পশ্চাদগামীকারী, যিনি বিলম্বিত করেন।"
+    },
+    {
+      "id": 73,
+      "name": "আল-আউয়াল",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "অনাদি, যাঁর কোনো শুরু নেই।"
+    },
+    {
+      "id": 74,
+      "name": "আল-আখির",
+      "arabic": "الْآخِرُ",
+      "meaning": "অনন্ত, যাঁর কোনো শেষ নেই।"
+    },
+    {
+      "id": 75,
+      "name": "আয-যাহির",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "সর্বপ্রকাশ্য।"
+    },
+    {
+      "id": 76,
+      "name": "আল-বাতিন",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "সর্বগোপন।"
+    },
+    {
+      "id": 77,
+      "name": "আল-ওয়ালী",
+      "arabic": "الْوَالِي",
+      "meaning": "সবকিছুর অধিপতি ও পরিচালক।"
+    },
+    {
+      "id": 78,
+      "name": "আল-মুতাআলী",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "সর্বোচ্চ মর্যাদাসম্পন্ন।"
+    },
+    {
+      "id": 79,
+      "name": "আল-বার্রু",
+      "arabic": "الْبَرُّ",
+      "meaning": "পরম কল্যাণময়, সকল কল্যাণের উৎস।"
+    },
+    {
+      "id": 80,
+      "name": "আত-তাওয়াব",
+      "arabic": "التَّوَّابُ",
+      "meaning": "সর্বদা তাওবা কবুলকারী।"
+    },
+    {
+      "id": 81,
+      "name": "আল-মুনতাকিম",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "অন্যায়ের প্রতিশোধগ্রহণকারী।"
+    },
+    {
+      "id": 82,
+      "name": "আল-আফুউ",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "পরম মার্জনাকারী, যিনি গুনাহ মুছে দেন।"
+    },
+    {
+      "id": 83,
+      "name": "আর-রাউফ",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "অতি স্নেহশীল, পরম করুণাময়।"
+    },
+    {
+      "id": 84,
+      "name": "মালিকুল মুলক",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "সমগ্র সার্বভৌমত্বের মালিক।"
+    },
+    {
+      "id": 85,
+      "name": "যুল-জালালি ওয়াল-ইকরাম",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "মহিমা ও সম্মানের অধিকারী।"
+    },
+    {
+      "id": 86,
+      "name": "আল-মুকসিত",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "ন্যায়পরায়ণ।"
+    },
+    {
+      "id": 87,
+      "name": "আল-জামি",
+      "arabic": "الْجَامِعُ",
+      "meaning": "একত্রকারী।"
+    },
+    {
+      "id": 88,
+      "name": "আল-গানী",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "অমুখাপেক্ষী, মহাধনী।"
+    },
+    {
+      "id": 89,
+      "name": "আল-মুগনী",
+      "arabic": "الْمُغْنِي",
+      "meaning": "সমৃদ্ধিদানকারী।"
+    },
+    {
+      "id": 90,
+      "name": "আল-মানি",
+      "arabic": "الْمَانِعُ",
+      "meaning": "অনিষ্ট প্রতিরোধকারী।"
+    },
+    {
+      "id": 91,
+      "name": "আদ-দার্রু",
+      "arabic": "الضَّارُّ",
+      "meaning": "ক্ষতিসাধনকারী, যিনি যাকে ইচ্ছা ক্ষতির সম্মুখীন করেন।"
+    },
+    {
+      "id": 92,
+      "name": "আন-নাফি",
+      "arabic": "النَّافِعُ",
+      "meaning": "কল্যাণদানকারী, যিনি উপকার দান করেন।"
+    },
+    {
+      "id": 93,
+      "name": "আন-নূর",
+      "arabic": "النُّورُ",
+      "meaning": "পরম জ্যোতি।"
+    },
+    {
+      "id": 94,
+      "name": "আল-হাদী",
+      "arabic": "الْهَادِي",
+      "meaning": "পথপ্রদর্শক।"
+    },
+    {
+      "id": 95,
+      "name": "আল-বাদী",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "অনুপম সৃষ্টিকর্তা।"
+    },
+    {
+      "id": 96,
+      "name": "আল-বাকী",
+      "arabic": "الْبَاقِي",
+      "meaning": "চিরস্থায়ী।"
+    },
+    {
+      "id": 97,
+      "name": "আল-ওয়ারিস",
+      "arabic": "الْوَارِثُ",
+      "meaning": "সবকিছুর চূড়ান্ত উত্তরাধিকারী।"
+    },
+    {
+      "id": 98,
+      "name": "আর-রাশীদ",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "সঠিক পথের দিশারী।"
+    },
+    {
+      "id": 99,
+      "name": "আস-সাবূর",
+      "arabic": "الصَّبُورُ",
+      "meaning": "পরম ধৈর্যশীল।"
+    }
+  ],
+  "hi": [
+    {
+      "id": 1,
+      "name": "अर-रहमान",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "बेहद रहम करने वाला, जो इस दुनिया में तमाम मख़लूक़ पर मेहरबान है।"
+    },
+    {
+      "id": 2,
+      "name": "अर-रहीम",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "बड़ा मेहरबान, ख़ास तौर पर आख़िरत में ईमान वालों पर रहम करने वाला।"
+    },
+    {
+      "id": 3,
+      "name": "अल-मलिक",
+      "arabic": "الْمَلِكُ",
+      "meaning": "बादशाह, सारी कायनात का असल मालिक और हाकिम।"
+    },
+    {
+      "id": 4,
+      "name": "अल-क़ुद्दूस",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "निहायत पाक, हर ऐब और कमी से पाक।"
+    },
+    {
+      "id": 5,
+      "name": "अस-सलाम",
+      "arabic": "السَّلَامُ",
+      "meaning": "सलामती का सरचश्मा, जो अमन और सलामती अता करता है।"
+    },
+    {
+      "id": 6,
+      "name": "अल-मोमिन",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "ईमान और अमन अता करने वाला।"
+    },
+    {
+      "id": 7,
+      "name": "अल-मुहैमिन",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "निगेहबान, जो हर चीज़ की निगरानी और हिफ़ाज़त करता है।"
+    },
+    {
+      "id": 8,
+      "name": "अल-अज़ीज़",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "सबसे ज़बरदस्त और ग़ालिब, जिसे कोई हरा नहीं सकता।"
+    },
+    {
+      "id": 9,
+      "name": "अल-जब्बार",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "ज़बरदस्त क़ुदरत वाला, जो टूटे हुए को जोड़ता और दुरुस्त करता है।"
+    },
+    {
+      "id": 10,
+      "name": "अल-मुतकब्बिर",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "सबसे बड़ी अज़मत और बुज़ुर्गी वाला।"
+    },
+    {
+      "id": 11,
+      "name": "अल-ख़ालिक़",
+      "arabic": "الْخَالِقُ",
+      "meaning": "पैदा करने वाला, जो बिना किसी चीज़ के वजूद बख़्शता है।"
+    },
+    {
+      "id": 12,
+      "name": "अल-बारी",
+      "arabic": "الْبَارِئُ",
+      "meaning": "ईजाद करने वाला, जो हर चीज़ को बेहतरीन तनासुब के साथ बनाता है।"
+    },
+    {
+      "id": 13,
+      "name": "अल-मुसव्विर",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "सूरत बनाने वाला, जो हर चीज़ को उसका रूप अता करता है।"
+    },
+    {
+      "id": 14,
+      "name": "अल-ग़फ़्फ़ार",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "बहुत ज़्यादा बख़्शने वाला।"
+    },
+    {
+      "id": 15,
+      "name": "अल-क़ह्हार",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "सब पर ग़ालिब और सबको अपने क़ाबू में रखने वाला।"
+    },
+    {
+      "id": 16,
+      "name": "अल-वह्हाब",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "सबसे बड़ा देने वाला, जो बेहिसाब अता करता है।"
+    },
+    {
+      "id": 17,
+      "name": "अर-रज़्ज़ाक़",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "तमाम मख़लूक़ को रिज़्क़ देने वाला।"
+    },
+    {
+      "id": 18,
+      "name": "अल-फ़त्ताह",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "खोलने वाला, जो रहमत के दरवाज़े खोलता है और फ़ैसला करता है।"
+    },
+    {
+      "id": 19,
+      "name": "अल-अलीम",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "सब कुछ जानने वाला।"
+    },
+    {
+      "id": 20,
+      "name": "अल-क़ाबिज़",
+      "arabic": "الْقَابِضُ",
+      "meaning": "रोक लेने वाला, जो जिसे चाहे तंगी देता है।"
+    },
+    {
+      "id": 21,
+      "name": "अल-बासित",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "कुशादगी देने वाला, जो जिसे चाहे फ़राख़ी देता है।"
+    },
+    {
+      "id": 22,
+      "name": "अल-ख़ाफ़िज़",
+      "arabic": "الْخَافِضُ",
+      "meaning": "पस्त करने वाला, जो जिसे चाहे नीचे गिरा दे।"
+    },
+    {
+      "id": 23,
+      "name": "अर-राफ़िअ",
+      "arabic": "الرَّافِعُ",
+      "meaning": "बुलंद करने वाला, जो जिसे चाहे ऊंचा उठाता है।"
+    },
+    {
+      "id": 24,
+      "name": "अल-मुइज़्ज़",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "इज़्ज़त देने वाला।"
+    },
+    {
+      "id": 25,
+      "name": "अल-मुज़िल्ल",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "ज़िल्लत देने वाला।"
+    },
+    {
+      "id": 26,
+      "name": "अस-समीअ",
+      "arabic": "السَّمِيعُ",
+      "meaning": "सब कुछ सुनने वाला।"
+    },
+    {
+      "id": 27,
+      "name": "अल-बसीर",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "सब कुछ देखने वाला।"
+    },
+    {
+      "id": 28,
+      "name": "अल-हकम",
+      "arabic": "الْحَكَمُ",
+      "meaning": "फ़ैसला करने वाला, जिसका हुक्म आख़िरी होता है।"
+    },
+    {
+      "id": 29,
+      "name": "अल-अद्ल",
+      "arabic": "الْعَدْلُ",
+      "meaning": "सरासर इंसाफ़ करने वाला।"
+    },
+    {
+      "id": 30,
+      "name": "अल-लतीफ़",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "निहायत बारीकबीन और बड़ा मेहरबान।"
+    },
+    {
+      "id": 31,
+      "name": "अल-ख़बीर",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "हर पोशीदा बात की ख़बर रखने वाला।"
+    },
+    {
+      "id": 32,
+      "name": "अल-हलीम",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "बड़ा बुर्दबार, जो सज़ा देने में जल्दी नहीं करता।"
+    },
+    {
+      "id": 33,
+      "name": "अल-अज़ीम",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "अज़मत और बुज़ुर्गी वाला।"
+    },
+    {
+      "id": 34,
+      "name": "अल-ग़फ़ूर",
+      "arabic": "الْغَفُورُ",
+      "meaning": "बड़ा बख़्शने वाला।"
+    },
+    {
+      "id": 35,
+      "name": "अश-शकूर",
+      "arabic": "الشَّكُورُ",
+      "meaning": "क़द्रदान, जो थोड़े अमल पर बहुत ज़्यादा अज्र देता है।"
+    },
+    {
+      "id": 36,
+      "name": "अल-अली",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "सबसे बुलंद।"
+    },
+    {
+      "id": 37,
+      "name": "अल-कबीर",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "सबसे बड़ा।"
+    },
+    {
+      "id": 38,
+      "name": "अल-हफ़ीज़",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "हिफ़ाज़त करने वाला, जो हर चीज़ को महफ़ूज़ रखता है।"
+    },
+    {
+      "id": 39,
+      "name": "अल-मुक़ीत",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "रोज़ी पहुंचाने वाला, जो हर मख़लूक़ की परवरिश करता है।"
+    },
+    {
+      "id": 40,
+      "name": "अल-हसीब",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "हिसाब लेने वाला, जो सबका हिसाब रखता है।"
+    },
+    {
+      "id": 41,
+      "name": "अल-जलील",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "जलाल और शान वाला।"
+    },
+    {
+      "id": 42,
+      "name": "अल-करीम",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "बड़ा सख़ी और करम करने वाला।"
+    },
+    {
+      "id": 43,
+      "name": "अर-रक़ीब",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "निगेहबान और हर चीज़ पर नज़र रखने वाला।"
+    },
+    {
+      "id": 44,
+      "name": "अल-मुजीब",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "दुआएं क़बूल करने वाला।"
+    },
+    {
+      "id": 45,
+      "name": "अल-वासिअ",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "बेहद वुसअत वाला, हर चीज़ को घेरने वाला।"
+    },
+    {
+      "id": 46,
+      "name": "अल-हकीम",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "बड़ी हिकमत वाला।"
+    },
+    {
+      "id": 47,
+      "name": "अल-वदूद",
+      "arabic": "الْوَدُودُ",
+      "meaning": "बेहद मुहब्बत करने वाला।"
+    },
+    {
+      "id": 48,
+      "name": "अल-मजीद",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "बड़ी शान और बुज़ुर्गी वाला।"
+    },
+    {
+      "id": 49,
+      "name": "अल-बाइस",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "दोबारा ज़िंदा करके उठाने वाला।"
+    },
+    {
+      "id": 50,
+      "name": "अश-शहीद",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "हर चीज़ का गवाह।"
+    },
+    {
+      "id": 51,
+      "name": "अल-हक़",
+      "arabic": "الْحَقُّ",
+      "meaning": "सरासर हक़ और बरहक़।"
+    },
+    {
+      "id": 52,
+      "name": "अल-वकील",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "कारसाज़, तमाम मामलों को बेहतरीन तरीक़े से संभालने वाला।"
+    },
+    {
+      "id": 53,
+      "name": "अल-क़वी",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "बड़ी क़ुव्वत और ताक़त वाला।"
+    },
+    {
+      "id": 54,
+      "name": "अल-मतीन",
+      "arabic": "الْمَتِينُ",
+      "meaning": "निहायत मज़बूत और मुस्तहकम।"
+    },
+    {
+      "id": 55,
+      "name": "अल-वली",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "ईमान वालों का दोस्त और मददगार।"
+    },
+    {
+      "id": 56,
+      "name": "अल-हमीद",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "तमाम तारीफ़ों के लायक़।"
+    },
+    {
+      "id": 57,
+      "name": "अल-मुहसी",
+      "arabic": "الْمُحْصِي",
+      "meaning": "गिनती रखने वाला, जो हर चीज़ की तादाद जानता है।"
+    },
+    {
+      "id": 58,
+      "name": "अल-मुब्दी",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "पहली बार पैदा करने वाला, जो तख़्लीक़ की शुरुआत करता है।"
+    },
+    {
+      "id": 59,
+      "name": "अल-मुईद",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "लौटाने वाला, जो दोबारा ज़िंदगी बख़्शता है।"
+    },
+    {
+      "id": 60,
+      "name": "अल-मुहयी",
+      "arabic": "الْمُحْيِي",
+      "meaning": "ज़िंदगी देने वाला।"
+    },
+    {
+      "id": 61,
+      "name": "अल-मुमीत",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "मौत देने वाला।"
+    },
+    {
+      "id": 62,
+      "name": "अल-हय्य",
+      "arabic": "الْحَيُّ",
+      "meaning": "हमेशा ज़िंदा रहने वाला।"
+    },
+    {
+      "id": 63,
+      "name": "अल-क़य्यूम",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "ख़ुद क़ायम रहने वाला और सारी कायनात को क़ायम रखने वाला।"
+    },
+    {
+      "id": 64,
+      "name": "अल-वाजिद",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "सब कुछ पाने वाला, जिसे किसी चीज़ की कमी नहीं।"
+    },
+    {
+      "id": 65,
+      "name": "अल-माजिद",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "बड़ी इज़्ज़त और बुज़ुर्गी वाला।"
+    },
+    {
+      "id": 66,
+      "name": "अल-वाहिद",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "अकेला और एक।"
+    },
+    {
+      "id": 67,
+      "name": "अल-अहद",
+      "arabic": "الْأَحَدُ",
+      "meaning": "एक और यकता, जिसका कोई शरीक नहीं।"
+    },
+    {
+      "id": 68,
+      "name": "अस-समद",
+      "arabic": "الصَّمَدُ",
+      "meaning": "बेनियाज़, जिसका सब मोहताज हैं और वह किसी का मोहताज नहीं।"
+    },
+    {
+      "id": 69,
+      "name": "अल-क़ादिर",
+      "arabic": "الْقَادِرُ",
+      "meaning": "हर चीज़ पर क़ुदरत रखने वाला।"
+    },
+    {
+      "id": 70,
+      "name": "अल-मुक़्तदिर",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "पूरी क़ुदरत और इख़्तियार वाला।"
+    },
+    {
+      "id": 71,
+      "name": "अल-मुक़द्दिम",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "आगे बढ़ाने वाला।"
+    },
+    {
+      "id": 72,
+      "name": "अल-मुअख़्ख़िर",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "पीछे करने वाला।"
+    },
+    {
+      "id": 73,
+      "name": "अल-अव्वल",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "सबसे पहला, जिसकी कोई इब्तिदा नहीं।"
+    },
+    {
+      "id": 74,
+      "name": "अल-आख़िर",
+      "arabic": "الْآخِرُ",
+      "meaning": "सबसे आख़िरी, जिसकी कोई इंतिहा नहीं।"
+    },
+    {
+      "id": 75,
+      "name": "अज़-ज़ाहिर",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "ज़ाहिर और नुमायां।"
+    },
+    {
+      "id": 76,
+      "name": "अल-बातिन",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "पोशीदा और छुपा हुआ।"
+    },
+    {
+      "id": 77,
+      "name": "अल-वाली",
+      "arabic": "الْوَالِي",
+      "meaning": "तमाम चीज़ों का मालिक और इंतज़ाम करने वाला।"
+    },
+    {
+      "id": 78,
+      "name": "अल-मुतआली",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "सबसे बुलंद और बरतर।"
+    },
+    {
+      "id": 79,
+      "name": "अल-बर्र",
+      "arabic": "الْبَرُّ",
+      "meaning": "तमाम भलाइयों का सरचश्मा और एहसान करने वाला।"
+    },
+    {
+      "id": 80,
+      "name": "अत-तव्वाब",
+      "arabic": "التَّوَّابُ",
+      "meaning": "बार-बार तौबा क़बूल करने वाला।"
+    },
+    {
+      "id": 81,
+      "name": "अल-मुंतक़िम",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "ज़ालिमों और गुनहगारों से बदला लेने वाला।"
+    },
+    {
+      "id": 82,
+      "name": "अल-अफ़ुव्व",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "दरगुज़र करने वाला, जो गुनाहों को मिटा देता है।"
+    },
+    {
+      "id": 83,
+      "name": "अर-रऊफ़",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "निहायत शफ़क़त और नरमी करने वाला।"
+    },
+    {
+      "id": 84,
+      "name": "मालिकुल-मुल्क",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "सारी बादशाहत का मालिक।"
+    },
+    {
+      "id": 85,
+      "name": "ज़ुल-जलाली वल-इकराम",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "अज़मत, जलाल और इज़्ज़त वाला।"
+    },
+    {
+      "id": 86,
+      "name": "अल-मुक़्सित",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "इंसाफ़ करने वाला।"
+    },
+    {
+      "id": 87,
+      "name": "अल-जामिअ",
+      "arabic": "الْجَامِعُ",
+      "meaning": "सबको जमा करने वाला।"
+    },
+    {
+      "id": 88,
+      "name": "अल-ग़नी",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "बेनियाज़ और मालदार।"
+    },
+    {
+      "id": 89,
+      "name": "अल-मुग़नी",
+      "arabic": "الْمُغْنِي",
+      "meaning": "ग़नी और मालदार बनाने वाला।"
+    },
+    {
+      "id": 90,
+      "name": "अल-मानिअ",
+      "arabic": "الْمَانِعُ",
+      "meaning": "नुक़सान से रोकने वाला।"
+    },
+    {
+      "id": 91,
+      "name": "अज़-ज़ार्र",
+      "arabic": "الضَّارُّ",
+      "meaning": "नुक़सान पहुंचाने वाला, जो जिसे चाहे तकलीफ़ पहुंचने दे।"
+    },
+    {
+      "id": 92,
+      "name": "अन-नाफ़िअ",
+      "arabic": "النَّافِعُ",
+      "meaning": "नफ़ा और फ़ायदा पहुंचाने वाला।"
+    },
+    {
+      "id": 93,
+      "name": "अन-नूर",
+      "arabic": "النُّورُ",
+      "meaning": "रोशनी और नूर।"
+    },
+    {
+      "id": 94,
+      "name": "अल-हादी",
+      "arabic": "الْهَادِي",
+      "meaning": "हिदायत देने वाला।"
+    },
+    {
+      "id": 95,
+      "name": "अल-बदीअ",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "बेमिसाल पैदा करने वाला।"
+    },
+    {
+      "id": 96,
+      "name": "अल-बाक़ी",
+      "arabic": "الْبَاقِي",
+      "meaning": "हमेशा बाक़ी रहने वाला।"
+    },
+    {
+      "id": 97,
+      "name": "अल-वारिस",
+      "arabic": "الْوَارِثُ",
+      "meaning": "सबका वारिस।"
+    },
+    {
+      "id": 98,
+      "name": "अर-रशीद",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "सीधे रास्ते की रहनुमाई करने वाला।"
+    },
+    {
+      "id": 99,
+      "name": "अस-सबूर",
+      "arabic": "الصَّبُورُ",
+      "meaning": "बड़ा सब्र करने वाला।"
+    }
+  ],
+  "ms": [
+    {
+      "id": 1,
+      "name": "Ar-Rahman",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "Yang Maha Pemurah, yang mengasihi seluruh makhluk di dunia ini."
+    },
+    {
+      "id": 2,
+      "name": "Ar-Rahim",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "Yang Maha Penyayang, khususnya kepada orang-orang beriman di akhirat."
+    },
+    {
+      "id": 3,
+      "name": "Al-Malik",
+      "arabic": "الْمَلِكُ",
+      "meaning": "Yang Maha Merajai, Pemilik dan Penguasa sebenar seluruh alam."
+    },
+    {
+      "id": 4,
+      "name": "Al-Quddus",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "Yang Maha Suci, bersih daripada segala kekurangan."
+    },
+    {
+      "id": 5,
+      "name": "As-Salam",
+      "arabic": "السَّلَامُ",
+      "meaning": "Yang Maha Sejahtera, yang mengurniakan keselamatan."
+    },
+    {
+      "id": 6,
+      "name": "Al-Mu'min",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "Yang Maha Mengurniakan Keamanan dan Keimanan."
+    },
+    {
+      "id": 7,
+      "name": "Al-Muhaimin",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "Yang Maha Memelihara, yang mengawasi segala sesuatu."
+    },
+    {
+      "id": 8,
+      "name": "Al-Aziz",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "Yang Maha Perkasa, yang tidak dapat dikalahkan."
+    },
+    {
+      "id": 9,
+      "name": "Al-Jabbar",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "Yang Maha Gagah, yang memulihkan dan memperbaiki."
+    },
+    {
+      "id": 10,
+      "name": "Al-Mutakabbir",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "Yang Maha Megah dalam segala kebesaran."
+    },
+    {
+      "id": 11,
+      "name": "Al-Khaliq",
+      "arabic": "الْخَالِقُ",
+      "meaning": "Yang Maha Pencipta, yang mengadakan sesuatu daripada tiada."
+    },
+    {
+      "id": 12,
+      "name": "Al-Bari'",
+      "arabic": "الْبَارِئُ",
+      "meaning": "Yang Maha Mengadakan, yang mencipta dengan sempurna dan seimbang."
+    },
+    {
+      "id": 13,
+      "name": "Al-Musawwir",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "Yang Maha Membentuk Rupa, yang memberi rupa kepada setiap sesuatu."
+    },
+    {
+      "id": 14,
+      "name": "Al-Ghaffar",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "Yang Maha Banyak Mengampuni."
+    },
+    {
+      "id": 15,
+      "name": "Al-Qahhar",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "Yang Maha Menundukkan lagi Maha Menguasai."
+    },
+    {
+      "id": 16,
+      "name": "Al-Wahhab",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "Yang Maha Pemberi Kurnia, yang memberi tanpa batas."
+    },
+    {
+      "id": 17,
+      "name": "Ar-Razzaq",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "Yang Maha Pemberi segala rezeki."
+    },
+    {
+      "id": 18,
+      "name": "Al-Fattah",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "Yang Maha Pembuka, yang membuka pintu rahmat dan memutuskan hukum."
+    },
+    {
+      "id": 19,
+      "name": "Al-Alim",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "Yang Maha Mengetahui."
+    },
+    {
+      "id": 20,
+      "name": "Al-Qabid",
+      "arabic": "الْقَابِضُ",
+      "meaning": "Yang Maha Menyempitkan, yang menahan mengikut kehendak-Nya."
+    },
+    {
+      "id": 21,
+      "name": "Al-Basit",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "Yang Maha Melapangkan, yang meluaskan mengikut kehendak-Nya."
+    },
+    {
+      "id": 22,
+      "name": "Al-Khafid",
+      "arabic": "الْخَافِضُ",
+      "meaning": "Yang Maha Merendahkan, yang merendahkan sesiapa yang dikehendaki-Nya."
+    },
+    {
+      "id": 23,
+      "name": "Ar-Rafi'",
+      "arabic": "الرَّافِعُ",
+      "meaning": "Yang Maha Meninggikan, yang mengangkat darjat sesiapa yang dikehendaki-Nya."
+    },
+    {
+      "id": 24,
+      "name": "Al-Mu'izz",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "Yang Maha Memuliakan."
+    },
+    {
+      "id": 25,
+      "name": "Al-Muzill",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "Yang Maha Menghinakan."
+    },
+    {
+      "id": 26,
+      "name": "As-Sami'",
+      "arabic": "السَّمِيعُ",
+      "meaning": "Yang Maha Mendengar."
+    },
+    {
+      "id": 27,
+      "name": "Al-Basir",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "Yang Maha Melihat."
+    },
+    {
+      "id": 28,
+      "name": "Al-Hakam",
+      "arabic": "الْحَكَمُ",
+      "meaning": "Yang Maha Menetapkan Hukum, yang muktamad keputusan-Nya."
+    },
+    {
+      "id": 29,
+      "name": "Al-Adl",
+      "arabic": "الْعَدْلُ",
+      "meaning": "Yang Maha Adil."
+    },
+    {
+      "id": 30,
+      "name": "Al-Latif",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "Yang Maha Lembut lagi Maha Halus."
+    },
+    {
+      "id": 31,
+      "name": "Al-Khabir",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "Yang Maha Mengetahui segala perkara yang tersembunyi."
+    },
+    {
+      "id": 32,
+      "name": "Al-Halim",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "Yang Maha Penyantun, yang tidak menyegerakan hukuman."
+    },
+    {
+      "id": 33,
+      "name": "Al-Azim",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "Yang Maha Agung."
+    },
+    {
+      "id": 34,
+      "name": "Al-Ghafur",
+      "arabic": "الْغَفُورُ",
+      "meaning": "Yang Maha Pengampun."
+    },
+    {
+      "id": 35,
+      "name": "Asy-Syakur",
+      "arabic": "الشَّكُورُ",
+      "meaning": "Yang Maha Mensyukuri, yang memberi ganjaran besar atas amalan yang sedikit."
+    },
+    {
+      "id": 36,
+      "name": "Al-Aliyy",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "Yang Maha Tinggi."
+    },
+    {
+      "id": 37,
+      "name": "Al-Kabir",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "Yang Maha Besar."
+    },
+    {
+      "id": 38,
+      "name": "Al-Hafiz",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "Yang Maha Memelihara, yang menjaga segala sesuatu."
+    },
+    {
+      "id": 39,
+      "name": "Al-Muqit",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "Yang Maha Mencukupkan, yang memelihara dan memberi makan setiap makhluk."
+    },
+    {
+      "id": 40,
+      "name": "Al-Hasib",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "Yang Maha Menghitung, yang membuat perkiraan atas segala sesuatu."
+    },
+    {
+      "id": 41,
+      "name": "Al-Jalil",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "Yang Maha Luhur."
+    },
+    {
+      "id": 42,
+      "name": "Al-Karim",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "Yang Maha Pemurah lagi Maha Mulia."
+    },
+    {
+      "id": 43,
+      "name": "Ar-Raqib",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "Yang Maha Mengawasi."
+    },
+    {
+      "id": 44,
+      "name": "Al-Mujib",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "Yang Maha Memperkenankan, yang mengabulkan doa."
+    },
+    {
+      "id": 45,
+      "name": "Al-Wasi'",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "Yang Maha Luas, tiada batasannya."
+    },
+    {
+      "id": 46,
+      "name": "Al-Hakim",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "Yang Maha Bijaksana."
+    },
+    {
+      "id": 47,
+      "name": "Al-Wadud",
+      "arabic": "الْوَدُودُ",
+      "meaning": "Yang Maha Mengasihi."
+    },
+    {
+      "id": 48,
+      "name": "Al-Majid",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "Yang Maha Mulia."
+    },
+    {
+      "id": 49,
+      "name": "Al-Ba'ith",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "Yang Maha Membangkitkan."
+    },
+    {
+      "id": 50,
+      "name": "Asy-Syahid",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "Yang Maha Menyaksikan segala sesuatu."
+    },
+    {
+      "id": 51,
+      "name": "Al-Haqq",
+      "arabic": "الْحَقُّ",
+      "meaning": "Yang Maha Benar."
+    },
+    {
+      "id": 52,
+      "name": "Al-Wakil",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "Yang Maha Mewakili, sebaik-baik Pengurus segala urusan."
+    },
+    {
+      "id": 53,
+      "name": "Al-Qawiyy",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "Yang Maha Kuat."
+    },
+    {
+      "id": 54,
+      "name": "Al-Matin",
+      "arabic": "الْمَتِينُ",
+      "meaning": "Yang Maha Kukuh lagi Maha Teguh."
+    },
+    {
+      "id": 55,
+      "name": "Al-Waliyy",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "Yang Maha Melindungi orang-orang yang beriman."
+    },
+    {
+      "id": 56,
+      "name": "Al-Hamid",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "Yang Maha Terpuji."
+    },
+    {
+      "id": 57,
+      "name": "Al-Muhsi",
+      "arabic": "الْمُحْصِي",
+      "meaning": "Yang Maha Menghitung, yang mengetahui bilangan segala sesuatu."
+    },
+    {
+      "id": 58,
+      "name": "Al-Mubdi'",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "Yang Maha Memulakan penciptaan."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mu'id",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "Yang Maha Mengembalikan, yang menghidupkan semula."
+    },
+    {
+      "id": 60,
+      "name": "Al-Muhyi",
+      "arabic": "الْمُحْيِي",
+      "meaning": "Yang Maha Menghidupkan."
+    },
+    {
+      "id": 61,
+      "name": "Al-Mumit",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "Yang Maha Mematikan."
+    },
+    {
+      "id": 62,
+      "name": "Al-Hayy",
+      "arabic": "الْحَيُّ",
+      "meaning": "Yang Maha Hidup."
+    },
+    {
+      "id": 63,
+      "name": "Al-Qayyum",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "Yang Maha Berdiri Sendiri, yang mentadbir dan memelihara segala sesuatu."
+    },
+    {
+      "id": 64,
+      "name": "Al-Wajid",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "Yang Maha Menemukan, yang tidak kekurangan sesuatu pun."
+    },
+    {
+      "id": 65,
+      "name": "Al-Majid",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "Yang Maha Mulia lagi Maha Agung."
+    },
+    {
+      "id": 66,
+      "name": "Al-Wahid",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "Yang Maha Tunggal."
+    },
+    {
+      "id": 67,
+      "name": "Al-Ahad",
+      "arabic": "الْأَحَدُ",
+      "meaning": "Yang Maha Esa."
+    },
+    {
+      "id": 68,
+      "name": "As-Samad",
+      "arabic": "الصَّمَدُ",
+      "meaning": "Yang Maha Menjadi Tumpuan, yang tidak memerlukan sesiapa pun."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir",
+      "arabic": "الْقَادِرُ",
+      "meaning": "Yang Maha Berkuasa."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "Yang Maha Menentukan lagi Maha Berkuasa."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "Yang Maha Mendahulukan."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhkhir",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "Yang Maha Mengakhirkan."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "Yang Maha Awal, tanpa permulaan."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir",
+      "arabic": "الْآخِرُ",
+      "meaning": "Yang Maha Akhir, tanpa pengakhiran."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "Yang Maha Zahir."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "Yang Maha Batin."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali",
+      "arabic": "الْوَالِي",
+      "meaning": "Yang Maha Memerintah segala sesuatu."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "Yang Maha Tertinggi."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr",
+      "arabic": "الْبَرُّ",
+      "meaning": "Yang Maha Melimpahkan Kebaikan."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab",
+      "arabic": "التَّوَّابُ",
+      "meaning": "Yang Maha Menerima Taubat."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "Yang Maha Memberi Balasan terhadap kezaliman."
+    },
+    {
+      "id": 82,
+      "name": "Al-Afuww",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "Yang Maha Pemaaf, yang menghapuskan dosa."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "Yang Maha Pengasih lagi Maha Belas Kasihan."
+    },
+    {
+      "id": 84,
+      "name": "Malik al-Mulk",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "Yang Maha Memiliki Segala Kerajaan."
+    },
+    {
+      "id": 85,
+      "name": "Zul-Jalali wal-Ikram",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "Yang Maha Memiliki Keagungan dan Kemuliaan."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "Yang Maha Saksama."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami'",
+      "arabic": "الْجَامِعُ",
+      "meaning": "Yang Maha Mengumpulkan."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniyy",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "Yang Maha Kaya lagi tidak memerlukan sesuatu pun."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni",
+      "arabic": "الْمُغْنِي",
+      "meaning": "Yang Maha Memberi Kekayaan."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani'",
+      "arabic": "الْمَانِعُ",
+      "meaning": "Yang Maha Mencegah kemudaratan."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Darr",
+      "arabic": "الضَّارُّ",
+      "meaning": "Yang Maha Memberi Mudarat, yang membiarkan mudarat menimpa sesiapa yang dikehendaki-Nya."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi'",
+      "arabic": "النَّافِعُ",
+      "meaning": "Yang Maha Memberi Manfaat."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur",
+      "arabic": "النُّورُ",
+      "meaning": "Yang Maha Bercahaya."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi",
+      "arabic": "الْهَادِي",
+      "meaning": "Yang Maha Pemberi Petunjuk."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi'",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "Yang Maha Pencipta yang tiada bandingannya."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi",
+      "arabic": "الْبَاقِي",
+      "meaning": "Yang Maha Kekal."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith",
+      "arabic": "الْوَارِثُ",
+      "meaning": "Yang Maha Mewarisi segala sesuatu."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rasyid",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "Yang Maha Memberi Petunjuk ke Jalan yang Benar."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur",
+      "arabic": "الصَّبُورُ",
+      "meaning": "Yang Maha Penyabar."
+    }
+  ],
+  "th": [
+    {
+      "id": 1,
+      "name": "อัร-เราะห์มาน",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "ผู้ทรงกรุณาปรานีอย่างยิ่ง ผู้ทรงเมตตาต่อสรรพสิ่งทั้งปวงในโลกนี้"
+    },
+    {
+      "id": 2,
+      "name": "อัร-เราะฮีม",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "ผู้ทรงเมตตายิ่ง โดยเฉพาะต่อบรรดาผู้ศรัทธาในโลกหน้า"
+    },
+    {
+      "id": 3,
+      "name": "อัล-มาลิก",
+      "arabic": "الْمَلِكُ",
+      "meaning": "ผู้ทรงเป็นราชา ผู้ทรงเป็นเจ้าของและผู้ปกครองที่แท้จริงแห่งสรรพสิ่งทั้งปวง"
+    },
+    {
+      "id": 4,
+      "name": "อัล-กุดดูส",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "ผู้ทรงบริสุทธิ์ยิ่ง ปราศจากข้อบกพร่องทั้งปวง"
+    },
+    {
+      "id": 5,
+      "name": "อัส-สะลาม",
+      "arabic": "السَّلَامُ",
+      "meaning": "ผู้ทรงเป็นบ่อเกิดแห่งสันติ ผู้ทรงประทานความปลอดภัย"
+    },
+    {
+      "id": 6,
+      "name": "อัล-มุอ์มิน",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "ผู้ทรงประทานความศรัทธาและความปลอดภัย"
+    },
+    {
+      "id": 7,
+      "name": "อัล-มุฮัยมิน",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "ผู้ทรงพิทักษ์รักษา ผู้ทรงเฝ้าดูแลทุกสรรพสิ่ง"
+    },
+    {
+      "id": 8,
+      "name": "อัล-อะซีซ",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "ผู้ทรงเดชานุภาพยิ่ง ผู้ทรงเกรียงไกรไร้ผู้ต่อต้าน"
+    },
+    {
+      "id": 9,
+      "name": "อัล-ญับบาร",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "ผู้ทรงอำนาจเด็ดขาด ผู้ทรงเยียวยาและฟื้นฟู"
+    },
+    {
+      "id": 10,
+      "name": "อัล-มุตะกับบิร",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "ผู้ทรงเกรียงไกรสูงสุด"
+    },
+    {
+      "id": 11,
+      "name": "อัล-คอลิก",
+      "arabic": "الْخَالِقُ",
+      "meaning": "ผู้ทรงสร้าง ผู้ทรงบังเกิดสรรพสิ่งขึ้นจากความว่างเปล่า"
+    },
+    {
+      "id": 12,
+      "name": "อัล-บาริอ์",
+      "arabic": "الْبَارِئُ",
+      "meaning": "ผู้ทรงบันดาล ผู้ทรงสร้างสรรค์อย่างกลมกลืนสมบูรณ์แบบ"
+    },
+    {
+      "id": 13,
+      "name": "อัล-มุเศาวิร",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "ผู้ทรงปั้นแต่ง ผู้ทรงกำหนดรูปร่างให้แก่ทุกสรรพสิ่ง"
+    },
+    {
+      "id": 14,
+      "name": "อัล-ฆ็อฟฟาร",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "ผู้ทรงอภัยโทษอย่างล้นเหลือ"
+    },
+    {
+      "id": 15,
+      "name": "อัล-กอฮ์ฮาร",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "ผู้ทรงพิชิต ผู้ทรงมีอำนาจเหนือทุกสิ่ง"
+    },
+    {
+      "id": 16,
+      "name": "อัล-วะฮ์ฮาบ",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "ผู้ทรงประทานให้ ผู้ทรงให้อย่างไม่มีขอบเขต"
+    },
+    {
+      "id": 17,
+      "name": "อัร-ร็อซซาก",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "ผู้ทรงประทานปัจจัยยังชีพทั้งปวง"
+    },
+    {
+      "id": 18,
+      "name": "อัล-ฟัตตาห์",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "ผู้ทรงเปิดประตูแห่งความเมตตาและผู้ทรงตัดสิน"
+    },
+    {
+      "id": 19,
+      "name": "อัล-อะลีม",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "ผู้ทรงรอบรู้ยิ่ง"
+    },
+    {
+      "id": 20,
+      "name": "อัล-กอบิฎ",
+      "arabic": "الْقَابِضُ",
+      "meaning": "ผู้ทรงยับยั้ง ผู้ทรงทำให้คับแคบตามที่พระองค์ทรงประสงค์"
+    },
+    {
+      "id": 21,
+      "name": "อัล-บาสิฏ",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "ผู้ทรงแผ่ขยาย ผู้ทรงทำให้กว้างขวางตามที่พระองค์ทรงประสงค์"
+    },
+    {
+      "id": 22,
+      "name": "อัล-คอฟิฎ",
+      "arabic": "الْخَافِضُ",
+      "meaning": "ผู้ทรงลดระดับ ผู้ทรงลดเกียรติผู้ที่พระองค์ทรงประสงค์"
+    },
+    {
+      "id": 23,
+      "name": "อัร-รอฟิอ์",
+      "arabic": "الرَّافِعُ",
+      "meaning": "ผู้ทรงยกฐานะ ผู้ทรงยกเกียรติผู้ที่พระองค์ทรงประสงค์"
+    },
+    {
+      "id": 24,
+      "name": "อัล-มุอิซซ์",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "ผู้ทรงประทานเกียรติยศ"
+    },
+    {
+      "id": 25,
+      "name": "อัล-มุซิลล์",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "ผู้ทรงทำให้ต่ำต้อย"
+    },
+    {
+      "id": 26,
+      "name": "อัส-สะมีอ์",
+      "arabic": "السَّمِيعُ",
+      "meaning": "ผู้ทรงได้ยินยิ่ง"
+    },
+    {
+      "id": 27,
+      "name": "อัล-บะศีร",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "ผู้ทรงเห็นยิ่ง"
+    },
+    {
+      "id": 28,
+      "name": "อัล-หะกัม",
+      "arabic": "الْحَكَمُ",
+      "meaning": "ผู้ทรงพิพากษา ผู้ซึ่งคำตัดสินของพระองค์ถือเป็นที่สุด"
+    },
+    {
+      "id": 29,
+      "name": "อัล-อัดล์",
+      "arabic": "الْعَدْلُ",
+      "meaning": "ผู้ทรงยุติธรรมยิ่ง"
+    },
+    {
+      "id": 30,
+      "name": "อัล-ละฏีฟ",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "ผู้ทรงละเอียดอ่อน ผู้ทรงอ่อนโยนยิ่ง"
+    },
+    {
+      "id": 31,
+      "name": "อัล-เคาะบีร",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "ผู้ทรงตระหนักรู้ทุกเรื่องราวที่เร้นลับ"
+    },
+    {
+      "id": 32,
+      "name": "อัล-หะลีม",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "ผู้ทรงขันติ ผู้ไม่ทรงเร่งรีบในการลงโทษ"
+    },
+    {
+      "id": 33,
+      "name": "อัล-อะซีม",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "ผู้ทรงยิ่งใหญ่"
+    },
+    {
+      "id": 34,
+      "name": "อัล-เฆาะฟูร",
+      "arabic": "الْغَفُورُ",
+      "meaning": "ผู้ทรงให้อภัยยิ่ง"
+    },
+    {
+      "id": 35,
+      "name": "อัช-ชะกูร",
+      "arabic": "الشَّكُورُ",
+      "meaning": "ผู้ทรงตอบแทนคุณ ผู้ทรงประทานรางวัลอันมากมายแก่การงานอันเล็กน้อย"
+    },
+    {
+      "id": 36,
+      "name": "อัล-อะลีย์",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "ผู้ทรงสูงส่งยิ่ง"
+    },
+    {
+      "id": 37,
+      "name": "อัล-กะบีร",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "ผู้ทรงเกรียงไกรยิ่ง"
+    },
+    {
+      "id": 38,
+      "name": "อัล-หะฟีซ",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "ผู้ทรงพิทักษ์รักษา ผู้ทรงคุ้มครองทุกสรรพสิ่ง"
+    },
+    {
+      "id": 39,
+      "name": "อัล-มุกีต",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "ผู้ทรงหล่อเลี้ยง ผู้ทรงประทานอาหารแก่ทุกสรรพสิ่ง"
+    },
+    {
+      "id": 40,
+      "name": "อัล-หะสีบ",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "ผู้ทรงคิดคำนวณ ผู้ทรงสอบสวนทุกสรรพสิ่ง"
+    },
+    {
+      "id": 41,
+      "name": "อัล-ญะลีล",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "ผู้ทรงสง่างามยิ่งใหญ่"
+    },
+    {
+      "id": 42,
+      "name": "อัล-กะรีม",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "ผู้ทรงเอื้อเฟื้อเผื่อแผ่ยิ่ง"
+    },
+    {
+      "id": 43,
+      "name": "อัร-เราะกีบ",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "ผู้ทรงสอดส่องดูแล"
+    },
+    {
+      "id": 44,
+      "name": "อัล-มุญีบ",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "ผู้ทรงตอบรับ ผู้ทรงรับคำวิงวอน"
+    },
+    {
+      "id": 45,
+      "name": "อัล-วาสิอ์",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "ผู้ทรงกว้างขวาง ผู้ทรงไร้ขอบเขต"
+    },
+    {
+      "id": 46,
+      "name": "อัล-หะกีม",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "ผู้ทรงปรีชาญาณยิ่ง"
+    },
+    {
+      "id": 47,
+      "name": "อัล-วะดูด",
+      "arabic": "الْوَدُودُ",
+      "meaning": "ผู้ทรงรักใคร่ยิ่ง"
+    },
+    {
+      "id": 48,
+      "name": "อัล-มะญีด",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "ผู้ทรงเกียรติอันสูงส่งยิ่ง"
+    },
+    {
+      "id": 49,
+      "name": "อัล-บาอิษ",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "ผู้ทรงให้ฟื้นคืนชีพ"
+    },
+    {
+      "id": 50,
+      "name": "อัช-ชะฮีด",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "ผู้ทรงเป็นพยานต่อทุกสรรพสิ่ง"
+    },
+    {
+      "id": 51,
+      "name": "อัล-หักก์",
+      "arabic": "الْحَقُّ",
+      "meaning": "ผู้ทรงสัจธรรม ผู้ทรงมีอยู่จริง"
+    },
+    {
+      "id": 52,
+      "name": "อัล-วะกีล",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "ผู้ทรงรับมอบหมาย ผู้ทรงจัดการกิจการทั้งปวงอย่างดีเยี่ยม"
+    },
+    {
+      "id": 53,
+      "name": "อัล-เกาะวีย์",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "ผู้ทรงพลังยิ่ง"
+    },
+    {
+      "id": 54,
+      "name": "อัล-มะตีน",
+      "arabic": "الْمَتِينُ",
+      "meaning": "ผู้ทรงมั่นคงแข็งแกร่ง"
+    },
+    {
+      "id": 55,
+      "name": "อัล-วะลีย์",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "ผู้ทรงเป็นมิตรผู้คุ้มครองบรรดาผู้ศรัทธา"
+    },
+    {
+      "id": 56,
+      "name": "อัล-หะมีด",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "ผู้ทรงได้รับการสรรเสริญ"
+    },
+    {
+      "id": 57,
+      "name": "อัล-มุห์ศี",
+      "arabic": "الْمُحْصِي",
+      "meaning": "ผู้ทรงนับจำนวน ผู้ทรงรู้จำนวนของทุกสรรพสิ่ง"
+    },
+    {
+      "id": 58,
+      "name": "อัล-มุบดิอ์",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "ผู้ทรงริเริ่ม ผู้ทรงเริ่มการสร้างสรรพสิ่ง"
+    },
+    {
+      "id": 59,
+      "name": "อัล-มุอีด",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "ผู้ทรงนำกลับคืน ผู้ทรงทำให้ฟื้นคืนชีวิตอีกครั้ง"
+    },
+    {
+      "id": 60,
+      "name": "อัล-มุห์ยี",
+      "arabic": "الْمُحْيِي",
+      "meaning": "ผู้ทรงให้ชีวิต"
+    },
+    {
+      "id": 61,
+      "name": "อัล-มุมีต",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "ผู้ทรงให้ความตาย"
+    },
+    {
+      "id": 62,
+      "name": "อัล-หัยย์",
+      "arabic": "الْحَيُّ",
+      "meaning": "ผู้ทรงมีชีวิตตลอดกาล"
+    },
+    {
+      "id": 63,
+      "name": "อัล-ก็อยยูม",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "ผู้ทรงดำรงอยู่ด้วยพระองค์เอง ผู้ทรงบริหารดูแลสรรพสิ่งทั้งปวง"
+    },
+    {
+      "id": 64,
+      "name": "อัล-วาญิด",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "ผู้ทรงมั่งคั่งสมบูรณ์ ผู้ไม่ทรงขาดแคลนสิ่งใด"
+    },
+    {
+      "id": 65,
+      "name": "อัล-มาญิด",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "ผู้ทรงเกียรติ ผู้ทรงสูงส่ง"
+    },
+    {
+      "id": 66,
+      "name": "อัล-วาหิด",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "ผู้ทรงเอกะ"
+    },
+    {
+      "id": 67,
+      "name": "อัล-อะหัด",
+      "arabic": "الْأَحَدُ",
+      "meaning": "ผู้ทรงเอกะหนึ่งเดียว"
+    },
+    {
+      "id": 68,
+      "name": "อัศ-เศาะมัด",
+      "arabic": "الصَّمَدُ",
+      "meaning": "ผู้ทรงเป็นที่พึ่ง ผู้ไม่ทรงพึ่งพาสิ่งใด"
+    },
+    {
+      "id": 69,
+      "name": "อัล-กอดิร",
+      "arabic": "الْقَادِرُ",
+      "meaning": "ผู้ทรงอานุภาพยิ่ง"
+    },
+    {
+      "id": 70,
+      "name": "อัล-มุกตะดิร",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "ผู้ทรงกำหนด ผู้ทรงอานุภาพสมบูรณ์"
+    },
+    {
+      "id": 71,
+      "name": "อัล-มุก็อดดิม",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "ผู้ทรงให้มาก่อน ผู้ทรงเลื่อนขึ้นหน้า"
+    },
+    {
+      "id": 72,
+      "name": "อัล-มุอัคคิร",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "ผู้ทรงประวิงเวลา ผู้ทรงเลื่อนไว้ภายหลัง"
+    },
+    {
+      "id": 73,
+      "name": "อัล-เอาวัล",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "ผู้ทรงเป็นองค์แรก โดยไร้จุดเริ่มต้น"
+    },
+    {
+      "id": 74,
+      "name": "อัล-อาคิร",
+      "arabic": "الْآخِرُ",
+      "meaning": "ผู้ทรงเป็นองค์สุดท้าย โดยไร้จุดสิ้นสุด"
+    },
+    {
+      "id": 75,
+      "name": "อัซ-ซอฮิร",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "ผู้ทรงประจักษ์แจ้ง"
+    },
+    {
+      "id": 76,
+      "name": "อัล-บาฏิน",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "ผู้ทรงเร้นลับ"
+    },
+    {
+      "id": 77,
+      "name": "อัล-วาลี",
+      "arabic": "الْوَالِي",
+      "meaning": "ผู้ทรงปกครองทุกสรรพสิ่ง"
+    },
+    {
+      "id": 78,
+      "name": "อัล-มุตะอาลี",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "ผู้ทรงสูงส่งยิ่งใหญ่"
+    },
+    {
+      "id": 79,
+      "name": "อัล-บัรร์",
+      "arabic": "الْبَرُّ",
+      "meaning": "ผู้ทรงเป็นบ่อเกิดแห่งความดีงามทั้งปวง"
+    },
+    {
+      "id": 80,
+      "name": "อัต-เตาวาบ",
+      "arabic": "التَّوَّابُ",
+      "meaning": "ผู้ทรงรับการกลับตัวอยู่เสมอ"
+    },
+    {
+      "id": 81,
+      "name": "อัล-มุนตะกิม",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "ผู้ทรงลงทัณฑ์ต่อความชั่วร้าย"
+    },
+    {
+      "id": 82,
+      "name": "อัล-อะฟูว์",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "ผู้ทรงอภัย ผู้ทรงลบล้างความผิดบาป"
+    },
+    {
+      "id": 83,
+      "name": "อัร-เราะอูฟ",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "ผู้ทรงเอ็นดูยิ่ง ผู้ทรงเปี่ยมด้วยความสงสาร"
+    },
+    {
+      "id": 84,
+      "name": "มาลิกุล-มุลก์",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "ผู้ทรงเป็นเจ้าของอำนาจอธิปไตยทั้งปวง"
+    },
+    {
+      "id": 85,
+      "name": "ซุล-ญะลาลิ วัล-อิกรอม",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "ผู้ทรงเปี่ยมด้วยความยิ่งใหญ่และเกียรติยศ"
+    },
+    {
+      "id": 86,
+      "name": "อัล-มุกสิฏ",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "ผู้ทรงเที่ยงธรรม"
+    },
+    {
+      "id": 87,
+      "name": "อัล-ญามิอ์",
+      "arabic": "الْجَامِعُ",
+      "meaning": "ผู้ทรงรวบรวม"
+    },
+    {
+      "id": 88,
+      "name": "อัล-เฆาะนีย์",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "ผู้ทรงพอเพียง ผู้ทรงมั่งคั่ง"
+    },
+    {
+      "id": 89,
+      "name": "อัล-มุฆนี",
+      "arabic": "الْمُغْنِي",
+      "meaning": "ผู้ทรงประทานความมั่งคั่ง"
+    },
+    {
+      "id": 90,
+      "name": "อัล-มานิอ์",
+      "arabic": "الْمَانِعُ",
+      "meaning": "ผู้ทรงป้องกันอันตราย"
+    },
+    {
+      "id": 91,
+      "name": "อัฎ-ฎอรร์",
+      "arabic": "الضَّارُّ",
+      "meaning": "ผู้ทรงกำหนดความเดือดร้อน ผู้ทรงปล่อยให้ผลร้ายประสบแก่ผู้ที่พระองค์ทรงประสงค์"
+    },
+    {
+      "id": 92,
+      "name": "อัน-นาฟิอ์",
+      "arabic": "النَّافِعُ",
+      "meaning": "ผู้ทรงประทานคุณประโยชน์"
+    },
+    {
+      "id": 93,
+      "name": "อัน-นูร",
+      "arabic": "النُّورُ",
+      "meaning": "ผู้ทรงเป็นรัศมี"
+    },
+    {
+      "id": 94,
+      "name": "อัล-ฮาดี",
+      "arabic": "الْهَادِي",
+      "meaning": "ผู้ทรงชี้นำทาง"
+    },
+    {
+      "id": 95,
+      "name": "อัล-บะดีอ์",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "ผู้ทรงประดิษฐ์สร้างโดยไร้แบบอย่าง"
+    },
+    {
+      "id": 96,
+      "name": "อัล-บากี",
+      "arabic": "الْبَاقِي",
+      "meaning": "ผู้ทรงจีรังยั่งยืน"
+    },
+    {
+      "id": 97,
+      "name": "อัล-วาริษ",
+      "arabic": "الْوَارِثُ",
+      "meaning": "ผู้ทรงรับมรดกแห่งสรรพสิ่งทั้งปวง"
+    },
+    {
+      "id": 98,
+      "name": "อัร-เราะชีด",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "ผู้ทรงนำสู่แนวทางที่เที่ยงตรง"
+    },
+    {
+      "id": 99,
+      "name": "อัศ-เศาะบูร",
+      "arabic": "الصَّبُورُ",
+      "meaning": "ผู้ทรงอดทนยิ่ง"
+    }
+  ],
+  "es": [
+    {
+      "id": 1,
+      "name": "Ar-Rahman",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "El Compasivo, misericordioso con toda la creación en este mundo."
+    },
+    {
+      "id": 2,
+      "name": "Ar-Rahim",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "El Misericordioso, especialmente con los creyentes en la Otra Vida."
+    },
+    {
+      "id": 3,
+      "name": "Al-Malik",
+      "arabic": "الْمَلِكُ",
+      "meaning": "El Soberano, verdadero Dueño y Rey de toda la existencia."
+    },
+    {
+      "id": 4,
+      "name": "Al-Quddus",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "El Santísimo, libre de toda imperfección."
+    },
+    {
+      "id": 5,
+      "name": "As-Salam",
+      "arabic": "السَّلَامُ",
+      "meaning": "La Fuente de Paz, quien otorga seguridad."
+    },
+    {
+      "id": 6,
+      "name": "Al-Mu'min",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "El Otorgador de la Fe y la Seguridad."
+    },
+    {
+      "id": 7,
+      "name": "Al-Muhaymin",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "El Protector, quien vela por todas las cosas."
+    },
+    {
+      "id": 8,
+      "name": "Al-Aziz",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "El Todopoderoso, el Invencible."
+    },
+    {
+      "id": 9,
+      "name": "Al-Jabbar",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "El Irresistible, quien restaura y repara."
+    },
+    {
+      "id": 10,
+      "name": "Al-Mutakabbir",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "El Supremo en Grandeza."
+    },
+    {
+      "id": 11,
+      "name": "Al-Khaliq",
+      "arabic": "الْخَالِقُ",
+      "meaning": "El Creador, quien da existencia desde la nada."
+    },
+    {
+      "id": 12,
+      "name": "Al-Bari'",
+      "arabic": "الْبَارِئُ",
+      "meaning": "El Hacedor, quien crea en perfecta armonía."
+    },
+    {
+      "id": 13,
+      "name": "Al-Musawwir",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "El Formador, quien da a cada cosa su forma."
+    },
+    {
+      "id": 14,
+      "name": "Al-Ghaffar",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "El Sumamente Indulgente."
+    },
+    {
+      "id": 15,
+      "name": "Al-Qahhar",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "El Dominador, el Que Todo lo Somete."
+    },
+    {
+      "id": 16,
+      "name": "Al-Wahhab",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "El Dadivoso, quien da generosamente sin medida."
+    },
+    {
+      "id": 17,
+      "name": "Ar-Razzaq",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "El Proveedor de todo sustento."
+    },
+    {
+      "id": 18,
+      "name": "Al-Fattah",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "El Que Abre, quien abre las puertas de la misericordia y juzga."
+    },
+    {
+      "id": 19,
+      "name": "Al-Alim",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "El Omnisciente."
+    },
+    {
+      "id": 20,
+      "name": "Al-Qabid",
+      "arabic": "الْقَابِضُ",
+      "meaning": "El Que Retiene, quien restringe según Su voluntad."
+    },
+    {
+      "id": 21,
+      "name": "Al-Basit",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "El Que Expande, quien amplía según Su voluntad."
+    },
+    {
+      "id": 22,
+      "name": "Al-Khafid",
+      "arabic": "الْخَافِضُ",
+      "meaning": "El Que Rebaja, quien humilla a quien quiere."
+    },
+    {
+      "id": 23,
+      "name": "Ar-Rafi'",
+      "arabic": "الرَّافِعُ",
+      "meaning": "El Que Eleva, quien enaltece a quien quiere."
+    },
+    {
+      "id": 24,
+      "name": "Al-Mu'izz",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "El Que Honra."
+    },
+    {
+      "id": 25,
+      "name": "Al-Mudhill",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "El Que Humilla."
+    },
+    {
+      "id": 26,
+      "name": "As-Sami'",
+      "arabic": "السَّمِيعُ",
+      "meaning": "El Que Todo lo Oye."
+    },
+    {
+      "id": 27,
+      "name": "Al-Basir",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "El Que Todo lo Ve."
+    },
+    {
+      "id": 28,
+      "name": "Al-Hakam",
+      "arabic": "الْحَكَمُ",
+      "meaning": "El Juez, cuyo decreto es definitivo."
+    },
+    {
+      "id": 29,
+      "name": "Al-Adl",
+      "arabic": "الْعَدْلُ",
+      "meaning": "El Absolutamente Justo."
+    },
+    {
+      "id": 30,
+      "name": "Al-Latif",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "El Sutil, el Sumamente Benévolo."
+    },
+    {
+      "id": 31,
+      "name": "Al-Khabir",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "El Bien Informado de todo asunto oculto."
+    },
+    {
+      "id": 32,
+      "name": "Al-Halim",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "El Tolerante, quien no apresura el castigo."
+    },
+    {
+      "id": 33,
+      "name": "Al-Azim",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "El Magnífico."
+    },
+    {
+      "id": 34,
+      "name": "Al-Ghafur",
+      "arabic": "الْغَفُورُ",
+      "meaning": "El Perdonador."
+    },
+    {
+      "id": 35,
+      "name": "Ash-Shakur",
+      "arabic": "الشَّكُورُ",
+      "meaning": "El Agradecido, quien recompensa con creces por lo poco."
+    },
+    {
+      "id": 36,
+      "name": "Al-Aliyy",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "El Altísimo."
+    },
+    {
+      "id": 37,
+      "name": "Al-Kabir",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "El Más Grande."
+    },
+    {
+      "id": 38,
+      "name": "Al-Hafiz",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "El Preservador, quien protege todas las cosas."
+    },
+    {
+      "id": 39,
+      "name": "Al-Muqit",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "El Sustentador, quien nutre a cada criatura."
+    },
+    {
+      "id": 40,
+      "name": "Al-Hasib",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "El Que Pide Cuentas, quien lleva la cuenta de todo."
+    },
+    {
+      "id": 41,
+      "name": "Al-Jalil",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "El Majestuoso."
+    },
+    {
+      "id": 42,
+      "name": "Al-Karim",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "El Más Generoso."
+    },
+    {
+      "id": 43,
+      "name": "Ar-Raqib",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "El Vigilante."
+    },
+    {
+      "id": 44,
+      "name": "Al-Mujib",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "El Que Responde a las súplicas."
+    },
+    {
+      "id": 45,
+      "name": "Al-Wasi'",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "El Vasto, el Ilimitado."
+    },
+    {
+      "id": 46,
+      "name": "Al-Hakim",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "El Sabio."
+    },
+    {
+      "id": 47,
+      "name": "Al-Wadud",
+      "arabic": "الْوَدُودُ",
+      "meaning": "El Afectuoso, el Que Más Ama."
+    },
+    {
+      "id": 48,
+      "name": "Al-Majid",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "El Glorioso."
+    },
+    {
+      "id": 49,
+      "name": "Al-Ba'ith",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "El Resucitador."
+    },
+    {
+      "id": 50,
+      "name": "Ash-Shahid",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "El Testigo de todas las cosas."
+    },
+    {
+      "id": 51,
+      "name": "Al-Haqq",
+      "arabic": "الْحَقُّ",
+      "meaning": "La Verdad, lo Real."
+    },
+    {
+      "id": 52,
+      "name": "Al-Wakil",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "El Protector de los asuntos, el Mejor Administrador."
+    },
+    {
+      "id": 53,
+      "name": "Al-Qawiyy",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "El Fuerte."
+    },
+    {
+      "id": 54,
+      "name": "Al-Matin",
+      "arabic": "الْمَتِينُ",
+      "meaning": "El Firme, el Inquebrantable."
+    },
+    {
+      "id": 55,
+      "name": "Al-Waliyy",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "El Amigo Protector de los creyentes."
+    },
+    {
+      "id": 56,
+      "name": "Al-Hamid",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "El Digno de Alabanza."
+    },
+    {
+      "id": 57,
+      "name": "Al-Muhsi",
+      "arabic": "الْمُحْصِي",
+      "meaning": "El Que Todo lo Enumera, quien conoce el número de todas las cosas."
+    },
+    {
+      "id": 58,
+      "name": "Al-Mubdi'",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "El Originador, quien inicia la creación."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mu'id",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "El Restaurador, quien devuelve a la vida."
+    },
+    {
+      "id": 60,
+      "name": "Al-Muhyi",
+      "arabic": "الْمُحْيِي",
+      "meaning": "El Que Da la Vida."
+    },
+    {
+      "id": 61,
+      "name": "Al-Mumit",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "El Que Da la Muerte."
+    },
+    {
+      "id": 62,
+      "name": "Al-Hayy",
+      "arabic": "الْحَيُّ",
+      "meaning": "El Viviente."
+    },
+    {
+      "id": 63,
+      "name": "Al-Qayyum",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "El Subsistente por Sí Mismo, Sustentador de todo."
+    },
+    {
+      "id": 64,
+      "name": "Al-Wajid",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "El Que Todo lo Encuentra, quien de nada carece."
+    },
+    {
+      "id": 65,
+      "name": "Al-Majid",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "El Noble, el Ilustre."
+    },
+    {
+      "id": 66,
+      "name": "Al-Wahid",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "El Uno."
+    },
+    {
+      "id": 67,
+      "name": "Al-Ahad",
+      "arabic": "الْأَحَدُ",
+      "meaning": "El Único, el Solo."
+    },
+    {
+      "id": 68,
+      "name": "As-Samad",
+      "arabic": "الصَّمَدُ",
+      "meaning": "El Refugio Eterno, quien no necesita de nadie."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir",
+      "arabic": "الْقَادِرُ",
+      "meaning": "El Capaz de Todo."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "El Determinador, el Omnipotente."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "El Que Adelanta, quien hace avanzar."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhkhir",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "El Que Retrasa, quien posterga."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "El Primero, sin principio."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir",
+      "arabic": "الْآخِرُ",
+      "meaning": "El Último, sin fin."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "El Manifiesto."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "El Oculto."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali",
+      "arabic": "الْوَالِي",
+      "meaning": "El Gobernante de todas las cosas."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "El Sumamente Exaltado."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr",
+      "arabic": "الْبَرُّ",
+      "meaning": "La Fuente de Toda Bondad."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab",
+      "arabic": "التَّوَّابُ",
+      "meaning": "El Que Acepta Siempre el Arrepentimiento."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "El Vengador de la injusticia."
+    },
+    {
+      "id": 82,
+      "name": "Al-Afuww",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "El Indulgente, quien borra los pecados."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "El Compasivo, el Sumamente Bondadoso."
+    },
+    {
+      "id": 84,
+      "name": "Malik al-Mulk",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "El Dueño de Toda Soberanía."
+    },
+    {
+      "id": 85,
+      "name": "Dhul-Jalali wal-Ikram",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "El Señor de la Majestad y el Honor."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "El Equitativo."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami'",
+      "arabic": "الْجَامِعُ",
+      "meaning": "El Reunidor."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniyy",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "El Autosuficiente, el Rico."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni",
+      "arabic": "الْمُغْنِي",
+      "meaning": "El Enriquecedor."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani'",
+      "arabic": "الْمَانِعُ",
+      "meaning": "El Que Impide el daño."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Darr",
+      "arabic": "الضَّارُّ",
+      "meaning": "El Que Permite el Daño, quien deja que el mal alcance a quien quiere."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi'",
+      "arabic": "النَّافِعُ",
+      "meaning": "El Benefactor, quien otorga beneficio."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur",
+      "arabic": "النُّورُ",
+      "meaning": "La Luz."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi",
+      "arabic": "الْهَادِي",
+      "meaning": "El Guía."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi'",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "El Originador Incomparable."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi",
+      "arabic": "الْبَاقِي",
+      "meaning": "El Eterno."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith",
+      "arabic": "الْوَارِثُ",
+      "meaning": "El Heredero de todo."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rashid",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "El Guía hacia el Camino Recto."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur",
+      "arabic": "الصَّبُورُ",
+      "meaning": "El Sumamente Paciente."
+    }
+  ],
+  "it": [
+    {
+      "id": 1,
+      "name": "Ar-Rahman",
+      "arabic": "الرَّحْمَٰنُ",
+      "meaning": "Il Compassionevole, misericordioso verso tutta la creazione in questo mondo."
+    },
+    {
+      "id": 2,
+      "name": "Ar-Rahim",
+      "arabic": "الرَّحِيمُ",
+      "meaning": "Il Misericordioso, in particolare verso i credenti nell'Aldilà."
+    },
+    {
+      "id": 3,
+      "name": "Al-Malik",
+      "arabic": "الْمَلِكُ",
+      "meaning": "Il Re, vero Proprietario e Sovrano di tutta l'esistenza."
+    },
+    {
+      "id": 4,
+      "name": "Al-Quddus",
+      "arabic": "الْقُدُّوسُ",
+      "meaning": "Il Santo, esente da ogni imperfezione."
+    },
+    {
+      "id": 5,
+      "name": "As-Salam",
+      "arabic": "السَّلَامُ",
+      "meaning": "La Fonte di Pace, Colui che dona sicurezza."
+    },
+    {
+      "id": 6,
+      "name": "Al-Mu'min",
+      "arabic": "الْمُؤْمِنُ",
+      "meaning": "Il Datore di Fede e Sicurezza."
+    },
+    {
+      "id": 7,
+      "name": "Al-Muhaymin",
+      "arabic": "الْمُهَيْمِنُ",
+      "meaning": "Il Custode, Colui che veglia su ogni cosa."
+    },
+    {
+      "id": 8,
+      "name": "Al-Aziz",
+      "arabic": "الْعَزِيزُ",
+      "meaning": "Il Possente, l'Invincibile."
+    },
+    {
+      "id": 9,
+      "name": "Al-Jabbar",
+      "arabic": "الْجَبَّارُ",
+      "meaning": "L'Irresistibile, Colui che ripara e risana."
+    },
+    {
+      "id": 10,
+      "name": "Al-Mutakabbir",
+      "arabic": "الْمُتَكَبِّرُ",
+      "meaning": "Il Supremo nella Grandezza."
+    },
+    {
+      "id": 11,
+      "name": "Al-Khaliq",
+      "arabic": "الْخَالِقُ",
+      "meaning": "Il Creatore, Colui che trae all'esistenza dal nulla."
+    },
+    {
+      "id": 12,
+      "name": "Al-Bari'",
+      "arabic": "الْبَارِئُ",
+      "meaning": "L'Artefice, Colui che crea in perfetta armonia."
+    },
+    {
+      "id": 13,
+      "name": "Al-Musawwir",
+      "arabic": "الْمُصَوِّرُ",
+      "meaning": "Il Plasmatore, Colui che dà a ogni cosa la sua forma."
+    },
+    {
+      "id": 14,
+      "name": "Al-Ghaffar",
+      "arabic": "الْغَفَّارُ",
+      "meaning": "Il Sempre Perdonatore."
+    },
+    {
+      "id": 15,
+      "name": "Al-Qahhar",
+      "arabic": "الْقَهَّارُ",
+      "meaning": "Il Dominatore, Colui che tutto sottomette."
+    },
+    {
+      "id": 16,
+      "name": "Al-Wahhab",
+      "arabic": "الْوَهَّابُ",
+      "meaning": "Il Donatore, Colui che elargisce senza misura."
+    },
+    {
+      "id": 17,
+      "name": "Ar-Razzaq",
+      "arabic": "الرَّزَّاقُ",
+      "meaning": "Il Provveditore di ogni sostentamento."
+    },
+    {
+      "id": 18,
+      "name": "Al-Fattah",
+      "arabic": "الْفَتَّاحُ",
+      "meaning": "Colui che apre le porte della misericordia e giudica."
+    },
+    {
+      "id": 19,
+      "name": "Al-Alim",
+      "arabic": "الْعَلِيمُ",
+      "meaning": "L'Onnisciente."
+    },
+    {
+      "id": 20,
+      "name": "Al-Qabid",
+      "arabic": "الْقَابِضُ",
+      "meaning": "Colui che trattiene e restringe secondo la Sua volontà."
+    },
+    {
+      "id": 21,
+      "name": "Al-Basit",
+      "arabic": "الْبَاسِطُ",
+      "meaning": "Colui che estende e amplia secondo la Sua volontà."
+    },
+    {
+      "id": 22,
+      "name": "Al-Khafid",
+      "arabic": "الْخَافِضُ",
+      "meaning": "Colui che abbassa chi vuole."
+    },
+    {
+      "id": 23,
+      "name": "Ar-Rafi'",
+      "arabic": "الرَّافِعُ",
+      "meaning": "Colui che innalza chi vuole."
+    },
+    {
+      "id": 24,
+      "name": "Al-Mu'izz",
+      "arabic": "الْمُعِزُّ",
+      "meaning": "Colui che conferisce onore."
+    },
+    {
+      "id": 25,
+      "name": "Al-Mudhill",
+      "arabic": "الْمُذِلُّ",
+      "meaning": "Colui che umilia."
+    },
+    {
+      "id": 26,
+      "name": "As-Sami'",
+      "arabic": "السَّمِيعُ",
+      "meaning": "Colui che tutto ascolta."
+    },
+    {
+      "id": 27,
+      "name": "Al-Basir",
+      "arabic": "الْبَصِيرُ",
+      "meaning": "Colui che tutto vede."
+    },
+    {
+      "id": 28,
+      "name": "Al-Hakam",
+      "arabic": "الْحَكَمُ",
+      "meaning": "Il Giudice, il cui decreto è definitivo."
+    },
+    {
+      "id": 29,
+      "name": "Al-Adl",
+      "arabic": "الْعَدْلُ",
+      "meaning": "Il Sommamente Giusto."
+    },
+    {
+      "id": 30,
+      "name": "Al-Latif",
+      "arabic": "اللَّطِيفُ",
+      "meaning": "Il Sottile, il Benevolo."
+    },
+    {
+      "id": 31,
+      "name": "Al-Khabir",
+      "arabic": "الْخَبِيرُ",
+      "meaning": "Il Ben Informato su ogni cosa nascosta."
+    },
+    {
+      "id": 32,
+      "name": "Al-Halim",
+      "arabic": "الْحَلِيمُ",
+      "meaning": "Il Clemente, Colui che non affretta il castigo."
+    },
+    {
+      "id": 33,
+      "name": "Al-Azim",
+      "arabic": "الْعَظِيمُ",
+      "meaning": "Il Magnifico."
+    },
+    {
+      "id": 34,
+      "name": "Al-Ghafur",
+      "arabic": "الْغَفُورُ",
+      "meaning": "Il Perdonatore."
+    },
+    {
+      "id": 35,
+      "name": "Ash-Shakur",
+      "arabic": "الشَّكُورُ",
+      "meaning": "Il Riconoscente, Colui che ricompensa grandemente per il poco."
+    },
+    {
+      "id": 36,
+      "name": "Al-Aliyy",
+      "arabic": "الْعَلِيُّ",
+      "meaning": "L'Altissimo."
+    },
+    {
+      "id": 37,
+      "name": "Al-Kabir",
+      "arabic": "الْكَبِيرُ",
+      "meaning": "Il Grande."
+    },
+    {
+      "id": 38,
+      "name": "Al-Hafiz",
+      "arabic": "الْحَفِيظُ",
+      "meaning": "Il Preservatore, Colui che protegge ogni cosa."
+    },
+    {
+      "id": 39,
+      "name": "Al-Muqit",
+      "arabic": "الْمُقِيتُ",
+      "meaning": "Il Sostentatore, Colui che nutre ogni creatura."
+    },
+    {
+      "id": 40,
+      "name": "Al-Hasib",
+      "arabic": "الْحَسِيبُ",
+      "meaning": "Colui che chiede conto di tutto."
+    },
+    {
+      "id": 41,
+      "name": "Al-Jalil",
+      "arabic": "الْجَلِيلُ",
+      "meaning": "Il Maestoso."
+    },
+    {
+      "id": 42,
+      "name": "Al-Karim",
+      "arabic": "الْكَرِيمُ",
+      "meaning": "Il Generoso."
+    },
+    {
+      "id": 43,
+      "name": "Ar-Raqib",
+      "arabic": "الرَّقِيبُ",
+      "meaning": "Il Vigile."
+    },
+    {
+      "id": 44,
+      "name": "Al-Mujib",
+      "arabic": "الْمُجِيبُ",
+      "meaning": "Colui che risponde ed esaudisce le invocazioni."
+    },
+    {
+      "id": 45,
+      "name": "Al-Wasi'",
+      "arabic": "الْوَاسِعُ",
+      "meaning": "L'Immenso, Colui che tutto abbraccia."
+    },
+    {
+      "id": 46,
+      "name": "Al-Hakim",
+      "arabic": "الْحَكِيمُ",
+      "meaning": "Il Saggio."
+    },
+    {
+      "id": 47,
+      "name": "Al-Wadud",
+      "arabic": "الْوَدُودُ",
+      "meaning": "L'Amorevole."
+    },
+    {
+      "id": 48,
+      "name": "Al-Majid",
+      "arabic": "الْمَجِيدُ",
+      "meaning": "Il Glorioso."
+    },
+    {
+      "id": 49,
+      "name": "Al-Ba'ith",
+      "arabic": "الْبَاعِثُ",
+      "meaning": "Colui che resuscita."
+    },
+    {
+      "id": 50,
+      "name": "Ash-Shahid",
+      "arabic": "الشَّهِيدُ",
+      "meaning": "Il Testimone di ogni cosa."
+    },
+    {
+      "id": 51,
+      "name": "Al-Haqq",
+      "arabic": "الْحَقُّ",
+      "meaning": "La Verità, il Reale."
+    },
+    {
+      "id": 52,
+      "name": "Al-Wakil",
+      "arabic": "الْوَكِيلُ",
+      "meaning": "Il Garante, il miglior Amministratore degli affari."
+    },
+    {
+      "id": 53,
+      "name": "Al-Qawiyy",
+      "arabic": "الْقَوِيُّ",
+      "meaning": "Il Forte."
+    },
+    {
+      "id": 54,
+      "name": "Al-Matin",
+      "arabic": "الْمَتِينُ",
+      "meaning": "Il Saldo, l'Incrollabile."
+    },
+    {
+      "id": 55,
+      "name": "Al-Waliyy",
+      "arabic": "الْوَلِيُّ",
+      "meaning": "Il Protettore e Amico dei credenti."
+    },
+    {
+      "id": 56,
+      "name": "Al-Hamid",
+      "arabic": "الْحَمِيدُ",
+      "meaning": "Il Degno di Lode."
+    },
+    {
+      "id": 57,
+      "name": "Al-Muhsi",
+      "arabic": "الْمُحْصِي",
+      "meaning": "Colui che conta e conosce il numero di ogni cosa."
+    },
+    {
+      "id": 58,
+      "name": "Al-Mubdi'",
+      "arabic": "الْمُبْدِئُ",
+      "meaning": "L'Iniziatore, Colui che dà inizio alla creazione."
+    },
+    {
+      "id": 59,
+      "name": "Al-Mu'id",
+      "arabic": "الْمُعِيدُ",
+      "meaning": "Colui che rinnova e riporta in vita."
+    },
+    {
+      "id": 60,
+      "name": "Al-Muhyi",
+      "arabic": "الْمُحْيِي",
+      "meaning": "Colui che dà la vita."
+    },
+    {
+      "id": 61,
+      "name": "Al-Mumit",
+      "arabic": "الْمُمِيتُ",
+      "meaning": "Colui che toglie la vita."
+    },
+    {
+      "id": 62,
+      "name": "Al-Hayy",
+      "arabic": "الْحَيُّ",
+      "meaning": "Il Vivente."
+    },
+    {
+      "id": 63,
+      "name": "Al-Qayyum",
+      "arabic": "الْقَيُّومُ",
+      "meaning": "Colui che sussiste da Sé, Sostegno di ogni cosa."
+    },
+    {
+      "id": 64,
+      "name": "Al-Wajid",
+      "arabic": "الْوَاجِدُ",
+      "meaning": "Colui che trova, a cui nulla manca."
+    },
+    {
+      "id": 65,
+      "name": "Al-Majid",
+      "arabic": "الْمَاجِدُ",
+      "meaning": "Il Nobile, l'Illustre."
+    },
+    {
+      "id": 66,
+      "name": "Al-Wahid",
+      "arabic": "الْوَاحِدُ",
+      "meaning": "L'Unico."
+    },
+    {
+      "id": 67,
+      "name": "Al-Ahad",
+      "arabic": "الْأَحَدُ",
+      "meaning": "L'Uno, il Solo."
+    },
+    {
+      "id": 68,
+      "name": "As-Samad",
+      "arabic": "الصَّمَدُ",
+      "meaning": "Il Rifugio Eterno, che non ha bisogno di nessuno."
+    },
+    {
+      "id": 69,
+      "name": "Al-Qadir",
+      "arabic": "الْقَادِرُ",
+      "meaning": "L'Onnipotente."
+    },
+    {
+      "id": 70,
+      "name": "Al-Muqtadir",
+      "arabic": "الْمُقْتَدِرُ",
+      "meaning": "Colui che tutto determina, l'Onnipotente."
+    },
+    {
+      "id": 71,
+      "name": "Al-Muqaddim",
+      "arabic": "الْمُقَدِّمُ",
+      "meaning": "Colui che anticipa e fa avanzare."
+    },
+    {
+      "id": 72,
+      "name": "Al-Mu'akhkhir",
+      "arabic": "الْمُؤَخِّرُ",
+      "meaning": "Colui che posticipa e fa retrocedere."
+    },
+    {
+      "id": 73,
+      "name": "Al-Awwal",
+      "arabic": "الْأَوَّلُ",
+      "meaning": "Il Primo, senza inizio."
+    },
+    {
+      "id": 74,
+      "name": "Al-Akhir",
+      "arabic": "الْآخِرُ",
+      "meaning": "L'Ultimo, senza fine."
+    },
+    {
+      "id": 75,
+      "name": "Az-Zahir",
+      "arabic": "الظَّاهِرُ",
+      "meaning": "Il Manifesto."
+    },
+    {
+      "id": 76,
+      "name": "Al-Batin",
+      "arabic": "الْبَاطِنُ",
+      "meaning": "Il Nascosto."
+    },
+    {
+      "id": 77,
+      "name": "Al-Wali",
+      "arabic": "الْوَالِي",
+      "meaning": "Il Governatore di tutte le cose."
+    },
+    {
+      "id": 78,
+      "name": "Al-Muta'ali",
+      "arabic": "الْمُتَعَالِي",
+      "meaning": "Il Sublime."
+    },
+    {
+      "id": 79,
+      "name": "Al-Barr",
+      "arabic": "الْبَرُّ",
+      "meaning": "La Fonte di ogni Bontà."
+    },
+    {
+      "id": 80,
+      "name": "At-Tawwab",
+      "arabic": "التَّوَّابُ",
+      "meaning": "Colui che accoglie sempre il pentimento."
+    },
+    {
+      "id": 81,
+      "name": "Al-Muntaqim",
+      "arabic": "الْمُنْتَقِمُ",
+      "meaning": "Il Vendicatore delle ingiustizie."
+    },
+    {
+      "id": 82,
+      "name": "Al-Afuww",
+      "arabic": "الْعَفُوُّ",
+      "meaning": "L'Indulgente, Colui che cancella i peccati."
+    },
+    {
+      "id": 83,
+      "name": "Ar-Ra'uf",
+      "arabic": "الرَّءُوفُ",
+      "meaning": "Il Benevolo, il Compassionevole."
+    },
+    {
+      "id": 84,
+      "name": "Malik al-Mulk",
+      "arabic": "مَالِكُ الْمُلْكِ",
+      "meaning": "Il Possessore di ogni Sovranità."
+    },
+    {
+      "id": 85,
+      "name": "Dhul-Jalali wal-Ikram",
+      "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+      "meaning": "Il Signore della Maestà e dell'Onore."
+    },
+    {
+      "id": 86,
+      "name": "Al-Muqsit",
+      "arabic": "الْمُقْسِطُ",
+      "meaning": "L'Equo."
+    },
+    {
+      "id": 87,
+      "name": "Al-Jami'",
+      "arabic": "الْجَامِعُ",
+      "meaning": "Colui che riunisce."
+    },
+    {
+      "id": 88,
+      "name": "Al-Ghaniyy",
+      "arabic": "الْغَنِيُّ",
+      "meaning": "L'Autosufficiente, il Ricco."
+    },
+    {
+      "id": 89,
+      "name": "Al-Mughni",
+      "arabic": "الْمُغْنِي",
+      "meaning": "Colui che arricchisce."
+    },
+    {
+      "id": 90,
+      "name": "Al-Mani'",
+      "arabic": "الْمَانِعُ",
+      "meaning": "Colui che impedisce il male."
+    },
+    {
+      "id": 91,
+      "name": "Ad-Darr",
+      "arabic": "الضَّارُّ",
+      "meaning": "Colui che permette al danno di colpire chi vuole."
+    },
+    {
+      "id": 92,
+      "name": "An-Nafi'",
+      "arabic": "النَّافِعُ",
+      "meaning": "Il Propizio, Colui che concede beneficio."
+    },
+    {
+      "id": 93,
+      "name": "An-Nur",
+      "arabic": "النُّورُ",
+      "meaning": "La Luce."
+    },
+    {
+      "id": 94,
+      "name": "Al-Hadi",
+      "arabic": "الْهَادِي",
+      "meaning": "La Guida."
+    },
+    {
+      "id": 95,
+      "name": "Al-Badi'",
+      "arabic": "الْبَدِيعُ",
+      "meaning": "L'Incomparabile Creatore."
+    },
+    {
+      "id": 96,
+      "name": "Al-Baqi",
+      "arabic": "الْبَاقِي",
+      "meaning": "L'Eterno."
+    },
+    {
+      "id": 97,
+      "name": "Al-Warith",
+      "arabic": "الْوَارِثُ",
+      "meaning": "L'Erede di ogni cosa."
+    },
+    {
+      "id": 98,
+      "name": "Ar-Rashid",
+      "arabic": "الرَّشِيدُ",
+      "meaning": "La Guida alla Retta Via."
+    },
+    {
+      "id": 99,
+      "name": "As-Sabur",
+      "arabic": "الصَّبُورُ",
+      "meaning": "Il Paziente."
+    }
   ]
 }

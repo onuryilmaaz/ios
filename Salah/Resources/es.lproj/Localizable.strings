@@ -1,0 +1,7 @@
+/* Siri ve Kısayollar başlıkları (Salah/App/SiriShortcuts.swift). Sistem bunları uygulamayı açmadan okur. */
+"intent.nextPrayer.title" = "Próxima oración";
+"intent.nextPrayer.description" = "Indica la próxima oración y cuánto falta.";
+"intent.markPrayer.title" = "Recé";
+"intent.markPrayer.description" = "Marca la oración actual como realizada.";
+"shortcut.nextPrayer" = "Próxima oración";
+"shortcut.markPrayer" = "Recé";

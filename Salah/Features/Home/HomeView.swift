@@ -199,7 +199,7 @@ struct HomeView: View {
       ForbiddenTimeBanner(times: model.today?.times)
       CumaCard(onOpen: AppControlStore.shared.isOn("hutbe") ? { push(.hutbe) } : nil)
       RamadanCard(today: model.today, onImsakiye: { push(.imsakiye) }, onHatim: { push(.hatimPlan) }, onJournal: { push(.fastJournal) })
-      HolidayGreetingCard()
+      HolidayGreetingCard(onAll: AppControlStore.shared.isOn("greetings") ? { push(.greetings) } : nil)
 
       if NotificationNavigation.shared.inspiration != nil, !layout.sections.contains(where: { $0.key == .dailyInspiration && $0.visible }) {
         DailyInspirationCard()

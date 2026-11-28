@@ -60,6 +60,7 @@ targets:
     sources:
       - path: PrayerLock/Shield
       - path: PrayerLock/Shared
+      - path: Shared/mobile/widget-src/CustomPalette.swift
     entitlements:
       path: PrayerLock/Shield/PrayerLockShield.entitlements
       properties:

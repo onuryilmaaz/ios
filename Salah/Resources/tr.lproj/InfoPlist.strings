@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "Namaz vakitlerini ve kıble yönünü gösterebilmek için konumunuz kullanılır.";
 "NSAlarmKitUsageDescription" = "Namaz, teheccüd ve sahur alarmlarınızı sessiz modda da çalabilmek için alarm izni gerekir.";
 "NSCameraUsageDescription" = "Kıble yönünü kamera görüntüsü üzerinde gösterebilmek için kamera kullanılır.";
+"NSPhotoLibraryAddUsageDescription" = "Duvar kağıdı ve kartları fotoğraflarınıza kaydedebilmek için fotoğraf arşivine ekleme izni gerekir.";

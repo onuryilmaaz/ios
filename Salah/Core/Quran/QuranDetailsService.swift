@@ -56,6 +56,10 @@ extension QuranService {
     #if DEBUG
     if DebugLaunch.quran != nil { return QuranPreview.verses(surahID: id) }
     #endif
+    #if DEBUG
+    // Yalnız Debug ekran görüntüsü (Kıssalar): izole oturumda açık quran.com verisi (gerçek metin, uydurma yok).
+    if DebugLaunch.openQuranFallback, DebugLaunch.isIsolated { return await debugOpenSurah(id) }
+    #endif
     let key = "QURAN_SURAH_CACHE_v2_\(id)"
     if let cached = LocalStore.decode([Verse].self, key), !cached.isEmpty {
       return await localize(surahId: id, cached)
@@ -68,6 +72,37 @@ extension QuranService {
     LocalStore.encode(response.data.verses, for: key)
     return await localize(surahId: id, response.data.verses)
   }
+
+  #if DEBUG
+  private static func debugOpenSurah(_ id: Int) async -> [Verse] {
+    struct R: Decodable {
+      struct V: Decodable {
+        struct T: Decodable { let text: String }
+        let verse_number: Int
+        let text_imlaei: String
+        let page_number: Int?
+        let translations: [T]?
+      }
+      struct P: Decodable { let next_page: Int? }
+      let verses: [V]
+      let pagination: P?
+    }
+    var out: [Verse] = []
+    var page: Int? = 1
+    while let current = page, current < 12 {
+      guard let url = URL(string: "https://api.quran.com/api/v4/verses/by_chapter/\(id)?fields=text_imlaei&translations=77&per_page=50&page=\(current)"),
+        let (data, _) = try? await URLSession.shared.data(from: url), let r = try? JSONDecoder().decode(R.self, from: data)
+      else { break }
+      for v in r.verses {
+        let text = (v.translations?.first?.text ?? "").replacingOccurrences(of: #"<[^>]+>"#, with: "", options: .regularExpression).replacingOccurrences(of: "&quot;", with: "\"").replacingOccurrences(of: "&amp;", with: "&")
+        out.append(Verse(id: id * 1000 + v.verse_number, surah_id: id, verse_number: v.verse_number, verse_simplified: v.text_imlaei, page_number: v.page_number,
+                         juz_number: nil, transcription: nil, translation: .init(id: nil, text: text, author: nil)))
+      }
+      page = r.pagination?.next_page
+    }
+    return out
+  }
+  #endif
 
   static func tajweed(_ id: Int) async -> [Int: [TajweedSegment]] {
     let key = "@salah_tajweed_\(id)"

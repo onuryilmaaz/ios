@@ -3,6 +3,14 @@ import SwiftUI
 enum QuranRoute: Hashable {
   case surah(Int, Int?)
   case hifz
+  case topics
+  case topic(String)
+  case topicsSaved
+  case wallpaper(TopicRef?)
+  case greetings
+  case stories
+  case story(String)
+  case dailyReading
 }
 @Observable
 final class QuranNavigation {
@@ -87,9 +95,17 @@ struct SurahBrowserView: View {
         switch route {
         case .surah(let id, let focus): SurahDetailView(surahID: id, focusVerse: focus)
         case .hifz: HifzView()
+        case .topics: ModuleGated("topics") { TopicsView() }
+        case .topic(let id): ModuleGated("topics") { TopicDetailView(topicID: id) }
+        case .topicsSaved: ModuleGated("topics") { TopicDetailView(topicID: nil) }
+        case .wallpaper(let ref): ModuleGated("wallpapers") { WallpaperView(seed: ref) }
+        case .greetings: ModuleGated("greetings") { GreetingsView() }
+        case .stories: ModuleGated("stories") { StoriesView() }
+        case .story(let id): ModuleGated("stories") { StoryDetailView(storyID: id) }
+        case .dailyReading: ModuleGated("daily_reading") { DailyReadingView() }
         }
       }
-      .task { await load(); openDebug() }
+      .task { await load(); openDebug(); openDebugTopics(); openDebugB(); openDebugC() }
       .sheet(isPresented: $downloadsOpen) {
         QuranDownloadsView().environment(\.tokens, tokens).presentationDetents([.medium, .large]).presentationDragIndicator(.visible)
       }
@@ -113,6 +129,17 @@ struct SurahBrowserView: View {
   private var continueCards: some View {
     let store = QuranReadingStore.shared
     return VStack(spacing: 10.5) {
+      // Panelden kapatılan kutucuk gösterilmez; hepsi kapalıysa satır da yok.
+      let discover: [QuranDiscoverRow.Item] = ([
+        ("daily_reading", .init(id: "daily", icon: "today-outline", title: t("discover.daily"), route: .dailyReading)),
+        ("topics", .init(id: "topics", icon: "grid-outline", title: t("discover.topics"), route: .topics)),
+        ("stories", .init(id: "stories", icon: "library-outline", title: t("discover.stories"), route: .stories)),
+        ("wallpapers", .init(id: "wallpaper", icon: "image-outline", title: t("discover.wallpapers"), route: .wallpaper(nil))),
+        ("greetings", .init(id: "greetings", icon: "gift-outline", title: t("discover.greetings"), route: .greetings)),
+      ] as [(String, QuranDiscoverRow.Item)]).filter { AppControlStore.shared.isOn($0.0) }.map(\.1)
+      if !discover.isEmpty {
+        QuranDiscoverRow(items: discover) { nav.path.append($0) }
+      }
       Button {
         Haptics.impact(.light)
         nav.mushaf = .init(id: store.mushafMark?.page ?? store.mushafPage ?? 1)
@@ -160,6 +187,38 @@ struct SurahBrowserView: View {
     if ["detail", "flow", "verse", "share"].contains(mode) { nav.path = [.surah(1, nil)] }
     if mode == "mushaf" || mode == "mushafLive" || mode == "fold" { nav.mushaf = .init(id: DebugLaunch.mushafPage ?? 1) }
     if mode == "hifz" { nav.path = [.hifz] }
+  }
+  /// -SalahDebugTopics grid|detail|saved (Debug): Konular ekranını doğrudan açar.
+  private func openDebugTopics() {
+    guard !debugOpened, let mode = DebugLaunch.topics else { return }
+    debugOpened = true
+    switch mode {
+    case "detail": nav.path = [.topics, .topic(DebugLaunch.topicID ?? "sabir")]
+    case "saved": nav.path = [.topics, .topicsSaved]
+    default: nav.path = [.topics]
+    }
+  }
+  /// -SalahDebugStories list|detail [-SalahDebugStory yusuf] [-SalahDebugStorySection 2] ve -SalahDebugDaily 1 (Debug).
+  private func openDebugC() {
+    guard !debugOpened else { return }
+    if let mode = DebugLaunch.stories {
+      debugOpened = true
+      nav.path = mode == "detail" ? [.stories, .story(DebugLaunch.storyID ?? "yusuf")] : [.stories]
+    } else if DebugLaunch.daily {
+      debugOpened = true
+      nav.path = [.dailyReading]
+    }
+  }
+  /// -SalahDebugWallpaper verse|dua|esma [-SalahDebugDesign orman|gece|kagit|sade] ve -SalahDebugGreetings list|edit [-SalahDebugGreetingKind kandil] (Debug).
+  private func openDebugB() {
+    guard !debugOpened else { return }
+    if DebugLaunch.wallpaper != nil {
+      debugOpened = true
+      nav.path = [.wallpaper(DebugLaunch.wallpaper == "verse" ? TopicCatalog.all.first?.verses.first : nil)]
+    } else if DebugLaunch.greetings != nil {
+      debugOpened = true
+      nav.path = [.greetings]
+    }
   }
 }
 

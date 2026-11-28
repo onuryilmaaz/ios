@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import SwiftUI
+import UIKit
 
 /// Uygulama rengi: kullanıcı Ayarlar'dan seçer; Ramazan günlerinde seçimden bağımsız olarak saate göre
 /// lacivert, mor ve bordo arasında kendisi geçer. `Accent` ve `Forest` buradan okur, böylece bütün ekranlar
@@ -61,6 +62,7 @@ final class AppColorStore {
   func start() {
     WidgetBridge.setCustomColor(customHex)
     WidgetBridge.setAppColor(choice.rawValue)
+    WidgetBridge.setAppIcon(UIApplication.shared.alternateIconName)
     refresh()
     guard timer == nil else { return }
     timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in

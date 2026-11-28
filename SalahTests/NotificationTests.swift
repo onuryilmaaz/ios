@@ -220,6 +220,42 @@ struct NotificationPlanTests {
     #expect(!build(verses: [], hadiths: []).contains { $0.kind == .inspiration })
   }
 
+  @Test func topicsKeepOnlySelectedVersesAndNoHadith() {
+    var p = F.enabled
+    p.inspirationTopics = ["sabir"]
+    let short = (0..<4).map { NotificationInspiration(id: "t\($0)", contentType: "ayet", subtitle: "s", body: "kisa \($0)") }
+    let plan = build(p, verses: short, hadiths: F.hadiths).filter { $0.kind == .inspiration }
+    #expect(!plan.isEmpty)
+    #expect(plan.allSatisfy { $0.contentType == "ayet" && $0.body.hasPrefix("kisa") })
+  }
+
+  @Test func frequencySlots() {
+    var p = F.enabled
+    let now = F.date(19, 6)
+    func hours(_ f: InspirationFrequency) -> [Int] {
+      p.inspirationFrequency = f
+      return build(p, now: now).filter { $0.kind == .inspiration }.map { F.calendar.component(.hour, from: $0.date) }
+    }
+    #expect(hours(.daily).allSatisfy { $0 == 10 } && !hours(.daily).isEmpty)
+    #expect(Set(hours(.twiceDaily)) == [10, 20])
+    #expect(hours(.every4h).count < hours(.every2h).count)
+    for f in InspirationFrequency.allCases {
+      p.inspirationFrequency = f
+      #expect(build(p, now: now).count <= NotificationPlan.maxPending)
+    }
+    p.inspirationFrequency = .twiceDaily
+    let slots = NotificationPlan.inspirationSlots(now: F.date(19, 11), calendar: F.calendar, frequency: .twiceDaily)
+    #expect(slots.first == F.date(19, 20))
+  }
+
+  @Test func topicPreferencesRoundTrip() {
+    let entries = ["INSPIRATION_TOPICS": #"["sabir","yok","sabir","umut"]"#, "INSPIRATION_FREQUENCY": "daily"]
+    let p = NotificationPreferences.read(get: { entries[$0] })
+    #expect(p.inspirationFrequency == .daily)
+    #expect(p.inspirationTopics == TopicCatalog.valid(["sabir", "umut"]))
+    #expect(NotificationPreferences.read(get: { _ in nil }).inspirationTopics.isEmpty)
+  }
+
   @Test func fridayTimesMatchRN() {
     let friday = build(now: F.date(22, 12)).filter { $0.kind == .friday }
     #expect(friday.map(\.date) == [F.date(22, 20), F.date(23, 9)])

@@ -17,6 +17,7 @@ enum WidgetSync {
     await processRamadanMarks()
     ramadanChanged()
     await syncVerses()
+    await syncInspirationDay()
   }
 
   /// Oruç işareti ya da Ramazan modu değişti.
@@ -34,6 +35,7 @@ enum WidgetSync {
   static func languageChanged() async {
     WidgetBridge.setLanguage(Localizer.shared.language.rawValue)
     await syncVerses()
+    await syncInspirationDay()
   }
 
   /// Vakit widget'ı ve Live Activity. Kılınan namaz ya da vakit geçişi pencereyi değiştirir;
@@ -100,9 +102,44 @@ enum WidgetSync {
     versesTask = nil
   }
 
+  // MARK: - Günün içeriği (konu seçiliyse en çok 6 öğe, widget 4 saatlik dilimlerde gezer)
+
+  private struct StoredDay: Codable {
+    var date, lang, topics: String
+    var items: [Verse]
+    struct Verse: Codable { var text, source, arabic: String }
+  }
+
+  private static let dayKey = "@salah_widget_day_v1"
+
+  /// Konu seçili değilse anahtar silinir ve widget eski tek öğe (ya da günün ayeti) biçimine döner.
+  static func syncInspirationDay() async {
+    guard !DebugLaunch.isIsolated else { return }
+    let topics = NotificationStore.shared.preferences.inspirationTopics
+    let today = localDateString()
+    guard !topics.isEmpty else { return WidgetBridge.updateInspirationDay([], date: today) }
+    let lang = Localizer.shared.language.rawValue, signature = topics.sorted().joined(separator: ",")
+    var stored = LocalStore.decode(StoredDay.self, dayKey)
+    if stored?.date != today || stored?.lang != lang || stored?.topics != signature {
+      var items: [StoredDay.Verse] = []
+      for ref in TopicPicker.day(topics, date: today) {
+        guard let v = await TopicVerses.load(ref), !v.text.isEmpty else { continue }
+        items.append(.init(text: v.text, source: v.source, arabic: v.arabic))
+      }
+      // Ağ yok: eldekini koru; bugüne ait olmayan içerik widget'ta zaten yok sayılır.
+      guard !items.isEmpty else { return }
+      stored = StoredDay(date: today, lang: lang, topics: signature, items: items)
+      LocalStore.encode(stored, for: dayKey)
+    }
+    guard let stored else { return }
+    WidgetBridge.updateInspirationDay(stored.items.map { ["text": $0.text, "source": $0.source, "type": "ayet", "arabic": $0.arabic] }, date: today)
+  }
+
   private static func runVerses(force: Bool) async {
     guard !DebugLaunch.isIsolated else { return }
-    let lang = Localizer.shared.language.rawValue
+    let topics = NotificationStore.shared.preferences.inspirationTopics
+    // Konu seçimi değişince önceden yazılmış günlük ayetler atılır (dil alanına konu imzası eklenir).
+    let lang = Localizer.shared.language.rawValue + (topics.isEmpty ? "" : "|" + topics.sorted().joined(separator: ","))
     let today = localDateString()
     let stored = LocalStore.decode(StoredVerses.self, versesKey)
     var items = !force && stored?.lang == lang ? (stored?.items ?? []).filter { $0.date >= today } : []
@@ -128,6 +165,15 @@ enum WidgetSync {
   }
 
   private static func pickVerse(_ date: String) async -> StoredVerses.Verse? {
+    let topics = NotificationStore.shared.preferences.inspirationTopics
+    if !topics.isEmpty {
+      // Konu seçiliyse yalnız o konuların ayetleri (günlük kararlı sıra).
+      for ref in TopicPicker.shuffled(TopicCatalog.refs(for: topics), seed: date) {
+        guard let v = await TopicVerses.load(ref), !v.text.isEmpty else { continue }
+        return .init(date: date, text: v.text, source: v.source, arabic: v.arabic)
+      }
+      return nil
+    }
     var fallback: StoredVerses.Verse?
     for _ in 0..<3 {
       guard let r = await QuranService.randomVerse(), !r.verse.translation.text.isEmpty else { continue }

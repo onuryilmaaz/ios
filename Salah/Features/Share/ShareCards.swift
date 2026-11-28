@@ -244,10 +244,13 @@ struct HolidayGreetingCard: View {
   @State private var today: ReligiousDay?
   @State private var kind: GreetingKind?
   @State private var open = false
+  /// "Tümü": Tebrik kartları ekranını açar (verilmezse bağlantı görünmez).
+  var onAll: (() -> Void)?
 
   var body: some View {
     Group {
       if let today, let kind {
+        VStack(alignment: .trailing, spacing: 0) {
         Button {
           Haptics.impact(.light)
           open = true
@@ -269,8 +272,6 @@ struct HolidayGreetingCard: View {
           }
           .padding(17.5)
           .background(tokens.isDark ? Accent.s900 : Accent.s800, in: .rect(cornerRadius: 21))
-          .padding(.horizontal, 14)
-          .padding(.bottom, 10.5)
         }
         .buttonStyle(PressableStyle(pressedOpacity: 0.8))
         .accessibilityLabel("\(today.name). \(t("shareCards.greeting.cta"))")
@@ -278,6 +279,17 @@ struct HolidayGreetingCard: View {
           GreetingShareSheet(kind: kind, dayName: today.name, dateText: GreetingKind.dateText(today.date))
             .environment(\.tokens, tokens)
         }
+        if let onAll {
+          Button { Haptics.impact(.light); onAll() } label: {
+            HStack(spacing: 3.5) {
+              Text(t("greetings.all")).font(.system(size: 13, weight: .semibold))
+              Ionicon(dirIcon("chevron-forward"), size: 12, color: tokens.accent)
+            }.foregroundStyle(tokens.accent).padding(.vertical, 7).padding(.horizontal, 3.5)
+          }.buttonStyle(PressableStyle())
+        }
+        }
+        .padding(.horizontal, 14)
+        .padding(.bottom, onAll == nil ? 10.5 : 3.5)
       }
     }
     .task(id: Localizer.shared.language) {

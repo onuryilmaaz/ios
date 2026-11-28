@@ -10,6 +10,8 @@ enum HomeRoute: Hashable {
   case calendar
   case history
   case esma
+  case dailyReading
+  case greetings
   case alarms
   case hutbe
   case profile
@@ -55,6 +57,8 @@ enum HomeRoute: Hashable {
     case .kaza: "kaza"
     case .dhikr: "dhikr"
     case .circles, .circle: "streak_circles"
+    case .dailyReading: "daily_reading"
+    case .greetings: "greetings"
     #if PRAYER_LOCK
     case .prayerLock: "prayer_lock"
     #endif
@@ -90,6 +94,8 @@ enum HomeRoute: Hashable {
     case .dua: DuaView()
     case .duaJournal: DuaJournalView()
     case .esma: EsmaulHusnaView()
+    case .dailyReading: DailyReadingView(embedded: true)
+    case .greetings: GreetingsView()
     case .hutbe: HutbeView()
     case .alarms: AlarmsView()
     case .profile: ProfileView()

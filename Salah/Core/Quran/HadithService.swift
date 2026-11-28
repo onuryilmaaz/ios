@@ -55,6 +55,30 @@ enum HadithService {
     )
   }
 
+  /// Günün hadisi havuzu: veritabanından günlük okumaya uygun seçilmiş hadis kimlikleri (fıkhi hüküm, ceza, savaş vb. hariç).
+  /// Kaynak: Resources/daily-hadiths.json (Android aynı dosyayı assets/data'ya kopyalar).
+  private static let dailyIDs: [Int] = {
+    struct File: Decodable { let ids: [Int] }
+    guard let url = Bundle.main.url(forResource: "daily-hadiths", withExtension: "json"),
+      let data = try? Data(contentsOf: url), let file = try? JSONDecoder().decode(File.self, from: data) else { return [] }
+    return file.ids
+  }()
+
+  /// O güne sabit hadis: `index` (tarih+dil tohumundan), seçilmiş havuzda sıra numarası olarak kullanılır.
+  static func daily(index: (Int) -> Int) async -> Result? {
+    guard let db = open(), !dailyIDs.isEmpty else { return nil }
+    var stmt: OpaquePointer?
+    guard sqlite3_prepare_v2(db, "SELECT book, hadith_number, text FROM hadiths WHERE id = ?", -1, &stmt, nil) == SQLITE_OK
+    else { return nil }
+    defer { sqlite3_finalize(stmt) }
+    sqlite3_bind_int(stmt, 1, Int32(dailyIDs[index(dailyIDs.count) % dailyIDs.count]))
+    guard sqlite3_step(stmt) == SQLITE_ROW, let bookC = sqlite3_column_text(stmt, 0), let textC = sqlite3_column_text(stmt, 2) else { return nil }
+    let rowBook = String(cString: bookC)
+    let number = Int(sqlite3_column_int(stmt, 1))
+    let translated = await translatedText(book: rowBook, number: number)
+    return Result(number: number, text: translated ?? cleanNarrationText(String(cString: textC)), bookName: bookDisplayName(rowBook))
+  }
+
   private static func translatedText(book: String, number: Int) async -> String? {
     let prefix: String
     switch Localizer.shared.language {
@@ -65,7 +89,8 @@ enum HadithService {
     case .ur: prefix = "urd"
     case .ru: prefix = "rus"
     // Hadis kaynağında Almanca baskı yok: İngilizcesi.
-    case .en, .de: prefix = "eng"
+    case .bn: prefix = "ben"
+    case .en, .de, .es, .it, .ms, .hi, .th: prefix = "eng"
     }
     if let text = await editionText(prefix: prefix, book: book, number: number) { return text }
     // Bazı kitapların o dilde baskısı yok (ör. Fransızca/Rusça Tirmizî): İngilizcesi.
@@ -101,6 +126,12 @@ enum HadithService {
       .fr: ["bukhari": "Sahih al-Boukhari", "muslim": "Sahih Mouslim", "abudawud": "Sunan Abi Dawoud", "tirmidhi": "Jami' at-Tirmidhi"],
       .ur: ["bukhari": "صحیح بخاری", "muslim": "صحیح مسلم", "abudawud": "سنن ابو داؤد", "tirmidhi": "جامع ترمذی"],
       .ru: ["bukhari": "Сахих аль-Бухари", "muslim": "Сахих Муслим", "abudawud": "Сунан Абу Дауда", "tirmidhi": "Джами ат-Тирмизи"],
+      .es: ["bukhari": "Sahih al-Bujari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Yami at-Tirmidhi"],
+      .it: ["bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Jami at-Tirmidhi"],
+      .ms: ["bukhari": "Sahih al-Bukhari", "muslim": "Sahih Muslim", "abudawud": "Sunan Abi Dawud", "tirmidhi": "Jami at-Tirmidhi"],
+      .bn: ["bukhari": "সহীহ বুখারী", "muslim": "সহীহ মুসলিম", "abudawud": "সুনানে আবু দাউদ", "tirmidhi": "জামে তিরমিযী"],
+      .hi: ["bukhari": "सहीह अल-बुख़ारी", "muslim": "सहीह मुस्लिम", "abudawud": "सुनन अबू दाऊद", "tirmidhi": "जामे अत-तिर्मिज़ी"],
+      .th: ["bukhari": "เศาะฮีหฺอัล-บุคอรี", "muslim": "เศาะฮีหฺมุสลิม", "abudawud": "สุนันอบีดาวูด", "tirmidhi": "ญามิอฺอัต-ติรมิซี"],
     ]
     return names[Localizer.shared.language]?[book] ?? names[.en]?[book] ?? book
   }

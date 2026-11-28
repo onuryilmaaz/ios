@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "يُستخدم موقعك لعرض مواقيت الصلاة واتجاه القبلة.";
 "NSAlarmKitUsageDescription" = "يلزم إذن المنبّهات لكي تعمل منبّهات الصلاة والتهجد والسحور حتى في الوضع الصامت.";
 "NSCameraUsageDescription" = "تُستخدم الكاميرا لعرض اتجاه القبلة فوق صورة الكاميرا.";
+"NSPhotoLibraryAddUsageDescription" = "يلزم إذن الإضافة إلى مكتبة الصور لحفظ الخلفيات والبطاقات في الصور.";

@@ -167,9 +167,11 @@ enum NotificationPlan {
 
     if p.inspiration {
       let available = max(0, budget - plan.count - 8)
-      let slots = Array(inspirationSlots(now: now, calendar: calendar).filter { $0 > cutoff }.prefix(available))
-      let poolV = unique(verses.filter { ($0.body as NSString).length >= 60 })
-      let poolH = unique(hadiths.filter { !$0.body.isEmpty })
+      let slots = Array(inspirationSlots(now: now, calendar: calendar, frequency: p.inspirationFrequency).filter { $0 > cutoff }.prefix(available))
+      // Konu seçiliyse yalnız o konuların ayetleri (kısa ayetler de), hadis karışmaz.
+      let topical = !p.inspirationTopics.isEmpty
+      let poolV = unique(verses.filter { topical ? !$0.body.isEmpty : ($0.body as NSString).length >= 60 })
+      let poolH = topical ? [] : unique(hadiths.filter { !$0.body.isEmpty })
       var vi = 0, hi = 0
       for (index, date) in slots.enumerated() {
         let useVerse = (index % 2 == 0 && !poolV.isEmpty) || poolH.isEmpty
@@ -242,8 +244,20 @@ enum NotificationPlan {
     return target
   }
 
-  static func inspirationSlots(now: Date, calendar: Calendar = .current) -> [Date] {
-    stride(from: 2, through: 72, by: 2).compactMap { hour in
+  static func inspirationSlots(now: Date, calendar: Calendar = .current, frequency: InspirationFrequency = .every2h) -> [Date] {
+    switch frequency {
+    case .twiceDaily, .daily:
+      // Sabit saatler: günde 1 ise 10:00, günde 2 ise 10:00 ve 20:00; önümüzdeki 7 gün.
+      let hours = frequency == .daily ? [10] : [10, 20]
+      let start = calendar.startOfDay(for: now)
+      return (0..<7).flatMap { delta -> [Date] in
+        guard let day = calendar.date(byAdding: .day, value: delta, to: start) else { return [] }
+        return hours.compactMap { calendar.date(bySettingHour: $0, minute: 0, second: 0, of: day) }
+      }.filter { $0 > now }
+    case .every2h, .every4h: break
+    }
+    let step = frequency == .every4h ? 4 : 2
+    return stride(from: step, through: 72, by: step).compactMap { hour in
       let future = now.addingTimeInterval(Double(hour) * 3600)
       guard let date = calendar.dateInterval(of: .hour, for: future)?.start else { return nil }
       let h = calendar.component(.hour, from: date)

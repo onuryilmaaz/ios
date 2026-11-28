@@ -1129,9 +1129,16 @@
       "title": "Kandil & Bayram Bildirimleri"
     },
     "inspiration": {
-      "info": "Gün boyunca yaklaşık 2 saatte bir ayet veya hadis gönderilir. Gece 23:00-07:00 arası rahatsız edilmezsin.",
+      "info": "Gün içinde seçtiğin sıklıkta ayet veya hadis gönderilir. Gece 23:00-07:00 arası rahatsız edilmezsin.",
       "section": "Ayet & Hadis Bildirimleri",
-      "sub": "Gün boyunca manevi hatırlatmalar al"
+      "sub": "Gün boyunca manevi hatırlatmalar al",
+      "topics": "Konular",
+      "topicsSub": "Seçersen yalnız bu konulardan ayet gelir. Hiçbiri seçili değilse ayet ve hadis karışık gelir.",
+      "frequency": "Sıklık",
+      "freqH2": "2 saatte bir",
+      "freqH4": "4 saatte bir",
+      "freqTwice": "Günde 2 (10:00, 20:00)",
+      "freqOnce": "Günde 1 (10:00)"
     },
     "language": {
       "restartMessage": "Düzenin yeni dile göre değişmesi için uygulamayı kapatıp yeniden aç.",
@@ -1251,6 +1258,24 @@
       "hicriYil": "Hicri yeni yılınız mübarek olsun",
       "asure": "Aşure gününüz mübarek olsun",
       "cuma": "Hayırlı Cumalar",
+      "kandil2": "Kandil gecenizde dualarınız kabul olsun",
+      "kandil3": "Rabbim bu mübarek geceyi hayırlara vesile kılsın",
+      "kadir2": "Kadir Gecesi'nde dualarınız kabul olsun",
+      "kadir3": "Bin aydan hayırlı bu gece rahmete vesile olsun",
+      "bayram2": "Bayramınız barış ve huzur getirsin",
+      "bayram3": "Sevdiklerinizle birlikte kutlu bir bayram dileriz",
+      "arife2": "Arife gününüz hayırlara vesile olsun",
+      "arife3": "Arife gününüz mübarek, dualarınız kabul olsun",
+      "ramazan2": "Ramazan'ınız rahmet ve bereket getirsin",
+      "ramazan3": "Oruçlarınız ve dualarınız kabul olsun",
+      "ucAylar2": "Üç aylar rahmet ve mağfirete vesile olsun",
+      "ucAylar3": "Rabbim bu mübarek ayları hayırla geçirmeyi nasip etsin",
+      "hicriYil2": "Yeni yıl hayır, huzur ve bereket getirsin",
+      "hicriYil3": "Hicri yılbaşınız kutlu olsun",
+      "asure2": "Aşure gününüz hayırlara vesile olsun",
+      "asure3": "Aşure gününüz bereket ve paylaşma getirsin",
+      "cuma2": "Cumanız mübarek olsun",
+      "cuma3": "Cuma gününde dualarınız kabul olsun",
       "prayer": "Dualarınız kabul olsun.",
       "cta": "Tebrik kartı paylaş",
       "cumaA11y": "Cuma tebrik kartı paylaş"
@@ -2119,5 +2144,122 @@
     "deleteMessage": "Bu işlem geri alınamaz.",
     "private": "Dua defterin yalnız bu cihazda tutulur, sunucuya gönderilmez.",
     "notifTitle": "Dua vakti"
+  },
+  "wallpaper": {
+    "title": "Duvar kağıdı",
+    "save": "Kaydet",
+    "saved": "Fotoğraflara kaydedildi",
+    "failed": "Duvar kağıdı oluşturulamadı",
+    "denied": "Fotoğraflara erişim yok",
+    "deniedHint": "Kaydedebilmek için Ayarlar'dan fotoğraflara ekleme iznini aç.",
+    "empty": "Gösterilecek içerik yok",
+    "source": {
+      "verse": "Ayet",
+      "dua": "Dua",
+      "esma": "Esma"
+    },
+    "design": {
+      "title": "Tasarım",
+      "orman": "Orman",
+      "gece": "Gece",
+      "kagit": "Kâğıt",
+      "sade": "Sade"
+    }
+  },
+  "greetings": {
+    "title": "Tebrik kartları",
+    "today": "Bugün",
+    "all": "Tümü",
+    "cuma": "Cuma",
+    "message": "Mesaj",
+    "classic": "Klasik"
+  },
+  "discover": {
+    "title": "Keşfet",
+    "topics": "Konular",
+    "wallpapers": "Duvar kağıtları",
+    "greetings": "Tebrik kartları",
+    "stories": "Kıssalar",
+    "daily": "Günün okuması"
+  },
+  "topics": {
+    "title": "Konular",
+    "count": "{{count}} ayet",
+    "saved": "Kaydettiklerim",
+    "savedEmpty": "Henüz kaydettiğin ayet yok",
+    "savedEmptyHint": "Ayet kartındaki yer imi simgesine dokunarak kaydedebilirsin.",
+    "save": "Kaydet",
+    "unsave": "Kaydedilenlerden çıkar",
+    "openSurah": "Sureyi aç",
+    "goToSurah": "Sureye git",
+    "more": "Diğer",
+    "wallpaper": "Duvar kağıdı yap",
+    "openMushaf": "Mushaf'ta aç",
+    "loadFailed": "Ayet yüklenemedi",
+    "emptyTopic": "Bu konuda ayet yok",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Sabır",
+      "sub": "Zorluklarda dayanma ve metanet"
+    },
+    "sukur": {
+      "title": "Şükür",
+      "sub": "Nimetlere teşekkür ve minnet"
+    },
+    "tevekkul": {
+      "title": "Tevekkül",
+      "sub": "Allah'a güvenmek ve dayanmak"
+    },
+    "umut": {
+      "title": "Umut",
+      "sub": "Rahmetten ümit kesmemek"
+    },
+    "tovbe": {
+      "title": "Tövbe",
+      "sub": "Af dilemek ve Allah'a dönmek"
+    },
+    "iman": {
+      "title": "İman",
+      "sub": "İnanç ve kalpte yakîn"
+    },
+    "dua": {
+      "title": "Dua",
+      "sub": "Allah'a yönelmek ve yakarmak"
+    },
+    "huzur": {
+      "title": "Huzur",
+      "sub": "Kalbin sükûnet bulması"
+    },
+    "siginma": {
+      "title": "Sığınma",
+      "sub": "Allah'a sığınmak ve korunmak"
+    },
+    "ahlak": {
+      "title": "Ahlak",
+      "sub": "Güzel huy ve davranış"
+    },
+    "aile": {
+      "title": "Aile",
+      "sub": "Eş, anne baba ve çocuklar"
+    },
+    "rizik": {
+      "title": "Rızık",
+      "sub": "Helal kazanç ve bereket"
+    }
+  },
+  "stories": {
+    "title": "Kıssalar",
+    "sections": "{{count}} bölüm",
+    "done": "Okundu",
+    "continue": "Devam et",
+    "next": "Sonraki bölüm",
+    "finish": "Tamamla",
+    "step": "Bölüm {{current}}/{{total}}",
+    "note": "Özet, Kur'an ayetlerine dayanır."
+  },
+  "daily": {
+    "title": "Günün okuması",
+    "dua": "Günün duası",
+    "esma": "Günün esması"
   }
 }

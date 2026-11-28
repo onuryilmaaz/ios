@@ -27,6 +27,16 @@ final class InspirationModel {
     guard !isLoading else { return }
     isLoading = true
     defer { isLoading = false }
+    // Konu seçiliyse yalnız o konuların ayetleri (hadis ve panel içeriği karışmaz).
+    let topics = NotificationStore.shared.preferences.inspirationTopics
+    if !topics.isEmpty {
+      for ref in TopicCatalog.refs(for: topics).shuffled().prefix(3) {
+        guard let v = await TopicVerses.load(ref), !v.text.isEmpty else { continue }
+        current = Item(kind: .verse, text: v.text, arabic: v.arabic, source: v.source)
+        return
+      }
+      return
+    }
     // Panelde bu güne atanmış içerik varsa rastgele seçilmez.
     if let daily = AppControlStore.shared.dailyItem(for: localDateString()) {
       let language = Localizer.shared.language.rawValue
@@ -74,9 +84,10 @@ struct DailyInspirationCard: View {
       else if model.current == nil { await model.load() }
     }
     .onChange(of: NotificationNavigation.shared.homeRequest) { expanded = true }
+    .onChange(of: NotificationStore.shared.preferences.inspirationTopics) { Task { await model.load() } }
     // Panel içeriği sonradan gelirse (ilk okuma) kart güncellenir.
     .onChange(of: AppControlStore.shared.dailyItem(for: localDateString())) { _, item in
-      if item != nil, NotificationNavigation.shared.inspiration == nil { Task { await model.load() } }
+      if item != nil, NotificationNavigation.shared.inspiration == nil, NotificationStore.shared.preferences.inspirationTopics.isEmpty { Task { await model.load() } }
     }
     .fullScreenCover(item: $sharing) { item in
       ShareCardSheet(
@@ -172,6 +183,18 @@ struct DailyInspirationCard: View {
       .id(item.text)
       .transition(.opacity)
       .animation(.easeOut(duration: 0.3), value: item.text)
+
+      if AppControlStore.shared.isOn("daily_reading") {
+        Button {
+          Haptics.impact(.light)
+          HomeNavigation.shared.path.append(.dailyReading)
+        } label: {
+          HStack(spacing: 3.5) {
+            Text(t("daily.title")).font(.system(size: 14, weight: .semibold))
+            Ionicon(dirIcon("chevron-forward"), size: 13, color: tokens.accent)
+          }.foregroundStyle(tokens.accent).padding(.top, 14)
+        }.buttonStyle(PressableStyle())
+      }
     }
   }
 }

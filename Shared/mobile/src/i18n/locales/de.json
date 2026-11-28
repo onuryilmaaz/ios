@@ -1144,9 +1144,16 @@
       "title": "Benachrichtigungen zu heiligen Nächten und Festen"
     },
     "inspiration": {
-      "info": "Tagsüber wird etwa alle 2 Stunden ein Vers oder Hadith gesendet. Zwischen 23:00 und 07:00 wirst du nicht gestört.",
+      "info": "Tagsüber wird in der von dir gewählten Häufigkeit ein Vers oder Hadith gesendet. Zwischen 23:00 und 07:00 wirst du nicht gestört.",
       "section": "Vers- und Hadith-Benachrichtigungen",
-      "sub": "Erhalte über den Tag spirituelle Erinnerungen"
+      "sub": "Erhalte über den Tag spirituelle Erinnerungen",
+      "topics": "Themen",
+      "topicsSub": "Bei gewählten Themen kommen nur Verse daraus. Ohne Auswahl werden Verse und Hadithe gemischt.",
+      "frequency": "Häufigkeit",
+      "freqH2": "Alle 2 Stunden",
+      "freqH4": "Alle 4 Stunden",
+      "freqTwice": "Zweimal täglich (10:00, 20:00)",
+      "freqOnce": "Einmal täglich (10:00)"
     },
     "language": {
       "restartMessage": "Schließe die App und öffne sie erneut, damit das Layout zur neuen Sprache wechselt.",
@@ -1266,6 +1273,24 @@
       "hicriYil": "Frohes islamisches Neujahr",
       "asure": "Gesegneter Aschura-Tag",
       "cuma": "Gesegneten Freitag",
+      "kandil2": "Mögen deine Gebete in dieser heiligen Nacht erhört werden",
+      "kandil3": "Möge Allah diese gesegnete Nacht zu einer Quelle des Guten machen",
+      "kadir2": "Mögen deine Gebete in der Lailat al-Qadr angenommen werden",
+      "kadir3": "Möge diese Nacht, besser als tausend Monate, Barmherzigkeit bringen",
+      "bayram2": "Möge dein Fest Frieden und Freude bringen",
+      "bayram3": "Ein gesegnetes Fest im Kreis deiner Lieben",
+      "arife2": "Möge dieser gesegnete Tag Gutes bringen",
+      "arife3": "Mögen deine Gebete an diesem Tag angenommen werden",
+      "ramazan2": "Möge der Ramadan dir Barmherzigkeit und Segen bringen",
+      "ramazan3": "Möge Allah dein Fasten und deine Gebete annehmen",
+      "ucAylar2": "Mögen die drei heiligen Monate Barmherzigkeit und Vergebung bringen",
+      "ucAylar3": "Möge Allah uns diese gesegneten Monate im Guten verbringen lassen",
+      "hicriYil2": "Möge das neue Jahr Gutes, Frieden und Segen bringen",
+      "hicriYil3": "Ein gesegnetes neues Hidschra-Jahr",
+      "asure2": "Möge dir der Aschura-Tag Gutes bringen",
+      "asure3": "Ein Aschura-Tag voller Segen und Teilen",
+      "cuma2": "Einen gesegneten Freitag",
+      "cuma3": "Mögen deine Gebete an diesem Freitag angenommen werden",
       "prayer": "Mögen deine Gebete angenommen werden.",
       "cta": "Grußkarte teilen",
       "cumaA11y": "Freitags-Grußkarte teilen"
@@ -2283,5 +2308,122 @@
     "deleteMessage": "Das kann nicht rückgängig gemacht werden.",
     "private": "Dein Dua-Tagebuch bleibt auf diesem Gerät und wird nie an den Server gesendet.",
     "notifTitle": "Zeit für Dua"
+  },
+  "wallpaper": {
+    "title": "Hintergrund",
+    "save": "Speichern",
+    "saved": "In Fotos gesichert",
+    "failed": "Hintergrund konnte nicht erstellt werden",
+    "denied": "Kein Zugriff auf Fotos",
+    "deniedHint": "Erlaube in den Einstellungen das Hinzufügen zu Fotos, um zu speichern.",
+    "empty": "Keine Inhalte",
+    "source": {
+      "verse": "Vers",
+      "dua": "Dua",
+      "esma": "Namen"
+    },
+    "design": {
+      "title": "Design",
+      "orman": "Wald",
+      "gece": "Nacht",
+      "kagit": "Papier",
+      "sade": "Schlicht"
+    }
+  },
+  "greetings": {
+    "title": "Grußkarten",
+    "today": "Heute",
+    "all": "Alle",
+    "cuma": "Freitag",
+    "message": "Nachricht",
+    "classic": "Klassisch"
+  },
+  "discover": {
+    "title": "Entdecken",
+    "topics": "Themen",
+    "wallpapers": "Hintergründe",
+    "greetings": "Grußkarten",
+    "stories": "Geschichten",
+    "daily": "Tageslektüre"
+  },
+  "topics": {
+    "title": "Themen",
+    "count": "{{count}} Verse",
+    "saved": "Gespeichert",
+    "savedEmpty": "Noch keine gespeicherten Verse",
+    "savedEmptyHint": "Tippe auf das Lesezeichen einer Versekarte, um sie zu speichern.",
+    "save": "Speichern",
+    "unsave": "Aus Gespeichert entfernen",
+    "openSurah": "Sure öffnen",
+    "goToSurah": "Zur Sure",
+    "more": "Mehr",
+    "wallpaper": "Als Hintergrund gestalten",
+    "openMushaf": "Im Mushaf öffnen",
+    "loadFailed": "Vers konnte nicht geladen werden",
+    "emptyTopic": "Keine Verse in diesem Thema",
+    "ref": "{{surah}} {{verse}}",
+    "sabir": {
+      "title": "Geduld",
+      "sub": "Standhaftigkeit in schweren Zeiten"
+    },
+    "sukur": {
+      "title": "Dankbarkeit",
+      "sub": "Dank für die Gaben"
+    },
+    "tevekkul": {
+      "title": "Gottvertrauen",
+      "sub": "Sich auf Allah verlassen"
+    },
+    "umut": {
+      "title": "Hoffnung",
+      "sub": "Nie an der Barmherzigkeit verzweifeln"
+    },
+    "tovbe": {
+      "title": "Reue",
+      "sub": "Um Vergebung bitten und zu Allah zurückkehren"
+    },
+    "iman": {
+      "title": "Glaube",
+      "sub": "Überzeugung und Gewissheit im Herzen"
+    },
+    "dua": {
+      "title": "Bittgebet",
+      "sub": "Sich an Allah wenden und ihn anrufen"
+    },
+    "huzur": {
+      "title": "Ruhe",
+      "sub": "Frieden und Gelassenheit des Herzens"
+    },
+    "siginma": {
+      "title": "Zuflucht",
+      "sub": "Zuflucht und Schutz bei Allah suchen"
+    },
+    "ahlak": {
+      "title": "Charakter",
+      "sub": "Gute Umgangsformen und Verhalten"
+    },
+    "aile": {
+      "title": "Familie",
+      "sub": "Ehepartner, Eltern und Kinder"
+    },
+    "rizik": {
+      "title": "Versorgung",
+      "sub": "Erlaubter Erwerb und Segen"
+    }
+  },
+  "stories": {
+    "title": "Geschichten",
+    "sections": "{{count}} Abschnitte",
+    "done": "Gelesen",
+    "continue": "Fortsetzen",
+    "next": "Nächster Abschnitt",
+    "finish": "Abschließen",
+    "step": "Abschnitt {{current}}/{{total}}",
+    "note": "Die Zusammenfassung stützt sich auf die Verse des Korans."
+  },
+  "daily": {
+    "title": "Tageslektüre",
+    "dua": "Bittgebet des Tages",
+    "esma": "Name des Tages"
   }
 }

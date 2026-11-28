@@ -1,0 +1,5 @@
+/* Permission descriptions. No app name here so Debug stays "Salah Dev". */
+"NSLocationWhenInUseUsageDescription" = "La tua posizione viene usata per mostrare gli orari di preghiera e la direzione della qibla.";
+"NSAlarmKitUsageDescription" = "L'accesso alle sveglie permette a quelle di preghiera, tahajjud e suhur di suonare anche in modalità silenziosa.";
+"NSCameraUsageDescription" = "La fotocamera serve a mostrare la direzione della qibla sull'immagine della fotocamera.";
+"NSPhotoLibraryAddUsageDescription" = "Il permesso di aggiungere alla libreria foto serve a salvare sfondi e cartoline in Foto.";
