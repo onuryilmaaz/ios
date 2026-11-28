@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "موجودہ نماز کو ادا شدہ درج کرتا ہے۔";
 "shortcut.nextPrayer" = "اگلی نماز";
 "shortcut.markPrayer" = "میں نے نماز پڑھ لی";
+"intent.dailyVerse.title" = "آج کی آیت";
+"intent.dailyVerse.description" = "آج کی آیت کا ترجمہ اور حوالہ سناتی ہے۔";
+"intent.morningEzkar.title" = "صبح کے اذکار";
+"intent.morningEzkar.description" = "صبح کے اذکار کھولتی ہے۔";
+"intent.eveningEzkar.title" = "شام کے اذکار";
+"intent.eveningEzkar.description" = "شام کے اذکار کھولتی ہے۔";
+"shortcut.dailyVerse" = "آج کی آیت";
+"shortcut.morningEzkar" = "صبح کے اذکار";
+"shortcut.eveningEzkar" = "شام کے اذکار";

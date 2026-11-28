@@ -122,7 +122,7 @@ struct TopicDetailView: View {
           ForEach(refs) { ref in TopicVerseCard(ref: ref).id(ref.id) }
         }.padding(.horizontal, 14).padding(.top, 10.5).padding(.bottom, 24)
       }.scrollIndicators(.hidden)
-    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar)
+    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar).stopsVerseAudioOnDisappear()
   }
 }
 
@@ -133,6 +133,8 @@ struct TopicVerseCard: View {
   var preloaded: TopicVerseText?
   /// Mushaf, sure ve duvar kağıdı bağlantıları Kur'an sekmesi yığınına gider; ana sayfada kapalı.
   var links = true
+  /// Kıssada "Tümünü dinle" sırasında çalan ayet.
+  var highlighted = false
   @State private var verse: TopicVerseText?
   @State private var failed = false
   @State private var sharing: TopicVerseText?
@@ -144,6 +146,7 @@ struct TopicVerseCard: View {
       else if failed { errorView }
       else { skeleton }
     }
+    .overlay { if highlighted { RoundedRectangle(cornerRadius: 21).stroke(tokens.accent, lineWidth: 2) } }
     .task(id: Localizer.shared.language) { await load() }
     .fullScreenCover(item: $sharing) { item in
       ShareCardSheet(arabic: item.arabic.isEmpty ? nil : item.arabic, text: item.text, source: item.source, label: t("home.inspiration.verse"))
@@ -172,6 +175,7 @@ struct TopicVerseCard: View {
         } label: {
           Ionicon("ellipsis-horizontal", size: 17, color: tokens.inkMuted).frame(width: 31.5, height: 31.5).background(tokens.fill, in: .circle)
         }.accessibilityLabel(t("topics.more")) }
+        VerseListenButton(refs: VerseAudio.refs(surah: ref.s, from: ref.a, to: min(ref.to, ref.a + TopicVerses.maxRange - 1)))
         action("share-outline", label: t("common.share")) { Haptics.impact(.light); sharing = item }
         action(saved.isSaved(ref) ? "bookmark" : "bookmark-outline", label: t(saved.isSaved(ref) ? "topics.unsave" : "topics.save"),
                color: saved.isSaved(ref) ? tokens.gold : tokens.inkMuted) {

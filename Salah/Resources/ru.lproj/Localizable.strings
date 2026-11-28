@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "Отмечает текущий намаз как совершённый.";
 "shortcut.nextPrayer" = "Следующий намаз";
 "shortcut.markPrayer" = "Я совершил намаз";
+"intent.dailyVerse.title" = "Аят дня";
+"intent.dailyVerse.description" = "Зачитывает смысл и источник аята дня.";
+"intent.morningEzkar.title" = "Утренние азкары";
+"intent.morningEzkar.description" = "Открывает утренние азкары.";
+"intent.eveningEzkar.title" = "Вечерние азкары";
+"intent.eveningEzkar.description" = "Открывает вечерние азкары.";
+"shortcut.dailyVerse" = "Аят дня";
+"shortcut.morningEzkar" = "Утренние азкары";
+"shortcut.eveningEzkar" = "Вечерние азкары";

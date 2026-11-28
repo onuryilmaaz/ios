@@ -102,6 +102,11 @@ struct RootView: View {
       }
       #endif
       if NotificationNavigation.shared.inspiration != nil { tab = .home }
+      // Siri uygulamayı açarken bırakılan bağlantı (RootView henüz yokken `onChange` tetiklenmez).
+      if let url = AppLinks.shared.request {
+        AppLinks.shared.request = nil
+        open(url)
+      }
     }
     .onOpenURL { open($0) }
     .onChange(of: AppLinks.shared.request) { _, url in
@@ -287,7 +292,9 @@ enum DebugLaunch {
     #endif
   }
   /// Ağsız izole oturumda ekran görüntüsü için açık quran.com yedeğinin kullanılacağı debug açılışları.
-  static var openQuranFallback: Bool { topics != nil || wallpaper != nil || stories != nil || daily }
+  static var openQuranFallback: Bool {
+    topics != nil || wallpaper != nil || stories != nil || daily || UserDefaults.standard.string(forKey: "SalahDebugRoute")?.hasPrefix("zikirler") == true
+  }
   /// -SalahDebugStories list|detail [-SalahDebugStory yusuf] [-SalahDebugStorySection 2]: Kıssalar (Kur'an sekmesi).
   static var stories: String? {
     #if DEBUG
@@ -461,6 +468,8 @@ enum DebugLaunch {
       case "history": return .history
       case "kaza": return .kaza
       case "dhikr": return .dhikr
+      case "zikirler": return .ezkar(.morning)
+      case "zikirler-aksam": return .ezkar(.evening)
       case "circles": return .circles
       case "admin": return .admin
       case "adminUsers": return .adminUsers

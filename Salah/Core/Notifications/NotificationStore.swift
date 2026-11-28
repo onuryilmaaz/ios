@@ -148,14 +148,18 @@ final class NotificationStore {
       // 2. aşama: ayet/hadis, dini gün ve cuma bildirimleri (ağdan içerik gerekir).
       let pools = snapshot.inspiration ? await loadPools() : (verses: [], hadiths: [])
       guard version == revision else { continue }
-      let calendar = snapshot.religiousDays ? await loadCalendar() : ReligiousCalendar()
+      let calendar = snapshot.religiousDays || snapshot.fasting ? await loadCalendar() : ReligiousCalendar()
       guard version == revision else { continue }
+      // Hicri gün, takvim ekranındakiyle aynı hesaptan (ReligiousCalendar.hijri).
+      let fasting = snapshot.fasting ? FastingReminder.fastingDays(from: now(), days: NotificationPlan.daysAhead, hijri: { calendar.hijri($0) },
+                                                                    enabled: snapshot.fastingGroups) : []
+      let ezkarDone = persists ? EzkarProgressStore.shared.completedSessions(date: localDateString(now())) : []
       let rest = NotificationPlan.build(days: days, preferences: snapshot, now: now(), verses: pools.verses,
                                         hadiths: pools.hadiths, religiousDays: calendar.religiousDays(now: now()),
                                         alarmCovered: alarmCovered, hatim: persists ? HatimPlanStore.shared.reminder(now: now()) : nil,
                                         nights: persists ? RamadanSchedule.nightsReminder(now: now()) : nil,
                                         // 1. aşamadakilerle birlikte hesaplansın: toplam üst sınırı (maxPending) aşmasın.
-                                        missed: missed, journal: persists ? DuaJournalStore.shared.reminders : [])
+                                        missed: missed, journal: persists ? DuaJournalStore.shared.reminders : [], fasting: fasting, ezkarDone: ezkarDone)
         .filter { !$0.isPrayer && $0.kind != .missed }
       // Planda olmayan her şey (eski içerik bildirimleri, önceki sürümlerden kalanlar) silinir.
       let planned = prayerIDs.union(rest.map(delivery.identifier))
@@ -210,6 +214,7 @@ final class NotificationStore {
       AlarmStore.shared.coveredPrayerKeys.sorted().joined(separator: ","),
       localDateString(now()),
       persists ? DuaJournalStore.shared.signature : "",
+      persists ? EzkarProgressStore.shared.signature : "",
     ].joined(separator: "|")
   }
 
@@ -252,6 +257,11 @@ final class NotificationStore {
     LocalStore.set(String(p.religiousDays), for: "RELIGIOUS_DAY_NOTIFICATIONS_ENABLED")
     LocalStore.set(String(p.friday), for: "CUMA_REMINDER_ENABLED")
     LocalStore.set(String(p.missed), for: "MISSED_PRAYER_REMINDER_ENABLED")
+    LocalStore.set(String(p.ezkarMorning), for: "EZKAR_MORNING_REMINDER_ENABLED")
+    LocalStore.set(String(p.ezkarEvening), for: "EZKAR_EVENING_REMINDER_ENABLED")
+    LocalStore.set(String(p.fasting), for: "NAFILE_FAST_REMINDER_ENABLED")
+    LocalStore.encode(p.fastingGroups.map(\.rawValue).sorted(), for: "NAFILE_FAST_GROUPS")
+    LocalStore.set(String(p.fastingSuhoor), for: "NAFILE_FAST_SUHOOR_ENABLED")
     LocalStore.set(p.muteUntil.map { String($0.timeIntervalSince1970 * 1000) }, for: "NOTIFICATION_MUTE_UNTIL")
   }
 

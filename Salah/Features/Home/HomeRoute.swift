@@ -34,6 +34,8 @@ enum HomeRoute: Hashable {
   case hatimGroup(String)
   case kaza
   case dhikr
+  /// Sabah ve akşam zikirleri; oturum derin bağlantıdan gelir.
+  case ezkar(EzkarSession?)
   case circles
   case circle(String)
   case yearSummary
@@ -56,6 +58,7 @@ enum HomeRoute: Hashable {
     case .hatimGroups, .hatimGroup: "hatim_groups"
     case .kaza: "kaza"
     case .dhikr: "dhikr"
+    case .ezkar: "ezkar"
     case .circles, .circle: "streak_circles"
     case .dailyReading: "daily_reading"
     case .greetings: "greetings"
@@ -122,6 +125,7 @@ enum HomeRoute: Hashable {
     case .hatimGroup(let id): HatimGroupView(id: id)
     case .kaza: KazaView()
     case .dhikr: DhikrView()
+    case .ezkar(let session): EzkarView(initial: session)
     case .circles: StreakCirclesView()
     case .circle(let id): StreakCircleView(id: id)
     case .yearSummary: YearSummaryView()

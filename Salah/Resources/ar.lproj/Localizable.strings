@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "يسجّل صلاة الوقت الحالي كمؤدّاة.";
 "shortcut.nextPrayer" = "الصلاة القادمة";
 "shortcut.markPrayer" = "صلّيت";
+"intent.dailyVerse.title" = "آية اليوم";
+"intent.dailyVerse.description" = "تقرأ معنى آية اليوم ومصدرها.";
+"intent.morningEzkar.title" = "أذكار الصباح";
+"intent.morningEzkar.description" = "تفتح أذكار الصباح.";
+"intent.eveningEzkar.title" = "أذكار المساء";
+"intent.eveningEzkar.description" = "تفتح أذكار المساء.";
+"shortcut.dailyVerse" = "آية اليوم";
+"shortcut.morningEzkar" = "أذكار الصباح";
+"shortcut.eveningEzkar" = "أذكار المساء";

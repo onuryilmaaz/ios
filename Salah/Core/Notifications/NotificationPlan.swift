@@ -2,7 +2,7 @@ import Foundation
 import UserNotifications
 
 struct PlannedNotification: Equatable, Sendable {
-  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night", missed = "missed_prayer", journal = "dua_reminder" }
+  enum Kind: String, Sendable { case prayerTime = "prayer_time", prayerReminder = "prayer_reminder", inspiration = "spiritual_reminder", religiousDay = "religious_day", friday = "cuma_reminder", comeback = "app_reminder", hatim = "hatim_reminder", ramadanNight = "ramadan_night", missed = "missed_prayer", journal = "dua_reminder", ezkar = "ezkar_reminder", fasting = "fasting_reminder" }
   var id: String
   var date: Date
   var kind: Kind
@@ -90,7 +90,7 @@ enum NotificationPlan {
     days: [PrayerDay], preferences p: NotificationPreferences, now: Date,
     calendar: Calendar = .current, verses: [NotificationInspiration] = [], hadiths: [NotificationInspiration] = [],
     religiousDays: [ReligiousDay] = [], alarmCovered: Set<String> = [], hatim: HatimReminder? = nil, nights: RamadanNightsReminder? = nil,
-    missed: MissedReminder? = nil, journal: [JournalReminder] = []
+    missed: MissedReminder? = nil, journal: [JournalReminder] = [], fasting: [FastingDay] = [], ezkarDone: Set<EzkarSession> = []
   ) -> [PlannedNotification] {
     guard p.enabled else { return [] }
     // Sessiz aralık sonrasını ŞİMDİ kur: uygulama kapalıyken de süre bitince
@@ -162,6 +162,46 @@ enum NotificationPlan {
         let kadir = calendar.startOfDay(for: base) == nights.kadir
         plan.append(.init(id: "ramadan_night.\(Int(date.timeIntervalSince1970))", date: date, kind: .ramadanNight,
                           title: t(kadir ? "notif.kadirTitle" : "notif.nightTitle"), body: t(kadir ? "notif.kadirBody" : "notif.nightBody")))
+      }
+    }
+
+    // Sabah zikirleri: güneşten 20 dk, akşam zikirleri: ikindiden 30 dk sonra. O gün tamamlanan oturum kurulmaz.
+    if p.ezkarMorning || p.ezkarEvening {
+      let today = calendar.startOfDay(for: now)
+      let sessions: [(EzkarSession, Bool, String, Double)] = [(.morning, p.ezkarMorning, "gunes", 20), (.evening, p.ezkarEvening, "ikindi", 30)]
+      for day in days.prefix(daysAhead) {
+        guard let base = parseDay(day.date, calendar: calendar) else { continue }
+        for (session, enabled, key, minutes) in sessions where enabled && plan.count < budget - 4 {
+          if calendar.startOfDay(for: base) == today, ezkarDone.contains(session) { continue }
+          guard let raw = day.times[key], let exact = clock(raw, on: base, calendar: calendar) else { continue }
+          let date = exact.addingTimeInterval(minutes * 60)
+          guard date > cutoff else { continue }
+          let prefix = session == .morning ? "ezkar.notifMorning" : "ezkar.notifEvening"
+          plan.append(.init(id: "ezkar.\(session.rawValue).\(Int(date.timeIntervalSince1970))", date: date, kind: .ezkar, when: session.rawValue,
+                            title: t(prefix + "Title"), body: t(prefix + "Body")))
+        }
+      }
+    }
+
+    // Nafile oruç: oruç gününden önceki akşam 21.00; "sahur" açıksa oruç günü imsaktan 45 dk önce ikinci bildirim.
+    if p.fasting {
+      let times = Dictionary(days.compactMap { day in parseDay(day.date, calendar: calendar).map { (calendar.startOfDay(for: $0), day.times) } },
+                             uniquingKeysWith: { first, _ in first })
+      for fast in fasting where plan.count < budget - 4 {
+        let ymd = MissedPrayers.ymd(fast.date, calendar: calendar)
+        if let before = calendar.date(byAdding: .day, value: -1, to: fast.date),
+          let date = calendar.date(bySettingHour: FastingReminder.eveHour, minute: 0, second: 0, of: before), date > cutoff
+        {
+          plan.append(.init(id: "fasting.\(ymd).eve", date: date, kind: .fasting, dayID: fast.kind.rawValue, when: "eve",
+                            title: t("nafile.notifTitle"), body: t(fast.kind.notificationKey)))
+        }
+        if p.fastingSuhoor, let raw = times[fast.date]?.imsak, let imsak = clock(raw, on: fast.date, calendar: calendar) {
+          let date = imsak.addingTimeInterval(-FastingReminder.suhoorLead)
+          if date > cutoff {
+            plan.append(.init(id: "fasting.\(ymd).suhoor", date: date, kind: .fasting, dayID: fast.kind.rawValue, when: "suhoor",
+                              title: t("nafile.notifTitle"), body: t("nafile.notifSuhoor")))
+          }
+        }
       }
     }
 

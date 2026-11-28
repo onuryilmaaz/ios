@@ -3,3 +3,9 @@
 "When is the next prayer in ${applicationName}" = "Quando è la prossima preghiera in ${applicationName}";
 "Mark my prayer in ${applicationName}" = "Segna la mia preghiera in ${applicationName}";
 "I prayed in ${applicationName}" = "Ho pregato in ${applicationName}";
+"Verse of the day in ${applicationName}" = "Versetto del giorno in ${applicationName}";
+"Read the verse of the day in ${applicationName}" = "Leggi il versetto del giorno in ${applicationName}";
+"Morning adhkar in ${applicationName}" = "Adhkar del mattino in ${applicationName}";
+"Open morning adhkar in ${applicationName}" = "Apri gli adhkar del mattino in ${applicationName}";
+"Evening adhkar in ${applicationName}" = "Adhkar della sera in ${applicationName}";
+"Open evening adhkar in ${applicationName}" = "Apri gli adhkar della sera in ${applicationName}";

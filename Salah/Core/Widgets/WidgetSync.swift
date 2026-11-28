@@ -18,6 +18,7 @@ enum WidgetSync {
     ramadanChanged()
     await syncVerses()
     await syncInspirationDay()
+    await syncDailyReading()
   }
 
   /// Oruç işareti ya da Ramazan modu değişti.
@@ -36,6 +37,7 @@ enum WidgetSync {
     WidgetBridge.setLanguage(Localizer.shared.language.rawValue)
     await syncVerses()
     await syncInspirationDay()
+    await syncDailyReading()
   }
 
   /// Vakit widget'ı ve Live Activity. Kılınan namaz ya da vakit geçişi pencereyi değiştirir;

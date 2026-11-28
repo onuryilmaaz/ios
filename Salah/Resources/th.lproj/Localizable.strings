@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "ทำเครื่องหมายว่าละหมาดปัจจุบันเสร็จแล้ว";
 "shortcut.nextPrayer" = "ละหมาดครั้งถัดไป";
 "shortcut.markPrayer" = "ฉันละหมาดแล้ว";
+"intent.dailyVerse.title" = "อายะฮ์ประจำวัน";
+"intent.dailyVerse.description" = "อ่านความหมายและแหล่งที่มาของอายะฮ์ประจำวัน";
+"intent.morningEzkar.title" = "อัซการตอนเช้า";
+"intent.morningEzkar.description" = "เปิดอัซการตอนเช้า";
+"intent.eveningEzkar.title" = "อัซการตอนเย็น";
+"intent.eveningEzkar.description" = "เปิดอัซการตอนเย็น";
+"shortcut.dailyVerse" = "อายะฮ์ประจำวัน";
+"shortcut.morningEzkar" = "อัซการตอนเช้า";
+"shortcut.eveningEzkar" = "อัซการตอนเย็น";

@@ -11,6 +11,7 @@ enum QuranRoute: Hashable {
   case stories
   case story(String)
   case dailyReading
+  case ezkar
 }
 @Observable
 final class QuranNavigation {
@@ -103,6 +104,7 @@ struct SurahBrowserView: View {
         case .stories: ModuleGated("stories") { StoriesView() }
         case .story(let id): ModuleGated("stories") { StoryDetailView(storyID: id) }
         case .dailyReading: ModuleGated("daily_reading") { DailyReadingView() }
+        case .ezkar: ModuleGated("ezkar") { EzkarView() }
         }
       }
       .task { await load(); openDebug(); openDebugTopics(); openDebugB(); openDebugC() }
@@ -131,6 +133,7 @@ struct SurahBrowserView: View {
     return VStack(spacing: 10.5) {
       // Panelden kapatılan kutucuk gösterilmez; hepsi kapalıysa satır da yok.
       let discover: [QuranDiscoverRow.Item] = ([
+        ("ezkar", .init(id: "ezkar", icon: "sunny-outline", title: t("ezkar.title"), route: .ezkar)),
         ("daily_reading", .init(id: "daily", icon: "today-outline", title: t("discover.daily"), route: .dailyReading)),
         ("topics", .init(id: "topics", icon: "grid-outline", title: t("discover.topics"), route: .topics)),
         ("stories", .init(id: "stories", icon: "library-outline", title: t("discover.stories"), route: .stories)),

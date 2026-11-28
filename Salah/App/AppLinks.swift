@@ -2,6 +2,7 @@ import Foundation
 
 /// `salah://` derin bağlantıları (widget'lar ve bildirimler). RN: App.tsx `handleUrl`.
 ///   home | prayer → Ana sayfa, qibla, alarms, hutbe → ana sayfa yığını,
+///   zikirler[/sabah|/aksam] → sabah ve akşam zikirleri, gunun-okumasi → Günün okuması,
 ///   istatistik → İbadet sekmesinde istatistikler, tracker/<tür> → ilgili kayıt formu, sure/<n> → Kur'an'da sure.
 ///   paywall: premium kapalıyken erişim zaten açık, yok sayılır.
 @Observable
@@ -38,6 +39,8 @@ final class AppLinks {
     case "zekat": return .home(.zakat)
     case "kaza": return .home(.kaza)
     case "zikir": return .home(.dhikr)
+    case "zikirler": return .home(.ezkar(EzkarSession(link: parts.dropFirst().first)))
+    case "gunun-okumasi": return .home(.dailyReading)
     case "defter": return .home(.duaJournal)
     case "yil": return .home(.yearSummary)
     case "ezber": return .hifz

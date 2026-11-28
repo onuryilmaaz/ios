@@ -97,6 +97,38 @@ extension SettingsView {
         }.padding(.horizontal, 14).padding(.vertical, 10.5)
       }
     }
+    if AppControlStore.shared.isOn("ezkar") {
+      SectionLabel(t("ezkar.settingsSection")).padding(.leading, 10.5)
+      group {
+        row("sunny-outline", t("ezkar.settingsMorning"), sub: t("ezkar.settingsMorningSub"), toggle: reminderBinding(\.ezkarMorning))
+        row("moon-outline", t("ezkar.settingsEvening"), sub: t("ezkar.settingsEveningSub"), last: true, toggle: reminderBinding(\.ezkarEvening))
+      }
+      .id("ezkar")
+    }
+    SectionLabel(t("nafile.title")).padding(.leading, 10.5)
+    group {
+      row("calendar-outline", t("nafile.reminder"), sub: t("nafile.reminderSub"), last: !prefs.fasting, toggle: reminderBinding(\.fasting))
+      if prefs.fasting {
+        VStack(alignment: .leading, spacing: 7) {
+          optionLabel("nafile.days")
+          FlowLayout {
+            ForEach(FastingGroup.allCases, id: \.self) { group in
+              selectionChip(t(group.labelKey), selected: prefs.fastingGroups.contains(group)) {
+                NotificationStore.shared.update {
+                  if $0.fastingGroups.contains(group) { $0.fastingGroups.remove(group) } else { $0.fastingGroups.insert(group) }
+                }
+              }
+            }
+          }
+        }.padding(.horizontal, 14).padding(.vertical, 10.5).frame(maxWidth: .infinity, alignment: .leading)
+        row("alarm-outline", t("nafile.suhoor"), sub: t("nafile.suhoorSub"), toggle: preferenceBinding(\.fastingSuhoor))
+        HStack(alignment: .top, spacing: 7) {
+          Ionicon("information-circle-outline", size: 16, color: tokens.inkSubtle)
+          Text(t("nafile.info")).font(.system(size: 12)).foregroundStyle(tokens.inkSubtle).lineSpacing(5)
+        }.padding(.horizontal, 14).padding(.vertical, 10.5)
+      }
+    }
+    .id("nafile")
     SectionLabel(t("settings.holidays.section")).padding(.leading, 10.5)
     group {
       row("moon-outline", t("settings.holidays.title"), sub: t("settings.holidays.sub"), toggle: preferenceBinding(\.religiousDays))
@@ -186,6 +218,20 @@ extension SettingsView {
     Binding(get: { NotificationStore.shared.preferences[keyPath: keyPath] }, set: { value in
       Haptics.impact(.light)
       NotificationStore.shared.update { $0[keyPath: keyPath] = value }
+    })
+  }
+
+  /// Zikir ve nafile oruç hatırlatmaları bildirim planına bağlıdır: açılırken bildirimler kapalıysa izin istenip açılır.
+  private func reminderBinding(_ keyPath: WritableKeyPath<NotificationPreferences, Bool>) -> Binding<Bool> {
+    Binding(get: { NotificationStore.shared.preferences[keyPath: keyPath] }, set: { value in
+      Haptics.impact(.light)
+      NotificationStore.shared.update { $0[keyPath: keyPath] = value }
+      guard value, !NotificationStore.shared.preferences.enabled else { return }
+      Task {
+        if await !NotificationStore.shared.setEnabled(true) {
+          AppAlert.warning(t("settings.location.permission"), t("settings.notifications.permissionMessage"))
+        }
+      }
     })
   }
 

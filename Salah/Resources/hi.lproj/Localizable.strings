@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "मौजूदा नमाज़ को अदा की हुई दर्ज करता है।";
 "shortcut.nextPrayer" = "अगली नमाज़";
 "shortcut.markPrayer" = "मैंने नमाज़ पढ़ ली";
+"intent.dailyVerse.title" = "आज की आयत";
+"intent.dailyVerse.description" = "आज की आयत का अर्थ और स्रोत पढ़कर सुनाता है।";
+"intent.morningEzkar.title" = "सुबह के अज़कार";
+"intent.morningEzkar.description" = "सुबह के अज़कार खोलता है।";
+"intent.eveningEzkar.title" = "शाम के अज़कार";
+"intent.eveningEzkar.description" = "शाम के अज़कार खोलता है।";
+"shortcut.dailyVerse" = "आज की आयत";
+"shortcut.morningEzkar" = "सुबह के अज़कार";
+"shortcut.eveningEzkar" = "शाम के अज़कार";

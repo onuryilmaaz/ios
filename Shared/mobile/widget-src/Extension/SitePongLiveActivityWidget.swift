@@ -9,6 +9,7 @@ struct SitePongLiveActivityWidgetBundle: WidgetBundle {
     PrayerTrackerWidget()
     AmelWidget()
     InspirationWidget()
+    DailyReadingWidget()
 
     // Kilit ekranı widget'ları (iOS 16+)
     SalahNextPrayerLockWidget()

@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "Marca la oración actual como realizada.";
 "shortcut.nextPrayer" = "Próxima oración";
 "shortcut.markPrayer" = "Recé";
+"intent.dailyVerse.title" = "Aleya del día";
+"intent.dailyVerse.description" = "Lee el significado y la fuente de la aleya del día.";
+"intent.morningEzkar.title" = "Adhkar de la mañana";
+"intent.morningEzkar.description" = "Abre los adhkar de la mañana.";
+"intent.eveningEzkar.title" = "Adhkar de la tarde";
+"intent.eveningEzkar.description" = "Abre los adhkar de la tarde.";
+"shortcut.dailyVerse" = "Aleya del día";
+"shortcut.morningEzkar" = "Adhkar de la mañana";
+"shortcut.eveningEzkar" = "Adhkar de la tarde";

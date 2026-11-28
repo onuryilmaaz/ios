@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "Segna la preghiera corrente come eseguita.";
 "shortcut.nextPrayer" = "Prossima preghiera";
 "shortcut.markPrayer" = "Ho pregato";
+"intent.dailyVerse.title" = "Versetto del giorno";
+"intent.dailyVerse.description" = "Legge il significato e la fonte del versetto del giorno.";
+"intent.morningEzkar.title" = "Adhkar del mattino";
+"intent.morningEzkar.description" = "Apre gli adhkar del mattino.";
+"intent.eveningEzkar.title" = "Adhkar della sera";
+"intent.eveningEzkar.description" = "Apre gli adhkar della sera.";
+"shortcut.dailyVerse" = "Versetto del giorno";
+"shortcut.morningEzkar" = "Adhkar del mattino";
+"shortcut.eveningEzkar" = "Adhkar della sera";

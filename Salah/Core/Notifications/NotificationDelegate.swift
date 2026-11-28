@@ -32,6 +32,8 @@ struct NotificationPayload: Sendable {
   let subtitle: String
   let arabic: String
   let contentType: String
+  /// Zikir hatırlatmasında oturum ("morning" / "evening").
+  let when: String
   /// Duyuru bildiriminin bağlantısı.
   let url: String
   let campaignId: String
@@ -44,6 +46,7 @@ struct NotificationPayload: Sendable {
     subtitle = info["subtitle"] as? String ?? ""
     arabic = info["arabic"] as? String ?? ""
     contentType = info["contentType"] as? String ?? "ayet"
+    when = info["when"] as? String ?? ""
     url = info["url"] as? String ?? ""
     campaignId = info["campaignId"] as? String ?? ""
   }
@@ -119,6 +122,9 @@ final class SalahNotificationDelegate: NSObject, UNUserNotificationCenterDelegat
         if payload.type == "prayer_time" { AdhanPlayer.shared.receiveTap(payload.prayerKey) }
         if payload.type == "hatim_reminder", let url = URL(string: "salah://tracker/quran") { UIApplication.shared.open(url) }
         if payload.type == "dua_reminder", let url = URL(string: "salah://defter") { UIApplication.shared.open(url) }
+        if payload.type == "ezkar_reminder", let url = URL(string: "salah://zikirler/\(EzkarSession(rawValue: payload.when)?.linkName ?? "sabah")") {
+          UIApplication.shared.open(url)
+        }
         if payload.type == "ramadan_night", let url = URL(string: "salah://oruc") { UIApplication.shared.open(url) }
         if payload.type == "announcement" {
           PushStore.shared.recordOpen(payload.campaignId)

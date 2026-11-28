@@ -1,0 +1,462 @@
+{
+  "_note": "Sabah ve akşam zikirleri. kind=quran: metin uygulamanın Kur'an kaynağından (sure/ayet aralığı); kind=dua: duas.generated.json içindeki id; kind=text: bu dosyadaki metin. count: tekrar sayısı. Yeni metinlerin meali hoca kontrolü bekler.",
+  "morning": [
+    {
+      "id": "ayetelKursi",
+      "kind": "quran",
+      "surah": 2,
+      "from": 255,
+      "to": 255,
+      "count": 1
+    },
+    {
+      "id": "ihlas",
+      "kind": "quran",
+      "surah": 112,
+      "from": 1,
+      "to": 4,
+      "count": 3
+    },
+    {
+      "id": "felak",
+      "kind": "quran",
+      "surah": 113,
+      "from": 1,
+      "to": 5,
+      "count": 3
+    },
+    {
+      "id": "nas",
+      "kind": "quran",
+      "surah": 114,
+      "from": 1,
+      "to": 6,
+      "count": 3
+    },
+    {
+      "id": "sabah-2",
+      "kind": "dua",
+      "count": 1
+    },
+    {
+      "id": "sabah-3",
+      "kind": "dua",
+      "count": 1
+    },
+    {
+      "id": "seyyidulIstigfar",
+      "kind": "text",
+      "count": 1
+    },
+    {
+      "id": "bismillahillezi",
+      "kind": "text",
+      "count": 3
+    },
+    {
+      "id": "subhanallahiVeBihamdihi",
+      "kind": "text",
+      "count": 100
+    }
+  ],
+  "evening": [
+    {
+      "id": "ayetelKursi",
+      "kind": "quran",
+      "surah": 2,
+      "from": 255,
+      "to": 255,
+      "count": 1
+    },
+    {
+      "id": "ihlas",
+      "kind": "quran",
+      "surah": 112,
+      "from": 1,
+      "to": 4,
+      "count": 3
+    },
+    {
+      "id": "felak",
+      "kind": "quran",
+      "surah": 113,
+      "from": 1,
+      "to": 5,
+      "count": 3
+    },
+    {
+      "id": "nas",
+      "kind": "quran",
+      "surah": 114,
+      "from": 1,
+      "to": 6,
+      "count": 3
+    },
+    {
+      "id": "aksam-1",
+      "kind": "dua",
+      "count": 1
+    },
+    {
+      "id": "aksam-2",
+      "kind": "dua",
+      "count": 1
+    },
+    {
+      "id": "seyyidulIstigfar",
+      "kind": "text",
+      "count": 1
+    },
+    {
+      "id": "bismillahillezi",
+      "kind": "text",
+      "count": 3
+    },
+    {
+      "id": "euzuBiKelimatillah",
+      "kind": "text",
+      "count": 3
+    },
+    {
+      "id": "subhanallahiVeBihamdihi",
+      "kind": "text",
+      "count": 100
+    }
+  ],
+  "titles": {
+    "ayetelKursi": {
+      "tr": "Âyetü'l-Kürsî",
+      "en": "Ayat al-Kursi",
+      "ar": "آية الكرسي",
+      "de": "Ayat al-Kursi (Thronvers)",
+      "fr": "Ayat al-Kursi (verset du Trône)",
+      "id": "Ayat Kursi",
+      "ur": "آیت الکرسی",
+      "ru": "Аят аль-Курси",
+      "es": "Ayat al-Kursi (aleya del Trono)",
+      "it": "Ayat al-Kursi (versetto del Trono)",
+      "ms": "Ayat Kursi",
+      "bn": "আয়াতুল কুরসি",
+      "hi": "आयतुल कुर्सी",
+      "th": "อายะตุลกุรสีย์"
+    },
+    "ihlas": {
+      "tr": "İhlâs Suresi",
+      "en": "Surah Al-Ikhlas",
+      "ar": "سورة الإخلاص",
+      "de": "Sure al-Ichlas",
+      "fr": "Sourate Al-Ikhlas",
+      "id": "Surah Al-Ikhlas",
+      "ur": "سورۃ الاخلاص",
+      "ru": "Сура аль-Ихлас",
+      "es": "Sura Al-Ijlas",
+      "it": "Sura Al-Ikhlas",
+      "ms": "Surah Al-Ikhlas",
+      "bn": "সূরা আল-ইখলাস",
+      "hi": "सूरह अल-इख़लास",
+      "th": "ซูเราะฮ์อัล-อิคลาศ"
+    },
+    "felak": {
+      "tr": "Felak Suresi",
+      "en": "Surah Al-Falaq",
+      "ar": "سورة الفلق",
+      "de": "Sure al-Falaq",
+      "fr": "Sourate Al-Falaq",
+      "id": "Surah Al-Falaq",
+      "ur": "سورۃ الفلق",
+      "ru": "Сура аль-Фаляк",
+      "es": "Sura Al-Falaq",
+      "it": "Sura Al-Falaq",
+      "ms": "Surah Al-Falaq",
+      "bn": "সূরা আল-ফালাক",
+      "hi": "सूरह अल-फ़लक़",
+      "th": "ซูเราะฮ์อัล-ฟะลัก"
+    },
+    "nas": {
+      "tr": "Nâs Suresi",
+      "en": "Surah An-Nas",
+      "ar": "سورة الناس",
+      "de": "Sure an-Nas",
+      "fr": "Sourate An-Nas",
+      "id": "Surah An-Nas",
+      "ur": "سورۃ الناس",
+      "ru": "Сура ан-Нас",
+      "es": "Sura An-Nas",
+      "it": "Sura An-Nas",
+      "ms": "Surah An-Nas",
+      "bn": "সূরা আন-নাস",
+      "hi": "सूरह अन-नास",
+      "th": "ซูเราะฮ์อัน-นาส"
+    }
+  },
+  "texts": {
+    "seyyidulIstigfar": {
+      "arabic": "اَللّٰهُمَّ أَنْتَ رَبِّي لَا إِلٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلٰى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "title": {
+        "tr": "Seyyidü'l-İstiğfâr",
+        "en": "Sayyid al-Istighfar",
+        "ar": "سيد الاستغفار",
+        "de": "Sayyid al-Istighfar",
+        "fr": "Sayyid al-Istighfar",
+        "id": "Sayyidul Istighfar",
+        "ur": "سید الاستغفار",
+        "ru": "Саййид аль-истигфар",
+        "es": "Sayyid al-Istighfar",
+        "it": "Sayyid al-Istighfar",
+        "ms": "Sayyidul Istighfar",
+        "bn": "সাইয়্যেদুল ইস্তিগফার",
+        "hi": "सय्यिदुल इस्तिग़फ़ार",
+        "th": "สัยยิดุลอิสติฆฟาร"
+      },
+      "source": {
+        "tr": "Buhârî",
+        "en": "Bukhari",
+        "ar": "البخاري",
+        "de": "Buchari",
+        "fr": "Boukhari",
+        "id": "Bukhari",
+        "ur": "بخاری",
+        "ru": "аль-Бухари",
+        "es": "Bujari",
+        "it": "Bukhari",
+        "ms": "Bukhari",
+        "bn": "বুখারী",
+        "hi": "बुख़ारी",
+        "th": "บุคอรี"
+      },
+      "meaning": {
+        "tr": "Allah'ım! Sen benim Rabbimsin. Senden başka ilah yoktur. Beni Sen yarattın, ben Senin kulunum. Gücüm yettiğince Sana verdiğim söz ve ahdin üzerindeyim. Yaptıklarımın kötülüğünden Sana sığınırım. Bana verdiğin nimetleri ikrar ederim, günahımı da itiraf ederim. Beni bağışla; çünkü günahları ancak Sen bağışlarsın.",
+        "en": "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant. I keep Your covenant and promise as much as I can. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me and I admit my sin, so forgive me, for none forgives sins but You.",
+        "ar": "",
+        "de": "O Allah, Du bist mein Herr, es gibt keinen Gott außer Dir. Du hast mich erschaffen und ich bin Dein Diener. Ich halte an Deinem Bund und Versprechen fest, so gut ich kann. Ich suche Zuflucht bei Dir vor dem Übel dessen, was ich getan habe. Ich bekenne Deine Gnade über mich und bekenne meine Sünde, so vergib mir, denn niemand vergibt die Sünden außer Dir.",
+        "fr": "Ô Allah, Tu es mon Seigneur, il n'y a de divinité que Toi. Tu m'as créé et je suis Ton serviteur. Je reste fidèle à Ton pacte et à Ta promesse autant que je le peux. Je cherche refuge auprès de Toi contre le mal de ce que j'ai fait. Je reconnais Ton bienfait envers moi et je reconnais mon péché, pardonne-moi donc, car nul ne pardonne les péchés en dehors de Toi.",
+        "id": "Ya Allah, Engkau adalah Tuhanku, tidak ada tuhan selain Engkau. Engkau yang menciptakanku dan aku adalah hamba-Mu. Aku tetap pada janji dan perjanjian-Mu semampuku. Aku berlindung kepada-Mu dari keburukan perbuatanku. Aku mengakui nikmat-Mu kepadaku dan aku mengakui dosaku, maka ampunilah aku, karena tidak ada yang mengampuni dosa selain Engkau.",
+        "ur": "اے اللہ! تو میرا رب ہے، تیرے سوا کوئی معبود نہیں۔ تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں۔ میں اپنی طاقت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔ میں اپنے کیے کے شر سے تیری پناہ مانگتا ہوں۔ میں اپنے اوپر تیری نعمتوں کا اقرار کرتا ہوں اور اپنے گناہ کا اعتراف کرتا ہوں، پس مجھے بخش دے، کیونکہ تیرے سوا کوئی گناہوں کو نہیں بخشتا۔",
+        "ru": "О Аллах, Ты мой Господь, нет божества, кроме Тебя. Ты сотворил меня, и я Твой раб. Я храню верность Твоему завету и обещанию, насколько могу. Прибегаю к Тебе от зла того, что я сделал. Признаю Твою милость ко мне и признаю свой грех, так прости же меня, ведь никто не прощает грехи, кроме Тебя.",
+        "es": "Oh Allah, Tú eres mi Señor, no hay más dios que Tú. Tú me creaste y yo soy Tu siervo. Me mantengo en Tu pacto y Tu promesa en la medida de mis posibilidades. Me refugio en Ti del mal de lo que he hecho. Reconozco Tu favor sobre mí y reconozco mi pecado, perdóname, pues nadie perdona los pecados sino Tú.",
+        "it": "O Allah, Tu sei il mio Signore, non c'è dio all'infuori di Te. Tu mi hai creato e io sono il Tuo servo. Rimango fedele al Tuo patto e alla Tua promessa per quanto posso. Mi rifugio in Te dal male di ciò che ho fatto. Riconosco la Tua grazia su di me e riconosco il mio peccato, perdonami dunque, perché nessuno perdona i peccati se non Tu.",
+        "ms": "Ya Allah, Engkaulah Tuhanku, tiada tuhan selain Engkau. Engkau yang menciptakanku dan aku hamba-Mu. Aku tetap di atas perjanjian dan janji-Mu sedaya upayaku. Aku berlindung kepada-Mu daripada keburukan perbuatanku. Aku mengakui nikmat-Mu ke atasku dan aku mengakui dosaku, maka ampunilah aku, kerana tiada yang mengampunkan dosa melainkan Engkau.",
+        "bn": "হে আল্লাহ, আপনি আমার রব, আপনি ছাড়া কোনো ইলাহ নেই। আপনি আমাকে সৃষ্টি করেছেন এবং আমি আপনার বান্দা। আমি সাধ্যমতো আপনার অঙ্গীকার ও প্রতিশ্রুতির উপর আছি। আমার কৃতকর্মের অনিষ্ট থেকে আপনার কাছে আশ্রয় চাই। আমার প্রতি আপনার নিয়ামত স্বীকার করছি এবং আমার গুনাহও স্বীকার করছি; তাই আমাকে ক্ষমা করুন, কেননা আপনি ছাড়া কেউ গুনাহ ক্ষমা করতে পারে না।",
+        "hi": "ऐ अल्लाह! तू मेरा रब है, तेरे सिवा कोई माबूद नहीं। तूने मुझे पैदा किया और मैं तेरा बंदा हूँ। मैं अपनी ताक़त भर तेरे अहद और वादे पर क़ायम हूँ। मैं अपने किए की बुराई से तेरी पनाह माँगता हूँ। मैं अपने ऊपर तेरी नेमतों का इक़रार करता हूँ और अपने गुनाह का एतराफ़ करता हूँ, तो मुझे बख़्श दे, क्योंकि तेरे सिवा कोई गुनाहों को नहीं बख़्शता।",
+        "th": "โอ้ อัลลอฮ์ พระองค์คือพระผู้อภิบาลของข้าพระองค์ ไม่มีพระเจ้าอื่นใดนอกจากพระองค์ พระองค์ทรงสร้างข้าพระองค์ และข้าพระองค์คือบ่าวของพระองค์ ข้าพระองค์ยึดมั่นในสัญญาและคำมั่นของพระองค์เท่าที่สามารถ ข้าพระองค์ขอความคุ้มครองจากพระองค์ให้พ้นจากความชั่วของสิ่งที่ข้าพระองค์ได้กระทำ ข้าพระองค์ยอมรับความโปรดปรานของพระองค์ที่มีต่อข้าพระองค์ และยอมรับบาปของข้าพระองค์ โปรดอภัยให้ข้าพระองค์ด้วยเถิด เพราะไม่มีผู้ใดอภัยบาปได้นอกจากพระองค์"
+      },
+      "transliteration": {
+        "tr": "Allâhümme ente rabbî lâ ilâhe illâ ente, halaktenî ve ene abdük, ve ene alâ ahdike ve va'dike mestata'tü, eûzü bike min şerri mâ sana'tü, ebûü leke bi-ni'metike aleyye, ve ebûü leke bi-zenbî fağfir lî, fe-innehû lâ yağfiru'z-zünûbe illâ ente.",
+        "en": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "ar": "",
+        "de": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "fr": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "id": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "ur": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "ru": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "es": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "it": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "ms": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "bn": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "hi": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta.",
+        "th": "Allahumma anta rabbi la ilaha illa anta, khalaqtani wa ana abduka, wa ana ala ahdika wa wa'dika mastata'tu, a'udhu bika min sharri ma sana'tu, abu'u laka bi-ni'matika alayya, wa abu'u laka bi-dhanbi faghfir li, fa-innahu la yaghfirudh-dhunuba illa anta."
+      }
+    },
+    "bismillahillezi": {
+      "arabic": "بِسْمِ اللّٰهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "title": {
+        "tr": "Korunma Duası",
+        "en": "Supplication for Protection",
+        "ar": "دعاء الحفظ",
+        "de": "Dua um Schutz",
+        "fr": "Invocation de protection",
+        "id": "Doa Perlindungan",
+        "ur": "حفاظت کی دعا",
+        "ru": "Дуа о защите",
+        "es": "Súplica de protección",
+        "it": "Invocazione di protezione",
+        "ms": "Doa Perlindungan",
+        "bn": "হেফাজতের দোয়া",
+        "hi": "हिफ़ाज़त की दुआ",
+        "th": "ดุอาอ์ขอความคุ้มครอง"
+      },
+      "source": {
+        "tr": "Ebû Dâvûd, Tirmizî",
+        "en": "Abu Dawud, Tirmidhi",
+        "ar": "أبو داود، الترمذي",
+        "de": "Abu Dawud, Tirmidhi",
+        "fr": "Abou Dawoud, Tirmidhi",
+        "id": "Abu Dawud, Tirmidzi",
+        "ur": "ابو داؤد، ترمذی",
+        "ru": "Абу Дауд, ат-Тирмизи",
+        "es": "Abu Dawud, Tirmidhi",
+        "it": "Abu Dawud, Tirmidhi",
+        "ms": "Abu Daud, Tirmizi",
+        "bn": "আবু দাউদ, তিরমিযী",
+        "hi": "अबू दाऊद, तिर्मिज़ी",
+        "th": "อบูดาวูด, ติรมิซี"
+      },
+      "meaning": {
+        "tr": "İsmiyle birlikte yerde ve gökte hiçbir şeyin zarar veremeyeceği Allah'ın adıyla. O, işitendir, bilendir.",
+        "en": "In the name of Allah, with whose name nothing on earth or in the heavens can cause harm, and He is the All-Hearing, the All-Knowing.",
+        "ar": "",
+        "de": "Im Namen Allahs, mit dessen Namen nichts auf der Erde und im Himmel schaden kann, und Er ist der Allhörende, der Allwissende.",
+        "fr": "Au nom d'Allah, avec le nom duquel rien sur terre ni dans le ciel ne peut nuire, et Il est Celui qui entend tout, Celui qui sait tout.",
+        "id": "Dengan nama Allah yang bersama nama-Nya tidak ada sesuatu pun di bumi dan di langit yang dapat membahayakan, dan Dialah Yang Maha Mendengar lagi Maha Mengetahui.",
+        "ur": "اللہ کے نام سے جس کے نام کے ساتھ زمین اور آسمان میں کوئی چیز نقصان نہیں پہنچا سکتی، اور وہ سب کچھ سننے والا، سب کچھ جاننے والا ہے۔",
+        "ru": "С именем Аллаха, с именем которого ничто на земле и на небе не причинит вреда, и Он Всеслышащий, Всезнающий.",
+        "es": "En el nombre de Allah, con cuyo nombre nada en la tierra ni en el cielo puede causar daño, y Él es el que todo lo oye, el que todo lo sabe.",
+        "it": "Nel nome di Allah, con il cui nome nulla sulla terra e nel cielo può nuocere, ed Egli è Colui che tutto ascolta, Colui che tutto sa.",
+        "ms": "Dengan nama Allah yang bersama nama-Nya tiada sesuatu pun di bumi dan di langit dapat memudaratkan, dan Dialah Yang Maha Mendengar lagi Maha Mengetahui.",
+        "bn": "আল্লাহর নামে, যাঁর নামের সাথে জমিনে ও আসমানে কোনো কিছুই ক্ষতি করতে পারে না; আর তিনি সর্বশ্রোতা, সর্বজ্ঞ।",
+        "hi": "अल्लाह के नाम से, जिसके नाम के साथ ज़मीन और आसमान में कोई चीज़ नुक़सान नहीं पहुँचा सकती, और वह सब कुछ सुनने वाला, सब कुछ जानने वाला है।",
+        "th": "ด้วยพระนามของอัลลอฮ์ ซึ่งเมื่ออยู่กับพระนามของพระองค์ ไม่มีสิ่งใดในแผ่นดินและในฟากฟ้าจะให้โทษได้ และพระองค์คือผู้ทรงได้ยิน ผู้ทรงรอบรู้"
+      },
+      "transliteration": {
+        "tr": "Bismillâhillezî lâ yedurru maasmihî şey'ün fi'l-ardı ve lâ fi's-semâi ve hüve's-semîu'l-alîm.",
+        "en": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "ar": "",
+        "de": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "fr": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "id": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "ur": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "ru": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "es": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "it": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "ms": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "bn": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "hi": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim.",
+        "th": "Bismillahil-ladhi la yadurru ma'asmihi shay'un fil-ardi wa la fis-sama'i wa huwas-sami'ul-alim."
+      }
+    },
+    "subhanallahiVeBihamdihi": {
+      "arabic": "سُبْحَانَ اللّٰهِ وَبِحَمْدِهِ",
+      "title": {
+        "tr": "Tesbih",
+        "en": "Glorification",
+        "ar": "التسبيح",
+        "de": "Lobpreisung",
+        "fr": "Glorification",
+        "id": "Tasbih",
+        "ur": "تسبیح",
+        "ru": "Тасбих",
+        "es": "Glorificación",
+        "it": "Glorificazione",
+        "ms": "Tasbih",
+        "bn": "তাসবিহ",
+        "hi": "तस्बीह",
+        "th": "ตัสบีห์"
+      },
+      "source": {
+        "tr": "Müslim",
+        "en": "Muslim",
+        "ar": "مسلم",
+        "de": "Muslim",
+        "fr": "Mouslim",
+        "id": "Muslim",
+        "ur": "مسلم",
+        "ru": "Муслим",
+        "es": "Muslim",
+        "it": "Muslim",
+        "ms": "Muslim",
+        "bn": "মুসলিম",
+        "hi": "मुस्लिम",
+        "th": "มุสลิม"
+      },
+      "meaning": {
+        "tr": "Allah'ı hamd ile tesbih ederim.",
+        "en": "Glory be to Allah and praise be to Him.",
+        "ar": "",
+        "de": "Gepriesen sei Allah und Lob sei Ihm.",
+        "fr": "Gloire et louange à Allah.",
+        "id": "Maha Suci Allah dan segala puji bagi-Nya.",
+        "ur": "اللہ پاک ہے اپنی حمد کے ساتھ۔",
+        "ru": "Пречист Аллах, и хвала Ему.",
+        "es": "Glorificado sea Allah y alabado sea.",
+        "it": "Gloria ad Allah e lode a Lui.",
+        "ms": "Maha Suci Allah dan segala puji bagi-Nya.",
+        "bn": "আল্লাহ পবিত্র এবং সমস্ত প্রশংসা তাঁরই।",
+        "hi": "अल्लाह पाक है और सारी तारीफ़ उसी के लिए है।",
+        "th": "มหาบริสุทธิ์แด่อัลลอฮ์ และการสรรเสริญเป็นของพระองค์"
+      },
+      "transliteration": {
+        "tr": "Sübhânallâhi ve bihamdihî.",
+        "en": "Subhanallahi wa bihamdihi.",
+        "ar": "",
+        "de": "Subhanallahi wa bihamdihi.",
+        "fr": "Subhanallahi wa bihamdihi.",
+        "id": "Subhanallahi wa bihamdihi.",
+        "ur": "Subhanallahi wa bihamdihi.",
+        "ru": "Subhanallahi wa bihamdihi.",
+        "es": "Subhanallahi wa bihamdihi.",
+        "it": "Subhanallahi wa bihamdihi.",
+        "ms": "Subhanallahi wa bihamdihi.",
+        "bn": "Subhanallahi wa bihamdihi.",
+        "hi": "Subhanallahi wa bihamdihi.",
+        "th": "Subhanallahi wa bihamdihi."
+      }
+    },
+    "euzuBiKelimatillah": {
+      "arabic": "أَعُوذُ بِكَلِمَاتِ اللّٰهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "title": {
+        "tr": "Sığınma Duası",
+        "en": "Seeking Refuge",
+        "ar": "دعاء الاستعاذة",
+        "de": "Zufluchtsuche",
+        "fr": "Demande de refuge",
+        "id": "Doa Memohon Perlindungan",
+        "ur": "پناہ کی دعا",
+        "ru": "Поиск защиты",
+        "es": "Búsqueda de refugio",
+        "it": "Ricerca di rifugio",
+        "ms": "Doa Memohon Perlindungan",
+        "bn": "আশ্রয় প্রার্থনা",
+        "hi": "पनाह की दुआ",
+        "th": "การขอความคุ้มครอง"
+      },
+      "source": {
+        "tr": "Müslim, Tirmizî",
+        "en": "Muslim, Tirmidhi",
+        "ar": "مسلم، الترمذي",
+        "de": "Muslim, Tirmidhi",
+        "fr": "Mouslim, Tirmidhi",
+        "id": "Muslim, Tirmidzi",
+        "ur": "مسلم، ترمذی",
+        "ru": "Муслим, ат-Тирмизи",
+        "es": "Muslim, Tirmidhi",
+        "it": "Muslim, Tirmidhi",
+        "ms": "Muslim, Tirmizi",
+        "bn": "মুসলিম, তিরমিযী",
+        "hi": "मुस्लिम, तिर्मिज़ी",
+        "th": "มุสลิม, ติรมิซี"
+      },
+      "meaning": {
+        "tr": "Yarattıklarının şerrinden Allah'ın eksiksiz kelimelerine sığınırım.",
+        "en": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+        "ar": "",
+        "de": "Ich suche Zuflucht bei den vollkommenen Worten Allahs vor dem Übel dessen, was Er erschaffen hat.",
+        "fr": "Je cherche refuge auprès des paroles parfaites d'Allah contre le mal de ce qu'Il a créé.",
+        "id": "Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari keburukan makhluk yang Dia ciptakan.",
+        "ur": "میں اللہ کے کامل کلمات کی پناہ مانگتا ہوں اس کی مخلوق کے شر سے۔",
+        "ru": "Прибегаю к совершенным словам Аллаха от зла того, что Он сотворил.",
+        "es": "Me refugio en las palabras perfectas de Allah del mal de lo que Él ha creado.",
+        "it": "Mi rifugio nelle parole perfette di Allah dal male di ciò che Egli ha creato.",
+        "ms": "Aku berlindung dengan kalimah-kalimah Allah yang sempurna daripada kejahatan makhluk yang Dia ciptakan.",
+        "bn": "আমি আল্লাহর পূর্ণাঙ্গ কালিমাসমূহের আশ্রয় চাই, তিনি যা সৃষ্টি করেছেন তার অনিষ্ট থেকে।",
+        "hi": "मैं अल्लाह के मुकम्मल कलिमात की पनाह माँगता हूँ, उसकी पैदा की हुई चीज़ों की बुराई से।",
+        "th": "ข้าพระองค์ขอความคุ้มครองด้วยถ้อยคำอันสมบูรณ์ของอัลลอฮ์ ให้พ้นจากความชั่วของสิ่งที่พระองค์ทรงสร้าง"
+      },
+      "transliteration": {
+        "tr": "Eûzü bi-kelimâtillâhi't-tâmmâti min şerri mâ halak.",
+        "en": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "ar": "",
+        "de": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "fr": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "id": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "ur": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "ru": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "es": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "it": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "ms": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "bn": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "hi": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq.",
+        "th": "A'udhu bi-kalimatillahit-tammati min sharri ma khalaq."
+      }
+    }
+  }
+}

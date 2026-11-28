@@ -135,6 +135,12 @@ enum WidgetBridge {
     write(["date": date, "items": Array(items.prefix(TopicDay.maxItems))], key: "salah_inspiration_day", reload: "SalahInspirationWidget")
   }
 
+  /// "Günün okuması" widget'ı: önümüzdeki günlerin esması, ayeti (meal dahil) ve duası. Widget ağa çıkmaz.
+  static func updateDailyReading(_ days: [[String: Any]]) {
+    guard !days.isEmpty else { return }
+    write(["days": days], key: "salah_daily_reading", reload: "SalahDailyReadingWidget")
+  }
+
   /// Kilit ekranı için önümüzdeki günlerin ayetleri; widget gece yarısı kendisi geçer.
   static func updateVerses(_ items: [[String: String]]) {
     write(items, key: "salah_inspiration_verses", reload: "SalahInspirationWidget")

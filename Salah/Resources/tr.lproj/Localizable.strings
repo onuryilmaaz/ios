@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "O anki vakti kılındı olarak işaretler.";
 "shortcut.nextPrayer" = "Sıradaki vakit";
 "shortcut.markPrayer" = "Kıldım";
+"intent.dailyVerse.title" = "Günün ayeti";
+"intent.dailyVerse.description" = "Günün ayetinin mealini ve kaynağını okur.";
+"intent.morningEzkar.title" = "Sabah zikirleri";
+"intent.morningEzkar.description" = "Sabah zikirlerini açar.";
+"intent.eveningEzkar.title" = "Akşam zikirleri";
+"intent.eveningEzkar.description" = "Akşam zikirlerini açar.";
+"shortcut.dailyVerse" = "Günün ayeti";
+"shortcut.morningEzkar" = "Sabah zikirleri";
+"shortcut.eveningEzkar" = "Akşam zikirleri";

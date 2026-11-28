@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "Menandai salat saat ini sebagai sudah dikerjakan.";
 "shortcut.nextPrayer" = "Salat berikutnya";
 "shortcut.markPrayer" = "Saya sudah salat";
+"intent.dailyVerse.title" = "Ayat hari ini";
+"intent.dailyVerse.description" = "Membacakan arti dan sumber ayat hari ini.";
+"intent.morningEzkar.title" = "Zikir pagi";
+"intent.morningEzkar.description" = "Membuka zikir pagi.";
+"intent.eveningEzkar.title" = "Zikir petang";
+"intent.eveningEzkar.description" = "Membuka zikir petang.";
+"shortcut.dailyVerse" = "Ayat hari ini";
+"shortcut.morningEzkar" = "Zikir pagi";
+"shortcut.eveningEzkar" = "Zikir petang";

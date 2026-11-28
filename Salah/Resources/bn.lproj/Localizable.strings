@@ -5,3 +5,12 @@
 "intent.markPrayer.description" = "বর্তমান নামাজ আদায় হয়েছে বলে চিহ্নিত করে।";
 "shortcut.nextPrayer" = "পরবর্তী নামাজ";
 "shortcut.markPrayer" = "আমি নামাজ পড়েছি";
+"intent.dailyVerse.title" = "আজকের আয়াত";
+"intent.dailyVerse.description" = "আজকের আয়াতের অর্থ ও সূত্র পড়ে শোনায়।";
+"intent.morningEzkar.title" = "সকালের যিকির";
+"intent.morningEzkar.description" = "সকালের যিকির খোলে।";
+"intent.eveningEzkar.title" = "সন্ধ্যার যিকির";
+"intent.eveningEzkar.description" = "সন্ধ্যার যিকির খোলে।";
+"shortcut.dailyVerse" = "আজকের আয়াত";
+"shortcut.morningEzkar" = "সকালের যিকির";
+"shortcut.eveningEzkar" = "সন্ধ্যার যিকির";

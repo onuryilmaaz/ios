@@ -26,6 +26,33 @@ struct SalahShortcuts: AppShortcutsProvider {
       shortTitle: "shortcut.markPrayer",
       systemImageName: "checkmark.circle"
     )
+    AppShortcut(
+      intent: DailyVerseIntent(),
+      phrases: [
+        "Verse of the day in \(.applicationName)",
+        "Read the verse of the day in \(.applicationName)",
+      ],
+      shortTitle: "shortcut.dailyVerse",
+      systemImageName: "book"
+    )
+    AppShortcut(
+      intent: MorningEzkarIntent(),
+      phrases: [
+        "Morning adhkar in \(.applicationName)",
+        "Open morning adhkar in \(.applicationName)",
+      ],
+      shortTitle: "shortcut.morningEzkar",
+      systemImageName: "sunrise"
+    )
+    AppShortcut(
+      intent: EveningEzkarIntent(),
+      phrases: [
+        "Evening adhkar in \(.applicationName)",
+        "Open evening adhkar in \(.applicationName)",
+      ],
+      shortTitle: "shortcut.eveningEzkar",
+      systemImageName: "sunset"
+    )
   }
 
   static var shortcutTileColor: ShortcutTileColor { .grayGreen }
@@ -57,8 +84,66 @@ struct MarkCurrentPrayerIntent: AppIntent {
   }
 }
 
+/// "Günün ayeti": uygulamayı açmadan günün ayetinin mealini ve kaynağını söyler (önbellek yoksa çekmeyi dener).
+struct DailyVerseIntent: AppIntent {
+  static let title: LocalizedStringResource = "intent.dailyVerse.title"
+  static let description = IntentDescription("intent.dailyVerse.description")
+  static let openAppWhenRun = false
+
+  @MainActor
+  func perform() async throws -> some IntentResult & ReturnsValue<String> & ProvidesDialog {
+    UsageStore.shared.record("siri.verse")
+    let text = await SiriPrayer.dailyVerseText(date: localDateString())
+    return .result(value: text, dialog: IntentDialog(stringLiteral: text))
+  }
+}
+
+/// "Sabah zikirleri" ve "Akşam zikirleri": uygulamayı ilgili oturumda açar.
+struct MorningEzkarIntent: AppIntent {
+  static let title: LocalizedStringResource = "intent.morningEzkar.title"
+  static let description = IntentDescription("intent.morningEzkar.description")
+  static let openAppWhenRun = true
+
+  @MainActor
+  func perform() async throws -> some IntentResult {
+    UsageStore.shared.record("siri.ezkar.morning")
+    SiriPrayer.openEzkar(.morning)
+    return .result()
+  }
+}
+
+struct EveningEzkarIntent: AppIntent {
+  static let title: LocalizedStringResource = "intent.eveningEzkar.title"
+  static let description = IntentDescription("intent.eveningEzkar.description")
+  static let openAppWhenRun = true
+
+  @MainActor
+  func perform() async throws -> some IntentResult {
+    UsageStore.shared.record("siri.ezkar.evening")
+    SiriPrayer.openEzkar(.evening)
+    return .result()
+  }
+}
+
 @MainActor
 enum SiriPrayer {
+  /// Günün ayeti: Günün okuması ekranıyla aynı seçim (panel ataması ya da `DailyReading.verse`); metin yoksa uygulamayı aç.
+  static func dailyVerseText(date: String) async -> String {
+    guard AppControlStore.shared.isOn("daily_reading") else { return t("ezkar.siriOpen") }
+    let language = Localizer.shared.language.rawValue
+    if let panel = AppControlStore.shared.dailyItem(for: date), panel.kind != "hadith" {
+      let text = AppControlLogic.text(panel.text, language: language)
+      if !text.isEmpty { return t("ezkar.siriSay", ["text": text, "source": AppControlLogic.text(panel.source, language: language)]) }
+    }
+    guard let ref = DailyReading.verse(date: date), let verse = await VerseTextCache.load(ref), !verse.text.isEmpty else { return t("ezkar.siriOpen") }
+    return t("ezkar.siriSay", ["text": verse.text, "source": verse.source])
+  }
+
+  /// Uygulama açılırken `RootView` bağlantıyı işler (sahne yoksa `onAppear`, varsa `onChange`).
+  static func openEzkar(_ session: EzkarSession) {
+    if let url = URL(string: "salah://zikirler/\(session.linkName)") { AppLinks.shared.request = url }
+  }
+
   /// Uygulama yalnız intent için açıldıysa (sahne yok) oturum henüz okunmamıştır.
   static func prepare() async {
     if !AuthStore.shared.hydrated { await AuthStore.shared.hydrate() }

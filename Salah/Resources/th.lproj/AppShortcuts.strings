@@ -3,3 +3,9 @@
 "When is the next prayer in ${applicationName}" = "ละหมาดครั้งถัดไปใน ${applicationName} เมื่อไหร่";
 "Mark my prayer in ${applicationName}" = "บันทึกการละหมาดของฉันใน ${applicationName}";
 "I prayed in ${applicationName}" = "ฉันละหมาดแล้วใน ${applicationName}";
+"Verse of the day in ${applicationName}" = "อายะฮ์ประจำวันใน ${applicationName}";
+"Read the verse of the day in ${applicationName}" = "อ่านอายะฮ์ประจำวันใน ${applicationName}";
+"Morning adhkar in ${applicationName}" = "อัซการตอนเช้าใน ${applicationName}";
+"Open morning adhkar in ${applicationName}" = "เปิดอัซการตอนเช้าใน ${applicationName}";
+"Evening adhkar in ${applicationName}" = "อัซการตอนเย็นใน ${applicationName}";
+"Open evening adhkar in ${applicationName}" = "เปิดอัซการตอนเย็นใน ${applicationName}";

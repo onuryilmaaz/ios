@@ -32,6 +32,13 @@ struct NotificationPreferences: Equatable, Sendable {
   var friday = true
   /// Kılınmamış vakit hatırlatması: en az kılınan iki vakit, vakit çıkmadan önce.
   var missed = true
+  /// Sabah (güneşten 20 dk sonra) ve akşam (ikindiden 30 dk sonra) zikirleri hatırlatması.
+  var ezkarMorning = false
+  var ezkarEvening = false
+  /// Nafile oruç hatırlatıcısı: gün grupları (varsayılan hepsi) ve imsaktan önce sahur bildirimi.
+  var fasting = false
+  var fastingGroups = Set(FastingGroup.allCases)
+  var fastingSuhoor = false
   var muteUntil: Date?
 
   static func read(now: Date = Date(), get: (String) -> String? = { LocalStore.string($0) }) -> Self {
@@ -46,6 +53,11 @@ struct NotificationPreferences: Equatable, Sendable {
     value.religiousDays = get("RELIGIOUS_DAY_NOTIFICATIONS_ENABLED").map { $0 == "true" } ?? true
     value.friday = get("CUMA_REMINDER_ENABLED").map { $0 == "true" } ?? true
     value.missed = get("MISSED_PRAYER_REMINDER_ENABLED").map { $0 == "true" } ?? true
+    value.ezkarMorning = get("EZKAR_MORNING_REMINDER_ENABLED") == "true"
+    value.ezkarEvening = get("EZKAR_EVENING_REMINDER_ENABLED") == "true"
+    value.fasting = get("NAFILE_FAST_REMINDER_ENABLED") == "true"
+    if let groups = decode([String].self, get("NAFILE_FAST_GROUPS")) { value.fastingGroups = Set(groups.compactMap(FastingGroup.init(rawValue:))) }
+    value.fastingSuhoor = get("NAFILE_FAST_SUHOOR_ENABLED") == "true"
     if let raw = get("NOTIFICATION_MUTE_UNTIL"), let ms = Double(raw), ms.isFinite {
       let date = Date(timeIntervalSince1970: ms / 1000)
       if date > now { value.muteUntil = date }

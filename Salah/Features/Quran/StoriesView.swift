@@ -66,6 +66,8 @@ struct StoryDetailView: View {
   @State private var verses: [TopicVerseText]?
   @State private var failed = false
   @State private var started = false
+  @State private var listenIDs: [Int] = []
+  private let audio = QuranAudioPlayer.shared
 
   private var story: Story? { StoryCatalog.story(storyID) }
 
@@ -80,8 +82,11 @@ struct StoryDetailView: View {
               header(story).id("top")
               sectionHeader(section, total: story.sections.count)
               if let verses {
-                ForEach(verses) { verse in
-                  TopicVerseCard(ref: verse.ref, preloaded: verse).id("\(Localizer.shared.language.rawValue)-\(verse.id)")
+                VerseListenButton(refs: verses.map(\.ref), showsTitle: true, playKey: "listen.all", stopKey: "listen.stopAll")
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                ForEach(Array(verses.enumerated()), id: \.element.id) { offset, verse in
+                  TopicVerseCard(ref: verse.ref, preloaded: verse, highlighted: isPlaying(offset))
+                    .id("\(Localizer.shared.language.rawValue)-\(verse.id)")
                 }
               } else if failed {
                 Card {
@@ -97,11 +102,13 @@ struct StoryDetailView: View {
             .onChange(of: index) { proxy.scrollTo("top", anchor: .top) }
         }
         .task(id: "\(index)-\(Localizer.shared.language.rawValue)") { await load(section) }
+        .task(id: verses?.map(\.id).joined(separator: ",") ?? "") { listenIDs = await VerseAudio.verses(verses?.map(\.ref) ?? []).map(\.id) }
       } else {
         QuranEmptyView(icon: "albums-outline", title: t("topics.emptyTopic")).padding(.top, 24)
         Spacer()
       }
-    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar)
+    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar).stopsVerseAudioOnDisappear()
+      .onChange(of: index) { QuranAudioPlayer.shared.stop() }
       .onAppear {
         guard !started, let story else { return }
         started = true
@@ -111,6 +118,11 @@ struct StoryDetailView: View {
         // Yarım kalan kıssada kaldığın bölümden, bitmişse baştan.
         else if done > 0, done < story.sections.count { index = done }
       }
+  }
+
+  /// "Tümünü dinle" sırasında çalan ayet vurgulanır.
+  private func isPlaying(_ offset: Int) -> Bool {
+    !listenIDs.isEmpty && audio.state != .idle && audio.activeIndex == offset && audio.verses.map(\.id) == listenIDs
   }
 
   private func header(_ story: Story) -> some View {

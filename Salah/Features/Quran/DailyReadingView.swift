@@ -25,7 +25,7 @@ struct DailyReadingView: View {
           esmaSection
         }.padding(.horizontal, 14).padding(.top, 10.5).padding(.bottom, 24)
       }.scrollIndicators(.hidden)
-    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar)
+    }.background(tokens.canvas).toolbar(.hidden, for: .navigationBar).stopsVerseAudioOnDisappear()
       .task(id: language + date) { await loadHadith() }
   }
 
